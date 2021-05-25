@@ -1,13 +1,13 @@
 package proj21_shoes.dto;
 
-public class Address { // 배송지정보
+public class Address { 				// 배송지정보
 
-	private Order orderCode; // 주문정보
-	private String recipient; // 받는사람
-	private String zipCode; // 우편번호
-	private String address; // 주소
-	private String detail_address; // 상세주소
-	private String tel; // 연락처
+	private Order orderCode; 		// 주문정보
+	private String recipient; 		// 받는사람
+	private String zipCode; 		// 우편번호
+	private String address; 		// 주소
+	private String detail_address;	 // 상세주소
+	private String tel; 			// 연락처
 
 	public Order getOrderCode() {
 		return orderCode;
