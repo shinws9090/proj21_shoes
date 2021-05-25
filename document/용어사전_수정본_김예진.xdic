@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tm:TermDictionary xmlns:tm="http://exerd.com/term-model" version="1.1">
+  <term name="회원" description="회원" physicalName="member" physicalDescription=""/>
+  <term name="확정" description="확정" physicalName="confirm" physicalDescription=""/>
+  <term name="포인트" description="포인트" physicalName="point" physicalDescription=""/>
+  <term name="판매" description="판매" physicalName="sell" physicalDescription=""/>
+  <term name="탈퇴" description="탈퇴" physicalName="quit" physicalDescription=""/>
+  <term name="코드" description="코드" physicalName="code" physicalDescription=""/>
+  <term name="직원" description="직원" physicalName="emp" physicalDescription="">
+    <synonyms>사원</synonyms>
+  </term>
+  <term name="주소" description="주소" physicalName="address" physicalDescription=""/>
+  <term name="주문" description="주문" physicalName="order" physicalDescription=""/>
+  <term name="종류" description="종류" physicalName="category" physicalDescription="">
+    <synonyms>카테고리</synonyms>
+  </term>
+  <term name="제조" description="제조" physicalName="made" physicalDescription=""/>
+  <term name="제목" description="제목" physicalName="title" physicalDescription=""/>
+  <term name="재고" description="재고" physicalName="stock" physicalDescription=""/>
+  <term name="일" description="월" physicalName="date" physicalDescription="">
+    <synonyms>날</synonyms>
+    <synonyms>일자</synonyms>
+  </term>
+  <term name="이미지" description="이미지" physicalName="image" physicalDescription=""/>
+  <term name="이메일" description="이메일" physicalName="email" physicalDescription=""/>
+  <term name="이름" description="이름" physicalName="name" physicalDescription=""/>
+  <term name="원가" description="원가" physicalName="costPrice" physicalDescription=""/>
+  <term name="우편" description="우편" physicalName="zip" physicalDescription=""/>
+  <term name="옵션" description="옵션" physicalName="option" physicalDescription=""/>
+  <term name="연령" description="연령" physicalName="age" physicalDescription="">
+    <synonyms>나이대</synonyms>
+    <synonyms>연령대</synonyms>
+  </term>
+  <term name="연락처" description="연락처" physicalName="tel" physicalDescription="">
+    <synonyms>전화</synonyms>
+  </term>
+  <term name="여부" description="여부" physicalName="state" physicalDescription="">
+    <synonyms>상태</synonyms>
+  </term>
+  <term name="아이디" description="아이디" physicalName="id" physicalDescription=""/>
+  <term name="스타일" description="스타일" physicalName="style" physicalDescription=""/>
+  <term name="순서" description="순서" physicalName="procedure" physicalDescription=""/>
+  <term name="수량" description="수량" physicalName="count" physicalDescription=""/>
+  <term name="소재" description="소재" physicalName="material" physicalDescription="">
+    <synonyms>재질</synonyms>
+    <synonyms>재료</synonyms>
+  </term>
+  <term name="성별" description="성별" physicalName="gender" physicalDescription="">
+    <synonyms>성별구분</synonyms>
+  </term>
+  <term name="생년월일" description="생년월일" physicalName="birthday" physicalDescription=""/>
+  <term name="색상" description="색상" physicalName="color" physicalDescription=""/>
+  <term name="상품" description="상품" physicalName="product" physicalDescription="">
+    <synonyms>제품</synonyms>
+  </term>
+  <term name="상세" description="상세" physicalName="detail" physicalDescription=""/>
+  <term name="사진" description="사진" physicalName="pic" physicalDescription=""/>
+  <term name="사이즈" description="사이즈" physicalName="size" physicalDescription=""/>
+  <term name="비회원" description="비회원" physicalName="nonMember" physicalDescription=""/>
+  <term name="비밀번호" description="비밀번호" physicalName="pwd" physicalDescription=""/>
+  <term name="브랜드" description="브랜드" physicalName="brand" physicalDescription=""/>
+  <term name="번호" description="번호" physicalName="number" physicalDescription=""/>
+  <term name="배송" description="배송" physicalName="delivery" physicalDescription=""/>
+  <term name="받는사람" description="받는사람" physicalName="recipient" physicalDescription=""/>
+  <term name="명" description="명" physicalName="name" physicalDescription="">
+    <synonyms>이름</synonyms>
+    <synonyms>명칭</synonyms>
+  </term>
+  <term name="등록자" description="등록자" physicalName="uploader" physicalDescription=""/>
+  <term name="등록" description="등록" physicalName="regist" physicalDescription="">
+    <synonyms>입고</synonyms>
+  </term>
+  <term name="등급" description="등급" physicalName="grade" physicalDescription=""/>
+  <term name="대표" description="대표" physicalName="main" physicalDescription=""/>
+  <term name="답글" description="답글" physicalName="reply" physicalDescription=""/>
+  <term name="누적" description="누적" physicalName="cumulative" physicalDescription="">
+    <synonyms>누적</synonyms>
+  </term>
+  <term name="내용" description="내용" physicalName="content" physicalDescription=""/>
+  <term name="금액" description="금액" physicalName="amount" physicalDescription=""/>
+  <term name="권한" description="권한" physicalName="authority" physicalDescription=""/>
+  <term name="구입" description="구입" physicalName="buy" physicalDescription="">
+    <synonyms>구매</synonyms>
+  </term>
+  <term name="계절" description="계절" physicalName="season" physicalDescription=""/>
+  <term name="결제" description="결제" physicalName="payment" physicalDescription=""/>
+  <term name="게시판" description="게시판" physicalName="board" physicalDescription=""/>
+  <term name="가입" description="가입" physicalName="signUp" physicalDescription=""/>
+  <term name="가격" description="가격" physicalName="Price" physicalDescription="">
+    <synonyms>가</synonyms>
+  </term>
+  <term name="row" description="row" physicalName="row" physicalDescription=""/>
+  <term name="high" description="hi" physicalName="high" physicalDescription="">
+    <synonyms>hi</synonyms>
+  </term>
+  <term name="우편번호" description="우편번호" physicalName="zipCode" physicalDescription=""/>
+  <term name="장바구니" description="장바구니" physicalName="cart" physicalDescription=""/>
+</tm:TermDictionary>
