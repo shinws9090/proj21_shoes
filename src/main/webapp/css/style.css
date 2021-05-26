@@ -1667,11 +1667,14 @@ margin: 0 auto;
 float: left;
 }
 
-.top-box p {
-	float: right;
-	padding-top: 10px;
-    color: #000;
+.top-box #top li{
+	display: inline-block;
+	padding:1em;
 }
+.top-box #top{
+	float: right;
+}
+
 ul.sociel_link li {
 	display: inline-block;
 }

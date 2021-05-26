@@ -37,67 +37,51 @@
       </div>
       <!-- end loader --> 
       <!-- header -->
-      <header>
-         <!-- header inner -->
-         <div class="header">
-            <div class="head_top">
-               <div class="container">
-                  <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                       <div class="top-box">
-                        <ul class="sociel_link">
-                         <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                         <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
-                         <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
-                         <li> <a href="#"><i class="fa fa-linkedin"></i></a></li>
-                     </ul>
-                    </div>
-                  </div>
-                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                    <div class="top-box">
-                        <ul id=top>
-							<li><a href="">JOIN</a></li>
-							<li><a href="">LOGIN</a></li>
-							<li><a href="">MYPAGE</a></li>
-							<li><a href="">BOARD</a></li>
-						</ul>
-                    </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="container">
-            <div class="row">
-               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
-                  <div class="full">
-                     <div class="center-desk">
-                        <div class="logo"> <a href="index.html"><img src="images/logo.jpg" alt="logo"/></a> </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-xl-7 col-lg-7 col-md-9 col-sm-9">
-                  <div class="menu-area">
-                     <div class="limit-box">
-                        <nav class="main-menu">
-                           <ul class="menu-area-main">
-                              <li class="active"> <a href="index.html">Home</a> </li>
-                              <li> <a href="contact.html">BRAND</a> </li>
-                              <li> <a href="about.html">WOMEN</a> </li>
-                              <li> <a href="product.html">MEN</a> </li>
-                              <li> <a href="blog.html"> KIDS</a> </li>
-                           </ul>
-                        </nav>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <!-- end header inner --> 
-      </header>
-      <!-- end header -->
+	<header>
+		<!-- header inner -->
+		<div class="header">
+			<div class="top-box">
+				<ul class="sociel_link">
+					<li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+					<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+					<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+					<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+				</ul>
+			</div>
+			<div class="top-box">
+				<ul id=top>
+					<li><a href="#">JOIN</a></li>
+					<li><a href="#">LOGIN</a></li>
+					<li><a href="#">MYPAGE</a></li>
+					<li><a href="#">BOARD</a></li>
+				</ul>
+			</div>
+			<div class="center-desk">
+				<div class="logo">
+					<a href="#"><img src="images/logo.jpg" alt="logo" /></a>
+				</div>
+			</div>
+			<nav class="main-menu">
+				<ul class="menu-area-main">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#">BRAND</a></li>
+					<li><a href="#">WOMEN</a></li>
+					<li><a href="#">MEN</a></li>
+					<li><a href="#"> KIDS</a></li>
+				</ul>
+			</nav>
+		</div>
+		<!-- end header inner -->
+	</header>
+
+
+
+
+
+
+	<!-- end header -->
       <section class="slider_section">
          <div id="main_slider" class="carousel slide banner-main" data-ride="carousel">
-
             <div class="carousel-inner">
                <div class="carousel-item active">
                   <img class="first-slide" src="images/banner3.jpg" alt="First slide">
@@ -151,24 +135,15 @@
 
 
 <!-- CHOOSE  -->
-      <div class="whyschose">
-         <div class="container">
-
-            <div class="row">
-               <div class="col-md-7 offset-md-3">
-                  <div class="title">
-                     <h2>이런신발 <strong class="black">좋은신발 </strong></h2>
-                     <span>팔아요</span>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
+	<div class="title">
+		<h2>이런신발 <strong class="black">좋은신발 </strong></h2>
+		<span>팔아요</span>
+	</div>
 
 
-      
 
-      <!-- our product -->
+
+	<!-- our product -->
       <div class="product-bg">
          <div class="product-bg-white">
          <div class="container">
@@ -253,7 +228,6 @@
                      <ul class="sociel">
                          <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
                          <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
-                         <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
                          <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
                      </ul>
                   </div>
