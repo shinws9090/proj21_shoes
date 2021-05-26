@@ -1644,7 +1644,7 @@ input[type="radio"] .styled:checked+label::after {
 
 
 .buy {
-background: #ffc221;
+background: #f1ede0;
 padding: 7px 41px !important;
 margin-top: 18px;
 border-radius: 5px;
@@ -1656,7 +1656,7 @@ float: right;
 	color: #fff;
 }
 
-.head_top {background: #ffc221;
+.head_top {background: ##ffffff;
 margin-bottom: 35px;
 }
 ul.sociel_link {

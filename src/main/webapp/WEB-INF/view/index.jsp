@@ -90,7 +90,7 @@
                   </div>
                </div>
                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-                  <li><a class="buy" href="#">Login</a></li>
+                  <li><a class="buy" href="#">로그인</a></li>
                </div>
             </div>
          </div>
@@ -102,38 +102,38 @@
 
             <div class="carousel-inner">
                <div class="carousel-item active">
-                  <img class="first-slide" src="images/banner2.jpg" alt="First slide">
+                  <img class="first-slide" src="images/banner3.jpg" alt="First slide">
                   <div class="container">
                      <div class="carousel-caption relative">
-                        <h1>Our <br> <strong class="black_bold">Latest </strong><br>
-                           <strong class="yellow_bold">Product </strong></h1>
+                         <h1>좋은 <br> <strong class="black_bold">신발 </strong><br>
+                           <strong class="yellow_bold">팝니다 </strong></h1>
                         <p>It is a long established fact that a r <br>
                           eader will be distracted by the readable content of a page </p>
-                        <a  href="#">see more Products</a>
+                         <a  href="#">신발 구경하러가기</a>
                      </div>
                   </div>
                </div>
                <div class="carousel-item">
-                  <img class="second-slide" src="images/banner2.jpg" alt="Second slide">
+                  <img class="second-slide" src="images/banner3.jpg" alt="Second slide">
                   <div class="container">
                      <div class="carousel-caption relative">
-                        <h1>Our <br> <strong class="black_bold">Latest </strong><br>
-                           <strong class="yellow_bold">Product </strong></h1>
+                         <h1>좋은 <br> <strong class="black_bold">신발 </strong><br>
+                           <strong class="yellow_bold">팝니다 </strong></h1>
                         <p>It is a long established fact that a r <br>
                           eader will be distracted by the readable content of a page </p>
-                        <a  href="#">see more Products</a>
+                          <a  href="#">신발 구경하러가기</a>
                      </div>
                   </div>
                </div>
                <div class="carousel-item">
-                  <img class="third-slide" src="images/banner2.jpg" alt="Third slide">
+                  <img class="third-slide" src="images/banner3.jpg" alt="Third slide">
                   <div class="container">
                      <div class="carousel-caption relative">
-                        <h1>Our <br> <strong class="black_bold">Latest </strong><br>
-                           <strong class="yellow_bold">Product </strong></h1>
+                        <h1>좋은 <br> <strong class="black_bold">신발 </strong><br>
+                           <strong class="yellow_bold">팝니다 </strong></h1>
                         <p>It is a long established fact that a r <br>
                           eader will be distracted by the readable content of a page </p>
-                        <a  href="#">see more Products</a>
+                        <a  href="#">신발 구경하러가기</a>
                      </div>
                   </div>
                </div>
@@ -159,8 +159,8 @@
             <div class="row">
                <div class="col-md-7 offset-md-3">
                   <div class="title">
-                     <h2>Why <strong class="black">choose us</strong></h2>
-                     <span>Fastest repair service with best price!</span>
+                     <h2>이런신발 <strong class="black">좋은신발 </strong></h2>
+                     <span>팔아요</span>
                   </div>
                </div>
             </div>
