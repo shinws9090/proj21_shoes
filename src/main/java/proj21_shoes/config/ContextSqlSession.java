@@ -22,7 +22,7 @@ public class ContextSqlSession {
 		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
 		factoryBean.setDataSource(dataSource);
 		factoryBean.setConfigLocation(applicationContext.getResource("classpath:/mybatis-config.xml"));
-		factoryBean.setMapperLocations(applicationContext.getResources("classpath:/mappers/*Mapper.xml"));// 모든것에 mapper로 끝나는
+//		factoryBean.setMapperLocations(applicationContext.getResources("classpath:/mappers/*Mapper.xml"));// 모든것에 mapper로 끝나는
 		return factoryBean;
 	}
 
