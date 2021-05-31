@@ -42,7 +42,7 @@
 				<li><a href="brand">BRAND</a></li>
 				<li><a href="women">WOMEN</a></li>
 				<li><a href="men">MEN</a></li>
-				<li><a href="kdis">KIDS</a></li>
+				<li><a href="kids">KIDS</a></li>
 			</ul>
 		</nav>
 		<!-- end header inner -->
