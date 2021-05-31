@@ -20,6 +20,8 @@ public class Product { //상품정보
 	private Employee employee; //사원정보(등록자)
 	private List<OrderOption> orderOptions; //상품주문정보(상세정보)
 	private ProductPost productPost; //상품게시글
+	
+	
 	public int getProductCode() {
 		return productCode;
 	}

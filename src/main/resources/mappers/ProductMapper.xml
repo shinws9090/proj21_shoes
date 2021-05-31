@@ -2,11 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="proj21_shoes.mapper.ProductMapper">
 
+
+<resultMap type="Product" id="ProductAll">
+	<id column="product_code" property="productCode"/>
+	<result column="productName" property="productName"/>
+	<result column="gender" property="gender"/>
+	<result column="material" property="material"/>
+	<result column="season" property="season"/>
+	<result column="madeDate" property="madeDate"/>
+	<result column="costPrice" property="costPrice"/>
+	<result column="sellPrice" property="sellPrice"/>
+	<result column="registDate" property="registDate"/>
+	<result column="cumulativeRegistCount" property="cumulativeRegistCount"/>
+	<result column="cumulativeSellCount" property="cumulativeSellCount"/>
+	<result column="brand" property="brand"/>
+	<result column="category" property="category"/>
+	<result column="employee" property="employee"/>
+	<result column="productpost" property="productPost"/>
+	<!-- <collection column="order_options" property="orderOptions"/> -->
+</resultMap>
+
 <select id="productByAll" resultType="Product">
-	select product_code, product_name, brand_code, gender, product_category_code, material, 
-		season, made_date, costPrice, sell_Price, regist_date, 
-		cumulative_regist_count, cumulative_sell_count, emp_number 
-	from product
+	call productByAll()
 </select>
 
 </mapper>
