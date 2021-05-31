@@ -25,7 +25,6 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-            proj21_shoes.config.MvcConfig <!-- bean만 scanner만 -->
             proj21_shoes.config.ContextRoot <!-- 분할한것 . -->
        	 	</param-value>
 		</init-param>
