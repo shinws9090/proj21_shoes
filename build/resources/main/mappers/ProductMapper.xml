@@ -5,14 +5,17 @@
  
 <resultMap type="Product" id="ProductAll">
 	<id column="product_code" property="productCode"/>
-	<association property="brand"/>
+	<association property="brand" javaType="Brand"/> 
 	<association property="category" javaType="Category"/>
-	<association property="employee" javaType="Employee"/>
-	<association property="productPost" javaType="ProductPost"/>
-	<collection property="orderOptions" javaType="OrderOption"/>
+	<association property="employee" resultMap="ResEmp"/>
+	<collection property="orderOptions" resultMap="ResOrderOption"/> 
+</resultMap>
+<resultMap type="OrderOption" id="ResOrderOption"/>
+<resultMap type="Employee" id="ResEmp">
+	<association property="authority" autoMapping="true"/>
 </resultMap>
 
-<select id="productByAll" resultType="Product">
+<select id="productByAll" resultMap="ProductAll">
 	call productByAll()
 </select>
 

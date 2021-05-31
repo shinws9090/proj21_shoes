@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="proj21_shoes.mapper.ProductMapperTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-31T06:17:11" hostname="CLASS202-19" time="0.01">
+<testsuite name="proj21_shoes.mapper.ProductMapperTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-31T06:30:32" hostname="CLASS202-07" time="0.012">
   <properties/>
-  <testcase name="testProductByAll" classname="proj21_shoes.mapper.ProductMapperTest" time="0.01"/>
+  <testcase name="testProductByAll" classname="proj21_shoes.mapper.ProductMapperTest" time="0.012"/>
   <system-out><![CDATA[
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
