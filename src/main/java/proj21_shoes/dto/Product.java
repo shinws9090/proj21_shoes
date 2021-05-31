@@ -4,40 +4,33 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class Product { //상품정보
-	private int product_code; //상품코드
-	private String product_name; //상품명
+	private int productCode; //상품코드
+	private String productName; //상품명
 	private Brand brand; //브렌드
 	private String gender; //성별
 	private Category category; //카테고리
 	private String material; //소재
 	private String season; //계절
-	private LocalDateTime made_date; //제조일
+	private LocalDateTime madeDate; //제조일
 	private int costPrice; //원가
-	private int sell_Price; //판매가
-	private LocalDateTime regist_date; //등록일
-	private int cumulative_regist_count; //누적등록수량
-	private int cumulative_sell_count; //누적판매수량
+	private int sellPrice; //판매가
+	private LocalDateTime registDate; //등록일
+	private int cumulativeRegistCount; //누적등록수량
+	private int cumulativeSellCount; //누적판매수량
 	private Employee employee; //사원정보(등록자)
 	private List<OrderOption> orderOptions; //상품주문정보(상세정보)
 	private ProductPost productPost; //상품게시글
-	
-	public ProductPost getProductPost() {
-		return productPost;
+	public int getProductCode() {
+		return productCode;
 	}
-	public void setProductPost(ProductPost productPost) {
-		this.productPost = productPost;
+	public void setProductCode(int productCode) {
+		this.productCode = productCode;
 	}
-	public int getProduct_code() {
-		return product_code;
+	public String getProductName() {
+		return productName;
 	}
-	public void setProduct_code(int product_code) {
-		this.product_code = product_code;
-	}
-	public String getProduct_name() {
-		return product_name;
-	}
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 	public Brand getBrand() {
 		return brand;
@@ -69,11 +62,11 @@ public class Product { //상품정보
 	public void setSeason(String season) {
 		this.season = season;
 	}
-	public LocalDateTime getMade_date() {
-		return made_date;
+	public LocalDateTime getMadeDate() {
+		return madeDate;
 	}
-	public void setMade_date(LocalDateTime made_date) {
-		this.made_date = made_date;
+	public void setMadeDate(LocalDateTime madeDate) {
+		this.madeDate = madeDate;
 	}
 	public int getCostPrice() {
 		return costPrice;
@@ -81,29 +74,29 @@ public class Product { //상품정보
 	public void setCostPrice(int costPrice) {
 		this.costPrice = costPrice;
 	}
-	public int getSell_Price() {
-		return sell_Price;
+	public int getSellPrice() {
+		return sellPrice;
 	}
-	public void setSell_Price(int sell_Price) {
-		this.sell_Price = sell_Price;
+	public void setSellPrice(int sellPrice) {
+		this.sellPrice = sellPrice;
 	}
-	public LocalDateTime getRegist_date() {
-		return regist_date;
+	public LocalDateTime getRegistDate() {
+		return registDate;
 	}
-	public void setRegist_date(LocalDateTime regist_date) {
-		this.regist_date = regist_date;
+	public void setRegistDate(LocalDateTime registDate) {
+		this.registDate = registDate;
 	}
-	public int getCumulative_regist_count() {
-		return cumulative_regist_count;
+	public int getCumulativeRegistCount() {
+		return cumulativeRegistCount;
 	}
-	public void setCumulative_regist_count(int cumulative_regist_count) {
-		this.cumulative_regist_count = cumulative_regist_count;
+	public void setCumulativeRegistCount(int cumulativeRegistCount) {
+		this.cumulativeRegistCount = cumulativeRegistCount;
 	}
-	public int getCumulative_sell_count() {
-		return cumulative_sell_count;
+	public int getCumulativeSellCount() {
+		return cumulativeSellCount;
 	}
-	public void setCumulative_sell_count(int cumulative_sell_count) {
-		this.cumulative_sell_count = cumulative_sell_count;
+	public void setCumulativeSellCount(int cumulativeSellCount) {
+		this.cumulativeSellCount = cumulativeSellCount;
 	}
 	public Employee getEmployee() {
 		return employee;
@@ -117,13 +110,21 @@ public class Product { //상품정보
 	public void setOrderOptions(List<OrderOption> orderOptions) {
 		this.orderOptions = orderOptions;
 	}
+	public ProductPost getProductPost() {
+		return productPost;
+	}
+	public void setProductPost(ProductPost productPost) {
+		this.productPost = productPost;
+	}
 	@Override
 	public String toString() {
 		return String.format(
-				"Product [product_code=%s, product_name=%s, brand=%s, gender=%s, category=%s, material=%s, season=%s, made_date=%s, costPrice=%s, sell_Price=%s, regist_date=%s, cumulative_regist_count=%s, cumulative_sell_count=%s, employee=%s, orderOptions=%s, productPost=%s]",
-				product_code, product_name, brand, gender, category, material, season, made_date, costPrice, sell_Price,
-				regist_date, cumulative_regist_count, cumulative_sell_count, employee, orderOptions, productPost);
+				"Product [productCode=%s, productName=%s, brand=%s, gender=%s, category=%s, material=%s, season=%s, madeDate=%s, costPrice=%s, sellPrice=%s, registDate=%s, cumulativeRegistCount=%s, cumulativeSellCount=%s, employee=%s, orderOptions=%s, productPost=%s]",
+				productCode, productName, brand, gender, category, material, season, madeDate, costPrice, sellPrice,
+				registDate, cumulativeRegistCount, cumulativeSellCount, employee, orderOptions, productPost);
 	}
+	
+	
 	
 	
 	
