@@ -30,6 +30,7 @@ public class MvcConfig implements WebMvcConfigurer {
 	@Override 
 	public void addViewControllers(ViewControllerRegistry registry) { 
 	registry.addViewController("/index").setViewName("index"); //메인부르면 컨트롤러 거치지 말고 바로 메인 호출시켜준다!! main.jsp는 register안 말고, view안에 바로 만들기
+	registry.addViewController("/signup").setViewName("/member/signup");  //회원가입화면
 	}
 	
 	@Bean	//messag패키지에 속한 label 프로퍼티 파일로부터 메시지를 읽어 온당
