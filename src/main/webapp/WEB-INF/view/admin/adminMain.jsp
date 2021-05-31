@@ -57,7 +57,7 @@
 	<!-- end header -->
 
 	<section>
-		<img alt="웹 접근성 공공기관 읽어준다" src="http://via.placeholder.com/1200X2500">
+		관리자 페이지 만들어야됨
 	</section>
 
 	<!-- end our product -->
