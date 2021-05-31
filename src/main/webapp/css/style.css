@@ -13,9 +13,22 @@ body{
 	font-family: 'Noto Sans KR', sans-serif;
 }
 header{
-	position: relative;
+	position: fixed;
 	height: 8em;
+	min-width: 1300px;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #f5f5f5;
+    /* 배경색은 구분용 최종으론 아마도 흰색? */
 }
+
+section{
+	/* 내용들어갈때 패딩탑 줘야 헤더랑 영역 구분됨 */
+	padding-top: 150px
+}
+
+
 header div,nav{
 	position: absolute;
 }
@@ -34,7 +47,7 @@ a{
 }
 .top-menu{
 	top:0;
-	right: 0;
+	right: 5%;
 	font-size:0.5em;
 }
 .logo{
@@ -55,6 +68,7 @@ footer{
 	position:relative;
 	background: #e9e9e9;
 	height: 15em;
+	min-width: 1300px;
 }
 footer *{
 	color: #808080;

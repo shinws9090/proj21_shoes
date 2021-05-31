@@ -50,7 +50,7 @@
 	<!-- end header -->
 
 	<section>
-		<img alt="웹 접근성 공공기관 읽어준다" src="http://via.placeholder.com/1200X500">
+		<img alt="웹 접근성 공공기관 읽어준다" src="http://via.placeholder.com/1200X2500">
 	</section>
 
 	<!-- end our product -->
