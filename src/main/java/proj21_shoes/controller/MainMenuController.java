@@ -19,22 +19,22 @@ public class MainMenuController {
 	@GetMapping("/brand")
 	public ModelAndView brandList() {
 		
-		return new ModelAndView("product/brand/productList");
+		return new ModelAndView("product/productList");
 	}
 	
 	@GetMapping("/women")
 	public ModelAndView womenList() {
 		List<Product> products = service.productByMenu("women");
-		return new ModelAndView("product/women/productList","products",products);
+		return new ModelAndView("product/productList","products",products);
 	}
 	@GetMapping("/men")
 	public ModelAndView menList() {
 		List<Product> products = service.productByMenu("men");
-		return new ModelAndView("product/men/productList","products",products);
+		return new ModelAndView("product/productList","products",products);
 	}
 	@GetMapping("/kids")
 	public ModelAndView kidsList() {
 		List<Product> products = service.productByMenu("kids");
-		return new ModelAndView("product/kids/productList","products",products);
+		return new ModelAndView("product/productList","products",products);
 	}
 }

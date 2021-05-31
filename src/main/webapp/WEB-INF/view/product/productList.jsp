@@ -1,7 +1,7 @@
 <%@page import="com.sun.xml.internal.bind.CycleRecoverable.Context"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,20 +13,31 @@
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>lighten</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/productList.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 <body class="main-layout">
-	<!-- header -->
 	<header>
 		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
 	</header>
-	<!-- end header -->
 
 	<section>
-		<img alt="웹 접근성 공공기관 읽어준다" src="http://via.placeholder.com/1200X2500">
+		<%-- ${products} --%>
+		<c:forEach var="p" items="${products}">
+			<div class="item">
+				<img src="images/model-female.png">
+				<div class="detail">
+					<div class="title">
+						<h2>
+							<em>${p.productName}</em>
+						</h2>
+						<span class="price">${p.sellPrice}</span>
+					</div>
+				</div>
+			</div>
+		</c:forEach>
 	</section>
 
-	<!-- end our product -->
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp"/>
 	</footer>

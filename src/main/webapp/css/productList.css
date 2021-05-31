@@ -1,0 +1,69 @@
+@charset "EUC-KR";
+
+section{
+	width: 90%;
+	margin: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+/* item */
+.item {
+	margin:3em;
+	display:inline-block;
+	width:10em;
+	border-radius: 10px;
+}
+
+.item img {
+	transition: 0.5s;
+}
+.item:hover img {
+	filter: blur(2px);
+}
+
+.detail {
+	background-color: #f8f8f8;
+	width: 100%;
+	left: 0;
+	height: 50%;
+	transition: 0.5s;
+	padding: 0 20px;
+	box-sizing: border-box;
+}
+
+.item:hover .detail {
+	bottom: 0;
+}
+/* tilte */
+.title {
+	border-bottom: 1px solid #ddd;
+	
+	/* 자식요소(.title h2)가 flout 속성이 들어가있어 크기를 잃어버려서 써야됨 */
+	overflow: hidden;
+	
+	margin-bottom: 10px;
+}
+
+.title h2 {
+	font-size: 16px;
+	color: #888;
+	line-height: 1.2em;
+	float: left;
+}
+
+.title h2 em {
+	font-style: normal;
+	display: block;
+	color: #000;
+	margin-bottom: 5px;
+	font-size: 20px;
+}
+
+.title .price {
+	float: right;
+	margin-top: 15px;
+	font-size: 20px;
+	color: crimson;
+}
