@@ -13,6 +13,7 @@
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>회원가입</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/signup.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 <body class="main-layout">
@@ -59,9 +60,18 @@
 	<section class="box">
 	<!-- 	<img alt="웹 접근성 공공기관 읽어준다" src="http://via.placeholder.com/1200X2500"> -->
 			<article class="box1">
-			<h2>이용약관 동의</h2>
+			이용약관 동의
 			</article>
-			<article class="box2"></article>
+			<article class="box2">개인정보 수집 및 이용 동의</article>
+			
+	</section>
+	<section>
+		<article class="btn1">
+				회원가입
+		</article>
+			<article class="btn2">
+				회원가입취소
+		</article>
 	</section>
 
 	<!-- end our product -->
