@@ -25,10 +25,8 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-            spring5_webmvc_mybatis_study.config.MvcConfig <!-- bean만 scanner만 -->
-            spring5_webmvc_mybatis_study.config.ContextRoot <!-- 분할한것 . -->
-        
-        </param-value>
+            proj21_shoes.config.ContextRoot <!-- 분할한것 . -->
+       	 	</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
