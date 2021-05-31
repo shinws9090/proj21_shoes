@@ -11,7 +11,7 @@ import proj21_shoes.dto.Product;
 import proj21_shoes.service.ProductService;
 
 @Controller
-public class MenuController {
+public class MainMenuController {
 	
 	@Autowired
 	ProductService service;

@@ -15,6 +15,9 @@ insert into brand values
 insert into category values
 	(1,'슬리퍼');
 insert into product values
+	(2,'상품명',1,'여',1,'소재','계절',now(),50000,60000,now(),1,1,1),
+	(3,'상품명',1,'아동',1,'소재','계절',now(),50000,60000,now(),1,1,1),
+	(4,'상품명',1,'남',1,'소재','계절',now(),50000,60000,now(),1,1,1);
 	(1,'상품명',1,'남',1,'소재','계절',now(),50000,60000,now(),1,1,1);
 insert into productpost values
 	(1,'상품대표이미지','내용');
