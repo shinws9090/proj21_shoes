@@ -37,13 +37,13 @@
 				
 			</when>
 			<when test="menu == 'women'">
-				where gender = 여
+				where gender = '여'
 			</when>
 			<when test="menu == 'mem'">
-				where gender = 남
+				where gender = '남'
 			</when>
 			<when test="menu == 'kids'">
-				where gender = 아동
+				where gender = '아동'
 			</when>
 		</choose>
 	</select>
