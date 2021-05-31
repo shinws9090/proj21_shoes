@@ -1,6 +1,7 @@
 <%@page import="com.sun.xml.internal.bind.CycleRecoverable.Context"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +32,12 @@
 				<li><a href="#">LOGIN</a></li>
 				<li><a href="#">MYPAGE</a></li>
 				<li><a href="#">BOARD</a></li>
+				
+				<!-- 직원 아이디로 로그인 하고 권한 있을때 관리자 화면 표시 -->
+				<%-- <c:if test="${employee.authority == 1}"> --%>
+				<li><a href="#">관리자 화면</a></li> 
+				<%-- </c:if> --%>
+				
 			</ul>
 		</nav>
 		<div class="logo">
