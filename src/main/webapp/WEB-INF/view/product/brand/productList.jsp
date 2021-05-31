@@ -38,11 +38,11 @@
 		</div>
 		<nav class="main-menu">
 			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">BRAND</a></li>
-				<li><a href="#">WOMEN</a></li>
-				<li><a href="#">MEN</a></li>
-				<li><a href="#"> KIDS</a></li>
+				<li><a href="index">Home</a></li>
+				<li><a href="brand">BRAND</a></li>
+				<li><a href="women">WOMEN</a></li>
+				<li><a href="men">MEN</a></li>
+				<li><a href="kdis">KIDS</a></li>
 			</ul>
 		</nav>
 		<!-- end header inner -->
@@ -50,7 +50,7 @@
 	<!-- end header -->
 
 	<section>
-		<img alt="웹 접근성 공공기관 읽어준다" src="http://via.placeholder.com/1200X2500">
+		
 	</section>
 
 	<!-- end our product -->
