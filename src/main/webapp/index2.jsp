@@ -1,3 +1,4 @@
+<%@page import="com.sun.xml.internal.bind.CycleRecoverable.Context"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,9 +11,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>lighten</title>
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet"
-	href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 <body class="main-layout">
 	<!-- header -->

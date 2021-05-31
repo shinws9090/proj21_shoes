@@ -4,10 +4,10 @@
  "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 <settings>
-		<setting name="mapUnderscoreToCamelCase" value="true" />
-	</settings>
+	<setting name="mapUnderscoreToCamelCase" value="true" />
+</settings>
 <typeAliases>
-<package name="proj21_shoes.dto"/>
+	<package name="proj21_shoes.dto"/>
 </typeAliases>
 	
 	
