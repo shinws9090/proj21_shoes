@@ -11,9 +11,8 @@
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<title>회원가입</title>
+<title>lighten</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/signup.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 <body class="main-layout">
@@ -22,22 +21,9 @@
 		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
 	</header>
 	<!-- end header -->
-	
-	<section class="box">
-	<!-- 	<img alt="웹 접근성 공공기관 읽어준다" src="http://via.placeholder.com/1200X2500"> -->
-			<article class="box1">
-			이용약관 동의
-			</article>
-			<article class="box2">개인정보 수집 및 이용 동의</article>
-			
-	</section>
+
 	<section>
-		<article class="btn1">
-				회원가입
-		</article>
-			<article class="btn2">
-				회원가입취소
-		</article>
+		관리자 페이지 만들어야됨
 	</section>
 
 	<!-- end our product -->
