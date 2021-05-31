@@ -6,4 +6,5 @@ import proj21_shoes.dto.Product;
 
 public interface ProductService {
 	List<Product> productByAll();
+	List<Product> productByMenu(String menu);
 }

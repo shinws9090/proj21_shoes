@@ -50,7 +50,7 @@
 	<!-- end header -->
 
 	<section>
-		
+		${products}
 	</section>
 
 	<!-- end our product -->

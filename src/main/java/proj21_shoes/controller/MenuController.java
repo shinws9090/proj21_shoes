@@ -1,5 +1,7 @@
 package proj21_shoes.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,20 +18,23 @@ public class MenuController {
 	
 	@GetMapping("/brand")
 	public ModelAndView brandList() {
+		
 		return new ModelAndView("product/brand/productList");
 	}
 	
 	@GetMapping("/women")
 	public ModelAndView womenList() {
-//		Product product = service.productByAll();
-		return new ModelAndView("product/women/productList");
+		List<Product> products = service.productByMenu("women");
+		return new ModelAndView("product/women/productList","products",products);
 	}
 	@GetMapping("/men")
 	public ModelAndView menList() {
-		return new ModelAndView("product/men/productList");
+		List<Product> products = service.productByMenu("men");
+		return new ModelAndView("product/men/productList","products",products);
 	}
 	@GetMapping("/kids")
 	public ModelAndView kidsList() {
-		return new ModelAndView("product/kids/productList");
+		List<Product> products = service.productByMenu("kids");
+		return new ModelAndView("product/kids/productList","products",products);
 	}
 }

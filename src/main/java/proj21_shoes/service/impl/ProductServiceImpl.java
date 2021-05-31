@@ -19,5 +19,9 @@ public class ProductServiceImpl implements ProductService{
 	public List<Product> productByAll() {
 		return mapper.productByAll();
 	}
+	@Override
+	public List<Product> productByMenu(String menu){
+		return mapper.productByMenu(menu);
+	}
 
 }
