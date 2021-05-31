@@ -7,6 +7,7 @@ import proj21_shoes.dto.Product;
 public interface ProductMapper {
 	
 	List<Product> productByAll();
+	List<Product> productByMenu(String menu);
 		
 	
 }
