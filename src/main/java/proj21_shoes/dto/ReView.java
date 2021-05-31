@@ -8,7 +8,7 @@ public class ReView {					// 상품후기게시판
 	private Order orderCode; 			// 	주문코드
 	private String title;				// 	제목
 	private String content;				// 	내용
-	private LocalDateTime regist_date;	// 	등록일
+	private LocalDateTime registDate;	// 	등록일
 	public int getBoardCode() {
 		return boardCode;
 	}
@@ -33,17 +33,16 @@ public class ReView {					// 상품후기게시판
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public LocalDateTime getRegist_date() {
-		return regist_date;
+	public LocalDateTime getRegistDate() {
+		return registDate;
 	}
-	public void setRegist_date(LocalDateTime regist_date) {
-		this.regist_date = regist_date;
+	public void setRegistDate(LocalDateTime registDate) {
+		this.registDate = registDate;
 	}
-	
 	@Override
 	public String toString() {
-		return String.format("ReView [boardCode=%s, orderCode=%s, title=%s, content=%s, regist_date=%s]", boardCode,
-				orderCode, title, content, regist_date);
+		return String.format("ReView [boardCode=%s, orderCode=%s, title=%s, content=%s, registDate=%s]", boardCode,
+				orderCode, title, content, registDate);
 	}
 	
 	
