@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+.box1 {
+	text-align: center;
+	width: 300px;
+	height: 200px;
+	border: 1px solid black;
+	margin: auto;
+	padding-top: 10px;
+	
+}
+.box2 {
+	text-align: center;
+	width: 300px;
+	height: 200px;
+	border: 1px solid black;
+	margin: auto;
+	padding-top: 10px;
+}
+
+.btn1 {
+	text-align: center;
+	color: red;
+}
+
+.btn2 {
+	text-align: center;
+	color: red;
+}
