@@ -137,6 +137,23 @@ public class MemberDetail {			//	회원상세정보
 
 
 
+	public MemberDetail(String memberId, String memberPwd, String memberName, boolean gender, LocalDateTime birthday,
+			String email, String tel, String zipCode, String address, String detailAddress) {
+		super();
+		this.memberId = memberId;
+		this.memberPwd = memberPwd;
+		this.memberName = memberName;
+		this.gender = gender;
+		this.birthday = birthday;
+		this.email = email;
+		this.tel = tel;
+		this.zipCode = zipCode;
+		this.address = address;
+		this.detailAddress = detailAddress;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return String.format(
