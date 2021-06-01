@@ -1,17 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+<%@page import="com.sun.xml.internal.bind.CycleRecoverable.Context"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title><spring:message code="member.register"/></title>
+
+<!-- basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- mobile metas -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+<title><spring:message code="member.register" /></title>
+
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/signup.css">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
-<body>
-	<h2><spring:message code="term"/></h2>
-	<p><spring:message code="term.content"/></p>
-	<form action="step2" method="post">
-		<label> <input type="checkbox" name="agree" value="true"><spring:message code="term.agree"/></label> 
-		<input type="submit" value="<spring:message code="next.btn"/>" />
-	</form>
+
+<body class="main-layout">
+	<!-- header -->
+	<header>
+		<jsp:include page="/WEB-INF/view/include/header.jsp" />
+	</header>
+	<!-- end header -->
+
+
+	<section class="box">
+		<article class="box1">
+			<h2>
+				<spring:message code="term" />
+			</h2>
+			<p>
+				<spring:message code="term.content" />
+			</p>
+			<form action="step2" method="post">
+				<label> <input type="checkbox" name="agree" value="true">
+				<spring:message code="term.agree" /></label> <input type="submit" value="<spring:message code="next.btn"/>" />
+			</form>
+			</article>
+	</section>
+	<section>
+		<article class="btn1"> <input type="submit" value="<spring:message code="member.register"/>" /></article>
+		<article class="btn2"> <input type="submit" value="<spring:message code="member.register.cancel"/>" /></article>
+	</section>
+
+	<!-- end our product -->
+	<footer>
+		<jsp:include page="/WEB-INF/view/include/footer.jsp" />
+	</footer>
 </body>
 </html>
+

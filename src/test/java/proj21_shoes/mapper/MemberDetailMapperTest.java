@@ -50,7 +50,7 @@ public class MemberDetailMapperTest {
 	@Test
 	public void test01InsertMemberDetail() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-		MemberDetail newMember = new MemberDetail("testId", "111111", "김예진",true);
+		MemberDetail newMember = new MemberDetail("testId", "111111", "김예진",true,null, "test@gmail.com","010-1234-5678","12345","대구","상세주소");
 		System.out.println(newMember);
 		int res = mapper.insertMemberDetail(newMember);
 		Assert.assertEquals(1, res);

@@ -5,7 +5,7 @@
 	<!-- resultMap type : dto 클래스명 , id : 외부에서 지정할이름? -->
 	<!-- result column : db속 컬럼명, property : dto속 변수명 -->
 
-	<resultMap type="MemberDetail" id="MemberDetailAll">
+	<resultMap type="MemberDetail" id="MemberDetail">
 		<id column="member_id" property="memberId" />			<!-- 회원id -->
 		<result column="member_pwd" property="memberPwd" />		<!-- 회원password -->
 		<result column="member_name" property="memberName" />	<!-- 회원이름 -->
@@ -26,6 +26,9 @@
 
 
 	<insert id="insertMemberDetail" >
+	insert into memberDetail values
+<!-- 	(?,?,?,?,now(birthday),?,?,?,?,?) -->
+	(#{mamberId},#{memberPwd},#{memberName},#{gender},now(birthday),#{email},#{tel},#{zipCode},#{address},#{detailAddress}) 
 	
 	</insert>
 </mapper>
