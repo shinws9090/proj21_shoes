@@ -19,7 +19,7 @@
 
 			<!-- 직원 아이디로 로그인 하고 권한 있을때 관리자 화면 표시 -->
 			<%-- <c:if test="${employee.authority == 1}"> --%>
-			<li><a href="#">관리자 화면</a></li>
+			<li><a href="adminMain">관리자 화면</a></li>
 			<%-- </c:if> --%>
 
 		</ul>
