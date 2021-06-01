@@ -2,21 +2,51 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="proj21_shoes.mapper.ProductMapper">
 
- 
-<resultMap type="Product" id="ProductAll">
-	<id column="product_code" property="productCode"/>
-	<association property="brand" javaType="Brand"/> 
-	<association property="category" javaType="Category"/>
-	<association property="employee" resultMap="ResEmp"/>
-	<collection property="orderOptions" resultMap="ResOrderOption"/> 
-</resultMap>
-<resultMap type="OrderOption" id="ResOrderOption"/>
-<resultMap type="Employee" id="ResEmp">
-	<association property="authority" autoMapping="true"/>
-</resultMap>
 
-<select id="productByAll" resultMap="ProductAll">
-	call productByAll()
-</select>
+	<resultMap type="Product" id="ProductAll">
+		<id column="product_code" property="productCode" />
+		<association property="brand" javaType="Brand" />
+		<association property="category" javaType="Category" />
+		<association property="employee" resultMap="ResEmp" />
+		<collection property="orderOptions"	resultMap="ResOrderOption" />
+	</resultMap>
+	<resultMap type="OrderOption" id="ResOrderOption" />
+	<resultMap type="Employee" id="ResEmp">
+		<association property="authority" />
+	</resultMap>
+
+	<sql id="selProduct">
+		select *
+		from product p
+		join brand b on p.brand_code = b.brand_code
+		join category c on c.product_category_code =p.product_category_code
+		join employee e on e.emp_number = p.emp_number
+		join authority a2 on e.authority_code = a2.authority_code
+		left join orderoption o on o.product_code = p.product_code
+	</sql>
+	<select id="BrandByAll" resultType="Brand">
+		select * from brand
+	</select>
+
+	<select id="productByAll" resultMap="ProductAll">
+		<include refid="selProduct" />
+	</select>
+	
+	<select id="productByMenu" resultMap="ProductAll" parameterType="String">
+		<include refid="selProduct" />
+		<choose>
+			<when test="menu == 'women'">
+				where gender = '여'
+			</when>
+			<when test="menu == 'men'">
+				where gender = '남'
+			</when>
+			<when test="menu == 'kids'">
+				where gender = '아동'
+			</when>
+		</choose>
+	</select>
+	
+	
 
 </mapper>
