@@ -17,6 +17,12 @@ public class MemberDetail {			//	회원상세정보
 
 	
 
+	public MemberDetail() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public String getMemberId() {
 		return memberId;
 	}
@@ -152,7 +158,21 @@ public class MemberDetail {			//	회원상세정보
 		this.detailAddress = detailAddress;
 	}
 
-//	////////////////입력받은 값이 회원가입시 저장된 패스워드와 일치하는지 확인
+
+
+
+
+	public MemberDetail(String memberId, String memberPwd, String memberName, boolean gender) {
+		super();
+		this.memberId = memberId;
+		this.memberPwd = memberPwd;
+		this.memberName = memberName;
+		this.gender = gender;
+	}
+
+
+
+	//	////////////////입력받은 값이 회원가입시 저장된 패스워드와 일치하는지 확인
 	public boolean matchPassword(String password) {
 		return this.memberPwd.equals(password);
 	}
