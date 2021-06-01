@@ -2,6 +2,7 @@ package proj21_shoes.controller;  //회원가입 화면에서 가입 버튼 누�
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,10 +16,19 @@ public class SignUpController { //
 	@Autowired
 	private RegisterMemberDetailService service;
 	
-	@RequestMapping("/register/step1")
+	@RequestMapping("/register/step1")  //약관동의페이지
 	public String handleStep1() {
 	return "/register/step1";
 	}
+	
+	@RequestMapping("/register/signup")  //회원가입 입력페이지
+	public String handleStep2() {
+	return "/register/signup";
+	}
+	
+	
+	
+	
 	@PostMapping("/register/step2")
 	public String handleStep2(@RequestParam(value = "agree", defaultValue = "false") Boolean agree) {
 	if (!agree) {

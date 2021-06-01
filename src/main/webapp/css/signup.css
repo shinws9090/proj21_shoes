@@ -58,6 +58,11 @@ table{
 
 .td_left {
 	width:150;
-	background: orange;
+	background: #dedede ;;
 	
+}
+
+-----------
+#writeForm{
+color: #c0c0c0 ; 
 }
