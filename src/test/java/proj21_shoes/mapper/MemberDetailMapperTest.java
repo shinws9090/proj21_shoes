@@ -1,5 +1,7 @@
 package proj21_shoes.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 import org.junit.After;
@@ -16,7 +18,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import proj21_shoes.config.ContextRoot;
 import proj21_shoes.dto.MemberDetail;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ContextRoot.class })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -30,11 +31,16 @@ public class MemberDetailMapperTest {
 	public void tearDown() throws Exception {
 		System.out.println();
 	}
+
 //
-//	@Test
-//	public void testSelectMemberDetailAll() {
-//		fail("Not yet implemented");
-//	}
+	@Test
+	public void testSelectMemberDetailAll() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+
+		List<MemberDetail> list = mapper.selectMemberDetailAll();
+		Assert.assertNotNull(list);
+		list.stream().forEach(System.out::println);
+	}
 //
 //	@Test
 //	public void testSelectMemberDetailById() {
