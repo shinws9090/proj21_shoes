@@ -3,9 +3,9 @@ package proj21_shoes.service.impl;
 import java.util.List;
 
 import proj21_shoes.dto.MemberDetail;
-import proj21_shoes.service.MemberDetailListService;
+import proj21_shoes.service.GetMemberDetailListService;
 
-public class MemberDetailListServiceImpl implements MemberDetailListService {
+public class GetMemberDetailListServiceImpl implements GetMemberDetailListService {
 
 	@Override
 	public List<MemberDetail> getMemberDetailLists() {
