@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
+	<c:set var="contextPath" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +15,17 @@
 <title>lighten</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/productList.css">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+$(function() {
+	var contextPath = "${contextPath}";
+	$(".item").click(function(){
+		var code = $(this).data("item");
+		window.location.href = contextPath+"/productDetail/"+code;	
+	});
+});
+</script>
 </head>
 <body class="main-layout">
 	<header>
@@ -23,16 +34,17 @@
 
 	<section>
 		<%-- ${products} --%>
-		<c:forEach var="p" items="${products}">
-			<div class="item" >
-				<img src="images/model-female.png" alt="">
+		
+		<c:forEach var="product" items="${products}">
+			<div class="item" data-item="${product.productCode}">
+				<img src="images/model-female.png">
 				<div class="detail">
 					<div class="title">
 						<h2>
-							<em>${p.productName}</em>
+							<em>${product.productName}</em>
 						</h2>
-						<span class="price">${p.sellPrice}</span>
-						<span class="price">${p.gender}</span>
+						<span class="price">${product.sellPrice}</span>
+						<span class="price">${product.gender}</span>
 					</div>
 				</div>
 			</div>

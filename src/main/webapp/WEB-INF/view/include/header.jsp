@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<c:set var="contextPath" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
 <html>
 <body>
@@ -28,11 +30,11 @@
 	</div>
 	<nav class="main-menu">
 		<ul>
-			<li><a href="index">Home</a></li>
-			<li><a href="brand">BRAND</a></li>
-			<li><a href="women">WOMEN</a></li>
-			<li><a href="men">MEN</a></li>
-			<li><a href="kids">KIDS</a></li>
+			<li><a href="${contextPath}/index">Home</a></li>
+			<li><a href="${contextPath}/brand">BRAND</a></li>
+			<li><a href="${contextPath}/women">WOMEN</a></li>
+			<li><a href="${contextPath}/men">MEN</a></li>
+			<li><a href="${contextPath}/kids">KIDS</a></li>
 		</ul>
 	</nav>
 </body>

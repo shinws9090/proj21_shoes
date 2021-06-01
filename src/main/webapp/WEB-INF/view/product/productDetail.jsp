@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
 	<c:set var="contextPath" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
 <html lang="en">
@@ -15,16 +16,9 @@
 <title>lighten</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/productList.css">
-<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
-$(function() {
-	var contextPath = "${contextPath}";
-	$(".item").click(function(){
-		var code = $(this).data("item");
-		window.location.href = contextPath+"/brand/"+code;
-	});
-});
+
 </script>
 </head>
 <body class="main-layout">
@@ -33,22 +27,7 @@ $(function() {
 	</header>
 
 	<section>
-		<%-- ${products} --%>
-		<c:forEach var="b" items="${brand}">
-			<div class="item" data-item="${b.brandCode}">
-				<img src="images/model-female.png">
-				<div class="detail">
-					<div class="title">
-						<h2>
-							<em>${b.brandName}</em>
-						</h2>
-						<h5>
-							<em>${b.brandEngName}</em>
-						</h5>
-					</div>
-				</div>
-			</div>
-		</c:forEach>
+		${product}
 	</section>
 
 	<footer>

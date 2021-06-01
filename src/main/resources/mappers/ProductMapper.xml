@@ -2,38 +2,65 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="proj21_shoes.mapper.ProductMapper">
 
-
-	<resultMap type="Product" id="ProductAll">
+	<resultMap type="Product" id="ProductList">
 		<id column="product_code" property="productCode" />
 		<association property="brand" javaType="Brand" />
 		<association property="category" javaType="Category" />
-		<association property="employee" resultMap="ResEmp" />
-		<collection property="orderOptions"	resultMap="ResOrderOption" />
+		<association property="productPost" javaType="ProductPost" />
 	</resultMap>
-	<resultMap type="OrderOption" id="ResOrderOption" />
-	<resultMap type="Employee" id="ResEmp">
-		<association property="authority" />
+	<resultMap type="Product" id="ProductDetail">
+		<id column="product_code" property="productCode" />
+		<association property="brand" javaType="Brand" />
+		<association property="category" javaType="Category" />
+		<association property="employee" resultMap="ResEmployee"/>
+		<association property="productPost" resultMap="ResProductPost" />
 	</resultMap>
+	<resultMap type="Employee" id="ResEmployee">
+		<association property="authority" javaType="Authority"/>
+	</resultMap>
+	<resultMap type="ProductPost" id="ResProductPost">
+		<id column="product_code" property="productCode"/>
+		<collection column="Image" property="images" resultMap="ResImage"/>
+	</resultMap>
+	<resultMap type="Image" id="ResImage"/>
 
-	<sql id="selProduct">
+	<sql id="selProductList">
 		select *
 		from product p
 		join brand b on p.brand_code = b.brand_code
 		join category c on c.product_category_code =p.product_category_code
+		join productpost p2 on p2.product_code = p.product_code
+	</sql>
+	<sql id="selProductDetail">
+		select *
+		from product p 
+		join brand b on p.brand_code = b.brand_code 
+		join category c on c.product_category_code =p.product_category_code
 		join employee e on e.emp_number = p.emp_number
 		join authority a2 on e.authority_code = a2.authority_code
-		left join orderoption o on o.product_code = p.product_code
+		join productpost p2 on p2.product_code = p.product_code
+		left join image i on i.product_code = p.product_code
 	</sql>
+	
+	
+	
+	
+	
+	
 	<select id="BrandByAll" resultType="Brand">
 		select * from brand
 	</select>
-
-	<select id="productByAll" resultMap="ProductAll">
-		<include refid="selProduct" />
+	
+	<select id="OrderOptionByCode" resultType="OrderOption" parameterType="int">
+		select * from orderoption where product_code = #{code}
 	</select>
 	
-	<select id="productByMenu" resultMap="ProductAll" parameterType="String">
-		<include refid="selProduct" />
+	<select id="productByAll" resultMap="ProductList">
+		<include refid="selProductList" />
+	</select>
+
+	<select id="productByMenu" resultMap="ProductList" parameterType="String">
+		<include refid="selProductList" />
 		<choose>
 			<when test="menu == 'women'">
 				where gender = '여'
@@ -47,6 +74,16 @@
 		</choose>
 	</select>
 	
-	
+	<select id="productByBrand" resultMap="ProductList" parameterType="int">
+		<include refid="selProductList" />
+			where p.brand_code = #{code}
+	</select>
+
+	<select id="productByCode" resultMap="ProductDetail" parameterType="int">
+		<include refid="selProductDetail" />
+			where p.product_code = #{code}
+	</select>
+
+
 
 </mapper>
