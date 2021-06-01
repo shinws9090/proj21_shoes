@@ -17,7 +17,7 @@ public interface MemberDetailMapper {//우선 회원가입용!! 회원가입시�
 	MemberDetail selectMemberDetailById(long id);
 	
 	
-	int insertMemberDetail(MemberDetail memberDetail); 	 //회원상세정보 추가
+	int insertMemberDetail(MemberDetail memberDetail); 		 //회원상세정보 추가
 	int updateMemberDetail(MemberDetail memberDetail);  	//회원상세정보 수정
 	int deleteMemberDetail(long id);  						//회원상세정보 삭제
 	
