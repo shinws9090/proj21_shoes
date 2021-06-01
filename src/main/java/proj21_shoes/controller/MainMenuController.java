@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import proj21_shoes.dto.Brand;
 import proj21_shoes.dto.Product;
 import proj21_shoes.service.ProductService;
 
@@ -18,8 +19,8 @@ public class MainMenuController {
 	
 	@GetMapping("/brand")
 	public ModelAndView brandList() {
-		
-		return new ModelAndView("product/productList");
+		List<Brand> brand = service.brandByAll();
+		return new ModelAndView("product/brandList","brand",brand);
 	}
 	
 	@GetMapping("/women")

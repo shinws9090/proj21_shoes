@@ -23,16 +23,17 @@
 
 	<section>
 		<%-- ${products} --%>
-		<c:forEach var="p" items="${products}">
+		<c:forEach var="b" items="${brand}">
 			<div class="item">
 				<img src="images/model-female.png">
 				<div class="detail">
 					<div class="title">
 						<h2>
-							<em>${p.productName}</em>
+							<em>${b.brandName}</em>
 						</h2>
-						<span class="price">${p.sellPrice}</span>
-						<span class="price">${p.gender}</span>
+						<h5>
+							<em>${b.brandEngName}</em>
+						</h5>
 					</div>
 				</div>
 			</div>

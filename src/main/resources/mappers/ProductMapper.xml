@@ -25,21 +25,21 @@
 		join authority a2 on e.authority_code = a2.authority_code
 		left join orderoption o on o.product_code = p.product_code
 	</sql>
-
+	<select id="BrandByAll" resultType="Brand">
+		select * from brand
+	</select>
 
 	<select id="productByAll" resultMap="ProductAll">
 		<include refid="selProduct" />
 	</select>
+	
 	<select id="productByMenu" resultMap="ProductAll" parameterType="String">
 		<include refid="selProduct" />
 		<choose>
-			<when test="menu == 'brand'">
-				
-			</when>
 			<when test="menu == 'women'">
 				where gender = '여'
 			</when>
-			<when test="menu == 'mem'">
+			<when test="menu == 'men'">
 				where gender = '남'
 			</when>
 			<when test="menu == 'kids'">
@@ -47,5 +47,7 @@
 			</when>
 		</choose>
 	</select>
+	
+	
 
 </mapper>
