@@ -24,14 +24,42 @@
 	</header>
 	<!-- end header -->
 	
-	<section class="box">
-	<!-- 	<img alt="웹 접근성 공공기관 읽어준다" src="http://via.placeholder.com/1200X2500"> -->
-			<article class="box1">
-			이용약관 동의
-			</article>
-			<article class="box2">개인정보 수집 및 이용 동의</article>
-			
+	<section id = "writeForm">
+	<h2>게시판글등록</h2>
+	<form action="boardWritePro.do" method = "post" enctype="multipart/form-data" name="boardform">
+	<table>
+	<tr>
+	<td class="td_left"><label for="BOARD_NAME">글쓴이</label></td>
+	<td class="td_right"><input type="text" name="BOARD_NAME" id="BOARD_NAME" required /></td>
+	</tr>
+		<tr>
+	<td class="td_left"><label for="BOARD_PASS">비밀번호</label></td>
+	<td class="td_right"><input type="password" name="BOARD_PASS" id="BOARD_PASS" required /></td>
+	</tr>
+		<tr>
+	<td class="td_left"><label for="BOARD_SUBJECT">제목</label></td>
+	<td class="td_right"><input type="text" name="BOARD_SUBJECT" id="BOARD_SUBJECT" required /></td>
+	</tr>
+	<tr>
+	<td class="td_left"><label for="BOARD_CONTENT">내용</label></td>
+	<td><textarea id ="BOARD_CONTENT" name="BOARD_CONTENT" cols="40" rows="15" required></textarea></td>
+	</tr>
+	<tr>
+	<td class="td_left"><label for="BOARD_FILE">파일첨부</label></td>
+	<td class="td_right"><input type="file" name="BOARD_FILE" id="BOARD_FILE" required /></td>
+	</tr>
+	
+	
+	</table>
+	<section id ="commandCell">
+	<input type="submit" value="등록"/>&nbsp;&nbsp;
+	<input type="reset" value="다시쓰기" />
+	
+	
 	</section>
+	</form>
+	</section>
+	
 	<section>
 		<article class="btn1">
 				회원가입

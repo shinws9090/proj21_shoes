@@ -30,3 +30,36 @@
 [TRACE] [2021-06-01 16:42] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
 [TRACE] [2021-06-01 16:42] <==        Row: 회원아이디, 회원비밀번호, 회원이름, 1, 2021-06-01 12:47:18.0, 이메일, 연락처, 12345, 주소, 상세주소
 [DEBUG] [2021-06-01 16:42] <==      Total: 1
+[DEBUG] [2021-06-01 18:41] test01InsertMemberDetail()
+[DEBUG] [2021-06-01 18:41] ==>  Preparing: insert into memberdetail values (?,?,?,?,now(birthday),?,?,?,?,?)
+[DEBUG] [2021-06-01 18:41] testSelectMemberDetailAll()
+[DEBUG] [2021-06-01 18:41] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail
+[DEBUG] [2021-06-01 18:41] ==> Parameters: 
+[TRACE] [2021-06-01 18:41] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-01 18:41] <==        Row: 회원아이디, 회원비밀번호, 회원이름, 1, 2021-06-01 12:47:18.0, 이메일, 연락처, 12345, 주소, 상세주소
+[DEBUG] [2021-06-01 18:41] <==      Total: 1
+[DEBUG] [2021-06-01 18:52] test01InsertMemberDetail()
+[DEBUG] [2021-06-01 18:52] ==>  Preparing: insert into memberdetail values (?,?,?,?,now(birthday),?,?,?,?,?)
+[DEBUG] [2021-06-01 18:52] testSelectMemberDetailAll()
+[DEBUG] [2021-06-01 18:52] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail
+[DEBUG] [2021-06-01 18:52] ==> Parameters: 
+[TRACE] [2021-06-01 18:52] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-01 18:52] <==        Row: 회원아이디, 회원비밀번호, 회원이름, 1, 2021-06-01 12:47:18.0, 이메일, 연락처, 12345, 주소, 상세주소
+[DEBUG] [2021-06-01 18:52] <==      Total: 1
+[DEBUG] [2021-06-01 18:55] test01InsertMemberDetail()
+[DEBUG] [2021-06-01 18:55] ==>  Preparing: insert into memberdetail values (?,?,?,?,now(birthday),?,?,?,?,?)
+[DEBUG] [2021-06-01 18:55] testSelectMemberDetailAll()
+[DEBUG] [2021-06-01 18:55] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail
+[DEBUG] [2021-06-01 18:55] ==> Parameters: 
+[TRACE] [2021-06-01 18:55] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-01 18:55] <==        Row: 회원아이디, 회원비밀번호, 회원이름, 1, 2021-06-01 12:47:18.0, 이메일, 연락처, 12345, 주소, 상세주소
+[DEBUG] [2021-06-01 18:55] <==      Total: 1
+[DEBUG] [2021-06-01 19:00] test01InsertMemberDetail()
+[DEBUG] [2021-06-01 19:00] ==>  Preparing: insert into memberDetail values (?,?,?,?,now(birthday),?,?,?,?,?)
+[DEBUG] [2021-06-01 19:00] ==> Parameters: 
+[DEBUG] [2021-06-01 19:00] testSelectMemberDetailAll()
+[DEBUG] [2021-06-01 19:00] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail
+[DEBUG] [2021-06-01 19:00] ==> Parameters: 
+[TRACE] [2021-06-01 19:00] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-01 19:00] <==        Row: 회원아이디, 회원비밀번호, 회원이름, 1, 2021-06-01 12:47:18.0, 이메일, 연락처, 12345, 주소, 상세주소
+[DEBUG] [2021-06-01 19:00] <==      Total: 1
