@@ -19,8 +19,9 @@
 	</resultMap>
 
 
-	<select id="selectMemberDetailAll">
-	select *from memberDetail
+	<select id="selectMemberDetailAll" resultType="MemberDetail">
+	select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address 
+	from memberDetail
 	</select>
 
 </mapper>

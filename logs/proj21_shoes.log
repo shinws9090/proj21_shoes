@@ -21,3 +21,12 @@
 [DEBUG] [2021-06-01 15:34] test01InsertMemberDetail()
 [DEBUG] [2021-06-01 15:39] test01InsertMemberDetail()
 [DEBUG] [2021-06-01 15:41] test01InsertMemberDetail()
+[DEBUG] [2021-06-01 16:39] testSelectMemberDetailAll()
+[DEBUG] [2021-06-01 16:39] ==>  Preparing: select *from memberDetail
+[DEBUG] [2021-06-01 16:39] ==> Parameters: 
+[DEBUG] [2021-06-01 16:42] testSelectMemberDetailAll()
+[DEBUG] [2021-06-01 16:42] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail
+[DEBUG] [2021-06-01 16:42] ==> Parameters: 
+[TRACE] [2021-06-01 16:42] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-01 16:42] <==        Row: 회원아이디, 회원비밀번호, 회원이름, 1, 2021-06-01 12:47:18.0, 이메일, 연락처, 12345, 주소, 상세주소
+[DEBUG] [2021-06-01 16:42] <==      Total: 1
