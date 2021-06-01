@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import proj21_shoes.dto.MemberDetail;
 @Service
-public interface RegisterMemberService {
+public interface RegisterMemberDetailService {
 
 	int registerMemberDetail(MemberDetail memberDetail);	
 
