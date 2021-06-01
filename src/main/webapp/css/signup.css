@@ -1,6 +1,18 @@
 @charset "UTF-8";
 
-.box1 {
+.box1{
+	text-align: center;
+	width: 300px;
+	height: 200px;
+	border: 5px solid #c0c0c0 ; 
+	margin: auto;
+	padding-top: inherit;
+	margin-top: 100px;
+	
+	
+}
+
+/* .box1 {
 	text-align: center;
 	width: 300px;
 	height: 200px;
@@ -8,7 +20,7 @@
 	margin: auto;
 	padding-top: 10px;
 	
-}
+} */
 .box2 {
 	text-align: center;
 	width: 300px;
@@ -26,4 +38,31 @@
 .btn2 {
 	text-align: center;
 	color: red;
+}
+ --------------------
+ #registForm{
+	
+	width: 500px;
+	height:620px;
+	border:1px solid red;
+	margin:auto;
+}
+h2{
+	text-align:center;
+}
+
+table{
+	margin:auto;
+	width:450px;
+}
+
+.td_left {
+	width:150;
+	background: #dedede ;;
+	
+}
+
+-----------
+#writeForm{
+color: #c0c0c0 ; 
 }

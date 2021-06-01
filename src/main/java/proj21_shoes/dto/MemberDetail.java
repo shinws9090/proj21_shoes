@@ -15,7 +15,7 @@ public class MemberDetail {			//	회원상세정보
 	private String address; 		// 	주소
 	private String detailAddress;	// 	상세주소
 
-	
+
 
 	public MemberDetail() {
 		// TODO Auto-generated constructor stub
@@ -158,7 +158,25 @@ public class MemberDetail {			//	회원상세정보
 		this.detailAddress = detailAddress;
 	}
 
+	
 
+
+
+
+
+	public MemberDetail(String memberId, String memberPwd, String memberName, boolean gender, String email, String tel,
+			String zipCode, String address, String detailAddress) {
+		super();
+		this.memberId = memberId;
+		this.memberPwd = memberPwd;
+		this.memberName = memberName;
+		this.gender = gender;
+		this.email = email;
+		this.tel = tel;
+		this.zipCode = zipCode;
+		this.address = address;
+		this.detailAddress = detailAddress;
+	}
 
 
 
@@ -169,6 +187,14 @@ public class MemberDetail {			//	회원상세정보
 		this.memberName = memberName;
 		this.gender = gender;
 	}
+
+
+
+	
+
+
+
+
 
 
 

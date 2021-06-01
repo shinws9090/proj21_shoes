@@ -32,6 +32,8 @@
 				<td><a href="#">주문관리</a></td>
 			</tr>
 		</table>
+	${members}
+		
 	</section>
 
 	<!-- end our product -->
