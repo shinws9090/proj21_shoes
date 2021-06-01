@@ -24,6 +24,10 @@
 	from memberDetail
 	</select>
 
+
+	<insert id="insertMemberDetail" >
+	
+	</insert>
 </mapper>
 
 

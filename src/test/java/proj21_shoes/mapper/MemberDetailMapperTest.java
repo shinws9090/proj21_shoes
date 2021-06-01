@@ -47,14 +47,14 @@ public class MemberDetailMapperTest {
 //		fail("Not yet implemented");
 //	}
 
-//	@Test
-//	public void test01InsertMemberDetail() {
-//		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-//		MemberDetail newMember = new MemberDetail("testId", "111111", "김예진",true);
-//		System.out.println(newMember);
-//		int res = mapper.insertMemberDetail(newMember);
-//		Assert.assertEquals(1, res);
-//	}
+	@Test
+	public void test01InsertMemberDetail() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		MemberDetail newMember = new MemberDetail("testId", "111111", "김예진",true);
+		System.out.println(newMember);
+		int res = mapper.insertMemberDetail(newMember);
+		Assert.assertEquals(1, res);
+	}
 //
 //	@Test
 //	public void testUpdateMemberDetail() {
