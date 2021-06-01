@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="proj21_shoes.mapper.MemberDetailMapper">
-	<!-- resultMap type dto 클래스명 , id =외부에서 지정할이름? -->
+
+	<!-- resultMap type : dto 클래스명 , id : 외부에서 지정할이름? -->
 	<!-- result column : db속 컬럼명, property : dto속 변수명 -->
 
 	<resultMap type="MemberDetail" id="MemberDetailAll">
