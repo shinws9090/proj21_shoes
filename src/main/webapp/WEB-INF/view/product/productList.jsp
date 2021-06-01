@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,6 @@
 <title>lighten</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/productList.css">
-<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 <body class="main-layout">
 	<header>
@@ -24,8 +24,8 @@
 	<section>
 		<%-- ${products} --%>
 		<c:forEach var="p" items="${products}">
-			<div class="item">
-				<img src="images/model-female.png">
+			<div class="item" >
+				<img src="images/model-female.png" alt="">
 				<div class="detail">
 					<div class="title">
 						<h2>

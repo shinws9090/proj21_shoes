@@ -8,8 +8,7 @@
 		<association property="brand" javaType="Brand" />
 		<association property="category" javaType="Category" />
 		<association property="employee" resultMap="ResEmp" />
-		<collection property="orderOptions"
-			resultMap="ResOrderOption" />
+		<collection property="orderOptions"	resultMap="ResOrderOption" />
 	</resultMap>
 	<resultMap type="OrderOption" id="ResOrderOption" />
 	<resultMap type="Employee" id="ResEmp">
