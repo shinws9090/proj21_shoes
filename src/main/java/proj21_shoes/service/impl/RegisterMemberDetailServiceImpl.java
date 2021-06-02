@@ -1,7 +1,5 @@
 package proj21_shoes.service.impl;
 
-import java.time.LocalDateTime;
-
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +18,15 @@ public class RegisterMemberDetailServiceImpl implements RegisterMemberDetailServ
 	private MemberDetailMapper mapper;
 
 	@Override
-	public String regist(RegisterRequest req) {
-//	//	MemberDetail member = mapper.selectMemberDetailById(req.getMemberId();//(req.getEmail());
-//		if (member != null) {
-//			throw new DuplicateMemberException("dup email " + req.getEmail());
-//		}
-//		MemberDetail newMember = new MemberDetail(req.getEmail(), req.getPassword(), req.getName(), false, LocalDateTime.now(), null, null, null, null, null);
-//		mapper.insertMemberDetail(newMember);
-//		return newMember.getId();
-		return null;
+	public MemberDetail regist(RegisterRequest req) {//이 형식의 애를 받아서
+		MemberDetail member = mapper.selectMemberDetailById(req.getMemberId());//(req.getEmail());
+		if (member != null) {
+			throw new DuplicateMemberException("dup email " + req.getEmail());
+		}
+		RegisterRequest newMember = new RegisterRequest(req.getMemberId(),req.getMemberPwd(),req.getConfirmPassword(),req.getMemberName(),req.getGender(),req.getBirthday(),req.getEmail(),req.getTel(),req.getZipCode(),req.getAddress(), req.getDetailAddress());
+		mapper.insertMemberDetail(newMember);
+		return newMember.getMemberId();
+
 	}
 	
 
