@@ -17,10 +17,17 @@ public class RegisterMemberDetailServiceImpl implements RegisterMemberDetailServ
 	
 	@Autowired
 	private MemberDetailMapper mapper;
+
 	@Override
-	public int registerMemberDetail(MemberDetail memberDetail) {
-		log.debug("service - registerMemberDetail() > " + memberDetail);
-		return mapper.insertMemberDetail(memberDetail);
+	public Long regist(RegisterRequest req) {
+		MemberDetail member = mapper.selectMemberDetailById(req.getId())//(req.getEmail());
+		if (member != null) {
+			throw new DuplicateMemberException("dup email " + req.getEmail());
+		}
+		MemberDetail newMember = new MemberDetail(req.getEmail(), req.getPassword(), req.getName(), LocalDateTime.now());
+		mapper.insertMemberDetail(newMember);
+		return newMember.getId();
 	}
+	
 
 }

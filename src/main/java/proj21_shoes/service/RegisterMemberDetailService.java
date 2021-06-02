@@ -10,6 +10,6 @@ import proj21_shoes.dto.RegisterRequest;
 public interface RegisterMemberDetailService {
 
 
-	int registerMemberDetail(MemberDetail memberDetail);	
+	Long regist(RegisterRequest req);
 
 }

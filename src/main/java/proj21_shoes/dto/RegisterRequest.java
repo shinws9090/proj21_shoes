@@ -5,7 +5,11 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.sun.javafx.beans.IDProperty;
+
 public class RegisterRequest {
+	@NotBlank
+	private String id;
 	@NotBlank
 	@Email
 	private String email;
@@ -16,6 +20,15 @@ public class RegisterRequest {
 	@NotEmpty
 	private String name;
 	
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -52,6 +65,16 @@ public class RegisterRequest {
 	}
 
 
+
+	public RegisterRequest(@NotBlank String id, @NotBlank @Email String email, @Size(min = 6) String password,
+			@NotEmpty String confirmPassword, @NotEmpty String name) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.confirmPassword = confirmPassword;
+		this.name = name;
+	}
 
 	@Override
 	public String toString() {
