@@ -4,14 +4,14 @@
 
 <!DOCTYPE html> 
 <html> 
-<head><title>><spring:message code="member.register"/></title></head> 
+<head><title><spring:message code="member.register"/></title></head> 
 <body> 
 
 <spring:message code="register.done">
 
-<spring:argument value="${registerRequest.name}" />
-<spring:argument value="${registerRequest.email}" /> 
+<%-- <spring:argument value="${registerRequest.name}" />
+<spring:argument value="${registerRequest.email}" />  --%>
 </spring:message>
-<p><a href="<c:url value='/main'/>">[<spring:message code="go.main"/>]</a></p> 
+<%-- <p><a href="<c:url value='../index'/>">[<spring:message code="go.index"/>]</a></p>  --%>
 </body> 
 </html>

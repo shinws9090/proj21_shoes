@@ -64,32 +64,20 @@ $(function(){
 		<h2>회원가입</h2><!-- 회원가입 -->
 		
 		
-		<form action="step3" method = "post" enctype="multipart/form-data" name="signUpForm">
+		
+		
+		
+		<form:form>
 		<table>
 		<tr>
-		<td class="td_left"><label for="memberName">회원아이디</label></td>
-		<td class="td_right"><input type="text" name="memberName" id="memberName" required /></td>
+		<td class="td_left"><label >회원아이디 <input type="text" /></label></td>
+
 		</tr>
-			<tr>
-		<td class="td_left"><label for="memberPassword">비밀번호</label></td>
-		<td class="td_right"><input type="password" name="memberPassword" id="memberPassword" required /></td>
-		</tr>
-			<tr>
-		<!-- <td class="td_left"><label for="BOARD_SUBJECT">제목</label></td>
-		<td class="td_right"><input type="text" name="BOARD_SUBJECT" id="BOARD_SUBJECT" required /></td>
-		</tr>
-		<tr>
-		<td class="td_left"><label for="BOARD_CONTENT">내용</label></td>
-		<td><textarea id ="BOARD_CONTENT" name="BOARD_CONTENT" cols="40" rows="15" required></textarea></td>
-		</tr> -->
-		<tr>
-		<td class="td_left"><label for="upload">파일첨부</label></td>
-		<td class="td_right"><input type="file" name="upload" id="upload" required /></td>
-		</tr>
+			
 		
 	
 		</table>
-		</form>
+		</form:form>
 		<article class="btn2">
 				<form action="step1" method="post"> <!-- 일로 보내조 -->
 				
