@@ -1,11 +1,14 @@
 package proj21_shoes.service.impl;
 
+import javax.validation.Valid;
+
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import proj21_shoes.dto.MemberDetail;
+import proj21_shoes.dto.RegisterRequest;
 import proj21_shoes.mapper.MemberDetailMapper;
 import proj21_shoes.service.RegisterMemberDetailService;
 @Service

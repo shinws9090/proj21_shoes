@@ -1,45 +1,32 @@
 @charset "UTF-8";
-
+/* step1 */
 .box1{
 	text-align: center;
-	width: 300px;
+	width: 800px;
 	height: 200px;
 	border: 5px solid #c0c0c0 ; 
 	margin: auto;
 	padding-top: inherit;
 	margin-top: 100px;
+	margin-bottom: 100px;
 	
 	
 }
-
-/* .box1 {
-	text-align: center;
-	width: 300px;
-	height: 200px;
-	border: 1px solid black;
-	margin: auto;
-	padding-top: 10px;
-	
-} */
-.box2 {
-	text-align: center;
-	width: 300px;
-	height: 200px;
-	border: 1px solid black;
-	margin: auto;
-	padding-top: 10px;
-}
+ h3{
+ margin-bottom: 10px;
+ }
 
 .btn1 {
-	text-align: center;
+	text-align: left;
 	color: red;
 }
 
-.btn2 {
+.btn2 { /* 회원가입, 회원가입 취소 버튼 */
+	padding-top:inherit;
 	text-align: center;
 	color: red;
 }
- --------------------
+/*  join */
  #registForm{
 	
 	width: 500px;
@@ -58,11 +45,15 @@ table{
 
 .td_left {
 	width:150;
-	background: #dedede ;;
+	background: #dedede ;
 	
 }
 
------------
-#writeForm{
+
+/* 회원가입 입력폼. id = #, class = . */
+#signUpForm{
 color: #c0c0c0 ; 
 }
+
+
+
