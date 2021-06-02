@@ -20,7 +20,8 @@
 <title><spring:message code="member.register" /></title>
 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/signup.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/step1.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/step2.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 
@@ -42,7 +43,7 @@
 			<p>
 				<spring:message code="term.content1" /> <!-- 약관내용 -->
 			</p>
-			<form action="step2test" method="post">
+			<form action="step2" method="post">
 				<label> <input type="checkbox" name="agree" value="true"><!-- 동의 -->
 				<spring:message code="term.agree" /></label> <input type="submit" value="<spring:message code="next.btn"/>" /><!--다음단계  -->
 			</form>

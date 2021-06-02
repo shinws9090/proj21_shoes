@@ -22,16 +22,16 @@ public class RegisterMemberDetailController {
 		return "/register/step1";
 	}
 
-	@PostMapping("/register/step2test")
+	@PostMapping("/register/step2")
 	public String handleStep2(@RequestParam(value = "agree", defaultValue = "false") Boolean agree,
 			RegisterRequest registerRequest) {
 		if (!agree) {
 			return "register/step1";
 		}
-		return "register/step2test";
+		return "register/step2";
 	}
 
-	@GetMapping("/register/step2test")
+	@GetMapping("/register/step2")
 	public String handleStep2Get() {
 		return "redirect:/register/step1";
 	}
@@ -40,14 +40,14 @@ public class RegisterMemberDetailController {
 	public String handleStep3(RegisterRequest regReq, Errors errors) {
 
 		if (errors.hasErrors())
-			return "register/step2test";
+			return "register/step2";
 
 		try {
 			service.regist(regReq);
 			return "register/step3";
 		} catch (DuplicateMemberException ex) {
 			errors.rejectValue("email", "duplicate");
-			return "register/step2test";
+			return "register/step2";
 		}
 	}
 }

@@ -21,6 +21,7 @@
 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/signup.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/commonException.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 
