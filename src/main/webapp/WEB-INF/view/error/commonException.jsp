@@ -31,7 +31,7 @@
 	</header>
 	<!-- end header -->
 	<section class="error1">
-	<a>에러가 발생했습니다 왜???</a>
+	<a>에러가 발생했습니다! 콘솔창을 올려서 에러메세지를 확인해주세요!!</a>
 	</section>
 	
 
