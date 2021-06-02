@@ -21,13 +21,14 @@ public class RegisterMemberDetailServiceImpl implements RegisterMemberDetailServ
 
 	@Override
 	public String regist(RegisterRequest req) {
-		MemberDetail member = mapper.selectMemberDetailById(req.getMemberId();//(req.getEmail());
-		if (member != null) {
-			throw new DuplicateMemberException("dup email " + req.getEmail());
-		}
-		MemberDetail newMember = new MemberDetail(req.getEmail(), req.getPassword(), req.getName(), false, LocalDateTime.now(), null, null, null, null, null);
-		mapper.insertMemberDetail(newMember);
-		return newMember.getId();
+//	//	MemberDetail member = mapper.selectMemberDetailById(req.getMemberId();//(req.getEmail());
+//		if (member != null) {
+//			throw new DuplicateMemberException("dup email " + req.getEmail());
+//		}
+//		MemberDetail newMember = new MemberDetail(req.getEmail(), req.getPassword(), req.getName(), false, LocalDateTime.now(), null, null, null, null, null);
+//		mapper.insertMemberDetail(newMember);
+//		return newMember.getId();
+		return null;
 	}
 	
 
