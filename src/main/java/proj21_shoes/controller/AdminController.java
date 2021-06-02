@@ -4,14 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import proj21_shoes.dto.Member;
 import proj21_shoes.dto.MemberDetail;
+import proj21_shoes.dto.Order;
 import proj21_shoes.dto.Product;
 import proj21_shoes.service.GetMemberDetailListService;
 import proj21_shoes.service.ProductService;
@@ -49,6 +46,12 @@ public class AdminController {
 	public ModelAndView productList() {
 		List<Product> product = productService.productByAll();
 		return new ModelAndView("admin/productMgt", "product", product);
+	}
+
+	@GetMapping("/orderMgt")
+	public ModelAndView orderList() {
+//		List<Order> order = 
+		return new ModelAndView("admin/orderMgt");
 	}
 
 }
