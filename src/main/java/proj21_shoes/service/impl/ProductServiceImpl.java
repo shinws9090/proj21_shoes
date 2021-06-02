@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import proj21_shoes.commend.ProductSelectCommend;
 import proj21_shoes.dto.Brand;
 import proj21_shoes.dto.OrderOption;
 import proj21_shoes.dto.Product;
@@ -40,6 +41,10 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<Product> productByBrand(int code) {
 		return mapper.productByBrand(code);
+	}
+	@Override
+	public List<Product> productBycommand(ProductSelectCommend productSelectCommend) {
+		return mapper.productBycommand(productSelectCommend);
 	}
 
 }

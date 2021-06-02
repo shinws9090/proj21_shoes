@@ -31,10 +31,11 @@
 	<nav class="main-menu">
 		<ul>
 			<li><a href="${contextPath}/index">Home</a></li>
-			<li><a href="${contextPath}/brand">BRAND</a></li>
-			<li><a href="${contextPath}/women">WOMEN</a></li>
-			<li><a href="${contextPath}/men">MEN</a></li>
-			<li><a href="${contextPath}/kids">KIDS</a></li>
+			<li><a href="${contextPath}/productList?menu=brand">BRAND</a></li>
+			<li><a href="${contextPath}/productList?menu=women">WOMEN</a></li>
+			<li><a href="${contextPath}/productList?menu=men">MEN</a></li>
+			<li><a href="${contextPath}/productList?menu=kids">KIDS</a></li>
+			<li><a href="${contextPath}/productList?menu=all">FREE</a></li>
 		</ul>
 	</nav>
 </body>

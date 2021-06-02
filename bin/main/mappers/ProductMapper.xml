@@ -61,17 +61,7 @@
 
 	<select id="productByMenu" resultMap="ProductList" parameterType="String">
 		<include refid="selProductList" />
-		<choose>
-			<when test="menu == 'women'">
-				where gender = '여'
-			</when>
-			<when test="menu == 'men'">
-				where gender = '남'
-			</when>
-			<when test="menu == 'kids'">
-				where gender = '아동'
-			</when>
-		</choose>
+				where gender = #{menu}
 	</select>
 	
 	<select id="productByBrand" resultMap="ProductList" parameterType="int">
@@ -82,6 +72,21 @@
 	<select id="productByCode" resultMap="ProductDetail" parameterType="int">
 		<include refid="selProductDetail" />
 			where p.product_code = #{code}
+	</select>
+	
+	<select id="productBycommand" resultMap="ProductList" parameterType="ProductSelectCommend">
+		<include refid="selProductList" />
+			<where>
+				<if test="gender !=''">
+					and gender = #{gender}
+				</if>
+				<if test="productCategoryCode !=0">
+					and p.product_category_code = #{productCategoryCode}
+				</if>
+				<if test="brandCode !=0">
+					and p.brand_code = #{brandCode}
+				</if>
+			</where>
 	</select>
 
 

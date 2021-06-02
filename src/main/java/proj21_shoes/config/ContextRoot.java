@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Import;
 @ComponentScan(basePackages = {
 		"proj21_shoes.service"
 		,"proj21_shoes.controller"
+		,"proj21_shoes.commend"
 		,"proj21_shoes.mapper"
 		})
 public class ContextRoot {

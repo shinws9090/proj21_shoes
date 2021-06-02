@@ -1,15 +1,17 @@
-package proj21_shoes.service.commend;
+package proj21_shoes.commend;
 
 public class ProductSelectCommend {
-	private String manu;
+	private String gender;
 	private int brandCode;
 	private int productCategoryCode;
 	
-	public String getManu() {
-		return manu;
+	
+	
+	public String getGender() {
+		return gender;
 	}
-	public void setManu(String manu) {
-		this.manu = manu;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	public int getBrandCode() {
 		return brandCode;
@@ -23,5 +25,12 @@ public class ProductSelectCommend {
 	public void setProductCategoryCode(int productCategoryCode) {
 		this.productCategoryCode = productCategoryCode;
 	}
+	@Override
+	public String toString() {
+		return String.format("ProductSelectCommend [gender=%s, brandCode=%s, productCategoryCode=%s]", gender,
+				brandCode, productCategoryCode);
+	}
+	
+	
 	
 }

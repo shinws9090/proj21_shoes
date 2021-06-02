@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import proj21_shoes.commend.ProductSelectCommend;
 import proj21_shoes.dto.Brand;
 import proj21_shoes.dto.Product;
 import proj21_shoes.service.ProductService;
@@ -20,33 +22,33 @@ public class MainMenuController {
 	@Autowired
 	ProductService service;
 	
-	@GetMapping("/brand")
-	public ModelAndView brandList() {
-		List<Brand> brand = service.brandByAll();
-		return new ModelAndView("product/brandList","brand",brand);
-	}
 	@GetMapping("/brand/{code}")
 	public ModelAndView brandList(@PathVariable("code")int code) {
 		System.out.println(code);
 		List<Product> products = service.productByBrand(code);
 		System.out.println(products);
-		return new ModelAndView("product/productList","products",products);
+		ProductSelectCommend commend = new ProductSelectCommend();
+		commend.setBrandCode(code);
+		return new ModelAndView("product/productList","products",products)
+				.addObject("productSelectCommend", commend);
 	}
-	
-	@GetMapping("/women")
-	public ModelAndView womenList() {
-		List<Product> products = service.productByMenu("women");
-		return new ModelAndView("product/productList","products",products);
+	@PostMapping("/productList")
+	public ModelAndView productList(ProductSelectCommend productSelectCommend) {
+		System.out.println(productSelectCommend);
+		List<Product> products = service.productBycommand(productSelectCommend);
+		return new ModelAndView("product/productList","products",products)
+				.addObject("productSelectCommend", productSelectCommend);
 	}
-	@GetMapping("/men")
-	public ModelAndView menList() {
-		List<Product> products = service.productByMenu("men");
-		return new ModelAndView("product/productList","products",products);
-	}
-	@GetMapping("/kids")
-	public ModelAndView kidsList() {
-		List<Product> products = service.productByMenu("kids");
-		return new ModelAndView("product/productList","products",products);
+	@GetMapping("/productList")
+	public ModelAndView productList(@RequestParam("menu") String menu) {
+		if(menu.equals("brand")) {
+			List<Brand> brand = service.brandByAll();
+			return new ModelAndView("product/brandList","brand",brand);
+		}else {
+			List<Product> products = service.productByMenu(menu);
+			return new ModelAndView("product/productList","products",products)
+					.addObject("productSelectCommend", new ProductSelectCommend());
+		}
 	}
 	@GetMapping("/productDetail/{code}")
 	public ModelAndView productDetail(@PathVariable("code")int code) {

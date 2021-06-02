@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 	<c:set var="contextPath" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +25,11 @@ $(function() {
 		var code = $(this).data("item");
 		window.location.href = contextPath+"/productDetail/"+code;	
 	});
+	$(".category").click(function(){
+		$(this).submit();
+	});
+	
+	
 });
 </script>
 </head>
@@ -34,7 +40,27 @@ $(function() {
 
 	<section>
 		<%-- ${products} --%>
-		
+		<nav class="category-menu">
+			<ul>
+				<li>
+					<form:form class="category" modelAttribute="productSelectCommend" action="${contextPath}/productList">
+						ALL
+						<form:hidden path="gender" value="${products[0].gender}"/>
+						<form:hidden path="brandCode"/>
+					</form:form>
+				</li>
+				<c:forEach var="product" items="${products}">
+					<li>
+						<form:form class="category" modelAttribute="productSelectCommend" action="${contextPath}/productList">
+							${product.category.category}
+							<form:hidden path="gender" value="${products[0].gender}"/>
+							<form:hidden path="brandCode"/>
+							<form:hidden path="productCategoryCode" value="${product.category.productCategoryCode}"/>
+						</form:form>
+					</li>
+				</c:forEach>
+			</ul>
+		</nav>
 		<c:forEach var="product" items="${products}">
 			<div class="item" data-item="${product.productCode}">
 				<img src="images/model-female.png">

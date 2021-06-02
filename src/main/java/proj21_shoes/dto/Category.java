@@ -5,6 +5,7 @@ public class Category { // 카데고리
 	private String category; //종류
 	
 	
+	
 	public int getProductCategoryCode() {
 		return productCategoryCode;
 	}
