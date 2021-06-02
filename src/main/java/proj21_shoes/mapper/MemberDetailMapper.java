@@ -14,7 +14,7 @@ public interface MemberDetailMapper {//우선 회원가입용!! 회원가입시�
 	List<MemberDetail> selectMemberDetailAll();	//회원상세정보 검색- 회원아이디, 회원비밀번호,회원이름,성별,생년월일,이메일,연락처,우편번호,주소,상세주소		
 									
 	//~로 검색  (모든 조건으로 검색할수있어야??)
-	MemberDetail selectMemberDetailById(long id);
+	MemberDetail selectMemberDetailById(String id);
 	
 	
 	int insertMemberDetail(MemberDetail memberDetail); 		 //회원상세정보 추가

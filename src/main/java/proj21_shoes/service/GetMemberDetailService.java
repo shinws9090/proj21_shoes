@@ -6,6 +6,6 @@ import proj21_shoes.dto.MemberDetail;
 
 @Service
 public interface GetMemberDetailService {
-	MemberDetail getMemberDetail(long id);
+	MemberDetail getMemberDetail(MemberDetail id);
 
 }

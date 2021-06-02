@@ -26,35 +26,36 @@
 
 	<section>
 		<jsp:include page="/WEB-INF/view/admin/include/adminMenu.jsp" />
-	<%-- ${members} --%>
 	
-	<table style="width: 80%">
+		<table style="width: 80%">
 			<tr>
-				<td colspan="7" class="td_title">회원 목록</td>
+				<td colspan="7" class="td_title">상품 목록</td>
 			</tr>
 			
 			<tr style="background-color: lightgrey; text-align: center">
-				<td>아이디</td><td>이름</td><td>성별</td><td>이메일</td><td>연락처</td><td>상세보기</td><td>기타</td>
+				<td>번호</td><td>상품명</td><td>가격</td><td>등록일</td><td>재고량</td><td>상세보기</td><td>기타</td>
 				
 			</tr>	
 						
-			<c:forEach var="memberDetail" items="${members}">
+			<c:forEach var="product" items="${product}">
 				<tr>
-					<td>${memberDetail.memberId }</td>
-					<td>${memberDetail.memberName }</td>
-					<td>${memberDetail.gender }</td>
-					<td>${memberDetail.email }</td>
-					<td>${memberDetail.tel }</td>
+					<td>${product.productCode }</td>
+					<td>${product.productName }</td>
+					<td>${product.sellPrice }</td>
+					<td>${product.registDate }</td>
+					<td>${product.cumulativeRegistCount }</td>
 					<td><a href="#">[상세보기]</a></td>	
 					<td><a href="#">[수정]</a>&nbsp;
 						<a href="#">[삭제]</a></td>
 				</tr>
 			</c:forEach>
-		
+						
+			<tr>
+				<td><a href="#">[상품등록]</a></td>
+			</tr>
 		</table>
-	
-	
-		
+				
+		<%-- ${product} --%>
 	</section>
 
 	<!-- end our product -->

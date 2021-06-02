@@ -1,3 +1,5 @@
 SELECT * FROM memberdetail
 
 insert into memberdetail() values ("test1", 1234, "홍길동1", 1, 20000101, "test1@test.com", 01012341234, 12345, "대구", "우리집");
+
+select * from orderproduct;

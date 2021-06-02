@@ -31,25 +31,24 @@
 	</header>
 	<!-- end header -->
 
-
+  <!-- 동의 -->
+  
+  
 	<section class="box">
 		<article class="box1">
 			<h2>
-				<spring:message code="term" />
+				<spring:message code="term" />  <!--약관  -->
 			</h2>
 			<p>
-				<spring:message code="term.content" />
+				<spring:message code="term.content1" /> <!-- 약관내용 -->
 			</p>
 			<form action="step2" method="post">
-				<label> <input type="checkbox" name="agree" value="true">
-				<spring:message code="term.agree" /></label> <input type="submit" value="<spring:message code="next.btn"/>" />
+				<label> <input type="checkbox" name="agree" value="true"><!-- 동의 -->
+				<spring:message code="term.agree" /></label> <input type="submit" value="<spring:message code="next.btn"/>" /><!--다음단계  -->
 			</form>
 			</article>
 	</section>
-	<section>
-		<article class="btn1"> <input type="submit" value="<spring:message code="member.register"/>" /></article>
-		<article class="btn2"> <input type="submit" value="<spring:message code="member.register.cancel"/>" /></article>
-	</section>
+
 
 	<!-- end our product -->
 	<footer>
