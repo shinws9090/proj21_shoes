@@ -25,7 +25,15 @@
 	<!-- end header -->
 
 	<section>
-		<jsp:include page="/WEB-INF/view/admin/include/adminMenu.jsp" />
+		<table style="width: 50%">
+			<tr style="background-color: #e9e9e9; text-align: center;">
+				<td><a href="memberMgt">회원관리</a></td>
+				<td><a href="productMgt">상품관리</a></td>
+				<td><a href="#">주문관리</a></td>
+			</tr>
+		</table>
+	
+		
 	</section>
 
 	<!-- end our product -->

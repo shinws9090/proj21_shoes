@@ -26,6 +26,8 @@
 
 	<section>
 		<jsp:include page="/WEB-INF/view/admin/include/adminMenu.jsp" />
+	${product}
+		
 	</section>
 
 	<!-- end our product -->

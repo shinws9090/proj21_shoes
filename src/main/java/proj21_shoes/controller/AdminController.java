@@ -19,7 +19,7 @@ import proj21_shoes.service.ProductService;
 @Controller
 public class AdminController {
 	@Autowired
-	ProductService service;
+	ProductService productService;
 
 	@Autowired
 	private GetMemberDetailListService memListService;
@@ -43,6 +43,12 @@ public class AdminController {
 	public ModelAndView memberDetailList() {
 		List<MemberDetail> members = memListService.getMemberDetailLists();
 		return new ModelAndView("admin/memberMgt", "members", members);
+	}
+
+	@GetMapping("/productMgt")
+	public ModelAndView productList() {
+		List<Product> product = productService.productByAll();
+		return new ModelAndView("admin/productMgt", "product", product);
 	}
 
 }
