@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Import;
 		,"proj21_shoes.controller"
 		,"proj21_shoes.commend"
 		,"proj21_shoes.mapper"
+		,"proj21_shoes.common"
 		})
 public class ContextRoot {
 

@@ -91,7 +91,7 @@ $(function(){
 		</table>
 		</form>
 		<article class="btn2">
-				<form action="step1" method="post"> <!-- 일로 보내조 -->
+				<form action="step3" method="post"> <!-- 일로 보내조 -->
 				
 				<input type="submit" value="<spring:message code="member.register"/>" /><!--다음단계  -->
 				<input type="submit" value="<spring:message code="member.register.cancel"/>" /><!--취소  -->

@@ -28,7 +28,7 @@
 	<insert id="insertMemberDetail" >
 	insert into memberDetail values
 <!-- 	(?,?,?,?,now(birthday),?,?,?,?,?) -->
-	(#{mamberId},#{memberPwd},#{memberName},#{gender},now(birthday),#{email},#{tel},#{zipCode},#{address},#{detailAddress}) 
+	(#{mamberId},#{memberPwd},#{memberName},#{gender},#{birthday},#{email},#{tel},#{zipCode},#{address},#{detailAddress}) 
 	
 	</insert>
 </mapper>

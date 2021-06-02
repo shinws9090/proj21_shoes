@@ -17,43 +17,43 @@ import proj21_shoes.service.RegisterMemberDetailService;
 //@RequestMapping("")
 public class SignUpController { //
 
-	@Autowired
-	private RegisterMemberDetailService service;
-
-	@RequestMapping("/register/step1") // 약관동의페이지
-	public String handleStep1() {
-		return "/register/step1";
-	}
-
-	@PostMapping("/register/step2")
-	public String handleStep2(@RequestParam(value = "agree", defaultValue = "false") Boolean agree) {
-		if (!agree) {
-			return "register/step1";
-		}
-		return "register/step2";
-	}
-
-	
-	@PostMapping("/register/step3")
-	public String handleStep3(@Valid RegisterRequest regReq, Errors errors) {
-		// 커맨드 객체(RegisterRequest 객체) 검증
-		if (errors.hasErrors())
-			return "register/step2";
-
-		if (!regReq.isPasswordEqualToConfirmPassword()) {
-			errors.rejectValue("confirmPassword", "nomatch");
-			return "register/step2";
-		}
-
-		try {
-//			service.registerMemberDetail(regReq);
-			return "/register/step3";
-		} catch (DuplicateMemberException e) {
-			errors.rejectValue("email", "duplicate");
-			return "/register/step2";
-		}
-
-	}
+//	@Autowired
+//	private RegisterMemberDetailService service;
+//
+//	@RequestMapping("/register/step1") // 약관동의페이지
+//	public String handleStep1() {
+//		return "/register/step1";
+//	}
+//
+//	@PostMapping("/register/step2")
+//	public String handleStep2(@RequestParam(value = "agree", defaultValue = "false") Boolean agree) {
+//		if (!agree) {
+//			return "register/step1";
+//		}
+//		return "register/step2";
+//	}
+//
+//	
+//	@PostMapping("/register/step3")
+//	public String handleStep3(@Valid RegisterRequest regReq, Errors errors) {
+//		// 커맨드 객체(RegisterRequest 객체) 검증
+//		if (errors.hasErrors())
+//			return "register/step2";
+//
+//		if (!regReq.isPasswordEqualToConfirmPassword()) {
+//			errors.rejectValue("confirmPassword", "nomatch");
+//			return "register/step2";
+//		}
+//
+//		try {
+////			service.registerMemberDetail(regReq);
+//			return "/register/step3";
+//		} catch (DuplicateMemberException e) {
+//			errors.rejectValue("email", "duplicate");
+//			return "/register/step2";
+//		}
+//
+//	}
 	 
 
 }

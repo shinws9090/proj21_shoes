@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script>
-$(function(){
+<%-- $(function(){
     var contextPath = "<%= request.getContextPath()%>";
     $('#cancel').on("click", function(e){
         window.location.href = contextPath + "/memberlist";
@@ -49,7 +49,7 @@ $(function(){
             }
         }); 
     });
-});
+}); --%>
 </script>
 </head>
 <body class="main-layout">
@@ -79,7 +79,7 @@ $(function(){
 		</table>
 		</form:form>
 		<article class="btn2">
-				<form action="step1" method="post"> <!-- 일로 보내조 -->
+				<form action="step3" method="post"> <!-- 일로 보내조 -->
 				
 				<input type="submit" value="<spring:message code="member.register"/>" /><!--다음단계  -->
 				<input type="submit" value="<spring:message code="member.register.cancel"/>" /><!--취소  -->
