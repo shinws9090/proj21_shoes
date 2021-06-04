@@ -27,8 +27,7 @@ public class Product { // 상품정보
 
 	public Product(int productCode, String productName, Brand brand, String gender, Category category, String material,
 			String season, LocalDateTime madeDate, int costPrice, int sellPrice, LocalDateTime registDate,
-			int cumulativeRegistCount, int cumulativeSellCount, Employee employee, List<OrderOption> orderOptions,
-			ProductPost productPost) {
+			int cumulativeRegistCount, int cumulativeSellCount, Employee employee) {
 		this.productCode = productCode;
 		this.productName = productName;
 		this.brand = brand;
@@ -43,8 +42,6 @@ public class Product { // 상품정보
 		this.cumulativeRegistCount = cumulativeRegistCount;
 		this.cumulativeSellCount = cumulativeSellCount;
 		this.employee = employee;
-		this.orderOptions = orderOptions;
-		this.productPost = productPost;
 	}
 
 	public int getProductCode() {

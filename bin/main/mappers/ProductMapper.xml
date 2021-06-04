@@ -97,7 +97,7 @@
 		insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, 
 							made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number)
 		values (#{productCode}, #{productName}, #{brand.brandCode}, #{gender}, #{category.productCategoryCode}, #{material}, #{season}, 
-				now(), #{costPrice}, #{sellPrice}, now(), #{cumulativeRegistCount}, #{cumulativeSellCount}, #{employee.empNumber});
+				#{madeDate}, #{costPrice}, #{sellPrice}, #{registDate}, #{cumulativeRegistCount}, #{cumulativeSellCount}, #{employee.empNumber});
 	</insert>
 
 
