@@ -15,6 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import proj21_shoes.commend.ProductSelectCommend;
 import proj21_shoes.config.ContextRoot;
 import proj21_shoes.dto.Product;
  
@@ -39,7 +40,9 @@ public class ProductMapperTest {
 	
 	@Test
 	public void testProductByAll() {
-		List<Product> list = mapper.productByAll();
+		ProductSelectCommend a = new ProductSelectCommend();
+		a.setBrandCode(1);
+		List<Product> list = mapper.productBycommand(a);
 		Assert.assertNotNull(list);
 		log.debug(list.toString());
 	}

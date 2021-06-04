@@ -8,6 +8,7 @@
 		<association property="category" javaType="Category" />
 		<association property="productPost" javaType="ProductPost" />
 	</resultMap>
+	
 	<resultMap type="Product" id="ProductDetail">
 		<id column="product_code" property="productCode" />
 		<association property="brand" javaType="Brand" />
@@ -15,13 +16,16 @@
 		<association property="employee" resultMap="ResEmployee"/>
 		<association property="productPost" resultMap="ResProductPost" />
 	</resultMap>
+	
 	<resultMap type="Employee" id="ResEmployee">
 		<association property="authority" javaType="Authority"/>
 	</resultMap>
+	
 	<resultMap type="ProductPost" id="ResProductPost">
 		<id column="product_code" property="productCode"/>
 		<collection column="Image" property="images" resultMap="ResImage"/>
 	</resultMap>
+	
 	<resultMap type="Image" id="ResImage"/>
 
 	<sql id="selProductList">
@@ -77,7 +81,7 @@
 	<select id="productBycommand" resultMap="ProductList" parameterType="ProductSelectCommend">
 		<include refid="selProductList" />
 			<where>
-				<if test="gender !=''">
+				<if test="gender !=null">
 					and gender = #{gender}
 				</if>
 				<if test="productCategoryCode !=0">
@@ -88,7 +92,13 @@
 				</if>
 			</where>
 	</select>
-
+	
+	<insert id="insertProduct" parameterType="Product">
+		insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, 
+							made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number)
+		values (#{productCode}, #{productName}, #{brand.brandCode}, #{gender}, #{category.productCategoryCode}, #{material}, #{season}, 
+				now(), #{costPrice}, #{sellPrice}, now(), #{cumulativeRegistCount}, #{cumulativeSellCount}, #{employee.empNumber});
+	</insert>
 
 
 </mapper>

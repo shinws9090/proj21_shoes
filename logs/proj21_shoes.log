@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [DEBUG] [2021-06-04 17:16] test01InsertMemberDetail()
 [DEBUG] [2021-06-04 17:16] testSelectMemberDetailAll()
 [DEBUG] [2021-06-04 17:16] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail
@@ -13,3 +14,40 @@
 [TRACE] [2021-06-04 17:16] <==        Row: 1, »óÇ°¸í, 1, ³², 1, ¼ÒÀç, °èÀý, 2021-06-01 14:58:13.0, 50000, 60000, 2021-06-01 14:58:13.0, 1, 1, 1, 1, ³ªÀÌÅ°, NIKE, 1, ½½¸®ÆÛ, 1, <<BLOB>>, ³»¿ë
 [DEBUG] [2021-06-04 17:16] <==      Total: 1
 [DEBUG] [2021-06-04 17:16] [Product [productCode=1, productName=»óÇ°¸í, brand=Brand [brandCode=1, brandName=³ªÀÌÅ°, brandEngName=NIKE], gender=³², category=Category [productCategoryCode=1, category=½½¸®ÆÛ], material=¼ÒÀç, season=°èÀý, madeDate=2021-06-01T14:58:13, costPrice=50000, sellPrice=60000, registDate=2021-06-01T14:58:13, cumulativeRegistCount=1, cumulativeSellCount=1, employee=null, orderOptions=null, productPost=ProductPost [productCode=1, productMainImage=[-20, -125, -127, -19, -110, -120, -21, -116, -128, -19, -111, -100, -20, -99, -76, -21, -81, -72, -20, -89, -128], content=³»¿ë, images=null]]]
+=======
+[DEBUG] [2021-06-04 14:27] ==>  Preparing: select * from product p join brand b on p.brand_code = b.brand_code join category c on c.product_category_code =p.product_category_code join productpost p2 on p2.product_code = p.product_code WHERE gender = ?
+[DEBUG] [2021-06-04 14:27] ==> Parameters: null
+[DEBUG] [2021-06-04 14:27] <==      Total: 0
+[DEBUG] [2021-06-04 14:27] []
+[DEBUG] [2021-06-04 14:27] ==>  Preparing: select * from product p join brand b on p.brand_code = b.brand_code join category c on c.product_category_code =p.product_category_code join productpost p2 on p2.product_code = p.product_code WHERE gender = ? and p.brand_code = ?
+[DEBUG] [2021-06-04 14:27] ==> Parameters: null, 1(Integer)
+[DEBUG] [2021-06-04 14:27] <==      Total: 0
+[DEBUG] [2021-06-04 14:27] []
+[DEBUG] [2021-06-04 14:28] ==>  Preparing: select * from product p join brand b on p.brand_code = b.brand_code join category c on c.product_category_code =p.product_category_code join productpost p2 on p2.product_code = p.product_code WHERE p.brand_code = ?
+[DEBUG] [2021-06-04 14:28] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-04 14:28] <==    Columns: product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number, brand_code, brand_name, brand_eng_name, product_category_code, category, product_code, product_main_image, content
+[TRACE] [2021-06-04 14:28] <==        Row: 11111, ì¹´ì‹œì•ˆ ë‹¤í¬ë¸Œë¼ìš´ ìƒŒë“¤, 1, men, 555, ì²œì—°(ì†Œ)ê°€ì£½, S/S, 2021-06-02 13:57:22.0, 178000, 124900, 2021-06-02 13:57:22.0, 1, 1, 101, 1, ë‹¥í„°ë§ˆí‹´, Dr.Martin, 555, ìƒŒë“¤, 11111, <<BLOB>>, ë‹¥í„°ë§ˆí‹´ ìƒŒë“¤
+[DEBUG] [2021-06-04 14:28] <==      Total: 1
+[DEBUG] [2021-06-04 14:28] [Product [productCode=11111, productName=ì¹´ì‹œì•ˆ ë‹¤í¬ë¸Œë¼ìš´ ìƒŒë“¤, brand=Brand [brandCode=1, brandName=ë‹¥í„°ë§ˆí‹´, brandEngName=Dr.Martin], gender=men, category=Category [productCategoryCode=555, category=ìƒŒë“¤], material=ì²œì—°(ì†Œ)ê°€ì£½, season=S/S, madeDate=2021-06-02T13:57:22, costPrice=178000, sellPrice=124900, registDate=2021-06-02T13:57:22, cumulativeRegistCount=1, cumulativeSellCount=1, employee=null, orderOptions=null, productPost=ProductPost [productCode=11111, productMainImage=[68, 114, 77, 97, 114, 116, 105, 110, 49, 45, 109, 97, 105, 110, 46, 106, 112, 103], content=ë‹¥í„°ë§ˆí‹´ ìƒŒë“¤, images=null]]]
+[DEBUG] [2021-06-04 14:28] ==>  Preparing: select * from product p join brand b on p.brand_code = b.brand_code join category c on c.product_category_code =p.product_category_code join productpost p2 on p2.product_code = p.product_code WHERE p.brand_code = ?
+[DEBUG] [2021-06-04 14:28] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-04 14:28] <==    Columns: product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number, brand_code, brand_name, brand_eng_name, product_category_code, category, product_code, product_main_image, content
+[TRACE] [2021-06-04 14:28] <==        Row: 11111, ì¹´ì‹œì•ˆ ë‹¤í¬ë¸Œë¼ìš´ ìƒŒë“¤, 1, men, 555, ì²œì—°(ì†Œ)ê°€ì£½, S/S, 2021-06-02 13:57:22.0, 178000, 124900, 2021-06-02 13:57:22.0, 1, 1, 101, 1, ë‹¥í„°ë§ˆí‹´, Dr.Martin, 555, ìƒŒë“¤, 11111, <<BLOB>>, ë‹¥í„°ë§ˆí‹´ ìƒŒë“¤
+[DEBUG] [2021-06-04 14:28] <==      Total: 1
+[DEBUG] [2021-06-04 14:28] [Product [productCode=11111, productName=ì¹´ì‹œì•ˆ ë‹¤í¬ë¸Œë¼ìš´ ìƒŒë“¤, brand=Brand [brandCode=1, brandName=ë‹¥í„°ë§ˆí‹´, brandEngName=Dr.Martin], gender=men, category=Category [productCategoryCode=555, category=ìƒŒë“¤], material=ì²œì—°(ì†Œ)ê°€ì£½, season=S/S, madeDate=2021-06-02T13:57:22, costPrice=178000, sellPrice=124900, registDate=2021-06-02T13:57:22, cumulativeRegistCount=1, cumulativeSellCount=1, employee=null, orderOptions=null, productPost=ProductPost [productCode=11111, productMainImage=[68, 114, 77, 97, 114, 116, 105, 110, 49, 45, 109, 97, 105, 110, 46, 106, 112, 103], content=ë‹¥í„°ë§ˆí‹´ ìƒŒë“¤, images=null]]]
+>>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/proj21_shoes.git
+[DEBUG] [2021-06-04 17:18] test01InsertMemberDetail()
+[DEBUG] [2021-06-04 17:18] testSelectMemberDetailAll()
+[DEBUG] [2021-06-04 17:18] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail
+[DEBUG] [2021-06-04 17:18] ==> Parameters: 
+[TRACE] [2021-06-04 17:18] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-04 17:18] <==        Row: test, 1234, È«±æµ¿, 1, 2000-01-01 00:00:00.0, test@test.com, 1012341234, 12345, ´ë±¸, ¿ì¸®Áý
+[TRACE] [2021-06-04 17:18] <==        Row: test1, 1234, È«±æµ¿1, 1, 2000-01-01 00:00:00.0, test1@test.com, 1012341234, 12345, ´ë±¸, ¿ì¸®Áý
+[TRACE] [2021-06-04 17:18] <==        Row: È¸¿ø¾ÆÀÌµð, È¸¿øºñ¹Ð¹øÈ£, È¸¿øÀÌ¸§, 1, 2021-06-01 14:58:13.0, ÀÌ¸ÞÀÏ, ¿¬¶ôÃ³, 12345, ÁÖ¼Ò, »ó¼¼ÁÖ¼Ò
+[DEBUG] [2021-06-04 17:18] <==      Total: 3
+[DEBUG] [2021-06-04 17:18] ==>  Preparing: select * from product p join brand b on p.brand_code = b.brand_code join category c on c.product_category_code =p.product_category_code join productpost p2 on p2.product_code = p.product_code WHERE p.brand_code = ?
+[DEBUG] [2021-06-04 17:18] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-04 17:18] <==    Columns: product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number, brand_code, brand_name, brand_eng_name, product_category_code, category, product_code, product_main_image, content
+[TRACE] [2021-06-04 17:18] <==        Row: 1, »óÇ°¸í, 1, ³², 1, ¼ÒÀç, °èÀý, 2021-06-01 14:58:13.0, 50000, 60000, 2021-06-01 14:58:13.0, 1, 1, 1, 1, ³ªÀÌÅ°, NIKE, 1, ½½¸®ÆÛ, 1, <<BLOB>>, ³»¿ë
+[DEBUG] [2021-06-04 17:18] <==      Total: 1
+[DEBUG] [2021-06-04 17:18] [Product [productCode=1, productName=»óÇ°¸í, brand=Brand [brandCode=1, brandName=³ªÀÌÅ°, brandEngName=NIKE], gender=³², category=Category [productCategoryCode=1, category=½½¸®ÆÛ], material=¼ÒÀç, season=°èÀý, madeDate=2021-06-01T14:58:13, costPrice=50000, sellPrice=60000, registDate=2021-06-01T14:58:13, cumulativeRegistCount=1, cumulativeSellCount=1, employee=null, orderOptions=null, productPost=ProductPost [productCode=1, productMainImage=[-20, -125, -127, -19, -110, -120, -21, -116, -128, -19, -111, -100, -20, -99, -76, -21, -81, -72, -20, -89, -128], content=³»¿ë, images=null]]]
