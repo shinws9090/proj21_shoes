@@ -25,29 +25,36 @@ public class MainMenuController {
 	@GetMapping("/brand/{code}")
 	public ModelAndView brandList(@PathVariable("code")int code) {
 		System.out.println(code);
-		List<Product> products = service.productByBrand(code);
-		System.out.println(products);
+//		List<Product> products = service.productByBrand(code);
 		ProductSelectCommend commend = new ProductSelectCommend();
 		commend.setBrandCode(code);
+		List<Product> products = service.productBycommand(commend);
+		System.out.println(products);
 		return new ModelAndView("product/productList","products",products)
 				.addObject("productSelectCommend", commend);
 	}
+	
 	@PostMapping("/productList")
 	public ModelAndView productList(ProductSelectCommend productSelectCommend) {
 		System.out.println(productSelectCommend);
 		List<Product> products = service.productBycommand(productSelectCommend);
+		System.out.println(products);
 		return new ModelAndView("product/productList","products",products)
 				.addObject("productSelectCommend", productSelectCommend);
 	}
+	
 	@GetMapping("/productList")
 	public ModelAndView productList(@RequestParam("menu") String menu) {
 		if(menu.equals("brand")) {
 			List<Brand> brand = service.brandByAll();
 			return new ModelAndView("product/brandList","brand",brand);
 		}else {
-			List<Product> products = service.productByMenu(menu);
+			ProductSelectCommend commend = new ProductSelectCommend();
+			commend.setGender(menu);
+			List<Product> products = service.productBycommand(commend);
+			System.out.println(products);
 			return new ModelAndView("product/productList","products",products)
-					.addObject("productSelectCommend", new ProductSelectCommend());
+					.addObject("productSelectCommend", commend);
 		}
 	}
 	@GetMapping("/productDetail/{code}")

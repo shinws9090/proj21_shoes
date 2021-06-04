@@ -13,6 +13,7 @@ public class ProductSelectCommend {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	
 	public int getBrandCode() {
 		return brandCode;
 	}
