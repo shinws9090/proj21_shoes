@@ -30,21 +30,19 @@
 			$(".tabs div").eq($(this).index()).addClass("active");
 		});
 		
-			/* var options = "${product.orderOptions.color}"; */
 		$(".size span").click(function(){
-			alert("asd");
+			alert($(this).data("size"));
 			$(".size span").removeClass();
 			$(this).addClass("active");
 			var c = ""
-			/* for(var option in options){
+			for(var option in options){
 			c += "<span>"+option.color+"</span>";
-			} */
-			/* $(".color").append(color); */
+			}
+			$(".color").append(color);
 			
-		});
+		}); 
 		
 		$(".color span").click(function(){
-			/* $(".color span").removeClass(); */
 			$(this).addClass("active");
 			$(this).siblings().removeClass("active");
 		});
@@ -92,7 +90,7 @@
 			<div class="size">
 				<label>Sizes</label>
 				<c:forEach var="option" items="${product.orderOptions}">
-					<span class="active">${option.size}</span>
+					<span class="active" data-size="${option.size}">${option.size}</span>
 				</c:forEach>
 			</div>
 			<div class="color">
