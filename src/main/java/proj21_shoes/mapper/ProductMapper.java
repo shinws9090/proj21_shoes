@@ -17,5 +17,5 @@ public interface ProductMapper {
 	Product productByCode(int code);
 	List<OrderOption> OrderOptionByCode(int code);
 		
-	
+	int insertProduct(Product product);
 }

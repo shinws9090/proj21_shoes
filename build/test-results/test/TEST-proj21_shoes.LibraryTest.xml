@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="proj21_shoes.LibraryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-01T06:33:09" hostname="CLASS202-03" time="0.004">
+<testsuite name="proj21_shoes.LibraryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-04T08:16:20" hostname="CLASS202-19" time="0.003">
   <properties/>
-  <testcase name="testSomeLibraryMethod" classname="proj21_shoes.LibraryTest" time="0.004"/>
+  <testcase name="testSomeLibraryMethod" classname="proj21_shoes.LibraryTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

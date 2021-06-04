@@ -3,3 +3,9 @@ SELECT * FROM memberdetail
 insert into memberdetail() values ("test1", 1234, "홍길동1", 1, 20000101, "test1@test.com", 01012341234, 12345, "대구", "우리집");
 
 select * from orderproduct;
+
+select * from product;
+
+insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number)
+	values (5, "운동화", "1", "남", "1", "가죽", "겨울", 20210101, 50000, 80000, now(), 1, 1, 1);
+	
