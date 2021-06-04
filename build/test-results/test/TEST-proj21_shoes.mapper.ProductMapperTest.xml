@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="proj21_shoes.mapper.ProductMapperTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-04T08:16:22" hostname="CLASS202-19" time="0.011">
+<testsuite name="proj21_shoes.mapper.ProductMapperTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-04T08:18:55" hostname="CLASS202-19" time="0.036">
   <properties/>
-  <testcase name="testProductByAll" classname="proj21_shoes.mapper.ProductMapperTest" time="0.011"/>
-  <system-out><![CDATA[DEBUG [Test worker] - ==>  Preparing: select * from product p join brand b on p.brand_code = b.brand_code join category c on c.product_category_code =p.product_category_code join productpost p2 on p2.product_code = p.product_code
-DEBUG [Test worker] - ==> Parameters: 
+  <testcase name="testProductByAll" classname="proj21_shoes.mapper.ProductMapperTest" time="0.036"/>
+  <system-out><![CDATA[DEBUG [Test worker] - ==>  Preparing: select * from product p join brand b on p.brand_code = b.brand_code join category c on c.product_category_code =p.product_category_code join productpost p2 on p2.product_code = p.product_code WHERE p.brand_code = ?
+DEBUG [Test worker] - ==> Parameters: 1(Integer)
 TRACE [Test worker] - <==    Columns: product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number, brand_code, brand_name, brand_eng_name, product_category_code, category, product_code, product_main_image, content
 TRACE [Test worker] - <==        Row: 1, 상품명, 1, 남, 1, 소재, 계절, 2021-06-01 14:58:13.0, 50000, 60000, 2021-06-01 14:58:13.0, 1, 1, 1, 1, 나이키, NIKE, 1, 슬리퍼, 1, <<BLOB>>, 내용
 DEBUG [Test worker] - <==      Total: 1

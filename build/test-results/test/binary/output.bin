@@ -12,8 +12,8 @@
 �MemberDetail [memberId=test1, memberPwd=1234, memberName=홍길동1, gender=true, birthday=2000-01-01T00:00, email=test1@test.com, tel=1012341234, zipCode=12345, address=대구, detailAddress=우리집]
 �MemberDetail [memberId=회원아이디, memberPwd=회원비밀번호, memberName=회원이름, gender=true, birthday=2021-06-01T14:58:13, email=이메일, tel=연락처, zipCode=12345, address=주소, detailAddress=상세주소]
 
-�DEBUG [Test worker] - ==>  Preparing: select * from product p join brand b on p.brand_code = b.brand_code join category c on c.product_category_code =p.product_category_code join productpost p2 on p2.product_code = p.product_code
-(DEBUG [Test worker] - ==> Parameters: 
+�DEBUG [Test worker] - ==>  Preparing: select * from product p join brand b on p.brand_code = b.brand_code join category c on c.product_category_code =p.product_category_code join productpost p2 on p2.product_code = p.product_code WHERE p.brand_code = ?
+2DEBUG [Test worker] - ==> Parameters: 1(Integer)
 �TRACE [Test worker] - <==    Columns: product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number, brand_code, brand_name, brand_eng_name, product_category_code, category, product_code, product_main_image, content
 �TRACE [Test worker] - <==        Row: 1, 상품명, 1, 남, 1, 소재, 계절, 2021-06-01 14:58:13.0, 50000, 60000, 2021-06-01 14:58:13.0, 1, 1, 1, 1, 나이키, NIKE, 1, 슬리퍼, 1, <<BLOB>>, 내용
 )DEBUG [Test worker] - <==      Total: 1
