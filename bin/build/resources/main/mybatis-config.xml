@@ -5,9 +5,11 @@
 <configuration>
 <settings>
 	<setting name="mapUnderscoreToCamelCase" value="true" />
+	<setting name="autoMappingBehavior" value="FULL" />
 </settings>
 <typeAliases>
 	<package name="proj21_shoes.dto"/>
+	<package name="proj21_shoes.commend"/>
 </typeAliases>
 	
 	

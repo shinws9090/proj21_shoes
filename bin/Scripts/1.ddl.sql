@@ -271,8 +271,9 @@ ALTER TABLE sinabro.productPost
 
 -- 브랜드구분
 CREATE TABLE sinabro.brand (
-	brand_code INT         NOT NULL COMMENT '브랜드코드', -- 브랜드코드
-	brand_name VARCHAR(20) NOT NULL COMMENT '브랜드명' -- 브랜드명
+	brand_code     INT         NOT NULL COMMENT '브랜드코드', -- 브랜드코드
+	brand_name     VARCHAR(20) NOT NULL COMMENT '브랜드명', -- 브랜드명
+	brand_eng_name VARCHAR(50) NOT NULL COMMENT '브랜드영어명' -- 브랜드영어명
 )
 COMMENT '브랜드구분';
 
