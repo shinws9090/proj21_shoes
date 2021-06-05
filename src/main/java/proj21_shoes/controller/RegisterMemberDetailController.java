@@ -1,5 +1,7 @@
 package proj21_shoes.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -17,38 +19,48 @@ public class RegisterMemberDetailController {
 	@Autowired
 	private RegisterMemberDetailService service;
 
-	@RequestMapping("/register/step1")//약관동의
+	@RequestMapping("/register/step1")
 	public String handleStep1() {
 		return "/register/step1";
 	}
 
 	@PostMapping("/register/step2")  //가입정보 입력
 	public String handleStep2(@RequestParam(value = "agree", defaultValue = "false") Boolean agree,
-			RegisterRequest registerRequest, Errors errors) {
+			RegisterRequest registerRequest) {
 		if (!agree) {
-			errors.reject("email","duplicate");  //수정하기
+//			errors.reject("email","duplicate");  //수정하기
 			return "register/step1";
 		}
 		return "register/step2";
 	}
 
-//	@GetMapping("/register/step2")
-//	public String handleStep2Get() {
-//		return "redirect:/register/step1";
+	@GetMapping("/register/step2") //주소창에서 이래찍으면
+	public String handleStep2Get() {
+		return "redirect:/register/step1";  //step1로 쫓아낸당
+	}
+//	@GetMapping("/register/step3") //주소창에서 이래찍으면
+//	public String handleStep3Get() {
+//		return "redirect:/register/step2";  //step1로 쫓아낸당
 //	}
 
 	@PostMapping("/register/step3")
-	public String handleStep3(RegisterRequest regReq, Errors errors) {
+	public String handleStep3(@Valid RegisterRequest regReq, Errors errors) {
+		// 커맨드 객체(RegisterRequest 객체) 검증
+		if (errors.hasErrors())  //에러 있으면
+			return "register/step2";  //일로 돌려보내고
 
-		if (errors.hasErrors())
-			return "register/step2";
-
-		try {
-			service.regist(regReq);
-			return "register/step3";
-		} catch (DuplicateMemberException ex) {
-			errors.rejectValue("email", "duplicate");
+		if (!regReq.isPasswordEqualToConfirmPassword()) {//패스워드 불일치해도 돌려보내고
+			errors.rejectValue("confirmPassword", "nomatch");
 			return "register/step2";
 		}
+
+		try {
+			service.regist(regReq);  //입력쓰
+			return "/register/step3";
+		} catch (DuplicateMemberException e) {
+			errors.rejectValue("email", "duplicate");
+			return "/register/step2";
+		}
+
 	}
 }

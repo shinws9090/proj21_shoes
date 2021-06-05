@@ -8,6 +8,7 @@ import proj21_shoes.dto.RegisterRequest;
 public interface RegisterMemberDetailService {
 
 
-	MemberDetail regist(RegisterRequest req);
+	String regist(RegisterRequest req);
+	
 
 }
