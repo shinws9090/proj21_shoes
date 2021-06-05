@@ -17,24 +17,25 @@ public class RegisterMemberDetailController {
 	@Autowired
 	private RegisterMemberDetailService service;
 
-	@RequestMapping("/register/step1")
+	@RequestMapping("/register/step1")//약관동의
 	public String handleStep1() {
 		return "/register/step1";
 	}
 
-	@PostMapping("/register/step2")
+	@PostMapping("/register/step2")  //가입정보 입력
 	public String handleStep2(@RequestParam(value = "agree", defaultValue = "false") Boolean agree,
-			RegisterRequest registerRequest) {
+			RegisterRequest registerRequest, Errors errors) {
 		if (!agree) {
+			errors.reject("email","duplicate");  //수정하기
 			return "register/step1";
 		}
 		return "register/step2";
 	}
 
-	@GetMapping("/register/step2")
-	public String handleStep2Get() {
-		return "redirect:/register/step1";
-	}
+//	@GetMapping("/register/step2")
+//	public String handleStep2Get() {
+//		return "redirect:/register/step1";
+//	}
 
 	@PostMapping("/register/step3")
 	public String handleStep3(RegisterRequest regReq, Errors errors) {

@@ -113,10 +113,13 @@
 		</table>
 		</form:form>
 		<article class="btn2">
-				<form action="step3" method="post"> <!-- 일로 보내조 -->
+		
+				 <form action="step3" method="post"> <!-- 일로 보내조 -->
+				<input type="submit" value="다음단계" /><!--다음단계  -->
 				
-				<input type="submit" value="<spring:message code="member.register"/>" /><!--다음단계  -->
-				<input type="submit" value="<spring:message code="member.register.cancel"/>" /><!--취소  -->
+				</form> 
+				<form action="../index" method="get">
+				<input type="submit" value="가입취소" />
 				</form>
 		</article>
 	

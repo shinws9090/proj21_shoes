@@ -23,7 +23,7 @@ public class RegisterRequest {  	//회원정보 입력란 컨펌
 	private MemberDetail email;				//	이메일
 	@NotEmpty
 	private MemberDetail tel; 				// 	연락처
-	@NotEmpty
+	@NotBlank
 	private MemberDetail zipCode; 			// 	우편번호
 	@NotEmpty
 	private MemberDetail address; 			// 	주소
