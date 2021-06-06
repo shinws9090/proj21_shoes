@@ -21,24 +21,34 @@ public class RegisterRequestValidator implements Validator { // dto에 있는 �
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return MemberDetail.class.isAssignableFrom(clazz);
+		return RegisterRequest.class.isAssignableFrom(clazz);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
 		RegisterRequest regReq = (RegisterRequest) target;
-		if (regReq.getEmail() == null || regReq.getEmail().trim().isEmpty()) {
-			errors.rejectValue("email", "required");
+		if (regReq.getEmail() == null || regReq.getEmail().trim().isEmpty()) { //email이 null이거나 비어있으면
+			errors.rejectValue("email", "required"); //이메일, 필수항목입니다.
 		} else {
-			Matcher matcher = pattern.matcher(regReq.getEmail());
+			Matcher matcher = pattern.matcher(regReq.getEmail());  //이메일 패턴이 아니면
 			if (!matcher.matches()) {
 				errors.rejectValue("email", "bad");
 			}
 		}
+	
 		//dto에 있는 필드이름들과 같아야 하는 애들
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required"); //이름
-		ValidationUtils.rejectIfEmpty(errors, "password", "required");//비밀번호
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "memberId", "required"); //이름
+		ValidationUtils.rejectIfEmpty(errors, "memberName", "required");//비밀번호확인
+		ValidationUtils.rejectIfEmpty(errors, "memberPwd", "required");//비밀번호
 		ValidationUtils.rejectIfEmpty(errors, "confirmPassword", "required");//비밀번호확인
+		ValidationUtils.rejectIfEmpty(errors, "gender", "required");//성별
+		ValidationUtils.rejectIfEmpty(errors, "birthday", "required");//생년월일
+		ValidationUtils.rejectIfEmpty(errors, "tel", "required");//연락처
+		ValidationUtils.rejectIfEmpty(errors, "zipCode", "required");//비밀번호확인
+		ValidationUtils.rejectIfEmpty(errors, "address", "required");//비밀번호확인
+		ValidationUtils.rejectIfEmpty(errors, "detailAddress", "required");//비밀번호확인
+		
+
 		if (!regReq.getMemberPwd().isEmpty()) {  //공백 없고
 			if (!regReq.isPasswordEqualToConfirmPassword()) {//비밀번호와 비밀번호 확인이틀리면
 				errors.rejectValue("confirmPassword", "nomatch");  //이렇게 적어주고 에러명 label.properties 파일에도 적어줘야한당

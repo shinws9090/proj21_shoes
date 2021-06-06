@@ -11,8 +11,9 @@ h2{
 	text-align:center;
 }
 .td_left {
-	width:150;
-	padding-right:30px;
+	width:10;
+	padding-right:10px;
+	padding-left:10px;
 	background: #ffffff ;
 	
 }

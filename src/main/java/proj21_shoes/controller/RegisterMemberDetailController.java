@@ -38,21 +38,24 @@ public class RegisterMemberDetailController {
 	public String handleStep2Get() {
 		return "redirect:/register/step1";  //step1로 쫓아낸당
 	}
-//	@GetMapping("/register/step3") //주소창에서 이래찍으면
-//	public String handleStep3Get() {
-//		return "redirect:/register/step2";  //step1로 쫓아낸당
-//	}
+
 
 	@PostMapping("/register/step3")
-	public String handleStep3(@Valid RegisterRequest regReq, Errors errors) {
+	public String handleStep3(@Valid RegisterRequest regReq,Errors errors) {
 		// 커맨드 객체(RegisterRequest 객체) 검증
-		if (errors.hasErrors())  //에러 있으면
+		
+		
+		if (errors.hasErrors()) { //에러 있으면
+			System.out.println(1);
+			System.out.println(errors);
 			return "register/step2";  //일로 돌려보내고
+		}
 
 		if (!regReq.isPasswordEqualToConfirmPassword()) {//패스워드 불일치해도 돌려보내고
 			errors.rejectValue("confirmPassword", "nomatch");
 			return "register/step2";
 		}
+		
 
 		try {
 			service.regist(regReq);  //입력쓰
