@@ -45,7 +45,7 @@ public class RegisterMemberDetailController {
 		// 커맨드 객체(RegisterRequest 객체) 검증
 		System.out.println("regReq.getBirthday() >> " + regReq.getBirthday());  //날짜 입력되는지 확인
 		System.out.println("id ====> "+ regReq.getMemberId());
-	//	System.out.println(service.selectById(regReq.getMemberId()));  //입력된것 상세정보 확인
+		//System.out.println(service.selectById(regReq.getMemberId()));  //입력된것 상세정보 확인
 		
 		
 		if (errors.hasErrors()) { //에러 있으면
@@ -54,11 +54,11 @@ public class RegisterMemberDetailController {
 			return "register/step2";  //일로 돌려보내고
 		}
 		if (regReq.isGender()) {
-			System.out.println("여");
+			System.out.println("여>>>" + regReq.isGender());
 			
 		}
 		if (!regReq.isGender()) {
-			System.out.println("남");
+			System.out.println("남>>>"+regReq.isGender());
 			
 		}
 		
@@ -69,6 +69,7 @@ public class RegisterMemberDetailController {
 		}
 
 		try {
+			System.out.println("regReq >>> " + regReq);
 			service.regist(regReq);  //입력쓰
 			return "/register/step3";
 		} catch (DuplicateMemberException e) {

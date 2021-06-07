@@ -3,12 +3,15 @@ package proj21_shoes.dto;
 import java.time.LocalDate;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class MemberDetail {			//	회원상세정보
 	
 	private String memberId; 		// 	회원아이디(회원코드랑은 다름)
 	private String memberPwd; 		// 	회원비밀번호
 	private String memberName; 		//	 회원이름
 	private boolean gender; 		// 	성별
+	@DateTimeFormat(pattern = "yyyy-MM-dd")	
 	private LocalDate birthday; 			//	 생년월일
 	private String email; 			// 	이메일
 	private String tel; 			// 	연락처

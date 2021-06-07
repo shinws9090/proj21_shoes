@@ -8,6 +8,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class RegisterRequest {  					//회원정보 입력란 컨펌
 	@NotBlank(message="아이디를 입력해주세요!")
 	private String memberId; 						// 	회원아이디(회원코드랑은 다름)
@@ -23,7 +25,7 @@ public class RegisterRequest {  					//회원정보 입력란 컨펌
 	private boolean gender; 						// 	성별
 	
 	
-//	@DateTimeFormat(pattern = "yyyyMMdd")			//HH 붙이면 시간도!
+	@DateTimeFormat(pattern = "yyyy-MM-dd")			//HH 붙이면 시간도!
 	@Past(message="과거시간만 입력할 수 있어요!!!")
 	private LocalDate birthday;				//	 생년월일
 	

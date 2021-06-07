@@ -148,7 +148,7 @@
 		
 		<p>
 			<label for="birthday">회원 생일: 
-			<form:input path="birthday"  id="birthday" placeholder="하이폰(-) 없이 입력해주세요" />  
+			<form:input path="birthday" type="date" id="birthday" placeholder="하이폰(-) 없이 입력해주세요" />  
 			<form:errors path="birthday" />
 			</label>
 		</p>
