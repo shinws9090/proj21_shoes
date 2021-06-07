@@ -52,7 +52,15 @@ public class RegisterMemberDetailController {
 			System.out.println(errors);
 			return "register/step2";  //일로 돌려보내고
 		}
-
+		if (regReq.isGender()) {
+			System.out.println("여");
+			
+		}
+		if (!regReq.isGender()) {
+			System.out.println("남");
+			
+		}
+		
 		
 		if (!regReq.isPasswordEqualToConfirmPassword()) {//패스워드 불일치해도 돌려보내고
 			errors.rejectValue("confirmPassword", "nomatch");

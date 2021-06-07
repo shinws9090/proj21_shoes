@@ -141,14 +141,14 @@
  --%><p> 
  성별
 	<label for="gender">	  
-		 <input type="radio"  id="gender" name="gender" value="남" checked>남 
-		 <input type="radio" id="gender" name="gender" value="여" checked>여
+		 <input type="radio"  id="gender" name="gender" value="false" checked>남 
+		 <input type="radio" id="gender" name="gender" value="true" checked>여
 	</label>
 
 		
 		<p>
 			<label for="birthday">회원 생일: 
-			<form:input path="birthday"  id="birthday" placeholder="생년월일을 선택해주세요" />  
+			<form:input path="birthday"  id="birthday" placeholder="하이폰(-) 없이 입력해주세요" />  
 			<form:errors path="birthday" />
 			</label>
 		</p>
