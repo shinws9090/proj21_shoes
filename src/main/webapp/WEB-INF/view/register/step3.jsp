@@ -68,7 +68,7 @@
 
 
 			<h2>회원가입</h2>
-
+	
 
 
 			<form action="step3" method="post">

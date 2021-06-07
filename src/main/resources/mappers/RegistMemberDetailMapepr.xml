@@ -29,9 +29,10 @@
 	</select>
 
 
-	<insert id="insertMemberDetail" parameterType="RegisterRequest"  >
+	<insert id="insertMemberDetail"  >
 	insert into memberDetail values
-	(#{mamberId},#{memberPwd},#{memberName},#{gender},#{birthday},#{email},#{tel},#{zipCode},#{address},#{detailAddress}) 	
+	(#{mamberId},#{memberPwd},#{memberName},true,#{birthday},#{email},#{tel},#{zipCode},#{address},#{detailAddress}) 
+		
 	</insert>
 	
 	

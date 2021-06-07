@@ -43,6 +43,8 @@ public class RegisterMemberDetailController {
 	@PostMapping("/register/step3")
 	public String handleStep3(@Valid RegisterRequest regReq,Errors errors) {
 		// 커맨드 객체(RegisterRequest 객체) 검증
+		System.out.println("regReq.getBirthday() >> " + regReq.getBirthday());
+		System.out.println(regReq.getMemberId());
 		
 		
 		if (errors.hasErrors()) { //에러 있으면
@@ -51,17 +53,17 @@ public class RegisterMemberDetailController {
 			return "register/step2";  //일로 돌려보내고
 		}
 
+		
 		if (!regReq.isPasswordEqualToConfirmPassword()) {//패스워드 불일치해도 돌려보내고
 			errors.rejectValue("confirmPassword", "nomatch");
 			return "register/step2";
 		}
-		
 
 		try {
 			service.regist(regReq);  //입력쓰
 			return "/register/step3";
 		} catch (DuplicateMemberException e) {
-			errors.rejectValue("email", "duplicate");
+			errors.rejectValue("id", "duplicate");
 			return "/register/step2";
 		}
 
