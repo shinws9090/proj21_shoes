@@ -18,6 +18,7 @@ public class MemberDetail {			//	회원상세정보
 	private String zipCode; 		// 	우편번호
 	private String address; 		// 	주소
 	private String detailAddress;	// 	상세주소
+	
 
 
 

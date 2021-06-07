@@ -157,6 +157,28 @@ public class RegisterRequest {  					//회원정보 입력란 컨펌
 	
 	
 	
+	public RegisterRequest(@NotBlank(message = "아이디를 입력해주세요!") String memberId,
+			@NotEmpty(message = "비밀번호를 입력해주세요!") @Size(min = 6, message = "6자리수 이상 입력해주세요!") String memberPwd,
+			@NotEmpty(message = "이름을 입력해주세요!") String memberName, boolean gender,
+			@Past(message = "과거시간만 입력할 수 있어요!!!") LocalDate birthday,
+			@NotEmpty(message = "email을 입력해주세요!") @Email String email, @NotEmpty(message = "연락처를 입력해주세요!") String tel,
+			@NotEmpty(message = "우편번호를 입력해주세요!") String zipCode, @NotEmpty(message = "주소를 입력해주세요!") String address,
+			@NotEmpty String detailAddress) {
+		super();
+		this.memberId = memberId;
+		this.memberPwd = memberPwd;
+		this.memberName = memberName;
+		this.gender = gender;
+		this.birthday = birthday;
+		this.email = email;
+		this.tel = tel;
+		this.zipCode = zipCode;
+		this.address = address;
+		this.detailAddress = detailAddress;
+	}
+
+
+
 	public RegisterRequest(@NotBlank String memberId) {
 		super();
 		this.memberId = memberId;
