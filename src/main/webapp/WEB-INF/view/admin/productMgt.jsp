@@ -51,7 +51,7 @@
 			</c:forEach>
 						
 			<tr>
-				<td><a href="#">[상품등록]</a></td>
+				<td><a href="productReg">[상품등록]</a></td>
 			</tr>
 		</table>
 				

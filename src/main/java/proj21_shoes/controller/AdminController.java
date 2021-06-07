@@ -5,10 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_shoes.dto.MemberDetail;
-import proj21_shoes.dto.Order;
 import proj21_shoes.dto.Product;
 import proj21_shoes.service.GetMemberDetailListService;
 import proj21_shoes.service.ProductService;
@@ -16,7 +17,7 @@ import proj21_shoes.service.ProductService;
 @Controller
 public class AdminController {
 	@Autowired
-	ProductService productService;
+	private ProductService productService;
 
 	@Autowired
 	private GetMemberDetailListService memListService;
@@ -52,6 +53,17 @@ public class AdminController {
 	public ModelAndView orderList() {
 //		List<Order> order = 
 		return new ModelAndView("admin/orderMgt");
+	}
+
+//	@RequestMapping(value = "/admin/product/productReg", method = RequestMethod.GET)
+//	public String registerProduct() throws Exception {
+//		return "admin/product/productReg";
+//	}
+	
+	@GetMapping("/productReg")
+	public String registerProduct(Product product) {
+//		productService.insertProduct(product);
+		return "redirect:/admin/productMgt";
 	}
 
 }
