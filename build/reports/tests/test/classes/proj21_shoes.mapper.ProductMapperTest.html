@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.136s</div>
+<div class="counter">0.065s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,22 +79,22 @@
 </thead>
 <tr>
 <td class="success">test01ProductByAll</td>
-<td class="success">0.111s</td>
+<td class="success">0.031s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test97InsertProduct</td>
-<td class="success">0.014s</td>
+<td class="success">0.018s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test98UpdateProduct</td>
-<td class="success">0.006s</td>
+<td class="success">0.009s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test99DeleteProduct</td>
-<td class="success">0.005s</td>
+<td class="success">0.007s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -110,15 +110,15 @@ DEBUG [Test worker] - &lt;==      Total: 1
 DEBUG [Test worker] - [Product [productCode=1, productName=상품명, brand=Brand [brandCode=1, brandName=나이키, brandEngName=NIKE], gender=남, category=Category [productCategoryCode=1, category=슬리퍼], material=소재, season=계절, madeDate=2021-06-01T14:58:13, costPrice=50000, sellPrice=60000, registDate=2021-06-01T14:58:13, cumulativeRegistCount=1, cumulativeSellCount=1, employee=null, orderOptions=null, productPost=ProductPost [productCode=1, productMainImage=[-20, -125, -127, -19, -110, -120, -21, -116, -128, -19, -111, -100, -20, -99, -76, -21, -81, -72, -20, -89, -128], content=내용, images=null]]]
 
 DEBUG [Test worker] - test97InsertProduct()
-DEBUG [Test worker] - Product [productCode=5, productName=운동화, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=남, category=Category [productCategoryCode=1, category=null], material=가죽, season=겨울, madeDate=2021-06-07T12:15:59.387, costPrice=50000, sellPrice=80000, registDate=2021-06-07T12:15:59.387, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+DEBUG [Test worker] - Product [productCode=5, productName=운동화, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=남, category=Category [productCategoryCode=1, category=null], material=가죽, season=겨울, madeDate=2021-06-07T17:24:43.609, costPrice=50000, sellPrice=80000, registDate=2021-06-07T17:24:43.609, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
 DEBUG [Test worker] - ==&gt;  Preparing: insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-DEBUG [Test worker] - ==&gt; Parameters: 5(Integer), 운동화(String), 1(Integer), 남(String), 1(Integer), 가죽(String), 겨울(String), 2021-06-07T12:15:59.387(LocalDateTime), 50000(Integer), 80000(Integer), 2021-06-07T12:15:59.387(LocalDateTime), 0(Integer), 0(Integer), 1(Integer)
+DEBUG [Test worker] - ==&gt; Parameters: 5(Integer), 운동화(String), 1(Integer), 남(String), 1(Integer), 가죽(String), 겨울(String), 2021-06-07T17:24:43.609(LocalDateTime), 50000(Integer), 80000(Integer), 2021-06-07T17:24:43.609(LocalDateTime), 0(Integer), 0(Integer), 1(Integer)
 DEBUG [Test worker] - &lt;==    Updates: 1
 
 DEBUG [Test worker] - test98UpdateProduct()
-DEBUG [Test worker] - Product [productCode=5, productName=구두, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=여, category=Category [productCategoryCode=1, category=null], material=가죽, season=가을, madeDate=2021-06-07T12:15:59.399, costPrice=60000, sellPrice=90000, registDate=2021-06-07T12:15:59.399, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+DEBUG [Test worker] - Product [productCode=5, productName=구두, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=여, category=Category [productCategoryCode=1, category=null], material=가죽, season=가을, madeDate=2021-06-07T17:24:43.623, costPrice=60000, sellPrice=90000, registDate=2021-06-07T17:24:43.623, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
 DEBUG [Test worker] - ==&gt;  Preparing: update product set product_name = ?, brand_code = ?, gender = ?, product_category_code = ?, material = ?, season = ?, made_date = ?, costPrice = ?, sell_Price = ?, regist_date = ?, cumulative_regist_count = ?, cumulative_sell_count = ?, emp_number = ? where product_code = ?
-DEBUG [Test worker] - ==&gt; Parameters: 구두(String), 1(Integer), 여(String), 1(Integer), 가죽(String), 가을(String), 2021-06-07T12:15:59.399(LocalDateTime), 60000(Integer), 90000(Integer), 2021-06-07T12:15:59.399(LocalDateTime), 0(Integer), 0(Integer), 1(Integer), 5(Integer)
+DEBUG [Test worker] - ==&gt; Parameters: 구두(String), 1(Integer), 여(String), 1(Integer), 가죽(String), 가을(String), 2021-06-07T17:24:43.623(LocalDateTime), 60000(Integer), 90000(Integer), 2021-06-07T17:24:43.623(LocalDateTime), 0(Integer), 0(Integer), 1(Integer), 5(Integer)
 DEBUG [Test worker] - &lt;==    Updates: 1
 
 DEBUG [Test worker] - test99DeleteProduct()
@@ -138,7 +138,7 @@ DEBUG [Test worker] - &lt;==    Updates: 1
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 6.3</a> at 2021. 6. 7 오후 12:15:59</p>
+<a href="http://www.gradle.org">Gradle 6.3</a> at 2021. 6. 7 오후 5:24:43</p>
 </div>
 </div>
 </body>

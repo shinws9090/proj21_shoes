@@ -101,3 +101,33 @@
 [TRACE] [2021-06-07 12:15] <==        Row: test1, 1234, 홍길동1, 1, 2000-01-01 00:00:00.0, test1@test.com, 1012341234, 12345, 대구, 우리집
 [TRACE] [2021-06-07 12:15] <==        Row: 회원아이디, 회원비밀번호, 회원이름, 1, 2021-06-01 14:58:13.0, 이메일, 연락처, 12345, 주소, 상세주소
 [DEBUG] [2021-06-07 12:15] <==      Total: 3
+[DEBUG] [2021-06-07 17:24] test01InsertMemberDetail()
+[DEBUG] [2021-06-07 17:24] testSelectMemberDetailAll()
+[DEBUG] [2021-06-07 17:24] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail
+[DEBUG] [2021-06-07 17:24] ==> Parameters: 
+[TRACE] [2021-06-07 17:24] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-07 17:24] <==        Row: test, 1234, 홍길동, 1, 2000-01-01 00:00:00.0, test@test.com, 1012341234, 12345, 대구, 우리집
+[TRACE] [2021-06-07 17:24] <==        Row: test1, 1234, 홍길동1, 1, 2000-01-01 00:00:00.0, test1@test.com, 1012341234, 12345, 대구, 우리집
+[TRACE] [2021-06-07 17:24] <==        Row: 회원아이디, 회원비밀번호, 회원이름, 1, 2021-06-01 14:58:13.0, 이메일, 연락처, 12345, 주소, 상세주소
+[DEBUG] [2021-06-07 17:24] <==      Total: 3
+[DEBUG] [2021-06-07 17:24] ==>  Preparing: select * from product p join brand b on p.brand_code = b.brand_code join category c on c.product_category_code =p.product_category_code join productpost p2 on p2.product_code = p.product_code WHERE p.brand_code = ?
+[DEBUG] [2021-06-07 17:24] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-07 17:24] <==    Columns: product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number, brand_code, brand_name, brand_eng_name, product_category_code, category, product_code, product_main_image, content
+[TRACE] [2021-06-07 17:24] <==        Row: 1, 상품명, 1, 남, 1, 소재, 계절, 2021-06-01 14:58:13.0, 50000, 60000, 2021-06-01 14:58:13.0, 1, 1, 1, 1, 나이키, NIKE, 1, 슬리퍼, 1, <<BLOB>>, 내용
+[DEBUG] [2021-06-07 17:24] <==      Total: 1
+[DEBUG] [2021-06-07 17:24] [Product [productCode=1, productName=상품명, brand=Brand [brandCode=1, brandName=나이키, brandEngName=NIKE], gender=남, category=Category [productCategoryCode=1, category=슬리퍼], material=소재, season=계절, madeDate=2021-06-01T14:58:13, costPrice=50000, sellPrice=60000, registDate=2021-06-01T14:58:13, cumulativeRegistCount=1, cumulativeSellCount=1, employee=null, orderOptions=null, productPost=ProductPost [productCode=1, productMainImage=[-20, -125, -127, -19, -110, -120, -21, -116, -128, -19, -111, -100, -20, -99, -76, -21, -81, -72, -20, -89, -128], content=내용, images=null]]]
+[DEBUG] [2021-06-07 17:24] test97InsertProduct()
+[DEBUG] [2021-06-07 17:24] Product [productCode=5, productName=운동화, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=남, category=Category [productCategoryCode=1, category=null], material=가죽, season=겨울, madeDate=2021-06-07T17:24:43.609, costPrice=50000, sellPrice=80000, registDate=2021-06-07T17:24:43.609, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+[DEBUG] [2021-06-07 17:24] ==>  Preparing: insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[DEBUG] [2021-06-07 17:24] ==> Parameters: 5(Integer), 운동화(String), 1(Integer), 남(String), 1(Integer), 가죽(String), 겨울(String), 2021-06-07T17:24:43.609(LocalDateTime), 50000(Integer), 80000(Integer), 2021-06-07T17:24:43.609(LocalDateTime), 0(Integer), 0(Integer), 1(Integer)
+[DEBUG] [2021-06-07 17:24] <==    Updates: 1
+[DEBUG] [2021-06-07 17:24] test98UpdateProduct()
+[DEBUG] [2021-06-07 17:24] Product [productCode=5, productName=구두, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=여, category=Category [productCategoryCode=1, category=null], material=가죽, season=가을, madeDate=2021-06-07T17:24:43.623, costPrice=60000, sellPrice=90000, registDate=2021-06-07T17:24:43.623, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+[DEBUG] [2021-06-07 17:24] ==>  Preparing: update product set product_name = ?, brand_code = ?, gender = ?, product_category_code = ?, material = ?, season = ?, made_date = ?, costPrice = ?, sell_Price = ?, regist_date = ?, cumulative_regist_count = ?, cumulative_sell_count = ?, emp_number = ? where product_code = ?
+[DEBUG] [2021-06-07 17:24] ==> Parameters: 구두(String), 1(Integer), 여(String), 1(Integer), 가죽(String), 가을(String), 2021-06-07T17:24:43.623(LocalDateTime), 60000(Integer), 90000(Integer), 2021-06-07T17:24:43.623(LocalDateTime), 0(Integer), 0(Integer), 1(Integer), 5(Integer)
+[DEBUG] [2021-06-07 17:24] <==    Updates: 1
+[DEBUG] [2021-06-07 17:24] test99DeleteProduct()
+[DEBUG] [2021-06-07 17:24] Product [productCode=5, productName=null, brand=null, gender=null, category=null, material=null, season=null, madeDate=null, costPrice=0, sellPrice=0, registDate=null, cumulativeRegistCount=0, cumulativeSellCount=0, employee=null, orderOptions=null, productPost=null]
+[DEBUG] [2021-06-07 17:24] ==>  Preparing: delete from product where product_code = ?
+[DEBUG] [2021-06-07 17:24] ==> Parameters: 5(Integer)
+[DEBUG] [2021-06-07 17:24] <==    Updates: 1
