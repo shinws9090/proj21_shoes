@@ -25,7 +25,7 @@ public class RegisterRequest {  					//회원정보 입력란 컨펌
 	
 //	@DateTimeFormat(pattern = "yyyyMMdd")			//HH 붙이면 시간도!
 	@Past(message="과거시간만 입력할 수 있어요!!!")
-	private LocalDate birthday ;				//	 생년월일
+	private LocalDate birthday;				//	 생년월일
 	
 	@NotEmpty(message="email을 입력해주세요!")
 	@Email

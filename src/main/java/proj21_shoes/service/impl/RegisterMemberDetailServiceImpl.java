@@ -19,7 +19,7 @@ public class RegisterMemberDetailServiceImpl implements RegisterMemberDetailServ
 
 	@Override
 	public String regist(RegisterRequest req) {//이 형식의 애를 받아서
-		RegisterRequest member = mapper.selectMemberDetailById(req.getMemberId());//selectById 메서드로 id 중복인지 확인해서
+		String member = mapper.selectMemberDetailById(req.getMemberId());//selectById 메서드로 id 중복인지 확인해서
 		if (member != null) {
 			throw new DuplicateMemberException("dup id " + req.getMemberId());
 		}
@@ -28,6 +28,13 @@ public class RegisterMemberDetailServiceImpl implements RegisterMemberDetailServ
 		return newMember.getMemberId();
 
 	}
+
+	@Override
+	public String selectById(String req) {
+		return mapper.selectMemberDetailById(req);
+	}
+
+
 	
 
 }
