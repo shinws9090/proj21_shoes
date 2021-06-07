@@ -97,8 +97,21 @@
 		insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, 
 							made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number)
 		values (#{productCode}, #{productName}, #{brand.brandCode}, #{gender}, #{category.productCategoryCode}, #{material}, #{season}, 
-				#{madeDate}, #{costPrice}, #{sellPrice}, #{registDate}, #{cumulativeRegistCount}, #{cumulativeSellCount}, #{employee.empNumber});
+				#{madeDate}, #{costPrice}, #{sellPrice}, #{registDate}, #{cumulativeRegistCount}, #{cumulativeSellCount}, #{employee.empNumber})
 	</insert>
+	
+	<update id="updateProduct" parameterType="Product">
+		update product set product_name = #{productName}, brand_code = #{brand.brandCode}, gender = #{gender}, 
+							product_category_code = #{category.productCategoryCode}, material = #{material}, season = #{season}, 
+							made_date = #{madeDate}, costPrice = #{costPrice}, sell_Price = #{sellPrice}, regist_date = #{registDate}, 
+							cumulative_regist_count = #{cumulativeRegistCount}, cumulative_sell_count = #{cumulativeSellCount}, emp_number = #{employee.empNumber}
+		 where product_code = #{productCode}
+	</update>
+
+	<delete id="deleteProduct">
+		delete from product
+		 where product_code = #{productCode}
+	</delete>
 
 
 </mapper>

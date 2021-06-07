@@ -17,4 +17,6 @@ public interface ProductService {
 	List<Product> productBycommand(ProductSelectCommend productSelectCommend);
 	
 	int insertProduct(Product product);
+	int updateProduct(Product product);
+	int deleteProduct(Product product);
 }

@@ -49,7 +49,7 @@ public class ProductMapperTest {
 	}
 
 	@Test
-	public void test99InsertProduct() {
+	public void test97InsertProduct() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 
 		Product product = new Product();
@@ -65,11 +65,46 @@ public class ProductMapperTest {
 		product.setSellPrice(80000);
 		product.setRegistDate(LocalDateTime.now());
 		product.setEmployee(new Employee(1));
-		
-		
+
 		log.debug(product.toString());
 		int res = mapper.insertProduct(product);
 		Assert.assertNotNull(res);
+	}
+
+	@Test
+	public void test98UpdateProduct() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+
+		Product product = new Product();
+		product.setProductCode(5);
+		product.setProductName("구두");
+		product.setBrand(new Brand(1));
+		product.setGender("여");
+		product.setCategory(new Category(1));
+		product.setMaterial("가죽");
+		product.setSeason("가을");
+		product.setMadeDate(LocalDateTime.now());
+		product.setCostPrice(60000);
+		product.setSellPrice(90000);
+		product.setRegistDate(LocalDateTime.now());
+		product.setEmployee(new Employee(1));
+
+		log.debug(product.toString());
+		int res = mapper.updateProduct(product);
+		Assert.assertNotNull(res);
+	}
+
+	@Test
+	public void test99DeleteProduct() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+
+		Product product = new Product();
+		product.setProductCode(5);
+
+		log.debug(product.toString());
+		int res = mapper.deleteProduct(product);
+		Assert.assertNotNull(res);
+
 	}
 
 }

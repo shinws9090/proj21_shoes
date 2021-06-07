@@ -25,6 +25,10 @@ public class Product { // 상품정보
 		// TODO Auto-generated constructor stub
 	}
 
+	public Product(int productCode) {
+		this.productCode = productCode;
+	}
+
 	public Product(int productCode, String productName, Brand brand, String gender, Category category, String material,
 			String season, LocalDateTime madeDate, int costPrice, int sellPrice, LocalDateTime registDate,
 			int cumulativeRegistCount, int cumulativeSellCount, Employee employee) {

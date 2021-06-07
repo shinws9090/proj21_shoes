@@ -18,4 +18,6 @@ public interface ProductMapper {
 	List<OrderOption> OrderOptionByCode(int code);
 		
 	int insertProduct(Product product);
+	int updateProduct(Product product);
+	int deleteProduct(Product product);
 }
