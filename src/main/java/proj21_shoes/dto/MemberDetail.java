@@ -1,6 +1,9 @@
 package proj21_shoes.dto;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class MemberDetail {			//	회원상세정보
 	
@@ -8,7 +11,8 @@ public class MemberDetail {			//	회원상세정보
 	private String memberPwd; 		// 	회원비밀번호
 	private String memberName; 		//	 회원이름
 	private boolean gender; 		// 	성별
-	private LocalDateTime birthday; //	 생년월일
+	@DateTimeFormat(pattern = "yyyy-MM-dd")	
+	private LocalDate birthday; 			//	 생년월일
 	private String email; 			// 	이메일
 	private String tel; 			// 	연락처
 	private String zipCode; 		// 	우편번호
@@ -71,13 +75,19 @@ public class MemberDetail {			//	회원상세정보
 
 
 
-	public LocalDateTime getBirthday() {
+	
+
+
+
+
+
+	public LocalDate getBirthday() {
 		return birthday;
 	}
 
 
 
-	public void setBirthday(LocalDateTime birthday) {
+	public void setBirthday(LocalDate birthday) {
 		this.birthday = birthday;
 	}
 
@@ -143,7 +153,15 @@ public class MemberDetail {			//	회원상세정보
 
 
 
-	public MemberDetail(String memberId, String memberPwd, String memberName, boolean gender, LocalDateTime birthday,
+
+
+
+
+	
+
+
+
+	public MemberDetail(String memberId, String memberPwd, String memberName, boolean gender, LocalDate birthday,
 			String email, String tel, String zipCode, String address, String detailAddress) {
 		super();
 		this.memberId = memberId;
@@ -157,10 +175,6 @@ public class MemberDetail {			//	회원상세정보
 		this.address = address;
 		this.detailAddress = detailAddress;
 	}
-
-	
-
-
 
 
 

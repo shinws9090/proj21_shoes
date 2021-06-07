@@ -43,6 +43,9 @@ public class RegisterMemberDetailController {
 	@PostMapping("/register/step3")
 	public String handleStep3(@Valid RegisterRequest regReq,Errors errors) {
 		// 커맨드 객체(RegisterRequest 객체) 검증
+		System.out.println("regReq.getBirthday() >> " + regReq.getBirthday());  //날짜 입력되는지 확인
+		System.out.println("id ====> "+ regReq.getMemberId());
+		//System.out.println(service.selectById(regReq.getMemberId()));  //입력된것 상세정보 확인
 		
 		
 		if (errors.hasErrors()) { //에러 있으면
@@ -50,18 +53,27 @@ public class RegisterMemberDetailController {
 			System.out.println(errors);
 			return "register/step2";  //일로 돌려보내고
 		}
-
+		if (regReq.isGender()) {
+			System.out.println("여>>>" + regReq.isGender());
+			
+		}
+		if (!regReq.isGender()) {
+			System.out.println("남>>>"+regReq.isGender());
+			
+		}
+		
+		
 		if (!regReq.isPasswordEqualToConfirmPassword()) {//패스워드 불일치해도 돌려보내고
 			errors.rejectValue("confirmPassword", "nomatch");
 			return "register/step2";
 		}
-		
 
 		try {
+			System.out.println("regReq >>> " + regReq);
 			service.regist(regReq);  //입력쓰
 			return "/register/step3";
 		} catch (DuplicateMemberException e) {
-			errors.rejectValue("email", "duplicate");
+			errors.rejectValue("id", "duplicate");
 			return "/register/step2";
 		}
 

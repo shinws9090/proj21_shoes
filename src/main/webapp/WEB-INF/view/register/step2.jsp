@@ -56,12 +56,12 @@
 						// 우편번호와 주소 정보를 해당 필드에 넣는다.
 						document.getElementById('zipCode').value = data.zonecode;  /* 우편번호 */
 						document.getElementById("address").value = roadAddr+"("+data.jibunAddress+")" ;  /* 도로명주소 */
-						//document.getElementById("sample4_jibunAddress").value = data.jibunAddress;/* 지번주소 */
+						//document.getElementById("detail_address").value = data.jibunAddress;/* 지번주소 */
 						// 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
 							if (roadAddr !== '') {
-								document.getElementById("detailAddress").value = extraRoadAddr;
+								document.getElementById("detail_address").value = extraRoadAddr;
 							} else {
-								document.getElementById("detailAddress").value = '';
+								document.getElementById("detail_address").value = '';
 							} 
 						 	var guideTextBox = document.getElementById("guide");
 							// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
@@ -104,82 +104,101 @@
 		<div class="left">
 		<p>
 			<label>회원 아이디: 
-			<form:input path="memberId" placeholder="6글자 이상 입력하세요." />  
+			<form:input  type="text" path="memberId" placeholder="ID" id="member_id" />  
 			<form:errors path="memberId" />
 			</label>
 		</p>
 		
 		
 		<p>
-			<label>회원 비밀번호: 
-			<form:password path="memberPwd" placeholder="6글자 이상 입력하세요." />  
+			<label for="memberPwd">회원 비밀번호: 
+			<form:password  path="memberPwd" placeholder="PASSWORD" id="member_pwd" />  
 			<form:errors path="memberPwd" />
 			</label>
 		</p>
 		
 		<p>
 			<label>비밀번호 확인: 
-			<form:password path="confirmPassword" placeholder="6글자 이상 입력하세요." />  
+			<form:password id="confirmPassword" path="confirmPassword" placeholder="Confirm Password" />  
 			<form:errors path="confirmPassword" />
 			</label>
 		</p>
 		
 		<p>
-			<label>회원 이름: 
-			<form:input path="memberName" placeholder="6글자 이상 입력하세요." />  
+			<label for="memberName">회원 이름: 
+			<form:input path="memberName" placeholder="Name" id="member_name" />  
 			<form:errors path="memberName" />
 			</label>
 		</p>
-		<p>
-			<label>회원 성별: 
-			<form:input path="gender" name="gender" value="여" placeholder="남/여 중 입력하세요" />  
-			<form:errors path="gender" />
+	<%-- 	 <p>
+	
+			<label for="gender">성별
+			<form:input type="radio" path="gender"  name="gender" value="true" />남
+			<form:input type="radio" path="gender"  name="gender" value="false"/>여
+			<form:errors path="gender"/>
 			</label>
-		</p>
+		</p> 
+ --%><p> 
+ 성별
+	<label for="gender">	  
+		 <input type="radio"  id="gender" name="gender" value="false" checked>남 
+		 <input type="radio" id="gender" name="gender" value="true" checked>여
+	</label>
+
+		
 		<p>
-			<label>회원 생일: 
-			<form:input path="birthday" type='date' value='2021-06-06'  placeholder="생년월일을 선택해주세요" />  
+			<label for="birthday">회원 생일: 
+			<form:input path="birthday" type="date" id="birthday" placeholder="하이폰(-) 없이 입력해주세요" />  
 			<form:errors path="birthday" />
 			</label>
 		</p>
 		
 		<p>
-			<label>이메일: 
-			<form:input path="email" placeholder="" />  
+			<label for="email">이메일: 
+			<form:input type="email" path="email" id="email" placeholder="E-mail" />  
 			<form:errors path="email" />
 			</label>
 		</p>
 		
 			<p>
-			<label>연락처: 
-			<form:input path="tel" placeholder="" />  
+			<label for="tel">연락처: 
+			<form:input type="tel" path="tel" id="tel" placeholder="Phone Number" />  
 			<form:errors path="tel" />
 			</label>
 		</p>
 		
 		<p>
 			<label for="zipCode">우편번호: 
-			<form:input type="test" path="zipCode"  id="zipCode"  value="우편번호 찾기"  onclick="testDaumPostcode()"/>  
+			<form:input type="text" path="zipCode"  id="zipCode"  value="우편번호 찾기"  onclick="testDaumPostcode()"/>  
 			<form:errors path="zipCode" />
 			</label>
 		</p>
 		
 		<p>
 			<label for="address">주소: 
-			<form:input path="address" type="text"  id="address"  readonly="true"   placeholder="도로명 주소 찾기" />  
+			<form:input  path="address" type="text"  id="address"  readonly="true"   />  
 			<form:errors path="address" />
 			</label>
 		</p>
 		
 			<p>
 			<label for="detailAddress">상세주소: 
-			<form:input path="detailAddress"  type="text" id="detailAddress"  placeholder="상세주소를 입력해주세요" />  
+			<form:input path="detailAddress"  id="detail_address"  />  
 			<form:errors path="detailAddress" />
 			</label>
 		</p>
 		</div>
 		
+		<article class="btn2">
 		
+				 <form action="step3" method="post"> <!-- 일로 보내조 -->
+				<input type="submit" value="다음단계" /><!--다음단계  -->
+				
+				</form> 
+				<form action="../index" method="get">
+				<input type="submit" value="가입취소" />
+				</form>
+		</article>
 		
 		
 		
@@ -249,16 +268,7 @@
 	
 		</table> --%>
 		</form:form>
-		<article class="btn2">
 		
-				 <form action="step3" method="post"> <!-- 일로 보내조 -->
-				<input type="submit" value="다음단계" /><!--다음단계  -->
-				
-				</form> 
-				<form action="../index" method="get">
-				<input type="submit" value="가입취소" />
-				</form>
-		</article>
 	
 	
 	</section>
