@@ -40,4 +40,8 @@ section {
 .tabs div.active{
 	display: block;
 }
+.active{
+	color:red;
+	border: 1px solid #000;
+}
 
