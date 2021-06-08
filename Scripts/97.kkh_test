@@ -32,4 +32,13 @@ select *
 		from product p
 		join brand b on p.brand_code = b.brand_code
 		join category c on c.product_category_code =p.product_category_code
-		join productpost p2 on p2.product_code = p.product_code;			
+		join productpost p2 on p2.product_code = p.product_code;		
+		
+	
+	
+select * from  productPost;
+select * from  image;
+
+select * from  productPost pp join image im on pp.product_code = im.product_code;
+
+

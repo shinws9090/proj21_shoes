@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="proj21_shoes.mapper.ProductPostMapper">
+
+	<resultMap type="ProductPost" id="ProductPostList">
+		<id column="product_code" property="productCode" />
+		<association property="images" javaType="Image" />
+	</resultMap>
+
+
+	<select id="productPostByAll" resultMap="ProductPostList">
+		select * from  productPost pp join image im on pp.product_code = im.product_code;
+	</select>
+	
+	<insert id="insertProductPost" parameterType="ProductPost">
+		insert into productPost (product_code, product_main_image, content)	
+		values (#{productCode}, #{productMainImage}, #{content})
+	</insert>
+	
+	<update id="updateProductPost" parameterType="ProductPost">
+		update productPost
+		   set product_main_image = #{productMainImage}, content = #{content}
+		 where product_code = #{productCode};
+	</update>
+	
+	<delete id="deleteProductPost">
+		delete from productPost
+		 where product_code = #{productCode};
+	</delete>
+
+</mapper>
