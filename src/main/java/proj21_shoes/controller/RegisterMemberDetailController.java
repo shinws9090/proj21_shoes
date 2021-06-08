@@ -83,7 +83,8 @@ public class RegisterMemberDetailController {
 			//service.regist(regReq);  //입력쓰
 			return "/register/step3";
 		} catch (DuplicateMemberException e) {
-			errors.rejectValue("id", "duplicate");
+			errors.rejectValue("memberId", "duplicate");
+			errors.rejectValue("email", "duplicate");
 			return "/register/step2";
 		}
 

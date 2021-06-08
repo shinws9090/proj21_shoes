@@ -67,18 +67,29 @@
 		<section id="signUpForm">
 
 
-			<h2>회원가입</h2>
-	
+			<h2>회원가입 완료</h2>
+			<c:forEach var="memberDetail" items="${members}">
+				<tr>
+					<td>${memberDetail.memberId }</td>
+					<td>${memberDetail.memberName }</td>
+					<td>${memberDetail.gender }</td>
+					<td>${memberDetail.email }</td>
+					<td>${memberDetail.tel }</td>
+					<td><a href="#">[상세보기]</a></td>	
+					<td><a href="#">[수정]</a>&nbsp;
+						<a href="#">[삭제]</a></td>
+				</tr>
+			</c:forEach>
 
 
-			<form action="step3" method="post">
+			<form action="step4" method="post">
 				<!-- 일로 보내조 -->
 				<input type="submit" value="다음단계" />
 				<!--다음단계  -->
 
 			</form>
 			<form action="../index" method="get">
-				<input type="submit" value="가입취소" />
+				<input type="submit" value="메인으로" />
 			</form>
 	
 
