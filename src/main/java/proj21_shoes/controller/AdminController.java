@@ -74,8 +74,11 @@ public class AdminController {
 //	}
 
 	@RequestMapping(value = "/productReg", method = RequestMethod.GET)
+	
 	public String registerProduct(HttpServletRequest request) {
 
+		
+		
 		Product product = new Product();
 		product.setProductCode(Integer.parseInt(request.getParameter("productCode")));
 		product.setProductName(request.getParameter("productName"));
@@ -89,9 +92,9 @@ public class AdminController {
 		product.setSellPrice(Integer.parseInt(request.getParameter("sellPrice")));
 		product.setRegistDate(LocalDateTime.now());
 		product.setEmployee(new Employee(Integer.parseInt(request.getParameter("employee"))));
-		
+
 		System.out.println(product);
-		
+
 		productService.insertProduct(product);
 
 		return "admin/productMgt";

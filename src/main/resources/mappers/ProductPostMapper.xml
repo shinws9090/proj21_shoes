@@ -9,7 +9,10 @@
 
 
 	<select id="productPostByAll" resultMap="ProductPostList">
-		select * from  productPost pp join image im on pp.product_code = im.product_code;
+		select pp.product_code, pp.product_main_image, pp.content, im.image_code, im.product_code, im.image 
+		  from  productPost pp 
+		  join image im 
+		    on pp.product_code = im.product_code
 	</select>
 	
 	<insert id="insertProductPost" parameterType="ProductPost">
