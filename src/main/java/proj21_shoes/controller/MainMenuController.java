@@ -57,12 +57,4 @@ public class MainMenuController {
 					.addObject("productSelectCommend", commend);
 		}
 	}
-	@GetMapping("/productDetail/{code}")
-	public ModelAndView productDetail(@PathVariable("code")int code) {
-		System.out.println(code);
-		Product product = service.productByCode(code);
-		product.setOrderOptions(service.OrderOptionByCode(code));
-		System.out.println(product);
-		return new ModelAndView("product/productDetail","product",product);
-	}
 }

@@ -18,9 +18,10 @@
 	href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/productDetail.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 	$(function() {
+		var contextPath = "${contextPath}"
 		$(".btn li").click(function() {
 			$(this).addClass("active");
 			$(this).siblings().removeClass("active");
@@ -30,22 +31,22 @@
 			$(".tabs div").eq($(this).index()).addClass("active");
 		});
 		
-		$(".size span").click(function(){
-			alert($(this).data("size"));
-			$(".size span").removeClass();
+		$(".styleCode span").click(function(){
+			$(".styleCode span").removeClass();
+			$("#size span").remove();
 			$(this).addClass("active");
-			var c = ""
-			for(var option in options){
-			c += "<span>"+option.color+"</span>";
-			}
-			$(".color").append(color);
+			var styleCode = $(this).data("stylecode");
+			var code = ${product.productCode};
 			
+			$.get(contextPath + "/api/size?styleCode="+styleCode+"&code="+code, function(json) {
+				var sCont = "";
+				for(i = 0; i < json.length; i++){
+				sCont += "<span> "+json[i].size+" </span>";
+				};
+				$("#size").append(sCont);
+			});
 		}); 
 		
-		$(".color span").click(function(){
-			$(this).addClass("active");
-			$(this).siblings().removeClass("active");
-		});
 		
 	});
 </script>
@@ -82,26 +83,38 @@
 				<div class='product-QnA'>상품문의</div>
 			</div>
 		</div>
+		<form action="">
 		<div class="order-options">
 			<strong>${product.productName}</strong>
 			<p>
 				<em>Brand : </em> <label>${product.brand.brandEngName }</label>
 			</p>
-			<div class="size">
-				<label>Sizes</label>
-				<c:forEach var="option" items="${product.orderOptions}">
-					<span class="active" data-size="${option.size}">${option.size}</span>
+			<div class="styleCode">
+				<label>스타일코드(색상)</label>
+				<c:forEach var="option" items="${product.orderOptions}" varStatus="status">
+					<c:choose>
+						<c:when test="${status.first}">
+							<span data-stylecode="${option.styleCode}">(${option.styleCode},${option.color})</span>
+						</c:when>
+						<c:when test="${option.styleCode == product.orderOptions[status.index-1].styleCode}">
+						</c:when>
+						<c:otherwise>
+							<span data-stylecode="${option.styleCode}">(${option.styleCode},${option.color})</span>
+						</c:otherwise>
+					</c:choose>
 				</c:forEach>
 			</div>
-			<div class="color">
+			<div id="size">
+				<label>size</label>
 			</div>
 			<p>${product.sellPrice}원</p>
 			<input type="number">
 			<div class='submitBtns'>
-				<input type='submit' id='cart' value='장바구니' /> <input type='submit'
-					id='purchase' value='구매하기' />
+				<input type='submit' id='cart' value='장바구니' /> 
+				<input type='submit' id='purchase' value='구매하기' />
 			</div>
 		</div>
+		</form>
 	</section>
 
 	<footer>

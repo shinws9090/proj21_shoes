@@ -61,6 +61,10 @@ insert into image values
 	(5,55555,'artistic-main.jpg'),
 	(6,66666,'sketchers-main.jpg');
 
+insert into orderoption VALUES
+	(22222,3,270,1000,'red'),
+	(22222,3,260,1000,'red'),
+	(22222,3,265,1000,'red');
 insert into orderoption values
 	(11111,1,270,1000,'brown'),
 	(22222,2,280,1000,'yellow'),

@@ -16,6 +16,7 @@ public interface ProductMapper {
 	List<Brand> BrandByAll();
 	Product productByCode(int code);
 	List<OrderOption> OrderOptionByCode(int code);
+	List<OrderOption> OrderOptionByStyle(int styleCode, int code);
 		
 	int insertProduct(Product product);
 	int updateProduct(Product product);

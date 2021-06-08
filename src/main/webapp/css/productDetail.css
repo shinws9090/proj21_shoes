@@ -8,6 +8,7 @@ section {
 
 .main {
 	margin: auto;
+	width:50%;
 	display: inline-block;
   	border: 1px solid #000;
 }
@@ -22,6 +23,11 @@ section {
 	top: 25%;
 	right: 10%;
 	border: 1px solid #000;
+}
+
+.order-options input{
+	width: 80%;
+	
 }
 
 /* tab메뉴 */

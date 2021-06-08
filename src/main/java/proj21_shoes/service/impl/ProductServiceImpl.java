@@ -68,4 +68,9 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.deleteProduct(product);
 	}
 
+	@Override
+	public List<OrderOption> OrderOptionByStyle(int styleCode, int code) {
+		return mapper.OrderOptionByStyle(styleCode, code);
+	}
+
 }

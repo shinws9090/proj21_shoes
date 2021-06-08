@@ -16,6 +16,7 @@ where p.product_code = 1;
 call productByAll();
 
 select * from orderoption where product_code = 1;
+select * from orderoption where product_code =22222 and style_code =3;
 
 select * from brand;
 select * from product where product_code =1;
