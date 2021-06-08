@@ -131,3 +131,221 @@
 [DEBUG] [2021-06-07 17:24] ==>  Preparing: delete from product where product_code = ?
 [DEBUG] [2021-06-07 17:24] ==> Parameters: 5(Integer)
 [DEBUG] [2021-06-07 17:24] <==    Updates: 1
+[DEBUG] [2021-06-08 14:47] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 14:47] test02SelectMemberDetailAll()
+[DEBUG] [2021-06-08 14:47] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail
+[DEBUG] [2021-06-08 14:47] ==> Parameters: 
+[TRACE] [2021-06-08 14:47] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 14:47] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[TRACE] [2021-06-08 14:47] <==        Row: bbb, rootroot, 테스트2, 1, 2021-06-08 14:26:56.0, test2@test.co.kr, 010-222-7777, 12345, 동대구로 386, 킹덤 오피스텔 지하 1층
+[TRACE] [2021-06-08 14:47] <==        Row: ccc, rootroot, 테스트3, 1, 2021-06-08 14:26:56.0, test3@test.co.kr, 010-333-6666, 12345, 상화로 373, 비둘기 아파트 2단지
+[TRACE] [2021-06-08 14:47] <==        Row: ddd, rootroot, 테스트4, 1, 2021-06-08 14:26:56.0, test4@test.co.kr, 010-666-5555, 12345, 서대구로 30, 맨투맨 빌딩 4층
+[TRACE] [2021-06-08 14:47] <==        Row: eee, rootroot, 테스트5, 1, 2021-06-08 14:26:56.0, test5@test.co.kr, 010-999-3333, 12345, 안심로90길 22, 해피키즈 유치원
+[TRACE] [2021-06-08 14:47] <==        Row: 회원아이디, 회원비밀번호, 회원이름, 1, 2021-06-01 12:47:18.0, 이메일, 연락처, 12345, 주소, 상세주소
+[DEBUG] [2021-06-08 14:47] <==      Total: 6
+[DEBUG] [2021-06-08 14:48] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 14:48] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 14:52] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 14:52] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 14:52] ==> Parameters: aaa(String)
+[TRACE] [2021-06-08 14:52] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 14:52] <==        Row: aaa, rootroot, �׽�Ʈ1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, ��ä����� 438, ���� ġ���ǿ�
+[DEBUG] [2021-06-08 14:52] <==      Total: 1
+[DEBUG] [2021-06-08 14:52] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 14:52] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 14:52] ==> Parameters: aaa(String)
+[TRACE] [2021-06-08 14:52] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 14:52] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-08 14:52] <==      Total: 1
+[DEBUG] [2021-06-08 14:53] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 14:53] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 14:53] ==> Parameters: aaa(String)
+[TRACE] [2021-06-08 14:53] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 14:53] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-08 14:53] <==      Total: 1
+[DEBUG] [2021-06-08 14:53] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 14:53] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 14:54] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 14:54] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 14:54] ==> Parameters: aaa(String)
+[TRACE] [2021-06-08 14:54] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 14:54] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-08 14:54] <==      Total: 1
+[DEBUG] [2021-06-08 14:54] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 14:54] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 14:54] test01SelectMemberDetailAll()
+[DEBUG] [2021-06-08 14:54] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail
+[DEBUG] [2021-06-08 14:54] ==> Parameters: 
+[TRACE] [2021-06-08 14:54] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 14:54] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[TRACE] [2021-06-08 14:54] <==        Row: bbb, rootroot, 테스트2, 1, 2021-06-08 14:26:56.0, test2@test.co.kr, 010-222-7777, 12345, 동대구로 386, 킹덤 오피스텔 지하 1층
+[TRACE] [2021-06-08 14:54] <==        Row: ccc, rootroot, 테스트3, 1, 2021-06-08 14:26:56.0, test3@test.co.kr, 010-333-6666, 12345, 상화로 373, 비둘기 아파트 2단지
+[TRACE] [2021-06-08 14:54] <==        Row: ddd, rootroot, 테스트4, 1, 2021-06-08 14:26:56.0, test4@test.co.kr, 010-666-5555, 12345, 서대구로 30, 맨투맨 빌딩 4층
+[TRACE] [2021-06-08 14:54] <==        Row: eee, rootroot, 테스트5, 1, 2021-06-08 14:26:56.0, test5@test.co.kr, 010-999-3333, 12345, 안심로90길 22, 해피키즈 유치원
+[TRACE] [2021-06-08 14:54] <==        Row: 회원아이디, 회원비밀번호, 회원이름, 1, 2021-06-01 12:47:18.0, 이메일, 연락처, 12345, 주소, 상세주소
+[DEBUG] [2021-06-08 14:54] <==      Total: 6
+[DEBUG] [2021-06-08 14:56] test01InsertMemberDetail()
+[DEBUG] [2021-06-08 14:56] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 14:56] test03SelectMemberDetailAll()
+[DEBUG] [2021-06-08 14:56] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail
+[DEBUG] [2021-06-08 14:56] ==> Parameters: 
+[TRACE] [2021-06-08 14:56] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 14:56] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[TRACE] [2021-06-08 14:56] <==        Row: bbb, rootroot, 테스트2, 1, 2021-06-08 14:26:56.0, test2@test.co.kr, 010-222-7777, 12345, 동대구로 386, 킹덤 오피스텔 지하 1층
+[TRACE] [2021-06-08 14:56] <==        Row: ccc, rootroot, 테스트3, 1, 2021-06-08 14:26:56.0, test3@test.co.kr, 010-333-6666, 12345, 상화로 373, 비둘기 아파트 2단지
+[TRACE] [2021-06-08 14:56] <==        Row: ddd, rootroot, 테스트4, 1, 2021-06-08 14:26:56.0, test4@test.co.kr, 010-666-5555, 12345, 서대구로 30, 맨투맨 빌딩 4층
+[TRACE] [2021-06-08 14:56] <==        Row: eee, rootroot, 테스트5, 1, 2021-06-08 14:26:56.0, test5@test.co.kr, 010-999-3333, 12345, 안심로90길 22, 해피키즈 유치원
+[TRACE] [2021-06-08 14:56] <==        Row: 회원아이디, 회원비밀번호, 회원이름, 1, 2021-06-01 12:47:18.0, 이메일, 연락처, 12345, 주소, 상세주소
+[DEBUG] [2021-06-08 14:56] <==      Total: 6
+[DEBUG] [2021-06-08 14:57] test01InsertMemberDetail()
+[DEBUG] [2021-06-08 14:57] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 14:57] test03SelectMemberDetailAll()
+[DEBUG] [2021-06-08 14:57] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail
+[DEBUG] [2021-06-08 14:57] ==> Parameters: 
+[TRACE] [2021-06-08 14:57] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 14:57] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[TRACE] [2021-06-08 14:57] <==        Row: bbb, rootroot, 테스트2, 1, 2021-06-08 14:26:56.0, test2@test.co.kr, 010-222-7777, 12345, 동대구로 386, 킹덤 오피스텔 지하 1층
+[TRACE] [2021-06-08 14:57] <==        Row: ccc, rootroot, 테스트3, 1, 2021-06-08 14:26:56.0, test3@test.co.kr, 010-333-6666, 12345, 상화로 373, 비둘기 아파트 2단지
+[TRACE] [2021-06-08 14:57] <==        Row: ddd, rootroot, 테스트4, 1, 2021-06-08 14:26:56.0, test4@test.co.kr, 010-666-5555, 12345, 서대구로 30, 맨투맨 빌딩 4층
+[TRACE] [2021-06-08 14:57] <==        Row: eee, rootroot, 테스트5, 1, 2021-06-08 14:26:56.0, test5@test.co.kr, 010-999-3333, 12345, 안심로90길 22, 해피키즈 유치원
+[TRACE] [2021-06-08 14:57] <==        Row: 회원아이디, 회원비밀번호, 회원이름, 1, 2021-06-01 12:47:18.0, 이메일, 연락처, 12345, 주소, 상세주소
+[DEBUG] [2021-06-08 14:57] <==      Total: 6
+[DEBUG] [2021-06-08 14:57] test01InsertMemberDetail()
+[DEBUG] [2021-06-08 14:57] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 14:57] test03SelectMemberDetailAll()
+[DEBUG] [2021-06-08 14:57] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail
+[DEBUG] [2021-06-08 14:57] ==> Parameters: 
+[TRACE] [2021-06-08 14:57] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 14:57] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[TRACE] [2021-06-08 14:57] <==        Row: bbb, rootroot, 테스트2, 1, 2021-06-08 14:26:56.0, test2@test.co.kr, 010-222-7777, 12345, 동대구로 386, 킹덤 오피스텔 지하 1층
+[TRACE] [2021-06-08 14:57] <==        Row: ccc, rootroot, 테스트3, 1, 2021-06-08 14:26:56.0, test3@test.co.kr, 010-333-6666, 12345, 상화로 373, 비둘기 아파트 2단지
+[TRACE] [2021-06-08 14:57] <==        Row: ddd, rootroot, 테스트4, 1, 2021-06-08 14:26:56.0, test4@test.co.kr, 010-666-5555, 12345, 서대구로 30, 맨투맨 빌딩 4층
+[TRACE] [2021-06-08 14:57] <==        Row: eee, rootroot, 테스트5, 1, 2021-06-08 14:26:56.0, test5@test.co.kr, 010-999-3333, 12345, 안심로90길 22, 해피키즈 유치원
+[TRACE] [2021-06-08 14:57] <==        Row: 회원아이디, 회원비밀번호, 회원이름, 1, 2021-06-01 12:47:18.0, 이메일, 연락처, 12345, 주소, 상세주소
+[DEBUG] [2021-06-08 14:57] <==      Total: 6
+[DEBUG] [2021-06-08 14:59] test01InsertMemberDetail()
+[DEBUG] [2021-06-08 14:59] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 14:59] test03SelectMemberDetailAll()
+[DEBUG] [2021-06-08 14:59] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail
+[DEBUG] [2021-06-08 14:59] ==> Parameters: 
+[TRACE] [2021-06-08 14:59] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 14:59] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[TRACE] [2021-06-08 14:59] <==        Row: bbb, rootroot, 테스트2, 1, 2021-06-08 14:26:56.0, test2@test.co.kr, 010-222-7777, 12345, 동대구로 386, 킹덤 오피스텔 지하 1층
+[TRACE] [2021-06-08 14:59] <==        Row: ccc, rootroot, 테스트3, 1, 2021-06-08 14:26:56.0, test3@test.co.kr, 010-333-6666, 12345, 상화로 373, 비둘기 아파트 2단지
+[TRACE] [2021-06-08 14:59] <==        Row: ddd, rootroot, 테스트4, 1, 2021-06-08 14:26:56.0, test4@test.co.kr, 010-666-5555, 12345, 서대구로 30, 맨투맨 빌딩 4층
+[TRACE] [2021-06-08 14:59] <==        Row: eee, rootroot, 테스트5, 1, 2021-06-08 14:26:56.0, test5@test.co.kr, 010-999-3333, 12345, 안심로90길 22, 해피키즈 유치원
+[TRACE] [2021-06-08 14:59] <==        Row: 회원아이디, 회원비밀번호, 회원이름, 1, 2021-06-01 12:47:18.0, 이메일, 연락처, 12345, 주소, 상세주소
+[DEBUG] [2021-06-08 14:59] <==      Total: 6
+[DEBUG] [2021-06-08 14:59] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 14:59] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 14:59] ==> Parameters: aaa(String)
+[DEBUG] [2021-06-08 14:59] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 14:59] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 15:00] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 15:00] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 15:00] ==> Parameters: aaa(String)
+[DEBUG] [2021-06-08 15:00] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 15:00] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 15:06] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 15:06] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 15:06] ==> Parameters: aaa(String)
+[TRACE] [2021-06-08 15:06] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 15:06] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-08 15:06] <==      Total: 1
+[DEBUG] [2021-06-08 15:06] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 15:06] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 15:13] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 15:13] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 15:13] ==> Parameters: aaa(String)
+[TRACE] [2021-06-08 15:13] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 15:13] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-08 15:13] <==      Total: 1
+[DEBUG] [2021-06-08 15:13] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 15:13] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 15:15] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 15:15] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 15:15] ==> Parameters: aaa(String)
+[TRACE] [2021-06-08 15:15] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 15:15] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-08 15:15] <==      Total: 1
+[DEBUG] [2021-06-08 15:15] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 15:15] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 15:16] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 15:16] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 15:16] ==> Parameters: aaa(String)
+[TRACE] [2021-06-08 15:16] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 15:16] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-08 15:16] <==      Total: 1
+[DEBUG] [2021-06-08 15:16] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 15:16] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 15:16] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 15:16] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 15:16] ==> Parameters: aaa(String)
+[TRACE] [2021-06-08 15:16] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 15:16] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-08 15:16] <==      Total: 1
+[DEBUG] [2021-06-08 15:16] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 15:16] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 15:17] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 15:17] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 15:17] ==> Parameters: aaa(String)
+[TRACE] [2021-06-08 15:17] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 15:17] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-08 15:17] <==      Total: 1
+[DEBUG] [2021-06-08 15:17] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 15:17] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 15:19] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 15:19] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 15:19] ==> Parameters: aaa(String)
+[TRACE] [2021-06-08 15:19] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 15:19] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-08 15:19] <==      Total: 1
+[DEBUG] [2021-06-08 15:19] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 15:19] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 15:20] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 15:20] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 15:20] ==> Parameters: aaa(String)
+[TRACE] [2021-06-08 15:20] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 15:20] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-08 15:20] <==      Total: 1
+[DEBUG] [2021-06-08 15:20] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 15:20] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 15:26] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 15:26] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 15:26] ==> Parameters: aaa(String)
+[TRACE] [2021-06-08 15:26] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 15:26] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-08 15:26] <==      Total: 1
+[DEBUG] [2021-06-08 15:26] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 15:26] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 15:26] ==> Parameters: testId(String), 1111111(String), 김예진(String), 2021-06-08(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), 대구(String), 상세주소(String)
+[DEBUG] [2021-06-08 15:26] <==    Updates: 1
+[DEBUG] [2021-06-08 15:29] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 15:29] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 15:29] ==> Parameters: aaa(String)
+[TRACE] [2021-06-08 15:29] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 15:29] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-08 15:29] <==      Total: 1
+[DEBUG] [2021-06-08 15:29] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 15:29] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 15:29] ==> Parameters: testId(String), 1111111(String), 김예진(String), 2021-06-08(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), 대구(String), 상세주소(String)
+[DEBUG] [2021-06-08 15:29] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 15:29] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 15:29] ==> Parameters: aaa(String)
+[TRACE] [2021-06-08 15:29] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 15:29] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-08 15:29] <==      Total: 1
+[DEBUG] [2021-06-08 15:29] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 15:29] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 15:29] ==> Parameters: testId2(String), 1111111(String), 김예진(String), 2021-06-08(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), 대구(String), 상세주소(String)
+[DEBUG] [2021-06-08 15:29] <==    Updates: 1
+[DEBUG] [2021-06-08 15:42] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 15:42] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 15:42] ==> Parameters: aaa(String)
+[TRACE] [2021-06-08 15:42] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-08 15:42] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-08 15:42] <==      Total: 1
+[DEBUG] [2021-06-08 15:42] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 15:42] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 15:42] ==> Parameters: testId22(String), 1111111(String), 김예진(String), 2021-06-08(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), 대구(String), 상세주소(String)
+[DEBUG] [2021-06-08 15:42] <==    Updates: 1

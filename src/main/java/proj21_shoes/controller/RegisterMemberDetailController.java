@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.dto.RegisterRequest;
 import proj21_shoes.exeption.DuplicateMemberException;
 import proj21_shoes.service.RegisterMemberDetailService;
@@ -43,10 +44,10 @@ public class RegisterMemberDetailController {
 	@PostMapping("/register/step3")
 	public String handleStep3(@Valid RegisterRequest regReq,Errors errors) {
 		// 커맨드 객체(RegisterRequest 객체) 검증
+		System.out.println("테스트용 id 검색 >>"+ service.selectById("회원아이디"));
 		System.out.println("regReq.getBirthday() >> " + regReq.getBirthday());  //날짜 입력되는지 확인
 		System.out.println("id ====> "+ regReq.getMemberId());
 		//System.out.println(service.selectById(regReq.getMemberId()));  //입력된것 상세정보 확인
-		
 		
 		if (errors.hasErrors()) { //에러 있으면
 			System.out.println(1);
@@ -69,8 +70,17 @@ public class RegisterMemberDetailController {
 		}
 
 		try {
+			MemberDetail member = service.selectById(regReq.getMemberId());//selectById 메서드로 id 중복인지 확인해서
+			if (member != null) {
+				throw new DuplicateMemberException("dup id " + regReq.getMemberId());
+			}
+			MemberDetail newMember =new MemberDetail(regReq.getMemberId(),regReq.getMemberPwd(),regReq.getMemberName(),regReq.isGender(),regReq.getBirthday(),regReq.getEmail(),regReq.getTel(),regReq.getZipCode(),regReq.getAddress(),regReq.getDetailAddress());
+			service.regist(newMember);
+			//return service.selectById(newMember.getMemberId());
+		
+			
 			System.out.println("regReq >>> " + regReq);
-			service.regist(regReq);  //입력쓰
+			//service.regist(regReq);  //입력쓰
 			return "/register/step3";
 		} catch (DuplicateMemberException e) {
 			errors.rejectValue("id", "duplicate");

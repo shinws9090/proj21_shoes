@@ -19,18 +19,41 @@
 	</resultMap> 
 	-->
 	
+	
+	
+	
+ 	 <resultMap type="MemberDetail" id="resMdt">
+		<id column="member_id" property="memberId" />			<!--  회원id-->
+		<result column="member_pwd" property="memberPwd" />		<!-- 회원password -->
+		<result column="member_name" property="memberName" /><!-- 	회원이름 -->
+		<result column="gender" property="gender" />			<!-- 성별	 -->
+		<result column="birthday" property="birthday" />		<!-- 생년월일 -->
+		<result column="email" property="email" />				<!-- 이메일 -->
+		<result column="tel" property="tel" />					<!-- 연락처 -->
+		<result column="zipCode" property="zipCode" />			<!-- 우편번호 -->
+		<result column="address" property="address" />			<!-- 주소 -->
+		<result column="detail_address" property="detailAddress" />	<!-- 상세주소 -->
+	</resultMap> 
+	 
+	 
 	<select id="selectMemberDetailAll" resultType="MemberDetail">
 	select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address 
 	from memberDetail
 	</select>
 
 
-	<insert id="insertMemberDetail" >
-	insert into memberDetail values
-<!-- 	(?,?,?,?,now(birthday),?,?,?,?,?) -->
-	(#{mamberId},#{memberPwd},#{memberName},#{gender},#{birthday},#{email},#{tel},#{zipCode},#{address},#{detailAddress}) 
-	
+	<insert id="insertMemberDetail">
+	insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address)
+	values(#{memberId},#{memberPwd},#{memberName},true,#{birthday},#{email},#{tel},#{zipCode},#{address},#{detailAddress}) 
+		
 	</insert>
+	
+	<select id="selectMemberDetailById" parameterType="string" resultMap="resMdt">
+	select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address 
+	from memberDetail where member_id = #{memberId}
+	
+	
+	</select>
 </mapper>
 
 
