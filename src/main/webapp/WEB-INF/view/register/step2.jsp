@@ -169,7 +169,7 @@
 		
 		<p>
 			<label for="zipCode">우편번호: 
-			<form:input type="text" path="zipCode"  id="zipCode"  value="우편번호 찾기"  onclick="testDaumPostcode()"/>  
+			<form:input type="text" path="zipCode"  id="zipCode"    onclick="testDaumPostcode()"/>  
 			<form:errors path="zipCode" />
 			</label>
 		</p>
