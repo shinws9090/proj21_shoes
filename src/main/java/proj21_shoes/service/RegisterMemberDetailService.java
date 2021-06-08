@@ -8,8 +8,8 @@ import proj21_shoes.dto.RegisterRequest;
 public interface RegisterMemberDetailService {
 
 
-	String regist(RegisterRequest req);
-	String selectById(String req);  //입력한 id로 상세정보 확인용!
+	MemberDetail regist(RegisterRequest req);
+	MemberDetail selectById(String req);  //입력한 id로 상세정보 확인용!
 	
 
 }

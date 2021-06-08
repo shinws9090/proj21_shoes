@@ -18,21 +18,22 @@ public class RegisterMemberDetailServiceImpl implements RegisterMemberDetailServ
 	private MemberDetailMapper mapper;
 
 	@Override
-	public String regist(RegisterRequest req) {//이 형식의 애를 받아서
-		String member = mapper.selectMemberDetailById(req.getMemberId());//selectById 메서드로 id 중복인지 확인해서
+	public MemberDetail regist(RegisterRequest req) {//이 형식의 애를 받아서
+		MemberDetail member = mapper.selectMemberDetailById(req.getMemberId());//selectById 메서드로 id 중복인지 확인해서
 		if (member != null) {
 			throw new DuplicateMemberException("dup id " + req.getMemberId());
 		}
 		RegisterRequest newMember = new RegisterRequest(req.getMemberId(),req.getMemberPwd(),req.getConfirmPassword(),req.getMemberName(),req.isGender(),req.getBirthday(),req.getEmail(),req.getTel(),req.getZipCode(),req.getAddress(), req.getDetailAddress());
+		MemberDetail member2 =new MemberDetail(newMember.getMemberId(),newMember.getMemberPwd(),newMember.getMemberName(),newMember.isGender(),newMember.getBirthday(),newMember.getEmail(),newMember.getTel(),newMember.getZipCode(),newMember.getAddress(),newMember.getDetailAddress());
 		mapper.insertMemberDetail(newMember);
-		return newMember.getMemberId();
+		return mapper.selectMemberDetailById(member2.getMemberId());
 
 	}
 
 	@Override
-	public String selectById(String req) {
+	public MemberDetail selectById(String req) {
 		return mapper.selectMemberDetailById(req);
-	}
+		}
 
 
 	

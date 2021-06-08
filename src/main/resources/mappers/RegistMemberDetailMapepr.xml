@@ -35,9 +35,9 @@
 		
 	</insert>
 	
-	<select id="selectMemberDetailById"  resultType="MemberDetail" resultMap="resMdt">
+	<select id="selectMemberDetailById" resultMap="resMdt">
 	select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address 
-	from memberDetail where member_id =#{memberId}
+	from memberDetail where member_id = #{memberId}
 	
 	
 	</select>

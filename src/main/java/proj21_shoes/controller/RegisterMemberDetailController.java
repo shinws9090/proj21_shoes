@@ -43,10 +43,10 @@ public class RegisterMemberDetailController {
 	@PostMapping("/register/step3")
 	public String handleStep3(@Valid RegisterRequest regReq,Errors errors) {
 		// 커맨드 객체(RegisterRequest 객체) 검증
+		System.out.println("테스트용 id 검색 >>"+ service.selectById("회원아이디"));
 		System.out.println("regReq.getBirthday() >> " + regReq.getBirthday());  //날짜 입력되는지 확인
 		System.out.println("id ====> "+ regReq.getMemberId());
 		//System.out.println(service.selectById(regReq.getMemberId()));  //입력된것 상세정보 확인
-		
 		
 		if (errors.hasErrors()) { //에러 있으면
 			System.out.println(1);

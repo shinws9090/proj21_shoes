@@ -18,6 +18,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import proj21_shoes.config.ContextRoot;
 import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.dto.RegisterRequest;
+import proj21_shoes.service.RegisterMemberDetailService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ContextRoot.class })
@@ -27,6 +28,8 @@ public class MemberDetailMapperTest {
 	protected static final Log log = LogFactory.getLog(MemberDetailMapperTest.class);
 	@Autowired
 	private MemberDetailMapper mapper;
+	@Autowired
+	private RegisterMemberDetailService service;
 
 	@After
 	public void tearDown() throws Exception {
@@ -35,27 +38,29 @@ public class MemberDetailMapperTest {
 
 //
 	@Test
-	public void testSelectMemberDetailAll() {
+	public void test02SelectMemberDetailAll() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 
 		List<MemberDetail> list = mapper.selectMemberDetailAll();
 		Assert.assertNotNull(list);
 		list.stream().forEach(System.out::println);
 	}
-//
-//	@Test
-//	public void testSelectMemberDetailById() {
-//		fail("Not yet implemented");
-//	}
 
 	@Test
-	public void test01InsertMemberDetail() {
+	public void test01SelectMemberDetailById() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-//		RegisterRequest newMember = new RegisterRequest("testId", "111111", "김예진",true,null, "test@gmail.com","010-1234-5678","12345","대구","상세주소");
-//		System.out.println(newMember);
-//		int res = mapper.insertMemberDetail(newMember);
-//		Assert.assertEquals(1, res);
+		
+
 	}
+
+//	@Test
+//	public void test01InsertMemberDetail() {
+//		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+////		RegisterRequest newMember = new RegisterRequest("testId", "111111", "김예진",true,null, "test@gmail.com","010-1234-5678","12345","대구","상세주소");
+////		System.out.println(newMember);
+////		int res = mapper.insertMemberDetail(newMember);
+////		Assert.assertEquals(1, res);
+//	}
 //
 //	@Test
 //	public void testUpdateMemberDetail() {
