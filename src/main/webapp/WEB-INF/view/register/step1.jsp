@@ -47,6 +47,9 @@
 				<label> <input type="checkbox" name="agree" value="true"><!-- 동의 -->
 				<spring:message code="term.agree" /></label> <input type="submit" value="<spring:message code="next.btn"/>" /><!--다음단계  -->
 			</form>
+			<form action="../index" method="get">
+			<label><input type="submit" value="가입취소(메인으로)"/> </label>
+			</form>
 			</article>
 	</section>
 

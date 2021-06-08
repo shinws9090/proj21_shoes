@@ -67,7 +67,7 @@
 		<section id="signUpForm">
 
 
-			<h2>회원가입 완료</h2>
+			<h2>회원가입이 완료되었습니다.</h2>
 			<c:forEach var="memberDetail" items="${members}">
 				<tr>
 					<td>${memberDetail.memberId }</td>
@@ -82,12 +82,12 @@
 			</c:forEach>
 
 
-			<form action="step4" method="post">
+			<%-- <form action="step4" method="post">
 				<!-- 일로 보내조 -->
 				<input type="submit" value="다음단계" />
 				<!--다음단계  -->
 
-			</form>
+			</form> --%>
 			<form action="../index" method="get">
 				<input type="submit" value="메인으로" />
 			</form>
