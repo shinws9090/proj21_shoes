@@ -1,5 +1,6 @@
 package proj21_shoes.mapper;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.apache.ibatis.logging.Log;
@@ -36,32 +37,38 @@ public class MemberDetailMapperTest {
 		System.out.println();
 	}
 
-//
-	@Test
-	public void test02SelectMemberDetailAll() {
-		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 
-		List<MemberDetail> list = mapper.selectMemberDetailAll();
-		Assert.assertNotNull(list);
-		list.stream().forEach(System.out::println);
-	}
+//	@Test
+//	public void test03SelectMemberDetailAll() {
+//		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+//
+//		List<MemberDetail> list = mapper.selectMemberDetailAll();
+//		Assert.assertNotNull(list);
+//		list.stream().forEach(System.out::println);
+//	}
 
 	@Test
 	public void test01SelectMemberDetailById() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-		
+		String s = "aaa";
+		MemberDetail member = mapper.selectMemberDetailById(s);
+		System.out.println(member);
+		Assert.assertNotNull(member);
+		//member.stream().forEach(System.out::println);
 
 	}
 
-//	@Test
-//	public void test01InsertMemberDetail() {
-//		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-////		RegisterRequest newMember = new RegisterRequest("testId", "111111", "김예진",true,null, "test@gmail.com","010-1234-5678","12345","대구","상세주소");
-////		System.out.println(newMember);
-////		int res = mapper.insertMemberDetail(newMember);
-////		Assert.assertEquals(1, res);
-//	}
-//
+	@Test
+	public void test02InsertMemberDetail() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		MemberDetail newMember = new MemberDetail("testId", "111111", "김예진",true,LocalDate.now(), "test@gmail.com","010-1234-5678","12345","대구","상세주소");
+		System.out.println(newMember);
+		MemberDetail res = mapper.insertMemberDetail(newMember);
+		Assert.assertEquals(1, res);
+		mapper.selectMemberDetailById(res.getMemberId());
+		
+	}
+
 //	@Test
 //	public void testUpdateMemberDetail() {
 //		fail("Not yet implemented");
