@@ -1,7 +1,6 @@
 package proj21_shoes.dto;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -24,6 +23,13 @@ public class MemberDetail {			//	회원상세정보
 
 	public MemberDetail() {
 		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public MemberDetail(String memberId) {
+		super();
+		this.memberId = memberId;
 	}
 
 
