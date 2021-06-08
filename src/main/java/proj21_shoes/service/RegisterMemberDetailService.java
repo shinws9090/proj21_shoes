@@ -7,7 +7,7 @@ import proj21_shoes.dto.MemberDetail;
 public interface RegisterMemberDetailService {
 
 
-	MemberDetail regist(MemberDetail req);
+	int regist(MemberDetail req);
 	MemberDetail selectById(String req);  //입력한 id로 상세정보 확인용!
 	
 

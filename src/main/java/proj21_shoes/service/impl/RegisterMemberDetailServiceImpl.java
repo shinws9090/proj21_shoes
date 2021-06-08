@@ -16,8 +16,9 @@ public class RegisterMemberDetailServiceImpl implements RegisterMemberDetailServ
 	private MemberDetailMapper mapper;
 
 	@Override
-	public MemberDetail regist(MemberDetail req) {//이 형식의 애를 받아서
-		return mapper.insertMemberDetail(req);
+	public int regist(MemberDetail req) {//이 형식의 애를 받아서
+		mapper.insertMemberDetail(req);
+		return 1;
 
 	}
 

@@ -42,9 +42,9 @@
 	</select>
 
 
-	<insert id="insertMemberDetail"  parameterType="MemberDetail">
+	<insert id="insertMemberDetail">
 	insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address)
-	values(#{mamberId},#{memberPwd},#{memberName},true,#{birthday},#{email},#{tel},#{zipCode},#{address},#{detailAddress}) 
+	values(#{memberId},#{memberPwd},#{memberName},true,#{birthday},#{email},#{tel},#{zipCode},#{address},#{detailAddress}) 
 		
 	</insert>
 	
