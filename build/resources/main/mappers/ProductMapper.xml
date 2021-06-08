@@ -59,6 +59,10 @@
 		select * from orderoption where product_code = #{code}
 	</select>
 	
+	<select id="OrderOptionByStyle" resultType="OrderOption" parameterType="int">
+		select * from orderoption where product_code = #{param2} and style_code =#{param1}
+	</select>
+	
 	<select id="productByAll" resultMap="ProductList">
 		<include refid="selProductList" />
 	</select>

@@ -1,8 +1,60 @@
 6DEBUG [Test worker] - test01SelectMemberDetailById()
 �DEBUG [Test worker] - ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
 3DEBUG [Test worker] - ==> Parameters: aaa(String)
-�TRACE [Test worker] - <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
-�TRACE [Test worker] - <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-08 14:26:56.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
-)DEBUG [Test worker] - <==      Total: 1
-�MemberDetail [memberId=aaa, memberPwd=rootroot, memberName=테스트1, gender=true, birthday=2021-06-08, email=test1@test.co.kr, tel=010-111-8888, zipCode=12345, address=국채보상로 438, detailAddress=서구 치과의원]
+)DEBUG [Test worker] - <==      Total: 0
+null
 
+2DEBUG [Test worker] - test02InsertMemberDetail()
+======start========
+�DEBUG [Test worker] - ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+�DEBUG [Test worker] - ==> Parameters: testId22(String), 1111111(String), 김예진(String), 2021-06-08(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), 대구(String), 상세주소(String)
+
+0DEBUG [Test worker] - test01ProductPostByAll()
+�DEBUG [Test worker] - ==>  Preparing: select pp.product_code, pp.product_main_image, pp.content, im.image_code, im.product_code, im.image from productPost pp join image im on pp.product_code = im.product_code
+(DEBUG [Test worker] - ==> Parameters: 
+rTRACE [Test worker] - <==    Columns: product_code, product_main_image, content, image_code, product_code, image
+gTRACE [Test worker] - <==        Row: 1, <<BLOB>>, 1	?  ?  ?  ?  ? ´??¸?§ 	내용, 1, 1, 이미지
+
+1DEBUG [Test worker] - test02InsertProductPost()
+�DEBUG [Test worker] - ProductPost [productCode=2, productMainImage=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], content=내용, images=[]]
+|DEBUG [Test worker] - ==>  Preparing: insert into productPost (product_code, product_main_image, content) values (?, ?, ?)
+WDEBUG [Test worker] - ==> Parameters: 2(Integer), [B@33893609(byte[]), 내용(String)
+)DEBUG [Test worker] - <==    Updates: 1
+
+1DEBUG [Test worker] - test03UpdateProductPost()
+�DEBUG [Test worker] - ProductPost [productCode=2, productMainImage=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], content=내용변경, images=[]]
+zDEBUG [Test worker] - ==>  Preparing: update productPost set product_main_image = ?, content = ? where product_code = ?;
+]DEBUG [Test worker] - ==> Parameters: [B@493eef8c(byte[]), 내용변경(String), 2(Integer)
+)DEBUG [Test worker] - <==    Updates: 1
+
+1DEBUG [Test worker] - test04DeleteProductPost()
+eDEBUG [Test worker] - ProductPost [productCode=2, productMainImage=null, content=null, images=null]
+WDEBUG [Test worker] - ==>  Preparing: delete from productPost where product_code = ?;
+2DEBUG [Test worker] - ==> Parameters: 2(Integer)
+)DEBUG [Test worker] - <==    Updates: 1
+
+�DEBUG [Test worker] - ==>  Preparing: select * from product p join brand b on p.brand_code = b.brand_code join category c on c.product_category_code =p.product_category_code join productpost p2 on p2.product_code = p.product_code WHERE p.brand_code = ?
+2DEBUG [Test worker] - ==> Parameters: 1(Integer)
+�TRACE [Test worker] - <==    Columns: product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number, brand_code, brand_name, brand_eng_name, product_category_code, category, product_code, product_main_image, content
+�TRACE [Test worker] - <==        Row: 1, 상품명1, 1, 남, 1, 소재, 계절, 2021-06-01 14:58:13.0, 50000, 60000, 2021-06-01 14:58:13.0, 1, 1, 1, 1, 나이키, NIKE, 1, 슬리퍼, 1, <<BLOB>>, 1	?  ?  ?  ?  ? ´??¸?§ 	내용
+)DEBUG [Test worker] - <==      Total: 1
+�DEBUG [Test worker] - [Product [productCode=1, productName=상품명1, brand=Brand [brandCode=1, brandName=나이키, brandEngName=NIKE], gender=남, category=Category [productCategoryCode=1, category=슬리퍼], material=소재, season=계절, madeDate=2021-06-01T14:58:13, costPrice=50000, sellPrice=60000, registDate=2021-06-01T14:58:13, cumulativeRegistCount=1, cumulativeSellCount=1, employee=null, orderOptions=null, productPost=ProductPost [productCode=1, productMainImage=[-20, -125, -127, -19, -110, -120, -21, -116, -128, -19, -111, -100, -20, -99, -76, -21, -81, -72, -20, -89, -128], content=1	?  ?  ?  ?  ? ´??¸?§ 	내용, images=null]]]
+
+-DEBUG [Test worker] - test97InsertProduct()
+�DEBUG [Test worker] - Product [productCode=5, productName=운동화, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=남, category=Category [productCategoryCode=1, category=null], material=가죽, season=겨울, madeDate=2021-06-08T17:44:43.829, costPrice=50000, sellPrice=80000, registDate=2021-06-08T17:44:43.829, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+�DEBUG [Test worker] - ==>  Preparing: insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+�DEBUG [Test worker] - ==> Parameters: 5(Integer), 운동화(String), 1(Integer), 남(String), 1(Integer), 가죽(String), 겨울(String), 2021-06-08T17:44:43.829(LocalDateTime), 50000(Integer), 80000(Integer), 2021-06-08T17:44:43.829(LocalDateTime), 0(Integer), 0(Integer), 1(Integer)
+)DEBUG [Test worker] - <==    Updates: 1
+
+-DEBUG [Test worker] - test98UpdateProduct()
+�DEBUG [Test worker] - Product [productCode=5, productName=구두, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=여, category=Category [productCategoryCode=1, category=null], material=가죽, season=가을, madeDate=2021-06-08T17:44:43.841, costPrice=60000, sellPrice=90000, registDate=2021-06-08T17:44:43.841, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+�DEBUG [Test worker] - ==>  Preparing: update product set product_name = ?, brand_code = ?, gender = ?, product_category_code = ?, material = ?, season = ?, made_date = ?, costPrice = ?, sell_Price = ?, regist_date = ?, cumulative_regist_count = ?, cumulative_sell_count = ?, emp_number = ? where product_code = ?
+�DEBUG [Test worker] - ==> Parameters: 구두(String), 1(Integer), 여(String), 1(Integer), 가죽(String), 가을(String), 2021-06-08T17:44:43.841(LocalDateTime), 60000(Integer), 90000(Integer), 2021-06-08T17:44:43.841(LocalDateTime), 0(Integer), 0(Integer), 1(Integer), 5(Integer)
+)DEBUG [Test worker] - <==    Updates: 1
+
+-DEBUG [Test worker] - test99DeleteProduct()
+�DEBUG [Test worker] - Product [productCode=5, productName=null, brand=null, gender=null, category=null, material=null, season=null, madeDate=null, costPrice=0, sellPrice=0, registDate=null, cumulativeRegistCount=0, cumulativeSellCount=0, employee=null, orderOptions=null, productPost=null]
+RDEBUG [Test worker] - ==>  Preparing: delete from product where product_code = ?
+2DEBUG [Test worker] - ==> Parameters: 5(Integer)
+)DEBUG [Test worker] - <==    Updates: 1
+

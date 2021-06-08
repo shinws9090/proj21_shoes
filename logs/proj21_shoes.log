@@ -349,3 +349,323 @@
 [DEBUG] [2021-06-08 15:42] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
 [DEBUG] [2021-06-08 15:42] ==> Parameters: testId22(String), 1111111(String), ê¹€ì˜ˆì§„(String), 2021-06-08(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), ëŒ€êµ¬(String), ìƒì„¸ì£¼ì†Œ(String)
 [DEBUG] [2021-06-08 15:42] <==    Updates: 1
+[DEBUG] [2021-06-08 16:47] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 16:47] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 16:47] ==> Parameters: aaa(String)
+[DEBUG] [2021-06-08 16:47] <==      Total: 0
+[DEBUG] [2021-06-08 16:47] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 16:47] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 16:47] ==> Parameters: testId22(String), 1111111(String), ±è¿¹Áø(String), 2021-06-08(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), ´ë±¸(String), »ó¼¼ÁÖ¼Ò(String)
+[DEBUG] [2021-06-08 16:47] <==    Updates: 1
+[DEBUG] [2021-06-08 16:47] ==>  Preparing: select * from product p join brand b on p.brand_code = b.brand_code join category c on c.product_category_code =p.product_category_code join productpost p2 on p2.product_code = p.product_code WHERE p.brand_code = ?
+[DEBUG] [2021-06-08 16:47] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-08 16:47] <==    Columns: product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number, brand_code, brand_name, brand_eng_name, product_category_code, category, product_code, product_main_image, content
+[TRACE] [2021-06-08 16:47] <==        Row: 1, »óÇ°¸í1, 1, ³², 1, ¼ÒÀç, °èÀı, 2021-06-01 14:58:13.0, 50000, 60000, 2021-06-01 14:58:13.0, 1, 1, 1, 1, ³ªÀÌÅ°, NIKE, 1, ½½¸®ÆÛ, 1, <<BLOB>>, 1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë
+[DEBUG] [2021-06-08 16:47] <==      Total: 1
+[DEBUG] [2021-06-08 16:47] [Product [productCode=1, productName=»óÇ°¸í1, brand=Brand [brandCode=1, brandName=³ªÀÌÅ°, brandEngName=NIKE], gender=³², category=Category [productCategoryCode=1, category=½½¸®ÆÛ], material=¼ÒÀç, season=°èÀı, madeDate=2021-06-01T14:58:13, costPrice=50000, sellPrice=60000, registDate=2021-06-01T14:58:13, cumulativeRegistCount=1, cumulativeSellCount=1, employee=null, orderOptions=null, productPost=ProductPost [productCode=1, productMainImage=[-20, -125, -127, -19, -110, -120, -21, -116, -128, -19, -111, -100, -20, -99, -76, -21, -81, -72, -20, -89, -128], content=1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë, images=null]]]
+[DEBUG] [2021-06-08 16:47] test97InsertProduct()
+[DEBUG] [2021-06-08 16:47] Product [productCode=5, productName=¿îµ¿È­, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=³², category=Category [productCategoryCode=1, category=null], material=°¡Á×, season=°Ü¿ï, madeDate=2021-06-08T16:47:35.551, costPrice=50000, sellPrice=80000, registDate=2021-06-08T16:47:35.551, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 16:47] ==>  Preparing: insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[DEBUG] [2021-06-08 16:47] ==> Parameters: 5(Integer), ¿îµ¿È­(String), 1(Integer), ³²(String), 1(Integer), °¡Á×(String), °Ü¿ï(String), 2021-06-08T16:47:35.551(LocalDateTime), 50000(Integer), 80000(Integer), 2021-06-08T16:47:35.551(LocalDateTime), 0(Integer), 0(Integer), 1(Integer)
+[DEBUG] [2021-06-08 16:47] test98UpdateProduct()
+[DEBUG] [2021-06-08 16:47] Product [productCode=5, productName=±¸µÎ, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=¿©, category=Category [productCategoryCode=1, category=null], material=°¡Á×, season=°¡À», madeDate=2021-06-08T16:47:35.615, costPrice=60000, sellPrice=90000, registDate=2021-06-08T16:47:35.615, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 16:47] ==>  Preparing: update product set product_name = ?, brand_code = ?, gender = ?, product_category_code = ?, material = ?, season = ?, made_date = ?, costPrice = ?, sell_Price = ?, regist_date = ?, cumulative_regist_count = ?, cumulative_sell_count = ?, emp_number = ? where product_code = ?
+[DEBUG] [2021-06-08 16:47] ==> Parameters: ±¸µÎ(String), 1(Integer), ¿©(String), 1(Integer), °¡Á×(String), °¡À»(String), 2021-06-08T16:47:35.615(LocalDateTime), 60000(Integer), 90000(Integer), 2021-06-08T16:47:35.615(LocalDateTime), 0(Integer), 0(Integer), 1(Integer), 5(Integer)
+[DEBUG] [2021-06-08 16:47] <==    Updates: 1
+[DEBUG] [2021-06-08 16:47] test99DeleteProduct()
+[DEBUG] [2021-06-08 16:47] Product [productCode=5, productName=null, brand=null, gender=null, category=null, material=null, season=null, madeDate=null, costPrice=0, sellPrice=0, registDate=null, cumulativeRegistCount=0, cumulativeSellCount=0, employee=null, orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 16:47] ==>  Preparing: delete from product where product_code = ?
+[DEBUG] [2021-06-08 16:47] ==> Parameters: 5(Integer)
+[DEBUG] [2021-06-08 16:47] <==    Updates: 1
+[DEBUG] [2021-06-08 16:47] ==>  Preparing: select * from productPost pp join image im on pp.product_code = im.product_code;
+[DEBUG] [2021-06-08 16:47] ==> Parameters: 
+[TRACE] [2021-06-08 16:47] <==    Columns: product_code, product_main_image, content, image_code, product_code, image
+[TRACE] [2021-06-08 16:47] <==        Row: 1, <<BLOB>>, 1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë, 1, 1, ÀÌ¹ÌÁö
+[DEBUG] [2021-06-08 16:48] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 16:48] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 16:48] ==> Parameters: aaa(String)
+[DEBUG] [2021-06-08 16:48] <==      Total: 0
+[DEBUG] [2021-06-08 16:48] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 16:48] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 16:48] ==> Parameters: testId22(String), 1111111(String), ±è¿¹Áø(String), 2021-06-08(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), ´ë±¸(String), »ó¼¼ÁÖ¼Ò(String)
+[DEBUG] [2021-06-08 16:48] ==>  Preparing: select * from product p join brand b on p.brand_code = b.brand_code join category c on c.product_category_code =p.product_category_code join productpost p2 on p2.product_code = p.product_code WHERE p.brand_code = ?
+[DEBUG] [2021-06-08 16:48] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-08 16:48] <==    Columns: product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number, brand_code, brand_name, brand_eng_name, product_category_code, category, product_code, product_main_image, content
+[TRACE] [2021-06-08 16:48] <==        Row: 1, »óÇ°¸í1, 1, ³², 1, ¼ÒÀç, °èÀı, 2021-06-01 14:58:13.0, 50000, 60000, 2021-06-01 14:58:13.0, 1, 1, 1, 1, ³ªÀÌÅ°, NIKE, 1, ½½¸®ÆÛ, 1, <<BLOB>>, 1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë
+[DEBUG] [2021-06-08 16:48] <==      Total: 1
+[DEBUG] [2021-06-08 16:48] [Product [productCode=1, productName=»óÇ°¸í1, brand=Brand [brandCode=1, brandName=³ªÀÌÅ°, brandEngName=NIKE], gender=³², category=Category [productCategoryCode=1, category=½½¸®ÆÛ], material=¼ÒÀç, season=°èÀı, madeDate=2021-06-01T14:58:13, costPrice=50000, sellPrice=60000, registDate=2021-06-01T14:58:13, cumulativeRegistCount=1, cumulativeSellCount=1, employee=null, orderOptions=null, productPost=ProductPost [productCode=1, productMainImage=[-20, -125, -127, -19, -110, -120, -21, -116, -128, -19, -111, -100, -20, -99, -76, -21, -81, -72, -20, -89, -128], content=1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë, images=null]]]
+[DEBUG] [2021-06-08 16:48] test97InsertProduct()
+[DEBUG] [2021-06-08 16:48] Product [productCode=5, productName=¿îµ¿È­, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=³², category=Category [productCategoryCode=1, category=null], material=°¡Á×, season=°Ü¿ï, madeDate=2021-06-08T16:48:20.096, costPrice=50000, sellPrice=80000, registDate=2021-06-08T16:48:20.096, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 16:48] ==>  Preparing: insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[DEBUG] [2021-06-08 16:48] ==> Parameters: 5(Integer), ¿îµ¿È­(String), 1(Integer), ³²(String), 1(Integer), °¡Á×(String), °Ü¿ï(String), 2021-06-08T16:48:20.096(LocalDateTime), 50000(Integer), 80000(Integer), 2021-06-08T16:48:20.096(LocalDateTime), 0(Integer), 0(Integer), 1(Integer)
+[DEBUG] [2021-06-08 16:48] <==    Updates: 1
+[DEBUG] [2021-06-08 16:48] test98UpdateProduct()
+[DEBUG] [2021-06-08 16:48] Product [productCode=5, productName=±¸µÎ, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=¿©, category=Category [productCategoryCode=1, category=null], material=°¡Á×, season=°¡À», madeDate=2021-06-08T16:48:20.106, costPrice=60000, sellPrice=90000, registDate=2021-06-08T16:48:20.106, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 16:48] ==>  Preparing: update product set product_name = ?, brand_code = ?, gender = ?, product_category_code = ?, material = ?, season = ?, made_date = ?, costPrice = ?, sell_Price = ?, regist_date = ?, cumulative_regist_count = ?, cumulative_sell_count = ?, emp_number = ? where product_code = ?
+[DEBUG] [2021-06-08 16:48] ==> Parameters: ±¸µÎ(String), 1(Integer), ¿©(String), 1(Integer), °¡Á×(String), °¡À»(String), 2021-06-08T16:48:20.106(LocalDateTime), 60000(Integer), 90000(Integer), 2021-06-08T16:48:20.106(LocalDateTime), 0(Integer), 0(Integer), 1(Integer), 5(Integer)
+[DEBUG] [2021-06-08 16:48] <==    Updates: 1
+[DEBUG] [2021-06-08 16:48] test99DeleteProduct()
+[DEBUG] [2021-06-08 16:48] Product [productCode=5, productName=null, brand=null, gender=null, category=null, material=null, season=null, madeDate=null, costPrice=0, sellPrice=0, registDate=null, cumulativeRegistCount=0, cumulativeSellCount=0, employee=null, orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 16:48] ==>  Preparing: delete from product where product_code = ?
+[DEBUG] [2021-06-08 16:48] ==> Parameters: 5(Integer)
+[DEBUG] [2021-06-08 16:48] <==    Updates: 1
+[DEBUG] [2021-06-08 16:48] ==>  Preparing: select * from productPost pp join image im on pp.product_code = im.product_code
+[DEBUG] [2021-06-08 16:48] ==> Parameters: 
+[TRACE] [2021-06-08 16:48] <==    Columns: product_code, product_main_image, content, image_code, product_code, image
+[TRACE] [2021-06-08 16:48] <==        Row: 1, <<BLOB>>, 1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë, 1, 1, ÀÌ¹ÌÁö
+[DEBUG] [2021-06-08 16:53] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 16:53] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 16:53] ==> Parameters: aaa(String)
+[DEBUG] [2021-06-08 16:53] <==      Total: 0
+[DEBUG] [2021-06-08 16:53] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 16:53] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 16:53] ==> Parameters: testId22(String), 1111111(String), ±è¿¹Áø(String), 2021-06-08(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), ´ë±¸(String), »ó¼¼ÁÖ¼Ò(String)
+[DEBUG] [2021-06-08 16:53] test01ProductPostByAll()
+[DEBUG] [2021-06-08 16:53] ==>  Preparing: select pp.product_code, pp.product_main_image, pp.content, im.image_code, im.product_code, im.image from productPost pp join image im on pp.product_code = im.product_code
+[DEBUG] [2021-06-08 16:53] ==> Parameters: 
+[TRACE] [2021-06-08 16:53] <==    Columns: product_code, product_main_image, content, image_code, product_code, image
+[TRACE] [2021-06-08 16:53] <==        Row: 1, <<BLOB>>, 1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë, 1, 1, ÀÌ¹ÌÁö
+[DEBUG] [2021-06-08 16:53] test02InsertProductPost()
+[DEBUG] [2021-06-08 16:53] test03UpdateProductPost()
+[DEBUG] [2021-06-08 16:53] test04DeleteProductPost()
+[DEBUG] [2021-06-08 16:53] ==>  Preparing: select * from product p join brand b on p.brand_code = b.brand_code join category c on c.product_category_code =p.product_category_code join productpost p2 on p2.product_code = p.product_code WHERE p.brand_code = ?
+[DEBUG] [2021-06-08 16:53] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-08 16:53] <==    Columns: product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number, brand_code, brand_name, brand_eng_name, product_category_code, category, product_code, product_main_image, content
+[TRACE] [2021-06-08 16:53] <==        Row: 1, »óÇ°¸í1, 1, ³², 1, ¼ÒÀç, °èÀı, 2021-06-01 14:58:13.0, 50000, 60000, 2021-06-01 14:58:13.0, 1, 1, 1, 1, ³ªÀÌÅ°, NIKE, 1, ½½¸®ÆÛ, 1, <<BLOB>>, 1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë
+[DEBUG] [2021-06-08 16:53] <==      Total: 1
+[DEBUG] [2021-06-08 16:53] [Product [productCode=1, productName=»óÇ°¸í1, brand=Brand [brandCode=1, brandName=³ªÀÌÅ°, brandEngName=NIKE], gender=³², category=Category [productCategoryCode=1, category=½½¸®ÆÛ], material=¼ÒÀç, season=°èÀı, madeDate=2021-06-01T14:58:13, costPrice=50000, sellPrice=60000, registDate=2021-06-01T14:58:13, cumulativeRegistCount=1, cumulativeSellCount=1, employee=null, orderOptions=null, productPost=ProductPost [productCode=1, productMainImage=[-20, -125, -127, -19, -110, -120, -21, -116, -128, -19, -111, -100, -20, -99, -76, -21, -81, -72, -20, -89, -128], content=1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë, images=null]]]
+[DEBUG] [2021-06-08 16:53] test97InsertProduct()
+[DEBUG] [2021-06-08 16:53] Product [productCode=5, productName=¿îµ¿È­, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=³², category=Category [productCategoryCode=1, category=null], material=°¡Á×, season=°Ü¿ï, madeDate=2021-06-08T16:53:58.335, costPrice=50000, sellPrice=80000, registDate=2021-06-08T16:53:58.335, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 16:53] ==>  Preparing: insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[DEBUG] [2021-06-08 16:53] ==> Parameters: 5(Integer), ¿îµ¿È­(String), 1(Integer), ³²(String), 1(Integer), °¡Á×(String), °Ü¿ï(String), 2021-06-08T16:53:58.335(LocalDateTime), 50000(Integer), 80000(Integer), 2021-06-08T16:53:58.335(LocalDateTime), 0(Integer), 0(Integer), 1(Integer)
+[DEBUG] [2021-06-08 16:53] <==    Updates: 1
+[DEBUG] [2021-06-08 16:53] test98UpdateProduct()
+[DEBUG] [2021-06-08 16:53] Product [productCode=5, productName=±¸µÎ, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=¿©, category=Category [productCategoryCode=1, category=null], material=°¡Á×, season=°¡À», madeDate=2021-06-08T16:53:58.358, costPrice=60000, sellPrice=90000, registDate=2021-06-08T16:53:58.358, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 16:53] ==>  Preparing: update product set product_name = ?, brand_code = ?, gender = ?, product_category_code = ?, material = ?, season = ?, made_date = ?, costPrice = ?, sell_Price = ?, regist_date = ?, cumulative_regist_count = ?, cumulative_sell_count = ?, emp_number = ? where product_code = ?
+[DEBUG] [2021-06-08 16:53] ==> Parameters: ±¸µÎ(String), 1(Integer), ¿©(String), 1(Integer), °¡Á×(String), °¡À»(String), 2021-06-08T16:53:58.358(LocalDateTime), 60000(Integer), 90000(Integer), 2021-06-08T16:53:58.358(LocalDateTime), 0(Integer), 0(Integer), 1(Integer), 5(Integer)
+[DEBUG] [2021-06-08 16:53] <==    Updates: 1
+[DEBUG] [2021-06-08 16:53] test99DeleteProduct()
+[DEBUG] [2021-06-08 16:53] Product [productCode=5, productName=null, brand=null, gender=null, category=null, material=null, season=null, madeDate=null, costPrice=0, sellPrice=0, registDate=null, cumulativeRegistCount=0, cumulativeSellCount=0, employee=null, orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 16:53] ==>  Preparing: delete from product where product_code = ?
+[DEBUG] [2021-06-08 16:53] ==> Parameters: 5(Integer)
+[DEBUG] [2021-06-08 16:53] <==    Updates: 1
+[DEBUG] [2021-06-08 17:35] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 17:35] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 17:35] ==> Parameters: aaa(String)
+[DEBUG] [2021-06-08 17:35] <==      Total: 0
+[DEBUG] [2021-06-08 17:35] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 17:35] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 17:35] ==> Parameters: testId22(String), 1111111(String), ±è¿¹Áø(String), 2021-06-08(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), ´ë±¸(String), »ó¼¼ÁÖ¼Ò(String)
+[DEBUG] [2021-06-08 17:35] test01ProductPostByAll()
+[DEBUG] [2021-06-08 17:35] ==>  Preparing: select pp.product_code, pp.product_main_image, pp.content, im.image_code, im.product_code, im.image from productPost pp join image im on pp.product_code = im.product_code
+[DEBUG] [2021-06-08 17:35] ==> Parameters: 
+[TRACE] [2021-06-08 17:35] <==    Columns: product_code, product_main_image, content, image_code, product_code, image
+[TRACE] [2021-06-08 17:35] <==        Row: 1, <<BLOB>>, 1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë, 1, 1, ÀÌ¹ÌÁö
+[DEBUG] [2021-06-08 17:35] test02InsertProductPost()
+[DEBUG] [2021-06-08 17:35] test03UpdateProductPost()
+[DEBUG] [2021-06-08 17:35] test04DeleteProductPost()
+[DEBUG] [2021-06-08 17:35] ==>  Preparing: select * from product p join brand b on p.brand_code = b.brand_code join category c on c.product_category_code =p.product_category_code join productpost p2 on p2.product_code = p.product_code WHERE p.brand_code = ?
+[DEBUG] [2021-06-08 17:35] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-08 17:35] <==    Columns: product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number, brand_code, brand_name, brand_eng_name, product_category_code, category, product_code, product_main_image, content
+[TRACE] [2021-06-08 17:35] <==        Row: 1, »óÇ°¸í1, 1, ³², 1, ¼ÒÀç, °èÀı, 2021-06-01 14:58:13.0, 50000, 60000, 2021-06-01 14:58:13.0, 1, 1, 1, 1, ³ªÀÌÅ°, NIKE, 1, ½½¸®ÆÛ, 1, <<BLOB>>, 1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë
+[DEBUG] [2021-06-08 17:35] <==      Total: 1
+[DEBUG] [2021-06-08 17:35] [Product [productCode=1, productName=»óÇ°¸í1, brand=Brand [brandCode=1, brandName=³ªÀÌÅ°, brandEngName=NIKE], gender=³², category=Category [productCategoryCode=1, category=½½¸®ÆÛ], material=¼ÒÀç, season=°èÀı, madeDate=2021-06-01T14:58:13, costPrice=50000, sellPrice=60000, registDate=2021-06-01T14:58:13, cumulativeRegistCount=1, cumulativeSellCount=1, employee=null, orderOptions=null, productPost=ProductPost [productCode=1, productMainImage=[-20, -125, -127, -19, -110, -120, -21, -116, -128, -19, -111, -100, -20, -99, -76, -21, -81, -72, -20, -89, -128], content=1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë, images=null]]]
+[DEBUG] [2021-06-08 17:35] test97InsertProduct()
+[DEBUG] [2021-06-08 17:35] Product [productCode=5, productName=¿îµ¿È­, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=³², category=Category [productCategoryCode=1, category=null], material=°¡Á×, season=°Ü¿ï, madeDate=2021-06-08T17:35:59.741, costPrice=50000, sellPrice=80000, registDate=2021-06-08T17:35:59.741, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 17:35] ==>  Preparing: insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[DEBUG] [2021-06-08 17:35] ==> Parameters: 5(Integer), ¿îµ¿È­(String), 1(Integer), ³²(String), 1(Integer), °¡Á×(String), °Ü¿ï(String), 2021-06-08T17:35:59.741(LocalDateTime), 50000(Integer), 80000(Integer), 2021-06-08T17:35:59.741(LocalDateTime), 0(Integer), 0(Integer), 1(Integer)
+[DEBUG] [2021-06-08 17:35] <==    Updates: 1
+[DEBUG] [2021-06-08 17:35] test98UpdateProduct()
+[DEBUG] [2021-06-08 17:35] Product [productCode=5, productName=±¸µÎ, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=¿©, category=Category [productCategoryCode=1, category=null], material=°¡Á×, season=°¡À», madeDate=2021-06-08T17:35:59.756, costPrice=60000, sellPrice=90000, registDate=2021-06-08T17:35:59.756, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 17:35] ==>  Preparing: update product set product_name = ?, brand_code = ?, gender = ?, product_category_code = ?, material = ?, season = ?, made_date = ?, costPrice = ?, sell_Price = ?, regist_date = ?, cumulative_regist_count = ?, cumulative_sell_count = ?, emp_number = ? where product_code = ?
+[DEBUG] [2021-06-08 17:35] ==> Parameters: ±¸µÎ(String), 1(Integer), ¿©(String), 1(Integer), °¡Á×(String), °¡À»(String), 2021-06-08T17:35:59.756(LocalDateTime), 60000(Integer), 90000(Integer), 2021-06-08T17:35:59.756(LocalDateTime), 0(Integer), 0(Integer), 1(Integer), 5(Integer)
+[DEBUG] [2021-06-08 17:35] <==    Updates: 1
+[DEBUG] [2021-06-08 17:35] test99DeleteProduct()
+[DEBUG] [2021-06-08 17:35] Product [productCode=5, productName=null, brand=null, gender=null, category=null, material=null, season=null, madeDate=null, costPrice=0, sellPrice=0, registDate=null, cumulativeRegistCount=0, cumulativeSellCount=0, employee=null, orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 17:35] ==>  Preparing: delete from product where product_code = ?
+[DEBUG] [2021-06-08 17:35] ==> Parameters: 5(Integer)
+[DEBUG] [2021-06-08 17:35] <==    Updates: 1
+[DEBUG] [2021-06-08 17:37] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 17:37] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 17:37] ==> Parameters: aaa(String)
+[DEBUG] [2021-06-08 17:37] <==      Total: 0
+[DEBUG] [2021-06-08 17:37] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 17:37] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 17:37] ==> Parameters: testId22(String), 1111111(String), ±è¿¹Áø(String), 2021-06-08(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), ´ë±¸(String), »ó¼¼ÁÖ¼Ò(String)
+[DEBUG] [2021-06-08 17:37] test01ProductPostByAll()
+[DEBUG] [2021-06-08 17:37] ==>  Preparing: select pp.product_code, pp.product_main_image, pp.content, im.image_code, im.product_code, im.image from productPost pp join image im on pp.product_code = im.product_code
+[DEBUG] [2021-06-08 17:37] ==> Parameters: 
+[TRACE] [2021-06-08 17:37] <==    Columns: product_code, product_main_image, content, image_code, product_code, image
+[TRACE] [2021-06-08 17:37] <==        Row: 1, <<BLOB>>, 1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë, 1, 1, ÀÌ¹ÌÁö
+[DEBUG] [2021-06-08 17:37] test02InsertProductPost()
+[DEBUG] [2021-06-08 17:37] ProductPost [productCode=2, productMainImage=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], content=³»¿ë, images=[]]
+[DEBUG] [2021-06-08 17:37] ==>  Preparing: insert into productPost (product_code, product_main_image, content) values (?, ?, ?)
+[DEBUG] [2021-06-08 17:37] ==> Parameters: 2(Integer), [B@33893609(byte[]), ³»¿ë(String)
+[DEBUG] [2021-06-08 17:37] <==    Updates: 1
+[DEBUG] [2021-06-08 17:37] test03UpdateProductPost()
+[DEBUG] [2021-06-08 17:37] test04DeleteProductPost()
+[DEBUG] [2021-06-08 17:37] ==>  Preparing: select * from product p join brand b on p.brand_code = b.brand_code join category c on c.product_category_code =p.product_category_code join productpost p2 on p2.product_code = p.product_code WHERE p.brand_code = ?
+[DEBUG] [2021-06-08 17:37] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-08 17:37] <==    Columns: product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number, brand_code, brand_name, brand_eng_name, product_category_code, category, product_code, product_main_image, content
+[TRACE] [2021-06-08 17:37] <==        Row: 1, »óÇ°¸í1, 1, ³², 1, ¼ÒÀç, °èÀı, 2021-06-01 14:58:13.0, 50000, 60000, 2021-06-01 14:58:13.0, 1, 1, 1, 1, ³ªÀÌÅ°, NIKE, 1, ½½¸®ÆÛ, 1, <<BLOB>>, 1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë
+[TRACE] [2021-06-08 17:37] <==        Row: 2, »óÇ°¸í, 1, ¿©, 1, ¼ÒÀç, °èÀı, 2021-06-01 14:58:13.0, 50000, 60000, 2021-06-01 14:58:13.0, 1, 1, 1, 1, ³ªÀÌÅ°, NIKE, 1, ½½¸®ÆÛ, 2, <<BLOB>>, ³»¿ë
+[DEBUG] [2021-06-08 17:37] <==      Total: 2
+[DEBUG] [2021-06-08 17:37] [Product [productCode=1, productName=»óÇ°¸í1, brand=Brand [brandCode=1, brandName=³ªÀÌÅ°, brandEngName=NIKE], gender=³², category=Category [productCategoryCode=1, category=½½¸®ÆÛ], material=¼ÒÀç, season=°èÀı, madeDate=2021-06-01T14:58:13, costPrice=50000, sellPrice=60000, registDate=2021-06-01T14:58:13, cumulativeRegistCount=1, cumulativeSellCount=1, employee=null, orderOptions=null, productPost=ProductPost [productCode=1, productMainImage=[-20, -125, -127, -19, -110, -120, -21, -116, -128, -19, -111, -100, -20, -99, -76, -21, -81, -72, -20, -89, -128], content=1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë, images=null]], Product [productCode=2, productName=»óÇ°¸í, brand=Brand [brandCode=1, brandName=³ªÀÌÅ°, brandEngName=NIKE], gender=¿©, category=Category [productCategoryCode=1, category=½½¸®ÆÛ], material=¼ÒÀç, season=°èÀı, madeDate=2021-06-01T14:58:13, costPrice=50000, sellPrice=60000, registDate=2021-06-01T14:58:13, cumulativeRegistCount=1, cumulativeSellCount=1, employee=null, orderOptions=null, productPost=ProductPost [productCode=2, productMainImage=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], content=³»¿ë, images=null]]]
+[DEBUG] [2021-06-08 17:37] test97InsertProduct()
+[DEBUG] [2021-06-08 17:37] Product [productCode=5, productName=¿îµ¿È­, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=³², category=Category [productCategoryCode=1, category=null], material=°¡Á×, season=°Ü¿ï, madeDate=2021-06-08T17:37:19.435, costPrice=50000, sellPrice=80000, registDate=2021-06-08T17:37:19.435, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 17:37] ==>  Preparing: insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[DEBUG] [2021-06-08 17:37] ==> Parameters: 5(Integer), ¿îµ¿È­(String), 1(Integer), ³²(String), 1(Integer), °¡Á×(String), °Ü¿ï(String), 2021-06-08T17:37:19.435(LocalDateTime), 50000(Integer), 80000(Integer), 2021-06-08T17:37:19.435(LocalDateTime), 0(Integer), 0(Integer), 1(Integer)
+[DEBUG] [2021-06-08 17:37] <==    Updates: 1
+[DEBUG] [2021-06-08 17:37] test98UpdateProduct()
+[DEBUG] [2021-06-08 17:37] Product [productCode=5, productName=±¸µÎ, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=¿©, category=Category [productCategoryCode=1, category=null], material=°¡Á×, season=°¡À», madeDate=2021-06-08T17:37:19.443, costPrice=60000, sellPrice=90000, registDate=2021-06-08T17:37:19.443, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 17:37] ==>  Preparing: update product set product_name = ?, brand_code = ?, gender = ?, product_category_code = ?, material = ?, season = ?, made_date = ?, costPrice = ?, sell_Price = ?, regist_date = ?, cumulative_regist_count = ?, cumulative_sell_count = ?, emp_number = ? where product_code = ?
+[DEBUG] [2021-06-08 17:37] ==> Parameters: ±¸µÎ(String), 1(Integer), ¿©(String), 1(Integer), °¡Á×(String), °¡À»(String), 2021-06-08T17:37:19.443(LocalDateTime), 60000(Integer), 90000(Integer), 2021-06-08T17:37:19.443(LocalDateTime), 0(Integer), 0(Integer), 1(Integer), 5(Integer)
+[DEBUG] [2021-06-08 17:37] <==    Updates: 1
+[DEBUG] [2021-06-08 17:37] test99DeleteProduct()
+[DEBUG] [2021-06-08 17:37] Product [productCode=5, productName=null, brand=null, gender=null, category=null, material=null, season=null, madeDate=null, costPrice=0, sellPrice=0, registDate=null, cumulativeRegistCount=0, cumulativeSellCount=0, employee=null, orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 17:37] ==>  Preparing: delete from product where product_code = ?
+[DEBUG] [2021-06-08 17:37] ==> Parameters: 5(Integer)
+[DEBUG] [2021-06-08 17:37] <==    Updates: 1
+[DEBUG] [2021-06-08 17:40] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 17:40] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 17:40] ==> Parameters: aaa(String)
+[DEBUG] [2021-06-08 17:40] <==      Total: 0
+[DEBUG] [2021-06-08 17:40] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 17:40] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 17:40] ==> Parameters: testId22(String), 1111111(String), ±è¿¹Áø(String), 2021-06-08(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), ´ë±¸(String), »ó¼¼ÁÖ¼Ò(String)
+[DEBUG] [2021-06-08 17:40] test01ProductPostByAll()
+[DEBUG] [2021-06-08 17:40] ==>  Preparing: select pp.product_code, pp.product_main_image, pp.content, im.image_code, im.product_code, im.image from productPost pp join image im on pp.product_code = im.product_code
+[DEBUG] [2021-06-08 17:40] ==> Parameters: 
+[TRACE] [2021-06-08 17:40] <==    Columns: product_code, product_main_image, content, image_code, product_code, image
+[TRACE] [2021-06-08 17:40] <==        Row: 1, <<BLOB>>, 1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë, 1, 1, ÀÌ¹ÌÁö
+[DEBUG] [2021-06-08 17:40] test02InsertProductPost()
+[DEBUG] [2021-06-08 17:40] ProductPost [productCode=2, productMainImage=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], content=³»¿ë, images=[]]
+[DEBUG] [2021-06-08 17:40] ==>  Preparing: insert into productPost (product_code, product_main_image, content) values (?, ?, ?)
+[DEBUG] [2021-06-08 17:40] ==> Parameters: 2(Integer), [B@33893609(byte[]), ³»¿ë(String)
+[DEBUG] [2021-06-08 17:40] test03UpdateProductPost()
+[DEBUG] [2021-06-08 17:40] ProductPost [productCode=2, productMainImage=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], content=³»¿ëº¯°æ, images=[]]
+[DEBUG] [2021-06-08 17:40] ==>  Preparing: update productPost set product_main_image = ?, content = ? where product_code = ?;
+[DEBUG] [2021-06-08 17:40] ==> Parameters: [B@493eef8c(byte[]), ³»¿ëº¯°æ(String), 2(Integer)
+[DEBUG] [2021-06-08 17:40] <==    Updates: 1
+[DEBUG] [2021-06-08 17:40] test04DeleteProductPost()
+[DEBUG] [2021-06-08 17:40] ProductPost [productCode=2, productMainImage=null, content=null, images=null]
+[DEBUG] [2021-06-08 17:40] ==>  Preparing: delete from productPost where product_code = ?;
+[DEBUG] [2021-06-08 17:40] ==> Parameters: 2(Integer)
+[DEBUG] [2021-06-08 17:40] <==    Updates: 1
+[DEBUG] [2021-06-08 17:40] ==>  Preparing: select * from product p join brand b on p.brand_code = b.brand_code join category c on c.product_category_code =p.product_category_code join productpost p2 on p2.product_code = p.product_code WHERE p.brand_code = ?
+[DEBUG] [2021-06-08 17:40] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-08 17:40] <==    Columns: product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number, brand_code, brand_name, brand_eng_name, product_category_code, category, product_code, product_main_image, content
+[TRACE] [2021-06-08 17:40] <==        Row: 1, »óÇ°¸í1, 1, ³², 1, ¼ÒÀç, °èÀı, 2021-06-01 14:58:13.0, 50000, 60000, 2021-06-01 14:58:13.0, 1, 1, 1, 1, ³ªÀÌÅ°, NIKE, 1, ½½¸®ÆÛ, 1, <<BLOB>>, 1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë
+[DEBUG] [2021-06-08 17:40] <==      Total: 1
+[DEBUG] [2021-06-08 17:40] [Product [productCode=1, productName=»óÇ°¸í1, brand=Brand [brandCode=1, brandName=³ªÀÌÅ°, brandEngName=NIKE], gender=³², category=Category [productCategoryCode=1, category=½½¸®ÆÛ], material=¼ÒÀç, season=°èÀı, madeDate=2021-06-01T14:58:13, costPrice=50000, sellPrice=60000, registDate=2021-06-01T14:58:13, cumulativeRegistCount=1, cumulativeSellCount=1, employee=null, orderOptions=null, productPost=ProductPost [productCode=1, productMainImage=[-20, -125, -127, -19, -110, -120, -21, -116, -128, -19, -111, -100, -20, -99, -76, -21, -81, -72, -20, -89, -128], content=1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë, images=null]]]
+[DEBUG] [2021-06-08 17:40] test97InsertProduct()
+[DEBUG] [2021-06-08 17:40] Product [productCode=5, productName=¿îµ¿È­, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=³², category=Category [productCategoryCode=1, category=null], material=°¡Á×, season=°Ü¿ï, madeDate=2021-06-08T17:40:19.299, costPrice=50000, sellPrice=80000, registDate=2021-06-08T17:40:19.299, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 17:40] ==>  Preparing: insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[DEBUG] [2021-06-08 17:40] ==> Parameters: 5(Integer), ¿îµ¿È­(String), 1(Integer), ³²(String), 1(Integer), °¡Á×(String), °Ü¿ï(String), 2021-06-08T17:40:19.299(LocalDateTime), 50000(Integer), 80000(Integer), 2021-06-08T17:40:19.299(LocalDateTime), 0(Integer), 0(Integer), 1(Integer)
+[DEBUG] [2021-06-08 17:40] <==    Updates: 1
+[DEBUG] [2021-06-08 17:40] test98UpdateProduct()
+[DEBUG] [2021-06-08 17:40] Product [productCode=5, productName=±¸µÎ, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=¿©, category=Category [productCategoryCode=1, category=null], material=°¡Á×, season=°¡À», madeDate=2021-06-08T17:40:19.310, costPrice=60000, sellPrice=90000, registDate=2021-06-08T17:40:19.310, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 17:40] ==>  Preparing: update product set product_name = ?, brand_code = ?, gender = ?, product_category_code = ?, material = ?, season = ?, made_date = ?, costPrice = ?, sell_Price = ?, regist_date = ?, cumulative_regist_count = ?, cumulative_sell_count = ?, emp_number = ? where product_code = ?
+[DEBUG] [2021-06-08 17:40] ==> Parameters: ±¸µÎ(String), 1(Integer), ¿©(String), 1(Integer), °¡Á×(String), °¡À»(String), 2021-06-08T17:40:19.310(LocalDateTime), 60000(Integer), 90000(Integer), 2021-06-08T17:40:19.310(LocalDateTime), 0(Integer), 0(Integer), 1(Integer), 5(Integer)
+[DEBUG] [2021-06-08 17:40] <==    Updates: 1
+[DEBUG] [2021-06-08 17:40] test99DeleteProduct()
+[DEBUG] [2021-06-08 17:40] Product [productCode=5, productName=null, brand=null, gender=null, category=null, material=null, season=null, madeDate=null, costPrice=0, sellPrice=0, registDate=null, cumulativeRegistCount=0, cumulativeSellCount=0, employee=null, orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 17:40] ==>  Preparing: delete from product where product_code = ?
+[DEBUG] [2021-06-08 17:40] ==> Parameters: 5(Integer)
+[DEBUG] [2021-06-08 17:40] <==    Updates: 1
+[DEBUG] [2021-06-08 17:40] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 17:40] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 17:40] ==> Parameters: aaa(String)
+[DEBUG] [2021-06-08 17:40] <==      Total: 0
+[DEBUG] [2021-06-08 17:40] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 17:40] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 17:40] ==> Parameters: testId22(String), 1111111(String), ±è¿¹Áø(String), 2021-06-08(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), ´ë±¸(String), »ó¼¼ÁÖ¼Ò(String)
+[DEBUG] [2021-06-08 17:40] test01ProductPostByAll()
+[DEBUG] [2021-06-08 17:40] ==>  Preparing: select pp.product_code, pp.product_main_image, pp.content, im.image_code, im.product_code, im.image from productPost pp join image im on pp.product_code = im.product_code
+[DEBUG] [2021-06-08 17:40] ==> Parameters: 
+[TRACE] [2021-06-08 17:40] <==    Columns: product_code, product_main_image, content, image_code, product_code, image
+[TRACE] [2021-06-08 17:40] <==        Row: 1, <<BLOB>>, 1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë, 1, 1, ÀÌ¹ÌÁö
+[DEBUG] [2021-06-08 17:40] test02InsertProductPost()
+[DEBUG] [2021-06-08 17:40] ProductPost [productCode=2, productMainImage=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], content=³»¿ë, images=[]]
+[DEBUG] [2021-06-08 17:40] ==>  Preparing: insert into productPost (product_code, product_main_image, content) values (?, ?, ?)
+[DEBUG] [2021-06-08 17:40] ==> Parameters: 2(Integer), [B@33893609(byte[]), ³»¿ë(String)
+[DEBUG] [2021-06-08 17:40] <==    Updates: 1
+[DEBUG] [2021-06-08 17:40] test03UpdateProductPost()
+[DEBUG] [2021-06-08 17:40] ProductPost [productCode=2, productMainImage=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], content=³»¿ëº¯°æ, images=[]]
+[DEBUG] [2021-06-08 17:40] ==>  Preparing: update productPost set product_main_image = ?, content = ? where product_code = ?;
+[DEBUG] [2021-06-08 17:40] ==> Parameters: [B@493eef8c(byte[]), ³»¿ëº¯°æ(String), 2(Integer)
+[DEBUG] [2021-06-08 17:40] <==    Updates: 1
+[DEBUG] [2021-06-08 17:40] test04DeleteProductPost()
+[DEBUG] [2021-06-08 17:40] ProductPost [productCode=2, productMainImage=null, content=null, images=null]
+[DEBUG] [2021-06-08 17:40] ==>  Preparing: delete from productPost where product_code = ?;
+[DEBUG] [2021-06-08 17:40] ==> Parameters: 2(Integer)
+[DEBUG] [2021-06-08 17:40] <==    Updates: 1
+[DEBUG] [2021-06-08 17:40] ==>  Preparing: select * from product p join brand b on p.brand_code = b.brand_code join category c on c.product_category_code =p.product_category_code join productpost p2 on p2.product_code = p.product_code WHERE p.brand_code = ?
+[DEBUG] [2021-06-08 17:40] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-08 17:40] <==    Columns: product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number, brand_code, brand_name, brand_eng_name, product_category_code, category, product_code, product_main_image, content
+[TRACE] [2021-06-08 17:40] <==        Row: 1, »óÇ°¸í1, 1, ³², 1, ¼ÒÀç, °èÀı, 2021-06-01 14:58:13.0, 50000, 60000, 2021-06-01 14:58:13.0, 1, 1, 1, 1, ³ªÀÌÅ°, NIKE, 1, ½½¸®ÆÛ, 1, <<BLOB>>, 1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë
+[DEBUG] [2021-06-08 17:40] <==      Total: 1
+[DEBUG] [2021-06-08 17:40] [Product [productCode=1, productName=»óÇ°¸í1, brand=Brand [brandCode=1, brandName=³ªÀÌÅ°, brandEngName=NIKE], gender=³², category=Category [productCategoryCode=1, category=½½¸®ÆÛ], material=¼ÒÀç, season=°èÀı, madeDate=2021-06-01T14:58:13, costPrice=50000, sellPrice=60000, registDate=2021-06-01T14:58:13, cumulativeRegistCount=1, cumulativeSellCount=1, employee=null, orderOptions=null, productPost=ProductPost [productCode=1, productMainImage=[-20, -125, -127, -19, -110, -120, -21, -116, -128, -19, -111, -100, -20, -99, -76, -21, -81, -72, -20, -89, -128], content=1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë, images=null]]]
+[DEBUG] [2021-06-08 17:40] test97InsertProduct()
+[DEBUG] [2021-06-08 17:40] Product [productCode=5, productName=¿îµ¿È­, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=³², category=Category [productCategoryCode=1, category=null], material=°¡Á×, season=°Ü¿ï, madeDate=2021-06-08T17:40:26.978, costPrice=50000, sellPrice=80000, registDate=2021-06-08T17:40:26.978, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 17:40] ==>  Preparing: insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[DEBUG] [2021-06-08 17:40] ==> Parameters: 5(Integer), ¿îµ¿È­(String), 1(Integer), ³²(String), 1(Integer), °¡Á×(String), °Ü¿ï(String), 2021-06-08T17:40:26.978(LocalDateTime), 50000(Integer), 80000(Integer), 2021-06-08T17:40:26.978(LocalDateTime), 0(Integer), 0(Integer), 1(Integer)
+[DEBUG] [2021-06-08 17:40] <==    Updates: 1
+[DEBUG] [2021-06-08 17:40] test98UpdateProduct()
+[DEBUG] [2021-06-08 17:40] Product [productCode=5, productName=±¸µÎ, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=¿©, category=Category [productCategoryCode=1, category=null], material=°¡Á×, season=°¡À», madeDate=2021-06-08T17:40:26.988, costPrice=60000, sellPrice=90000, registDate=2021-06-08T17:40:26.988, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 17:40] ==>  Preparing: update product set product_name = ?, brand_code = ?, gender = ?, product_category_code = ?, material = ?, season = ?, made_date = ?, costPrice = ?, sell_Price = ?, regist_date = ?, cumulative_regist_count = ?, cumulative_sell_count = ?, emp_number = ? where product_code = ?
+[DEBUG] [2021-06-08 17:40] ==> Parameters: ±¸µÎ(String), 1(Integer), ¿©(String), 1(Integer), °¡Á×(String), °¡À»(String), 2021-06-08T17:40:26.988(LocalDateTime), 60000(Integer), 90000(Integer), 2021-06-08T17:40:26.988(LocalDateTime), 0(Integer), 0(Integer), 1(Integer), 5(Integer)
+[DEBUG] [2021-06-08 17:40] <==    Updates: 1
+[DEBUG] [2021-06-08 17:40] test99DeleteProduct()
+[DEBUG] [2021-06-08 17:40] Product [productCode=5, productName=null, brand=null, gender=null, category=null, material=null, season=null, madeDate=null, costPrice=0, sellPrice=0, registDate=null, cumulativeRegistCount=0, cumulativeSellCount=0, employee=null, orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 17:40] ==>  Preparing: delete from product where product_code = ?
+[DEBUG] [2021-06-08 17:40] ==> Parameters: 5(Integer)
+[DEBUG] [2021-06-08 17:40] <==    Updates: 1
+[DEBUG] [2021-06-08 17:44] test01SelectMemberDetailById()
+[DEBUG] [2021-06-08 17:44] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-08 17:44] ==> Parameters: aaa(String)
+[DEBUG] [2021-06-08 17:44] <==      Total: 0
+[DEBUG] [2021-06-08 17:44] test02InsertMemberDetail()
+[DEBUG] [2021-06-08 17:44] ==>  Preparing: insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address) values(?,?,?,true,?,?,?,?,?,?)
+[DEBUG] [2021-06-08 17:44] ==> Parameters: testId22(String), 1111111(String), ±è¿¹Áø(String), 2021-06-08(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), ´ë±¸(String), »ó¼¼ÁÖ¼Ò(String)
+[DEBUG] [2021-06-08 17:44] test01ProductPostByAll()
+[DEBUG] [2021-06-08 17:44] ==>  Preparing: select pp.product_code, pp.product_main_image, pp.content, im.image_code, im.product_code, im.image from productPost pp join image im on pp.product_code = im.product_code
+[DEBUG] [2021-06-08 17:44] ==> Parameters: 
+[TRACE] [2021-06-08 17:44] <==    Columns: product_code, product_main_image, content, image_code, product_code, image
+[TRACE] [2021-06-08 17:44] <==        Row: 1, <<BLOB>>, 1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë, 1, 1, ÀÌ¹ÌÁö
+[DEBUG] [2021-06-08 17:44] test02InsertProductPost()
+[DEBUG] [2021-06-08 17:44] ProductPost [productCode=2, productMainImage=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], content=³»¿ë, images=[]]
+[DEBUG] [2021-06-08 17:44] ==>  Preparing: insert into productPost (product_code, product_main_image, content) values (?, ?, ?)
+[DEBUG] [2021-06-08 17:44] ==> Parameters: 2(Integer), [B@33893609(byte[]), ³»¿ë(String)
+[DEBUG] [2021-06-08 17:44] <==    Updates: 1
+[DEBUG] [2021-06-08 17:44] test03UpdateProductPost()
+[DEBUG] [2021-06-08 17:44] ProductPost [productCode=2, productMainImage=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], content=³»¿ëº¯°æ, images=[]]
+[DEBUG] [2021-06-08 17:44] ==>  Preparing: update productPost set product_main_image = ?, content = ? where product_code = ?;
+[DEBUG] [2021-06-08 17:44] ==> Parameters: [B@493eef8c(byte[]), ³»¿ëº¯°æ(String), 2(Integer)
+[DEBUG] [2021-06-08 17:44] <==    Updates: 1
+[DEBUG] [2021-06-08 17:44] test04DeleteProductPost()
+[DEBUG] [2021-06-08 17:44] ProductPost [productCode=2, productMainImage=null, content=null, images=null]
+[DEBUG] [2021-06-08 17:44] ==>  Preparing: delete from productPost where product_code = ?;
+[DEBUG] [2021-06-08 17:44] ==> Parameters: 2(Integer)
+[DEBUG] [2021-06-08 17:44] <==    Updates: 1
+[DEBUG] [2021-06-08 17:44] ==>  Preparing: select * from product p join brand b on p.brand_code = b.brand_code join category c on c.product_category_code =p.product_category_code join productpost p2 on p2.product_code = p.product_code WHERE p.brand_code = ?
+[DEBUG] [2021-06-08 17:44] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-08 17:44] <==    Columns: product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number, brand_code, brand_name, brand_eng_name, product_category_code, category, product_code, product_main_image, content
+[TRACE] [2021-06-08 17:44] <==        Row: 1, »óÇ°¸í1, 1, ³², 1, ¼ÒÀç, °èÀı, 2021-06-01 14:58:13.0, 50000, 60000, 2021-06-01 14:58:13.0, 1, 1, 1, 1, ³ªÀÌÅ°, NIKE, 1, ½½¸®ÆÛ, 1, <<BLOB>>, 1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë
+[DEBUG] [2021-06-08 17:44] <==      Total: 1
+[DEBUG] [2021-06-08 17:44] [Product [productCode=1, productName=»óÇ°¸í1, brand=Brand [brandCode=1, brandName=³ªÀÌÅ°, brandEngName=NIKE], gender=³², category=Category [productCategoryCode=1, category=½½¸®ÆÛ], material=¼ÒÀç, season=°èÀı, madeDate=2021-06-01T14:58:13, costPrice=50000, sellPrice=60000, registDate=2021-06-01T14:58:13, cumulativeRegistCount=1, cumulativeSellCount=1, employee=null, orderOptions=null, productPost=ProductPost [productCode=1, productMainImage=[-20, -125, -127, -19, -110, -120, -21, -116, -128, -19, -111, -100, -20, -99, -76, -21, -81, -72, -20, -89, -128], content=1	?  ?  ?  ?  ? ¢¥??¢¬?¡× 	³»¿ë, images=null]]]
+[DEBUG] [2021-06-08 17:44] test97InsertProduct()
+[DEBUG] [2021-06-08 17:44] Product [productCode=5, productName=¿îµ¿È­, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=³², category=Category [productCategoryCode=1, category=null], material=°¡Á×, season=°Ü¿ï, madeDate=2021-06-08T17:44:43.829, costPrice=50000, sellPrice=80000, registDate=2021-06-08T17:44:43.829, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 17:44] ==>  Preparing: insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[DEBUG] [2021-06-08 17:44] ==> Parameters: 5(Integer), ¿îµ¿È­(String), 1(Integer), ³²(String), 1(Integer), °¡Á×(String), °Ü¿ï(String), 2021-06-08T17:44:43.829(LocalDateTime), 50000(Integer), 80000(Integer), 2021-06-08T17:44:43.829(LocalDateTime), 0(Integer), 0(Integer), 1(Integer)
+[DEBUG] [2021-06-08 17:44] <==    Updates: 1
+[DEBUG] [2021-06-08 17:44] test98UpdateProduct()
+[DEBUG] [2021-06-08 17:44] Product [productCode=5, productName=±¸µÎ, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=¿©, category=Category [productCategoryCode=1, category=null], material=°¡Á×, season=°¡À», madeDate=2021-06-08T17:44:43.841, costPrice=60000, sellPrice=90000, registDate=2021-06-08T17:44:43.841, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 17:44] ==>  Preparing: update product set product_name = ?, brand_code = ?, gender = ?, product_category_code = ?, material = ?, season = ?, made_date = ?, costPrice = ?, sell_Price = ?, regist_date = ?, cumulative_regist_count = ?, cumulative_sell_count = ?, emp_number = ? where product_code = ?
+[DEBUG] [2021-06-08 17:44] ==> Parameters: ±¸µÎ(String), 1(Integer), ¿©(String), 1(Integer), °¡Á×(String), °¡À»(String), 2021-06-08T17:44:43.841(LocalDateTime), 60000(Integer), 90000(Integer), 2021-06-08T17:44:43.841(LocalDateTime), 0(Integer), 0(Integer), 1(Integer), 5(Integer)
+[DEBUG] [2021-06-08 17:44] <==    Updates: 1
+[DEBUG] [2021-06-08 17:44] test99DeleteProduct()
+[DEBUG] [2021-06-08 17:44] Product [productCode=5, productName=null, brand=null, gender=null, category=null, material=null, season=null, madeDate=null, costPrice=0, sellPrice=0, registDate=null, cumulativeRegistCount=0, cumulativeSellCount=0, employee=null, orderOptions=null, productPost=null]
+[DEBUG] [2021-06-08 17:44] ==>  Preparing: delete from product where product_code = ?
+[DEBUG] [2021-06-08 17:44] ==> Parameters: 5(Integer)
+[DEBUG] [2021-06-08 17:44] <==    Updates: 1
