@@ -1,14 +1,21 @@
 package proj21_shoes.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import proj21_shoes.dto.Brand;
+import proj21_shoes.dto.Category;
+import proj21_shoes.dto.Employee;
 import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.dto.Product;
 import proj21_shoes.service.GetMemberDetailListService;
@@ -55,15 +62,40 @@ public class AdminController {
 		return new ModelAndView("admin/orderMgt");
 	}
 
-//	@RequestMapping(value = "/admin/product/productReg", method = RequestMethod.GET)
-//	public String registerProduct() throws Exception {
-//		return "admin/product/productReg";
-//	}
-	
-	@GetMapping("/productReg")
-	public String registerProduct(Product product) {
-//		productService.insertProduct(product);
-		return "redirect:/admin/productMgt";
+	@GetMapping("/viewProductReg")
+	public ModelAndView viewRegisterProduct() {
+		return new ModelAndView("admin/product/productReg");
 	}
 
+//	@GetMapping("/productReg")
+//	public ModelAndView registerProduct(Product product) {
+//		productService.insertProduct(product);
+//		
+//		return new ModelAndView("admin/productMgt");
+//	}
+
+	@RequestMapping(value = "/productReg", method = RequestMethod.GET)
+	@Transactional
+	public String registerProduct(HttpServletRequest request) {		
+		
+		Product product = new Product();
+		product.setProductCode(Integer.parseInt(request.getParameter("productCode")));
+		product.setProductName(request.getParameter("productName"));
+		product.setBrand(new Brand(Integer.parseInt(request.getParameter("brandCode"))));
+		product.setGender(request.getParameter("gender"));
+		product.setCategory(new Category(Integer.parseInt(request.getParameter("category"))));
+		product.setMaterial(request.getParameter("material"));
+		product.setSeason(request.getParameter("season"));
+		product.setMadeDate(LocalDateTime.now());
+		product.setCostPrice(Integer.parseInt(request.getParameter("costPrice")));
+		product.setSellPrice(Integer.parseInt(request.getParameter("sellPrice")));
+		product.setRegistDate(LocalDateTime.now());
+		product.setEmployee(new Employee(Integer.parseInt(request.getParameter("employee"))));
+
+		System.out.println(product);
+
+		productService.insertProduct(product);
+
+		return "admin/productMgt";
+	}
 }
