@@ -1,8 +1,5 @@
 package proj21_shoes.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,39 +9,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import proj21_shoes.dto.Cart;
-import proj21_shoes.service.ProductService;
+import proj21_shoes.dto.Member;
+import proj21_shoes.service.CartService;
 
 @RestController
 public class CartlController {
 
 	@Autowired
-	ProductService service;
+	CartService service;
 
 	@PostMapping("api/cartSave")
 	public ResponseEntity<Object> cartSave(@RequestBody Cart cart, HttpServletRequest request) {
-		if(cart.getSize()<=0||cart.getStyleCode()<=0||cart.getCount()<=0) {
+		if(cart.getProductCode()<=0||cart.getSize()<=0||cart.getStyleCode()<=0||cart.getCount()<=0) {
 			return ResponseEntity.badRequest().build();
 		}
-		List<Cart> cartList = (List<Cart>) request.getSession().getAttribute("cartList");
-		if (cartList == null) {
-			cartList = new ArrayList<Cart>();
-			request.getSession().setAttribute("cartList", cartList);
+		Member member = (Member) request.getSession().getAttribute("member");
+		if(member != null) {
+			return ResponseEntity.notFound().build();
 		}
-
-		boolean isNewCart = true;
-		for (Cart c : cartList) {
-			if (cart.equals(c)) {
-				isNewCart = false;
-				c.setCount(c.getCount() + cart.getCount());
-				break;
-			}
-		}
-
-		if (isNewCart) {
-			cartList.add(cart);
-		}
-		System.out.println(request.getSession().getAttribute("cartList"));
-		
+		cart.setMember(member);
+		service.insertCart(cart);
 		return ResponseEntity.ok(cart);
 	}
 }

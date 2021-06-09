@@ -21,3 +21,13 @@ select * from orderoption where product_code =22222 and style_code =3;
 select * from brand;
 select * from product where product_code =1;
 
+select cart_code, member_code, `size`, product_code, style_code, count
+	from cart where member_code = 111111;
+
+insert into cart(member_code, `size`, product_code, style_code, count) values
+	(111111,270,11111,1,20);
+update cart 
+	set count =30
+	where member_code =111111 and `size` =270 and product_code = 11111 and style_code =1;
+
+delete from cart where cart_code = 6;
