@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,7 +48,7 @@ public class RegisterMemberDetailController {
 		return "redirect:/register/step1";  //step1로 쫓아낸당
 	}
 
-
+	@Transactional
 	@PostMapping("/register/step3")
 	public String handleStep3(@Valid RegisterRequest regReq,Errors errors) {
 		// 커맨드 객체(RegisterRequest 객체) 검증		
