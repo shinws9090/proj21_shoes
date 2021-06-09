@@ -1,5 +1,7 @@
 package proj21_shoes.controller;
 
+import java.time.LocalDateTime;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import proj21_shoes.commend.RegisterRequest;
+import proj21_shoes.dto.Grade;
+import proj21_shoes.dto.Member;
 import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.exeption.DuplicateMemberException;
 import proj21_shoes.service.RegisterMemberDetailService;
+import proj21_shoes.service.RegisterMemberService;
 
 @Controller
 public class RegisterMemberDetailController {
 	@Autowired
 	private RegisterMemberDetailService service;
+	@Autowired
+	private RegisterMemberService service2;
 
 	@RequestMapping("/register/step1")
 	public String handleStep1() {
@@ -60,8 +67,12 @@ public class RegisterMemberDetailController {
 			if (member != null) {
 				throw new DuplicateMemberException("dup id " + regReq.getMemberId());
 			}
-			MemberDetail newMember =new MemberDetail(regReq.getMemberId(),regReq.getMemberPwd(),regReq.getMemberName(),regReq.isGender(),regReq.getBirthday(),regReq.getEmail(),regReq.getTel(),regReq.getZipCode(),regReq.getAddress(),regReq.getDetailAddress());
+			//입력받은 값을 그대로 객체에 담아주기
+			MemberDetail newMember =new MemberDetail(regReq.getMemberId(),regReq.getMemberPwd(),regReq.getMemberName(),regReq.isGender(),regReq.getBirthday(),regReq.getEmail(),regReq.getTel(),regReq.getZipCode(),regReq.getAddress(),regReq.getDetailAddress()); 
+			//위에서 담은 아이디 가져와서 담기
+			Member newMember2 = new Member(newMember,1000,0,new Grade(5),false,LocalDateTime.now()); //
 			service.regist(newMember);
+			service2.regist(newMember2); //객체로 담아서 넣어줘야한당
 
 			return "/register/step3";
 		} catch (DuplicateMemberException e) {
