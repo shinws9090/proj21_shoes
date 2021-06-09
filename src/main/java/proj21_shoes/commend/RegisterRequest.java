@@ -1,4 +1,4 @@
-package proj21_shoes.dto;
+package proj21_shoes.commend;
 
 import java.time.LocalDate;
 

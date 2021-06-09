@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import proj21_shoes.commend.RegisterRequest;
 import proj21_shoes.dto.MemberDetail;
-import proj21_shoes.dto.RegisterRequest;
 import proj21_shoes.exeption.DuplicateMemberException;
 import proj21_shoes.service.RegisterMemberDetailService;
 
