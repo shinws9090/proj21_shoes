@@ -77,9 +77,12 @@
 				dataType : 'json',
 				cache : false,
 				data : JSON.stringify(data),
-				success : function() {
-					alert("카트저장완료");
-					alert("${session.getAttribute('cartList')}");
+				success : function(json) {
+					alert(json+"카트저장완료");
+					var res = confirm('장바구니 화면으로 이동하시겠습니까?')
+					if(res){
+						location.href = contextPath +"/cartList";					
+					}
 				},
 				error : function(request, status, error) {
 					alert("code:"+request.status+"\n"+"message:"

@@ -16,4 +16,9 @@ public interface CartMapper {
 	int updateCartCount(Cart cart);
 	
 	int deleteCart(int cartCode);
+	
+	Cart cartBycartCode(int cartCode);
+	void cartCountUp(int cartCode);
+	void cartCountDown(int cartCode);
+	
 }

@@ -1,0 +1,8 @@
+@charset "EUC-KR";
+
+table{
+	border: 1px solid #ccc;
+}
+table *{
+	border: 1px solid #ccc;
+}

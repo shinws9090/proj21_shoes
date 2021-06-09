@@ -20,12 +20,11 @@ public class ProductDetailController {
 	@GetMapping("/productDetail/{code}")
 	public ModelAndView productDetail(@PathVariable("code")int code) {
 		Product product = service.productByCode(code);
-		product.setOrderOptions(service.OrderOptionByCode(code));
 		return new ModelAndView("product/productDetail","product",product);
 	}
 	
 	@GetMapping("api/size")
-	public ResponseEntity<Object> members(@RequestParam(value = "styleCode") int styleCode,
+	public ResponseEntity<Object> getSize(@RequestParam(value = "styleCode") int styleCode,
 			@RequestParam(value = "code") int code){
 		return ResponseEntity.ok(service.OrderOptionByStyle(styleCode, code));
 	} 

@@ -36,9 +36,7 @@ public class MainMenuController {
 	
 	@PostMapping("/productList")
 	public ModelAndView productList(ProductSelectCommend productSelectCommend) {
-		System.out.println(productSelectCommend);
 		List<Product> products = service.productBycommand(productSelectCommend);
-		System.out.println(products);
 		return new ModelAndView("product/productList","products",products)
 				.addObject("productSelectCommend", productSelectCommend);
 	}

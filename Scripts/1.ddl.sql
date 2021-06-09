@@ -114,7 +114,9 @@ ALTER TABLE sinabro.orderProduct
 	ADD CONSTRAINT PK_orderProduct -- 주문상품 기본키
 		PRIMARY KEY (
 			order_code,   -- 주문코드
-			product_code  -- 상품코드
+			product_code,  -- 상품코드
+			style_code,  -- 스타일코드
+			size  -- 사이즈
 		);
 
 -- 상품주문정보

@@ -38,5 +38,20 @@
 	<delete id="deleteCart">
 		delete from cart where cart_code = #{cartCode}
 	</delete>
-
+	
+	<select id="cartBycartCode" parameterType="int" resultMap="ResCart">
+		select cart_code, member_code, `size`, product_code, style_code, count
+			from cart 
+			where cart_code = #{cartCode}
+	</select>
+	<update id="cartCountUp" parameterType="int">
+		update cart 
+			set count = count+1
+			where cart_code = #{cartCode} 
+	</update>
+	<update id="cartCountDown" parameterType="int">
+		update cart 
+			set count = count-1
+			where cart_code = #{cartCode} 
+	</update>
 </mapper>
