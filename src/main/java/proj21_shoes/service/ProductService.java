@@ -13,8 +13,8 @@ public interface ProductService {
 	List<Product> productByMenu(String menu);
 	List<Brand> brandByAll();
 	Product productByCode(int code);
-	List<OrderOption> OrderOptionByCode(int code);
 	List<Product> productByBrand(int code);
+	List<OrderOption> OrderOptionByCode(int code);
 	List<Product> productBycommand(ProductSelectCommend productSelectCommend);
 	List<OrderOption> OrderOptionByStyle(int styleCode, int code);
 	

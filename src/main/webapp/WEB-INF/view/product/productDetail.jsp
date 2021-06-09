@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="from" uri="http://www.springframework.org/tags/form"%>
 <c:set var="contextPath" value="<%=request.getContextPath()%>" />
+<c:set var="session" value="<%=request.getSession()%>" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,21 +32,67 @@
 			$(".tabs div").eq($(this).index()).addClass("active");
 		});
 		
-		$(".styleCode span").click(function(){
-			$(".styleCode span").removeClass();
-			$("#size span").remove();
-			$(this).addClass("active");
-			var styleCode = $(this).data("stylecode");
+		
+		$(".styleCode input").click(function(){
+			$(".styleCode label").removeClass("active");
+			$(".styleCode input").removeClass();
+			$("#size .size").remove();
+			$(this).parent().addClass("active");
+			$(this).addClass("style-code-data");
+			var styleCode = $(this).val();
 			var code = ${product.productCode};
 			
 			$.get(contextPath + "/api/size?styleCode="+styleCode+"&code="+code, function(json) {
 				var sCont = "";
+				
 				for(i = 0; i < json.length; i++){
-				sCont += "<span> "+json[i].size+" </span>";
+				sCont += "<label class='size'> ";
+				sCont += "<input type='radio' value="+json[i].size+" hidden='hidden'>"+json[i].size;
+				sCont += " </label>";
 				};
 				$("#size").append(sCont);
+				
+				$("#size input").click(function(){
+					$("#size label").removeClass("active")
+					$("#size input").removeClass();
+					$(this).parent().addClass("active");
+					$(this).addClass("size-data");
+				});
 			});
 		}); 
+		
+		
+		$("#cart").click(function(){
+			var data = {
+					productCode:${product.productCode},
+					styleCode:$(".style-code-data").val(),
+					size:$(".size-data").val(),
+					count:$("#count").val()
+			};
+			alert("카트저장")
+			$.ajax({
+				url : contextPath + "/api/cartSave",
+				type : 'post',
+				contentType : "application/json; charset=utf-8",
+				dataType : 'json',
+				cache : false,
+				data : JSON.stringify(data),
+				success : function(json) {
+					alert(json+"카트저장완료");
+					var res = confirm('장바구니 화면으로 이동하시겠습니까?')
+					if(res){
+						location.href = contextPath +"/cartList";					
+					}
+				},
+				error : function(request, status, error) {
+					alert("code:"+request.status+"\n"+"message:"
+							+request.responseText+"\n"+"error:"+error);
+				}
+			});
+			$("#size .size").remove();
+			$(".styleCode label").removeClass("active");
+		});
+		
 		
 		
 	});
@@ -83,7 +130,6 @@
 				<div class='product-QnA'>상품문의</div>
 			</div>
 		</div>
-		<form action="">
 		<div class="order-options">
 			<strong>${product.productName}</strong>
 			<p>
@@ -94,12 +140,18 @@
 				<c:forEach var="option" items="${product.orderOptions}" varStatus="status">
 					<c:choose>
 						<c:when test="${status.first}">
-							<span data-stylecode="${option.styleCode}">(${option.styleCode},${option.color})</span>
+							<label>
+							 <input type="radio" value="${option.styleCode}" hidden="hidden" >
+								(${option.styleCode},${option.color})
+							</label>
 						</c:when>
 						<c:when test="${option.styleCode == product.orderOptions[status.index-1].styleCode}">
 						</c:when>
 						<c:otherwise>
-							<span data-stylecode="${option.styleCode}">(${option.styleCode},${option.color})</span>
+							<label>
+							<input type="radio" value="${option.styleCode}" hidden="hidden" >
+								(${option.styleCode},${option.color})
+							</label>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
@@ -108,13 +160,12 @@
 				<label>size</label>
 			</div>
 			<p>${product.sellPrice}원</p>
-			<input type="number">
+			<input type="number" id="count">
 			<div class='submitBtns'>
 				<input type='submit' id='cart' value='장바구니' /> 
 				<input type='submit' id='purchase' value='구매하기' />
 			</div>
 		</div>
-		</form>
 	</section>
 
 	<footer>

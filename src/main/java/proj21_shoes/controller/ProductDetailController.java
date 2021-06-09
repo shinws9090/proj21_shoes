@@ -19,17 +19,13 @@ public class ProductDetailController {
 
 	@GetMapping("/productDetail/{code}")
 	public ModelAndView productDetail(@PathVariable("code")int code) {
-		System.out.println(code);
 		Product product = service.productByCode(code);
-		product.setOrderOptions(service.OrderOptionByCode(code));
-		System.out.println(product);
 		return new ModelAndView("product/productDetail","product",product);
 	}
 	
 	@GetMapping("api/size")
-	public ResponseEntity<Object> members(@RequestParam(value = "styleCode") int styleCode,
+	public ResponseEntity<Object> getSize(@RequestParam(value = "styleCode") int styleCode,
 			@RequestParam(value = "code") int code){
-		System.out.println(service.OrderOptionByStyle(styleCode, code));
 		return ResponseEntity.ok(service.OrderOptionByStyle(styleCode, code));
 	} 
 }

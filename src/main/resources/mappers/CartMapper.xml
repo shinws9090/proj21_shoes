@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="proj21_shoes.mapper.CartMapper">
+	
+	<resultMap type="Cart" id="ResCart">
+		<association property="member" javaType="Member">
+			<result column="member_code" property="memberCode"/>
+		</association>
+	</resultMap>
+	
+	<select id="cartListByMember" parameterType="Member" resultMap="ResCart">
+		select cart_code, member_code, `size`, product_code, style_code, count
+			from cart where member_code = #{memberCode}
+	</select>
+	
+	<select id="cartByOne" resultMap="ResCart">
+		select cart_code, member_code, `size`, product_code, style_code, count
+			from cart 
+			where member_code = #{member.memberCode} 
+			and `size` = #{size} 
+			and product_code = #{productCode}
+			and style_code = #{styleCode}
+	</select>
+	<insert id="insertCart">
+		insert into cart(member_code, `size`, product_code, style_code, count) 
+		values (#{member.memberCode},#{size},#{productCode},#{styleCode},#{count})
+	</insert>
+	
+	<update id="updateCartCount">
+		update cart 
+			set count = #{count}
+			where member_code = #{member.memberCode} 
+			and `size` = #{size} 
+			and product_code = #{productCode}
+			and style_code = #{styleCode}
+	</update>
+	
+	<delete id="deleteCart">
+		delete from cart where cart_code = #{cartCode}
+	</delete>
+	
+	<select id="cartBycartCode" parameterType="int" resultMap="ResCart">
+		select cart_code, member_code, `size`, product_code, style_code, count
+			from cart 
+			where cart_code = #{cartCode}
+	</select>
+	<update id="cartCountUp" parameterType="int">
+		update cart 
+			set count = count+1
+			where cart_code = #{cartCode} 
+	</update>
+	<update id="cartCountDown" parameterType="int">
+		update cart 
+			set count = count-1
+			where cart_code = #{cartCode} 
+	</update>
+</mapper>

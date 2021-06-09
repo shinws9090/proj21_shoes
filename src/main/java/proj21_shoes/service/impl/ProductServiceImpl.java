@@ -35,7 +35,9 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Product productByCode(int code) {
-		return mapper.productByCode(code);
+		Product product = mapper.productByCode(code);
+		product.setOrderOptions(OrderOptionByCode(code));
+		return product;
 	}
 
 	@Override

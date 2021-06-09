@@ -128,8 +128,7 @@ public class AdminController {
 		System.out.println(newProduct);
 //		System.out.println(regProductpost);
 
-		productService.insertProduct(newProduct);
-//		productPostService.insertProductPost(regProductpost);
+		productService.insertProduct(newProduct);//		productPostService.insertProductPost(regProductpost);
 //
 //		model.addAttribute(regProduct);
 //		model.addAttribute(regProductpost);

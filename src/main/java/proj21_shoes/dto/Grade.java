@@ -4,6 +4,18 @@ public class Grade {			//	등급
 	
 	private int gradeCode; 		// 	등급코드
 	private String grade; 		// 	등급
+	
+	
+	
+
+	public Grade() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Grade(int gradeCode) {
+		super();
+		this.gradeCode = gradeCode;
+	}
 
 	public int getGradeCode() {
 		return gradeCode;
