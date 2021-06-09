@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import proj21_shoes.dto.MemberDetail;
-import proj21_shoes.dto.RegisterRequest;
 
 
 

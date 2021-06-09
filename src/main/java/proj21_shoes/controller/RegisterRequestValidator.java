@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import proj21_shoes.dto.RegisterRequest;
+import proj21_shoes.commend.RegisterRequest;
 
 
 
