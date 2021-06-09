@@ -15,7 +15,7 @@
 	<nav class="top-menu">
 		<ul>
 			<li><a href="${contextPath}/register/step1">JOIN</a></li>
-			<li><a href="#">LOGIN</a></li>
+			<li><a href="${contextPath}/login/loginForm">LOGIN</a></li>
 			<li><a href="#">MYPAGE</a></li>
 			<li><a href="#">BOARD</a></li>
 
