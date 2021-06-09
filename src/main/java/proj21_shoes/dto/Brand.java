@@ -13,6 +13,12 @@ public class Brand { // 브랜드 구분
 		this.brandCode = brandCode;
 	}
 
+	public Brand(int brandCode, String brandName, String brandEngName) {
+		this.brandCode = brandCode;
+		this.brandName = brandName;
+		this.brandEngName = brandEngName;
+	}
+
 	public int getBrandCode() {
 		return brandCode;
 	}

@@ -1,9 +1,6 @@
 package proj21_shoes.mapper;
 
-import static org.junit.Assert.fail;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.ibatis.logging.Log;
