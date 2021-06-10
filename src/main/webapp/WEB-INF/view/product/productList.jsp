@@ -67,9 +67,9 @@ $(function() {
 				<div class="detail">
 					<div class="title">
 						<h2>
-							<em>${product.productName}</em>
+							<em>▒ ${product.productName}</em>
 						</h2>
-						<span class="price">${product.sellPrice}</span>
+						<span class="price">₩ ${product.sellPrice}</span>
 				</div>
 				</div>
 			</div>

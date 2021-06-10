@@ -14,8 +14,6 @@ img {
   object-fit: cover;
   border-radius: 20%;
 
-
-  
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -82,12 +80,12 @@ h1, h2, h3, h4, h5, h6 {
 	border-radius:20px; 
 	padding: 12px; 
 	word-break: break-all;
-	border-color: black; 
+	border-color: #898989; 
 	background-color:rgba(211, 211, 211, 0.2);
 }
 
 .title {
-	border-bottom: 2px dotted #000000;
+	border-bottom: 2px dotted #898989;
 	
 	/* 자식요소(.title h2)가 flout 속성이 들어가있어 크기를 잃어버려서 써야됨 */
 	overflow: hidden;
