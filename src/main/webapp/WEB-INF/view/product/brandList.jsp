@@ -36,16 +36,17 @@ $(function() {
 		<%-- ${products} --%>
 		<c:forEach var="b" items="${brand}">
 			<div class="item" data-item="${b.brandCode}">
-				<img src="images/model-female.png">
+				<img src="images/닥터마틴logo.jpg">
 				<div class="detail">
 					<div class="title">
 						<h2>
-							<em>${b.brandName}</em>
+							<em> ＊ ${b.brandName}</em>
 						</h2>
 						
 						<h5>
 							<em>${b.brandEngName}</em>
 						</h5>
+						
 					</div>
 				</div>
 			</div>
