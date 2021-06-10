@@ -17,132 +17,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/cartList.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script type="text/javascript">
-$(function() {
-	var contextPath = "${contextPath}"
-	/*전채가격 설정*/
-	function priceAll() {
-		var priceAll = 0;
-		$(".check:checked").parent().parent().children(".price").each(function() {
-			priceAll += Number($(this).text());
-		});
-		$("#priceAll").text("전체가격:" + priceAll);
-	}
-	priceAll();
-	
-	
-	$("#allCheck").click(function(){
-		if($("#allCheck").prop("checked")){
-			$(".check").prop("checked", true);
-		}else{
-			$(".check").prop("checked", false);
-		}
-		priceAll();
-	});
-	
-	$(".check").click(function(){
-		priceAll();
-	});
-	
-	
-	/* 수량 up,down DB연동 */
-	function count(url , cartCode, t){
-		var c = 0;
-		$.ajax({
-			url : contextPath + "/api/"+url+"/"+cartCode,
-			type : 'put',
-			contentType : "application/json; charset=utf-8",
-			dataType : 'json',
-			async: false,
-			cache : false,
-			success : function(json) {
-				c= json.count;
-			},
-			error : function(request, status, error) {
-				alert("code:"+request.status+"\n"+"message:"
-						+request.responseText+"\n"+"error:"+error);
-			}
-		});
-		return c;
-	}
-	
-	/* 수량 up */
-	$(".countDown").click(function(){
-		var cartCode = $(this).val();
-		var res = count("countDown" ,cartCode)
-		$(this).next().text(res);
-		var price = res * $(this).parent().parent().children(".price").data("sellprice");
-		$(this).parent().parent().children(".price").text(price);
-		priceAll()
-	});
-	/* 수량 down */
-	$(".countUp").click(function(){
-		var cartCode = $(this).val();
-		var res = count("countUp" ,cartCode);
-		$(this).prev().text(res);
-		var price = res * $(this).parent().parent().children(".price").data("sellprice");
-		$(this).parent().parent().children(".price").text(price);
-		priceAll()
-	});
-	
-	
-	
-	/* 카트물품 삭제 */
-	function cartDelete(cartCode){
-		$.ajax({
-			url : contextPath + "/api/delete/"+cartCode,
-			type : 'delete',
-			contentType : "application/json; charset=utf-8",
-			dataType : 'json',
-			async: false,
-			cache : false,
-			success : function() {
-				$(".del").remove();
-			},
-			error : function(request, status, error) {
-				alert("code:"+request.status+"\n"+"message:"
-						+request.responseText+"\n"+"error:"+error);
-				
-			}
-		});
-	}
-	
-	/* 개별삭제 */
-	$(".delete").click(function(){
-		$(this).parent().parent().addClass("del")
-		var cartCode = $(this).val();
-		cartDelete(cartCode)
-		$(this).parent().parent().removeClass("del");
-		priceAll();
-	});
-	/* 선택물품 삭제 */
-	$("#checkBoxDelete").click(function(){
-		$(".check:checked").parent().parent().children().children(".delete")
-		.each(function() {
-			$(this).parent().parent().addClass("del")
-			cartDelete($(this).val());
-			$(this).parent().parent().removeClass("del");
-		});
-		$("#allCheck").prop("checked", false);
-		priceAll();
-	});
-	
-	$("#order").click(function(){
-		var codeArr = [];
-		$(".check:checked").each(function(){
-			codeArr.push($(this).val());
-		});
-		$.ajax({
-			url : contextPath + "/order",
-			type : 'post',
-			contentType : "application/json; charset=utf-8",
-			dataType : 'json',
-			data: JSON.stringify(codeArr)
-		});
-	});
-});
-</script>
 </head>
 <body class="main-layout">
 	<header>
@@ -150,30 +24,48 @@ $(function() {
 	</header>
 
 	<section>
-		${order }
-		<%-- ${productList} --%>
+	<%-- 	${order }
+		${productList} --%>
 			<table>
 				<thead>
 				<tr>
-					<th>대표이미지 </th>
 					<th>상품코드 </th>
-					<th>상품명 </th>
 					<th>스타일코드 </th>
-					<th>사이즈 </th>
-					<th>색상 </th>
+					<th>대표이미지 </th>
+					<th>상품명 </th>
 					<th>가격 </th>
 					<th>수량 </th>
+					<th>색상 </th>
+					<th>사이즈 </th>
 				</tr>
 				</thead>
-				<tbody>
-					
+				<tbody>	
+					<c:forEach var="orderProduct" items="${order.orderProduct}">
+					<tr>
+						<td>${orderProduct.orderOption.productCode} </td>
+						<td>${orderProduct.orderOption.styleCode} </td>
+						<c:forEach var="p" items="${productList}">
+							<c:if test="${orderProduct.orderOption.productCode == p.productCode}">
+								<td>${p.productPost.productMainImage} </td>
+								<td>${p.productName} </td>
+								<td class="price" data-sellprice="${p.sellPrice}">
+									${p.sellPrice*orderProduct.orderCount}</td>
+							</c:if>
+						</c:forEach>
+						<td>
+							${orderProduct.orderCount} 
+						</td>
+						<td>${orderProduct.orderOption.color}</td>
+						<td>${orderProduct.orderOption.size} </td>
+					</tr>	
+					</c:forEach>
 				</tbody>
 			</table>
 			<ul>
-				
+				<li> <jsp:forward page=""/> </li>
 			</ul>
 	</section>
-
+		
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp"/>
 	</footer>

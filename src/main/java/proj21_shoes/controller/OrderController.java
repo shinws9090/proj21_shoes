@@ -29,10 +29,8 @@ public class OrderController {
 	ProductService pService;
 	
 	@PostMapping("/order")
-	public ModelAndView orderList( @RequestParam(required = false, value = "codeList") List<Integer> codeList) {
-		System.out.println(codeList);
+	public ModelAndView orderList(@RequestParam(required = false, value = "codeList") List<Integer> codeList) {
 		List<Cart> cartList = cService.cartBycartCodes(codeList);
-		System.out.println(cartList);
 		List<OrderProduct> orderProductList = new ArrayList<OrderProduct>();
 		for(Cart c : cartList) {
 			
