@@ -90,6 +90,14 @@ $(function() {
 		$("#priceAll").text("전체가격:" + priceAll);
 	}
 	priceAll()
+	$("#allCheck").click(function(){
+		alert("하");
+		if($("#allCheck").prop("checked")){
+			$(".remove").prop("checked", true);
+		}else{
+			$(".remove").prop("checked", false);
+		}
+	});
 });
 </script>
 </head>
@@ -104,6 +112,7 @@ $(function() {
 			<table>
 				<thead>
 				<tr>
+					<td><input type="checkbox" id ="allCheck" name="allCheck" onclick="checkAll(this.form)"/> </td>
 					<th>상품코드 </th>
 					<th>상품명 </th>
 					<th>대표이미지 </th>
@@ -118,6 +127,9 @@ $(function() {
 				<tbody>
 					<c:forEach var="cart" items="${cartList}">
 					<tr>
+						<td>
+        					<input type="checkbox" class="remove" name="remove" value="${cart.kind }"/>
+        				</td>
 						<c:forEach var="p" items="${productList}">
 							<c:if test="${cart.productCode == p.productCode}">
 								<td>${p.productCode} </td>
