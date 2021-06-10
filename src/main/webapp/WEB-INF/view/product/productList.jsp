@@ -63,15 +63,14 @@ $(function() {
 		</nav>
 		<c:forEach var="product" items="${products}">
 			<div class="item" data-item="${product.productCode}">
-				<img src="images/model-female.png">
+				<img src="images/women-myool-main.jpg">
 				<div class="detail">
 					<div class="title">
 						<h2>
 							<em>${product.productName}</em>
 						</h2>
 						<span class="price">${product.sellPrice}</span>
-						<span class="price">${product.gender}</span>
-					</div>
+				</div>
 				</div>
 			</div>
 		</c:forEach>
