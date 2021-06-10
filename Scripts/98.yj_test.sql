@@ -22,7 +22,7 @@ insert into memberdetail values
 -- 회원정보
 INSERT INTO member
 (member_id, point, cumulative_buy_amount, grade_code, quit_state, signUp_date)
-VALUES('11', 1, 1, 1, 1, '11-11-11 11:11:11');
+VALUES('55', 1, 1, 1, 1, '11-11-11 11:11:11');
 
 
 -- 상품문의게시판
@@ -45,6 +45,8 @@ from memberdetail  md left join member m  on md.member_id =m.member_id  left joi
 -- ---------------------------------
 select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address, point, cumulative_buy_amount, grade,  signUp_date
 from vw_mypagedata where member_id=11; 
+
+
 
 
 	

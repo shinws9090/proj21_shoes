@@ -12,11 +12,10 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import proj21_shoes.commend.AuthInfoCommend;
 import proj21_shoes.commend.LoginCommand;
-import proj21_shoes.dto.MemberDetail;
+import proj21_shoes.exeption.QuitMemberException;
 import proj21_shoes.exeption.WrongIdPasswordException;
 import proj21_shoes.service.AuthService;
 
@@ -58,11 +57,13 @@ public class LoginController {
 		} catch (WrongIdPasswordException ex) {
 			errors.reject("idPasswordNotMatching");
 			return "/login/loginForm";
-		}
+		}catch (QuitMemberException ex) {
+			errors.reject("quitMemberException");
+			return "/login/loginForm";
 
-	}
+	   }
 
 	
-
+	}
 }
 

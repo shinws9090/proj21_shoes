@@ -26,4 +26,9 @@ public class RegisterMemberServiceImpl implements RegisterMemberService {
 		return mapper.selectMemberByMCode(req);
 	}
 
+	@Override
+	public Member selectMemberById(String string) {
+		return mapper.selectMemberById(string);
+	}
+
 }
