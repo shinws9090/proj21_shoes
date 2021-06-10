@@ -47,7 +47,7 @@
 			</c:if>
 			<c:if test="${!empty authInfo}">
 				
-				<h1>(${authInfo.memberName }님의 마이페이지</h1>
+				<h1>${authInfo.memberName }님의 마이페이지</h1>
 				<h2>회원정보</h2>
 				<tr style="background-color:#e5e5e5 ; text-align: center">
 					<h3><td><a href="${contextPath}/myPage/${authInfo.memberId}">-회원정보 변경</a></td></h3>
