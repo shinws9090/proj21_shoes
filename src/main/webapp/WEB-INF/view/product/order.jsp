@@ -47,7 +47,7 @@ $(function() {
 	
 	
 	/* 수량 up,down DB연동 */
-	function count(url , cartCode){
+	function count(url , cartCode, t){
 		var c = 0;
 		$.ajax({
 			url : contextPath + "/api/"+url+"/"+cartCode,
@@ -133,8 +133,13 @@ $(function() {
 		$(".check:checked").each(function(){
 			codeArr.push($(this).val());
 		});
-		$("#data").val(codeArr);
-		$("#target").submit();
+		$.ajax({
+			url : contextPath + "/order",
+			type : 'post',
+			contentType : "application/json; charset=utf-8",
+			dataType : 'json',
+			data: JSON.stringify(codeArr)
+		});
 	});
 });
 </script>
@@ -145,68 +150,28 @@ $(function() {
 	</header>
 
 	<section>
-		${cartList}
+		${order }
 		<%-- ${productList} --%>
 			<table>
 				<thead>
 				<tr>
-					<td><input type="checkbox" id ="allCheck" name="allCheck"/></td>
+					<th>대표이미지 </th>
 					<th>상품코드 </th>
 					<th>상품명 </th>
-					<th>대표이미지 </th>
-					<th>가격 </th>
-					<th>색상 </th>
 					<th>스타일코드 </th>
 					<th>사이즈 </th>
+					<th>색상 </th>
+					<th>가격 </th>
 					<th>수량 </th>
-					<th>삭제 </th>
 				</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="cart" items="${cartList}">
-					<tr>
-						<td>
-        					<input type="checkbox" class="check" value="${cart.cartCode}"/>
-        				</td>
-						<c:forEach var="p" items="${productList}">
-							<c:if test="${cart.productCode == p.productCode}">
-								<td>${p.productCode} </td>
-								<td>${p.productName} </td>
-								<td>${p.productPost.productMainImage} </td>
-								<td class="price" data-sellprice="${p.sellPrice}">
-									${p.sellPrice*cart.count}</td>
-								
-								<c:forEach var="o" items="${p.orderOptions}">
-									<c:if test="${cart.styleCode==o.styleCode}">
-										<td>${o.color}</td>
-									</c:if>
-								</c:forEach>
-								
-							</c:if>
-						</c:forEach>
-						
-						<td>${cart.styleCode} </td>
-						<td>${cart.size} </td>
-						<td>
-							<button class="countDown" value="${cart.cartCode}">◀</button>
-							<span>${cart.count} </span>
-							<button class="countUp" value="${cart.cartCode}">▶</button>
-						</td>
-						<td>
-							<button class="delete" value="${cart.cartCode}">삭제</button>
-						</td>
-					</tr>
-					</c:forEach>
+					
 				</tbody>
 			</table>
 			<ul>
-				<li id="priceAll">전체가격:</li>
-				<li><button id="order">구매하기</button></li>
-				<li><button id="checkBoxDelete">선택삭제</button></li>
+				
 			</ul>
-			<form action="order" id="target" method="post">
-				<input type="hidden" id="data" name="codeList">
-			</form>
 	</section>
 
 	<footer>

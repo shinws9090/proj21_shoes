@@ -2,17 +2,9 @@ package proj21_shoes.dto;
 
 public class OrderProduct {
 
-	private Order order;
 	private OrderOption orderOption;
 	private int orderCount;
 
-	public Order getOrder() {
-		return order;
-	}
-
-	public void setOrder(Order order) {
-		this.order = order;
-	}
 
 	public OrderOption getOrderOption() {
 		return orderOption;
@@ -32,7 +24,7 @@ public class OrderProduct {
 
 	@Override
 	public String toString() {
-		return String.format("OrderProduct [order=%s, orderOption=%s, orderCount=%s]", order, orderOption, orderCount);
+		return String.format("OrderProduct [orderOption=%s, orderCount=%s]", orderOption, orderCount);
 	}
 
 }

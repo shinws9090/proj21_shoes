@@ -20,5 +20,7 @@ public interface CartMapper {
 	Cart cartBycartCode(int cartCode);
 	void cartCountUp(int cartCode);
 	void cartCountDown(int cartCode);
+
+	List<Cart> cartBycartCodes(List<Integer> cartCodes);
 	
 }

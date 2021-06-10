@@ -57,6 +57,11 @@ public class CartServiceImpl implements CartService{
 	public Cart cartBycartCode(int cartCode) {
 		return mapper.cartBycartCode(cartCode);
 	}
+
+	@Override
+	public List<Cart> cartBycartCodes(List<Integer> cartCodes) {
+		return mapper.cartBycartCodes(cartCodes);
+	}
 	
 
 }
