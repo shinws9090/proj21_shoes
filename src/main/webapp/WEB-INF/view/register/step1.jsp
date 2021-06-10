@@ -33,24 +33,32 @@
 	<!-- end header -->
 
   <!-- 동의 -->
-  
+ <!-- 회원가입 -->
   
 	<section class="box">
+	 <h2>회원가입</h2>
 		<article class="box1">
 			<h2>
 				<spring:message code="term" />  <!--약관  -->
 			</h2>
+			<br>
+		
 			<p>
 				<spring:message code="term.content1" /> <!-- 약관내용 -->
 			</p>
+			<br>
 			<form action="step2" method="post">
 				<label> <input type="checkbox" name="agree" value="true"><!-- 동의 -->
 				<spring:message code="term.agree" /></label> <input type="submit" value="<spring:message code="next.btn"/>" /><!--다음단계  -->
 			</form>
+			<br>
 			<form action="../index" method="get">
 			<label><input type="submit" value="가입취소(메인으로)"/> </label>
+			<br>
+				<img src="../images/welcome.jpg" align="right">
 			</form>
 			</article>
+				
 	</section>
 
 
