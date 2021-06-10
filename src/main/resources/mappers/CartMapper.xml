@@ -54,4 +54,13 @@
 			set count = count-1
 			where cart_code = #{cartCode} 
 	</update>
+	
+	<select id="cartBycartCodes" parameterType="list" resultMap="ResCart">
+		select * 
+		from cart
+		where cart_code in 
+		 <foreach   item = "code" collection="list" index = "index" open = "(" close = ")" separator=",">
+               #{code}
+         </foreach>
+	</select>
 </mapper>

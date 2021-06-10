@@ -1,6 +1,6 @@
 package proj21_shoes.commend;
 
-public class AuthInfo {
+public class AuthInfoCommend {
 
 	private String memberId;
 	private String email;
@@ -26,7 +26,7 @@ public class AuthInfo {
 	}
 	
 	
-	public AuthInfo(String memberId, String email, String memberName) {
+	public AuthInfoCommend(String memberId, String email, String memberName) {
 		super();
 		this.memberId = memberId;
 		this.email = email;

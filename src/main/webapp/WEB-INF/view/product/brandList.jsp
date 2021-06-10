@@ -42,6 +42,7 @@ $(function() {
 						<h2>
 							<em>${b.brandName}</em>
 						</h2>
+						
 						<h5>
 							<em>${b.brandEngName}</em>
 						</h5>

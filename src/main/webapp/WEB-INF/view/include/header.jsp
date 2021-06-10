@@ -14,28 +14,29 @@
 	</div>
 	<nav class="top-menu">
 		<ul>
+			<!--로그인 하지 않았을 때 보여지는 메뉴  -->
 			<c:if test="${empty authInfo}"> 
-				<p>환영합니다.</p> 
+				<p>로그인해주세요.</p> 
 				<p>
-				<li><a href="${contextPath}/register/step1">JOIN</a></li>
-			<li><a href="${contextPath}/login/loginForm">LOGIN</a></li>
-				
+				<li><a href="${contextPath}/register/step1">회원가입</a></li>
+				<li><a href="${contextPath}/login/loginForm">로그인</a></li>			
 			</c:if>
+			
+			<!-- 로그인 했을 때 보여지는 메뉴 -->
 			<c:if test="${!empty authInfo}">
 				<p>${authInfo.memberName }님. 환영합니다</p>
 				<p>
-					<%-- <a href="<c:url value="/edit/changePassword"/>">[비밀번호 변경]</a> --%>
-					
-					<a href="<c:url value="/logout"/>">로그아웃</a>
-					
-				
-				</p>
 			
+					<%-- <a href="<c:url value="/edit/changePassword"/>">[비밀번호 변경]</a> --%>
+				</p>	
+				<li><a href="${contextPath}/cartList">장바구니</a></li>		
+				<li><a href="${contextPath}/myPage">마이페이지</a></li>
+				<li><a href="<c:url value="/logout"/>">로그아웃</a></li>
 			</c:if>
 			
 
-			<li><a href="#">MYPAGE</a></li>
-			<li><a href="#">BOARD</a></li>
+			
+			<li><a href="#">공지사항</a></li>
 
 			<!-- 직원 아이디로 로그인 하고 권한 있을때 관리자 화면 표시 -->
 			<%-- <c:if test="${employee.authority == 1}"> --%>

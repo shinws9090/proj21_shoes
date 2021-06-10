@@ -21,8 +21,33 @@
 <script type="text/javascript">
 $(function() {
 	var contextPath = "${contextPath}"
+	/*전채가격 설정*/
+	function priceAll() {
+		var priceAll = 0;
+		$(".check:checked").parent().parent().children(".price").each(function() {
+			priceAll += Number($(this).text());
+		});
+		$("#priceAll").text("전체가격:" + priceAll);
+	}
+	priceAll();
 	
-	function count(url , cartCode, t){
+	
+	$("#allCheck").click(function(){
+		if($("#allCheck").prop("checked")){
+			$(".check").prop("checked", true);
+		}else{
+			$(".check").prop("checked", false);
+		}
+		priceAll();
+	});
+	
+	$(".check").click(function(){
+		priceAll();
+	});
+	
+	
+	/* 수량 up,down DB연동 */
+	function count(url , cartCode){
 		var c = 0;
 		$.ajax({
 			url : contextPath + "/api/"+url+"/"+cartCode,
@@ -42,6 +67,7 @@ $(function() {
 		return c;
 	}
 	
+	/* 수량 up */
 	$(".countDown").click(function(){
 		var cartCode = $(this).val();
 		var res = count("countDown" ,cartCode)
@@ -50,7 +76,7 @@ $(function() {
 		$(this).parent().parent().children(".price").text(price);
 		priceAll()
 	});
-	
+	/* 수량 down */
 	$(".countUp").click(function(){
 		var cartCode = $(this).val();
 		var res = count("countUp" ,cartCode);
@@ -60,9 +86,10 @@ $(function() {
 		priceAll()
 	});
 	
-	$(".delete").click(function(){
-		$(this).parent().parent().addClass("del")
-		var cartCode = $(this).val();
+	
+	
+	/* 카트물품 삭제 */
+	function cartDelete(cartCode){
 		$.ajax({
 			url : contextPath + "/api/delete/"+cartCode,
 			type : 'delete',
@@ -79,24 +106,35 @@ $(function() {
 				
 			}
 		});
-		$(this).parent().parent().removeClass("del")
+	}
+	
+	/* 개별삭제 */
+	$(".delete").click(function(){
+		$(this).parent().parent().addClass("del")
+		var cartCode = $(this).val();
+		cartDelete(cartCode)
+		$(this).parent().parent().removeClass("del");
+		priceAll();
+	});
+	/* 선택물품 삭제 */
+	$("#checkBoxDelete").click(function(){
+		$(".check:checked").parent().parent().children().children(".delete")
+		.each(function() {
+			$(this).parent().parent().addClass("del")
+			cartDelete($(this).val());
+			$(this).parent().parent().removeClass("del");
+		});
+		$("#allCheck").prop("checked", false);
+		priceAll();
 	});
 	
-	function priceAll() {
-		var priceAll = 0;
-		$(".price").each(function() {
-			priceAll += Number($(this).text());
+	$("#order").click(function(){
+		var codeArr = [];
+		$(".check:checked").each(function(){
+			codeArr.push($(this).val());
 		});
-		$("#priceAll").text("전체가격:" + priceAll);
-	}
-	priceAll()
-	$("#allCheck").click(function(){
-		alert("하");
-		if($("#allCheck").prop("checked")){
-			$(".remove").prop("checked", true);
-		}else{
-			$(".remove").prop("checked", false);
-		}
+		$("#data").val(codeArr);
+		$("#target").submit();
 	});
 });
 </script>
@@ -112,7 +150,7 @@ $(function() {
 			<table>
 				<thead>
 				<tr>
-					<td><input type="checkbox" id ="allCheck" name="allCheck" onclick="checkAll(this.form)"/> </td>
+					<td><input type="checkbox" id ="allCheck" name="allCheck"/></td>
 					<th>상품코드 </th>
 					<th>상품명 </th>
 					<th>대표이미지 </th>
@@ -128,7 +166,7 @@ $(function() {
 					<c:forEach var="cart" items="${cartList}">
 					<tr>
 						<td>
-        					<input type="checkbox" class="remove" name="remove" value="${cart.kind }"/>
+        					<input type="checkbox" class="check" value="${cart.cartCode}"/>
         				</td>
 						<c:forEach var="p" items="${productList}">
 							<c:if test="${cart.productCode == p.productCode}">
@@ -150,12 +188,12 @@ $(function() {
 						<td>${cart.styleCode} </td>
 						<td>${cart.size} </td>
 						<td>
-						<button class="countDown" value="${cart.cartCode}">◀</button>
-						<span>${cart.count} </span>
-						<button class="countUp" value="${cart.cartCode}">▶</button>
+							<button class="countDown" value="${cart.cartCode}">◀</button>
+							<span>${cart.count} </span>
+							<button class="countUp" value="${cart.cartCode}">▶</button>
 						</td>
 						<td>
-						<button class="delete" value="${cart.cartCode}">삭제</button>
+							<button class="delete" value="${cart.cartCode}">삭제</button>
 						</td>
 					</tr>
 					</c:forEach>
@@ -163,8 +201,12 @@ $(function() {
 			</table>
 			<ul>
 				<li id="priceAll">전체가격:</li>
-				<li>구매하기</li>
+				<li><button id="order">구매하기</button></li>
+				<li><button id="checkBoxDelete">선택삭제</button></li>
 			</ul>
+			<form action="order" id="target" method="post">
+				<input type="hidden" id="data" name="codeList">
+			</form>
 	</section>
 
 	<footer>

@@ -1,16 +1,41 @@
 package proj21_shoes.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
-public class Order { 					// 	주문정보
+public class Order { 						// 	주문정보
 	
-	private int orderCode; 				// 	주문코드
-	private Member memberCode;			// 	회원코드
-	private LocalDateTime orderDate; 	//  주문일
-	private int paymentAmount; 			// 	결제금액
-	private boolean paymentState; 		// 	결제여부
-	private String deliveryCode; 		// 	배송코드
-	private boolean buyConfirmState; 	// 	구매확정여부
+	private int orderCode; 					// 	주문코드
+	private Member memberCode;				// 	회원코드
+	private LocalDateTime orderDate; 		//  주문일
+	private int paymentAmount; 				// 	결제금액
+	private boolean paymentState; 			// 	결제여부
+	private String deliveryCode; 			// 	배송코드
+	private boolean buyConfirmState; 		// 	구매확정여부
+	private List<OrderProduct> orderProduct;
+	private Address address;
+	
+	
+
+	
+
+	
+
+	public List<OrderProduct> getOrderProduct() {
+		return orderProduct;
+	}
+
+	public void setOrderProduct(List<OrderProduct> orderProduct) {
+		this.orderProduct = orderProduct;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
 	public int getOrderCode() {
 		return orderCode;
@@ -71,8 +96,10 @@ public class Order { 					// 	주문정보
 	@Override
 	public String toString() {
 		return String.format(
-				"Order [orderCode=%s, memberCode=%s, orderDate=%s, paymentAmount=%s, paymentState=%s, deliveryCode=%s, buyConfirmState=%s]",
-				orderCode, memberCode, orderDate, paymentAmount, paymentState, deliveryCode, buyConfirmState);
+				"Order [orderCode=%s, memberCode=%s, orderDate=%s, paymentAmount=%s, paymentState=%s, deliveryCode=%s, buyConfirmState=%s, orderProduct=%s, address=%s]",
+				orderCode, memberCode, orderDate, paymentAmount, paymentState, deliveryCode, buyConfirmState,
+				orderProduct, address);
 	}
 
+	
 }

@@ -13,6 +13,7 @@ public interface MemberMapper {
 									
 	//~로 검색  (모든 조건으로 검색할수있어야??)
 	Member selectMemberByMCode(int string);					//회원코드로 검색
+	Member selectMemberById(String memberId);					//회원아이디로 검색
 	
 	int insertMember(Member req); 		 					//회원정보 추가
 	int updateMember(Member memberDetail);  				//회원정보 수정

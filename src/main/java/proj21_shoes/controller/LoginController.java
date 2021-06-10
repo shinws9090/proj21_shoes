@@ -12,10 +12,10 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import proj21_shoes.commend.AuthInfo;
+import proj21_shoes.commend.AuthInfoCommend;
 import proj21_shoes.commend.LoginCommand;
+import proj21_shoes.exeption.QuitMemberException;
 import proj21_shoes.exeption.WrongIdPasswordException;
 import proj21_shoes.service.AuthService;
 
@@ -24,7 +24,8 @@ public class LoginController {
 
 	@Autowired
 	private AuthService authService;  
-
+	
+	//로그인 화면
 	@GetMapping("/login/loginForm")
 	public String form(LoginCommand loginComaand, @CookieValue(value = "REMEMBER", required = false) Cookie cookie) {	
 		
@@ -35,14 +36,14 @@ public class LoginController {
 		return "/login/loginForm";
 
 	}
-
+	//로그인완료 화면
 	@PostMapping("/login/loginSuccess")
 	public String submit(LoginCommand loginCommand, Errors errors, HttpSession session, HttpServletResponse response) {
 	//	new LoginCommandValidator().validate(loginCommand, errors);
 		if (errors.hasErrors())
 			return "/login/loginForm";
 		try {
-			AuthInfo authInfo = authService.authenicate(loginCommand.getMemberId(), loginCommand.getMemberPwd());
+			AuthInfoCommend authInfo = authService.authenicate(loginCommand.getMemberId(), loginCommand.getMemberPwd());
 			session.setAttribute("authInfo", authInfo);
 			Cookie rememberCookie = new Cookie("REMEMBER", loginCommand.getMemberId());
 			rememberCookie.setPath("/");
@@ -56,10 +57,13 @@ public class LoginController {
 		} catch (WrongIdPasswordException ex) {
 			errors.reject("idPasswordNotMatching");
 			return "/login/loginForm";
-		}
+		}catch (QuitMemberException ex) {
+			errors.reject("quitMemberException");
+			return "/login/loginForm";
 
-	}
+	   }
+
 	
-
+	}
 }
 
