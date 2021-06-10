@@ -6,6 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,27 +18,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>lighten</title>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/style.css">
-<link rel="stylesheet"
-	href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script>
-	$(function(){
-		/* 등록 버튼 */
-		$("#btnReg").click(function() {
-			$("#productRegForm").submit();
-		});
-	
-		/* 취소 버튼 */
-		$("#btnReset").click(function() {
-			location.href = "/proj21_shoes/productMgt"
-		});
-	});
-</script>
-
 </head>
-
 <body class="main-layout">
 	<!-- header -->
 	<header>
@@ -47,20 +31,20 @@
 
 	<section>
 		<jsp:include page="/WEB-INF/view/admin/include/adminMenu.jsp" />
-
+		
 		<div class="admin_content_wrap">
 			<div class="admin_content_main">
 				<form action="productReg" method="post" id="productRegForm">
-
+					
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>상품코드</label>
 						</div>
 						<div class="form_section_content">
-							<input name="productCode" value="">
+							<input name="productCode" value="21">
 						</div>
 					</div>
-
+					
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>상품명</label>
@@ -69,7 +53,7 @@
 							<input name="productName" value="신발">
 						</div>
 					</div>
-
+					
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>브랜드</label>
@@ -78,7 +62,7 @@
 							<input name="brand" value="1">
 						</div>
 					</div>
-
+					
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>성별</label>
@@ -87,7 +71,7 @@
 							<input name="gender" value="남">
 						</div>
 					</div>
-
+					
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>카테고리</label>
@@ -96,7 +80,7 @@
 							<input name="category" value="1">
 						</div>
 					</div>
-
+					
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>소재</label>
@@ -105,7 +89,7 @@
 							<input name="material" value="소재">
 						</div>
 					</div>
-
+					
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>계절</label>
@@ -114,16 +98,16 @@
 							<input name="season" value="계절">
 						</div>
 					</div>
-
+					
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>제조일</label>
 						</div>
 						<div class="form_section_content">
-							<input type="date" name="madeDate">
+							<input name="madeDate" value="20210101">
 						</div>
 					</div>
-
+					
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>공급가격</label>
@@ -132,7 +116,7 @@
 							<input name="costPrice" value="50000">
 						</div>
 					</div>
-
+					
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>판매가격</label>
@@ -141,16 +125,16 @@
 							<input name="sellPrice" value="60000">
 						</div>
 					</div>
-
+					
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>등록일</label>
 						</div>
 						<div class="form_section_content">
-							<input type="date" name="registDate">
+							<input name="registDate" value="20210101">
 						</div>
 					</div>
-
+					
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>누적등록수량</label>
@@ -159,7 +143,7 @@
 							<input name="cumulativeRegistCount" value="1">
 						</div>
 					</div>
-
+					
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>누적판매수량</label>
@@ -176,66 +160,64 @@
 						<div class="form_section_content">
 							<input name="employee" value="1">
 						</div>
-					</div>
+					</div>			
 					
-					<div class="form_section">
+					<!-- <div class="form_section">
 						<div class="form_section_title">
-							<label>상품대표이미지</label>
+							<label>등록사원정보</label>
 						</div>
 						<div class="form_section_content">
-							<input name="productMainImage">
-						</div>
-					</div>
-					
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>내용</label>
-						</div>
-						<div class="form_section_content">
-							<input name="content" value="내용">
+							<input name="employee" value="1">
 						</div>
 					</div>
 					
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>상품이미지들</label>
+							<label>등록사원정보</label>
 						</div>
 						<div class="form_section_content">
-							<input name="images">
+							<input name="employee" value="1">
 						</div>
 					</div>
-				
-
+					
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>등록사원정보</label>
+						</div>
+						<div class="form_section_content">
+							<input name="employee" value="1">
+						</div>
+					</div>
+					
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>등록사원정보</label>
+						</div>
+						<div class="form_section_content">
+							<input name="employee" value="1">
+						</div>
+					</div> -->
+					
 				</form>
-				
-					<div class="btn_section">
-						<!-- <input type="button" value="등록" id="btnReg" style="cursor: pointer">
-						<input type="button" value="취소" id="btnReset" style="cursor: pointer"> -->
-
-						<button id="btnReg" class="btnReg_btn" style="cursor: pointer">등록</button>
-						<button id="btnReset" class="btnReset_btn" style="cursor: pointer">취소</button>
-					</div>
-
-				<!-- <script>
-					$("#btnReg").on('click', function() {
-						$.ajax({
-							type : "POST",
-							data : $('productRegForm').serialize(),
-							contentType : "application/json; charset=utf-8",
-							url : "/productReg",
-							success : function(data) {
-								alert("complete");
-							},
-							error : function(e) {
-								alert("fail" + e);
-							}
-						});
-					});					
-				</script> -->
 			</div>
 		</div>
+		<div class="btn_section">
+			<button id="btnReg" class="btnReg_btn" style="cursor: pointer">등록</button>
+			<button id="btnReset" class="btnReset_btn" style="cursor: pointer">취소</button>
+		</div>
+			
+			<script>
+				/* 등록 버튼 */
+				$("#btnReg").click(function() {
+					$("#productRegForm").submit();
+				});
+			
+				/* 취소 버튼 */
+				$("#btnReset").click(function() {
+					location.href = "/proj21_shoes/productMgt"
+				});
+			</script>
 
-		
 
 
 	</section>
@@ -244,6 +226,8 @@
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp" />
 	</footer>
+
+
 
 </body>
 </html>
