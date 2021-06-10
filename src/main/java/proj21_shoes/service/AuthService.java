@@ -3,7 +3,7 @@ package proj21_shoes.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import proj21_shoes.commend.AuthInfo;
+import proj21_shoes.commend.AuthInfoCommend;
 import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.exeption.WrongIdPasswordException;
 import proj21_shoes.mapper.MemberDetailMapper;
@@ -13,7 +13,7 @@ public class AuthService {
 	@Autowired
 	private MemberDetailMapper mapper;
 
-	public AuthInfo authenicate(String memberId, String password) { 	 //아이디랑 비번 입력받아서
+	public AuthInfoCommend authenicate(String memberId, String password) { 	 //아이디랑 비번 입력받아서
 		MemberDetail member = mapper.selectMemberDetailById(memberId);   //memberDetail에 있는앤지 id로 검색쓰
 		if (member == null) {
 			throw new WrongIdPasswordException();
@@ -21,6 +21,6 @@ public class AuthService {
 		if (!member.matchPassword(password)) {
 			throw new WrongIdPasswordException();
 		}
-		return new AuthInfo(member.getMemberId(), member.getEmail(), member.getMemberName());
+		return new AuthInfoCommend(member.getMemberId(), member.getEmail(), member.getMemberName());
 	}
 }

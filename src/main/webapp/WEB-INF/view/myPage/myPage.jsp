@@ -45,10 +45,10 @@
 				
 			</c:if>
 			<c:if test="${!empty authInfo}">
-				<p>${authInfo.memberName }님. 환영합니다</p>
+				<p>${authInfo.memberName }님의 마이페이지</p>
 				
 				
-				<p>나의 쇼핑정보</p>
+				<p>${authInfo.memberName }님의 쇼핑정보</p>
 				<li><a href="${contextPath}/myPage/changeMemberData">주문내역</a></li>
 				
 				
@@ -60,22 +60,7 @@
 				
 			</c:if>
 
-		<form:form action="maPage" modelAttribute="loginCommand">
-		<form:errors/>
-		<fieldset id="loginCommand">
-		<p>
-			<label>회원ID :<br> <form:input
-					path="memberId" /> <form:errors path="memberId" /></label>
-		</p>
-		<p>
-			<label>회원 비밀번호: :<br> <form:password path="memberPwd" /> <form:errors path="memberPwd" /></label>
-		</p>
-		<p>
-			<label>ID기억하기:<form:checkbox path="rememberId" /> </label>
-		</p>
-		<input type="submit" value="로그인하기" />
-		</fieldset>
-	</form:form> 
+	
 	
 	</section>
 </div>
