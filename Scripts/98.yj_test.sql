@@ -40,10 +40,10 @@ select member_code, member_id, `point`, cumulative_buy_amount, grade_code, quit_
 
 create or replace view  vw_mypageData as
 	select md.member_id, md.member_pwd,md.member_name, if((md.gender)=true,'여','남') as gender,md.birthday,md.email,md.tel,md.zipCode,md.address,md.detail_address,
-		   m.point,m.cumulative_buy_amount,g.grade,m.quit_state, m.signUp_date
+		   m.point,m.cumulative_buy_amount,g.grade, m.signUp_date -- 탈퇴여부 뺌
 from memberdetail  md left join member m  on md.member_id =m.member_id  left join grade g on m.grade_code =g.grade_code ;
 -- ---------------------------------
-select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address, point, cumulative_buy_amount, grade, quit_state, signUp_date
+select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address, point, cumulative_buy_amount, grade,  signUp_date
 from vw_mypagedata where member_id=11; 
 
 

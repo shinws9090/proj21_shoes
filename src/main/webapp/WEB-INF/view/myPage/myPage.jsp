@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/step1.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/step2.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/myPage.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -41,21 +42,27 @@
 				<p>로그인해주세요.</p> 
 				<p>
 				<li><a href="${contextPath}/register/step1">JOIN</a></li>
-			<li><a href="${contextPath}/login/loginForm">LOGIN</a></li>
+				<li><a href="${contextPath}/login/loginForm">LOGIN</a></li>
 				
 			</c:if>
 			<c:if test="${!empty authInfo}">
-				<p>${authInfo.memberName }님의 마이페이지</p>
+				
+				<h1>(${authInfo.memberName }님의 마이페이지</h1>
+				<h2>회원정보</h2>
+				<tr style="background-color:#e5e5e5 ; text-align: center">
+					<h3><td><a href="${contextPath}/myPage/${authInfo.memberId}">-회원정보 변경</a></td></h3>
+				</tr>
+				
+			<a></a>
+			
+				<h2>나의 쇼핑정보</h2>
+				<tr style="background-color: white-space; text-align: center">
+					<h3><td><a href="${contextPath}/myPage/changeMemberData">-주문내역</a></td></h3>
+				</tr>
 				
 				
-				<p>${authInfo.memberName }님의 쇼핑정보</p>
-				<li><a href="${contextPath}/myPage/changeMemberData">주문내역</a></li>
-				
-				
-				<p>회원정보</p>
-				<li><a href="${contextPath}/myPage/changeMemberData">회원정보 변경</a></li>
-				<li><a href="${contextPath}/myPage/">회원탈퇴</a></li>
-				
+	<!-- 			<p>회원정보</p> -->
+			
 				
 				
 			</c:if>

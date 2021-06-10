@@ -38,15 +38,13 @@
 		<div id="signSuccess">
 	<section id = "signSuccess">
 
-	<p>
-	로그인하셨습니다.
-</p>
+	
+	<h2>로그인하셨습니다.</h2>
 
-<p>
-	<a href="<c:url value='${contextPath}/index' />">
-	메인으로
-	</a>
-</p>
+
+	<h2><a href="<c:url value='${contextPath}/index' />">메인으로</a>	</h2>
+	<h2><a href="<c:url value='${contextPath}/myPage' />">마이페이지</a>	</h2>
+
 	
 	
 	</section>

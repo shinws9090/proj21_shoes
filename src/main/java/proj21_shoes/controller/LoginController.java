@@ -61,11 +61,6 @@ public class LoginController {
 		}
 
 	}
-		//임시 매핑!!  마이페이지용 컨트롤러로 옮길거임
-		@RequestMapping("/myPage")
-		public String myPage () {
-			return "/myPage/myPage";
-		}
 
 	
 
