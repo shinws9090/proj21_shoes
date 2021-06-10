@@ -36,11 +36,7 @@
 	<!-- end header -->
 		<div id="loginForm">
 	<section id = "loginForm">
-
-	
-		<h2>회원가입</h2><!-- 회원가입 -->
-	
- 	
+	  <h2>로그인</h2>
 		<form:form action="loginSuccess" modelAttribute="loginCommand">
 		<form:errors/>
 		<fieldset id="loginCommand">
@@ -49,7 +45,7 @@
 					path="memberId" /> <form:errors path="memberId" /></label>
 		</p>
 		<p>
-			<label>회원 비밀번호: :<br> <form:password path="memberPwd" /> <form:errors path="memberPwd" /></label>
+			<label>회원 비밀번호: <br> <form:password path="memberPwd" /> <form:errors path="memberPwd" /></label>
 		</p>
 		<p>
 			<label>ID기억하기:<form:checkbox path="rememberId" /> </label>
