@@ -96,36 +96,36 @@
 	<section id = "signUpForm">
 
 	
-		<h2>회원가입</h2><!-- 회원가입 -->
-	
+		<h2>※ 회원가입 2단계 ※ </h2><!-- 회원가입 -->
+	<article class="box2">
 		
 		<form:form action="step3" modelAttribute="registerRequest">
 		<form:errors/>
 		<div class="left">
 		<p>
-			<label>회원 아이디: 
+			<label>§ 회원 아이디 : 
 			<form:input  type="text" path="memberId" placeholder="ID" id="member_id" />  
 			<form:errors path="memberId" />
 			</label>
 		</p>
 		
 		
-		<p>
-			<label for="memberPwd">회원 비밀번호: 
+		<p style="line-height: 2;">
+			<label for="memberPwd">§ 회원 비밀번호 : 
 			<form:password  path="memberPwd" placeholder="PASSWORD" id="member_pwd" />  
 			<form:errors path="memberPwd" />
 			</label>
 		</p>
 		
-		<p>
-			<label>비밀번호 확인: 
+		<p style="line-height: 2;">
+			<label>§  비밀번호 확인 : 
 			<form:password id="confirmPassword" path="confirmPassword" placeholder="Confirm Password" />  
 			<form:errors path="confirmPassword" />
 			</label>
 		</p>
 		
-		<p>
-			<label for="memberName">회원 이름: 
+		<p style="line-height: 2;">
+			<label for="memberName">§ 회원 이름 : 
 			<form:input path="memberName" placeholder="Name" id="member_name" />  
 			<form:errors path="memberName" />
 			</label>
@@ -138,56 +138,59 @@
 			<form:errors path="gender"/>
 			</label>
 		</p> 
- --%><p> 
- 성별
+ --%><p style="line-height: 2;"> 
+ § 성별 :
 	<label for="gender">	  
 		 <input type="radio"  id="gender" name="gender" value="false" checked>남 
 		 <input type="radio" id="gender" name="gender" value="true" checked>여
 	</label>
 
 		
-		<p>
-			<label for="birthday">회원 생일: 
+		<p style="line-height: 2;">
+			<label for="birthday">§ 회원 생일 : 
 			<form:input path="birthday" type="date" id="birthday" placeholder="하이폰(-) 없이 입력해주세요" />  
 			<form:errors path="birthday" />
 			</label>
 		</p>
 		
-		<p>
-			<label for="email">이메일: 
+		<p style="line-height: 2;">
+			<label for="email">§ 이메일 : 
 			<form:input type="email" path="email" id="email" placeholder="E-mail" />  
 			<form:errors path="email" />
 			</label>
 		</p>
 		
-			<p>
-			<label for="tel">연락처: 
+			<p style="line-height: 2;">
+			<label for="tel">§ 연락처 : 
 			<form:input type="tel" path="tel" id="tel" placeholder="Phone Number" />  
 			<form:errors path="tel" />
 			</label>
 		</p>
 		
-		<p>
-			<label for="zipCode">우편번호: 
+		<p style="line-height: 2;">
+			<label for="zipCode">§ 우편번호 : 
 			<form:input type="text" path="zipCode"  id="zipCode"    onclick="testDaumPostcode()"/>  
 			<form:errors path="zipCode" />
 			</label>
 		</p>
 		
-		<p>
-			<label for="address">주소: 
+		<p style="line-height: 2;">
+			<label for="address">§ 주소 : 
 			<form:input  path="address" type="text"  id="address"  readonly="true"   />  
 			<form:errors path="address" />
 			</label>
 		</p>
 		
-			<p>
-			<label for="detailAddress">상세주소: 
+			<p style="line-height: 2;">
+			<label for="detailAddress">§ 상세주소 : 
 			<form:input path="detailAddress"  id="detail_address"  />  
 			<form:errors path="detailAddress" />
 			</label>
 		</p>
 		</div>
+		
+		<br>
+		
 		
 		<article class="btn2">
 		
@@ -270,7 +273,7 @@
 		</form:form>
 		
 	
-	
+	</article>
 	</section>
 </div>
 	
