@@ -6,7 +6,7 @@
 	text-align: left;
 	width: 700px;
 	height: 350px;
-	border: 5px dotted #c0c0c0 ; 
+	border: 2px solid #000000 ; 
 	margin: auto;
 
 	margin-top: 50px;
@@ -24,7 +24,7 @@
 	text-align: center;
 	width: 400px;
 	height: 450px;
-	border: 5px dotted #c0c0c0 ; 
+	border: 2px solid #000000 ; 
 	margin: auto;
 
 	margin-top: 50px;
@@ -67,9 +67,9 @@
 input {
 
 	
-	background: linear-gradient(45deg, black, lightgrey);
+	background-color:white;
 	border-radius: 7px;
-	color : white;
+	color : black;
 	
 	}
 

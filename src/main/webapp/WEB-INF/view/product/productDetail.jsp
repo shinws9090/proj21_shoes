@@ -108,13 +108,13 @@
 
 		<div class='main'>
 			<div class='main-image'>
-				${product.productPost.productMainImage} <img
-					src="http://via.placeholder.com/300X300">
+				${product.productPost.productMainImage} 
+				<img src="http://via.placeholder.com/300X300">
 			</div>
 
 
 			<ul class="btn">
-				<li class="active">상새정보</li>
+				<li class="active">상세정보</li>
 				<li>상품후기</li>
 				<li>상품문의</li>
 			</ul>
@@ -162,6 +162,7 @@
 			<p>${product.sellPrice}원</p>
 			<input type="number" id="count">
 			<div class='submitBtns'>
+			
 				<input type='submit' id='cart' value='장바구니' /> 
 				<input type='submit' id='purchase' value='구매하기' />
 			</div>
