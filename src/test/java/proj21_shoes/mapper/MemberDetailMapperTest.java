@@ -61,18 +61,23 @@ public class MemberDetailMapperTest {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 		System.out.println("======start========");
 
-		mapper.insertMemberDetail(new MemberDetail("testId22", "1111111", "김예진",true,LocalDate.now(), "test@gmail.com","010-1234-5678","12345","대구","상세주소"));
+	//	mapper.insertMemberDetail(new MemberDetail("testId22", "1111111", "김예진",true,LocalDate.now(), "test@gmail.com","010-1234-5678","12345","대구","상세주소"));
 	
 		//Assert.assertEquals(1, newMember);
 		//mapper.selectMemberDetailById(newMember.getMemberId());
 		
 	}
 
-//	@Test
-//	public void testUpdateMemberDetail() {
-//		fail("Not yet implemented");
-//	}
-//
+	@Test
+	public void testUpdateMemberDetail() {
+		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+		MemberDetail updateMember = new MemberDetail("22", "222222", "김예진",true,LocalDate.now(), "test@gmail.com","010-1234-5678","12345","대구","상세주소");
+		int res = mapper.updateMemberDetail(updateMember);
+		Assert.assertEquals(1, res);
+		log.debug(updateMember.toString());
+	}
+	
+	
 //	@Test
 //	public void testDeleteMemberDetail() {
 //		fail("Not yet implemented");
