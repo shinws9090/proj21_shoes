@@ -10,25 +10,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import proj21_shoes.dto.MemberDetail;
+import proj21_shoes.service.GetMemberDetailService;
+import proj21_shoes.service.GetMyPageService;
 import proj21_shoes.service.ModifyMemberDetailService;
 
 @Controller
 public class ModifyMemberDetailController {
 
 	@Autowired
-	ModifyMemberDetailService servis;
-
-	/*
-	 * @GetMapping("/myPage/modify/{memberId}") public String
-	 * modify(@PathVariable("memberId") @ModelAttribute("memberDetail") MemberDetail
-	 * memberDetail) {
-	 * 
-	 * return"/myPage/modify"; }
-	 */
+	GetMyPageService service;
+	@Autowired
+	ModifyMemberDetailService service2;
+	@Autowired
+	GetMemberDetailService service3;
 	
-	
-	//mypage2(내상세정보)에서 정보변경을 누르면 실행!거!
-
 	@PostMapping("/modify/{memberId}")//나의 정보 수정
 	public String myPageUpdate (@PathVariable("memberId") @ModelAttribute("memberDetail") MemberDetail memberDetail, HttpSession session,HttpServletResponse response){
 		

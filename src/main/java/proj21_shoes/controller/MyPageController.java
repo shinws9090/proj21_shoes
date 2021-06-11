@@ -1,7 +1,5 @@
 package proj21_shoes.controller;
 
-import java.time.LocalDateTime;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -17,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_shoes.commend.MemberDetailUpdateCommend;
-import proj21_shoes.dto.Grade;
-import proj21_shoes.dto.Member;
 import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.exeption.MemberNotFoundException;
 import proj21_shoes.service.GetMemberDetailService;
@@ -62,13 +58,13 @@ public class MyPageController {
 
 		return "/myPage/modifyForm";
 	}
-	
+	//업데이트용 컨트롤러로 이동시킬예정!!
 	@PostMapping("/myPage/modify/{memberId}")
 	public String modify(@PathVariable("memberId") String memberId, @ModelAttribute("memberDetailUpdateCommend") 
 	@Valid MemberDetailUpdateCommend memberUpdate, MemberDetail  memberDetail, HttpSession session,
 	HttpServletResponse response, Errors errors) {
 		MemberDetail member = service3.getMemberDetail(memberId); //주소에 찍힌 id로  멤버검색후 데이터 담아서
-		session.setAttribute("member", member);  // jsp에 보내주기! 요고 해줘야 jsp 에서 받을수 있당
+		session.setAttribute("member", member);  // jsp에 보내서 보여주기! 요고 해줘야 jsp 에서 받을수 있당
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("member",member);
 		mav.setViewName("myPage/modifyForm");
@@ -77,7 +73,7 @@ public class MyPageController {
 			System.out.println(errors);
 			return "/myPage/modifyForm";  //일로 돌려보내고
 		}
-		if (!memberUpdate.isPasswordEqualToConfirmPassword()) {//패스워드 불일치해도 돌려보내고
+		if (!memberUpdate.isPasswordEqualToConfirmPassword()) {//기존패스워드 불일치해도 돌려보내고
 			errors.rejectValue("confirmPassword", "nomatch");
 			return  "/myPage/modifyForm";
 		}

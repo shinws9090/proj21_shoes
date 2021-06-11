@@ -1,0 +1,144 @@
+<<<<<<< HEAD
+[DEBUG] [2021-06-10 11:27] ==>  Preparing: select * from product p join brand b on p.brand_code = b.brand_code join category c on c.product_category_code =p.product_category_code join productpost p2 on p2.product_code = p.product_code WHERE p.brand_code = ?
+[DEBUG] [2021-06-10 11:27] ==> Parameters: 1(Integer)
+[TRACE] [2021-06-10 11:27] <==    Columns: product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number, brand_code, brand_name, brand_eng_name, product_category_code, category, product_code, product_main_image, content
+[TRACE] [2021-06-10 11:27] <==        Row: 1, 상품명1, 1, 남, 1, 소재, 계절, 2021-06-01 14:58:13.0, 50000, 60000, 2021-06-01 14:58:13.0, 1, 1, 1, 1, 나이키, NIKE, 1, 슬리퍼, 1, <<BLOB>>, 1	ì  í  ë  í  ì ´ë¯¸ì§ 	내용
+[DEBUG] [2021-06-10 11:27] <==      Total: 1
+[DEBUG] [2021-06-10 11:27] [Product [productCode=1, productName=상품명1, brand=Brand [brandCode=1, brandName=나이키, brandEngName=NIKE], gender=남, category=Category [productCategoryCode=1, category=슬리퍼], material=소재, season=계절, madeDate=2021-06-01T14:58:13, costPrice=50000, sellPrice=60000, registDate=2021-06-01T14:58:13, cumulativeRegistCount=1, cumulativeSellCount=1, employee=null, orderOptions=null, productPost=ProductPost [productCode=1, productMainImage=[-20, -125, -127, -19, -110, -120, -21, -116, -128, -19, -111, -100, -20, -99, -76, -21, -81, -72, -20, -89, -128], content=1	ì  í  ë  í  ì ´ë¯¸ì§ 	내용, images=null]]]
+[DEBUG] [2021-06-10 11:27] test97InsertProduct()
+[DEBUG] [2021-06-10 11:27] Product [productCode=5, productName=운동화, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=남, category=Category [productCategoryCode=1, category=null], material=가죽, season=겨울, madeDate=2021-06-10T11:27:38.087, costPrice=50000, sellPrice=80000, registDate=2021-06-10T11:27:38.087, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+[DEBUG] [2021-06-10 11:27] ==>  Preparing: insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+[DEBUG] [2021-06-10 11:27] ==> Parameters: 5(Integer), 운동화(String), 1(Integer), 남(String), 1(Integer), 가죽(String), 겨울(String), 2021-06-10T11:27:38.087(LocalDateTime), 50000(Integer), 80000(Integer), 2021-06-10T11:27:38.087(LocalDateTime), 0(Integer), 0(Integer), 1(Integer)
+[DEBUG] [2021-06-10 11:27] <==    Updates: 1
+[DEBUG] [2021-06-10 11:27] test98UpdateProduct()
+[DEBUG] [2021-06-10 11:27] Product [productCode=5, productName=구두, brand=Brand [brandCode=1, brandName=null, brandEngName=null], gender=여, category=Category [productCategoryCode=1, category=null], material=가죽, season=가을, madeDate=2021-06-10T11:27:38.102, costPrice=60000, sellPrice=90000, registDate=2021-06-10T11:27:38.102, cumulativeRegistCount=0, cumulativeSellCount=0, employee=Employee [empNumber=1, empName=null, authority=null, empId=null, empPwd=null, email=null, telNumber=null], orderOptions=null, productPost=null]
+[DEBUG] [2021-06-10 11:27] ==>  Preparing: update product set product_name = ?, brand_code = ?, gender = ?, product_category_code = ?, material = ?, season = ?, made_date = ?, costPrice = ?, sell_Price = ?, regist_date = ?, cumulative_regist_count = ?, cumulative_sell_count = ?, emp_number = ? where product_code = ?
+[DEBUG] [2021-06-10 11:27] ==> Parameters: 구두(String), 1(Integer), 여(String), 1(Integer), 가죽(String), 가을(String), 2021-06-10T11:27:38.102(LocalDateTime), 60000(Integer), 90000(Integer), 2021-06-10T11:27:38.102(LocalDateTime), 0(Integer), 0(Integer), 1(Integer), 5(Integer)
+[DEBUG] [2021-06-10 11:27] <==    Updates: 1
+[DEBUG] [2021-06-10 11:27] test99DeleteProduct()
+[DEBUG] [2021-06-10 11:27] Product [productCode=5, productName=null, brand=null, gender=null, category=null, material=null, season=null, madeDate=null, costPrice=0, sellPrice=0, registDate=null, cumulativeRegistCount=0, cumulativeSellCount=0, employee=null, orderOptions=null, productPost=null]
+[DEBUG] [2021-06-10 11:27] ==>  Preparing: delete from product where product_code = ?
+[DEBUG] [2021-06-10 11:27] ==> Parameters: 5(Integer)
+[DEBUG] [2021-06-10 11:27] <==    Updates: 1
+=======
+[DEBUG] [2021-06-10 14:13] test01SelectMyPageById()
+[DEBUG] [2021-06-10 14:13] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address, point, cumulative_buy_amount, grade, quit_state, signUp_date from vw_mypagedata where member_id=?;
+[DEBUG] [2021-06-10 14:13] ==> Parameters: 11(String)
+[DEBUG] [2021-06-10 14:14] test01SelectMemberAll()
+[DEBUG] [2021-06-10 14:14] ==>  Preparing: select member_code, member_id, point, cumulative_buy_amount, grade_code, quit_state, signUp_date from member
+[DEBUG] [2021-06-10 14:14] ==> Parameters: 
+[TRACE] [2021-06-10 14:14] <==    Columns: member_code, member_id, point, cumulative_buy_amount, grade_code, quit_state, signUp_date
+[TRACE] [2021-06-10 14:14] <==        Row: 1, 회원아이디, 1000, 10000, 1, 0, 2021-06-01 12:47:18.0
+[TRACE] [2021-06-10 14:14] <==        Row: 8, 회원아이디2, 1000, 10000, 1, 0, 2021-06-08 16:41:58.0
+[TRACE] [2021-06-10 14:14] <==        Row: 11, 11, 1, 1, 1, 1, 2011-11-11 11:11:11.0
+[TRACE] [2021-06-10 14:14] <==        Row: 12, 133, 1000, 10000, 1, 0, 2021-06-09 14:59:40.0
+[TRACE] [2021-06-10 14:14] <==        Row: 13, 55, 1000, 0, 1, 0, 2021-06-09 15:17:16.0
+[TRACE] [2021-06-10 14:14] <==        Row: 14, 99, 1000, 0, 1, 0, 2021-06-09 15:48:30.0
+[TRACE] [2021-06-10 14:14] <==        Row: 15, 44, 1000, 0, 1, 0, 2021-06-09 15:57:57.0
+[DEBUG] [2021-06-10 14:14] <==      Total: 7
+[DEBUG] [2021-06-10 14:14] test3InsertMember()
+[DEBUG] [2021-06-10 14:14] ==>  Preparing: INSERT INTO member (member_id, point, cumulative_buy_amount, grade_code, quit_state, signUp_date) VALUES(?, 1000, 0, 1, false, now());
+[DEBUG] [2021-06-10 14:14] ==> Parameters: 133(String)
+[DEBUG] [2021-06-10 14:14] <==    Updates: 1
+[DEBUG] [2021-06-10 14:14] testSelectMemberByMCode()
+[DEBUG] [2021-06-10 14:14] ==>  Preparing: select member_code, member_id, point, cumulative_buy_amount, grade_code, quit_state, signUp_date from member where member_code = ?
+[DEBUG] [2021-06-10 14:14] ==> Parameters: 8(Integer)
+[TRACE] [2021-06-10 14:14] <==    Columns: member_code, member_id, point, cumulative_buy_amount, grade_code, quit_state, signUp_date
+[TRACE] [2021-06-10 14:14] <==        Row: 8, 회원아이디2, 1000, 10000, 1, 0, 2021-06-08 16:41:58.0
+[DEBUG] [2021-06-10 14:14] <==      Total: 1
+[DEBUG] [2021-06-10 14:15] test01SelectMyPageById()
+[DEBUG] [2021-06-10 14:15] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address, point, cumulative_buy_amount, grade, signUp_date from vw_mypagedata where member_id=?;
+[DEBUG] [2021-06-10 14:15] ==> Parameters: 11(String)
+[TRACE] [2021-06-10 14:15] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address, point, cumulative_buy_amount, grade, signUp_date
+[TRACE] [2021-06-10 14:15] <==        Row: 11, 111111, 11, 여, 2021-06-01 00:00:00.0, chamdodari@gmail.com, 1111, 01014, 서울 강북구 4.19로11길 6(서울 강북구 수유동 564-8),  (수유동), 1, 1, 등급, 2011-11-11 11:11:11.0
+[DEBUG] [2021-06-10 14:15] <==      Total: 1
+>>>>>>> branch 'master' of https://github.com/DaeguIT-MinSuKim/proj21_shoes.git
+[DEBUG] [2021-06-10 20:31] test01SelectMemberDetailById()
+[DEBUG] [2021-06-10 20:31] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-10 20:31] ==> Parameters: aaa(String)
+[TRACE] [2021-06-10 20:31] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-10 20:31] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-10 16:29:54.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-10 20:31] <==      Total: 1
+[DEBUG] [2021-06-10 20:31] test02InsertMemberDetail()
+[DEBUG] [2021-06-10 20:31] testUpdateMemberDetail()
+[DEBUG] [2021-06-10 20:31] ==>  Preparing: update memberDetail set member_pwd=?, member_name=?, gender=?, birthday=?, email=?, tel=?, zipCode=?, address=?, detail_address=? WHERE member_id=?
+[DEBUG] [2021-06-10 20:31] ==> Parameters: 1111111(String), 김예진(String), true(Boolean), 2021-06-10(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), 대구(String), 상세주소(String), 99(String)
+[DEBUG] [2021-06-10 20:31] <==    Updates: 0
+[DEBUG] [2021-06-10 20:36] test01SelectMemberDetailById()
+[DEBUG] [2021-06-10 20:36] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-10 20:36] ==> Parameters: aaa(String)
+[TRACE] [2021-06-10 20:36] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-10 20:36] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-10 16:29:54.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-10 20:36] <==      Total: 1
+[DEBUG] [2021-06-10 20:36] test02InsertMemberDetail()
+[DEBUG] [2021-06-10 20:36] testUpdateMemberDetail()
+[DEBUG] [2021-06-10 20:36] ==>  Preparing: update memberDetail set member_pwd=?, member_name=?, gender=?, birthday=?, email=?, tel=?, zipCode=?, address=?, detail_address=? WHERE member_id=?
+[DEBUG] [2021-06-10 20:36] ==> Parameters: 1111111(String), 김예진(String), true(Boolean), 2021-06-10(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), 대구(String), 상세주소(String), 99(String)
+[DEBUG] [2021-06-10 20:36] <==    Updates: 0
+[DEBUG] [2021-06-10 20:39] test01SelectMemberDetailById()
+[DEBUG] [2021-06-10 20:39] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-10 20:39] ==> Parameters: aaa(String)
+[TRACE] [2021-06-10 20:39] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-10 20:39] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-10 16:29:54.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-10 20:39] <==      Total: 1
+[DEBUG] [2021-06-10 20:39] test02InsertMemberDetail()
+[DEBUG] [2021-06-10 20:39] testUpdateMemberDetail()
+[DEBUG] [2021-06-10 20:39] ==>  Preparing: update memberDetail set member_pwd=?, member_name=?, gender=?, birthday=?, email=?, tel=?, zipCode=?, address=?, detail_address=? WHERE member_id=?
+[DEBUG] [2021-06-10 20:39] ==> Parameters: 1111111(String), 김예진(String), true(Boolean), 2021-06-10(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), 대구(String), 상세주소(String), 11(String)
+[DEBUG] [2021-06-10 20:39] <==    Updates: 0
+[DEBUG] [2021-06-10 20:42] test01SelectMemberDetailById()
+[DEBUG] [2021-06-10 20:42] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-10 20:42] ==> Parameters: aaa(String)
+[TRACE] [2021-06-10 20:42] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-10 20:42] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-10 16:29:54.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-10 20:42] <==      Total: 1
+[DEBUG] [2021-06-10 20:42] test02InsertMemberDetail()
+[DEBUG] [2021-06-10 20:42] testUpdateMemberDetail()
+[DEBUG] [2021-06-10 20:42] ==>  Preparing: update memberDetail set member_pwd=?, member_name=?, gender=?, birthday=?, email=?, tel=?, zipCode=?, address=?, detail_address=? WHERE member_id=?
+[DEBUG] [2021-06-10 20:42] ==> Parameters: 1111111(String), 김예진(String), true(Boolean), 2021-06-10(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), 대구(String), 상세주소(String), 11(String)
+[DEBUG] [2021-06-10 20:42] <==    Updates: 0
+[DEBUG] [2021-06-10 20:43] test01SelectMemberDetailById()
+[DEBUG] [2021-06-10 20:43] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-10 20:43] ==> Parameters: aaa(String)
+[TRACE] [2021-06-10 20:43] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-10 20:43] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-10 16:29:54.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-10 20:43] <==      Total: 1
+[DEBUG] [2021-06-10 20:43] test02InsertMemberDetail()
+[DEBUG] [2021-06-10 20:43] testUpdateMemberDetail()
+[DEBUG] [2021-06-10 20:43] ==>  Preparing: update memberDetail set member_pwd=?, member_name=?, gender=?, birthday=?, email=?, tel=?, zipCode=?, address=?, detail_address=? WHERE member_id=?
+[DEBUG] [2021-06-10 20:43] ==> Parameters: 1111111(String), 김예진(String), true(Boolean), 2021-06-10(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), 대구(String), 상세주소(String), 11(String)
+[DEBUG] [2021-06-10 20:43] <==    Updates: 0
+[DEBUG] [2021-06-10 20:43] test01SelectMemberDetailById()
+[DEBUG] [2021-06-10 20:43] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-10 20:43] ==> Parameters: aaa(String)
+[TRACE] [2021-06-10 20:43] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-10 20:43] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-10 16:29:54.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-10 20:43] <==      Total: 1
+[DEBUG] [2021-06-10 20:43] test02InsertMemberDetail()
+[DEBUG] [2021-06-10 20:43] testUpdateMemberDetail()
+[DEBUG] [2021-06-10 20:43] ==>  Preparing: update memberDetail set member_pwd=?, member_name=?, gender=?, birthday=?, email=?, tel=?, zipCode=?, address=?, detail_address=? WHERE member_id=?
+[DEBUG] [2021-06-10 20:43] ==> Parameters: 1111111(String), 김예진(String), true(Boolean), 2021-06-10(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), 대구(String), 상세주소(String), 11(String)
+[DEBUG] [2021-06-10 20:43] <==    Updates: 0
+[DEBUG] [2021-06-10 20:44] test01SelectMemberDetailById()
+[DEBUG] [2021-06-10 20:44] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-10 20:44] ==> Parameters: aaa(String)
+[TRACE] [2021-06-10 20:44] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-10 20:44] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-10 16:29:54.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-10 20:44] <==      Total: 1
+[DEBUG] [2021-06-10 20:44] test02InsertMemberDetail()
+[DEBUG] [2021-06-10 20:44] testUpdateMemberDetail()
+[DEBUG] [2021-06-10 20:44] ==>  Preparing: update memberDetail set member_pwd=?, member_name=?, gender=?, birthday=?, email=?, tel=?, zipCode=?, address=?, detail_address=? WHERE member_id=?
+[DEBUG] [2021-06-10 20:44] ==> Parameters: 1111111(String), 김예진(String), true(Boolean), 2021-06-10(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), 대구(String), 상세주소(String), 11(String)
+[DEBUG] [2021-06-10 20:44] <==    Updates: 0
+[DEBUG] [2021-06-10 20:44] test01SelectMemberDetailById()
+[DEBUG] [2021-06-10 20:44] ==>  Preparing: select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail where member_id = ?
+[DEBUG] [2021-06-10 20:44] ==> Parameters: aaa(String)
+[TRACE] [2021-06-10 20:44] <==    Columns: member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address
+[TRACE] [2021-06-10 20:44] <==        Row: aaa, rootroot, 테스트1, 1, 2021-06-10 16:29:54.0, test1@test.co.kr, 010-111-8888, 12345, 국채보상로 438, 서구 치과의원
+[DEBUG] [2021-06-10 20:44] <==      Total: 1
+[DEBUG] [2021-06-10 20:44] test02InsertMemberDetail()
+[DEBUG] [2021-06-10 20:44] testUpdateMemberDetail()
+[DEBUG] [2021-06-10 20:44] ==>  Preparing: update memberDetail set member_pwd=?, member_name=?, gender=?, birthday=?, email=?, tel=?, zipCode=?, address=?, detail_address=? WHERE member_id=?
+[DEBUG] [2021-06-10 20:44] ==> Parameters: 11111211(String), 김예진(String), true(Boolean), 2021-06-10(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), 대구(String), 상세주소(String), 22(String)
+[DEBUG] [2021-06-10 20:44] <==    Updates: 1
+[DEBUG] [2021-06-10 20:44] MemberDetail [memberId=22, memberPwd=11111211, memberName=김예진, gender=true, birthday=2021-06-10, email=test@gmail.com, tel=010-1234-5678, zipCode=12345, address=대구, detailAddress=상세주소]
