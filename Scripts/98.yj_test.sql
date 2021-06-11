@@ -47,6 +47,15 @@ select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode
 from vw_mypagedata where member_id=11; 
 
 
+-- -----------------------------------------------
+UPDATE sinabro.memberdetail
+SET member_pwd='', member_name='', gender=0, birthday='', email='', tel='', zipCode='', address='', detail_address=''
+WHERE member_id='';
+
+
+
+
+
 
 
 	

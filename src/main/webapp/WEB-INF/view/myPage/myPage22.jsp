@@ -41,8 +41,8 @@
 	<c:if test="${empty authInfo}"> 
 				<p>로그인해주세요.</p> 
 				<p>
-				<li><a href="${contextPath}/register/step1">JOIN</a></li>
-				<li><a href="${contextPath}/login/loginForm">LOGIN</a></li>
+				<li><a href="${contextPath}/register/step1">회원가입</a></li>
+				<li><a href="${contextPath}/login/loginForm">로그인</a></li>
 				
 			</c:if>
 			<c:if test="${!empty authInfo}">
@@ -52,18 +52,25 @@
 			<tr>
 				<td colspan="7" class="td_title">나의정보</td>
 			</tr>
-			
-			<tr style="background-color: white-space; text-align: left">
-				<td>회원아이디</td>	<td>${member.memberId }</td>				
+			<form:form action="myPage2" modelAttribute="memberDetail">
+			<tr>
+				<th scope="row"><label for="memberId">회원아이디</label></th>
+				<td><form:input path="memberId" id="memberId" readonly="true" value="${member.memberId }" /></td>				
 			</tr>
-			<tr style="background-color: white-space; text-align: left">
-				<td>비밀번호</td>		<td>${member.memberPwd }</td>
+			<tr>
+				<th scope="row"><label for="memberPwd"></label>기존비밀번호 확인</th>		
+				<td><form:input path="memberPwd" id="memberPwd" value="${member.memberPwd }"/></td>
+			</tr>
+			
+		 	<tr>
+				<th scope="row">변경할비밀번호</th>		
+				<td>${member.memberPwd }</td>
 			</tr>
 			<tr style="background-color: white-space; text-align: left">
 				<td>회원이름</td>		<td>${member.memberName }</td>
 			</tr>
 			<tr style="background-color: white-space; text-align: left">
-				<td>성별</td>		<td>${member.gender }</td>
+				<td>성별</td>		<td>${member.genderCode }</td>
 			</tr>
 			<tr style="background-color: white-space; text-align: left">
 				<td>생년월일</td>		<td>${member.birthday }</td>
@@ -83,7 +90,7 @@
 			<tr style="background-color: white-space; text-align: left">
 				<td>상세주소</td>		<td>${member.detailAddress }</td>
 			</tr>
-			<tr style="background-color: white-space; text-align: left">
+		<%-- 	<tr style="background-color: white-space; text-align: left">
 				<td>포인트</td>		<td>${member.point }</td>
 			</tr>
 			<tr style="background-color: white-space; text-align: left">
@@ -95,18 +102,17 @@
 			<tr style="background-color: white-space; text-align: left">
 				<td>가입일</td>		<td><tf:formatDateTime value="${member.signUpDate }" pattern="yyyy-MM-dd:mm"/>
 			</td>
-				
-						
-		 <%-- 	<c:forEach var="MyPageSelectCommend" items="${MyPageSelectCommend}">  --%>
-				<tr>
+				 --%>
+					
+				<tr> 
 
 					
 		
-					<td><a href="#">[회원정보 수정]</a>&nbsp;
-						<a href="#">[회원탈퇴]</a></td>
+					<td><a href="${contextPath}/myPage/modify/${authInfo.memberId}">회원정보 수정</a>&nbsp;
+						<a href="#">회원탈퇴</a></td>
 				</tr>
 		<%--  	</c:forEach>  --%>
-		
+		</form:form>
 		</table>
 				
 				
@@ -115,9 +121,9 @@
 				<li><a href="${contextPath}/myPage/changeMemberData">주문내역</a></li>
 				
 				
-				<p>회원정보</p>
+				<%-- <p>회원정보</p>
 				<li><a href="${contextPath}/myPage/changeMemberData">회원정보 변경</a></li>
-				<li><a href="${contextPath}/myPage/">회원탈퇴</a></li>
+				<li><a href="${contextPath}/myPage/">회원탈퇴</a></li> --%>
 				
 				
 				

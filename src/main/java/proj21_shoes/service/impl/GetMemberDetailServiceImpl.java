@@ -17,9 +17,9 @@ public class GetMemberDetailServiceImpl implements GetMemberDetailService {
 	private MemberDetailMapper mapper;
 	
 	@Override
-	public MemberDetail getMemberDetail(MemberDetail id) {  //회원 개인별 상세정보조회
+	public MemberDetail getMemberDetail(String id) {  //회원 개인별 상세정보조회
 		log.debug("service - GetMemberDetail() > " +id);
-		return null;   // mapper.selectMemberDetailById(id);
+		return mapper.selectMemberDetailById(id);
 	}
 
 }
