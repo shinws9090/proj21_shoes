@@ -49,8 +49,8 @@
 						<td>${products.sellPrice }</td>
 						<td>${products.registDate }</td>
 						<td>${products.cumulativeRegistCount }</td>
-						<td><a href="#">[상세보기]</a></td>
-						<td><a href="#">[수정]</a>&nbsp; <a href="#">[삭제]</a></td>
+						<td><a href="viewProductMod">[상세보기]</a></td>
+						<td><a href="viewProductMod">[수정]</a>&nbsp; <a href="#">[삭제]</a></td>
 					</tr>
 				</c:forEach>
 

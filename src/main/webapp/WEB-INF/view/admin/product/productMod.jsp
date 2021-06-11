@@ -6,7 +6,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,10 +17,60 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>lighten</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
-<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet"
+	href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+	
+		function productValidation() {
+			var productCode = $("[name='productCode']").prop("value");
+			if(productCode == "" || productCode == null){
+				alert("제품 코드를 입력하세요.")
+				return false;
+				
+			} else {
+				$.ajax({				
+					url : "/proj21_shoes/productReg",
+					type:'POST',
+					data : $('#productRegForm').serialize(),
+												
+						/* {
+							productCode : productCode,
+							productName : $("[name='productName']").prop("value"),
+							brand : $("[name='brand']").prop("value"),
+							gender : $("[name='gender']").prop("value"),
+							category : $("[name='category']").prop("value"),
+							material : $("[name='material']").prop("value"),
+							season : $("[name='season']").prop("value"),
+							madeDate : $("[name='madeDate']").prop("value"),
+							costPrice : $("[name='costPrice']").prop("value"),
+							sellPrice : $("[name='sellPrice']").prop("value"),
+							registDate : $("[name='registDate']").prop("value"),
+							cumulativeRegistCount : $("[name='cumulativeRegistCount']").prop("value"),
+							cumulativeSellCount : $("[name='cumulativeSellCount']").prop("value"),
+							employee : $("[name='employee']").prop("value")
+							}, */
+					
+					success:function(data){
+						console.log(data);
+						alert("제품 등록이 완료되었습니다.");
+						location.href= "<c:url value='/productMgt'/>";
+					},error:function( e ){
+						alert("제품 등록이 실패하였습니다.");
+						console.log( e );
+					}
+					
+				})
+			}		
+			
+		}
+	
+</script>
+
 </head>
+
 <body class="main-layout">
 	<!-- header -->
 	<header>
@@ -31,20 +80,20 @@
 
 	<section>
 		<jsp:include page="/WEB-INF/view/admin/include/adminMenu.jsp" />
-		
+
 		<div class="admin_content_wrap">
 			<div class="admin_content_main">
-				<form action="productReg" method="post" id="productRegForm">
-					
+				<form id="productRegForm">
+
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>상품코드</label>
 						</div>
 						<div class="form_section_content">
-							<input name="productCode" value="21">
+							<input name="productCode" value="">
 						</div>
 					</div>
-					
+
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>상품명</label>
@@ -53,7 +102,7 @@
 							<input name="productName" value="신발">
 						</div>
 					</div>
-					
+
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>브랜드</label>
@@ -62,7 +111,7 @@
 							<input name="brand" value="1">
 						</div>
 					</div>
-					
+
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>성별</label>
@@ -71,7 +120,7 @@
 							<input name="gender" value="남">
 						</div>
 					</div>
-					
+
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>카테고리</label>
@@ -80,7 +129,7 @@
 							<input name="category" value="1">
 						</div>
 					</div>
-					
+
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>소재</label>
@@ -89,7 +138,7 @@
 							<input name="material" value="소재">
 						</div>
 					</div>
-					
+
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>계절</label>
@@ -98,16 +147,16 @@
 							<input name="season" value="계절">
 						</div>
 					</div>
-					
+
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>제조일</label>
 						</div>
 						<div class="form_section_content">
-							<input name="madeDate" value="20210101">
+							<input type="date" name="madeDate">
 						</div>
 					</div>
-					
+
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>공급가격</label>
@@ -116,7 +165,7 @@
 							<input name="costPrice" value="50000">
 						</div>
 					</div>
-					
+
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>판매가격</label>
@@ -125,16 +174,16 @@
 							<input name="sellPrice" value="60000">
 						</div>
 					</div>
-					
+
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>등록일</label>
 						</div>
 						<div class="form_section_content">
-							<input name="registDate" value="20210101">
+							<input type="date" name="registDate">
 						</div>
 					</div>
-					
+
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>누적등록수량</label>
@@ -143,7 +192,7 @@
 							<input name="cumulativeRegistCount" value="1">
 						</div>
 					</div>
-					
+
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>누적판매수량</label>
@@ -160,65 +209,45 @@
 						<div class="form_section_content">
 							<input name="employee" value="1">
 						</div>
-					</div>			
+					</div>
 					
-					<!-- <div class="form_section">
+					
+					<div class="form_section">
 						<div class="form_section_title">
-							<label>등록사원정보</label>
+							<label>상품대표이미지</label>
 						</div>
 						<div class="form_section_content">
-							<input name="employee" value="1">
+							<input name="productMainImage">
 						</div>
 					</div>
 					
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>등록사원정보</label>
+							<label>내용</label>
 						</div>
 						<div class="form_section_content">
-							<input name="employee" value="1">
+							<input name="content" value="내용">
 						</div>
 					</div>
 					
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>등록사원정보</label>
+							<label>상품이미지들</label>
 						</div>
 						<div class="form_section_content">
-							<input name="employee" value="1">
+							<input name="images">
 						</div>
-					</div>
-					
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>등록사원정보</label>
-						</div>
-						<div class="form_section_content">
-							<input name="employee" value="1">
-						</div>
-					</div> -->
-					
+					</div>				
+
 				</form>
+				
+					<div class="btn_section">
+						<input type="button" value="등록" onclick="productValidation()" style="cursor: pointer" />
+						<input type="button" value="취소" onclick="javascript:location.href='/proj21_shoes/productMgt'" style="cursor: pointer" />
+					</div>
+
 			</div>
 		</div>
-		<div class="btn_section">
-			<button id="btnReg" class="btnReg_btn" style="cursor: pointer">등록</button>
-			<button id="btnReset" class="btnReset_btn" style="cursor: pointer">취소</button>
-		</div>
-			
-			<script>
-				/* 등록 버튼 */
-				$("#btnReg").click(function() {
-					$("#productRegForm").submit();
-				});
-			
-				/* 취소 버튼 */
-				$("#btnReset").click(function() {
-					location.href = "/proj21_shoes/productMgt"
-				});
-			</script>
-
-
 
 	</section>
 
@@ -226,8 +255,6 @@
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp" />
 	</footer>
-
-
 
 </body>
 </html>

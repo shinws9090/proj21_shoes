@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_shoes.dto.Brand;
@@ -131,15 +132,23 @@ public class AdminController {
 		productpost.setContent(request.getParameter("content"));
 		List<Image> list = new ArrayList<Image>();
 		productpost.setImages(list);
-		
+
 		System.out.println(product);
 		productService.insertProduct(product);
-		
+
 		System.out.println(productpost);
 		productPostService.insertProductPost(productpost);
-				
+
 		return "redirect:productMgt";
 
+	}
+
+	@RequestMapping("/viewProductMod")
+	public ModelAndView productMod() {
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/admin/product/productMod");
+		return mav;
 	}
 
 }
