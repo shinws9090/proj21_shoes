@@ -1,7 +1,6 @@
 package proj21_shoes.controller;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,12 +11,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javafx.util.converter.LocalDateTimeStringConverter;
 import proj21_shoes.dto.Brand;
 import proj21_shoes.dto.Category;
 import proj21_shoes.dto.Employee;
@@ -49,58 +46,70 @@ public class AdminController {
 		return "admin/adminMain";
 	}
 
-//	@RequestMapping("/memberMgt")
-//	public String list(@ModelAttribute("cmd") Model model) {
-//
-//		List<MemberDetail> members = memListService.getMemberDetailLists();
-//		model.addAttribute("members", members);
-//
-//		return "admin/memberMgt";
-//	}
-
 	@RequestMapping("/memberMgt")
 	public ModelAndView memberDetailList() {
 		List<MemberDetail> members = memListService.getMemberDetailLists();
-		return new ModelAndView("admin/memberMgt", "members", members);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("admin/memberMgt");
+		mav.addObject("members", members);
+		return mav;
 	}
 
 	@RequestMapping("/productMgt")
 	public ModelAndView productList() {
-		List<Product> product = productService.productByAll();
-		return new ModelAndView("admin/productMgt", "product", product);
+		List<Product> products = productService.productByAll();
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("admin/productMgt");
+		mav.addObject("products", products);
+		return mav;
 	}
 
 	@RequestMapping("/orderMgt")
 	public ModelAndView orderList() {
-//		List<Order> order = 
-		return new ModelAndView("admin/orderMgt");
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("admin/orderMgt");
+
+		return mav;
 	}
 
-	@GetMapping("/viewProductReg")
-	public String viewRegisterProduct(Product product) {
-		logger.info("상품 등록 페이지 접속");
+//	@GetMapping("/viewProductReg")
+//	public String viewRegisterProduct(Product product) {
+//		logger.info("상품 등록 페이지 접속");
+//
+//		return "admin/product/productReg";
+//	}
 
-		return "admin/product/productReg";
+	@RequestMapping("/viewProductReg")
+	public ModelAndView productReg() {
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/admin/product/productReg");
+		return mav;
 	}
-
-	/*
-	 * @PostMapping("/productReg")
-	 * 
-	 * @ResponseBody public String registerProduct(@RequestBody Product product) {
-	 * 
-	 * System.out.println(product); productService.insertProduct(product);
-	 * 
-	 * return "redirect:productMgt"; }
-	 */
 
 	@PostMapping("/productReg")
 	@Transactional
-	public String registerProduct(HttpServletRequest request) {
+	public String registProduct(HttpServletRequest request) {
 
-//		Product newProduct = new Product(product.getProductCode(), product.getProductName(), product.getBrand(),
-//				product.getGender(), product.getCategory(), product.getMaterial(), product.getSeason(),
-//				product.getMadeDate(), product.getCostPrice(), product.getSellPrice(), product.getRegistDate(),
-//				product.getCumulativeRegistCount(), product.getCumulativeSellCount(), product.getEmployee());
+		/*
+		 * logger.info("등록되나요?"); System.out.println(regProduct.getProductCode());
+		 * regProduct.setMadeDate(LocalDateTime.now());
+		 * regProduct.setRegistDate(LocalDateTime.now()); regProduct.getMadeDate();
+		 * regProduct.getRegistDate();
+		 * 
+		 * Product product = new Product(regProduct.getProductCode(),
+		 * regProduct.getProductName(), regProduct.getBrand(), regProduct.getGender(),
+		 * regProduct.getCategory(), regProduct.getMaterial(), regProduct.getSeason(),
+		 * regProduct.getMadeDate(), regProduct.getCostPrice(),
+		 * regProduct.getSellPrice(), regProduct.getRegistDate(),
+		 * regProduct.getCumulativeRegistCount(), regProduct.getCumulativeSellCount(),
+		 * regProduct.getEmployee());
+		 * 
+		 * productService.insertProduct(product);
+		 * 
+		 * return "/admin/product/productReg";
+		 */
 
 		Product product = new Product();
 		product.setProductCode(Integer.parseInt(request.getParameter("productCode")));
@@ -122,16 +131,15 @@ public class AdminController {
 		productpost.setContent(request.getParameter("content"));
 		List<Image> list = new ArrayList<Image>();
 		productpost.setImages(list);
-
-//		System.out.println(newProduct);
+		
 		System.out.println(product);
-		System.out.println(productpost);
-
-//		productService.insertProduct(newProduct);
 		productService.insertProduct(product);
+		
+		System.out.println(productpost);
 		productPostService.insertProductPost(productpost);
-
+				
 		return "redirect:productMgt";
+
 	}
 
 }

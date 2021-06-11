@@ -42,13 +42,13 @@
 
 				</tr>
 
-				<c:forEach var="product" items="${product}">
+				<c:forEach var="products" items="${products}">
 					<tr>
-						<td>${product.productCode }</td>
-						<td>${product.productName }</td>
-						<td>${product.sellPrice }</td>
-						<td>${product.registDate }</td>
-						<td>${product.cumulativeRegistCount }</td>
+						<td>${products.productCode }</td>
+						<td>${products.productName }</td>
+						<td>${products.sellPrice }</td>
+						<td>${products.registDate }</td>
+						<td>${products.cumulativeRegistCount }</td>
 						<td><a href="#">[상세보기]</a></td>
 						<td><a href="#">[수정]</a>&nbsp; <a href="#">[삭제]</a></td>
 					</tr>

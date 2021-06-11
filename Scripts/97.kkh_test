@@ -4,6 +4,8 @@ insert into memberdetail() values ("test1", 1234, "홍길동1", 1, 20000101, "te
 
 select * from orderproduct;
 
+select * from `order`;
+
 select * from product;
 select * from productpost;
 
