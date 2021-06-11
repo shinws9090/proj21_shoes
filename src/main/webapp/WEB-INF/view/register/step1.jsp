@@ -36,7 +36,7 @@
  <!-- 회원가입 -->
   
 	<section class="box">
-	 <h2>회원가입</h2>
+	 <h2>※ 회원가입 1단계 ※ </h2>
 		<article class="box1">
 			<h2>
 				<spring:message code="term" />  <!--약관  -->
@@ -55,7 +55,7 @@
 			<form action="../index" method="get">
 			<label><input type="submit" value="가입취소(메인으로)"/> </label>
 			<br>
-				<img src="../images/welcome.jpg" align="right">
+				<img src="../images/test.jpg" align="right">
 			</form>
 			</article>
 				
