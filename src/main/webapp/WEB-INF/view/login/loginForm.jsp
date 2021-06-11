@@ -36,24 +36,34 @@
 	<!-- end header -->
 		<div id="loginForm">
 	<section id = "loginForm">
-	  <h2>로그인</h2>
+	  <h2>※  Login ※</h2>
+	  <article class="box3">
 		<form:form action="loginSuccess" modelAttribute="loginCommand">
 		<form:errors/>
 		<fieldset id="loginCommand">
+		<br>
 		<p>
-			<label>회원ID :<br> <form:input
-					path="memberId" /> <form:errors path="memberId" /></label>
+			<label>＊ 회원ID :          <br> 
+			<form:input	path="memberId" /> 
+			<form:errors path="memberId" /></label>
 		</p>
+		<br>
 		<p>
-			<label>회원 비밀번호: <br> <form:password path="memberPwd" /> <form:errors path="memberPwd" /></label>
+			<label>＊ 회원 비밀번호 : <br> 
+			<form:password path="memberPwd" /> 
+			<form:errors path="memberPwd" /></label>
 		</p>
+		<br>
 		<p>
-			<label>ID기억하기:<form:checkbox path="rememberId" /> </label>
+			<label> ID기억하기 : <form:checkbox path="rememberId" /> </label>
 		</p>
+		<br>
 		<input type="submit" value="로그인하기" />
+		<br>
 		</fieldset>
-	</form:form> 
 	
+	</form:form> 
+	</article>
 	</section>
 </div>
 	

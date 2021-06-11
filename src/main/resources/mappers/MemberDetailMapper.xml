@@ -54,6 +54,13 @@
 	
 	
 	</select>
+	
+	<update id="updateMemberDetail" parameterType="MemberDetail">
+	update memberDetail
+	set member_pwd=#{memberPwd}, member_name=#{memberName}, gender=#{gender}, 
+		birthday=#{birthday}, email=#{email}, tel=#{tel}, zipCode=#{zipCode}, address=#{address}, detail_address=#{detailAddress}
+	WHERE member_id=#{memberId}
+	</update>
 </mapper>
 
 
