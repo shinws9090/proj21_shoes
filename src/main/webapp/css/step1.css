@@ -41,3 +41,10 @@ table{
 	margin:auto;
 	width:450px;
 }
+
+div{
+	padding-left: 30px;
+	text-align: left;
+	margin-left:30px;
+	color: #4d4d51 
+}

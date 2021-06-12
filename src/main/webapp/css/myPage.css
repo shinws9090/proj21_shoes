@@ -8,6 +8,13 @@ color: #2c2c2c ;
 
 }
 
+div{
+	padding-left: 30px;
+	text-align: left;
+	margin-left:50px;
+	color: #4d4d51 
+}
+
 h1{
 	text-align:left;
 	margin-left:10px;

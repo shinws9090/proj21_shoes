@@ -26,7 +26,7 @@
 	<!-- end header -->
   <!-- 동의 -->
   
-  
+  <div>
 	<section class="box">
 		<article class="box1">
 			<h2>
@@ -44,6 +44,7 @@
 			</form>
 			</article>
 	</section>
+	</div>
 
 	<!-- end our product -->
 	<footer>

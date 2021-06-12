@@ -113,8 +113,9 @@
 				
 				<table style="width: 80%">
 			<tr>
-				<td colspan="7" class="td_title">나의정보</td>
+				<h2>나의정보</h2>
 			</tr>
+			<div>
 			<form:form action="/myPage/modify/${member.memberId }" modelAttribute="memberDetailUpdateCommend"><!-- 보내는거? -->
 			<tr>
 				<th scope="row"><label for="memberId">회원아이디</label></th>
@@ -134,6 +135,7 @@
 				<th scope="row"><label for="memberName"></label> 회원이름</th>		
 				<td><form:input path="memberName" id="memberName" value="${member.memberName }"/></td>
 			</tr>
+		
 			<tr >
 				<th scope="row"><label for="gender"></label>성별</th>		
 				<td><input type="radio" name="gender" value="flase" checked>남</td>
@@ -167,6 +169,7 @@
 			</tr> 
 			
 			
+			
 		<%-- 	<tr style="background-color: white-space; text-align: left">
 				<td>포인트</td>		<td>${member.point }</td>
 			</tr>
@@ -183,21 +186,25 @@
 					
 			
 
-					<form action="/myPage/modify/${member.memberId }" method="post">
+				<%-- 	<form action="/myPage/modify/${member.memberId }" method="post">
 					<input type="submit" value="저장" />
 					</form>
-		
+		 --%>
 					
 			
 		<%--  	</c:forEach>  --%>
 		</form:form>
 		</table>
 				
-				
+				<form action="/myPage/modify/${member.memberId }" method="post">
+					<input type="submit" value="저장" />
+					</form>
+		
+					
 				
 				<p>나의 쇼핑정보</p>
 				<li><a href="${contextPath}/myPage/changeMemberData">주문내역</a></li>
-				
+				</div>
 				
 				<%-- <p>회원정보</p>
 				<li><a href="${contextPath}/myPage/changeMemberData">회원정보 변경</a></li>
