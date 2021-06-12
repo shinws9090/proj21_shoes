@@ -163,6 +163,7 @@
 			<tr>
 				<th scope="row"><label for="detailAddress"></label>상세주소</th>		
 				<td><form:input path="detailAddress" id="detail_address" value="${member.detailAddress }" /></td>
+			
 			</tr> 
 			
 			
