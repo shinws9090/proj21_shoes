@@ -17,7 +17,7 @@
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<title>회원가입</title>
+<title>마이페이지</title>
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/step1.css">
@@ -115,7 +115,7 @@
 			<tr>
 				<td colspan="7" class="td_title">나의정보</td>
 			</tr>
-			<form:form action="myPage/modify/${member.memberId }" modelAttribute="memberDetailUpdateCommend"><!-- 보내는거? -->
+			<form:form action="/myPage/modify/${member.memberId }" modelAttribute="memberDetailUpdateCommend"><!-- 보내는거? -->
 			<tr>
 				<th scope="row"><label for="memberId">회원아이디</label></th>
 				<td><form:input path="memberId" id="memberId" readonly="true" value="${member.memberId }" /></td>				
@@ -180,13 +180,14 @@
 			</td>
 				 --%>
 					
-				<tr> 
+			
 
-					
+					<form action="/myPage/modify/${member.memberId }" method="post">
+					<input type="submit" value="저장" />
+					</form>
 		
-					<td><a href="${contextPath}/myPage/modify/${authInfo.memberId}">회원정보 수정</a>&nbsp;
-						<a href="#">회원탈퇴</a></td>
-				</tr>
+					
+			
 		<%--  	</c:forEach>  --%>
 		</form:form>
 		</table>

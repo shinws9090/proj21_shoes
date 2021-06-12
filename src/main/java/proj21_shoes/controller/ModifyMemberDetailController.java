@@ -17,19 +17,19 @@ import proj21_shoes.service.ModifyMemberDetailService;
 @Controller
 public class ModifyMemberDetailController {
 
-	@Autowired
-	GetMyPageService service;
-	@Autowired
-	ModifyMemberDetailService service2;
-	@Autowired
-	GetMemberDetailService service3;
-	
-	@PostMapping("/modify/{memberId}")//나의 정보 수정
-	public String myPageUpdate (@PathVariable("memberId") @ModelAttribute("memberDetail") MemberDetail memberDetail, HttpSession session,HttpServletResponse response){
-		
-		return  "/myPage/modify";
-	
-	}
+//	@Autowired
+//	GetMyPageService service;
+//	@Autowired
+//	ModifyMemberDetailService service2;
+//	@Autowired
+//	GetMemberDetailService service3;
+//	
+//	@PostMapping("/modify/{memberId}")//나의 정보 수정
+//	public String myPageUpdate (@PathVariable("memberId") @ModelAttribute("memberDetail") MemberDetail memberDetail, HttpSession session,HttpServletResponse response){
+//		
+//		return  "/myPage/modify";
+//	
+//	}
 	
 	
 
