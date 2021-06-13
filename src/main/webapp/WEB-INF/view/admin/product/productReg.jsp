@@ -126,7 +126,7 @@
 							<label>카테고리</label>
 						</div>
 						<div class="form_section_content">
-							<input name="category" value="1">
+							<input name="category" value="111">
 						</div>
 					</div>
 
@@ -207,7 +207,7 @@
 							<label>등록사원정보</label>
 						</div>
 						<div class="form_section_content">
-							<input name="employee" value="1">
+							<input name="employee" value="303">
 						</div>
 					</div>
 					

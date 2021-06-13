@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_shoes.dto.Brand;
@@ -91,7 +91,7 @@ public class AdminController {
 
 	@PostMapping("/productReg")
 	@Transactional
-	public String registProduct(HttpServletRequest request) {
+	public String registProduct(/*@RequestBody Product product,*/ HttpServletRequest request) {
 
 		/*
 		 * logger.info("등록되나요?"); System.out.println(regProduct.getProductCode());

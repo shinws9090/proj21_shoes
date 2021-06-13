@@ -8,10 +8,14 @@ select * from `order`;
 
 select * from `member`;
 
+select * from employee;
+
 select * from product;
 select * from productpost;
 
 select * from brand;
+
+select * from category;
 
 insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number)
 	values (5, "운동화", "1", "남", "1", "가죽", "겨울", 20210610, 50000, 80000, now(), 1, 1, 1);
