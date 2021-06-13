@@ -2,7 +2,6 @@ package proj21_shoes.controller;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_shoes.commend.MemberDetailUpdateCommend;
+import proj21_shoes.commend.MyPageSelectCommend;
 import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.exeption.MemberNotFoundException;
 import proj21_shoes.service.GetMemberDetailService;
@@ -38,6 +38,28 @@ public class MyPageController {
 		return"/myPage/myPage";
 	}
 	
+	//회원정보 조회
+	@GetMapping("/myPage/myPageSel/{memberId}")
+	public String myPage (@PathVariable("memberId") String memberId, HttpSession session,HttpServletResponse response) {  //id를 받아와서
+		MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
+	
+		if(member ==null) {
+			throw new MemberNotFoundException();
+		}
+		session.setAttribute("member", member);  // 요고 해줘야 jsp 에서 받을수 있당
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("member",member);
+		mav.setViewName("myPage/myPage2");
+		System.out.println(member);
+
+
+
+
+		return "/myPage/myPageSel";
+	}
+
+	
 	//처음 보여지는 회원정보수정 화면!! 수정된 데이터 받는것도 다시 여기로 되돌아온다!!
 	@GetMapping("/myPage/{memberId}")  // <마이페이지에서 '회원정보 변경'을  누르면 --> myPage2로 이동 
 	public String myPage (@PathVariable("memberId") String memberId,
@@ -46,9 +68,12 @@ public class MyPageController {
 		//같은 페이지로 보내주기때문에 모델어트리뷰트 있어야한다!!!!!!!
 		
 		MemberDetail member = getMemberService.getMemberDetail(memberId); //주소에 찍힌 id로  멤버검색후 데이터 담아서
+		
 		if(member ==null) {
 			throw new MemberNotFoundException();
 		}
+
+		
 		session.setAttribute("member", member);  // jsp에 보내주기! 요고 해줘야 jsp 에서 받을수 있당
 		
 		ModelAndView mav = new ModelAndView();
@@ -63,6 +88,7 @@ public class MyPageController {
 	public String modify(@PathVariable("memberId") String memberId,
 			@ModelAttribute("memberDetailUpdateCommend") 
 	 MemberDetailUpdateCommend memberUpdate,  HttpSession session, HttpServletResponse response, Errors errors) {
+		
 	MemberDetail memberDetail = getMemberService.getMemberDetail(memberId);
 
 
@@ -72,8 +98,10 @@ public class MyPageController {
 			return "/myPage/modifyForm";  //일로 돌려보내고
 		}
 		
-		
+			//기존 비밀번호.equls(새로입력받은 번호)
 		if(!memberDetail.getMemberPwd().equals(memberUpdate.getConfirmPassword())) {  //기존 비밀번호 불일치시
+			System.out.println("기존비밀번호>>> "+ memberDetail.getMemberPwd());
+			System.out.println("입력받은 기존비번>>> "+ memberUpdate.getConfirmPassword());
 			errors.rejectValue("confirmPassword", "nomatch");
 			return  "/myPage/modifyForm";
 
@@ -92,7 +120,7 @@ public class MyPageController {
 		//위에서 담은 아이디 가져와서 담기
 		try {
 		modifyService.modifyMemberDetail(updateMember);  //여기서 수정완료!
-		return "/myPage/modifyForm";
+		return"/myPage/modifyForm";
 		}catch(Exception e) {
 			errors.reject("error");
 			return"/myPage/modifyForm";

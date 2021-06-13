@@ -84,6 +84,8 @@
 	}
 	
 	</script>
+	
+
 	<script type="text/javascript">
 	/* function genderview() {
 		작동되게해야하는디 만약 기존값이 true면  여자에 true 두게 하고, false면 남자에 true 값으로 입력하게 하기!! 
@@ -98,7 +100,7 @@
 		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
 	</header>
 	<!-- end header -->
-		<div id="myPage">
+
 	<section id = "maPage">
 	
 	<c:if test="${empty authInfo}"> 
@@ -115,12 +117,13 @@
 			<tr>
 				<h2>나의정보</h2>
 			</tr>
-			<div>
+			
 			<form:form action="/myPage/modify/${member.memberId }" modelAttribute="memberDetailUpdateCommend"><!-- 보내는거? -->
 			<tr>
 				<th scope="row"><label for="memberId">회원아이디</label></th>
 				<td><form:input path="memberId" id="memberId" readonly="true" value="${member.memberId }" /></td>				
 			</tr>
+		
 			<tr>
 				<th scope="row"><label for="confirmPassword"></label>기존비밀번호 확인</th>		
 				<td><form:password id="confirmPassword" path="confirmPassword" placeholder="기존 비밀번호 입력" /><form:errors path="confirmPassword" /></td>
@@ -135,12 +138,19 @@
 				<th scope="row"><label for="memberName"></label> 회원이름</th>		
 				<td><form:input path="memberName" id="memberName" value="${member.memberName }"/></td>
 			</tr>
+			
 		
+			<%-- 	${member.gender }	 --%>
+	
 			<tr >
-				<th scope="row"><label for="gender"></label>성별</th>		
-				<td><input type="radio" name="gender" value="flase" checked>남</td>
-				<td><input type="radio" name="gender" value="true" checked>여</td>
+				<th scope="row"><label for="gender"></label>성별</th>
+					<td><input type="radio" name="gender" value="false" checked>남</td>
+					<td><input type="radio" name="gender" value="true" checked>여</td>
+			
+				
+				
 			</tr>
+			
 			<tr>
 				<th scope="row"><label for="birthday"></label>생년월일</th>		
 				<td><form:input type="date" path="birthday" id="birthday" value="${member.birthday }"/></td>
@@ -186,25 +196,25 @@
 					
 			
 
-				<%-- 	<form action="/myPage/modify/${member.memberId }" method="post">
+				 	<form action="/myPage/modify/${member.memberId }" method="post">
 					<input type="submit" value="저장" />
 					</form>
-		 --%>
+		
 					
 			
 		<%--  	</c:forEach>  --%>
 		</form:form>
 		</table>
 				
-				<form action="/myPage/modify/${member.memberId }" method="post">
+<%-- 				<form action="/myPage/modify/${member.memberId }" method="post">
 					<input type="submit" value="저장" />
 					</form>
 		
-					
+					 --%>
 				
 				<p>나의 쇼핑정보</p>
 				<li><a href="${contextPath}/myPage/changeMemberData">주문내역</a></li>
-				</div>
+			
 				
 				<%-- <p>회원정보</p>
 				<li><a href="${contextPath}/myPage/changeMemberData">회원정보 변경</a></li>
@@ -217,7 +227,7 @@
 	
 	
 	</section>
-</div>
+
 	
 	<section>
 

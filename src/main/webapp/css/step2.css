@@ -5,9 +5,22 @@ color: #2c2c2c ;
 }
 .td_gender{
 }
-h2{
-	text-align:center;
+
+#loginCommand{
+	
+	text-align: center;
 }
+
+
+
+#signUpForm{
+	margin-left: 20%;
+}
+
+p{
+	padding-top: 10px;
+}
+
 .td_left {
 	width:10;
 	padding-right:10px;

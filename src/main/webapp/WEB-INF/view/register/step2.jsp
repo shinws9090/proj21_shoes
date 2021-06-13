@@ -89,7 +89,9 @@
 	<header>
 		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
 	</header>
+	
 	<!-- end header -->
+		<h2>회원가입</h2><!-- 회원가입 -->
 		<div id="signUpForm">
 	<section id = "signUpForm">
 	

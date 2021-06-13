@@ -41,13 +41,13 @@
 	<c:if test="${empty authInfo}"> 
 				<p>로그인해주세요.</p> 
 				<p>
-				<li><a href="${contextPath}/register/step1">JOIN</a></li>
-				<li><a href="${contextPath}/login/loginForm">LOGIN</a></li>
+				<li><a href="${contextPath}/register/step1">회원가입</a></li>
+				<li><a href="${contextPath}/login/loginForm">로그인</a></li>
 				
 			</c:if>
 			<c:if test="${!empty authInfo}">
 							<h1>회원정보 변경</h1>
-				
+				<div>
 				<form:form action="modify" modelAttribute="memberDetail">
 				<form:errors/>
 				<table style="width: 80%">
@@ -100,25 +100,17 @@
 				
 						
 		 <%-- 	<c:forEach var="MyPageSelectCommend" items="${MyPageSelectCommend}">  --%>
-				<tr>
-
-					
-		
-					<td><a href="#">[회원정보 수정]</a>&nbsp;
-						<a href="#">[회원탈퇴]</a></td>
-				</tr>
+				
+			
 		<%--  	</c:forEach>  --%>
 		
 		</table>
+		
 				</form:form>
 				
-				
-				<p>나의 쇼핑정보</p>
-				<li><a href="${contextPath}/myPage/changeMemberData">주문내역</a></li>
-				
-				
-				<p>회원정보</p>
-				<li><a href="${contextPath}/myPage/changeMemberData">회원정보 변경</a></li>
+				</div>
+	
+				<li><a href="${contextPath}/myPage/${authInfo.memberId}">회원정보 변경</a></li>
 				<li><a href="${contextPath}/myPage/">회원탈퇴</a></li>
 				
 				
