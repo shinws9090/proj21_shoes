@@ -22,15 +22,16 @@ h1, h2, h3, h4, h5, h6 {
 /* item */
 .item {
 	padding: 5px 0px 5px 5px;
-	
-	margin-top:40px;
-	margin-right :10em;
+	margin:3em;
 	display:inline-block;
-	width:20em;
+	width:15em;
+	height:20em;
 	border-radius: 10px;
 	
-   transition: all 0.2s ease-in-out;  
-
+ 	transition: all 0.2s ease-in-out;  
+	
+	border-bottom: 1px solid #898989;
+	border-top: 1px solid #898989;
 	
 }
 
@@ -46,8 +47,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .item img {
 	transition: 0.5s;
-	overflow:hidden 
-
+	overflow:hidden ;
+	width: 70%;
+	height: 70%;
 	
 }
 .item:hover img {
@@ -67,21 +69,15 @@ h1, h2, h3, h4, h5, h6 {
 .item:hover .detail {
 	bottom: 0;
 }
+
 /* title */
 
 .title {
-	border-style: dotted; 
-	border-width: 2px 2px 2px 2px;
-	border-radius:20px; 
 	padding: 12px; 
 	word-break: break-all;
-	border-color: #898989; 
-	background-color:rgba(211, 211, 211, 0.2);
 }
 
 .title {
-	border-bottom: 2px dotted #898989;
-	
 	/* 자식요소(.title h2)가 flout 속성이 들어가있어 크기를 잃어버려서 써야됨 */
 	overflow: hidden;
 	
@@ -106,6 +102,5 @@ h1, h2, h3, h4, h5, h6 {
 .title .price {
 	float: right;
 	margin-top: 15px;
-	font-size: 17px;
-	color: #ff0080;
+	font-size: 13px;
 }

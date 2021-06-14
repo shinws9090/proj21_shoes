@@ -109,12 +109,11 @@
 		<jsp:include page="/WEB-INF/view/include/header.jsp" />
 	</header>
 	<section>
-		<p>${product}</p>
+		<%-- <p>${product}</p> --%>
 
 		<div class='main'>
 			<div class='main-image'>
-				${product.productPost.productMainImage} 
-				<img src="http://via.placeholder.com/300X300">
+				<img src="${contextPath}/images/${product.productPost.productMainImage} ">
 			</div>
 
 
@@ -127,7 +126,7 @@
 			<div class="tabs">
 				<div class='product-content active'>
 					<c:forEach var="image" items="${product.productPost.images}">
-					${image.image} <img src="http://via.placeholder.com/300X300">
+					<img src="${contextPath}/images/${image.productCode}/${image.image}">
 					</c:forEach>
 					<p>상품설명 : ${product.productPost.content}</p>
 				</div>
@@ -135,6 +134,9 @@
 				<div class='product-QnA'>상품문의</div>
 			</div>
 		</div>
+		
+		
+		
 		<div class="order-options">
 			<strong>${product.productName}</strong>
 			<p>

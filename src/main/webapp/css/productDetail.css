@@ -2,7 +2,6 @@
 
 section {
 	width: 100%;
-	height: 2000px;
 	text-align: center;
 }
 
@@ -10,7 +9,7 @@ section {
 	margin: auto;
 	width:50%;
 	display: inline-block;
-  	border: 1px solid #000;
+  /* border: 1px solid #000; */
 }
 
 .order-options {
@@ -34,7 +33,12 @@ section {
 	border-radius: 7px;
 	
 }
-
+.product-content img{
+	width: 80%;
+}
+.main-image img{
+	width: 80%;
+}
 
 
 
@@ -50,6 +54,6 @@ section {
 }
 .active{
 	color:red;
-	border: 1px solid #000;
+	/* border: 1px solid #000; */
 	
 }

@@ -46,3 +46,19 @@ select * from address a;
 
 insert into orderproduct(order_code, product_code, style_code, `size`, order_count) values
 	()
+	
+insert into image(product_code,image) values
+	(22222,'Timberland (1).jpg'),
+	(22222,'Timberland (10).jpg'),
+	(22222,'Timberland (11).jpg'),
+	(22222,'Timberland (12).jpg'),
+	(22222,'Timberland (13).jpg'),
+	(22222,'Timberland (2).jpg'),
+	(22222,'Timberland (3).jpg'),
+	(22222,'Timberland (4).jpg'),
+	(22222,'Timberland (5).jpg'),
+	(22222,'Timberland (6).jpg'),
+	(22222,'Timberland (7).jpg'),
+	(22222,'Timberland (8).jpg'),
+	(22222,'Timberland (9).jpg');
+

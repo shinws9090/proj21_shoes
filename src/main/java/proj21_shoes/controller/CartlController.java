@@ -84,6 +84,9 @@ public class CartlController {
 			return ResponseEntity.badRequest().build();
 		}
 		AuthInfoCommend a = (AuthInfoCommend)session.getAttribute("authInfo");
+		if(a == null) {
+			return ResponseEntity.notFound().build();
+		}
 		aService.memberVo(a.getMemberId());
 		Member member = aService.memberVo(a.getMemberId());
 		if(member == null) {
