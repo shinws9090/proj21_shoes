@@ -45,6 +45,14 @@
 	
 	
 	</select>
+	
+	<update id="updateMember">
+	UPDATE member  SET quit_state=1
+    WHERE member_id=#{memberId};
+	
+	
+	</update>
+	
 </mapper>
 
 
