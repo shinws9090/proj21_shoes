@@ -27,6 +27,14 @@ public class MemberDetail {			//	회원상세정보
 
 
 
+	public MemberDetail(String memberName, String email) {
+		super();
+		this.memberName = memberName;
+		this.email = email;
+	}
+
+
+
 	public MemberDetail(String memberId) {
 		super();
 		this.memberId = memberId;

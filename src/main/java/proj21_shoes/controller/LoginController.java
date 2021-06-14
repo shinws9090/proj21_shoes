@@ -6,24 +6,29 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import proj21_shoes.commend.AuthInfoCommend;
 import proj21_shoes.commend.LoginCommand;
+import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.exeption.QuitMemberException;
 import proj21_shoes.exeption.WrongIdPasswordException;
 import proj21_shoes.service.AuthService;
+import proj21_shoes.service.FindMemberIdPwService;
 
 @Controller
 public class LoginController {
 
 	@Autowired
 	private AuthService authService;  
+	
 	
 	//로그인 화면
 	@GetMapping("/login/loginForm")
@@ -65,5 +70,10 @@ public class LoginController {
 
 	
 	}
+	
+	
+	
+	
+	
 }
 
