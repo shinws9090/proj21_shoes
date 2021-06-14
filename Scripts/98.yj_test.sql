@@ -54,8 +54,8 @@ WHERE member_id='';
 
 -- -----------
 UPDATE member
-SET quit_state=1
-WHERE member_id=0;
+SET quit_state=0
+WHERE member_id=22;
 
 
 
