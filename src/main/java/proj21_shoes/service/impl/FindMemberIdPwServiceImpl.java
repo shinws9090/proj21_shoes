@@ -21,4 +21,11 @@ public class FindMemberIdPwServiceImpl implements FindMemberIdPwService {
 		return mapper.selectMemberByNameEmail(memberName, email);
 	}
 
+
+	@Override
+	public MemberDetail selectPwdByIdNameEmail(String memberId, String memberName, String email) {
+		
+		return mapper.selectPwdByIdNameEmail(memberId, memberName, email);
+	}
+
 }

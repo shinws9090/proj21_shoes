@@ -63,6 +63,13 @@ where member_name=#{param1} and email =#{param2}
 	
 	</select>
 	
+		<select id="selectPwdByIdNameEmail" parameterType="string" resultMap="resMdt">
+	select member_pwd
+from memberDetail 
+where member_id=#{param1} and member_name=#{param2} and email =#{param3}
+	
+	</select>
+	
 	
 	<update id="updateMemberDetail" parameterType="MemberDetail">
 	update memberDetail

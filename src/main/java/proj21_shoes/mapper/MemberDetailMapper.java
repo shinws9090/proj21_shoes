@@ -16,6 +16,7 @@ public interface MemberDetailMapper {//우선 회원가입용!! 회원가입시�
 	//~로 검색  (모든 조건으로 검색할수있어야??)
 	MemberDetail selectMemberDetailById(String string);//수정필요 MemberDetail
 	MemberDetail selectMemberByNameEmail(String memberName, String email);
+	MemberDetail selectPwdByIdNameEmail(String memberId, String memberName, String email);
 
 	int insertMemberDetail(MemberDetail req); 		 //회원상세정보 추가
 	int updateMemberDetail(MemberDetail memberDetail);  	//회원상세정보 수정

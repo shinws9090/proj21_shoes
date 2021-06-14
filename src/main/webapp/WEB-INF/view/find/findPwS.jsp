@@ -35,36 +35,24 @@
 	</header>
 	<!-- end header -->
 		<div id="findForm">
-	<section id ="findForm">
+	<section id = "findForm">
 
 
 		<h2>비밀번호 찾기</h2><!-- 회원가입 -->
 
 
-		<form:form action="findPwS" modelAttribute="memberDetail">
+		<form:form action="/findPwS" modelAttribute="memberDetail">
 		<form:errors/>
 	<!-- 	<fieldset id="loginCommand"> -->
-	<p>
-			<label for = "memberId">회원   아이디 :  <form:input
-					path="memberId" /> <form:errors path="memberId" /></label>
-		</p>
 	
-	
+	${memberPwd.memberPwd}
 		<p>
-			<label for = "memberName">회원   이름 :  <form:input
-					path="memberName" /> <form:errors path="memberName" /></label>
+			<label for = "memberPwd">회원 비밀번호 :  <form:input
+					path="memberPwd"  value="${memberPwd.memberPwd }" readonly="true"/> <form:errors path="memberPwd" /></label>
 		</p>
 
-		<p>
-			<label for="email">이메일: 
-			<form:input type="email" path="email" id="email" placeholder="E-mail" />  
-			<form:errors path="email" />
-			</label>
-		</p>
 		
-		
-		<input type="submit" value="조회하기" />
-		<%-- <p><a href="<c:url value='${contextPath}/find/findPwS'/>">비밀번호 찾기</a> --%>
+		<p><a href="<c:url value='${contextPath}/find/findPw'/>">비밀번호 찾기</a>
 		<%-- <p><a href="<c:url value='/account/searchPw'/>">비밀번호 찾기</a> --%>
 		
 		

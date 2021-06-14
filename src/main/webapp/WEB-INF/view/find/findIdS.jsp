@@ -34,8 +34,8 @@
 		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
 	</header>
 	<!-- end header -->
-		<div id="loginForm">
-	<section id = "loginForm">
+		<div id="findForm">
+	<section id = "findForm">
 
 
 		<h2>아이디 찾기</h2><!-- 회원가입 -->
