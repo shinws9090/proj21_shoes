@@ -8,6 +8,18 @@ public class OrderOption { //상품주문정보(상세정보)
 	private int stock;				//재고
 	private String color;			//색상
 	
+	
+	public OrderOption() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public OrderOption(int productCode, int styleCode, int size) {
+		super();
+		this.productCode = productCode;
+		this.styleCode = styleCode;
+		this.size = size;
+
+	}
 	public int getProductCode() {
 		return productCode;
 	}

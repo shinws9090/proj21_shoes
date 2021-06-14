@@ -14,7 +14,7 @@ where p.product_code = 55555;
 
 call productByAll();
 
-select * from orderoption where product_code = 1;
+select * from orderoption; where product_code = 1;
 select * from orderoption where product_code =22222 and style_code =3;
 
 select * from brand;
@@ -32,3 +32,17 @@ update cart
 	where member_code =111111 and `size` =270 and product_code = 11111 and style_code =1;
 
 delete from cart where cart_code = 6;
+
+
+select * from `order`;
+
+insert into `order`(member_code, order_date, payment_amount) values
+	(111111,now(),1000);
+
+select last_insert_id();
+
+select * from orderproduct;
+select * from address a;
+
+insert into orderproduct(order_code, product_code, style_code, `size`, order_count) values
+	()

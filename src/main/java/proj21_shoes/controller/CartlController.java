@@ -3,7 +3,7 @@ package proj21_shoes.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import proj21_shoes.commend.AuthInfoCommend;
 import proj21_shoes.dto.Cart;
 import proj21_shoes.dto.Member;
 import proj21_shoes.dto.Product;
+import proj21_shoes.service.AuthService;
 import proj21_shoes.service.CartService;
 import proj21_shoes.service.ProductService;
 
@@ -30,6 +32,9 @@ public class CartlController {
 	
 	@Autowired
 	ProductService pService;
+	
+	@Autowired
+	AuthService aService;
 
 	@GetMapping("/cartList")
 	public ModelAndView cartList() {
@@ -74,20 +79,22 @@ public class CartlController {
 	}
 		
 	@PostMapping("api/cartSave")
-	public ResponseEntity<Object> cartSave(@RequestBody Cart cart, HttpServletRequest request) {
+	public ResponseEntity<Object> cartSave(@RequestBody Cart cart, HttpSession session) {
 		if(cart.getProductCode()<=0||cart.getSize()<=0||cart.getStyleCode()<=0||cart.getCount()<=0) {
 			return ResponseEntity.badRequest().build();
 		}
-//		Member member = (Member) request.getSession().getAttribute("member");
-//		if(member != null) {
-//			return ResponseEntity.notFound().build();
-//		}
-//		cart.setMember(member);
-		//테스트용
-		Member member = new Member();
-		member.setMemberCode(111111);
-		
+		AuthInfoCommend a = (AuthInfoCommend)session.getAttribute("authInfo");
+		aService.memberVo(a.getMemberId());
+		Member member = aService.memberVo(a.getMemberId());
+		if(member == null) {
+			return ResponseEntity.notFound().build();
+		}
 		cart.setMember(member);
+		//테스트용
+//		Member member = new Member();
+//		member.setMemberCode(111111);
+//		cart.setMember(member);
+		
 		System.out.println(cart);
 		int res = service.insertCart(cart);
 		if(res==1) {

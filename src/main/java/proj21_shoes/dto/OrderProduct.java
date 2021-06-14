@@ -4,7 +4,19 @@ public class OrderProduct {
 
 	private OrderOption orderOption;
 	private int orderCount;
+	
+	
 
+	public OrderProduct() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public OrderProduct(OrderOption orderOption, int orderCount) {
+		super();
+		this.orderOption = orderOption;
+		this.orderCount = orderCount;
+	}
 
 	public OrderOption getOrderOption() {
 		return orderOption;

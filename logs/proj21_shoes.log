@@ -22,3 +22,91 @@
 [DEBUG] [2021-06-11 11:56] ==> Parameters: 222222(String), 김예진(String), true(Boolean), 2021-06-11(LocalDate), test@gmail.com(String), 010-1234-5678(String), 12345(String), 대구(String), 상세주소(String), 22(String)
 [DEBUG] [2021-06-11 11:56] <==    Updates: 1
 [DEBUG] [2021-06-11 11:56] MemberDetail [memberId=22, memberPwd=222222, memberName=김예진, gender=true, birthday=2021-06-11, email=test@gmail.com, tel=010-1234-5678, zipCode=12345, address=대구, detailAddress=상세주소]
+[DEBUG] [2021-06-14 17:46] testInsertOrder()
+[DEBUG] [2021-06-14 17:46] ==>  Preparing: insert into `order`(member_code, order_date, payment_amount) values (?,?,?)
+[DEBUG] [2021-06-14 17:46] ==> Parameters: null, null, 0(Integer)
+[DEBUG] [2021-06-14 17:54] testInsertOrder()
+[DEBUG] [2021-06-14 17:54] ==>  Preparing: insert into `order`(member_code, order_date, payment_amount) values (?,?,?)
+[DEBUG] [2021-06-14 17:54] ==> Parameters: 100000(Integer), 2021-06-14T17:54:51.944(LocalDateTime), 10000(Integer)
+[DEBUG] [2021-06-14 17:55] testInsertOrder()
+[DEBUG] [2021-06-14 17:55] ==>  Preparing: insert into `order`(member_code, order_date, payment_amount) values (?,?,?)
+[DEBUG] [2021-06-14 17:55] ==> Parameters: 111111(Integer), 2021-06-14T17:55:41.199(LocalDateTime), 10000(Integer)
+[DEBUG] [2021-06-14 17:55] <==    Updates: 1
+[DEBUG] [2021-06-14 17:55] ==>  Preparing: select last_insert_id()
+[DEBUG] [2021-06-14 17:55] ==> Parameters: 
+[TRACE] [2021-06-14 17:55] <==    Columns: last_insert_id()
+[TRACE] [2021-06-14 17:55] <==        Row: 10016
+[DEBUG] [2021-06-14 17:55] <==      Total: 1
+[DEBUG] [2021-06-14 17:55] ==>  Preparing: insert into orderproduct(order_code, product_code, style_code, `size`, order_count) values (?,?, ?,?,?) , (?,?, ?,?,?) , (?,?, ?,?,?)
+[DEBUG] [2021-06-14 17:55] ==> Parameters: 10016(Integer), 11111(Integer), 1(Integer), 270(Integer), 10(Integer), 10016(Integer), 22222(Integer), 1(Integer), 280(Integer), 10(Integer), 10016(Integer), 11111(Integer), 1(Integer), 260(Integer), 10(Integer)
+[DEBUG] [2021-06-14 17:57] testInsertOrder()
+[DEBUG] [2021-06-14 17:57] ==>  Preparing: insert into `order`(member_code, order_date, payment_amount) values (?,?,?)
+[DEBUG] [2021-06-14 17:57] ==> Parameters: 111111(Integer), 2021-06-14T17:57:35.461(LocalDateTime), 10000(Integer)
+[DEBUG] [2021-06-14 17:57] <==    Updates: 1
+[DEBUG] [2021-06-14 17:57] ==>  Preparing: select last_insert_id()
+[DEBUG] [2021-06-14 17:57] ==> Parameters: 
+[TRACE] [2021-06-14 17:57] <==    Columns: last_insert_id()
+[TRACE] [2021-06-14 17:57] <==        Row: 10017
+[DEBUG] [2021-06-14 17:57] <==      Total: 1
+[DEBUG] [2021-06-14 17:57] ==>  Preparing: insert into orderproduct(order_code, product_code, style_code, `size`, order_count) values (?,?, ?,?,?) , (?,?, ?,?,?) , (?,?, ?,?,?)
+[DEBUG] [2021-06-14 17:57] ==> Parameters: 10017(Integer), 11111(Integer), 1(Integer), 270(Integer), 10(Integer), 10017(Integer), 22222(Integer), 2(Integer), 280(Integer), 10(Integer), 10017(Integer), 33333(Integer), 3(Integer), 230(Integer), 10(Integer)
+[DEBUG] [2021-06-14 17:57] <==    Updates: 3
+[DEBUG] [2021-06-14 17:57] ==>  Preparing: 
+[DEBUG] [2021-06-14 17:57] ==> Parameters: 
+[DEBUG] [2021-06-14 18:09] testInsertOrder()
+[DEBUG] [2021-06-14 18:09] ==>  Preparing: insert into `order`(member_code, order_date, payment_amount) values (?,?,?)
+[DEBUG] [2021-06-14 18:09] ==> Parameters: 111111(Integer), 2021-06-14T18:09:27.223(LocalDateTime), 10000(Integer)
+[DEBUG] [2021-06-14 18:09] <==    Updates: 1
+[DEBUG] [2021-06-14 18:09] ==>  Preparing: select last_insert_id()
+[DEBUG] [2021-06-14 18:09] ==> Parameters: 
+[TRACE] [2021-06-14 18:09] <==    Columns: last_insert_id()
+[TRACE] [2021-06-14 18:09] <==        Row: 10018
+[DEBUG] [2021-06-14 18:09] <==      Total: 1
+[DEBUG] [2021-06-14 18:09] ==>  Preparing: insert into orderproduct(order_code, product_code, style_code, `size`, order_count) values (?,?, ?,?,?) , (?,?, ?,?,?) , (?,?, ?,?,?)
+[DEBUG] [2021-06-14 18:09] ==> Parameters: 10018(Integer), 11111(Integer), 1(Integer), 270(Integer), 10(Integer), 10018(Integer), 22222(Integer), 2(Integer), 280(Integer), 10(Integer), 10018(Integer), 33333(Integer), 3(Integer), 230(Integer), 10(Integer)
+[DEBUG] [2021-06-14 18:09] <==    Updates: 3
+[DEBUG] [2021-06-14 18:09] ==>  Preparing: insert into address(order_code, recipient, zipCode, address, detail_address, tel) values (?,?,?,? ,?,?)
+[DEBUG] [2021-06-14 18:09] ==> Parameters: 0(Integer), asdasd(String), asdasd(String), asdasd(String), asdasd(String), asdasd(String)
+[DEBUG] [2021-06-14 18:09] testInsertOrder()
+[DEBUG] [2021-06-14 18:09] ==>  Preparing: insert into `order`(member_code, order_date, payment_amount) values (?,?,?)
+[DEBUG] [2021-06-14 18:09] ==> Parameters: 111111(Integer), 2021-06-14T18:09:56.174(LocalDateTime), 10000(Integer)
+[DEBUG] [2021-06-14 18:09] <==    Updates: 1
+[DEBUG] [2021-06-14 18:09] ==>  Preparing: select last_insert_id()
+[DEBUG] [2021-06-14 18:09] ==> Parameters: 
+[TRACE] [2021-06-14 18:09] <==    Columns: last_insert_id()
+[TRACE] [2021-06-14 18:09] <==        Row: 10019
+[DEBUG] [2021-06-14 18:09] <==      Total: 1
+[DEBUG] [2021-06-14 18:09] ==>  Preparing: insert into orderproduct(order_code, product_code, style_code, `size`, order_count) values (?,?, ?,?,?) , (?,?, ?,?,?) , (?,?, ?,?,?)
+[DEBUG] [2021-06-14 18:09] ==> Parameters: 10019(Integer), 11111(Integer), 1(Integer), 270(Integer), 10(Integer), 10019(Integer), 22222(Integer), 2(Integer), 280(Integer), 10(Integer), 10019(Integer), 33333(Integer), 3(Integer), 230(Integer), 10(Integer)
+[DEBUG] [2021-06-14 18:09] <==    Updates: 3
+[DEBUG] [2021-06-14 18:09] ==>  Preparing: insert into address(order_code, recipient, zipCode, address, detail_address, tel) values (?,?,?,? ,?,?)
+[DEBUG] [2021-06-14 18:09] ==> Parameters: 10019(Integer), asdasd(String), asdasd(String), asdasd(String), asdasd(String), asdasd(String)
+[DEBUG] [2021-06-14 18:10] testInsertOrder()
+[DEBUG] [2021-06-14 18:10] ==>  Preparing: insert into `order`(member_code, order_date, payment_amount) values (?,?,?)
+[DEBUG] [2021-06-14 18:10] ==> Parameters: 111111(Integer), 2021-06-14T18:10:08.921(LocalDateTime), 10000(Integer)
+[DEBUG] [2021-06-14 18:10] <==    Updates: 1
+[DEBUG] [2021-06-14 18:10] ==>  Preparing: select last_insert_id()
+[DEBUG] [2021-06-14 18:10] ==> Parameters: 
+[TRACE] [2021-06-14 18:10] <==    Columns: last_insert_id()
+[TRACE] [2021-06-14 18:10] <==        Row: 10020
+[DEBUG] [2021-06-14 18:10] <==      Total: 1
+[DEBUG] [2021-06-14 18:10] ==>  Preparing: insert into orderproduct(order_code, product_code, style_code, `size`, order_count) values (?,?, ?,?,?) , (?,?, ?,?,?) , (?,?, ?,?,?)
+[DEBUG] [2021-06-14 18:10] ==> Parameters: 10020(Integer), 11111(Integer), 1(Integer), 270(Integer), 10(Integer), 10020(Integer), 22222(Integer), 2(Integer), 280(Integer), 10(Integer), 10020(Integer), 33333(Integer), 3(Integer), 230(Integer), 10(Integer)
+[DEBUG] [2021-06-14 18:10] <==    Updates: 3
+[DEBUG] [2021-06-14 18:10] ==>  Preparing: insert into address(order_code, recipient, zipCode, address, detail_address, tel) values (?,?,?,? ,?,?)
+[DEBUG] [2021-06-14 18:10] ==> Parameters: 10020(Integer), asdasd(String), asdasd(String), asdasd(String), asdasd(String), asdasd(String)
+[DEBUG] [2021-06-14 18:10] testInsertOrder()
+[DEBUG] [2021-06-14 18:10] ==>  Preparing: insert into `order`(member_code, order_date, payment_amount) values (?,?,?)
+[DEBUG] [2021-06-14 18:10] ==> Parameters: 111111(Integer), 2021-06-14T18:10:46.699(LocalDateTime), 10000(Integer)
+[DEBUG] [2021-06-14 18:10] <==    Updates: 1
+[DEBUG] [2021-06-14 18:10] ==>  Preparing: select last_insert_id()
+[DEBUG] [2021-06-14 18:10] ==> Parameters: 
+[TRACE] [2021-06-14 18:10] <==    Columns: last_insert_id()
+[TRACE] [2021-06-14 18:10] <==        Row: 10021
+[DEBUG] [2021-06-14 18:10] <==      Total: 1
+[DEBUG] [2021-06-14 18:10] ==>  Preparing: insert into orderproduct(order_code, product_code, style_code, `size`, order_count) values (?,?, ?,?,?) , (?,?, ?,?,?) , (?,?, ?,?,?)
+[DEBUG] [2021-06-14 18:10] ==> Parameters: 10021(Integer), 11111(Integer), 1(Integer), 270(Integer), 10(Integer), 10021(Integer), 22222(Integer), 2(Integer), 280(Integer), 10(Integer), 10021(Integer), 33333(Integer), 3(Integer), 230(Integer), 10(Integer)
+[DEBUG] [2021-06-14 18:10] <==    Updates: 3
+[DEBUG] [2021-06-14 18:10] ==>  Preparing: insert into address(order_code, recipient, zipCode, address, detail_address, tel) values (?,?,?,? ,?,?)
+[DEBUG] [2021-06-14 18:10] ==> Parameters: 10021(Integer), asdasd(String), asdas(String), asdasd(String), asdasd(String), asdasd(String)
+[DEBUG] [2021-06-14 18:10] <==    Updates: 1
