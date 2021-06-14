@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import proj21_shoes.dto.Member;
+import proj21_shoes.dto.MemberDetail;
 
 @Component
 public interface MemberMapper {
@@ -15,9 +16,12 @@ public interface MemberMapper {
 	Member selectMemberByMCode(int string);					//회원코드로 검색
 	Member selectMemberById(String memberId);					//회원아이디로 검색
 	
+	
 	int insertMember(Member req); 		 					//회원정보 추가
 	int updateMember(String member);  				//회원정보 수정
 	int deleteMember(long id);  							//회원정보 삭제
+	
+	
 	
 	
 

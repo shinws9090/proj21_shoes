@@ -17,7 +17,7 @@
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<title>로그인</title>
+<title>아이디 찾기</title>
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/step1.css">
@@ -34,33 +34,37 @@
 		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
 	</header>
 	<!-- end header -->
-		<div id="loginForm">
-	<section id = "loginForm">
+		<div id="findForm">
+	<section id ="findForm">
 
 
-		<h2>로그인</h2><!-- 회원가입 -->
+		<h2>아이디 찾기</h2><!-- 회원가입 -->
 
 
-		<form:form action="loginSuccess" modelAttribute="loginCommand">
+		<form:form action="/findId" modelAttribute="memberDetail">
 		<form:errors/>
 	<!-- 	<fieldset id="loginCommand"> -->
 		<p>
-			<label >회원   ID :  <form:input
-					path="memberId" /> <form:errors path="memberId" /></label>
+			<label for = "memberName">회원   이름 :  <form:input
+					path="memberName" /> <form:errors path="memberName" /></label>
 		</p>
+
 		<p>
-			<label >회원 비밀번호: :  <form:password path="memberPwd" /> <form:errors path="memberPwd" /></label>
+			<label for="email">이메일: 
+			<form:input type="email" path="email" id="email" placeholder="E-mail" />  
+			<form:errors path="email" />
+			</label>
 		</p>
-		<p>
-			<label >ID기억하기: <form:checkbox path="rememberId" /> </label>
-		</p>
-		<input type="submit" value="로그인하기" />
-		<p><a href="<c:url value='${contextPath}/find/findIdPw'/>">아이디/비밀번호 찾기</a>
+		
+		
+		<input type="submit" value="조회하기" />
+		<p><a href="<c:url value='${contextPath}/find/findPw'/>">비밀번호 찾기</a>
 		<%-- <p><a href="<c:url value='/account/searchPw'/>">비밀번호 찾기</a> --%>
 		
 		
 <!-- 	</fieldset> -->
 	</form:form> 
+
 
 	</section>
 </div>
