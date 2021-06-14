@@ -71,11 +71,5 @@ public class OrderController {
 		return mav;
 	}
 	
-	@PostMapping("/order")
-	public ModelAndView orderGet(@ModelAttribute(value = "order") Order order) {
-		System.out.println(order);
-		
-		ModelAndView mav = new ModelAndView("product/orderGet","order",order);
-		return mav;
-	}
+
 }

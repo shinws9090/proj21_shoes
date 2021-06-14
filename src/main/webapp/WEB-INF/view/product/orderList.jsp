@@ -18,6 +18,21 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/cartList.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+$(function() {
+	var contextPath = "${contextPath}"
+	/*전채가격 설정*/
+	function priceAll() {
+		var priceAll = 0;
+		$(".price").each(function() {
+			priceAll += Number($(this).text());
+		});
+		$("#priceAll").text("결재가격:" + priceAll);
+	}
+	priceAll();
+});
+</script>
 </head>
 <body class="main-layout">
 	<header>
@@ -25,8 +40,16 @@
 	</header>
 
 	<section>
-		<%-- ${order } --%>
-		${productList}
+		주문코드 = ${order.orderCode } <br>
+		회원코드 = ${order.memberCode }<br>
+		주문일 = ${order.orderDate }<br>
+		결제금액 = ${order.paymentAmount }<br>
+		결제여부 = ${order.paymentState }<br>
+		배송코드 = ${order.deliveryCode }<br>
+		구매확정여부 = ${order.buyConfirmState }<br>
+		orderProduct = ${order.orderProduct }<br>
+		address = ${order.address }<br>
+		<%-- ${productList} --%>
 			<table>
 				<thead>
 				<tr>
@@ -62,13 +85,20 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<form:form action="order" modelAttribute="order">
+			
 			<ul>
-				<li>
-				<input type="submit" value="구매하기">
-				</li>
+				<li id="priceAll"></li>
 			</ul>
-			</form:form>
+			
+			<table>
+				<tr> 
+					<td>배송지선택</td>
+					<td> 
+					<label><input type="radio" name="address-option" value="member">회원정보와 동일</label>
+					<label><input type="radio" name="address-option" value="new">새로운 배송지</label>
+					</td>
+				</tr>
+			</table>
 	</section>
 		
 	<footer>
