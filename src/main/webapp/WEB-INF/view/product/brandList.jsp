@@ -33,10 +33,11 @@ $(function() {
 	</header>
 
 	<section>
-		<%-- ${products} --%>
+	<div>
+		<%-- ${brand} --%>
 		<c:forEach var="b" items="${brand}">
 			<div class="item" data-item="${b.brandCode}">
-				<img src="images/닥터마틴logo.jpg">
+				<img src="images/${b.brandName}logo.jpg">
 				<div class="detail">
 					<div class="title">
 						<h2>
@@ -51,6 +52,7 @@ $(function() {
 				</div>
 			</div>
 		</c:forEach>
+	</div>
 	</section>
 
 	<footer>

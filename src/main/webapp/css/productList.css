@@ -29,11 +29,6 @@ h1, h2, h3, h4, h5, h6 {
 	width:20em;
 	border-radius: 10px;
 	
-	transform: scale(0.95);
-   -webkit-transform: scale(0.95);
-   -moz-transform: scale(0.95);
-   -ms-transform: scale(0.95);
-   -o-transform: scale(0.95);
    transition: all 0.2s ease-in-out;  
 
 	

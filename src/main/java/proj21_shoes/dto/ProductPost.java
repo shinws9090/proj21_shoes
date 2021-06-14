@@ -1,6 +1,5 @@
 package proj21_shoes.dto;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class ProductPost { // 상품게시글
