@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="contextPath" value="<%=request.getContextPath()%>" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,29 +19,24 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 	$(function() {
-		var contextPath = "${contextPath}";
-		$.get(contextPath + "/api/productMgt", function(json) {
-			var dataLength = json.length;
-			if (dataLength >= 1) {
+		var contextPath = "<%= request.getContextPath()%>";
+		var productCode = ${productCode};
+		$.get(contextPath + "/api/productMgt/"+productCode,
+			function(json) {
 				var sCont = "";
-				for (i = 0; i < dataLength; i++) {
 					sCont += "<tr>";
-					sCont += "<td>" + json[i].productCode + "</td>";
-					sCont += "<td>" + json[i].productName + "</a></td>";
-					sCont += "<td>" + json[i].brand.brandName + "</td>";
-					sCont += "<td>" + json[i].gender + "</td>";
-					sCont += "<td>" + json[i].category.category + "</td>";
-					sCont += "<td>" + json[i].costPrice + "</td>";
-					sCont += "<td>" + json[i].sellPrice + "</td>";
-					sCont += "<td>" + json[i].registDate + "</td>";
-					sCont += "<td>" + json[i].cumulativeRegistCount + "</td>";
-					sCont += "<td>" + json[i].cumulativeSellCount + "</td>";
-					sCont += "<td><a href='read?productCode=" + json[i].productCode + "'>" + "[상세보기]" + "</a></td>";
-					sCont += "<td>" + "<a href='#'>[수정]</a>&nbsp;" + "<a href='#'>[삭제]</a>" + "</td>";			
+					sCont += "<td productCode='productCode'>" + json.productCode + "</td>";
+					sCont += "<td>" + json.productName + "</td>";
+					sCont += "<td>" + json.brand.brandName + "</td>";
+					sCont += "<td>" + json.gender + "</td>";
+					sCont += "<td>" + json.category.category + "</td>";
+					sCont += "<td>" + json.costPrice + "</td>";
+					sCont += "<td>" + json.sellPrice + "</td>";
+					sCont += "<td>" + json.registDate + "</td>";
+					sCont += "<td>" + json.cumulativeRegistCount + "</td>";
+					sCont += "<td>" + json.cumulativeSellCount + "</td>";
 					sCont += "</tr>";
-				}
 				$("#load:last-child").append(sCont);
-			}
 		});
 	});
 </script>
@@ -60,13 +54,12 @@
 		<table style="width: 80%">
 			<tr>
 				<td colspan="7" class="td_title">상품 목록</td>
-				<td><a href="viewProductReg">[상품등록]</a></td>
 			</tr>
 
 			<tr style="background-color: lightgrey; text-align: center">
 				<td>번호</td>
 				<td>상품명</td>
-				<td>브랜드</td>				
+				<td>브랜드</td>
 				<td>성별</td>
 				<td>카테고리</td>
 				<td>원가</td>

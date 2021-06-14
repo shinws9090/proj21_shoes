@@ -77,9 +77,9 @@ public class FindMemberIdPwController {
 		
 		
 			
-			//비밀번호찾기
+			//비밀번호찾기 화면 가기
 			@GetMapping("/find/findPw")  //dto 새로 하나 만들어야함. 확인용 변수만 들어간걸로
-			public String findPw(@ModelAttribute("memberDetail") MemberDetail memberDetail) {	
+			public String findPw(MemberDetail memberDetail) {	
 				
 				return "/find/findPw";
 
