@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ProductPost { // 상품게시글
 	private int productCode; // 상품정보
-	private byte[] productMainImage; // 상품대표이미지
+	private String productMainImage; // 상품대표이미지
 	private String content; // 내용
 	private List<Image> images; // 상품이미지들
 
@@ -17,7 +17,10 @@ public class ProductPost { // 상품게시글
 		this.productCode = productCode;
 	}
 
-	public ProductPost(int productCode, byte[] productMainImage, String content, List<Image> images) {
+	
+
+	public ProductPost(int productCode, String productMainImage, String content, List<Image> images) {
+		super();
 		this.productCode = productCode;
 		this.productMainImage = productMainImage;
 		this.content = content;
@@ -31,12 +34,13 @@ public class ProductPost { // 상품게시글
 	public void setProductCode(int productCode) {
 		this.productCode = productCode;
 	}
+	
 
-	public byte[] getProductMainImage() {
+	public String getProductMainImage() {
 		return productMainImage;
 	}
 
-	public void setProductMainImage(byte[] productMainImage) {
+	public void setProductMainImage(String productMainImage) {
 		this.productMainImage = productMainImage;
 	}
 
@@ -59,7 +63,7 @@ public class ProductPost { // 상품게시글
 	@Override
 	public String toString() {
 		return String.format("ProductPost [productCode=%s, productMainImage=%s, content=%s, images=%s]", productCode,
-				Arrays.toString(productMainImage), content, images);
+				productMainImage, content, images);
 	}
 
 }

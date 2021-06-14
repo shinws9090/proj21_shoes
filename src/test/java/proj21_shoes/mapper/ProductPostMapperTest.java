@@ -51,7 +51,7 @@ public class ProductPostMapperTest {
 		
 		ProductPost productPost = new ProductPost();
 		productPost.setProductCode(2);
-		productPost.setProductMainImage(new byte[12]);
+//		productPost.setProductMainImage(new byte[12]);
 		productPost.setContent("내용");
 
 		List<Image> list = new ArrayList<Image>();
@@ -69,7 +69,7 @@ public class ProductPostMapperTest {
 
 		ProductPost productPost = new ProductPost();
 		productPost.setProductCode(2);
-		productPost.setProductMainImage(new byte[12]);
+//		productPost.setProductMainImage(new byte[12]);
 		productPost.setContent("내용변경");
 
 		List<Image> list = new ArrayList<Image>();

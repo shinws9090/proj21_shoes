@@ -2,18 +2,19 @@ package proj21_shoes.dto;
 
 public class Address { // 배송지정보
 
-	private Order orderCode; // 주문정보
+	private int orderCode; // 주문정보
 	private String recipient; // 받는사람
 	private String zipCode; // 우편번호
 	private String address; // 주소
 	private String detailAddress; // 상세주소
 	private String tel; // 연락처
 
-	public Order getOrderCode() {
+
+	public int getOrderCode() {
 		return orderCode;
 	}
 
-	public void setOrderCode(Order orderCode) {
+	public void setOrderCode(int orderCode) {
 		this.orderCode = orderCode;
 	}
 

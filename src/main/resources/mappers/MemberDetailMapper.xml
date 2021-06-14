@@ -55,6 +55,15 @@
 	
 	</select>
 	
+	
+		<select id="selectMemberByNameEmail" parameterType="string" resultMap="resMdt">
+	select member_id
+from memberDetail 
+where member_name=#{param1} and email =#{param2}
+	
+	</select>
+	
+	
 	<update id="updateMemberDetail" parameterType="MemberDetail">
 	update memberDetail
 	set member_pwd=#{memberPwd}, member_name=#{memberName}, gender=#{gender}, 

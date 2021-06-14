@@ -7,8 +7,7 @@ join employee e on e.emp_number = p.emp_number
 join authority a2 on e.authority_code = a2.authority_code
 join productpost p2 on p2.product_code = p.product_code
 left join image i on i.product_code = p.product_code
-where p.brand_code = 4;
-where p.product_code = 1;
+where p.product_code = 55555;
 
 
 

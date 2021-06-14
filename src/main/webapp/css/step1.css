@@ -1,5 +1,13 @@
 @charset "UTF-8";
 /* step1 */
+
+
+#findForm{
+	width: 500px;
+	height:620px;
+	margin-left: 300px;
+	
+}
 .box1{
 	text-align: left;
 	width: 800px;

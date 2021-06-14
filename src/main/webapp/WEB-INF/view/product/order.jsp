@@ -4,6 +4,7 @@
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 	<c:set var="contextPath" value="<%=request.getContextPath() %>" />
+	<c:set var="oo" value="${order}" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,9 +62,11 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			<form action="orderGet" method="post">
 			<ul>
-				<li> <jsp:forward page=""/> </li>
+				<li> <input type="submit" value="다음"> </li>
 			</ul>
+			</form>
 	</section>
 		
 	<footer>

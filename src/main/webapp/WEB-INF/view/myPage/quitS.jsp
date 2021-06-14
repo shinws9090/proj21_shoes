@@ -17,15 +17,15 @@
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<title>로그인</title>
+<title>회원탈퇴</title>
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/step1.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/step2.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/myPage.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
 
 </head>
 <body class="main-layout">
@@ -34,37 +34,15 @@
 		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
 	</header>
 	<!-- end header -->
-		<div id="loginForm">
-	<section id = "loginForm">
 
+	<section id = "quitMember">
+		<h1>탈퇴가 완료되었습니다.</h1>
 
-		<h2>로그인</h2><!-- 회원가입 -->
-
-
-		<form:form action="loginSuccess" modelAttribute="loginCommand">
-		<form:errors/>
-	<!-- 	<fieldset id="loginCommand"> -->
-		<p>
-			<label >회원   ID :  <form:input
-					path="memberId" /> <form:errors path="memberId" /></label>
-		</p>
-		<p>
-			<label >회원 비밀번호: :  <form:password path="memberPwd" /> <form:errors path="memberPwd" /></label>
-		</p>
-		<p>
-			<label >ID기억하기: <form:checkbox path="rememberId" /> </label>
-		</p>
-		<input type="submit" value="로그인하기" />
-		<p><a href="<c:url value='${contextPath}/find/findIdPw'/>">아이디/비밀번호 찾기</a>
-		<%-- <p><a href="<c:url value='/account/searchPw'/>">비밀번호 찾기</a> --%>
-		
-		
-<!-- 	</fieldset> -->
-	</form:form> 
-
+	
+	
 	</section>
-</div>
 
+	
 	<section>
 
 	</section>
@@ -74,4 +52,4 @@
 		<jsp:include page="/WEB-INF/view/include/footer.jsp"/>
 	</footer>
 </body>
-</html> 
+</html>
