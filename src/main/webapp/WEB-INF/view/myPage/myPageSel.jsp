@@ -111,7 +111,7 @@
 				</div>
 	
 				<li><a href="${contextPath}/myPage/${authInfo.memberId}">회원정보 변경</a></li>
-				<li><a href="${contextPath}/myPage/">회원탈퇴</a></li>
+				<li><a href="${contextPath}/myPage/quitMember/${member.memberId}">회원탈퇴</a></li>
 				
 				
 				

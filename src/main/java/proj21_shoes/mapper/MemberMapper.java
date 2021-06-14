@@ -16,7 +16,7 @@ public interface MemberMapper {
 	Member selectMemberById(String memberId);					//회원아이디로 검색
 	
 	int insertMember(Member req); 		 					//회원정보 추가
-	int updateMember(Member memberDetail);  				//회원정보 수정
+	int updateMember(String member);  				//회원정보 수정
 	int deleteMember(long id);  							//회원정보 삭제
 	
 	
