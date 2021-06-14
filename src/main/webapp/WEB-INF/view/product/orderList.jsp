@@ -1,3 +1,4 @@
+<%@page import="proj21_shoes.dto.Order"%>
 <%@page import="com.sun.xml.internal.bind.CycleRecoverable.Context"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -24,8 +25,8 @@
 	</header>
 
 	<section>
-	<%-- 	${order }
-		${productList} --%>
+		<%-- ${order } --%>
+		${productList}
 			<table>
 				<thead>
 				<tr>
@@ -61,9 +62,13 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			<form:form action="order" modelAttribute="order">
 			<ul>
-				<li> <jsp:forward page=""/> </li>
+				<li>
+				<input type="submit" value="구매하기">
+				</li>
 			</ul>
+			</form:form>
 	</section>
 		
 	<footer>

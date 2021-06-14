@@ -204,7 +204,7 @@ $(function() {
 				<li><button id="order">구매하기</button></li>
 				<li><button id="checkBoxDelete">선택삭제</button></li>
 			</ul>
-			<form action="order" id="target" method="post">
+			<form action="orderList" id="target" method="post">
 				<input type="hidden" id="data" name="codeList">
 			</form>
 	</section>
