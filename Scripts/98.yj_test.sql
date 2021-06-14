@@ -65,6 +65,10 @@ member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, addre
 where member_name='김예진' and email ='chamdodari@gmail.com33';
 
 
+select 
+member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail 
+where  member_id ='33' and  member_name='김예진' and email ='chamdodari@gmail.com33' ;
+
 
 
 
