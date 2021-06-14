@@ -111,7 +111,7 @@ function newAddress() {
 						<td>${orderProduct.orderOption.styleCode} </td>
 						<c:forEach var="p" items="${productList}">
 							<c:if test="${orderProduct.orderOption.productCode == p.productCode}">
-								<td>${p.productPost.productMainImage} </td>
+								<td> <img src="${contextPath}/images/${p.productPost.productMainImage}"></td>
 								<td>${p.productName} </td>
 								<td class="price" data-sellprice="${p.sellPrice}">
 									${p.sellPrice*orderProduct.orderCount}</td>

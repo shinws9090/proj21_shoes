@@ -6,3 +6,7 @@ table{
 table *{
 	border: 1px solid #ccc;
 }
+table img{
+	width: 4em;
+	height: 4em;
+}

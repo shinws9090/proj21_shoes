@@ -127,7 +127,7 @@ $(function() {
 		$("#allCheck").prop("checked", false);
 		priceAll();
 	});
-	
+	/* 카트 구매하기 */
 	$("#order").click(function(){
 		var codeArr = [];
 		$(".check:checked").each(function(){
@@ -145,7 +145,7 @@ $(function() {
 	</header>
 
 	<section>
-		${cartList}
+		<%-- ${cartList} --%>
 		<%-- ${productList} --%>
 			<table>
 				<thead>
@@ -172,7 +172,7 @@ $(function() {
 							<c:if test="${cart.productCode == p.productCode}">
 								<td>${p.productCode} </td>
 								<td>${p.productName} </td>
-								<td>${p.productPost.productMainImage} </td>
+								<td><img src="${contextPath}/images/${p.productPost.productMainImage}"> </td>
 								<td class="price" data-sellprice="${p.sellPrice}">
 									${p.sellPrice*cart.count}</td>
 								

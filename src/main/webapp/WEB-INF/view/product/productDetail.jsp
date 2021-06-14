@@ -47,7 +47,7 @@
 				
 				for(i = 0; i < json.length; i++){
 				sCont += "<label class='size'> ";
-				sCont += "<input type='radio' value="+json[i].size+" hidden='hidden'>"+json[i].size;
+				sCont += "<input name='size' type='radio' value="+json[i].size+" hidden='hidden'>"+json[i].size;
 				sCont += " </label>";
 				};
 				$("#size").append(sCont);
@@ -136,19 +136,19 @@
 		</div>
 		
 		
-		
 		<div class="order-options">
 			<strong>${product.productName}</strong>
 			<p>
 				<em>Brand : </em> <label>${product.brand.brandEngName }</label>
 			</p>
+			<form action="${contextPath}/addOrderOne" method="post">
 			<div class="styleCode">
 				<label>스타일코드(색상)</label>
 				<c:forEach var="option" items="${product.orderOptions}" varStatus="status">
 					<c:choose>
 						<c:when test="${status.first}">
 							<label>
-							 <input type="radio" value="${option.styleCode}" hidden="hidden" >
+							 <input type="radio" name="styleCode" value="${option.styleCode}" hidden="hidden" required>
 								(${option.styleCode},${option.color})
 							</label>
 						</c:when>
@@ -156,7 +156,7 @@
 						</c:when>
 						<c:otherwise>
 							<label>
-							<input type="radio" value="${option.styleCode}" hidden="hidden" >
+							<input type="radio" name="styleCode" value="${option.styleCode}" hidden="hidden" required>
 								(${option.styleCode},${option.color})
 							</label>
 						</c:otherwise>
@@ -167,12 +167,13 @@
 				<label>size</label>
 			</div>
 			<p>${product.sellPrice}원</p>
-			<input type="number" id="count">
+			<input type="number" name="count" id="count" required>
 			<div class='submitBtns'>
-			
-				<input type='submit' id='cart' value='장바구니' /> 
-				<input type='submit' id='purchase' value='구매하기' />
+				<span id='cart'> 장바구니 </span>
+				<input type="hidden" name="productCode" value="${product.productCode }">
+				<input type='submit' value='구매하기' />
 			</div>
+			</form>
 		</div>
 	</section>
 

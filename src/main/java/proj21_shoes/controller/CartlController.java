@@ -37,10 +37,19 @@ public class CartlController {
 	AuthService aService;
 
 	@GetMapping("/cartList")
-	public ModelAndView cartList() {
+	public ModelAndView cartList(HttpSession session) {
 		//테스트용
-		Member member = new Member();
-		member.setMemberCode(111111);
+//		Member member = new Member();
+//		member.setMemberCode(111111);
+		AuthInfoCommend a = (AuthInfoCommend)session.getAttribute("authInfo");
+		if(a == null) {
+			return new ModelAndView("redirect:/login/loginForm");
+		}
+		aService.memberVo(a.getMemberId());
+		Member member = aService.memberVo(a.getMemberId());
+		if(member == null) {
+			return new ModelAndView("redirect:/login/loginForm");
+		}
 		
 		List<Cart> cartList = service.cartListByMember(member);
 		List<Product> productList = new ArrayList<Product>();

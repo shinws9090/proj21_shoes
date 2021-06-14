@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +18,6 @@ import proj21_shoes.commend.AuthInfoCommend;
 import proj21_shoes.dto.Address;
 import proj21_shoes.dto.Cart;
 import proj21_shoes.dto.Member;
-import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.dto.Order;
 import proj21_shoes.dto.OrderOption;
 import proj21_shoes.dto.OrderProduct;
@@ -74,6 +72,9 @@ public class OrderController {
 //		member.setMemberId(a);
 //		member.setPoint(1000);
 		AuthInfoCommend a = (AuthInfoCommend)session.getAttribute("authInfo");
+		if(a == null) {
+			return new ModelAndView("redirect:/login/loginForm");
+		}
 		aService.memberVo(a.getMemberId());
 		Member member = aService.memberVo(a.getMemberId());
 		if(member == null) {
@@ -96,6 +97,45 @@ public class OrderController {
 		return mav;
 	}
 	
+	@PostMapping("/addOrderOne")
+	public ModelAndView addOrderOne(OrderOption orderOption,
+				@RequestParam(value = "count") int count,
+								HttpSession session) {
+		
+		AuthInfoCommend a = (AuthInfoCommend)session.getAttribute("authInfo");
+		if(a == null) {
+			return new ModelAndView("redirect:/login/loginForm");
+		}
+		aService.memberVo(a.getMemberId());
+		Member member = aService.memberVo(a.getMemberId());
+		if(member == null) {
+			return new ModelAndView("redirect:/login/loginForm");
+		}
+		
+		List<OrderProduct> orderProductList = new ArrayList<OrderProduct>();
+		orderOption.setColor(pService.OrderOptionByStyle(orderOption.getStyleCode(), orderOption.getProductCode()).get(0).getColor());
+		OrderProduct orderProduct =  new OrderProduct();
+		orderProduct.setOrderOption(orderOption);
+		orderProduct.setOrderCount(count);
+		
+		orderProductList.add(orderProduct);
+		
+		
+		Order order = new Order();
+		order.setMemberCode(member);
+		order.setOrderDate(LocalDateTime.now());
+		order.setOrderProduct(orderProductList);
+		
+		List<Product> productList = new ArrayList<Product>();
+		productList.add(pService.productByCode(order.getOrderProduct().get(0).getOrderOption().getProductCode()));
+		
+		ModelAndView mav = new ModelAndView("product/orderList","productList",productList);
+		session.setAttribute("order",order);
+		return mav;
+	}
+	
+	
+	
 	@PostMapping("/addOrder")
 	public String addOrder(@ModelAttribute Address address,
 							@RequestParam(value = "priceSel") int priceSel, 
@@ -106,6 +146,7 @@ public class OrderController {
 		}
 		order.setAddress(address);
 		order.setPaymentAmount(priceSel);
+		
 		oService.insertOrder(order);
 		request.getSession().setAttribute("order",order);
 		return "product/orderOK";
