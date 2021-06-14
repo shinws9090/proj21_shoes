@@ -52,6 +52,10 @@ UPDATE sinabro.memberdetail
 SET member_pwd='', member_name='', gender=0, birthday='', email='', tel='', zipCode='', address='', detail_address=''
 WHERE member_id='';
 
+-- -----------
+UPDATE member
+SET quit_state=0
+WHERE member_id=22;
 
 
 

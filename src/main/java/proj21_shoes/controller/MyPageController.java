@@ -15,11 +15,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import proj21_shoes.commend.MemberDetailUpdateCommend;
 import proj21_shoes.commend.MyPageSelectCommend;
+import proj21_shoes.dto.Member;
 import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.exeption.MemberNotFoundException;
 import proj21_shoes.service.GetMemberDetailService;
 import proj21_shoes.service.GetMyPageService;
 import proj21_shoes.service.ModifyMemberDetailService;
+import proj21_shoes.service.ModifyMemberService;
 
 @Controller
 public class MyPageController {
@@ -29,6 +31,8 @@ public class MyPageController {
 	ModifyMemberDetailService modifyService;
 	@Autowired
 	GetMemberDetailService getMemberService;
+	@Autowired
+	ModifyMemberService quitMemberService;
 	
 	//private Member
 	//
@@ -107,9 +111,7 @@ public class MyPageController {
 
 		}
 		
-		
-		
-		System.out.println("여기까지넘어오나?");
+
 //		MemberDetail member = getMemberService.getMemberDetail(memberId); //주소에 찍힌 id로  멤버검색후 데이터 담아서
 //		session.setAttribute("member", member);  // jsp에 보내서 보여주기! 요고 해줘야 jsp 에서 받을수 있당
 //		ModelAndView mav = new ModelAndView();
@@ -127,6 +129,69 @@ public class MyPageController {
 		}
 	}
 	
+	
+	///회원탈퇴 -비번확인 페이지로 보내기
+	
+	@GetMapping("/myPage/quitMember/{memberId}")  // <마이페이지에서 '회원정보 변경'을  누르면 --> myPage2로 이동 
+	public String quitMemberFome (@PathVariable("memberId") String memberId,
+			@ModelAttribute("memberDetailUpdateCommend")  MemberDetailUpdateCommend memberUpdate, 
+			MemberDetail  memberDetail, HttpSession session,HttpServletResponse response, Errors errors) {  
+		//같은 페이지로 보내주기때문에 모델어트리뷰트 있어야한다!!!!!!!
+		
+		MemberDetail member = getMemberService.getMemberDetail(memberId); //주소에 찍힌 id로  멤버검색후 데이터 담아서
+		
+		if(member ==null) {
+			throw new MemberNotFoundException();
+		}
+
+		
+		session.setAttribute("member", member);  // jsp에 보내주기! 요고 해줘야 jsp 에서 받을수 있당
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("member",member);
+		mav.setViewName("myPage/quitMember");
+		System.out.println(member);
+
+		return "/myPage/quitMember";
+	}
+	
+	@PostMapping("/myPage/quitMember/{memberId}")
+	public String quitMemberSec(@PathVariable("memberId") String memberId,
+			@ModelAttribute("memberDetailUpdateCommend") 
+	 MemberDetailUpdateCommend memberUpdate,  HttpSession session, HttpServletResponse response, Errors errors) {
+	MemberDetail memberDetail = getMemberService.getMemberDetail(memberId);
+	Member member = quitMemberService.selectMemberById(memberId);
+	System.out.println();
+
+
+		if (errors.hasErrors()) { //에러 있으면
+			System.out.println(1);
+			System.out.println(errors);
+			return "/myPage/quitMember";  //일로 돌려보내고
+		}
+		
+			//기존 비밀번호.equls(새로입력받은 번호)
+		if(!memberDetail.getMemberPwd().equals(memberUpdate.getConfirmPassword())) {  //기존 비밀번호 불일치시
+			System.out.println("기존비밀번호>>> "+ memberDetail.getMemberPwd());
+			System.out.println("입력받은 기존비번>>> "+ memberUpdate.getConfirmPassword());
+			errors.rejectValue("confirmPassword", "nomatch");
+			return "/myPage/quitMember";
+
+		}
+
+		//위에서 담은 아이디 가져와서 담기
+		try {
+		quitMemberService.modifyMember(memberId);  //여기서 탈퇴!
+
+		System.out.println("member.setQuitState(true)>>>" + member.isQuitState());
+		//세션없애기
+		session.invalidate(); //세션제거하고
+		return"/myPage/quitS";  //탈퇴되었습니다 화면 띄우기
+		}catch(Exception e) {
+			errors.reject("error");
+			return"/myPage/modifyForm";
+		}
+	}
 	
 	
 	
