@@ -69,7 +69,6 @@
 					size:$(".size-data").val(),
 					count:$("#count").val()
 			};
-			alert("카트저장")
 			$.ajax({
 				url : contextPath + "/api/cartSave",
 				type : 'post',
@@ -87,6 +86,12 @@
 				error : function(request, status, error) {
 					alert("code:"+request.status+"\n"+"message:"
 							+request.responseText+"\n"+"error:"+error);
+					if(request.status==404){
+						location.href = contextPath +"/login/loginForm";
+					}
+					if(request.status==400){
+						alert("옵션정보를 전부 선택하세요")
+					}
 				}
 			});
 			$("#size .size").remove();

@@ -35,6 +35,8 @@
 		구매확정여부 = ${order.buyConfirmState }<br>
 		orderProduct = ${order.orderProduct }<br>
 		address = ${order.address }<br>
+		
+		
 			
 	</section>
 		

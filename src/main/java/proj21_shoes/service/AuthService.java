@@ -32,4 +32,11 @@ public class AuthService {
 		}
 		return new AuthInfoCommend(member.getMemberId(), member.getEmail(), member.getMemberName());
 	}
+	
+	public Member memberVo(String memberId) {
+		MemberDetail memberDetail = mapper.selectMemberDetailById(memberId);   //memberDetail에 있는앤지 id로 검색쓰
+		Member member = mapper2.selectMemberById(memberId);
+		member.setMemberId(memberDetail);
+		return member;
+	}
 }
