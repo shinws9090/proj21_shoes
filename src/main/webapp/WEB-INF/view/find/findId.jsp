@@ -58,7 +58,7 @@
 		
 		
 		<input type="submit" value="아이디 찾기" />
-		<p><a href="<c:url value='${contextPath}/login/findPw'/>">비밀번호 찾기</a>
+		<p><a href="<c:url value='${contextPath}/find/findPw'/>">비밀번호 찾기</a>
 		<%-- <p><a href="<c:url value='/account/searchPw'/>">비밀번호 찾기</a> --%>
 		
 		

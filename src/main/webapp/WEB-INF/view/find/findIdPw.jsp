@@ -17,7 +17,7 @@
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<title>비밀번호</title>
+<title>아이디/비밀번호 찾기</title>
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/step1.css">
@@ -41,8 +41,8 @@
 		<h2>아이디/비밀번호 찾기</h2><!-- 회원가입 -->
 
 
-		<p><a href="<c:url value='${contextPath}/login/findId'/>">아이디 찾기</a>
-		<p><a href="<c:url value='${contextPath}/login/findPw'/>">비밀번호 찾기</a>
+		<p><a href="<c:url value='${contextPath}/find/findId'/>">아이디 찾기</a>
+		<p><a href="<c:url value='${contextPath}/find/findPw'/>">비밀번호 찾기</a>
 		<%-- <p><a href="<c:url value='/account/searchPw'/>">비밀번호 찾기</a> --%>
 		
 		
