@@ -8,5 +8,7 @@ import proj21_shoes.dto.MemberDetail;
 public interface FindMemberIdPwService {
 	
 	MemberDetail selectMemberByNameEmail(String memberName, String email);
+	MemberDetail selectPwdByIdNameEmail(String memberId, String memberName, String email);
+
 
 }

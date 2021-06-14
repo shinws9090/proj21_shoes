@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_shoes.dto.MemberDetail;
+import proj21_shoes.exeption.MemberBadFoundException;
 import proj21_shoes.exeption.MemberNotFoundException;
 import proj21_shoes.service.AuthService;
 import proj21_shoes.service.FindMemberIdPwService;
@@ -78,13 +79,65 @@ public class FindMemberIdPwController {
 		
 			
 			//비밀번호찾기 화면 가기
-			@GetMapping("/find/findPw")  //dto 새로 하나 만들어야함. 확인용 변수만 들어간걸로
+		@RequestMapping("/find/findPw")  //dto 새로 하나 만들어야함. 확인용 변수만 들어간걸로
 			public String findPw(MemberDetail memberDetail) {	
 				
 				return "/find/findPw";
 
 			}
 			
+			//비번찾기 결과화면
+			@PostMapping("find/findPwS")
+			public String findPw2(
+					@Param("memberId") String memberId,
+					@Param("memberName") String memberName,
+					@Param("email") String email, 
+					@ModelAttribute("memberDetail") MemberDetail memberDetail, 
+					HttpSession session,
+					HttpServletResponse response, 
+					Errors errors) {
+				if(errors.hasErrors()) {
+					return"/find/findPw";
+				}
+				
+				System.out.println("id >>>" + memberDetail.getMemberId());
+				System.out.println("name >>> "+ memberDetail.getMemberName());
+				System.out.println("email >>> "+ memberDetail.getEmail());
+				
+				
+				memberId = memberDetail.getMemberId();
+				memberName = memberDetail.getMemberName();
+				email = memberDetail.getEmail();
+		//		System.out.println("memberName>>>"+memberName);
+				
+			//	String name = memberDetail.getMemberName();
+				//String email = memberDetail.getEmail();
+				
+				MemberDetail memberPwd= findService.selectPwdByIdNameEmail(memberId,memberName,email);
+				try {
+				
+				if(memberPwd==null) {
+					throw new  MemberBadFoundException();
+				}
+				
+				}catch (NullPointerException e) {
+					errors.reject("memberBadFoundException");
+					return"/find/findPw";
+				}catch (MemberBadFoundException e) {
+					errors.reject("memberBadFoundException");
+					return"/find/findPw";
+				}
+				System.out.println("memberPwd>>>>"+memberPwd.getMemberPwd());
+				session.setAttribute("memberPwd", memberPwd);  // jsp에 보내주기! 요고 해줘야 jsp 에서 받을수 있당
+				
+				ModelAndView mav = new ModelAndView();
+				mav.addObject("memberPwd",memberPwd);
+				mav.setViewName("/find/findPwS");
+			
+				return "/find/findPwS";
+			
+				
+			}
 			
 			
 			
