@@ -39,7 +39,7 @@ $(function() {
 	</header>
 
 	<section>
-		<%-- ${products} --%>
+		${products}
 		<nav class="category-menu">
 			<ul>
 				<li>
@@ -63,7 +63,7 @@ $(function() {
 		</nav>
 		<c:forEach var="product" items="${products}">
 			<div class="item" data-item="${product.productCode}">
-				<img src="images/women-myool-main.jpg">
+				<img src="${contextPath}/images/${product.productPost.productMainImage }">
 				<div class="detail">
 					<div class="title">
 						<h2>

@@ -128,7 +128,7 @@ public class AdminController {
 
 		ProductPost productpost = new ProductPost();
 		productpost.setProductCode(Integer.parseInt(request.getParameter("productCode")));
-		productpost.setProductMainImage(new byte[12]);
+//		productpost.setProductMainImage(new byte[12]);
 		productpost.setContent(request.getParameter("content"));
 		List<Image> list = new ArrayList<Image>();
 		productpost.setImages(list);

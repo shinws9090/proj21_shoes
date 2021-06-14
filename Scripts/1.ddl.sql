@@ -259,7 +259,7 @@ ALTER TABLE sinabro.address
 -- 상품게시글
 CREATE TABLE sinabro.productPost (
 	product_code       INT           NOT NULL COMMENT '상품코드', -- 상품코드
-	product_main_image LONGBLOB      NOT NULL COMMENT '상품대표이미지', -- 상품대표이미지
+	product_main_image VARCHAR(50)   NOT NULL COMMENT '상품대표이미지', -- 상품대표이미지
 	content            VARCHAR(2000) NULL     COMMENT '내용' -- 내용
 )
 COMMENT '상품게시글';
