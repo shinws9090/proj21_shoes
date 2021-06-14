@@ -59,9 +59,9 @@ public class AdminController {
 		mav.setViewName("admin/productMgt");
 		return mav;
 	}
-	
+
 	@RequestMapping("/read")
-	public ModelAndView productDetail(@RequestParam(value ="productCode") long productCode) {
+	public ModelAndView productDetail(@RequestParam(value = "productCode") long productCode) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("productCode", productCode);
 		mav.setViewName("admin/productDetailMgt");
@@ -92,59 +92,60 @@ public class AdminController {
 		return mav;
 	}
 
-	@PostMapping("/productReg")
-	@Transactional
-	public String registProduct(/* @RequestBody Product product, */ HttpServletRequest request) {
-
-		/*
-		 * logger.info("등록되나요?"); System.out.println(regProduct.getProductCode());
-		 * regProduct.setMadeDate(LocalDateTime.now());
-		 * regProduct.setRegistDate(LocalDateTime.now()); regProduct.getMadeDate();
-		 * regProduct.getRegistDate();
-		 * 
-		 * Product product = new Product(regProduct.getProductCode(),
-		 * regProduct.getProductName(), regProduct.getBrand(), regProduct.getGender(),
-		 * regProduct.getCategory(), regProduct.getMaterial(), regProduct.getSeason(),
-		 * regProduct.getMadeDate(), regProduct.getCostPrice(),
-		 * regProduct.getSellPrice(), regProduct.getRegistDate(),
-		 * regProduct.getCumulativeRegistCount(), regProduct.getCumulativeSellCount(),
-		 * regProduct.getEmployee());
-		 * 
-		 * productService.insertProduct(product);
-		 * 
-		 * return "/admin/product/productReg";
-		 */
-
-		Product product = new Product();
-		product.setProductCode(Integer.parseInt(request.getParameter("productCode")));
-		product.setProductName(request.getParameter("productName"));
-		product.setBrand(new Brand(Integer.parseInt(request.getParameter("brand"))));
-		product.setGender(request.getParameter("gender"));
-		product.setCategory(new Category(Integer.parseInt(request.getParameter("category"))));
-		product.setMaterial(request.getParameter("material"));
-		product.setSeason(request.getParameter("season"));
-		product.setMadeDate(LocalDateTime.now());
-		product.setCostPrice(Integer.parseInt(request.getParameter("costPrice")));
-		product.setSellPrice(Integer.parseInt(request.getParameter("sellPrice")));
-		product.setRegistDate(LocalDateTime.now());
-		product.setEmployee(new Employee(Integer.parseInt(request.getParameter("employee"))));
-
-		ProductPost productpost = new ProductPost();
-		productpost.setProductCode(Integer.parseInt(request.getParameter("productCode")));
-//		productpost.setProductMainImage(new byte[12]);
-		productpost.setContent(request.getParameter("content"));
-		List<Image> list = new ArrayList<Image>();
-		productpost.setImages(list);
-
-		System.out.println(product);
-		productService.insertProduct(product);
-
-		System.out.println(productpost);
-		productPostService.insertProductPost(productpost);
-
-		return "redirect:productMgt";
-
-	}
+	/*
+	 * @PostMapping("/productReg")
+	 * 
+	 * @Transactional public String registProduct( @RequestBody Product product,
+	 * HttpServletRequest request) {
+	 * 
+	 * 
+	 * logger.info("등록되나요?"); System.out.println(regProduct.getProductCode());
+	 * regProduct.setMadeDate(LocalDateTime.now());
+	 * regProduct.setRegistDate(LocalDateTime.now()); regProduct.getMadeDate();
+	 * regProduct.getRegistDate();
+	 * 
+	 * Product product = new Product(regProduct.getProductCode(),
+	 * regProduct.getProductName(), regProduct.getBrand(), regProduct.getGender(),
+	 * regProduct.getCategory(), regProduct.getMaterial(), regProduct.getSeason(),
+	 * regProduct.getMadeDate(), regProduct.getCostPrice(),
+	 * regProduct.getSellPrice(), regProduct.getRegistDate(),
+	 * regProduct.getCumulativeRegistCount(), regProduct.getCumulativeSellCount(),
+	 * regProduct.getEmployee());
+	 * 
+	 * productService.insertProduct(product);
+	 * 
+	 * return "/admin/product/productReg";
+	 * 
+	 * 
+	 * Product product = new Product();
+	 * product.setProductCode(Integer.parseInt(request.getParameter("productCode")))
+	 * ; product.setProductName(request.getParameter("productName"));
+	 * product.setBrand(new Brand(Integer.parseInt(request.getParameter("brand"))));
+	 * product.setGender(request.getParameter("gender")); product.setCategory(new
+	 * Category(Integer.parseInt(request.getParameter("category"))));
+	 * product.setMaterial(request.getParameter("material"));
+	 * product.setSeason(request.getParameter("season"));
+	 * product.setMadeDate(LocalDateTime.now());
+	 * product.setCostPrice(Integer.parseInt(request.getParameter("costPrice")));
+	 * product.setSellPrice(Integer.parseInt(request.getParameter("sellPrice")));
+	 * product.setRegistDate(LocalDateTime.now()); product.setEmployee(new
+	 * Employee(Integer.parseInt(request.getParameter("employee"))));
+	 * 
+	 * ProductPost productpost = new ProductPost();
+	 * productpost.setProductCode(Integer.parseInt(request.getParameter(
+	 * "productCode"))); // productpost.setProductMainImage(new byte[12]);
+	 * productpost.setContent(request.getParameter("content")); List<Image> list =
+	 * new ArrayList<Image>(); productpost.setImages(list);
+	 * 
+	 * System.out.println(product); productService.insertProduct(product);
+	 * 
+	 * System.out.println(productpost);
+	 * productPostService.insertProductPost(productpost);
+	 * 
+	 * return "redirect:productMgt";
+	 * 
+	 * }
+	 */
 
 	@RequestMapping("/viewProductMod")
 	public ModelAndView productMod() {

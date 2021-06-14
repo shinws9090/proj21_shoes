@@ -38,7 +38,7 @@
 					sCont += "<td>" + json[i].cumulativeRegistCount + "</td>";
 					sCont += "<td>" + json[i].cumulativeSellCount + "</td>";
 					sCont += "<td><a href='read?productCode=" + json[i].productCode + "'>" + "[상세보기]" + "</a></td>";
-					sCont += "<td>" + "<a href='#'>[수정]</a>&nbsp;" + "<a href='#'>[삭제]</a>" + "</td>";			
+					/* sCont += "<td>" + "<a href='#'>[수정]</a>&nbsp;" + "<a href='#'>[삭제]</a>" + "</td>"; */
 					sCont += "</tr>";
 				}
 				$("#load:last-child").append(sCont);

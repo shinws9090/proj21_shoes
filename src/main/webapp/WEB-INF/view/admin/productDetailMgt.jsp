@@ -35,6 +35,8 @@
 					sCont += "<td>" + json.registDate + "</td>";
 					sCont += "<td>" + json.cumulativeRegistCount + "</td>";
 					sCont += "<td>" + json.cumulativeSellCount + "</td>";
+					sCont += "<td>" + "<a href='#'>[수정]</a>" + "</td>";
+					sCont += "<td>" + "<a href='#'>[삭제]</a>" + "</td>";
 					sCont += "</tr>";
 				$("#load:last-child").append(sCont);
 		});
@@ -67,8 +69,8 @@
 				<td>등록일</td>
 				<td>등록수량</td>
 				<td>판매량</td>
-				<td>상세보기</td>
-				<td>기타</td>
+				<td>수정</td>
+				<td>삭제</td>
 
 			</tr>
 			<tr>
