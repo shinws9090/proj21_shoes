@@ -34,8 +34,8 @@
 		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
 	</header>
 	<!-- end header -->
-		<div id="loginForm">
-	<section id = "loginForm">
+		<div id="findForm">
+	<section id ="findForm">
 
 
 		<h2>아이디 찾기</h2><!-- 회원가입 -->
@@ -57,7 +57,7 @@
 		</p>
 		
 		
-		<input type="submit" value="아이디 찾기" />
+		<input type="submit" value="조회하기" />
 		<p><a href="<c:url value='${contextPath}/find/findPw'/>">비밀번호 찾기</a>
 		<%-- <p><a href="<c:url value='/account/searchPw'/>">비밀번호 찾기</a> --%>
 		
