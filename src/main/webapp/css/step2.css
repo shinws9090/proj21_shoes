@@ -3,13 +3,24 @@
 #signUpForm{
 color: #2c2c2c ; 
 }
-
 .td_gender{
+}
 
+#loginCommand{
+	
+	text-align: center;
 }
-h2{
-	text-align:center;
+
+
+
+#signUpForm{
+	margin-left: 20%;
 }
+
+p{
+	padding-top: 10px;
+}
+
 .td_left {
 	width:10;
 	padding-right:10px;
@@ -24,5 +35,12 @@ h2{
 	padding-left:10px;
 	background: #ffffff ;
 	text-align:left;
-	
+
+} 
+
+div{
+	text-align: left;
+	margin-left:30px;
+	padding-left: 30px;
+	color: #4d4d51 
 }

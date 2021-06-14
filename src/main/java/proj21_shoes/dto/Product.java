@@ -3,8 +3,6 @@ package proj21_shoes.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 public class Product { // 상품정보
 	private int productCode; // 상품코드
 	private String productName; // 상품명
@@ -14,12 +12,10 @@ public class Product { // 상품정보
 	private String material; // 소재
 	private String season; // 계절
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")	
 	private LocalDateTime madeDate; // 제조일
 	private int costPrice; // 원가
 	private int sellPrice; // 판매가
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")	
 	private LocalDateTime registDate; // 등록일
 	private int cumulativeRegistCount; // 누적등록수량
 	private int cumulativeSellCount; // 누적판매수량

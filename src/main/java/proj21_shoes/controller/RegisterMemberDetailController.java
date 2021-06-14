@@ -24,9 +24,9 @@ import proj21_shoes.service.RegisterMemberService;
 @Controller
 public class RegisterMemberDetailController {
 	@Autowired
-	private RegisterMemberDetailService service;
+	private RegisterMemberDetailService memberService;
 	@Autowired
-	private RegisterMemberService service2;
+	private RegisterMemberService memberDetailService;
 
 	@RequestMapping("/register/step1")
 	public String handleStep1() {
@@ -64,7 +64,7 @@ public class RegisterMemberDetailController {
 		}
 
 		try {
-			MemberDetail member = service.selectById(regReq.getMemberId());//selectById 메서드로 id 중복인지 확인해서
+			MemberDetail member = memberService.selectById(regReq.getMemberId());//selectById 메서드로 id 중복인지 확인해서
 			if (member != null) {
 				throw new DuplicateMemberException("dup id " + regReq.getMemberId());
 			}
@@ -72,8 +72,8 @@ public class RegisterMemberDetailController {
 			MemberDetail newMember =new MemberDetail(regReq.getMemberId(),regReq.getMemberPwd(),regReq.getMemberName(),regReq.isGender(),regReq.getBirthday(),regReq.getEmail(),regReq.getTel(),regReq.getZipCode(),regReq.getAddress(),regReq.getDetailAddress()); 
 			//위에서 담은 아이디 가져와서 담기
 			Member newMember2 = new Member(newMember,1000,0,new Grade(5),false,LocalDateTime.now()); //
-			service.regist(newMember);
-			service2.regist(newMember2); //객체로 담아서 넣어줘야한당
+			memberService.regist(newMember);
+			memberDetailService.regist(newMember2); //객체로 담아서 넣어줘야한당
 
 			return "/register/step3";
 		} catch (DuplicateMemberException e) {

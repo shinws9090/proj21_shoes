@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import proj21_shoes.commend.ProductSelectCommend;
+import proj21_shoes.commend.RegisterProduct;
 import proj21_shoes.config.ContextRoot;
 import proj21_shoes.dto.Brand;
 import proj21_shoes.dto.Category;

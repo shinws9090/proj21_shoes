@@ -15,6 +15,11 @@ public class Member {					//	회원정보
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")	
 	private LocalDateTime signUpDate;	//	 가입일
 
+	
+	
+	
+	
+	
 	public int getMemberCode() {
 		return memberCode;
 	}
@@ -75,7 +80,9 @@ public class Member {					//	회원정보
 		// TODO Auto-generated constructor stub
 	}
 
-
+	public Member(int memberCode) {
+		this.memberCode = memberCode;
+	}
 
 	public Member(Grade gradeCode) {
 		super();

@@ -1,47 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@page import="com.sun.xml.internal.bind.CycleRecoverable.Context"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <!-- basic -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
 <!-- mobile metas -->
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-
-<title><spring:message code="member.register" /></title>
-
+<title>회원가입</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/step1.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/step2.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
-
 <body class="main-layout">
 	<!-- header -->
 	<header>
 		<jsp:include page="/WEB-INF/view/include/header.jsp" />
 	</header>
 	<!-- end header -->
-
   <!-- 동의 -->
-  
-  
+
+  <div>
+ 
 	<section class="box">
+		<h2> 회원가입</h2><!-- 회원가입 -->
 		<article class="box1">
+			
 			<h2>
-				<spring:message code="term" />  <!--약관  -->
+				이용약관  <!--약관  -->
 			</h2>
 			<p>
-				<spring:message code="term.content1" /> <!-- 약관내용 -->
+				약관내용 <!-- 약관내용 -->
 			</p>
 			<form action="step2" method="post">
 				<label> <input type="checkbox" name="agree" value="true"><!-- 동의 -->
@@ -52,7 +46,7 @@
 			</form>
 			</article>
 	</section>
-
+	</div>
 
 	<!-- end our product -->
 	<footer>
@@ -60,4 +54,3 @@
 	</footer>
 </body>
 </html>
-

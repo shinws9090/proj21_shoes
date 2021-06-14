@@ -12,9 +12,9 @@
 	</nav>
 	<div class="footer-list">
 		<div>
-			<h3>conatct us</h3>
-			<span>123 Second Street Fifth Avenue,<br> Manhattan, New
-				York<br> +987 654 3210
+			<h3>contact us</h3>
+			<span>30, Seodaegu-ro, Seo-gu, Daegu,<br>  Republic of Korea
+				<br> 053-555-1333
 			</span>
 		</div>
 		<div>
@@ -45,8 +45,7 @@
 	</div>
 	<div class="bottom">
 		<p>
-			Copyright 2019 All Right Reserved By <a href="#">Free html
-				Templates</a>
+			Copyright 2021 All Right Reserved By <a href="#">Team Shinabro</a>
 		</p>
 	</div>
 </body>

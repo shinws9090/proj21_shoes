@@ -17,7 +17,7 @@
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<title>회원가입</title>
+<title>마이페이지</title>
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/step1.css">
@@ -41,8 +41,8 @@
 	<c:if test="${empty authInfo}"> 
 				<p>로그인해주세요.</p> 
 				<p>
-				<li><a href="${contextPath}/register/step1">JOIN</a></li>
-				<li><a href="${contextPath}/login/loginForm">LOGIN</a></li>
+				<li><a href="${contextPath}/register/step1">회원가입</a></li>
+				<li><a href="${contextPath}/login/loginForm">로그인</a></li>
 				
 			</c:if>
 			<c:if test="${!empty authInfo}">
@@ -50,8 +50,13 @@
 				<h1>${authInfo.memberName }님의 마이페이지</h1>
 				<h2>회원정보</h2>
 				<tr style="background-color:#e5e5e5 ; text-align: center">
-					<h3><td><a href="${contextPath}/myPage/${authInfo.memberId}">-회원정보 변경</a></td></h3>
+					<h3><td><a href="${contextPath}/myPage/myPageSel/${authInfo.memberId}">-회원정보 조회 / 변경</a></td></h3>
 				</tr>
+		<%-- 		
+				<tr style="background-color:#e5e5e5 ; text-align: center">
+					<h3><td><a href="${contextPath}/myPage/${authInfo.memberId}">-회원정보 변경</a></td></h3>
+				</tr> --%>
+				
 				
 			<a></a>
 			

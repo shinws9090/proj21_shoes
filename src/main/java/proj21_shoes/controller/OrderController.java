@@ -4,12 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,7 +28,7 @@ public class OrderController {
 	@Autowired
 	ProductService pService;
 	
-	@PostMapping("/order")
+	@PostMapping("/orderList")
 	public ModelAndView orderList(@RequestParam(required = false, value = "codeList") List<Integer> codeList) {
 		List<Cart> cartList = cService.cartBycartCodes(codeList);
 		List<OrderProduct> orderProductList = new ArrayList<OrderProduct>();
@@ -67,14 +62,9 @@ public class OrderController {
 		for(Cart c : cartList) {
 			productList.add(pService.productByCode(c.getProductCode()));
 		}
-		
-		ModelAndView mav = new ModelAndView("product/order","order",order);
+		ModelAndView mav = new ModelAndView("product/orderList","order",order);
 		mav.addObject("productList",productList);
 		return mav;
 	}
-	@PostMapping("/orderGet")
-	public String orderGet(HttpServletRequest request) {
-		System.out.println(request.getAttribute("oo"));
-		return null;
-	}
+
 }
