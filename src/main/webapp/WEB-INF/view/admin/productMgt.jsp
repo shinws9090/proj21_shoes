@@ -28,7 +28,7 @@
 				for (i = 0; i < dataLength; i++) {
 					sCont += "<tr>";
 					sCont += "<td>" + json[i].productCode + "</td>";
-					sCont += "<td><a href='read?productCode=" + json[i].productCode + "'>" + json[i].productName + "</a></td>";
+					sCont += "<td>" + json[i].productName + "</a></td>";
 					sCont += "<td>" + json[i].brand.brandName + "</td>";
 					sCont += "<td>" + json[i].gender + "</td>";
 					sCont += "<td>" + json[i].category.category + "</td>";
@@ -37,7 +37,7 @@
 					sCont += "<td>" + json[i].registDate + "</td>";
 					sCont += "<td>" + json[i].cumulativeRegistCount + "</td>";
 					sCont += "<td>" + json[i].cumulativeSellCount + "</td>";
-					sCont += "<td>" + "<a href='productDetailMgt/'+''>[상세보기]</a>&nbsp;" + "</td>";				
+					sCont += "<td><a href='read?productCode=" + json[i].productCode + "'>" + "[상세보기]" + "</a></td>";
 					sCont += "<td>" + "<a href='#'>[수정]</a>&nbsp;" + "<a href='#'>[삭제]</a>" + "</td>";			
 					sCont += "</tr>";
 				}
@@ -79,8 +79,7 @@
 
 			</tr>
 			<tr>
-				<tbody id="load"/>
-				
+				<tbody id="load"/>				
 			</tr>
 		</table>
 

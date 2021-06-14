@@ -13,8 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
 import proj21_shoes.dto.Brand;
 import proj21_shoes.dto.Category;
@@ -60,9 +60,10 @@ public class AdminController {
 		return mav;
 	}
 	
-	@RequestMapping("/productDetailMgt")
-	public ModelAndView productDetail() {
+	@RequestMapping("/read")
+	public ModelAndView productDetail(@RequestParam(value ="productCode") long productCode) {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("productCode", productCode);
 		mav.setViewName("admin/productDetailMgt");
 		return mav;
 	}

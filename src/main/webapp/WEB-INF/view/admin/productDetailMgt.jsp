@@ -25,19 +25,19 @@
 			function(json) {
 				var sCont = "";
 					sCont += "<tr>";
-					sCont += "<td productCode='productCode'>" + json[i].productCode + "</td>";
-					sCont += "<td>" + productName + "</td>";
-					sCont += "<td>" + brand.brandName + "</td>";
-					sCont += "<td>" + gender + "</td>";
-					sCont += "<td>" + category.category + "</td>";
-					sCont += "<td>" + costPrice + "</td>";
-					sCont += "<td>" + sellPrice + "</td>";
-					sCont += "<td>" + registDate + "</td>";
-					sCont += "<td>" + cumulativeRegistCount + "</td>";
-					sCont += "<td>" + cumulativeSellCount + "</td>";
+					sCont += "<td productCode='productCode'>" + json.productCode + "</td>";
+					sCont += "<td>" + json.productName + "</td>";
+					sCont += "<td>" + json.brand.brandName + "</td>";
+					sCont += "<td>" + json.gender + "</td>";
+					sCont += "<td>" + json.category.category + "</td>";
+					sCont += "<td>" + json.costPrice + "</td>";
+					sCont += "<td>" + json.sellPrice + "</td>";
+					sCont += "<td>" + json.registDate + "</td>";
+					sCont += "<td>" + json.cumulativeRegistCount + "</td>";
+					sCont += "<td>" + json.cumulativeSellCount + "</td>";
 					sCont += "</tr>";
 				$("#load:last-child").append(sCont);
-			}
+		});
 	});
 </script>
 
@@ -71,7 +71,9 @@
 				<td>기타</td>
 
 			</tr>
-			<tbody id="load" />
+			<tr>
+				<tbody id="load"/>				
+			</tr>
 		</table>
 
 	</section>
