@@ -12,15 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
 import proj21_shoes.dto.Brand;
 import proj21_shoes.dto.Category;
 import proj21_shoes.dto.Employee;
 import proj21_shoes.dto.Image;
-import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.dto.Product;
 import proj21_shoes.dto.ProductPost;
 import proj21_shoes.service.GetMemberDetailListService;
@@ -49,19 +48,22 @@ public class AdminController {
 
 	@RequestMapping("/memberMgt")
 	public ModelAndView memberDetailList() {
-		List<MemberDetail> members = memListService.getMemberDetailLists();
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("admin/memberMgt");
-		mav.addObject("members", members);
 		return mav;
 	}
 
 	@RequestMapping("/productMgt")
 	public ModelAndView productList() {
-		List<Product> products = productService.productByAll();
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("admin/productMgt");
-		mav.addObject("products", products);
+		return mav;
+	}
+	
+	@RequestMapping("/productDetailMgt")
+	public ModelAndView productDetail() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("admin/productDetailMgt");
 		return mav;
 	}
 
@@ -91,7 +93,7 @@ public class AdminController {
 
 	@PostMapping("/productReg")
 	@Transactional
-	public String registProduct(/*@RequestBody Product product,*/ HttpServletRequest request) {
+	public String registProduct(/* @RequestBody Product product, */ HttpServletRequest request) {
 
 		/*
 		 * logger.info("등록되나요?"); System.out.println(regProduct.getProductCode());
