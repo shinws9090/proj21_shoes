@@ -77,11 +77,11 @@ insert into grade values
 	(5,'FAMILY');
 
 insert into memberdetail values
-	('aaa','rootroot','테스트1',true,now(),'test1@test.co.kr','010-111-8888','12345','국채보상로 438','서구 치과의원'),
-	('bbb','rootroot','테스트2',true,now(),'test2@test.co.kr','010-222-7777','12345','동대구로 386','킹덤 오피스텔 지하 1층'),
-	('ccc','rootroot','테스트3',true,now(),'test3@test.co.kr','010-333-6666','12345','상화로 373','비둘기 아파트 2단지'),
-	('ddd','rootroot','테스트4',true,now(),'test4@test.co.kr','010-666-5555','12345','서대구로 30','맨투맨 빌딩 4층'),
-	('eee','rootroot','테스트5',true,now(),'test5@test.co.kr','010-999-3333','12345','안심로90길 22','해피키즈 유치원');
+	('aaa',password('rootroot'),'테스트1',true,now(),'test1@test.co.kr','010-111-8888','12345','국채보상로 438','서구 치과의원'),
+	('bbb',password('rootroot'),'테스트2',true,now(),'test2@test.co.kr','010-222-7777','12345','동대구로 386','킹덤 오피스텔 지하 1층'),
+	('ccc',password('rootroot'),'테스트3',true,now(),'test3@test.co.kr','010-333-6666','12345','상화로 373','비둘기 아파트 2단지'),
+	('ddd',password('rootroot'),'테스트4',true,now(),'test4@test.co.kr','010-666-5555','12345','서대구로 30','맨투맨 빌딩 4층'),
+	('eee',password('rootroot'),'테스트5',true,now(),'test5@test.co.kr','010-999-3333','12345','안심로90길 22','해피키즈 유치원');
 
 insert into `member` values
 	(111111,'aaa',1000,0,5,false,now()),

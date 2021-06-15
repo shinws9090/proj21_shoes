@@ -74,3 +74,5 @@ select * from cart c2 ;
 
 delete from cart 
 		where product_code = 11111 and style_code =#{orderOption.styleCode} and size = #{orderOption.size}
+		
+select * from memberdetail ;

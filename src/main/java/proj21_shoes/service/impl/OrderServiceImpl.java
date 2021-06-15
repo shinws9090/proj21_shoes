@@ -43,6 +43,7 @@ public class OrderServiceImpl implements OrderService {
 		}
 		Member member = order.getMemberCode();
 		member.setPoint(member.getPoint()-point);
+		member.setCumulativeBuyAmount(member.getCumulativeBuyAmount()+order.getPaymentAmount());
 		mapper.updateMemberPoint(member);
 		
 		return res;
