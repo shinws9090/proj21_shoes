@@ -17,7 +17,7 @@
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<title>마이페이지</title>
+<title>나의 상품문의</title>
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/step1.css">
@@ -47,31 +47,15 @@
 			</c:if>
 			<c:if test="${!empty authInfo}">
 				
-				<h1>${authInfo.memberName }님의 마이페이지</h1>
+				<h1>${authInfo.memberName }님의 문의사항</h1>
 				<h2>회원정보</h2>
-				<tr style="background-color:#e5e5e5 ; text-align: center">
-					<h3><td><a href="${contextPath}/myPage/myPageSel/${authInfo.memberId}">-회원정보 조회 / 변경</a></td></h3>
-				</tr>
-		<%-- 		
-				<tr style="background-color:#e5e5e5 ; text-align: center">
-					<h3><td><a href="${contextPath}/myPage/${authInfo.memberId}">-회원정보 변경</a></td></h3>
-				</tr> --%>
 				
-				
-			<a></a>
-			
-				<h2>나의 쇼핑정보</h2>
-				<tr style="background-color: white-space; text-align: center">
-					<h3><td><a href="${contextPath}/myPage/changeMemberData">-주문내역</a></td></h3>
+				<tr>
+					<td>번호</td>
+					<td>제목</td>
 				</tr>
 				
-					<tr style="background-color: white-space; text-align: center">
-					<h3><td><a href="${contextPath}/myPage/qna">-문의내역</a></td></h3>
-				</tr>
-				
-				
-	<!-- 			<p>회원정보</p> -->
-			
+	
 				
 				
 			</c:if>

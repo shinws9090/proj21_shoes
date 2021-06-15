@@ -11,10 +11,10 @@ select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode
 	from memberDetail where member_id ='회원아이디'
 	
 -- 
-select  member_id, member_pwd
-from memberdetail where member_id ='11' and member_pwd ='111111';
+select  member_id, passmember_pwd
+from memberdetail where member_id ='123' and member_pwd = password('123123');
 
-	
+
 	
 	-- 등급, 회원상세정보, 회원정보
 insert into grade values
@@ -22,7 +22,7 @@ insert into grade values
 
 
 insert into memberdetail values
-	('회원아이디2','회원비밀번호','회원이름',true,now(),'이메일','연락처','12345','주소','상세주소');
+	('123',password('123123'),'회원이름',true,now(),'이메일','연락처','12345','주소','상세주소');
 
 -- 회원정보
 INSERT INTO member
