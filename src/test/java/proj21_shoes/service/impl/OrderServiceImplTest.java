@@ -64,7 +64,7 @@ public class OrderServiceImplTest {
 		address.setZipCode("asdas");
 		
 		order.setAddress(address);
-		service.insertOrder(order);
+		service.insertOrder(order,null,0);
 		
 	}
 

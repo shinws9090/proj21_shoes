@@ -38,10 +38,13 @@ public class OrderController {
 	private ProductService pService;
 	@Autowired
 	AuthService aService;
+	private List<Integer> codeList;
+	
 	
 	@PostMapping("/orderList")
 	public ModelAndView orderList(@RequestParam(required = false, value = "codeList") List<Integer> codeList,
 				HttpSession session) {
+		this.codeList = codeList;
 		List<Cart> cartList = cService.cartBycartCodes(codeList);
 		List<OrderProduct> orderProductList = new ArrayList<OrderProduct>();
 		for(Cart c : cartList) {
@@ -135,6 +138,7 @@ public class OrderController {
 	@PostMapping("/addOrder")
 	public String addOrder(@ModelAttribute Address address,
 							@RequestParam(value = "priceSel") int priceSel, 
+							@RequestParam(value = "point") int point, 
 								HttpSession session) {
 		Order order = (Order) session.getAttribute("order");
 		if(order==null) {
@@ -143,7 +147,7 @@ public class OrderController {
 		order.setAddress(address);
 		order.setPaymentAmount(priceSel);
 		
-		oService.insertOrder(order);
+		oService.insertOrder(order,codeList,point);
 		session.setAttribute("order",order);
 		return "product/orderOK";
 	}
