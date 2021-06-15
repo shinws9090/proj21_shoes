@@ -38,6 +38,10 @@
 	<delete id="deleteCart">
 		delete from cart where cart_code = #{cartCode}
 	</delete>
+	<delete id="deleteCartbyOrder">
+		delete from cart 
+		where product_code = #{orderOption.productCode} and style_code =#{orderOption.styleCode} and size = #{orderOption.size}
+	</delete>
 	
 	<select id="cartBycartCode" parameterType="int" resultMap="ResCart">
 		select cart_code, member_code, `size`, product_code, style_code, count

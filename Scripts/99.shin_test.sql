@@ -69,3 +69,8 @@ select * from orderoption ;
 INSERT INTO sinabro.orderoption
 (product_code, style_code, `size`, stock, color)
 VALUES(22222, 2, 270, 0, 'yelloㅇw');
+
+select * from cart c2 ;
+
+delete from cart 
+		where product_code = 11111 and style_code =#{orderOption.styleCode} and size = #{orderOption.size}

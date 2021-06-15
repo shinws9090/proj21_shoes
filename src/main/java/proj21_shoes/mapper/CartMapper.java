@@ -4,6 +4,7 @@ import java.util.List;
 
 import proj21_shoes.dto.Cart;
 import proj21_shoes.dto.Member;
+import proj21_shoes.dto.OrderProduct;
 
 public interface CartMapper {
 	
@@ -22,5 +23,6 @@ public interface CartMapper {
 	void cartCountDown(int cartCode);
 
 	List<Cart> cartBycartCodes(List<Integer> cartCodes);
+
 	
 }
