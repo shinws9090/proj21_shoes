@@ -17,7 +17,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import proj21_shoes.commend.ProductSelectCommend;
-import proj21_shoes.commend.RegisterProduct;
 import proj21_shoes.config.ContextRoot;
 import proj21_shoes.dto.Brand;
 import proj21_shoes.dto.Category;
@@ -48,24 +47,22 @@ public class ProductMapperTest {
 		Assert.assertNotNull(list);
 		log.debug(list.toString());
 	}
+	
 
 	@Test
 	public void test97InsertProduct() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 
 		Product product = new Product();
-		product.setProductCode(5);
 		product.setProductName("운동화");
-		product.setBrand(new Brand(1));
+		product.setBrand(new Brand(5));
 		product.setGender("남");
-		product.setCategory(new Category(1));
+		product.setCategory(new Category(888));
 		product.setMaterial("가죽");
 		product.setSeason("겨울");
-		product.setMadeDate(LocalDateTime.now());
 		product.setCostPrice(50000);
 		product.setSellPrice(80000);
-		product.setRegistDate(LocalDateTime.now());
-		product.setEmployee(new Employee(1));
+		product.setEmployee(new Employee(101));
 
 		log.debug(product.toString());
 		int res = mapper.insertProduct(product);

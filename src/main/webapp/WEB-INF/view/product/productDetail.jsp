@@ -48,16 +48,28 @@
 				sCont += "<label class='size'> ";
 				sCont += "<input name='size' type='radio' value="+json[i].size+" hidden='hidden'>"+json[i].size;
 				sCont += "<span>(재고:"+json[i].stock+")</span>";
-				sCont += " </label>";
+				sCont += "<input class='stock' type='hidden' value="+json[i].stock+">";
+				sCont += "</label>";
 				};
 				$("#size").append(sCont);
 				
 				$("#size input").click(function(){
 					$("#size label").removeClass("active")
-					$("#size input").removeClass();
+					$("#size input").removeClass("size-data");
 					$(this).parent().addClass("active");
 					$(this).addClass("size-data");
 				});
+				
+				
+				$("#count").on("focusout",function(){
+					var stock = $("#size .active .stock").val();
+					var count = Number($(this).val());
+					if(count > stock){
+						$(this).val(stock);
+					}
+				});
+				
+				
 			});
 		}); 
 		
@@ -169,7 +181,7 @@
 				<label>size</label>
 			</div>
 			<p>${product.sellPrice}원</p>
-			<input type="number" name="count" id="count" required>
+			<input type="number" name="count" id="count" min="0" required>
 			<div class='submitBtns'>
 				<span id='cart'> 장바구니 </span>
 				<input type="hidden" name="productCode" value="${product.productCode }">

@@ -20,7 +20,7 @@ public interface ProductMapper {
 	List<OrderOption> OrderOptionByCode(int code);
 	List<OrderOption> OrderOptionByStyle(int styleCode, int code);
 	OrderOption OrderOptionBy3(int styleCode, int code, int size);
-		
+	
 	int insertProduct(Product product);
 	int updateProduct(Product product);
 	int deleteProduct(Product product);

@@ -51,7 +51,7 @@ $(function() {
 	
 	
 	/* 수량 up,down DB연동 */
-	function count(url , cartCode){
+	function countDB(url , cartCode){
 		var c = 0;
 		$.ajax({
 			url : contextPath + "/api/"+url+"/"+cartCode,
@@ -71,19 +71,27 @@ $(function() {
 		return c;
 	}
 	
-	/* 수량 up */
+	/* 수량 down */
 	$(".countDown").click(function(){
 		var cartCode = $(this).val();
-		var res = count("countDown" ,cartCode)
+		var count = $(this).next().text();
+		if(count <=0){
+			return
+		}
+		var res = countDB("countDown" ,cartCode)
 		$(this).next().text(res);
 		var price = res * $(this).parent().parent().children(".price").data("sellprice");
 		$(this).parent().parent().children(".price").text(price);
 		priceAll()
 	});
-	/* 수량 down */
+	/* 수량 up */
 	$(".countUp").click(function(){
 		var cartCode = $(this).val();
-		var res = count("countUp" ,cartCode);
+		var count = $(this).prev().text();
+		if(count >= $(this).next().val()){
+			return
+		}
+		var res = countDB("countUp" ,cartCode);
 		$(this).prev().text(res);
 		var price = res * $(this).parent().parent().children(".price").data("sellprice");
 		$(this).parent().parent().children(".price").text(price);
@@ -140,6 +148,8 @@ $(function() {
 		$("#data").val(codeArr);
 		$("#target").submit();
 	});
+	
+
 });
 </script>
 </head>
@@ -150,7 +160,7 @@ $(function() {
 
 	<section>
 		<%-- ${cartList} --%>
-		<%-- ${productList} --%>
+		${productList}
 			<table>
 				<thead>
 				<tr>
@@ -184,6 +194,9 @@ $(function() {
 									<c:if test="${cart.styleCode==o.styleCode}">
 										<td>${o.color}</td>
 									</c:if>
+									<c:if test="${cart.size==o.size}">
+										<c:set var="stock" value="${o.stock}"/>
+									</c:if>
 								</c:forEach>
 								
 							</c:if>
@@ -195,6 +208,7 @@ $(function() {
 							<button class="countDown" value="${cart.cartCode}">◀</button>
 							<span>${cart.count} </span>
 							<button class="countUp" value="${cart.cartCode}">▶</button>
+							<input type="hidden" value="${stock}">
 						</td>
 						<td>
 							<button class="delete" value="${cart.cartCode}"><i class="fa fa-times" aria-hidden="true"></i></button>

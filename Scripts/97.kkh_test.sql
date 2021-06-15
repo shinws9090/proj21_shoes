@@ -2,6 +2,8 @@ SELECT * FROM memberdetail;
 
 insert into memberdetail() values ("test1", 1234, "홍길동1", 1, 20000101, "test1@test.com", 01012341234, 12345, "대구", "우리집");
 
+select * from product where product_code = 22222;
+
 select * from orderproduct;
 
 select * from `order`;
@@ -18,8 +20,12 @@ select * from brand;
 select * from category;
 
 insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number)
-	values (5, "운동화", "1", "남", "1", "가죽", "겨울", 20210610, 50000, 80000, now(), 1, 1, 1);
+	values (22225, "운동화", "3", "남", "888", "가죽", "겨울", now(), 50000, 80000, now(), 1, 1, 101);
 	
+insert into product (product_name, made_date, costPrice, sell_Price, regist_date)
+	values ("운동화", now(), 50000, 80000, now());
+
+
 delete from product where product_code = 5;
 
 update product set product_name = "구두", brand_code = 2, gender = "여", product_category_code = 1, material = "가죽", season = "가을", made_date = 20210101, costPrice = 60000, sell_Price = 70000, regist_date = 20210505, cumulative_regist_count = 10, cumulative_sell_count = 2, emp_number = 1
