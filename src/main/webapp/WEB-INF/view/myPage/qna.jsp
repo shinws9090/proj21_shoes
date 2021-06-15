@@ -110,7 +110,12 @@ section#pageList{
 	<!-- end header -->
 	
 	<section id = "pageList">
-	
+	${myQnaList }
+	${myQnaList[0].boardCode }
+	${myQnaList[0].memberCode }
+	${myQnaList[0].productCode }
+	${myQnaList[0].title }
+	${myQnaList[0].content }
 	<c:if test="${empty authInfo}"> 
 				<p>로그인해주세요.</p> 
 				<p>
@@ -123,13 +128,29 @@ section#pageList{
 				<h1>${authInfo.memberName }님의 문의내역</h1>
 				<h2>회원정보</h2>
 				
-				<table class="tbl_type" border="1"></table>
+				<table class="tbl_type" border="1">
 				<tr>
-					<td>번호</td>
+					<td>글번호</td>
 					<td>제목</td>
-					<td>답변유무</td>
+					<td>상품코드</td>
+					<td>질문내용</td>
+					<td>회원코드</td>
 					<td>작성일</td>
+					<td>답글</td>
 				</tr>
+				<c:forEach var="myQna" items="${myQnaList }">
+				<tr>
+				<td>${myQna.boardCode }</td> <!-- 글번호 -->
+				<td>${myQna.title }</td>	<!-- 제목 -->
+				<td>${myQna.productCode }</td>	<!--상품코드  -->
+				<td>${myQna.content }</td>		<!-- 내용 -->
+				<td>${myQna.memberCode }</td>	<!--회원코드  -->
+				<td>${myQna.registDate }</td>	<!-- 작성일 -->
+				<td>${myQna.reply }</td>		<!-- 답글 -->
+				
+				</tr>
+				</c:forEach>
+	</table>
 				
 				<%-- <tr>
 				<c:forEach var = "board" items="${myQnaList}">  <!-- 이거말고 세션  새로 넣어주기!! -->
@@ -149,7 +170,6 @@ section#pageList{
 				
 				</tr> --%>
 				
-	</table>
 				
 				
 			</c:if>
