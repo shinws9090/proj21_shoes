@@ -36,8 +36,7 @@ public class OrderController {
 	private OrderService oService;
 	@Autowired
 	private ProductService pService;
-	@Autowired
-	AuthService aService;
+	
 	private List<Integer> codeList;
 	
 	
@@ -70,12 +69,7 @@ public class OrderController {
 //		a.setTel("1234");
 //		member.setMemberId(a);
 //		member.setPoint(1000);
-		AuthInfoCommend a = (AuthInfoCommend)session.getAttribute("authInfo");
-		if(a == null) {
-			return new ModelAndView("redirect:/login/loginForm");
-		}
-		aService.memberVo(a.getMemberId());
-		Member member = aService.memberVo(a.getMemberId());
+		Member member = (Member) session.getAttribute("member");
 		if(member == null) {
 			return new ModelAndView("redirect:/login/loginForm");
 		}
@@ -101,12 +95,7 @@ public class OrderController {
 				@RequestParam(value = "count") int count,
 								HttpSession session) {
 		
-		AuthInfoCommend a = (AuthInfoCommend)session.getAttribute("authInfo");
-		if(a == null) {
-			return new ModelAndView("redirect:/login/loginForm");
-		}
-		aService.memberVo(a.getMemberId());
-		Member member = aService.memberVo(a.getMemberId());
+		Member member = (Member) session.getAttribute("member");
 		if(member == null) {
 			return new ModelAndView("redirect:/login/loginForm");
 		}

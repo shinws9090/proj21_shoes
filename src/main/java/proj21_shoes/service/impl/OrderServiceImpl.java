@@ -44,7 +44,7 @@ public class OrderServiceImpl implements OrderService {
 		Member member = order.getMemberCode();
 		member.setPoint(member.getPoint()-point);
 		mapper.updateMemberPoint(member);
-
+		
 		return res;
 	}
 
