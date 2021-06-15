@@ -21,14 +21,15 @@ import proj21_shoes.dto.Member;
 import proj21_shoes.exeption.QuitMemberException;
 import proj21_shoes.exeption.WrongIdPasswordException;
 import proj21_shoes.mapper.MemberMapper;
+import proj21_shoes.service.AuthService;
 import proj21_shoes.service.LoginService;
 
 @Controller
 public class LoginController {
 
-//	@Autowired
-//	private AuthService authService;  
-//	
+	@Autowired
+	private AuthService authService;  
+	
 	@Autowired
 	private LoginService service;
 	@Autowired
@@ -70,6 +71,10 @@ public class LoginController {
 	
 			
 			session.setAttribute("authInfo", loginIdPw);
+
+			Member sessionMember = authService.memberVo(memberId);
+			session.setAttribute("member", sessionMember);
+			
 			Cookie rememberCookie = new Cookie("REMEMBER", loginCommand.getMemberId());
 			rememberCookie.setPath("/");
 			if (loginCommand.isRememberId()) {
