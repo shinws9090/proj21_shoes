@@ -10,6 +10,11 @@ select member_code, member_id, `point`, cumulative_buy_amount, grade_code, quit_
 select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address 
 	from memberDetail where member_id ='회원아이디'
 	
+-- 
+select  member_id, member_pwd
+from memberdetail where member_id ='11' and member_pwd ='111111';
+
+	
 	
 	-- 등급, 회원상세정보, 회원정보
 insert into grade values

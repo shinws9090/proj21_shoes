@@ -18,6 +18,10 @@ public class AuthService {
 	@Autowired
 	private MemberMapper mapper2;
 
+	
+	
+	
+	////////이제 로그인할때 얘 안쓴당!!! 로그인할떄 쓰는  select문 바꿨음!! 일단은 남겨둠!!
 	public AuthInfoCommend authenicate(String memberId, String password) { 	 //아이디랑 비번 입력받아서
 		MemberDetail member = mapper.selectMemberDetailById(memberId);   //memberDetail에 있는앤지 id로 검색쓰
 		Member member2 = mapper2.selectMemberById(memberId);  
