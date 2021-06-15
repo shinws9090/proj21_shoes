@@ -32,13 +32,14 @@ $(function() {
 	/*전채가격 설정*/
 	var priceHal = 0;
 	var priceAll = 0;
+	var priceEnd = 0;
 	function priceAllmethod() {
 		$(".price").each(function() {
 			priceAll += Number($(this).text());
 		});
 		$("#priceAll").text(priceAll);
 		priceHal = priceAll*0.1;
-		$("#priceHal").text(-priceHal);
+		$("#priceHal").text(priceHal);
 		priceEnd = priceAll-priceHal;
 		$("#priceEnd").text(priceEnd);
 		$("#priceSel").val(priceEnd);
@@ -51,10 +52,15 @@ $(function() {
 		if(inputPoint > point){
 			$("#point").val(point);
 		}
+		alert(priceEnd)
+		if(inputPoint > priceEnd){
+			$("#point").val(priceEnd);
+		}
 		
 		var a = priceHal + Number($("#point").val());
 		var b = priceAll - a;
-		$("#priceHal").text(-a);
+		
+		$("#priceHal").text(priceHal+"+"+$("#point").val()+"="+a);
 		$("#priceEnd").text(b);
 		$("#priceSel").val(b);
 	});
@@ -106,7 +112,7 @@ function newAddress() {
 	</header>
 
 	<section>
-		주문코드 = ${order.orderCode } <br>
+		<%-- 주문코드 = ${order.orderCode } <br>
 		회원코드 = ${order.memberCode }<br>
 		주문일 = ${order.orderDate }<br>
 		결제금액 = ${order.paymentAmount }<br>
@@ -114,7 +120,7 @@ function newAddress() {
 		배송코드 = ${order.deliveryCode }<br>
 		구매확정여부 = ${order.buyConfirmState }<br>
 		orderProduct = ${order.orderProduct }<br>
-		address = ${order.address }<br>
+		address = ${order.address }<br> --%>
 		<%-- ${productList} --%>
 			<table>
 				<thead>
@@ -167,7 +173,7 @@ function newAddress() {
 				<tr>
 					<td> 포인트  : </td>
 					<td colspan="2" style="text-align: left"> 
-					<input id="point" name="point" type="number" min="0" max="${order.memberCode.point}"/>
+					<input id="point" name="point" type="number" min="0" max="${order.memberCode.point}" />
 					<span>사용가능 : <em>${order.memberCode.point}</em>P </span>
 					</td>
 				</tr>

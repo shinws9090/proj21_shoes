@@ -43,6 +43,10 @@ public class OrderController {
 	@PostMapping("/orderList")
 	public ModelAndView orderList(@RequestParam(required = false, value = "codeList") List<Integer> codeList,
 				HttpSession session) {
+		System.out.println(codeList.size());
+		if(codeList.size() == 0) {
+			return new ModelAndView("redirect:/cartList");
+		}
 		this.codeList = codeList;
 		List<Cart> cartList = cService.cartBycartCodes(codeList);
 		List<OrderProduct> orderProductList = new ArrayList<OrderProduct>();
@@ -127,7 +131,7 @@ public class OrderController {
 	@PostMapping("/addOrder")
 	public String addOrder(@ModelAttribute Address address,
 							@RequestParam(value = "priceSel") int priceSel, 
-							@RequestParam(value = "point") int point, 
+							@RequestParam(defaultValue = "0" , value = "point") int point, 
 								HttpSession session) {
 		Order order = (Order) session.getAttribute("order");
 		if(order==null) {
@@ -138,7 +142,7 @@ public class OrderController {
 		
 		oService.insertOrder(order,codeList,point);
 		session.setAttribute("order",order);
-		return "product/orderOK";
+		return "product/orderOK"; 
 	}
 
 }

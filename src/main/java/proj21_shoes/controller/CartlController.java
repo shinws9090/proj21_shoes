@@ -99,7 +99,7 @@ public class CartlController {
 //		member.setMemberCode(111111);
 //		cart.setMember(member);
 		
-		System.out.println(cart);
+		System.out.println(cart); 
 		int res = service.insertCart(cart);
 		if(res==1) {
 			return ResponseEntity.ok(cart);
