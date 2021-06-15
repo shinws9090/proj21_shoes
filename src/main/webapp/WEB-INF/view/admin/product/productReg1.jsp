@@ -1,6 +1,7 @@
 <%@ page import="com.sun.xml.internal.bind.CycleRecoverable.Context"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.time.LocalDateTime"%>
 <%@ taglib prefix="tf" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -21,54 +22,65 @@
 	href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet"
 	href="path/to/font-awesome/css/font-awesome.min.css">
+
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
-	
-		function productValidation() {
+$(function(){
+	var contextPath = "<%=request.getContextPath()%>";
+		$('#cancel').on("click", function(e) {
+			window.location.href = contextPath + "/productMgt";
+		});
+		
+		$('#new').on( "click", function(e) {
+			var newProduct = {
+					productCode : $("[name='productCode']").prop("value"),
+					productName : $("[name='productName']").prop("value"),
+					brand : $("[name='brand']").prop("value"),
+					gender : $("[name='gender']").prop("value"),
+					category : $("[name='category']").prop("value"),
+					material : $("[name='material']").prop("value"),
+					season : $("[name='season']").prop("value"),
+					madeDate : $("[name='madeDate']").prop("value"),
+					costPrice : $("[name='costPrice']").prop("value"),
+					sellPrice : $("[name='sellPrice']").prop("value"),
+					registDate : $("[name='registDate']").prop("value"),
+					cumulativeRegistCount : $("[name='cumulativeRegistCount']").prop("value"),
+					cumulativeSellCount : $("[name='cumulativeSellCount']").prop("value"),
+					employee : $("[name='employee']").prop("value"),					
+					productMainImage : $("[name='productMainImage']").prop("value"),
+					content : $("[name='content']").prop("value"),
+					images : $("[name='images']").prop("value")
+			};
+			
 			var productCode = $("[name='productCode']").prop("value");
 			if(productCode == "" || productCode == null){
 				alert("제품 코드를 입력하세요.")
 				return false;
 				
-			} else {
-				$.ajax({				
-					url : "/proj21_shoes/productReg",
-					type:'POST',
-					data : $('#productRegForm').serialize(),
-												
-						/* {
-							productCode : productCode,
-							productName : $("[name='productName']").prop("value"),
-							brand : $("[name='brand']").prop("value"),
-							gender : $("[name='gender']").prop("value"),
-							category : $("[name='category']").prop("value"),
-							material : $("[name='material']").prop("value"),
-							season : $("[name='season']").prop("value"),
-							madeDate : $("[name='madeDate']").prop("value"),
-							costPrice : $("[name='costPrice']").prop("value"),
-							sellPrice : $("[name='sellPrice']").prop("value"),
-							registDate : $("[name='registDate']").prop("value"),
-							cumulativeRegistCount : $("[name='cumulativeRegistCount']").prop("value"),
-							cumulativeSellCount : $("[name='cumulativeSellCount']").prop("value"),
-							employee : $("[name='employee']").prop("value")
-							}, */
-					
-					success:function(data){
-						console.log(data);
-						alert("제품 등록이 완료되었습니다.");
-						location.href= "<c:url value='/productMgt'/>";
-					},error:function( e ){
-						alert("제품 등록이 실패하였습니다.");
-						console.log( e );
+			} else {			
+				alert("data > " + newProduct.productName);
+				$.ajax({
+					url : contextPath + "/productReg",
+					type : "POST",
+					contentType : "application/json; charset=utf-8",
+					datatype : "json",
+					cache : false,
+					data : JSON.stringify(newProduct),
+					success : function(res) {
+						alert(res);
+						window.location.href = contextPath + "/productMgt";
+					},
+					error : function(request, status, error) {
+						alert("에러" + "code:" + request.status + "\n" + "message:"
+								+ request.responseText + "\n" + "error:"
+								+ error);
+						window.location.href = contextPath + "/productMgt";
 					}
-					
-				})
-			}		
-			
-		}
-	
+				});
+			}						
+		});				
+});
 </script>
-
 </head>
 
 <body class="main-layout">
@@ -83,7 +95,7 @@
 
 		<div class="admin_content_wrap">
 			<div class="admin_content_main">
-				<form id="productRegForm">
+				<form:form id="productRegForm">
 
 					<div class="form_section">
 						<div class="form_section_title">
@@ -180,7 +192,10 @@
 							<label>등록일</label>
 						</div>
 						<div class="form_section_content">
-							<input type="date" name="registDate">
+							<c:set var="now" value="<%=LocalDateTime.now()%>" />
+							<input type="date" name="registDate"
+								value='<tf:formatDateTime value="${now}" pattern = "yyyy-MM-dd" />'
+								readonly="readonly">
 						</div>
 					</div>
 
@@ -201,7 +216,7 @@
 							<input name="cumulativeSellCount" value="1">
 						</div>
 					</div>
-					
+
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>등록사원정보</label>
@@ -210,8 +225,8 @@
 							<input name="employee" value="303">
 						</div>
 					</div>
-					
-					
+
+
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>상품대표이미지</label>
@@ -220,7 +235,7 @@
 							<input name="productMainImage">
 						</div>
 					</div>
-					
+
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>내용</label>
@@ -229,7 +244,7 @@
 							<input name="content" value="내용">
 						</div>
 					</div>
-					
+
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>상품이미지들</label>
@@ -237,14 +252,14 @@
 						<div class="form_section_content">
 							<input name="images">
 						</div>
-					</div>				
-
-				</form>
-				
-					<div class="btn_section">
-						<input type="button" value="등록" onclick="productValidation()" style="cursor: pointer" />
-						<input type="button" value="취소" onclick="javascript:location.href='/proj21_shoes/productMgt'" style="cursor: pointer" />
 					</div>
+
+				</form:form>
+
+				<div class="btn_section">
+					<button id="new">추가</button>
+					<button id="cancel">취소</button>
+				</div>
 
 			</div>
 		</div>

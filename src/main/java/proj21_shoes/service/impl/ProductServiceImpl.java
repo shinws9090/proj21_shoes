@@ -9,6 +9,7 @@ import proj21_shoes.commend.ProductSelectCommend;
 import proj21_shoes.dto.Brand;
 import proj21_shoes.dto.OrderOption;
 import proj21_shoes.dto.Product;
+import proj21_shoes.exeption.DuplicateProductException;
 import proj21_shoes.mapper.ProductMapper;
 import proj21_shoes.service.ProductService;
 
@@ -48,7 +49,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> productBycommand(ProductSelectCommend productSelectCommend) {
 		List<Product> products = mapper.productBycommand(productSelectCommend);
-		for(Product p : products) {
+		for (Product p : products) {
 			p.setOrderOptions(OrderOptionBy1(p.getProductCode()));
 		}
 		return products;
@@ -56,6 +57,12 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public int insertProduct(Product product) {
+		Product productNo = mapper.productByCode(product.getProductCode());
+
+		if (productNo != null) {
+			throw new DuplicateProductException("DuplicateProduct" + productNo);
+		}
+
 		return mapper.insertProduct(product);
 	}
 
@@ -69,7 +76,6 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.deleteProduct(product);
 	}
 
-
 	@Override
 	public List<OrderOption> OrderOptionBy1(int code) {
 		return mapper.OrderOptionByCode(code);
@@ -82,7 +88,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public OrderOption OrderOptionBy3(int styleCode, int code, int size) {
-		return mapper.OrderOptionBy3(styleCode,code, size);
+		return mapper.OrderOptionBy3(styleCode, code, size);
 	}
 
 }

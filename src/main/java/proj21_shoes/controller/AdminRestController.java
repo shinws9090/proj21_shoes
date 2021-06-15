@@ -17,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -92,18 +91,40 @@ public class AdminRestController {
 		return ResponseEntity.ok(productDeatil);
 	}
 
-	@PostMapping("/productMgt")
-	public ResponseEntity<Object> newProduct(@RequestBody Product product, ProductPost productPost) {
-		System.out.println("newProduct > " + product);		
-		
-		try {
-			product.setMadeDate(LocalDateTime.now());
-			URI uri = URI.create("/api/productMgt" + product.getProductCode());
-			
-			return ResponseEntity.created(uri).body(product.getProductCode());
-		} catch (DuplicateMemberException e) {
-			return ResponseEntity.status(HttpStatus.CONFLICT).build();
-		}
-	}
+	/*
+	 * @PostMapping("/productMgt/")
+	 * 
+	 * @Transactional public ResponseEntity<Object> newProduct(HttpServletRequest
+	 * request) { try { Product product = new Product();
+	 * product.setProductCode(Integer.parseInt(request.getParameter("productCode")))
+	 * ; product.setProductName(request.getParameter("productName"));
+	 * product.setBrand(new Brand(Integer.parseInt(request.getParameter("brand"))));
+	 * product.setGender(request.getParameter("gender")); product.setCategory(new
+	 * Category(Integer.parseInt(request.getParameter("category"))));
+	 * product.setMaterial(request.getParameter("material"));
+	 * product.setSeason(request.getParameter("season"));
+	 * product.setMadeDate(LocalDateTime.now());
+	 * product.setCostPrice(Integer.parseInt(request.getParameter("costPrice")));
+	 * product.setSellPrice(Integer.parseInt(request.getParameter("sellPrice")));
+	 * product.setRegistDate(LocalDateTime.now()); product.setEmployee(new
+	 * Employee(Integer.parseInt(request.getParameter("employee"))));
+	 * 
+	 * ProductPost productpost = new ProductPost();
+	 * productpost.setProductCode(Integer.parseInt(request.getParameter(
+	 * "productCode"))); productpost.setProductMainImage("image.jpg");
+	 * productpost.setContent(request.getParameter("content")); List<Image> list =
+	 * new ArrayList<Image>(); productpost.setImages(list);
+	 * 
+	 * System.out.println(product); productService.insertProduct(product);
+	 * 
+	 * System.out.println(productpost);
+	 * productPostService.insertProductPost(productpost);
+	 * 
+	 * URI uri = URI.create("/api/productMgt/" + product.getProductCode());
+	 * 
+	 * return ResponseEntity.created(uri).body(product.getProductCode()); } catch
+	 * (DuplicateMemberException e) { return
+	 * ResponseEntity.status(HttpStatus.CONFLICT).build(); } }
+	 */
 
 }

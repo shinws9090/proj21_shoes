@@ -11,6 +11,8 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -62,6 +64,15 @@ public class MvcConfig implements WebMvcConfigurer {
 				.serializerByType(LocalDateTime.class, new LocalDateTimeSerializer(formatter))
 				.simpleDateFormat("yyyy-MM-dd HH:mm:ss").build();
 		converters.add(0, new MappingJackson2HttpMessageConverter(objectMapper));
+	}
+	
+	@Bean	//파일 업로드를 위한 multipartResolver 빈 등록
+	public MultipartResolver multipartResolver() {
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+		multipartResolver.setMaxUploadSize(10485660);
+		multipartResolver.setDefaultEncoding("UTF-8");
+		
+		return multipartResolver;
 	}
 	
 }
