@@ -39,7 +39,7 @@ $(function() {
 	</header>
 
 	<section>
-		<%-- ${products} --%>
+		${products}
 		<nav class="category-menu">
 			<ul>
 				<li>
@@ -68,7 +68,18 @@ $(function() {
 						<h2>
 							<em>▒ ${product.productName}</em>
 						</h2>
-						<span class="price">₩ ${product.sellPrice}</span>
+						<c:forEach var="o" items="${product.orderOptions}">
+							<c:if test="${!test}">
+								<c:if test="${o.stock > 0 }">
+									<span class="price">₩ ${product.sellPrice}</span>
+									<c:set var="test" value="${true}"/>
+								</c:if>
+							</c:if>
+						</c:forEach>
+						<c:if test="${!test}">
+							품절
+						</c:if>
+					<c:set var="test" value="${false}"/>
 				</div>
 			</div>
 		</c:forEach>

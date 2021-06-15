@@ -36,13 +36,8 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Product productByCode(int code) {
 		Product product = mapper.productByCode(code);
-		product.setOrderOptions(OrderOptionByCode(code));
+		product.setOrderOptions(OrderOptionBy1(code));
 		return product;
-	}
-
-	@Override
-	public List<OrderOption> OrderOptionByCode(int code) {
-		return mapper.OrderOptionByCode(code);
 	}
 
 	@Override
@@ -52,7 +47,11 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<Product> productBycommand(ProductSelectCommend productSelectCommend) {
-		return mapper.productBycommand(productSelectCommend);
+		List<Product> products = mapper.productBycommand(productSelectCommend);
+		for(Product p : products) {
+			p.setOrderOptions(OrderOptionBy1(p.getProductCode()));
+		}
+		return products;
 	}
 
 	@Override
@@ -70,9 +69,20 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.deleteProduct(product);
 	}
 
+
 	@Override
-	public List<OrderOption> OrderOptionByStyle(int styleCode, int code) {
+	public List<OrderOption> OrderOptionBy1(int code) {
+		return mapper.OrderOptionByCode(code);
+	}
+
+	@Override
+	public List<OrderOption> OrderOptionBy2(int styleCode, int code) {
 		return mapper.OrderOptionByStyle(styleCode, code);
+	}
+
+	@Override
+	public OrderOption OrderOptionBy3(int styleCode, int code, int size) {
+		return mapper.OrderOptionBy3(styleCode,code, size);
 	}
 
 }

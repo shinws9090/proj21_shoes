@@ -44,10 +44,10 @@
 			
 			$.get(contextPath + "/api/size?styleCode="+styleCode+"&code="+code, function(json) {
 				var sCont = "";
-				
 				for(i = 0; i < json.length; i++){
 				sCont += "<label class='size'> ";
 				sCont += "<input name='size' type='radio' value="+json[i].size+" hidden='hidden'>"+json[i].size;
+				sCont += "<span>(재고:"+json[i].stock+")</span>";
 				sCont += " </label>";
 				};
 				$("#size").append(sCont);
@@ -109,7 +109,7 @@
 		<jsp:include page="/WEB-INF/view/include/header.jsp" />
 	</header>
 	<section>
-		<%-- <p>${product}</p> --%>
+		<p>${product}</p>
 
 		<div class='main'>
 			<div class='main-image'>
@@ -145,6 +145,7 @@
 			<div class="styleCode">
 				<label>스타일코드(색상)</label>
 				<c:forEach var="option" items="${product.orderOptions}" varStatus="status">
+					<c:if test="${option.stock >0}">
 					<c:choose>
 						<c:when test="${status.first}">
 							<label>
@@ -161,6 +162,7 @@
 							</label>
 						</c:otherwise>
 					</c:choose>
+					</c:if>
 				</c:forEach>
 			</div>
 			<div id="size">

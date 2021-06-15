@@ -17,7 +17,6 @@ h1, h2, h3, h4, h5, h6 {
 	margin:3em;
 	display:inline-table;
 	width:15em;
-	height:20em;
 	border-radius: 10px;
 	
  	transition: all 0.2s ease-in-out;  
@@ -64,15 +63,12 @@ h1, h2, h3, h4, h5, h6 {
 .title {
 	/* 자식요소(.title h2)가 flout 속성이 들어가있어 크기를 잃어버려서 써야됨 */
 	overflow: hidden;
-	
-	margin-bottom: 20px;
 }
 
 .title h2 {
 	font-size: 16px;
 	color: #888;
 	line-height: 1.1em;
-	float: left;
 }
 
 .title h2 em {

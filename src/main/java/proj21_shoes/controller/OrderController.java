@@ -46,11 +46,7 @@ public class OrderController {
 		List<OrderProduct> orderProductList = new ArrayList<OrderProduct>();
 		for(Cart c : cartList) {
 			
-			OrderOption orderOption = new OrderOption();
-			orderOption.setColor(pService.OrderOptionByStyle(c.getStyleCode(), c.getProductCode()).get(0).getColor());
-			orderOption.setProductCode(c.getProductCode());
-			orderOption.setSize(c.getSize());
-			orderOption.setStyleCode(c.getStyleCode());
+			OrderOption orderOption = pService.OrderOptionBy3(c.getStyleCode(), c.getProductCode(),c.getSize());
 			
 			OrderProduct orderProduct =  new OrderProduct();
 			orderProduct.setOrderOption(orderOption);
@@ -113,9 +109,9 @@ public class OrderController {
 		}
 		
 		List<OrderProduct> orderProductList = new ArrayList<OrderProduct>();
-		orderOption.setColor(pService.OrderOptionByStyle(orderOption.getStyleCode(), orderOption.getProductCode()).get(0).getColor());
+		OrderOption o = pService.OrderOptionBy3(orderOption.getStyleCode(), orderOption.getProductCode(),orderOption.getSize());
 		OrderProduct orderProduct =  new OrderProduct();
-		orderProduct.setOrderOption(orderOption);
+		orderProduct.setOrderOption(o);
 		orderProduct.setOrderCount(count);
 		
 		orderProductList.add(orderProduct);
@@ -139,8 +135,8 @@ public class OrderController {
 	@PostMapping("/addOrder")
 	public String addOrder(@ModelAttribute Address address,
 							@RequestParam(value = "priceSel") int priceSel, 
-								HttpServletRequest request) {
-		Order order = (Order) request.getSession().getAttribute("order");
+								HttpSession session) {
+		Order order = (Order) session.getAttribute("order");
 		if(order==null) {
 			return "redirect:cartList";
 		}
@@ -148,7 +144,7 @@ public class OrderController {
 		order.setPaymentAmount(priceSel);
 		
 		oService.insertOrder(order);
-		request.getSession().setAttribute("order",order);
+		session.setAttribute("order",order);
 		return "product/orderOK";
 	}
 

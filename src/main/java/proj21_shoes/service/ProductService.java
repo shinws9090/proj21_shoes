@@ -14,9 +14,11 @@ public interface ProductService {
 	List<Brand> brandByAll();
 	Product productByCode(int code);
 	List<Product> productByBrand(int code);
-	List<OrderOption> OrderOptionByCode(int code);
 	List<Product> productBycommand(ProductSelectCommend productSelectCommend);
-	List<OrderOption> OrderOptionByStyle(int styleCode, int code);
+	
+	List<OrderOption> OrderOptionBy1(int code);
+	List<OrderOption> OrderOptionBy2(int styleCode, int code);
+	OrderOption OrderOptionBy3(int styleCode, int code, int size);
 	
 	int insertProduct(Product product);
 	int updateProduct(Product product);

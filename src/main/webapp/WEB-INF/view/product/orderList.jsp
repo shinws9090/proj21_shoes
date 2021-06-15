@@ -10,14 +10,18 @@
 <html lang="en">
 <head>
 <!-- basic -->
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<link href="${contextPath}/css/bootstrap.min.css" rel="stylesheet">
+<link href="${contextPath}/css/buttons.css" rel="stylesheet">
+<link rel="stylesheet" href="${contextPath}/css/reset.css">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>lighten</title>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/cartList.css">
+<link rel="stylesheet" href="${contextPath}/css/style.css">
+<link rel="stylesheet" href="${contextPath}/css/orderList.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -134,20 +138,20 @@ function newAddress() {
 			<input type="hidden" id="priceSel" name="priceSel">
 			<table>
 				<tr> 
-					<td>배송지선택</td>
+					<th>배송지선택</th>
 					<td> 
 					<label><input type="radio" name="address-option" value="member" onclick="memberAddress()">회원정보와 동일</label>
 					<label><input type="radio" name="address-option" value="new" onclick="newAddress()">새로운 배송지</label>
 					</td>
 				</tr>
 				<tr> 
-					<td>받으시는 분</td>
+					<th>받으시는 분</th>
 					<td>
 					<input type="text" id="recipient" name="recipient">
 					</td>
 				</tr>
 				<tr> 
-					<td>주소</td>
+					<th>주소</th>
 					<td>
 					<input type="text" id="zipCode" name="zipCode" readonly required> <span onclick="testDaumPostcode()">우편번호</span> <br>
 					<input type="text" id="address" name="address" readonly required> <span>기본주소</span> <br>
@@ -155,13 +159,13 @@ function newAddress() {
 					</td>
 				</tr>
 				<tr> 
-					<td>연락처</td>
+					<th>연락처</th>
 					<td>
 					<input type="tel" id="tel" name="tel">
 					</td>
 				</tr>
 			</table>
-			<input type="submit" value="결재하기">
+			<input type="submit" class="btn btn-outline-secondary btn-xs" value="결재하기">
 		</form>
 	</section>
 		

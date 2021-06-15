@@ -26,6 +26,6 @@ public class ProductDetailController {
 	@GetMapping("api/size")
 	public ResponseEntity<Object> getSize(@RequestParam(value = "styleCode") int styleCode,
 			@RequestParam(value = "code") int code){
-		return ResponseEntity.ok(service.OrderOptionByStyle(styleCode, code));
+		return ResponseEntity.ok(service.OrderOptionBy2(styleCode, code));
 	} 
 }

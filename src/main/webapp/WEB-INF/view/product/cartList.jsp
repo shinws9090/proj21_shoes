@@ -8,14 +8,18 @@
 <html lang="en">
 <head>
 <!-- basic -->
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<link href="${contextPath}/css/bootstrap.min.css" rel="stylesheet">
+<link href="${contextPath}/css/buttons.css" rel="stylesheet">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>lighten</title>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/cartList.css">
+<link rel="stylesheet" href="${contextPath}/css/reset.css">
+<link rel="stylesheet" href="${contextPath}/css/style.css">
+<link rel="stylesheet" href="${contextPath}/css/cartList.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
@@ -150,7 +154,7 @@ $(function() {
 			<table>
 				<thead>
 				<tr>
-					<td><input type="checkbox" id ="allCheck" name="allCheck"/></td>
+					<th><input type="checkbox" id ="allCheck" name="allCheck"/></th>
 					<th>상품코드 </th>
 					<th>상품명 </th>
 					<th>대표이미지 </th>
@@ -193,7 +197,7 @@ $(function() {
 							<button class="countUp" value="${cart.cartCode}">▶</button>
 						</td>
 						<td>
-							<button class="delete" value="${cart.cartCode}">삭제</button>
+							<button class="delete" value="${cart.cartCode}"><i class="fa fa-times" aria-hidden="true"></i></button>
 						</td>
 					</tr>
 					</c:forEach>
@@ -201,8 +205,8 @@ $(function() {
 			</table>
 			<ul>
 				<li id="priceAll">전체가격:</li>
-				<li><button id="order">구매하기</button></li>
-				<li><button id="checkBoxDelete">선택삭제</button></li>
+				<li><button id="order" class="btn btn-outline-secondary btn-xs">구매하기</button></li>
+				<li><button id="checkBoxDelete" class="btn btn-outline-danger btn-xs">선택삭제</button></li>
 			</ul>
 			<form action="orderList" id="target" method="post">
 				<input type="hidden" id="data" name="codeList">

@@ -31,7 +31,20 @@ table > tbody > tr > td {
 	border-top: #ccc 1px solid;
 }
 
-.delete,.countUp,.countDown{
-	background: #fff;
-	border: 0;
+
+form table{
+	width: 60em;
 }
+form table tr{
+	padding: 10px;
+	border-top: #ccc 1px solid;
+}
+form table td{
+	text-align: left;
+}
+
+.btn{
+	margin: 2em;
+}
+
+

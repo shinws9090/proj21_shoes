@@ -17,7 +17,6 @@
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>lighten</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/cartList.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 <body class="main-layout">

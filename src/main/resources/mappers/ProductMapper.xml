@@ -63,6 +63,14 @@
 		select * from orderoption where product_code = #{param2} and style_code =#{param1}
 	</select>
 	
+	<select id="OrderOptionBy3" resultType="OrderOption" parameterType="int">
+		select * from orderoption where product_code = #{param2} and style_code =#{param1} and size = #{param3}
+	</select>
+	<update id="updateOrderOptionStock" parameterType="OrderProduct">
+		update orderoption set stock= stock-#{orderCount} 
+		where product_code = #{orderOption.productCode} and style_code =#{orderOption.styleCode} and size = #{orderOption.size}
+	</update>
+	
 	<select id="productByAll" resultMap="ProductList">
 		<include refid="selProductList" />
 	</select>

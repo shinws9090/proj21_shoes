@@ -62,3 +62,10 @@ insert into image(product_code,image) values
 	(22222,'Timberland (8).jpg'),
 	(22222,'Timberland (9).jpg');
 
+update orderoption set stock= stock- 1
+		where product_code = 22222 and style_code =2 and size = 280;
+select * from orderoption ;
+
+INSERT INTO sinabro.orderoption
+(product_code, style_code, `size`, stock, color)
+VALUES(22222, 2, 270, 0, 'yelloㅇw');
