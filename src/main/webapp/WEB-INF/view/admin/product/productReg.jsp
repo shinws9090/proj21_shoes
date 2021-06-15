@@ -48,9 +48,9 @@ $(function(){
 					cumulativeSellCount : $("[name='cumulativeSellCount']").prop("value"),
 					employee : $("[name='employee']").prop("value"),
 					
-					productMainImage : $("[name='productMainImage']").prop("value"),
+					/* productMainImage : $("[name='productMainImage']").prop("value"),
 					content : $("[name='content']").prop("value"),
-					images : $("[name='images']").prop("value")
+					images : $("[name='images']").prop("value") */
 			};
 			
 			var productCode = $("[name='productCode']").prop("value");

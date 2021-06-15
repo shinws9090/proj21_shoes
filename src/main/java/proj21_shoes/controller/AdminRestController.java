@@ -1,11 +1,8 @@
 package proj21_shoes.controller;
 
 import java.net.URI;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -13,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,14 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import proj21_shoes.dto.Brand;
-import proj21_shoes.dto.Category;
-import proj21_shoes.dto.Employee;
-import proj21_shoes.dto.Image;
 import proj21_shoes.dto.Member;
 import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.dto.Product;
-import proj21_shoes.dto.ProductPost;
 import proj21_shoes.exeption.DuplicateMemberException;
 import proj21_shoes.service.GetMemberDetailListService;
 import proj21_shoes.service.GetMemberDetailService;
@@ -92,13 +83,14 @@ public class AdminRestController {
 		return ResponseEntity.ok(productDeatil);
 	}
 
-	@PostMapping("/productMgt")
-	public ResponseEntity<Object> newProduct(@RequestBody Product product, ProductPost productPost) {
-		System.out.println("newProduct > " + product);		
+	@PostMapping("/productMgt/")
+	public ResponseEntity<Object> newProduct(@RequestBody Product product) {
+		System.out.println("newProduct > " + product);
 		
 		try {
-			product.setMadeDate(LocalDateTime.now());
-			URI uri = URI.create("/api/productMgt" + product.getProductCode());
+			productService.insertProduct(product);
+			
+			URI uri = URI.create("/api/productMgt/" + product.getProductCode());
 			
 			return ResponseEntity.created(uri).body(product.getProductCode());
 		} catch (DuplicateMemberException e) {
