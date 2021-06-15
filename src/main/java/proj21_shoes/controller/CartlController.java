@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_shoes.commend.AuthInfoCommend;
+import proj21_shoes.commend.LoginCommand2;
 import proj21_shoes.dto.Cart;
 import proj21_shoes.dto.Member;
 import proj21_shoes.dto.Product;
@@ -41,12 +42,7 @@ public class CartlController {
 		//테스트용
 //		Member member = new Member();
 //		member.setMemberCode(111111);
-		AuthInfoCommend a = (AuthInfoCommend)session.getAttribute("authInfo");
-		if(a == null) {
-			return new ModelAndView("redirect:/login/loginForm");
-		}
-		aService.memberVo(a.getMemberId());
-		Member member = aService.memberVo(a.getMemberId());
+		Member member = (Member) session.getAttribute("member");
 		if(member == null) {
 			return new ModelAndView("redirect:/login/loginForm");
 		}
@@ -92,12 +88,8 @@ public class CartlController {
 		if(cart.getProductCode()<=0||cart.getSize()<=0||cart.getStyleCode()<=0||cart.getCount()<=0) {
 			return ResponseEntity.badRequest().build();
 		}
-		AuthInfoCommend a = (AuthInfoCommend)session.getAttribute("authInfo");
-		if(a == null) {
-			return ResponseEntity.notFound().build();
-		}
-		aService.memberVo(a.getMemberId());
-		Member member = aService.memberVo(a.getMemberId());
+		
+		Member member = (Member) session.getAttribute("member");
 		if(member == null) {
 			return ResponseEntity.notFound().build();
 		}

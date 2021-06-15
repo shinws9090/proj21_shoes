@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="proj21_shoes.mapper.LoginMapper">
+
+	<!-- resultMap type : dto 클래스명 , id : 외부에서 지정할이름? -->
+	<!-- result column : db속 컬럼명, property : dto속 변수명 -->
+
+<!-- 	<resultMap type="MemberDetail" id="MemberDetailAll">
+		<id column="member_id" property="memberId" />			회원id
+		<result column="member_pwd" property="memberPwd" />		회원password
+		<result column="member_name" property="memberName" />	회원이름
+		<result column="gender" property="gender" />			성별	
+		<result column="birthday" property="birthday" />		생년월일
+		<result column="email" property="email" />				이메일
+		<result column="tel" property="tel" />					연락처
+		<result column="zipCode" property="zipCode" />			우편번호
+		<result column="address" property="address" />			주소
+		<result column="detail_address" property="detailAddress" />	상세주소
+	</resultMap> 
+	-->
+	
+	
+	
+	
+ 	 <resultMap type="loginCommand2" id="resLogin">
+		<id column="member_id" property="memberId" />			<!--  회원id-->
+		<result column="member_pwd" property="memberPwd" />		<!-- 회원password -->
+		<result column="member_name" property="memberName" />	<!-- 회원이름 -->
+		<!-- <result column="gender" property="gender" />			성별	
+		<result column="birthday" property="birthday" />		생년월일
+		<result column="email" property="email" />				이메일
+		<result column="tel" property="tel" />					연락처
+		<result column="zipCode" property="zipCode" />			우편번호
+		<result column="address" property="address" />			주소
+		<result column="detail_address" property="detailAddress" />	상세주소 -->
+	</resultMap> 
+	 
+	 
+	
+	
+	
+		<select id="loginIdPw" resultMap="resLogin">
+select  member_id, member_pwd,member_name
+from memberDetail where member_id =#{param1} and member_pwd =password(#{param2})
+	
+	</select>
+	
+	
+</mapper>
+
+
+

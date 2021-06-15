@@ -5,8 +5,8 @@ join brand b on p.brand_code = b.brand_code
 join category c on c.product_category_code =p.product_category_code
 join employee e on e.emp_number = p.emp_number
 join authority a2 on e.authority_code = a2.authority_code
-join productpost p2 on p2.product_code = p.product_code
-left join image i on i.product_code = p.product_code
+join productpost p2 on p2.product_code = p.product_code;
+left join image i on i.product_code = p.product_code;
 where p.product_code = 55555;
 
 
@@ -69,3 +69,10 @@ select * from orderoption ;
 INSERT INTO sinabro.orderoption
 (product_code, style_code, `size`, stock, color)
 VALUES(22222, 2, 270, 0, 'yelloㅇw');
+
+select * from cart c2 ;
+
+delete from cart 
+		where product_code = 11111 and style_code =#{orderOption.styleCode} and size = #{orderOption.size}
+		
+select * from memberdetail ;

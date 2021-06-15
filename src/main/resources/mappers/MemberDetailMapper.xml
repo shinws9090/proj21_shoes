@@ -44,7 +44,7 @@
 
 	<insert id="insertMemberDetail">
 	insert into memberDetail (member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address)
-	values(#{memberId},#{memberPwd},#{memberName},true,#{birthday},#{email},#{tel},#{zipCode},#{address},#{detailAddress}) 
+	values(#{memberId},password(#{memberPwd}),#{memberName},true,#{birthday},#{email},#{tel},#{zipCode},#{address},#{detailAddress}) 
 		
 	</insert>
 	
@@ -73,7 +73,7 @@ where member_id=#{param1} and member_name=#{param2} and email =#{param3}
 	
 	<update id="updateMemberDetail" parameterType="MemberDetail">
 	update memberDetail
-	set member_pwd=#{memberPwd}, member_name=#{memberName}, gender=#{gender}, 
+	set member_pwd=password(#{memberPwd}), member_name=#{memberName}, gender=#{gender}, 
 		birthday=#{birthday}, email=#{email}, tel=#{tel}, zipCode=#{zipCode}, address=#{address}, detail_address=#{detailAddress}
 	WHERE member_id=#{memberId}
 	</update>

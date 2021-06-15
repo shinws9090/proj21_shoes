@@ -22,4 +22,8 @@
 			(#{orderCode},#{address.recipient},#{address.zipCode},#{address.address}
 			,#{address.detailAddress},#{address.tel})
 	</insert>
+	<update id="updateMemberPoint" parameterType="Member">
+		update member set point = #{point} , cumulative_buy_amount = #{cumulativeBuyAmount}
+		where member_code = #{memberCode}
+	</update>
 </mapper>
