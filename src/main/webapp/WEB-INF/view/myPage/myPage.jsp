@@ -66,7 +66,7 @@
 				</tr>
 				
 					<tr style="background-color: white-space; text-align: center">
-					<h3><td><a href="${contextPath}/myPage/qna">-문의내역</a></td></h3>
+					<h3><td><a href="${contextPath}/myPage/qna/${authInfo.memberId}">-문의내역</a></td></h3>
 				</tr>
 				
 				

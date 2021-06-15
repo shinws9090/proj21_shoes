@@ -110,3 +110,48 @@
 [DEBUG] [2021-06-14 18:10] ==>  Preparing: insert into address(order_code, recipient, zipCode, address, detail_address, tel) values (?,?,?,? ,?,?)
 [DEBUG] [2021-06-14 18:10] ==> Parameters: 10021(Integer), asdasd(String), asdas(String), asdasd(String), asdasd(String), asdasd(String)
 [DEBUG] [2021-06-14 18:10] <==    Updates: 1
+[DEBUG] [2021-06-15 19:34] test01SelectbyId()
+[DEBUG] [2021-06-15 19:34] ==>  Preparing: select board_code, member_code,product_code, title,content,reply,regist_date from qna where member_code =(select member_code from member where member_id =?) ;
+[DEBUG] [2021-06-15 19:34] ==> Parameters: 1234(String)
+[TRACE] [2021-06-15 19:34] <==    Columns: board_code, member_code, product_code, title, content, reply, regist_date
+[TRACE] [2021-06-15 19:34] <==        Row: 7, 111124, 11111, 테스트질문, 내용, 답변, 2021-06-15 18:13:43.0
+[DEBUG] [2021-06-15 19:37] test01SelectbyId()
+[DEBUG] [2021-06-15 19:37] ==>  Preparing: select board_code, member_code,product_code, title,content,reply,regist_date from qna where member_code =(select member_code from member where member_id =?) ;
+[DEBUG] [2021-06-15 19:37] ==> Parameters: 1234(String)
+[TRACE] [2021-06-15 19:37] <==    Columns: board_code, member_code, product_code, title, content, reply, regist_date
+[TRACE] [2021-06-15 19:37] <==        Row: 7, 111124, 11111, 테스트질문, 내용, 답변, 2021-06-15 18:13:43.0
+[DEBUG] [2021-06-15 19:37] <==      Total: 1
+[DEBUG] [2021-06-15 19:40] test01SelectbyId()
+[DEBUG] [2021-06-15 19:40] ==>  Preparing: select board_code, member_code,product_code, title,content,reply,regist_date from qna where member_code =(select member_code from member where member_id =?) ;
+[DEBUG] [2021-06-15 19:40] ==> Parameters: 1234(String)
+[TRACE] [2021-06-15 19:40] <==    Columns: board_code, member_code, product_code, title, content, reply, regist_date
+[TRACE] [2021-06-15 19:40] <==        Row: 7, 111124, 11111, 테스트질문, 내용, 답변, 2021-06-15 18:13:43.0
+[DEBUG] [2021-06-15 19:40] <==      Total: 1
+[DEBUG] [2021-06-15 19:40] [MyQnaCommand [boardCode=7, memberCode=111124, productCode=11111, title=테스트질문, content=내용, reply=답변, registDate=2021-06-15T18:13:43, memberId=null]]
+[DEBUG] [2021-06-15 19:48] test01SelectbyId()
+[DEBUG] [2021-06-15 19:48] ==>  Preparing: select board_code, member_code,product_code, title,content,reply,regist_date from qna where member_code =(select member_code from member where member_id =?) ;
+[DEBUG] [2021-06-15 19:48] ==> Parameters: 1234(String)
+[TRACE] [2021-06-15 19:48] <==    Columns: board_code, member_code, product_code, title, content, reply, regist_date
+[TRACE] [2021-06-15 19:48] <==        Row: 7, 111124, 11111, 테스트질문, 내용, 답변, 2021-06-15 18:13:43.0
+[DEBUG] [2021-06-15 19:48] <==      Total: 1
+[DEBUG] [2021-06-15 19:49] test01SelectbyId()
+[DEBUG] [2021-06-15 19:49] ==>  Preparing: select board_code, member_code,product_code, title,content,reply,regist_date from qna where member_code =(select member_code from member where member_id =?) ;
+[DEBUG] [2021-06-15 19:49] ==> Parameters: 1234(String)
+[TRACE] [2021-06-15 19:49] <==    Columns: board_code, member_code, product_code, title, content, reply, regist_date
+[TRACE] [2021-06-15 19:49] <==        Row: 7, 111124, 11111, 테스트질문, 내용, 답변, 2021-06-15 18:13:43.0
+[DEBUG] [2021-06-15 19:49] <==      Total: 1
+[DEBUG] [2021-06-15 19:49] [MyQnaCommand [boardCode=7, memberCode=111124, productCode=11111, title=테스트질문, content=내용, reply=답변, registDate=2021-06-15T18:13:43, memberId=null]]
+[DEBUG] [2021-06-15 19:49] test01SelectbyId()
+[DEBUG] [2021-06-15 19:49] ==>  Preparing: select board_code, member_code,product_code, title,content,reply,regist_date from qna where member_code =(select member_code from member where member_id =?) ;
+[DEBUG] [2021-06-15 19:49] ==> Parameters: 1234(String)
+[TRACE] [2021-06-15 19:49] <==    Columns: board_code, member_code, product_code, title, content, reply, regist_date
+[TRACE] [2021-06-15 19:49] <==        Row: 7, 111124, 11111, 테스트질문, 내용, 답변, 2021-06-15 18:13:43.0
+[DEBUG] [2021-06-15 19:49] <==      Total: 1
+[DEBUG] [2021-06-15 19:49] [MyQnaCommand [boardCode=7, memberCode=111124, productCode=11111, title=테스트질문, content=내용, reply=답변, registDate=2021-06-15T18:13:43]]
+[DEBUG] [2021-06-15 19:49] test01SelectbyId()
+[DEBUG] [2021-06-15 19:49] ==>  Preparing: select board_code, member_code,product_code, title,content,reply,regist_date from qna where member_code =(select member_code from member where member_id =?) ;
+[DEBUG] [2021-06-15 19:49] ==> Parameters: 1234(String)
+[TRACE] [2021-06-15 19:49] <==    Columns: board_code, member_code, product_code, title, content, reply, regist_date
+[TRACE] [2021-06-15 19:49] <==        Row: 7, 111124, 11111, 테스트질문, 내용, 답변, 2021-06-15 18:13:43.0
+[DEBUG] [2021-06-15 19:49] <==      Total: 1
+[DEBUG] [2021-06-15 19:49] [MyQnaCommand [boardCode=7, memberCode=111124, productCode=11111, title=테스트질문, content=내용, reply=답변, registDate=2021-06-15T18:13:43]]
