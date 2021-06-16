@@ -73,7 +73,7 @@ public class OrderController {
 //		a.setTel("1234");
 //		member.setMemberId(a);
 //		member.setPoint(1000);
-		Member member = (Member) session.getAttribute("member");
+		Member member = (Member) session.getAttribute("sessionMember");
 		if(member == null) {
 			return new ModelAndView("redirect:/login/loginForm");
 		}
@@ -99,7 +99,7 @@ public class OrderController {
 				@RequestParam(value = "count") int count,
 								HttpSession session) {
 		
-		Member member = (Member) session.getAttribute("member");
+		Member member = (Member) session.getAttribute("sessionMember");
 		if(member == null) {
 			return new ModelAndView("redirect:/login/loginForm");
 		}
