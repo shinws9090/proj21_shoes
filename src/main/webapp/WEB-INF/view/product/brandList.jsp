@@ -24,6 +24,41 @@ $(function() {
 		var code = $(this).data("item");
 		window.location.href = contextPath+"/brand/"+code;
 	});
+	
+	$(".sel").click(function(){
+		 var selStd = $(this).text();
+		 $.ajax({
+				url : contextPath + "/api/brandSel/"+selStd,
+				type : 'get',
+				contentType : "application/json; charset=utf-8",
+				dataType : 'json',
+				/* async: false, */
+				cache : false,
+				success : function(json) {
+					var sCont = "";
+					for(i = 0; i < json.length; i++){
+					sCont +='<div class="item" data-item="'+json[i].brandCode+'">';
+					sCont +='<img src="images/'+json[i].brandName+'logo.jpg">';
+					sCont +='<div class="detail">';
+					sCont +='<div class="title">';
+					sCont +='<h2>';
+					sCont +='<em> *'+json[i].brandName+'</em>';
+					sCont +='</h2>';
+					sCont +='<h5>';
+					sCont +='<em>'+json[i].brandEngName+'</em>';
+					sCont +='</h5>';
+					sCont +='</div>';
+					sCont +='</div>';
+					sCont +='</div>';
+					}
+					$("#brands").html(sCont);
+				},
+				error : function(request, status, error) {
+					alert("code:"+request.status+"\n"+"message:"
+							+request.responseText+"\n"+"error:"+error);
+				}
+			});
+	});
 });
 </script>
 </head>
@@ -33,26 +68,29 @@ $(function() {
 	</header>
 
 	<section>
-	<div>
 		<%-- ${brand} --%>
-		<c:forEach var="b" items="${brand}">
-			<div class="item" data-item="${b.brandCode}">
-				<img src="images/${b.brandName}logo.jpg">
-				<div class="detail">
-					<div class="title">
-						<h2>
-							<em> ＊ ${b.brandName}</em>
-						</h2>
-						
-						<h5>
-							<em>${b.brandEngName}</em>
-						</h5>
-						
+		<div id="brand-select">
+			<c:forTokens var="a" items="ALL,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,기타" delims=",">
+				&nbsp;&nbsp;<span class="sel">${a}</span>&nbsp;&nbsp;
+			</c:forTokens>
+		</div>
+		<div id="brands">
+			<c:forEach var="b" items="${brand}">
+				<div class="item" data-item="${b.brandCode}">
+					<img src="images/${b.brandName}logo.jpg">
+					<div class="detail">
+						<div class="title">
+							<h2>
+								<em> ＊ ${b.brandName}</em>
+							</h2>
+							<h5>
+								<em>${b.brandEngName}</em>
+							</h5>
+						</div>
 					</div>
 				</div>
-			</div>
-		</c:forEach>
-	</div>
+			</c:forEach>
+		</div>
 	</section>
 
 	<footer>
