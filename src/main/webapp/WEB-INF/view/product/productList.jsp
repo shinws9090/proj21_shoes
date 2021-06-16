@@ -28,8 +28,6 @@ $(function() {
 	$(".category").click(function(){
 		$(this).submit();
 	});
-	
-	
 });
 </script>
 </head>
