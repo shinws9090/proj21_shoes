@@ -1,5 +1,7 @@
 package proj21_shoes.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_shoes.dto.Brand;
@@ -82,11 +85,10 @@ public class AdminController {
 	}
 
 	@PostMapping("/productReg")
-	
-	public String newProduct(HttpServletRequest request) {
+
+	public String newProduct(HttpServletRequest request, MultipartFile file) throws IOException, Exception {
 		System.out.println(Integer.parseInt(request.getParameter("productCode")));
-		
-		
+
 		Product product = new Product();
 		product.setProductCode(Integer.parseInt(request.getParameter("productCode")));
 		product.setProductName(request.getParameter("productName"));
@@ -105,9 +107,23 @@ public class AdminController {
 
 		ProductPost productpost = new ProductPost();
 		productpost.setProductCode(Integer.parseInt(request.getParameter("productCode")));
-		productpost.setProductMainImage("image.jpg");
-//		productpost.setContent(request.getParameter("content"));
-		
+		productpost.setProductMainImage(request.getParameter("productMainImage"));
+		productpost.setContent(request.getParameter("content"));
+
+		String uploadPath = "C:\\workspace_web\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\proj21_shoes\\";
+
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+
+		if (file != null) {
+			fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
+		} else {
+			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+
+		productpost.setProductMainImage(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+
 		/*
 		 * List<Image> list = new ArrayList<Image>(); productpost.setImages(list);
 		 */
