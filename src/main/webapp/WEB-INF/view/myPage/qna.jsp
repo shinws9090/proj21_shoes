@@ -110,12 +110,14 @@ section#pageList{
 	<!-- end header -->
 	
 	<section id = "pageList">
+<%-- 	
 	${myQnaList }
 	${myQnaList[0].boardCode }
 	${myQnaList[0].memberCode }
 	${myQnaList[0].productCode }
 	${myQnaList[0].title }
-	${myQnaList[0].content }
+	${myQnaList[0].content } 
+	--%>
 	<c:if test="${empty authInfo}"> 
 				<p>로그인해주세요.</p> 
 				<p>
@@ -126,7 +128,7 @@ section#pageList{
 			<c:if test="${!empty authInfo}">
 				
 				<h1>${authInfo.memberName }님의 문의내역</h1>
-				<h2>회원정보</h2>
+
 				
 				<table class="tbl_type" border="1">
 				<tr>
