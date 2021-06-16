@@ -53,6 +53,7 @@ dependencies {
 	
 	//Jackson :JSON library
 	implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.12.3'
+	implementation group: 'net.sf.json-lib', name: 'json-lib', version: '2.4', classifier: 'jdk15'
 	
 	//fileupload
 	implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'

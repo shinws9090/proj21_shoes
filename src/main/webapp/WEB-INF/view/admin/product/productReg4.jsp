@@ -7,7 +7,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<c:set var="contextPath" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,10 +22,69 @@
 	href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet"
 	href="path/to/font-awesome/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-</head>
-<body class="main-layout">
 
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+$(function(){
+	var contextPath = "<%=request.getContextPath()%>";
+		$('#cancel').on("click", function(e) {
+			window.location.href = contextPath + "/productMgt";
+		});
+		
+		$('#new').on( "click", function(e) {
+			var newProduct = {
+					productCode : $("[name='productCode']").prop("value"),
+					productName : $("[name='productName']").prop("value"),
+					brand : $("[name='brand']").prop("value"),
+					gender : $("[name='gender']").prop("value"),
+					category : $("[name='category']").prop("value"),
+					material : $("[name='material']").prop("value"),
+					season : $("[name='season']").prop("value"),
+					madeDate : $("[name='madeDate']").prop("value"),
+					costPrice : $("[name='costPrice']").prop("value"),
+					sellPrice : $("[name='sellPrice']").prop("value"),
+					registDate : $("[name='registDate']").prop("value"),
+					cumulativeRegistCount : $("[name='cumulativeRegistCount']").prop("value"),
+					cumulativeSellCount : $("[name='cumulativeSellCount']").prop("value"),
+					employee : $("[name='employee']").prop("value"),					
+					productMainImage : $("[name='productMainImage']")[0],
+					content : $("[name='content']").prop("value"),
+					images : $("[name='images']").prop("value")
+			};
+			
+			var productCode = $("[name='productCode']").prop("value");
+			if(productCode == "" || productCode == null){
+				alert("제품 코드를 입력하세요.")
+				return false;
+				
+			} else {			
+				alert("data > " + newProduct.productName);
+				$.ajax({
+					url : contextPath + "/productReg",
+					type : "POST",
+					processData : false,
+			        contentType : false,
+			        cache : false,
+			        enctype : "multipart/form-data",
+					data : JSON.stringify(newProduct),
+					success : function(res) {
+						alert(res);
+						window.location.href = contextPath + "/productMgt";
+					},
+					error : function(request, status, error) {
+						alert("에러" + "code:" + request.status + "\n" + "message:"
+								+ request.responseText + "\n" + "error:"
+								+ error);
+						window.location.href = contextPath + "/productMgt";
+					}
+				});
+			}						
+		});				
+});
+</script>
+</head>
+
+<body class="main-layout">
 	<!-- header -->
 	<header>
 		<jsp:include page="/WEB-INF/view/include/header.jsp" />
@@ -38,7 +96,7 @@
 
 		<div class="admin_content_wrap">
 			<div class="admin_content_main">
-				<form id="productRegForm" enctype="multipart/form-data" autocomplete="off">
+				<form id="productRegForm" enctype="multipart/form-data">
 
 					<div class="form_section">
 						<div class="form_section_title">
@@ -63,9 +121,7 @@
 							<label>브랜드</label>
 						</div>
 						<div class="form_section_content">
-							<select name="brand" class="brand">
-								<option selected="selected" value="선택해주세요">선택해주세요</option>
-							</select>
+							<input name="brand" value="1">
 						</div>
 					</div>
 
@@ -74,13 +130,7 @@
 							<label>성별</label>
 						</div>
 						<div class="form_section_content">
-							<select name="gender" class="form_select_option">
-								<option selected="selected" value="선택해주세요">선택해주세요</option>
-								<option value="여성">여성</option>						
-								<option value="남성">남성</option>						
-								<option value="공용">공용</option>
-								<option value="아동">아동</option>
-							</select>
+							<input name="gender" value="남">
 						</div>
 					</div>
 
@@ -89,9 +139,7 @@
 							<label>카테고리</label>
 						</div>
 						<div class="form_section_content">
-							<select name="category" class="category">
-								<option selected="selected" value="선택해주세요">선택해주세요</option>
-							</select>
+							<input name="category" value="111">
 						</div>
 					</div>
 
@@ -175,9 +223,7 @@
 							<label>등록사원정보</label>
 						</div>
 						<div class="form_section_content">
-							<select name="employee" class="form_select_option">
-								<option selected="selected" value="선택해주세요">선택해주세요</option>
-							</select>
+							<input name="employee" value="303" />
 						</div>
 					</div>
 
@@ -234,63 +280,12 @@
 			</div>
 		</div>
 
-${brandList}
 	</section>
 
 	<!-- end our product -->
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp" />
 	</footer>
-
-<script>
-	//컨트롤러에서 브랜드 데이터 받기
-	var jsonData = JSON.parse('${brandList}');
-	console.log(jsonData);
-	
-	var brandArr = new Array();
-	var brandObj = new Object();
-	
-	// 브랜드 셀렉트 박스에 삽입할 데이터 준비
-	for(var i = 0; i < jsonData.length; i++) {
-		brandObj = new Object();  //초기화
-		brandObj.brandCode = jsonData[i].brandCode;
-		brandObj.brandName = jsonData[i].brandName;
-		brandArr.push(brandObj);	 
-	}
-	
-	// 브랜드 셀렉트 박스에 데이터 삽입
-	var brandSelect = $("select.brand")
-
-	for(var i = 0; i < brandArr.length; i++) {
-		brandSelect.append("<option value='" + brandArr[i].brandCode + "'>"
-	      + brandArr[i].brandName + "</option>"); 
-	}
-</script>
-
-<script>
-	// 컨트롤러에서 카테고리 데이터 받기
-	var jsonData = JSON.parse('${categoryList}');
-	console.log(jsonData);
-	
-	var categoryArr = new Array();
-	var categoryObj = new Object();
-	
-	// 카테고리 셀렉트 박스에 삽입할 데이터 준비
-	for(var i = 0; i < jsonData.length; i++) {
-		categoryObj = new Object();  //초기화
-		categoryObj.productCategoryCode = jsonData[i].productCategoryCode;
-		categoryObj.category = jsonData[i].category;
-		categoryArr.push(categoryObj);	 
-	}
-	
-	// 카테고리 셀렉트 박스에 데이터 삽입
-	var categorySelect = $("select.category")
-
-	for(var i = 0; i < categoryArr.length; i++) {
-		categorySelect.append("<option value='" + categoryArr[i].productCategoryCode + "'>"
-	      + categoryArr[i].category + "</option>"); 
-	}
-</script>
 
 </body>
 </html>

@@ -15,9 +15,9 @@ select * from employee;
 select * from product;
 select * from productpost;
 
-select * from brand;
+select brand_code, brand_name, brand_eng_name from brand;
 
-select * from category;
+select product_category_code, category from category;
 
 insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number)
 	values (22225, "운동화", "3", "남", "888", "가죽", "겨울", now(), 50000, 80000, now(), 1, 1, 101);

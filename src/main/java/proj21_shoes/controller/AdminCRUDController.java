@@ -1,100 +1,52 @@
 package proj21_shoes.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.sf.json.JSONArray;
 import proj21_shoes.dto.Brand;
 import proj21_shoes.dto.Category;
+import proj21_shoes.dto.Employee;
+import proj21_shoes.dto.Product;
+import proj21_shoes.dto.ProductPost;
 import proj21_shoes.service.BrandService;
-import proj21_shoes.service.CategoryService;
 import proj21_shoes.service.GetMemberDetailListService;
 import proj21_shoes.service.ProductPostService;
 import proj21_shoes.service.ProductService;
 
 @Controller
-public class AdminController {
-	protected static final Logger logger = LoggerFactory.getLogger(AdminController.class);
-
-	@Autowired
-	private BrandService brandService;
-	
-	@Autowired
-	private CategoryService categoryService;
-
-	@Autowired
-	private ProductService productService;
-
-	@Autowired
-	private ProductPostService productPostService;
-
-	@Autowired
-	private GetMemberDetailListService memListService;
-
-	@RequestMapping("/adminMain") // 관리자메인 화면
-	public String Admin() {
-		logger.info("관리자 페이지 이동");
-		return "admin/adminMain";
-	}
-
-	@RequestMapping("/memberMgt") // 멤버관리 화면
-	public ModelAndView memberDetailList() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("admin/memberMgt");
-		return mav;
-	}
-
-	@RequestMapping("/productMgt") // 제품관리 화면
-	public ModelAndView productList() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("admin/productMgt");
-		return mav;
-	}
+public class AdminCRUDController {
+	protected static final Logger logger = LoggerFactory.getLogger(AdminCRUDController.class);
 
 	/*
-	 * @RequestMapping("/viewProductReg") // 제품등록 화면 public ModelAndView
-	 * productReg() { ModelAndView mav = new ModelAndView();
-	 * mav.setViewName("/admin/product/productReg"); return mav; }
-	 */
-
-	/*
-	 * @RequestMapping("/read") public ModelAndView
-	 * productDetail(@RequestParam(value = "productCode") long productCode) {
-	 * ModelAndView mav = new ModelAndView(); mav.addObject("productCode",
-	 * productCode); mav.setViewName("admin/productDetailMgt"); return mav; }
-	 */
-
-	@RequestMapping("/orderMgt") // 주문관리 화면
-	public ModelAndView orderList() {
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("admin/orderMgt");
-
-		return mav;
-	}
-
-	@RequestMapping("/admin/product/productReg")
-	public void getProductRegister(Model model) {
-		System.out.println("상품등록페이지");
-		List<Brand> brandList = brandService.brandList();
-		model.addAttribute("brandList", JSONArray.fromObject(brandList));
-		
-		List<Category> categoryList = categoryService.categoryList();
-		model.addAttribute("categoryList", JSONArray.fromObject(categoryList));
-		
-		
-//		System.out.println(brandList);
-//		System.out.println(model);
-	}
-
-	/*
+	 * @Autowired private BrandService brandService;
+	 * 
+	 * @Autowired private ProductService productService;
+	 * 
+	 * @Autowired private ProductPostService productPostService;
+	 * 
+	 * @Autowired private GetMemberDetailListService memListService;
+	 * 
+	 * @GetMapping("/productReg") public void getProductRegister(Model model) {
+	 * List<Brand> brandList = brandService.brandList();
+	 * model.addAttribute("brandList", JSONArray.fromObject(brandList)); }
+	 * 
 	 * @PostMapping("/productReg")
 	 * 
 	 * public String newProduct(HttpServletRequest request, MultipartFile file)
@@ -150,14 +102,11 @@ public class AdminController {
 	 * return "redirect:productMgt";
 	 * 
 	 * }
+	 * 
+	 * @RequestMapping("/viewProductMod") public ModelAndView productMod() {
+	 * 
+	 * ModelAndView mav = new ModelAndView();
+	 * mav.setViewName("/admin/product/productMod"); return mav; }
 	 */
-
-	@RequestMapping("/viewProductMod")
-	public ModelAndView productMod() {
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/admin/product/productMod");
-		return mav;
-	}
 
 }

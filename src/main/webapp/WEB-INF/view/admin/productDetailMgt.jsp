@@ -30,6 +30,7 @@
 					sCont += "<td>" + json.brand.brandName + "</td>";
 					sCont += "<td>" + json.gender + "</td>";
 					sCont += "<td>" + json.category.category + "</td>";
+					sCont += "<td>" + json.productMainImage + "</td>";					
 					sCont += "<td>" + json.costPrice + "</td>";
 					sCont += "<td>" + json.sellPrice + "</td>";
 					sCont += "<td>" + json.registDate + "</td>";
@@ -64,6 +65,7 @@
 				<td>브랜드</td>
 				<td>성별</td>
 				<td>카테고리</td>
+				<td>대표이미지</td>
 				<td>원가</td>
 				<td>판매가격</td>
 				<td>등록일</td>

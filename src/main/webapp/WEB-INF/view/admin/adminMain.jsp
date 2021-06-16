@@ -26,6 +26,7 @@
 
 	<section>
 		<jsp:include page="/WEB-INF/view/admin/include/adminMenu.jsp" />
+		관리자 메인화면
 	</section>
 
 	<!-- end our product -->
