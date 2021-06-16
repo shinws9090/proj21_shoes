@@ -25,4 +25,5 @@ public interface ProductMapper {
 	int updateProduct(Product product);
 	int deleteProduct(Product product);
 	int updateOrderOptionStock(OrderProduct orderProduct);
+	int updateCumulativeSellCount(OrderProduct orderProduct);
 }

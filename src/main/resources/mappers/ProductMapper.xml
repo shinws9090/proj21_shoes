@@ -71,6 +71,13 @@
 		where product_code = #{orderOption.productCode} and style_code =#{orderOption.styleCode} and size = #{orderOption.size}
 	</update>
 	
+	<update id="updateCumulativeSellCount" parameterType="OrderProduct">
+		update product set cumulative_sell_count = cumulative_sell_count+#{orderCount} 
+		where product_code = #{orderOption.productCode}
+	</update>
+	
+	
+	
 	<select id="productByAll" resultMap="ProductList">
 		<include refid="selProductList" />
 	</select>

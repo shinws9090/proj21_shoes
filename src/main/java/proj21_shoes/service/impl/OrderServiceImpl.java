@@ -35,15 +35,18 @@ public class OrderServiceImpl implements OrderService {
 		// 제고 - 주문수량 연산 업데이트
 		for (OrderProduct o : order.getOrderProduct()) {
 			pMapper.updateOrderOptionStock(o);
+			pMapper.updateCumulativeSellCount(o);
 		}
-		if (codeList != null) {
+		if (codeList != null) { 
 			for (Integer i : codeList) {
 				cMapper.deleteCart(i);
 			}
 		}
 		Member member = order.getMemberCode();
 		member.setPoint((int) (member.getPoint()-point+(order.getPaymentAmount()*0.01)));
+		
 		member.setCumulativeBuyAmount(member.getCumulativeBuyAmount()+order.getPaymentAmount());
+		
 		mapper.updateMemberPoint(member);
 		
 		return res;
