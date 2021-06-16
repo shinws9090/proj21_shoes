@@ -54,7 +54,7 @@
 			<li><a href="${contextPath}/productList?menu=women">WOMEN</a></li>
 			<li><a href="${contextPath}/productList?menu=men">MEN</a></li>
 			<li><a href="${contextPath}/productList?menu=kids">KIDS</a></li>
-			<li><a href="${contextPath}/productList?menu=all">FREE</a></li>
+			<li><a href="${contextPath}/productList?menu=free">FREE</a></li>
 		</ul>
 	</nav>
 </body>
