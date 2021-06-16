@@ -48,34 +48,34 @@
 			<c:if test="${!empty authInfo}">
 				
 				<h1>${member.memberName }[${member.memberId}]님의 멤버십 등급은 ${member.grade}입니다. </h1>
+				
+				
 				<tr style="background-color:#e5e5e5 ; text-align: center">
 				
-					<h5 style="text-align: left; margin-left: 700px;"><td><a href="${contextPath}/grade/${member.memberId}">등급별 혜택 보기 ></a></td></h5>
+					<h3 style="text-align: left; margin-left: 700px;"><td>VVIP</a></td></h3>
+					<h3 style="text-align: left; margin-left: 700px;"><td>매월 1일 10,000원 포인트 지급</a></td></h3>
 				</tr> 
-				<h2>회원정보</h2>
 				<tr style="background-color:#e5e5e5 ; text-align: center">
-					<h3><td><a href="${contextPath}/myPage/myPageSel/${authInfo.memberId}">-회원정보 조회 / 변경</a></td></h3>
-				</tr>
-		<%-- 		
+				
+					<h3 style="text-align: left; margin-left: 700px;"><td>VIP</a></td></h3>
+					<h3 style="text-align: left; margin-left: 700px;"><td>매월 1일 5,000원 포인트 지급</a></td></h3>
+				</tr> 
 				<tr style="background-color:#e5e5e5 ; text-align: center">
-					<h3><td><a href="${contextPath}/myPage/${authInfo.memberId}">-회원정보 변경</a></td></h3>
-				</tr> --%>
 				
+					<h3 style="text-align: left; margin-left: 700px;"><td>GOLD</a></td></h3>
+					<h3 style="text-align: left; margin-left: 700px;"><td>매월 1일 3,000원 포인트 지급</a></td></h3>
+				</tr> 
+				<tr style="background-color:#e5e5e5 ; text-align: center">
 				
-			<a></a>
-			
-				<h2>나의 쇼핑정보</h2>
-				<tr style="background-color: white-space; text-align: center">
-					<h3><td><a href="${contextPath}/myPage/changeMemberData">-주문내역</a></td></h3>
-				</tr>
+					<h3 style="text-align: left; margin-left: 700px;"><td>SILVER</a></td></h3>
+					<h3 style="text-align: left; margin-left: 700px;"><td>매월 1일 2,000원 포인트 지급</a></td></h3>
+				</tr> 
+				<tr style="background-color:#e5e5e5 ; text-align: center">
 				
-					<tr style="background-color: white-space; text-align: center">
-					<h3><td><a href="${contextPath}/myPage/qna/${authInfo.memberId}">-문의내역</a></td></h3>
-				</tr>
+					<h3 style="text-align: left; margin-left: 700px;"><td>FAMILY</a></td></h3>
+					<h3 style="text-align: left; margin-left: 700px;"><td>매월 1일 1,000원 포인트 지급</a></td></h3>
+				</tr> 
 				
-				
-	<!-- 			<p>회원정보</p> -->
-			
 				
 				
 			</c:if>
