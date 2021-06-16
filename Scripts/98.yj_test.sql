@@ -144,12 +144,16 @@ delivery_code,
 buy_confirm_state   
 from `order` where order_code = 10001 and member_code=111111 ;
 
+ select  * from vw_myOrderData where member_id='aaa';
+
+
 
 -- ---예진_ 마이페이지  나의주문내역 확인용  뷰   최종-------------------------------------------------------------------------------------------------------------------------------------------------------
 create or replace view  vw_myOrderData as
 select 
 od.order_code  , -- 주문코드   
 od.member_code,   -- 회원코드
+m.member_id,
 od.order_date,     	-- 주문일
 od.payment_amount,  -- 결제금액
 od.payment_state,	  -- 결제여부
@@ -170,7 +174,7 @@ from `order` as od
 left join address  as adr on od.order_code = adr.order_code  
 left join  orderproduct as opd on od.order_code =opd.order_code
 left join orderOption as op on opd.product_code =op.product_code and opd.product_code = op.product_code and opd.style_code =op.style_code and opd.`size` =op.`size` 
-left join  productPost as pdpost on op.product_code  = pdpost.product_code left join product as pd on op.product_code = pd.product_code ;
+left join  productPost as pdpost on op.product_code  = pdpost.product_code left join product as pd on op.product_code = pd.product_code left join member as m on od.member_code =m.member_code ;
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- ---예진_ 마이페이지  나의주문내역 확인용  뷰-------------------------------------------------------------------------------------------------------------------------------------------------------
