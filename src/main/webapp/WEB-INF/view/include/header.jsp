@@ -30,7 +30,7 @@
 					<%-- <a href="<c:url value="/edit/changePassword"/>">[비밀번호 변경]</a> --%>
 				</p>	
 				<li><a href="${contextPath}/cartList">장바구니</a></li>		
-				<li><a href="${contextPath}/myPage">마이페이지</a></li>
+				<li><a href="${contextPath}/myPageHome/${authInfo.memberId}">마이페이지</a></li>
 				<li><a href="<c:url value="/logout"/>">로그아웃</a></li>
 			</c:if>
 			
@@ -54,7 +54,7 @@
 			<li><a href="${contextPath}/productList?menu=women">WOMEN</a></li>
 			<li><a href="${contextPath}/productList?menu=men">MEN</a></li>
 			<li><a href="${contextPath}/productList?menu=kids">KIDS</a></li>
-			<li><a href="${contextPath}/productList?menu=all">FREE</a></li>
+			<li><a href="${contextPath}/productList?menu=free">FREE</a></li>
 		</ul>
 	</nav>
 </body>

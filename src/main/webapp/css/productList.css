@@ -11,6 +11,13 @@ section{
 h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
 }
+
+#brand-select span{
+	cursor: pointer;
+}
+
+
+
 /* item */
 .item {
 	padding: 5px 5px 5px 5px;

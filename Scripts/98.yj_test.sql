@@ -101,3 +101,10 @@ member_code,product_code, title,content,reply,regist_date
 
 insert into qna values
 
+-- 상품문의게시판
+insert into qna (member_code, product_code, title, content, reply, regist_date) values
+	(111124,11111,'질문 있습니다.','추천 해주세요','이 상품은 어떠신가요?',now()),
+	(111124,22222,'재고 있나요?','사이즈 240인데, 품절이길래 질문 남깁니다.','입고 예정입니다',now()),
+	(111124,33333,'발볼 때문에 사이즈가 고민 됩니다','발볼이 넓어서요','반 사이즈 크게 추천드려요',now()),
+	(111124,55555,'수선 가능할까요?','뒷꿈치가 좀 헐렁해서요','가능합니다',now()),
+	(111124,66666,'쿠션감이 충분한가요?','쿠션이 어느정도인지 모르겠어요','충분히 있어서 불편하지 않아요',now());

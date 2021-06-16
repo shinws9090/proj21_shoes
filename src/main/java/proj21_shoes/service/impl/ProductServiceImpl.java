@@ -91,4 +91,9 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.OrderOptionBy3(styleCode, code, size);
 	}
 
+	@Override
+	public List<Brand> brandBySel(String code) {
+		return mapper.brandBySel(code);
+	}
+
 }

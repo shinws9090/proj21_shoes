@@ -23,4 +23,5 @@ public interface ProductService {
 	int insertProduct(Product product);
 	int updateProduct(Product product);
 	int deleteProduct(Product product);
+	List<Brand> brandBySel(String code);
 }

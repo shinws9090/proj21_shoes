@@ -5,7 +5,7 @@ join brand b on p.brand_code = b.brand_code
 join category c on c.product_category_code =p.product_category_code
 join employee e on e.emp_number = p.emp_number
 join authority a2 on e.authority_code = a2.authority_code
-join productpost p2 on p2.product_code = p.product_code
+join productpost p2 on p2.product_code = p.product_code;
 	order by regist_date desc
 	limit 5;
 left join image i on i.product_code = p.product_code;
@@ -78,3 +78,5 @@ delete from cart
 		where product_code = 11111 and style_code =#{orderOption.styleCode} and size = #{orderOption.size}
 		
 select * from member ;
+
+select * from brand ;where brand_eng_name like concat('n','%');

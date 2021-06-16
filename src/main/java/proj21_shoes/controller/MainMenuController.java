@@ -28,6 +28,13 @@ public class MainMenuController {
 	@Autowired
 	ProductService service;
 	
+	@GetMapping("/api/brandSel/{code}")
+	public ResponseEntity<Object> images(@PathVariable("code") String code){
+		List<Brand> brand = service.brandBySel(code);
+		return ResponseEntity.ok(brand);
+	}
+	
+	
 	@GetMapping("/api/images")
 	public ResponseEntity<Object> images(HttpServletRequest request){
 		

@@ -42,7 +42,7 @@ public class CartlController {
 		//테스트용
 //		Member member = new Member();
 //		member.setMemberCode(111111);
-		Member member = (Member) session.getAttribute("member");
+		Member member = (Member) session.getAttribute("sessionMember");
 		if(member == null) {
 			return new ModelAndView("redirect:/login/loginForm");
 		}
@@ -89,7 +89,7 @@ public class CartlController {
 			return ResponseEntity.badRequest().build();
 		}
 		
-		Member member = (Member) session.getAttribute("member");
+		Member member = (Member) session.getAttribute("sessionMember");
 		if(member == null) {
 			return ResponseEntity.notFound().build();
 		}

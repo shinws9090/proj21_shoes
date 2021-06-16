@@ -39,11 +39,11 @@
 	<section id = "signSuccess">
 
 	
-	<h2>로그인하셨습니다.</h2>
-
+	<h2>  ${authInfo.memberName }(${authInfo.memberId })님으로 로그인하셨습니다.</h2>
+	
 
 	<h2><a href="<c:url value='${contextPath}/index' />">메인으로</a>	</h2>
-	<h2><a href="<c:url value='${contextPath}/myPage' />">마이페이지</a>	</h2>
+	<h2><a href="<c:url value='${contextPath}/myPageHome/${authInfo.memberId }' />">마이페이지</a>	</h2>
 
 	
 	
