@@ -78,3 +78,5 @@ delete from cart
 		where product_code = 11111 and style_code =#{orderOption.styleCode} and size = #{orderOption.size}
 		
 select * from member ;
+
+select * from brand ;where brand_eng_name like concat('n','%');

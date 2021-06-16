@@ -54,6 +54,12 @@
 	<select id="BrandByAll" resultType="Brand">
 		select * from brand
 	</select>
+	<select id="brandBySel" resultType="Brand">
+		select * from brand 
+		<if test="code != 'ALL'">
+			where brand_eng_name like concat(#{code},'%')
+		</if>
+	</select>
 	
 	<select id="OrderOptionByCode" resultType="OrderOption" parameterType="int">
 		select * from orderoption where product_code = #{code}
@@ -142,6 +148,8 @@
 		delete from product
 		 where product_code = #{productCode}
 	</delete>
+	
+	
 
 
 </mapper>

@@ -31,7 +31,6 @@ public class MainMenuController {
 	@GetMapping("/api/brandSel/{code}")
 	public ResponseEntity<Object> images(@PathVariable("code") String code){
 		List<Brand> brand = service.brandBySel(code);
-		
 		return ResponseEntity.ok(brand);
 	}
 	
