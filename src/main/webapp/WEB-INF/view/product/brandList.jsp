@@ -52,6 +52,11 @@ $(function() {
 					sCont +='</div>';
 					}
 					$("#brands").html(sCont);
+					
+					$(".item").click(function(){
+						var code = $(this).data("item");
+						window.location.href = contextPath+"/brand/"+code;
+					});
 				},
 				error : function(request, status, error) {
 					alert("code:"+request.status+"\n"+"message:"
@@ -70,7 +75,7 @@ $(function() {
 	<section>
 		<%-- ${brand} --%>
 		<div id="brand-select">
-			<c:forTokens var="a" items="ALL,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,기타" delims=",">
+			<c:forTokens var="a" items="ALL,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z" delims=",">
 				&nbsp;&nbsp;<span class="sel">${a}</span>&nbsp;&nbsp;
 			</c:forTokens>
 		</div>
