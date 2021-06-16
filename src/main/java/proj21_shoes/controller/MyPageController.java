@@ -37,8 +37,19 @@ public class MyPageController {
 	//private Member
 	//
 	
-	@RequestMapping("/myPage")  //마이페이지로 이동
-	public String myPage( ) {
+	@RequestMapping("/myPageHome/{memberId}")  //마이페이지로 이동
+	public String myPageHome( @PathVariable("memberId") String memberId, HttpSession session,HttpServletResponse response) {
+		MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
+		if(member ==null) {
+			throw new MemberNotFoundException();
+		}
+		session.setAttribute("member", member);  // 요고 해줘야 jsp 에서 받을수 있당
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("member",member);
+		mav.setViewName("myPage/myPage");
+		System.out.println(member);
+
 		return"/myPage/myPage";
 	}
 	
@@ -193,6 +204,32 @@ public class MyPageController {
 		}
 	}
 	
+	//회원정보 조회
+	@PostMapping("/grade/{memberId}")
+	public String grade (@PathVariable("memberId") String memberId, HttpSession session,HttpServletResponse response) {  //id를 받아와서
+		MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
+	
+		if(member ==null) {
+			throw new MemberNotFoundException();
+		}
+		session.setAttribute("member", member);  // 요고 해줘야 jsp 에서 받을수 있당
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("member",member);
+		mav.setViewName("myPage/myPage2");
+		System.out.println(member);
+
+
+
+
+		return "/grade/grade";
+	}
+	@GetMapping("/grade/{memberId}")
+	public String noView () {  //id를 받아와서
+
+
+		return "/grade/noView";
+	}
 	
 	
 

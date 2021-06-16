@@ -73,7 +73,7 @@ public class LoginController {
 			session.setAttribute("authInfo", loginIdPw);
 
 			Member sessionMember = authService.memberVo(memberId);
-			session.setAttribute("member", sessionMember);
+			session.setAttribute("member", sessionMember);  //이제 jsp에서 이 이름으로 객체 가져다쓰기
 			
 			Cookie rememberCookie = new Cookie("REMEMBER", loginCommand.getMemberId());
 			rememberCookie.setPath("/");
