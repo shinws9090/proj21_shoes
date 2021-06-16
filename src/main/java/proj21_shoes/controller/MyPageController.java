@@ -40,7 +40,6 @@ public class MyPageController {
 	@RequestMapping("/myPageHome/{memberId}")  //마이페이지로 이동
 	public String myPageHome( @PathVariable("memberId") String memberId, HttpSession session,HttpServletResponse response) {
 		MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
-		
 		if(member ==null) {
 			throw new MemberNotFoundException();
 		}
@@ -48,7 +47,7 @@ public class MyPageController {
 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("member",member);
-		mav.setViewName("myPage/myPage2");
+		mav.setViewName("myPage/myPage");
 		System.out.println(member);
 
 		return"/myPage/myPage";

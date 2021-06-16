@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/step1.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/step2.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/myPage.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/myPage2.css"> 
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -47,35 +47,83 @@
 			</c:if>
 			<c:if test="${!empty authInfo}">
 				
-				<h1>${member.memberName }[${member.memberId}]님의 멤버십 등급은 ${member.grade}입니다. </h1>
-				<tr style="background-color:#e5e5e5 ; text-align: center">
+				<table style="
+				border-collapse: collapse;   /* td간 선 없애기 */
+				width: 100%;
+				height: 100px;
+				margin-bottom: 20px;
+				padding-bottom: 30px;
 				
-					<h5 style="text-align: left; margin-left: 700px;"><td><a href="${contextPath}/grade/${member.memberId}">등급별 혜택 보기 ></a></td></h5>
+				"> 
+					<tr style="
+					background-color:#e5e5e5 ; 
+					text-align: center; 
+					width: 500px; 
+					margin-bottom: 20px;
+					">
+						<td><h2>${member.memberName }[${member.memberId}]님의 멤버십 등급은 ${member.grade}입니다.		</h2></td><td ><a href="${contextPath}/grade/${member.memberId}">등급별 혜택 보기 〉</a></td><td> 포인트 〉 </td><td style="color: red;"> 0점 </td>
+					</tr>
+				
+				<tr style="background-color:#e5e5e5 ; text-align:center;  padding-bottom: 20px;" >				
+		
 				</tr> 
-				<h2>회원정보</h2>
-				<tr style="background-color:#e5e5e5 ; text-align: center">
-					<h3><td><a href="${contextPath}/myPage/myPageSel/${authInfo.memberId}">-회원정보 조회 / 변경</a></td></h3>
-				</tr>
-		<%-- 		
-				<tr style="background-color:#e5e5e5 ; text-align: center">
-					<h3><td><a href="${contextPath}/myPage/${authInfo.memberId}">-회원정보 변경</a></td></h3>
-				</tr> --%>
 				
-				
-			<a></a>
+				</table>
 			
-				<h2>나의 쇼핑정보</h2>
-				<tr style="background-color: white-space; text-align: center">
-					<h3><td><a href="${contextPath}/myPage/changeMemberData">-주문내역</a></td></h3>
-				</tr>
-				
-					<tr style="background-color: white-space; text-align: center">
-					<h3><td><a href="${contextPath}/myPage/qna/${authInfo.memberId}">-문의내역</a></td></h3>
-				</tr>
-				
-				
-	<!-- 			<p>회원정보</p> -->
 			
+				<h3 style="margin-left: 300px;">나의 주문처리현황</h3>
+				<table style=" margin-left:300px; 10px; margin-bottom: 30px; width: 60%; height:100px; border-style: solid gray; border: 1px; border-collapse: collapse;   /* td간 선 없애기 */" >
+				
+					<!-- <tr style="background-color:#e5e5e5; text-align: left;  ">
+					<td></td><td></td><td></td><td><h3> 나의주문처리현황       (최근 3개월 기준)</h3></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+					</tr> -->
+					
+					<tr style="color: gray;">
+						<td>결제대기 </td>
+						<td>배송준비중</td>
+						<td>배송중  </td>
+						<td>배송완료</td>
+						<td>취소 </td>
+						<td>교환</td>
+						<td>반품</td>
+					
+						
+					</tr>
+	
+					<tr style="color: gray;">
+						<td>0건</td>
+						<td>0건</td>
+						<td>0건</td>
+						<td>0건</td>
+						<td style="color: red;"> 0 </td><td style="color: red;"> 0  </td><td style="color: red; padding-right: 20px;"> 0 </td>
+						
+					
+					</tr>
+					
+					
+				</table>
+			
+			
+				
+				
+				<table  style="margin-right: 90%;">
+				
+				<tr><td>회원정보<td></td></tr>
+				<tr >
+					<td><a href="${contextPath}/myPage/myPageSel/${authInfo.memberId}">-회원정보 조회 / 변경</a></td>
+				</tr>
+				</table>
+	
+			<table style="margin-right: 90%;">
+				<tr><td>나의 쇼핑정보<td><tr>
+				<tr>
+					<td><a href="${contextPath}/myPage/changeMemberData">-주문내역</a></td>
+				</tr>
+				
+					<tr>
+					<td><a href="${contextPath}/myPage/qna/${authInfo.memberId}">-문의내역</a></td>
+				</tr>
+			</table>
 				
 				
 			</c:if>

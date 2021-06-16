@@ -39,11 +39,11 @@ h4{
 }
 
 .tbl_type {
-   height : 460px;
+/*    height : 460px; */
    width: 90%;
    margin: 0 auto;
    max-width:800px;
-   border-top: 2px solid purple;
+   border-top: 2px solid gray;
    border-bottom: 2px solid #dcdcdc;
    font-family: '돋움', dotum;
    font-size: 12px;
