@@ -74,7 +74,30 @@ select
 member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address from memberDetail 
 where  member_id ='33' and  member_name='김예진' and email ='chamdodari@gmail.com33' ;
 
+/*111124*/
 
 
+select * from member;
 
-	
+-- 
+-- 상품문의게시판  - 회원아이디로 검색쓰
+select board_code, -- 게시판코드
+member_code,	   -- 회원코드 (member)
+product_code,  		-- 상품코드 (productPost) 상품게시글에이:ㅆ음
+title, 				-- 제목
+content, 			-- 내용
+reply, 				-- 답글
+regist_date 		-- 등록일
+	from qna where member_code =(select member_code from member where member_id ='1234') ;
+
+insert into qna values
+	(7,111124,11111,'테스트질문','내용','답변',now());
+
+
+-- 상품문의게시판  - 회원아이디로 검색쓰
+select board_code, 
+member_code,product_code, title,content,reply,regist_date 		
+	from qna where member_code =(select member_code from member where member_id ='1234') ;
+
+insert into qna values
+
