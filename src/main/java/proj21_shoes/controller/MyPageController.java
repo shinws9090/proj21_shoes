@@ -206,7 +206,7 @@ public class MyPageController {
 	}
 	
 	//회원정보 조회
-	@GetMapping("/grade/{memberId}")
+	@PostMapping("/grade/{memberId}")
 	public String grade (@PathVariable("memberId") String memberId, HttpSession session,HttpServletResponse response) {  //id를 받아와서
 		MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
 	
@@ -225,7 +225,12 @@ public class MyPageController {
 
 		return "/grade/grade";
 	}
-	
+	@GetMapping("/grade/{memberId}")
+	public String noView () {  //id를 받아와서
+
+
+		return "/grade/noView";
+	}
 	
 	
 
