@@ -4,9 +4,16 @@ public class ProductSelectCommend {
 	private String gender;
 	private int brandCode;
 	private int productCategoryCode;
+	private String main;
 	
 	
 	
+	public String getMain() {
+		return main;
+	}
+	public void setMain(String main) {
+		this.main = main;
+	}
 	public String getGender() {
 		return gender;
 	}
@@ -25,11 +32,6 @@ public class ProductSelectCommend {
 	}
 	public void setProductCategoryCode(int productCategoryCode) {
 		this.productCategoryCode = productCategoryCode;
-	}
-	@Override
-	public String toString() {
-		return String.format("ProductSelectCommend [gender=%s, brandCode=%s, productCategoryCode=%s]", gender,
-				brandCode, productCategoryCode);
 	}
 	
 	

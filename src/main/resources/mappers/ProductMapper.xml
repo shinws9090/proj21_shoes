@@ -99,6 +99,7 @@
 	
 	<select id="productBycommand" resultMap="ProductList" parameterType="ProductSelectCommend">
 		<include refid="selProductList" />
+		<if test="main ==null">
 			<where>
 				<if test="gender !=null">
 					and gender = #{gender}
@@ -110,6 +111,17 @@
 					and p.brand_code = #{brandCode}
 				</if>
 			</where>
+		</if>
+			<if test="main !=null">
+				<if test="main=='new'">
+					order by cumulative_sell_count desc
+					limit 4
+				</if>
+				<if test="main=='best'">
+					order by regist_date desc
+					limit 4
+				</if>
+			</if>
 	</select>
 	
 	<insert id="insertProduct" parameterType="Product">
