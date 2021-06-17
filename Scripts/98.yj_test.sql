@@ -151,14 +151,14 @@ from `order` where order_code = 10001 and member_code=111111 ;
 -- ---예진_ 마이페이지  나의주문내역 확인용  뷰   최종-------------------------------------------------------------------------------------------------------------------------------------------------------
 create or replace view  vw_myOrderData as
 select 
-od.order_code  , -- 주문코드   
-od.member_code,   -- 회원코드
+od.order_code  , 			-- 주문코드   
+od.member_code,   			-- 회원코드
 m.member_id,
-od.order_date,     	-- 주문일
-od.payment_amount,  -- 결제금액
-od.payment_state,	  -- 결제여부
-od.delivery_code, 	 -- 배송코드
-od.buy_confirm_state  ,-- 구매확정여부
+od.order_date,    		 	-- 주문일
+od.payment_amount,  		-- 결제금액
+od.payment_state,	 		-- 결제여부
+od.delivery_code, 	 		-- 배송코드
+od.buy_confirm_state  ,		-- 구매확정여부
 adr.recipient, 				-- 받는사람
 adr.zipCode, 				-- 우편번호
 adr.address,				-- 주소
@@ -177,7 +177,7 @@ left join orderOption as op on opd.product_code =op.product_code and opd.product
 left join  productPost as pdpost on op.product_code  = pdpost.product_code left join product as pd on op.product_code = pd.product_code left join member as m on od.member_code =m.member_code ;
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
--- ---예진_ 마이페이지  나의주문내역 확인용  뷰-------------------------------------------------------------------------------------------------------------------------------------------------------
+-- ---예진_ 마이페이지  나의주문내역 확인용  뷰 연습-------------------------------------------------------------------------------------------------------------------------------------------------------
 select 
 order_code,   
 member_code, 
