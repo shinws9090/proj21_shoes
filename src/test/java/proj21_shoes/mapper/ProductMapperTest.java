@@ -1,6 +1,6 @@
 package proj21_shoes.mapper;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.apache.ibatis.logging.Log;
@@ -81,10 +81,10 @@ public class ProductMapperTest {
 		product.setCategory(new Category(1));
 		product.setMaterial("가죽");
 		product.setSeason("가을");
-		product.setMadeDate(LocalDateTime.now());
+		product.setMadeDate(LocalDate.now());
 		product.setCostPrice(60000);
 		product.setSellPrice(90000);
-		product.setRegistDate(LocalDateTime.now());
+		product.setRegistDate(LocalDate.now());
 		product.setEmployee(new Employee(1));
 
 		log.debug(product.toString());
@@ -100,7 +100,7 @@ public class ProductMapperTest {
 		product.setProductCode(5);
 
 		log.debug(product.toString());
-		int res = mapper.deleteProduct(product);
+		int res = mapper.deleteProduct(5);
 		Assert.assertNotNull(res);
 
 	}

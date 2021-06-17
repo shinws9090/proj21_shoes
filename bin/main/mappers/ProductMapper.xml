@@ -130,6 +130,19 @@
 			</if>
 	</select>
 	
+	<resultMap type="Product" id="OnlyProductList">
+		<id column="product_code" property="productCode" />
+		<association property="brand" javaType="Brand" />
+		<association property="category" javaType="Category" />
+	</resultMap>	
+	
+	<select id="productByOnlyProuct" resultMap="OnlyProductList">
+		select *
+		  from product p
+		  join brand b on p.brand_code = b.brand_code
+		  join category c on c.product_category_code =p.product_category_code
+	</select>
+	
 	<insert id="insertProduct" parameterType="Product">
 		insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, 
 							made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number)

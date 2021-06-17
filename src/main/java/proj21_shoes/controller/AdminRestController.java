@@ -65,7 +65,7 @@ public class AdminRestController {
 	public ResponseEntity<Object> PorductList() {
 		System.out.println("제품 리스트");
 
-		List<Product> products = productService.productByAll();
+		List<Product> products = productService.productByOnlyProuct();
 
 		return ResponseEntity.ok(products);
 	}

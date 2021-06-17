@@ -1,5 +1,6 @@
 package proj21_shoes.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -11,12 +12,10 @@ public class Product { // 상품정보
 	private Category category; // 카테고리
 	private String material; // 소재
 	private String season; // 계절
-	
-	private LocalDateTime madeDate; // 제조일
+	private LocalDate madeDate; // 제조일
 	private int costPrice; // 원가
 	private int sellPrice; // 판매가
-	
-	private LocalDateTime registDate; // 등록일
+	private LocalDate registDate; // 등록일
 	private int cumulativeRegistCount; // 누적등록수량
 	private int cumulativeSellCount; // 누적판매수량
 	private Employee employee; // 사원정보(등록자)
@@ -32,7 +31,7 @@ public class Product { // 상품정보
 	}
 
 	public Product(int productCode, String productName, Brand brand, String gender, Category category, String material,
-			String season, LocalDateTime madeDate, int costPrice, int sellPrice, LocalDateTime registDate,
+			String season, LocalDate madeDate, int costPrice, int sellPrice, LocalDate registDate,
 			int cumulativeRegistCount, int cumulativeSellCount, Employee employee) {
 		this.productCode = productCode;
 		this.productName = productName;
@@ -106,11 +105,11 @@ public class Product { // 상품정보
 		this.season = season;
 	}
 
-	public LocalDateTime getMadeDate() {
+	public LocalDate getMadeDate() {
 		return madeDate;
 	}
 
-	public void setMadeDate(LocalDateTime madeDate) {
+	public void setMadeDate(LocalDate madeDate) {
 		this.madeDate = madeDate;
 	}
 
@@ -130,11 +129,11 @@ public class Product { // 상품정보
 		this.sellPrice = sellPrice;
 	}
 
-	public LocalDateTime getRegistDate() {
+	public LocalDate getRegistDate() {
 		return registDate;
 	}
 
-	public void setRegistDate(LocalDateTime registDate) {
+	public void setRegistDate(LocalDate registDate) {
 		this.registDate = registDate;
 	}
 

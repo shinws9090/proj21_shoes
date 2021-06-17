@@ -11,6 +11,7 @@ import proj21_shoes.dto.Product;
 public interface ProductMapper {
 	
 	List<Product> productByAll();
+	List<Product> productByOnlyProuct();
 	List<Product> productByMenu(String menu);
 	List<Product> productByBrand(int code);
 	List<Product> productBycommand(ProductSelectCommend productSelectCommend);
@@ -23,7 +24,7 @@ public interface ProductMapper {
 	
 	int insertProduct(Product product);
 	int updateProduct(Product product);
-	int deleteProduct(Product product);
+	int deleteProduct(int code);
 	int updateOrderOptionStock(OrderProduct orderProduct);
 	int updateCumulativeSellCount(OrderProduct orderProduct);
 	List<Brand> brandBySel(String code);

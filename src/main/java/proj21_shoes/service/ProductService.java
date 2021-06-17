@@ -10,6 +10,7 @@ import proj21_shoes.dto.Product;
 
 public interface ProductService {
 	List<Product> productByAll();
+	List<Product> productByOnlyProuct();
 	List<Product> productByMenu(String menu);
 	List<Brand> brandByAll();
 	Product productByCode(int code);
@@ -22,6 +23,6 @@ public interface ProductService {
 	
 	int insertProduct(Product product);
 	int updateProduct(Product product);
-	int deleteProduct(Product product);
+	int deleteProduct(int code);
 	List<Brand> brandBySel(String code);
 }

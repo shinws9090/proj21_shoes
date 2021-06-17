@@ -6,11 +6,13 @@ select * from product where product_code = 22222;
 
 select * from orderproduct;
 
+select * from gender;
+
 select * from `order`;
 
 select * from `member`;
 
-select * from employee;
+select emp_number, emp_name, authority_code, emp_id, email, tel_number from employee;
 
 select * from product;
 select * from productpost;

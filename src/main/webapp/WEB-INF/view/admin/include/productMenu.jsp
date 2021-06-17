@@ -9,13 +9,12 @@
 <!DOCTYPE html>
 <html>
 <body>
-		<table style="width: 100%">
-			<tr style="background-color: #e9e9e9; text-align: center;">
-				<td><a href="${contextPath}/admin/adminMain">관리자홈</a></td>
-				<td><a href="${contextPath}/admin/memberMgt">회원관리</a></td>
-				<td><a href="${contextPath}/admin/productMgt">상품관리</a></td>
-				<td><a href="${contextPath}/admin/orderMgt">주문관리</a></td>
-				<td><a href="${contextPath}/admin/adminMain">게시판관리</a></td>
+		<table style="width: 50%">
+			<tr style="background-color: e9e9e9; text-align: center;">
+				<td><a href="${contextPath}/admin/adminMain">상품 목록</a></td>
+				<td><a href="${contextPath}/admin/memberMgt">상품판매글 목록</a></td>
+				<td><a href="${contextPath}/admin/productMgt">상품 등록</a></td>
+				<td><a href="${contextPath}/admin/orderMgt">상품판매글 등록</a></td>
 			</tr>
 		</table>
 </body>
