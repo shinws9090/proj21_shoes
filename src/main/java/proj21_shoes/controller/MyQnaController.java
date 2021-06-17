@@ -26,7 +26,7 @@ public class MyQnaController {
 	
 	//@Autowired
 	
-	@GetMapping("/myPage/qna/{memberId}")
+	@GetMapping("/myPage/myQnA/{memberId}")
 	public String myQnaBoard(@PathVariable("memberId") String memberId,HttpSession session,HttpServletResponse response) {
 		List<MyQnaCommand> myQnaList =myQnaService.selectbyId(memberId);
 		if(myQnaList ==null) {
@@ -42,16 +42,11 @@ public class MyQnaController {
 	//	mav.setViewName("myPage/qna/{memberId}");
 		System.out.println(myQnaList);
 		
-		return "/myPage/qna";
+		return "/myPage/myQnA";
 		
 	}
 	
-	@GetMapping("/myPage/myOrder/{memberId}")
-	public String myOrder(@PathVariable("memberId") String memberId,HttpSession session, HttpServletResponse response) {
-		
-		return"myPage/myOrder";
-				
-	}
+	
 	
 	
 

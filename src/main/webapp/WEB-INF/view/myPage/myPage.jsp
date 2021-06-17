@@ -26,7 +26,82 @@
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<style type="text/css">
+h4{
+  
+   text-align: center;
+}
 
+.tbl_type, .tbl_type th, .tbl_type td {
+   border: 0;
+
+}
+
+.tbl_type {
+/*    height : 460px; */
+   width: 90%;
+   margin: 0 auto;
+   max-width:800px;
+   border-top: 2px solid gray;
+   border-bottom: 2px solid #dcdcdc;
+   font-family: '돋움', dotum;
+   font-size: 12px;
+   text-align: center;
+   border-collapse: collapse
+}
+
+.tbl_type caption {
+   display: none
+}
+
+.tbl_type tfoot {
+   background-color: #f5f7f9;
+   font-weight: bold
+}
+
+.tbl_type thead {
+   
+   background-color: #f5f7f9;
+   font-weight: bold
+}
+
+.tbl_type th {
+   padding: 7px 0 4px;
+   border-top: 2px solid #dcdcdc;
+   border-right: 1px solid #dcdcdc;
+   border-left: 1px solid #dcdcdc;
+   background-color: #f5f7f9;
+   color: #666;
+   font-family: '돋움', dotum;
+   font-size: 12px;
+   font-weight: bold
+}
+
+.tbl_type td {
+   padding: 6px 0 4px;
+   border: 1px solid #e5e5e5;
+   color: #4c4c4c;
+   width: 2000px;
+}
+
+.tbl_type td.ranking {
+   font-weight: bold
+}
+
+h2{
+   text-align: center;
+   text-decoration: underline;
+}
+span{
+	color: red;
+}
+
+section#pageList{
+	text-align: :center;
+	width: auto;
+}
+
+</style>
 	
 </head>
 <body class="main-layout">
@@ -71,68 +146,35 @@
 				</tr> 
 				
 				</table>
-				<table style="
-				border-collapse: collapse;   /* td간 선 없애기 */
-				width: 90%;
-				height: 100px;
-				margin-bottom: 20px;
-				padding-bottom: 30px;
-				border-bottom-style: solid;
-				border-top-style: solid;
-				
-				"> 
-				
-				
-					<tr style="
-					background-color:#e5e5e5 ; 
-					text-align: center; 
-					width: 500px; 
-					margin-bottom: 20px;
+		
+				<!-- 최근 주문내역 테이블  -->
+				<h4>최근 주문내역</h4>
+				<table  class="tbl_type" border="1"> 
 			
-					">
-						<td><h5>최근 주문내역</h5></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+					<tr>
+						<td>주문번호</td>
+						<td>상품사진</td>
+						<td>상품명</td>
+						<td>결제금액</td>
+						<td>주문수량</td>
+					 	<td>주문일</td> 
+						<td>송장번호</td>
 					</tr>
-					
-					<tr style="
-				
-					text-align: center; 
-					width: 500px; 
-					margin-bottom: 20px;
-					border-bottom:  1px solid #e5e5e5;
-				
-			
-					">
-						<td style="text-align: center;">주문일(주문번호)</td>
-						<td style="text-align: center;">이미지</td>
-						<td style="text-align: center;">결제금액</td>
-						<td style="text-align: center;">주문번호</td>
-						<td style="text-align: center;">상품명</td>
-						<td style="text-align: center;">주문수량</td>
-						<td style="text-align: center;">송장번호</td>
+					<c:forEach var="myOrderList" items="${myOrderList}">
+					<tr>
+						<td>${myOrderList.orderCode }</td>
+						<td><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/../images/${myOrderList.productMainImage }"></td>
+						<td>${myOrderList.productName }</td>
+						<td>${myOrderList.paymentAmount }</td>
+						<td>${myOrderList.orderCount }</td>
+						 <td>${myOrderList.orderDate }</td> 
+						<td>${myOrderList.deliveryCode }</td>
+						
 					</tr>
-					<tr style="
-				
-					text-align: center; 
-					width: 500px; 
-					margin-bottom: 20px;
-					">
-						<td>0</td>
-						<td>0</td>
-						<td>0</td>
-						<td>0</td>
-						<td>0</td>
-						<td>0</td>
-						<td>0</td>
-					</tr>
+					</c:forEach>
 				
 				</table>
-	
+					<!-- 좌측목록 테이블 -->
 				<table  style=" display:inline;  margin-left: 20px; margin-bottom: 20px; margin-top: 20px;">
 			
 				<tr><td>회원정보<td></td></tr>
@@ -141,51 +183,15 @@
 				</tr>
 				<tr >
 					<td><a href="${contextPath}/myPage/quitMember/${member.memberId}">-회원탈퇴</a></td>
+					<td></td>
 				</tr>
 				
 				</table>
+		
+				<h1></h1>
+				<h1></h1>
 				
-				
-			
-			
-				
-			
-				<!-- 
-				<table style=" display:inline; padding:20px;
-				 margin-left:300px;margin-bottom: 30px; width: 60%; height:100px; border-style: solid gray; border: 1px; border-collapse: collapse;   /* td간 선 없애기 */" >
-				
-				
-					<tr style="background-color:#e5e5e5; text-align: left;  ">
-					<td></td><td></td><td></td><td><h3> 나의주문처리현황       (최근 3개월 기준)</h3></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-					</tr>
-					
-					<tr style="margin-left: 600px;"><td>나의 주문처리 현황 (최근 3개월 내역)</td></tr>
-					<tr style="color: gray;  text-align: center; ">
-					
-						<td style="padding:20px;">결제대기 </td>
-						<td style="padding:20px;">배송준비중</td>
-						<td style="padding:20px;">배송중  </td>
-						<td style="padding:20px;">배송완료</td>
-						<td style="padding:20px;">취소 </td>
-						<td style="padding:20px;">교환</td>
-						<td style="padding:20px;">반품</td>
-					
-						
-					</tr>
-	
-					<tr style="color: gray; text-align: center;">
-							<td style="padding:20px;">0건</td>
-							<td style="padding:20px;">0건</td>
-							<td style="padding:20px;">0건</td>
-							<td style="padding:20px;">0건</td>
-						<td style="color: red; padding:20px;"> 0 </td><td style="color: red; padding:20px;"> 0  </td><td style="color: red; padding:20px; "> 0 </td>
-						
-					
-					</tr>
-					
-					
-				</table> -->
-				
+		
 				<h1></h1>
 				<h1></h1>
 			<table style=" display:inline; margin-left: 20px;  margin-top :20px; margin-bottom:  20px;">
@@ -195,7 +201,7 @@
 				</tr>
 				
 					<tr>
-					<td><a href="${contextPath}/myPage/qna/${member.memberId}">-문의내역</a></td>
+					<td><a href="${contextPath}/myPage/myQnA/${member.memberId}">-문의내역</a></td>
 				</tr>
 			</table>
 			

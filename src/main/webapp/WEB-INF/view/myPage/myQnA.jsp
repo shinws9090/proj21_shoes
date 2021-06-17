@@ -47,7 +47,7 @@ h4{
    font-family: '돋움', dotum;
    font-size: 12px;
    text-align: center;
-   border-collapse: collapse;
+   border-collapse: collapse
 }
 
 .tbl_type caption {
@@ -56,13 +56,13 @@ h4{
 
 .tbl_type tfoot {
    background-color: #f5f7f9;
-   font-weight: bold;
+   font-weight: bold
 }
 
 .tbl_type thead {
    
    background-color: #f5f7f9;
-   font-weight: bold;
+   font-weight: bold
 }
 
 .tbl_type th {
@@ -74,18 +74,17 @@ h4{
    color: #666;
    font-family: '돋움', dotum;
    font-size: 12px;
-   font-weight: bold;
+   font-weight: bold
 }
 
 .tbl_type td {
    padding: 6px 0 4px;
    border: 1px solid #e5e5e5;
-   color: #4c4c4c;
-   width: 2000px;
+   color: #4c4c4c
 }
 
 .tbl_type td.ranking {
-   font-weight: bold;
+   font-weight: bold
 }
 
 h2{
@@ -100,7 +99,6 @@ section#pageList{
 	text-align: :center;
 	width: auto;
 }
-
 </style>
 	
 </head>
@@ -144,36 +142,33 @@ section#pageList{
 				<tr style="background-color:#e5e5e5 ; text-align:center;  padding-bottom: 20px;" >				
 		
 				</tr> 
-				</table>
-	
-		
-				<!-- 최근 주문내역 테이블  -->
-				<h4>최근 주문내역</h4>
-				<table  class="tbl_type" border="1"> 
-			
-					<tr>
-						<td>주문번호</td>
-						<td>상품사진</td>
-						<td>상품명</td>
-						<td>결제금액</td>
-						<td>주문수량</td>
-					 	<td>주문일</td> 
-						<td>송장번호</td>
-					</tr>
-					<c:forEach var="myOrderList" items="${myOrderList}">
-					<tr>
-						<td>${myOrderList.orderCode }</td>
-						<td><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/../images/${myOrderList.productMainImage }"></td>
-						<td>${myOrderList.productName }</td>
-						<td>${myOrderList.paymentAmount }</td>
-						<td>${myOrderList.orderCount }</td>
-						 <td>${myOrderList.orderDate }</td> 
-						<td>${myOrderList.deliveryCode }</td>
-						
-					</tr>
-					</c:forEach>
 				
 				</table>
+				<h1>${authInfo.memberName }님의 문의내역</h1>
+
+				
+				<table class="tbl_type" border="1">
+				<tr>
+					<td>문의코드</td>
+					<td>제목</td>
+					<td>상품코드</td>
+					<!-- <td>질문내용</td> -->
+					
+					<td>작성일</td>
+					<td>답글</td>
+				</tr>
+				<c:forEach var="myQna" items="${myQnaList }">
+				<tr>
+				<td>${myQna.boardCode }</td> <!-- 문의코드 -->
+				<td>${myQna.title }</td>	<!-- 제목 -->
+				<td>${myQna.productCode }</td>	<!--상품코드  -->
+	<%-- 			<td>${myQna.content }</td>		<!-- 내용 --> --%>
+				<td>${myQna.registDate }</td>	<!-- 작성일 -->
+				<td>${myQna.reply }</td>		<!-- 답글 -->
+				
+				</tr>
+				</c:forEach>
+	</table>
 					<!-- 좌측목록 테이블 -->
 				<table  style=" display:inline;  margin-left: 20px; margin-bottom: 20px; margin-top: 20px;">
 			
@@ -187,7 +182,6 @@ section#pageList{
 				</tr>
 				
 				</table>
-				
 		
 				<h1></h1>
 				<h1></h1>

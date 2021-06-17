@@ -8,7 +8,7 @@ public class MyOrderCommend {
 	private int orderCode;  		//주문코드
 	private int membeCode;			//회원코드
 	private String memberId;		//회원아이디
-	@DateTimeFormat(pattern = "yyyy-MM-dd")	
+	@DateTimeFormat(pattern = "yyyyMMdd")	
 	private LocalDate orderDate; 	//주문일
 	private int paymentAmount;		//결제금액
 	private boolean paymentState; 	//결제여부
@@ -160,6 +160,8 @@ public class MyOrderCommend {
 		this.productMainImage = productMainImage;
 	}
 
+
+	
 
 	public MyOrderCommend(int orderCode, int membeCode, String memberId, LocalDate orderDate, int paymentAmount,
 			boolean paymentState, int deliveryCode, boolean buyConfirmState, String recipient, String zipCode,

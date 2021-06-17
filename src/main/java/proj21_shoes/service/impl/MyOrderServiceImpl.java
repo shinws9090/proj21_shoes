@@ -1,5 +1,7 @@
 package proj21_shoes.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +15,7 @@ public class MyOrderServiceImpl implements MyOrderService {
 	
 	
 	@Override
-	public MyOrderCommend selectMyOrderById(String memberid) {
+	public 	List<MyOrderCommend> selectMyOrderById(String memberid) {
 		return mapper.selectMyOrderById(memberid);
 	}
 
