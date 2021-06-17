@@ -19,14 +19,14 @@ import proj21_shoes.dto.Member;
 import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.exeption.MemberNotFoundException;
 import proj21_shoes.service.GetMemberDetailService;
-import proj21_shoes.service.GetMyPageService;
+import proj21_shoes.service.MyPageService;
 import proj21_shoes.service.ModifyMemberDetailService;
 import proj21_shoes.service.ModifyMemberService;
 
 @Controller
 public class MyPageController {
 	@Autowired
-	GetMyPageService getMyPageService;
+	MyPageService getMyPageService;
 	@Autowired
 	ModifyMemberDetailService modifyService;
 	@Autowired

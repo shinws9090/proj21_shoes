@@ -213,7 +213,7 @@
 					 --%>
 				
 				<p>나의 쇼핑정보</p>
-				<li><a href="${contextPath}/myPage/changeMemberData">주문내역</a></li>
+				<li><a href="${contextPath}/myPage/myOrder/${member.memberId }">주문내역</a></li>
 			
 				
 				<%-- <p>회원정보</p>

@@ -46,6 +46,13 @@ public class MyQnaController {
 		
 	}
 	
+	@GetMapping("/myPage/myOrder/{memberId}")
+	public String myOrder(@PathVariable("memberId") String memberId,HttpSession session, HttpServletResponse response) {
+		
+		return"myPage/myOrder";
+				
+	}
+	
 	
 
 }

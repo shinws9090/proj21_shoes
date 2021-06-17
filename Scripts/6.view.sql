@@ -42,7 +42,7 @@ opd.product_code ,			-- 상품코드
 pd.product_name,			-- 상품명
 opd.style_code ,			-- 스타일코드
 opd.`size` ,				-- 사이즈
-opd.order_count, 			-- 재고
+opd.order_count, 			-- 주문수량
 pdpost.product_main_image   -- 상품대표이미지
 from `order` as od 
 left join address  as adr on od.order_code = adr.order_code  
