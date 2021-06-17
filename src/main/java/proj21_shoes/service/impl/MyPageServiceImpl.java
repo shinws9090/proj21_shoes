@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 import proj21_shoes.commend.MyPageSelectCommend;
 import proj21_shoes.mapper.MyPageSelectMapper;
-import proj21_shoes.service.GetMyPageService;
+import proj21_shoes.service.MyPageService;
 @Service
-public class GetMyPageServiceImpl implements GetMyPageService {
-static final Log log = LogFactory.getLog(GetMyPageServiceImpl.class);
+public class MyPageServiceImpl implements MyPageService {
+static final Log log = LogFactory.getLog(MyPageServiceImpl.class);
 	
 	@Autowired
 	private MyPageSelectMapper mapper;

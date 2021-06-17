@@ -2,7 +2,7 @@ package proj21_shoes.commend;
 
 import java.time.LocalDateTime;
 
-import proj21_shoes.dto.Member;
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class MyQnaCommand { 				// 상품문의게시판
 
@@ -12,10 +12,10 @@ public class MyQnaCommand { 				// 상품문의게시판
 	private String title; 		// 제목
 	private String content; 	// 내용
 	private String reply;		 // 답글
+	@DateTimeFormat(pattern = "yyyyMMdd")	
 	private LocalDateTime registDate; // 등록일
 	private String memberId;
 	//private int board_num;
-	
 	
 	
 	public MyQnaCommand(int boardCode, String memberCode, int productCode, String title, String content, String reply,

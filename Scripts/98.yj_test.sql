@@ -144,7 +144,7 @@ delivery_code,
 buy_confirm_state   
 from `order` where order_code = 10001 and member_code=111111 ;
 
- select  * from vw_myOrderData where member_id='aaa';
+ select  order_code, member_code, member_id, order_date, payment_amount, payment_state, delivery_code, buy_confirm_state, recipient, zipCode, address, detail_address, tel, product_code, product_name, style_code, `size`, order_count, product_main_image from vw_myOrderData where member_id='aaa';
 
 
 

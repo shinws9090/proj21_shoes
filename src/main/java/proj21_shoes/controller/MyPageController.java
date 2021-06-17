@@ -1,5 +1,7 @@
 package proj21_shoes.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -14,25 +16,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_shoes.commend.MemberDetailUpdateCommend;
+import proj21_shoes.commend.MyOrderCommend;
 import proj21_shoes.commend.MyPageSelectCommend;
 import proj21_shoes.dto.Member;
 import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.exeption.MemberNotFoundException;
 import proj21_shoes.service.GetMemberDetailService;
-import proj21_shoes.service.GetMyPageService;
+import proj21_shoes.service.MyPageService;
 import proj21_shoes.service.ModifyMemberDetailService;
 import proj21_shoes.service.ModifyMemberService;
+import proj21_shoes.service.MyOrderService;
 
 @Controller
 public class MyPageController {
 	@Autowired
-	GetMyPageService getMyPageService;
+	MyPageService getMyPageService;
 	@Autowired
 	ModifyMemberDetailService modifyService;
 	@Autowired
 	GetMemberDetailService getMemberService;
 	@Autowired
 	ModifyMemberService quitMemberService;
+
+	@Autowired
+	MyOrderService myOrderService;
 	
 	//private Member
 	//
@@ -40,15 +47,22 @@ public class MyPageController {
 	@RequestMapping("/myPageHome/{memberId}")  //마이페이지로 이동
 	public String myPageHome( @PathVariable("memberId") String memberId, HttpSession session,HttpServletResponse response) {
 		MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
+		List<MyOrderCommend>  myOrderList  =myOrderService.selectMyOrderById(memberId);
+
 		if(member ==null) {
 			throw new MemberNotFoundException();
+		}
+		if(myOrderList ==null) {
+			System.out.println("리스트 없당");
 		}
 		session.setAttribute("member", member);  // 요고 해줘야 jsp 에서 받을수 있당
 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("member",member);
-		mav.setViewName("myPage/myPage");
+		session.setAttribute("myOrderList", myOrderList);
+		mav.addObject("myOrderList",myOrderList);
 		System.out.println(member);
+		mav.setViewName("myPage/myPage");
 
 		return"/myPage/myPage";
 	}
