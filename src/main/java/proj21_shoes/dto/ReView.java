@@ -1,6 +1,7 @@
 package proj21_shoes.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class ReView {					// 상품후기게시판
 
@@ -9,6 +10,9 @@ public class ReView {					// 상품후기게시판
 	private String title;				// 	제목
 	private String content;				// 	내용
 	private LocalDateTime registDate;	// 	등록일
+	private List<ReviewImage> reviewImages;
+	
+	
 	public int getBoardCode() {
 		return boardCode;
 	}

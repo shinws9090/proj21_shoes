@@ -3,7 +3,7 @@ package proj21_shoes.dto;
 public class ReviewImage { 			// 	후기이미지
 	
 	private int imageCode; 			//	 이미지코드
-	private ReView boardCode; 		// 	게시판코드
+	private int boardCode; 		// 	게시판코드
 	private String image; 			// 	이미지
 
 	public int getImageCode() {
@@ -14,11 +14,11 @@ public class ReviewImage { 			// 	후기이미지
 		this.imageCode = imageCode;
 	}
 
-	public ReView getBoardCode() {
+	public int getBoardCode() {
 		return boardCode;
 	}
 
-	public void setBoardCode(ReView boardCode) {
+	public void setBoardCode(int boardCode) {
 		this.boardCode = boardCode;
 	}
 
