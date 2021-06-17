@@ -151,10 +151,11 @@
 	</insert>
 	
 	<update id="updateProduct">
-		update product set product_name = #{productName}, brand_code = #{brand.brandCode}, gender = #{gender}, 
+		update product 
+		set product_name = #{productName}, brand_code = #{brand.brandCode}, gender = #{gender}, 
 							product_category_code = #{category.productCategoryCode}, material = #{material}, season = #{season}, made_date = #{madeDate}, costPrice = #{costPrice}, sell_Price = #{sellPrice}, regist_date = #{registDate}, 
 							cumulative_regist_count = #{cumulativeRegistCount}, cumulative_sell_count = #{cumulativeSellCount}, emp_number = #{employee.empNumber}
-		 where product_code = #{productCode}
+		where product_code = #{productCode}
 	</update>
 
 	<delete id="deleteProduct">

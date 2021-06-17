@@ -59,7 +59,7 @@
 				<td>회원아이디</td>	<td>${member.memberId }</td>				
 			</tr>
 			<tr style="background-color: white-space; text-align: left">
-				<td>비밀번호</td>		<td>${member.memberPwd }</td>
+				<td>비밀번호</td>		<td>비밀★</td><%-- <td>${member.memberPwd }</td> --%>
 			</tr>
 			<tr style="background-color: white-space; text-align: left">
 				<td>회원이름</td>		<td>${member.memberName }</td>

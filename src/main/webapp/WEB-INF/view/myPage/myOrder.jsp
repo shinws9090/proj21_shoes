@@ -47,7 +47,7 @@ h4{
    font-family: '돋움', dotum;
    font-size: 12px;
    text-align: center;
-   border-collapse: collapse
+   border-collapse: collapse;
 }
 
 .tbl_type caption {
@@ -56,13 +56,13 @@ h4{
 
 .tbl_type tfoot {
    background-color: #f5f7f9;
-   font-weight: bold
+   font-weight: bold;
 }
 
 .tbl_type thead {
    
    background-color: #f5f7f9;
-   font-weight: bold
+   font-weight: bold;
 }
 
 .tbl_type th {
@@ -74,7 +74,7 @@ h4{
    color: #666;
    font-family: '돋움', dotum;
    font-size: 12px;
-   font-weight: bold
+   font-weight: bold;
 }
 
 .tbl_type td {
@@ -85,7 +85,7 @@ h4{
 }
 
 .tbl_type td.ranking {
-   font-weight: bold
+   font-weight: bold;
 }
 
 h2{
@@ -144,8 +144,8 @@ section#pageList{
 				<tr style="background-color:#e5e5e5 ; text-align:center;  padding-bottom: 20px;" >				
 		
 				</tr> 
-				
 				</table>
+	
 		
 				<!-- 최근 주문내역 테이블  -->
 				<h4>최근 주문내역</h4>
@@ -187,6 +187,7 @@ section#pageList{
 				</tr>
 				
 				</table>
+				
 		
 				<h1></h1>
 				<h1></h1>

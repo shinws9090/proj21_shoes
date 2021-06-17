@@ -1,6 +1,7 @@
 package proj21_shoes.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class ReView {					// 상품후기게시판
 
@@ -9,6 +10,16 @@ public class ReView {					// 상품후기게시판
 	private String title;				// 	제목
 	private String content;				// 	내용
 	private LocalDateTime registDate;	// 	등록일
+	private List<ReviewImage> reviewImages;
+	
+	
+	
+	public List<ReviewImage> getReviewImages() {
+		return reviewImages;
+	}
+	public void setReviewImages(List<ReviewImage> reviewImages) {
+		this.reviewImages = reviewImages;
+	}
 	public int getBoardCode() {
 		return boardCode;
 	}
@@ -41,8 +52,9 @@ public class ReView {					// 상품후기게시판
 	}
 	@Override
 	public String toString() {
-		return String.format("ReView [boardCode=%s, orderCode=%s, title=%s, content=%s, registDate=%s]", boardCode,
-				orderCode, title, content, registDate);
+		return String.format(
+				"ReView [boardCode=%s, orderCode=%s, title=%s, content=%s, registDate=%s, reviewImages=%s]", boardCode,
+				orderCode, title, content, registDate, reviewImages);
 	}
 	
 	

@@ -1,0 +1,36 @@
+[DEBUG] [2021-06-17 12:01] testInsertOrder()
+[DEBUG] [2021-06-17 12:01] ==>  Preparing: insert into `order`(member_code, order_date, payment_amount) values (?,?,?)
+[DEBUG] [2021-06-17 12:01] ==> Parameters: 111111(Integer), 2021-06-17T12:01:05.253(LocalDateTime), 10000(Integer)
+[DEBUG] [2021-06-17 12:01] <==    Updates: 1
+[DEBUG] [2021-06-17 12:01] ==>  Preparing: select last_insert_id()
+[DEBUG] [2021-06-17 12:01] ==> Parameters: 
+[TRACE] [2021-06-17 12:01] <==    Columns: last_insert_id()
+[TRACE] [2021-06-17 12:01] <==        Row: 10014
+[DEBUG] [2021-06-17 12:01] <==      Total: 1
+[DEBUG] [2021-06-17 12:01] ==>  Preparing: insert into orderproduct(order_code, product_code, style_code, `size`, order_count) values (?,?, ?,?,?) , (?,?, ?,?,?) , (?,?, ?,?,?)
+[DEBUG] [2021-06-17 12:01] ==> Parameters: 10014(Integer), 11111(Integer), 1(Integer), 270(Integer), 10(Integer), 10014(Integer), 22222(Integer), 2(Integer), 280(Integer), 10(Integer), 10014(Integer), 33333(Integer), 3(Integer), 230(Integer), 10(Integer)
+[DEBUG] [2021-06-17 12:01] <==    Updates: 3
+[DEBUG] [2021-06-17 12:01] ==>  Preparing: insert into address(order_code, recipient, zipCode, address, detail_address, tel) values (?,?,?,? ,?,?)
+[DEBUG] [2021-06-17 12:01] ==> Parameters: 10014(Integer), asdasd(String), asdas(String), asdasd(String), asdasd(String), asdasd(String)
+[DEBUG] [2021-06-17 12:01] <==    Updates: 1
+[DEBUG] [2021-06-17 12:01] ==>  Preparing: update orderoption set stock= stock-? where product_code = ? and style_code =? and size = ?
+[DEBUG] [2021-06-17 12:01] ==> Parameters: 10(Integer), 11111(Integer), 1(Integer), 270(Integer)
+[DEBUG] [2021-06-17 12:01] <==    Updates: 1
+[DEBUG] [2021-06-17 12:01] ==>  Preparing: update product set cumulative_sell_count = cumulative_sell_count+? where product_code = ?
+[DEBUG] [2021-06-17 12:01] ==> Parameters: 10(Integer), 11111(Integer)
+[DEBUG] [2021-06-17 12:01] <==    Updates: 1
+[DEBUG] [2021-06-17 12:01] ==>  Preparing: update orderoption set stock= stock-? where product_code = ? and style_code =? and size = ?
+[DEBUG] [2021-06-17 12:01] ==> Parameters: 10(Integer), 22222(Integer), 2(Integer), 280(Integer)
+[DEBUG] [2021-06-17 12:01] <==    Updates: 1
+[DEBUG] [2021-06-17 12:01] ==>  Preparing: update product set cumulative_sell_count = cumulative_sell_count+? where product_code = ?
+[DEBUG] [2021-06-17 12:01] ==> Parameters: 10(Integer), 22222(Integer)
+[DEBUG] [2021-06-17 12:01] <==    Updates: 1
+[DEBUG] [2021-06-17 12:01] ==>  Preparing: update orderoption set stock= stock-? where product_code = ? and style_code =? and size = ?
+[DEBUG] [2021-06-17 12:01] ==> Parameters: 10(Integer), 33333(Integer), 3(Integer), 230(Integer)
+[DEBUG] [2021-06-17 12:01] <==    Updates: 1
+[DEBUG] [2021-06-17 12:01] ==>  Preparing: update product set cumulative_sell_count = cumulative_sell_count+? where product_code = ?
+[DEBUG] [2021-06-17 12:01] ==> Parameters: 10(Integer), 33333(Integer)
+[DEBUG] [2021-06-17 12:01] <==    Updates: 1
+[DEBUG] [2021-06-17 12:01] ==>  Preparing: update member set point = ? , cumulative_buy_amount = ? where member_code = ?
+[DEBUG] [2021-06-17 12:01] ==> Parameters: 100(Integer), 10000(Integer), 111111(Integer)
+[DEBUG] [2021-06-17 12:01] <==    Updates: 1
