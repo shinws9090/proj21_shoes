@@ -220,11 +220,10 @@ public class MyPageController {
 		System.out.println(member);
 
 
-
-
 		return "/grade/grade";
 	}
-	@GetMapping("/grade/{memberId}")
+	
+	@GetMapping("/grade/{memberId}")  
 	public String noView () {  //id를 받아와서
 
 

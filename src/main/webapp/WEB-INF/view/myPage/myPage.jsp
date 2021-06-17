@@ -39,10 +39,10 @@
 	<section id = "maPage">
 	
 	<c:if test="${empty authInfo}"> 
-				<p>로그인해주세요.</p> 
-				<p>
-				<li><a href="${contextPath}/register/step1">회원가입</a></li>
-				<li><a href="${contextPath}/login/loginForm">로그인</a></li>
+				<p style="text-align: center;">로그인해주세요.</p> 
+				<p></p>
+				<li style="text-align: center;"><a href="${contextPath}/register/step1">회원가입</a></li>
+				<li style="text-align: center;"><a href="${contextPath}/login/loginForm">로그인</a></li>
 				
 			</c:if>
 			<c:if test="${!empty authInfo}">
