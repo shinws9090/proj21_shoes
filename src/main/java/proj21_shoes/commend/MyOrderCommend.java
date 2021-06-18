@@ -12,7 +12,7 @@ public class MyOrderCommend {
 	private LocalDate orderDate; 	//주문일
 	private int paymentAmount;		//결제금액
 	private boolean paymentState; 	//결제여부
-	private int deliveryCode;		//배송코드(송장번호)
+	private String deliveryCode;		//배송코드(송장번호)
 	private boolean buyConfirmState; //구매확정여부
 	private String recipient;		//받는사람
 	private String zipCode; 		//우편번호
@@ -87,12 +87,27 @@ public class MyOrderCommend {
 	public void setPaymentState(boolean paymentState) {
 		this.paymentState = paymentState;
 	}
-	public int getDeliveryCode() {
+
+	public String getDeliveryCode() {
 		return deliveryCode;
 	}
-	public void setDeliveryCode(int deliveryCode) {
+
+
+	public void setDeliveryCode(String deliveryCode) {
 		this.deliveryCode = deliveryCode;
 	}
+
+
+	public boolean isBuyConfirmState() {
+		return buyConfirmState;
+	}
+
+
+	public void setBuyConfirmState(boolean buyConfirmState) {
+		this.buyConfirmState = buyConfirmState;
+	}
+
+
 	public String getRecipient() {
 		return recipient;
 	}
@@ -164,7 +179,7 @@ public class MyOrderCommend {
 	
 
 	public MyOrderCommend(int orderCode, int membeCode, String memberId, LocalDate orderDate, int paymentAmount,
-			boolean paymentState, int deliveryCode, boolean buyConfirmState, String recipient, String zipCode,
+			boolean paymentState, String deliveryCode, boolean buyConfirmState, String recipient, String zipCode,
 			String address, String detailAddress, String tel, int productCode, String productName, int styleCode,
 			int size, int orderCount, String productMainImage) {
 		super();
@@ -188,6 +203,9 @@ public class MyOrderCommend {
 		this.orderCount = orderCount;
 		this.productMainImage = productMainImage;
 	}
+
+
+
 
 
 	@Override
