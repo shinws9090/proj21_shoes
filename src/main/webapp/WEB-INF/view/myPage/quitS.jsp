@@ -7,7 +7,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="<%=request.getContextPath() %>" />
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,9 +21,7 @@
 <title>회원탈퇴</title>
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/step1.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/step2.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/myPage.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
