@@ -23,6 +23,7 @@
 <script type="text/javascript">
 	$(function() {
 		var contextPath = "${contextPath}"
+		/* tab기능 */
 		$(".btn li").click(function() {
 			$(this).addClass("active");
 			$(this).siblings().removeClass("active");
@@ -32,7 +33,7 @@
 			$(".tabs div").eq($(this).index()).addClass("active");
 		});
 		
-		
+		/* 스타일코드에 맞는 사이드 출력 */
 		$(".styleCode input").click(function(){
 			$(".styleCode label").removeClass("active");
 			$(".styleCode input").removeClass();
@@ -73,7 +74,7 @@
 			});
 		}); 
 		
-		
+		/* 장바구니 담기 */
 		$("#cart").click(function(){
 			var data = {
 					productCode:${product.productCode},
@@ -99,6 +100,7 @@
 					alert("code:"+request.status+"\n"+"message:"
 							+request.responseText+"\n"+"error:"+error);
 					if(request.status==404){
+						alert("로그인 해주세요")
 						location.href = contextPath +"/login/loginForm";
 					}
 					if(request.status==400){
@@ -186,6 +188,18 @@
 				<span id='cart'> 장바구니 </span>
 				<input type="hidden" name="productCode" value="${product.productCode }">
 				<input type='submit' value='구매하기' />
+				<!--// mode : development or production-->
+				<script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"
+				    data-client-id="{#_clientId}"
+				    data-mode="{#_mode}"
+				    data-merchant-user-key="{#_merchantUserKey}"
+				    data-merchant-pay-key="{#_merchantPayKey}"
+				    data-product-name="{#_productName}"
+				    data-total-pay-amount="{#_totalPayAmount}"
+				    data-tax-scope-amount="{#_taxScopeAmount}"
+				    data-tax-ex-scope-amount="{#_taxExScopeAmount}"
+				    data-return-url="{#_returnUrl}">
+				</script>
 			</div>
 			</form>
 		</div>

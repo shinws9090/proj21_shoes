@@ -23,6 +23,9 @@
 
 <script>
 	$(function() {
+		var contextPath = "${contextPath}";
+		
+		
 		$.get("${contextPath}/api/images",function(json){
 			var sCont = "";
 			for(i = 0; i < json.length; i++){
@@ -52,6 +55,10 @@
 			sCont +="</div>";
 			}
 			$("#new-product").append(sCont);
+			$(".item").click(function(){
+				var code = $(this).data("item");
+				window.location.href = contextPath+"/productDetail/"+code;	
+			});
 		});
 		
 		$.get("${contextPath}/api/mainList/best",function(json){
@@ -67,6 +74,10 @@
 			sCont +="</div>";
 			}
 			$("#best-product").append(sCont);
+			$(".item").click(function(){
+				var code = $(this).data("item");
+				window.location.href = contextPath+"/productDetail/"+code;	
+			});
 		});
 		
 	});
