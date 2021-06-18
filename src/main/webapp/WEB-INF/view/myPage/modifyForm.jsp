@@ -7,7 +7,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="<%=request.getContextPath() %>" />
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,9 +21,7 @@
 <title>마이페이지</title>
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/step1.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/step2.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/myPage.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -100,8 +99,8 @@
 		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
 	</header>
 	<!-- end header -->
-
-	<section id = "maPage">
+	<div id="myPage">
+	<section id ="maPage">
 	
 	<c:if test="${empty authInfo}"> 
 				<p>로그인해주세요.</p> 
@@ -111,31 +110,41 @@
 				
 			</c:if>
 			<c:if test="${!empty authInfo}">
-							<h1>회원정보 변경</h1>
-				
-				<table style="width: 80%">
-			<tr>
-				<h2>나의정보</h2>
-			</tr>
 			
+			<article id="my_menu">
+				<h3>회원정보</h3>
+				<a href="${contextPath}/myPage/myPageSel/${member.memberId}">-회원정보 조회 / 변경</a><br>
+				<a href="${contextPath}/myPage/quitMember/${member.memberId}">-회원탈퇴</a>
+				<br>
+				<h3>나의 쇼핑정보</h3>
+				<a href="${contextPath}/myPage/myOrder/${member.memberId}">-주문내역</a><br>
+				<a href="${contextPath}/myPage/myQnA/${member.memberId}">-문의내역</a><br>
+				<a href="${contextPath}/cartList">-장바구니</a>
+			
+				</article>
+			
+			
+			<div id="myData_modify">
+			<h4>회원정보 변경</h4>
 			<form:form action="/myPage/modify/${member.memberId }" modelAttribute="memberDetailUpdateCommend"><!-- 보내는거? -->
+				<table class="tbl_myData" border="1">
 			<tr>
-				<th scope="row"><label for="memberId">회원아이디</label></th>
+				<td id="myData_left_td"><label for="memberId">회원아이디</label></td>
 				<td><form:input path="memberId" id="memberId" readonly="true" value="${member.memberId }" /></td>				
 			</tr>
 		
 			<tr>
-				<th scope="row"><label for="confirmPassword"></label>기존비밀번호 확인</th>		
-				<td><form:password id="confirmPassword" path="confirmPassword" placeholder="기존 비밀번호 입력" /><form:errors path="confirmPassword" /></td>
+					<td id="myData_left_td"><label for="confirmPassword"></label>기존비밀번호 확인</td>		
+					<td><form:password id="confirmPassword" path="confirmPassword" placeholder="기존 비밀번호 입력" /><form:errors path="confirmPassword" /></td>
 			</tr>
 			
 		 	<tr>
-				<th scope="row"><label for="memberPwd"></label>변경할비밀번호</th>		
+				<td id="myData_left_td"><label for="memberPwd"></label>변경할비밀번호</td>		
 				<td><form:password id="memberPwd" path="memberPwd" placeholder="변경할 비밀번호 입력" /></td>
 			</tr>
 			
 			 <tr>
-				<th scope="row"><label for="memberName"></label> 회원이름</th>		
+					<td id="myData_left_td"><label for="memberName"></label> 회원이름</td>		
 				<td><form:input path="memberName" id="memberName" value="${member.memberName }"/></td>
 			</tr>
 			
@@ -143,91 +152,57 @@
 			<%-- 	${member.gender }	 --%>
 	
 			<tr >
-				<th scope="row"><label for="gender"></label>성별</th>
-					<td><input type="radio" name="gender" value="false" checked>남</td>
-					<td><input type="radio" name="gender" value="true" checked>여</td>
+					<td id="myData_left_td"><label for="gender"></label>성별</td>
+					<td><input type="radio" name="gender" value="false" checked>남
+					<input type="radio" name="gender" value="true" checked>여</td>
 			
 				
 				
 			</tr>
 			
 			<tr>
-				<th scope="row"><label for="birthday"></label>생년월일</th>		
+				<td id="myData_left_td"><label for="birthday"></label>생년월일</td>		
 				<td><form:input type="date" path="birthday" id="birthday" value="${member.birthday }"/></td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="email"></label>이메일</th>		
-				<td><form:input type="email" path="email" id="email" value="${member.email }"/><form:errors path="email" /></td>
+					<td id="myData_left_td"><label for="email"></label>이메일</td>		
+				<td><form:input type="email" path="email"  id="email" value="${member.email }"/><form:errors path="email" /></td>
 			</tr>
 			<tr>
-				<th scope="row"> <label for="tel"></label>연락처</th>		
+				<td id="myData_left_td"><label for="tel"></label>연락처</td>		
 				<td><form:input path="tel" id="tel" value="${member.tel }"/></td>
 			</tr>
 			<tr>
-				<th scope="row"> <label for="zipCode"></label>우편번호</th>		
+				<td id="myData_left_td"><label for="zipCode"></label>우편번호</td>		
 				<td><form:input type="test" path="zipCode" id="zipCode" onclick="testDaumPostcode()" value="${member.zipCode }" /><form:errors path="zipCode" /></td>
 				
 			</tr>
 			<tr >
-				<th scope="row"> <label for="address"></label>주소</th>		
+					<td id="myData_left_td"><label for="address"></label>주소</td>		
 				<td><form:input type="text" id="address" path="address" readonly="true" value="${member.address }"/><form:errors path="address"/></td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="detailAddress"></label>상세주소</th>		
+				<td id="myData_left_td"><label for="detailAddress"></label>상세주소</td>		
 				<td><form:input path="detailAddress" id="detail_address" value="${member.detailAddress }" /></td>
 			
 			</tr> 
+			</table>
 			
-			
-			
-		<%-- 	<tr style="background-color: white-space; text-align: left">
-				<td>포인트</td>		<td>${member.point }</td>
-			</tr>
-			<tr style="background-color: white-space; text-align: left">
-				<td>누적구매금액</td>	<td>${member.cumulativeBuyAmount }</td>
-			</tr>
-			<tr style="background-color: white-space; text-align: left">
-				<td>등급</td>		<td>${member.grade }</td>
-			</tr>
-			<tr style="background-color: white-space; text-align: left">
-				<td>가입일</td>		<td><tf:formatDateTime value="${member.signUpDate }" pattern="yyyy-MM-dd:mm"/>
-			</td>
-				 --%>
-					
-			
-
+					<article id="save_btn">
 				 	<form action="/myPage/modify/${member.memberId }" method="post">
-					<input type="submit" value="저장" />
-					</form>
-		
-					
-			
-		<%--  	</c:forEach>  --%>
-		</form:form>
-		</table>
-				
-<%-- 				<form action="/myPage/modify/${member.memberId }" method="post">
-					<input type="submit" value="저장" />
-					</form>
-		
-					 --%>
-				
-				<p>나의 쇼핑정보</p>
-				<li><a href="${contextPath}/myPage/myOrder/${member.memberId }">주문내역</a></li>
-			
-				
-				<%-- <p>회원정보</p>
-				<li><a href="${contextPath}/myPage/changeMemberData">회원정보 변경</a></li>
-				<li><a href="${contextPath}/myPage/">회원탈퇴</a></li> --%>
-				
-				
-				
+							<input type="submit" value="저장" /><form:errors path="confirmPassword" />
+						</form>
+					</article>
+
+			</form:form>
+		</div>	
+
 			</c:if>
 
 	
 	
 	</section>
-
+</div>
 	
 	<section>
 

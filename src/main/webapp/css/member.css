@@ -1,20 +1,16 @@
 @charset "UTF-8";
-/*예진 담당기능 css   (회원가입 입력폼,로그인입력폼,마이페이지-회원정보조회,나의 QnA,나의Order 등*/
-
-/* 회원가입 입력폼. id = #, class = . */
-
+/*  예진 담당기능 css  작성중!  (회원가입 입력폼 / 로그인입력폼,/ 마이페이지 -회원정보조회 / 나의 문의내역/ 나의주문내역 등!!!!   */
 
 /* 
- css 주는법!
+ css 줄곳 지정하는법!
  .클래스명{}
  #아이디명{}
  .클래스명#아이디명{}
  .클래스명,#클래스명{}
 */
 
-/* ------------------------------------------------------------------------------- */
+/* --------------------------------------회원가입 약관동의 페이지----------------------------------------- */
 
-/* start-- step1 */
 #signUpForm_agree{
 	padding: 30px;  	/*  칸 내부 여백 */
 	text-align: left;	/*  글자위치 */
@@ -39,77 +35,203 @@
 }
 
 
+/*  ------------------------------회원가입 정보입력 페이지  ----------------------------------------------------*/
 
-/* end-- step1 */
-
-
-/* ------------------------------------------------------------------------------- */
-
-/* step2 */
-
-#step2.titme_h2{
+#step2.titme_h2{ 					/*  */
 	text-align:center;
 	padding-top: 10px;
 	padding-bottom :10px;
 	color: #4d4d51 
 }
 
-/*  */
 
-#signUpForm{
+
+.signUpForm{						/*  */
 color: #2c2c2c ; 
 }
 
-
-
-
-
-.myPage #h1{
-	text-align:center;
-	margin-left:10px;
-	color: #4d4d51 ;
-	padding-top: 10px;
-			padding-bottom :10px;
-	
-}
-
-h2{
+.signUpForm.title_h2{				/*  */
 	text-align:center;
 	padding-top: 10px;
 	padding-bottom :10px;
 	color: #4d4d51 
 }
+/*--------------------------------------------로그인 입력 페이지----------------------------------------------  */
 
-
-h3{
-	text-align:center;
-	color: #4d4d51; 
-	padding-top: 10px;
-	padding-bottom :10px;
-}
-
-div id
-#myPage{
-	padding-left:30px;
-	margin-left:40px;	
-}
-
-
-td{
-	width:10;
-	padding-right:10px;
-	padding-left:10px;
-	background: #ffffff ;
-}
-
-.td_right {
-	text-align:left;
-	width:10;
-	background: #ffffff ;
+#loginForm{					/*  */
+	text-align: center;
 	
 }
-div{
-	text-align: center;
+#loginForm #loginForm #loginCommand{     /* 동명 div 안의 section 안의   fieldset id 설정*/
+	width:  300px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-left: 20%;
+	margin-right: 20%;
+	margin: auto;
+	
 }
- 
+
+/*--------------------------------------------로그인 완료페이지----------------------------------------------  */
+
+#signSuccess #signSuccess #signSuccess{	/* 동명 div 안의 section 안의   fieldset id 설정*/
+	width:  300px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin: auto;
+	margin-top: 100px;
+	
+}
+
+
+
+/*--------------------------------------------마이페이지 공통----------------------------------------------  */
+
+
+
+#tbl_maGrade{/* 나의 등급 table 설정*/
+border-collapse: collapse;   /* td간 선 없애기 */
+width: 90%;
+height: 100px;
+margin-bottom: 20px;
+padding-bottom: 30px;
+	
+}
+#tr_myGrade{ /* 나의 등급 table안의 tr 설정 */
+background-color:#e5e5e5 ; 
+text-align: center; 
+width: 500px; 
+margin-bottom: 20px;
+	
+}
+#myPoint{
+	color: red;
+}
+
+#my_menu{ /* 좌측 메뉴 */
+	text-align: left;
+	margin-left: 10px;
+}
+#my_menu h3{
+	text-align: left;
+}
+/* #center_view{
+	display:inline;
+}
+ */
+/*--------------------------------------------문의내역 페이지----------------------------------------------  */
+#myPage h4{
+	text-align: center;
+	
+}
+
+/*--------------------------------------------회원정보 확인|수정 페이지----------------------------------------------  */
+
+
+#myData h1{
+	text-align: center;
+	margin: 0 auto;
+	margin-bottom: 20px; 
+}
+
+.tbl_myData{
+   width: 600px;
+   margin-left:400px;
+   margin: 0 auto;
+   max-width:800px;
+   border-top: 2px solid gray;
+   border-bottom: 2px solid #dcdcdc;
+   font-family: '돋움', dotum;
+   font-size: 12px;
+   text-align: center;
+   border-collapse: collapse;
+   
+   
+
+}
+.tbl_myData #myData_left_td{
+	padding: 10px;
+	background-color:#f5f7f9;
+
+}
+#myData_btn{
+	text-align: center;
+	
+}
+
+#save_btn{
+		margin: 0 auto;
+		margin-left: 50%;
+}
+/*--------------------------------------------공통 적용 테이블----------------------------------------------  */
+
+
+.tbl_type, .tbl_type th, .tbl_type td {
+   border: 0;
+
+}
+
+.tbl_type {
+/*    height : 460px; */
+   width: 90%;
+   margin: 0 auto;
+   max-width:800px;
+   border-top: 2px solid gray;
+   border-bottom: 2px solid #dcdcdc;
+   font-family: '돋움', dotum;
+   font-size: 12px;
+   text-align: center;
+   border-collapse: collapse
+}
+
+.tbl_type caption {
+   display: none
+}
+
+.tbl_type tfoot {
+   background-color: #f5f7f9;
+   font-weight: bold
+}
+
+.tbl_type thead {
+   
+   background-color: #f5f7f9;
+   font-weight: bold
+}
+
+.tbl_type th {
+   padding: 7px 0 4px;
+   border-top: 2px solid #dcdcdc;
+   border-right: 1px solid #dcdcdc;
+   border-left: 1px solid #dcdcdc;
+   background-color: #f5f7f9;
+   color: #666;
+   font-family: '돋움', dotum;
+   font-size: 12px;
+   font-weight: bold
+}
+
+.tbl_type td {
+   padding: 6px 0 4px;
+   border: 1px solid #e5e5e5;
+   color: #4c4c4c;
+   width: 2000px;
+}
+
+.tbl_type td.ranking {
+   font-weight: bold
+}
+
+/* span{
+	color: red;
+} */
+
+section#pageList{
+	text-align: :center;
+	width: auto;
+}
 

@@ -12,27 +12,36 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_shoes.commend.MyOrderCommend;
+import proj21_shoes.commend.MyPageSelectCommend;
+import proj21_shoes.exeption.MemberNotFoundException;
 import proj21_shoes.service.MyOrderService;
+import proj21_shoes.service.MyPageService;
 
 @Controller
 public class MyOrderController {
 	
 	
-	
+	@Autowired
+	MyPageService getMyPageService;
 	@Autowired
 	MyOrderService myOrderService;
 	
 	
 	@GetMapping("/myPage/myOrder/{memberId}")
 	public String myOrder(@PathVariable("memberId") String memberId,HttpSession session,HttpServletResponse response) {
+		MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
 		List<MyOrderCommend>  myOrderList  =myOrderService.selectMyOrderById(memberId);
-		
+		if(member ==null) {
+			throw new MemberNotFoundException();
+		}
 		if(myOrderList ==null) {
 			System.out.println("리스트 없당");
 		}
+		session.setAttribute("member", member);
 		session.setAttribute("myOrderList", myOrderList);  // 요고 해줘야 jsp 에서 받을수 있당
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("myOrderList",myOrderList);
+		mav.addObject("member",member);
 	//	mav.setViewName("myPage/qna/{memberId}");
 		System.out.println(myOrderList);
 		return "/myPage/myOrder";

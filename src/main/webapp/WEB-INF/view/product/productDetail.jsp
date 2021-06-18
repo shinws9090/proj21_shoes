@@ -23,6 +23,7 @@
 <script type="text/javascript">
 	$(function() {
 		var contextPath = "${contextPath}"
+		/* tab기능 */
 		$(".btn li").click(function() {
 			$(this).addClass("active");
 			$(this).siblings().removeClass("active");
@@ -32,53 +33,42 @@
 			$(".tabs div").eq($(this).index()).addClass("active");
 		});
 		
-		
-		$(".styleCode input").click(function(){
-			$(".styleCode label").removeClass("active");
-			$(".styleCode input").removeClass();
-			$("#size .size").remove();
-			$(this).parent().addClass("active");
-			$(this).addClass("style-code-data");
-			var styleCode = $(this).val();
+		/* 스타일코드에 맞는 사이즈 출력 */
+		function sizeList(styleCode){
+			if($.type(styleCode) == 'number'){
 			var code = ${product.productCode};
-			
 			$.get(contextPath + "/api/size?styleCode="+styleCode+"&code="+code, function(json) {
 				var sCont = "";
 				for(i = 0; i < json.length; i++){
-				sCont += "<label class='size'> ";
-				sCont += "<input name='size' type='radio' value="+json[i].size+" hidden='hidden'>"+json[i].size;
+				sCont += "<option value="+json[i].size+" data-stock="+json[i].stock+">"+json[i].size;
 				sCont += "<span>(재고:"+json[i].stock+")</span>";
-				sCont += "<input class='stock' type='hidden' value="+json[i].stock+">";
-				sCont += "</label>";
+				sCont += "</option>";
 				};
-				$("#size").append(sCont);
-				
-				$("#size input").click(function(){
-					$("#size label").removeClass("active")
-					$("#size input").removeClass("size-data");
-					$(this).parent().addClass("active");
-					$(this).addClass("size-data");
-				});
-				
+				$("#sizeList").html(sCont);
 				
 				$("#count").on("focusout",function(){
-					var stock = $("#size .active .stock").val();
+					var stock = $("#size option:selected").data("stock");
 					var count = Number($(this).val());
 					if(count > stock){
 						$(this).val(stock);
 					}
 				});
-				
-				
 			});
+			}
+		}
+		sizeList($(".styleCode option:selected").val());
+		/* 스타일코드에 맞는 사이즈 출력 (클릭) */
+		$(".styleCode").change(function(){
+			var styleCode = Number($(this).val());
+			sizeList(styleCode);
 		}); 
 		
-		
+		/* 장바구니 담기 */
 		$("#cart").click(function(){
 			var data = {
 					productCode:${product.productCode},
-					styleCode:$(".style-code-data").val(),
-					size:$(".size-data").val(),
+					styleCode:$(".styleCode").val(),
+					size:$("#size").val(),
 					count:$("#count").val()
 			};
 			$.ajax({
@@ -89,16 +79,17 @@
 				cache : false,
 				data : JSON.stringify(data),
 				success : function(json) {
-					alert(json+"카트저장완료");
+					alert("카트저장완료");
 					var res = confirm('장바구니 화면으로 이동하시겠습니까?')
 					if(res){
 						location.href = contextPath +"/cartList";					
 					}
 				},
 				error : function(request, status, error) {
-					alert("code:"+request.status+"\n"+"message:"
-							+request.responseText+"\n"+"error:"+error);
+					/* alert("code:"+request.status+"\n"+"message:"
+							+request.responseText+"\n"+"error:"+error); */
 					if(request.status==404){
+						alert("로그인 해주세요")
 						location.href = contextPath +"/login/loginForm";
 					}
 					if(request.status==400){
@@ -106,8 +97,6 @@
 					}
 				}
 			});
-			$("#size .size").remove();
-			$(".styleCode label").removeClass("active");
 		});
 		
 		
@@ -149,43 +138,63 @@
 		
 		
 		<div class="order-options">
-			<strong>${product.productName}</strong>
-			<p>
-				<em>Brand : </em> <label>${product.brand.brandEngName }</label>
-			</p>
+			<strong>${product.brand.brandEngName }</strong>
+			<p>	${product.productName}</p>
 			<form action="${contextPath}/addOrderOne" method="post">
-			<div class="styleCode">
-				<label>스타일코드(색상)</label>
+			<div>
+				<p>색상(색상코드{스타일코드})</p>
+			<select name="styleCode" class="styleCode" >
+				<option>--색상 선택--</option>
+				<optgroup label="color">
 				<c:forEach var="option" items="${product.orderOptions}" varStatus="status">
 					<c:if test="${option.stock >0}">
 					<c:choose>
 						<c:when test="${status.first}">
-							<label>
-							 <input type="radio" name="styleCode" value="${option.styleCode}" hidden="hidden" required>
-								(${option.styleCode},${option.color})
-							</label>
+							 <option value="${option.styleCode}" >
+								${option.color}(${option.styleCode})
+							</option>
 						</c:when>
 						<c:when test="${option.styleCode == product.orderOptions[status.index-1].styleCode}">
 						</c:when>
 						<c:otherwise>
-							<label>
-							<input type="radio" name="styleCode" value="${option.styleCode}" hidden="hidden" required>
-								(${option.styleCode},${option.color})
-							</label>
+							<option value="${option.styleCode}" >
+								${option.color}(${option.styleCode})
+							</option>
 						</c:otherwise>
 					</c:choose>
 					</c:if>
 				</c:forEach>
+				</optgroup>
+			</select>
 			</div>
-			<div id="size">
-				<label>size</label>
+			
+			<div>
+				<p>size</p>
+				<select name='size' id="size">
+					<option>--사이즈 선택--</option>
+					<optgroup label="size" id="sizeList">
+					</optgroup>
+				</select>
 			</div>
+			
 			<p>${product.sellPrice}원</p>
 			<input type="number" name="count" id="count" min="0" required>
 			<div class='submitBtns'>
 				<span id='cart'> 장바구니 </span>
 				<input type="hidden" name="productCode" value="${product.productCode }">
 				<input type='submit' value='구매하기' />
+				<!--// mode : development or production-->
+				<script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"
+				    data-client-id="{#_clientId}"
+				    data-mode="{#_mode}"
+				    data-merchant-user-key="{#_merchantUserKey}"
+				    data-merchant-pay-key="{#_merchantPayKey}"
+				    data-product-name="{#_productName}"
+				    data-total-pay-amount="{#_totalPayAmount}"
+				    data-tax-scope-amount="{#_taxScopeAmount}"
+				    data-tax-ex-scope-amount="{#_taxExScopeAmount}"
+				    data-return-url="{#_returnUrl}">
+				</script>
 			</div>
 			</form>
 		</div>

@@ -14,7 +14,7 @@ section {
 
 .order-options {
 	padding: 0.5em;
-	text-align: right;
+	text-align: left;
 	width:15%;
 	display: inline-block;
 	float: right;
@@ -23,7 +23,6 @@ section {
 	right: 10%;
 	box-shadow: 10px 10px 20px #c0c0c0;
 	border-radius: 15px;
-	background-image: url('../images/background.jpg');
 }
 
 .order-options input{
