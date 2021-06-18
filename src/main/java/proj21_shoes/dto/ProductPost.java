@@ -4,6 +4,7 @@ import java.util.List;
 
 public class ProductPost { // 상품게시글
 	private int productCode; // 상품정보
+	private String productName;
 	private String productMainImage; // 상품대표이미지
 	private String content; // 내용
 	private List<Image> images; // 상품이미지들
@@ -15,8 +16,6 @@ public class ProductPost { // 상품게시글
 	public ProductPost(int productCode) {
 		this.productCode = productCode;
 	}
-
-	
 
 	public ProductPost(int productCode, String productMainImage, String content, List<Image> images) {
 		super();
@@ -33,7 +32,6 @@ public class ProductPost { // 상품게시글
 	public void setProductCode(int productCode) {
 		this.productCode = productCode;
 	}
-	
 
 	public String getProductMainImage() {
 		return productMainImage;
@@ -57,6 +55,14 @@ public class ProductPost { // 상품게시글
 
 	public void setImages(List<Image> images) {
 		this.images = images;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 	@Override

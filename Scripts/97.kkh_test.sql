@@ -57,4 +57,10 @@ select * from  image;
 
 select pp.product_code, pp.product_main_image, pp.content, im.image_code, im.product_code, im.image from  productPost pp join image im on pp.product_code = im.product_code;
 
-product_code, product_main_image, content, image_code, product_code, image
+product_code, product_main_image, content, image_code, product_code, image;
+
+
+select pp.product_code, p.product_name, pp.product_main_image, pp.content, im.image_code, im.product_code, im.image 
+		  from  productPost pp 
+		  join image im  on pp.product_code = im.product_code
+		  join product p on pp.product_code = p.product_code;

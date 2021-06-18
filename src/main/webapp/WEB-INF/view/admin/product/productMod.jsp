@@ -22,55 +22,7 @@
 <link rel="stylesheet"
 	href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script type="text/javascript">
-	
-		function productValidation() {
-			var productCode = $("[name='productCode']").prop("value");
-			if(productCode == "" || productCode == null){
-				alert("제품 코드를 입력하세요.")
-				return false;
-				
-			} else {
-				$.ajax({				
-					url : "/proj21_shoes/productReg",
-					type:'POST',
-					data : $('#productRegForm').serialize(),
-												
-						/* {
-							productCode : productCode,
-							productName : $("[name='productName']").prop("value"),
-							brand : $("[name='brand']").prop("value"),
-							gender : $("[name='gender']").prop("value"),
-							category : $("[name='category']").prop("value"),
-							material : $("[name='material']").prop("value"),
-							season : $("[name='season']").prop("value"),
-							madeDate : $("[name='madeDate']").prop("value"),
-							costPrice : $("[name='costPrice']").prop("value"),
-							sellPrice : $("[name='sellPrice']").prop("value"),
-							registDate : $("[name='registDate']").prop("value"),
-							cumulativeRegistCount : $("[name='cumulativeRegistCount']").prop("value"),
-							cumulativeSellCount : $("[name='cumulativeSellCount']").prop("value"),
-							employee : $("[name='employee']").prop("value")
-							}, */
-					
-					success:function(data){
-						console.log(data);
-						alert("제품 등록이 완료되었습니다.");
-						location.href= "<c:url value='/productMgt'/>";
-					},error:function( e ){
-						alert("제품 등록이 실패하였습니다.");
-						console.log( e );
-					}
-					
-				})
-			}		
-			
-		}
-	
-</script>
-
 </head>
-
 <body class="main-layout">
 	<!-- header -->
 	<header>
@@ -83,14 +35,13 @@
 
 		<div class="admin_content_wrap">
 			<div class="admin_content_main">
-				<form id="productRegForm">
-
+				<form id="productModForm" method="post" autocomplete="off">
+				
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>상품코드</label>
 						</div>
 						<div class="form_section_content">
-							<input name="productCode" value="">
+							<input type="hidden" name="productCode" value="${products.productCode}">
 						</div>
 					</div>
 
@@ -99,7 +50,7 @@
 							<label>상품명</label>
 						</div>
 						<div class="form_section_content">
-							<input name="productName" value="신발">
+							<input name="productName" value="${products.productName}">
 						</div>
 					</div>
 
@@ -108,7 +59,9 @@
 							<label>브랜드</label>
 						</div>
 						<div class="form_section_content">
-							<input name="brand" value="1">
+							<select name="brand" class="brand">
+								<option selected="selected" value="${products.brand}">${products.brand.brandName}</option>
+							</select>
 						</div>
 					</div>
 
@@ -117,7 +70,13 @@
 							<label>성별</label>
 						</div>
 						<div class="form_section_content">
-							<input name="gender" value="남">
+							<select name="gender" class="form_select_option">
+								<option selected="selected" value="">옵션을 선택해주세요</option>
+								<option value="WOMEN">WOMEN</option>						
+								<option value="MEN">MEN</option>						
+								<option value="ALL">ALL</option>
+								<option value="KIDS">KIDS</option>
+							</select>
 						</div>
 					</div>
 
@@ -126,7 +85,9 @@
 							<label>카테고리</label>
 						</div>
 						<div class="form_section_content">
-							<input name="category" value="1">
+							<select name="category" class="category">
+								<option selected="selected" value="">카테고리를 선택해주세요</option>
+							</select>
 						</div>
 					</div>
 
@@ -201,50 +162,25 @@
 							<input name="cumulativeSellCount" value="1">
 						</div>
 					</div>
-					
+
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>등록사원정보</label>
 						</div>
 						<div class="form_section_content">
-							<input name="employee" value="1">
+							<select name="employee" class="employee">
+								<option selected="selected" value="">등록사원을 선택해주세요</option>
+							</select>
 						</div>
 					</div>
 					
-					
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>상품대표이미지</label>
-						</div>
-						<div class="form_section_content">
-							<input name="productMainImage">
-						</div>
+					<div class="btn_section">
+						<button type="submit" id="new">추가</button>
+						<button id="cancel">취소</button>
 					</div>
-					
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>내용</label>
-						</div>
-						<div class="form_section_content">
-							<input name="content" value="내용">
-						</div>
-					</div>
-					
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>상품이미지들</label>
-						</div>
-						<div class="form_section_content">
-							<input name="images">
-						</div>
-					</div>				
 
 				</form>
-				
-					<div class="btn_section">
-						<input type="button" value="등록" onclick="productValidation()" style="cursor: pointer" />
-						<input type="button" value="취소" onclick="javascript:location.href='/proj21_shoes/productMgt'" style="cursor: pointer" />
-					</div>
+
 
 			</div>
 		</div>
@@ -255,6 +191,70 @@
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp" />
 	</footer>
+
+<script>
+	//컨트롤러에서 브랜드 데이터 받기
+	var jsonData = JSON.parse('${brandList}');
+	console.log(jsonData);
+	
+	var brandArr = new Array();
+	var brandObj = new Object();
+	
+	// 브랜드 셀렉트 박스에 삽입할 데이터 준비
+	for(var i = 0; i < jsonData.length; i++) {
+		brandObj = new Object();  //초기화
+		brandObj.brandCode = jsonData[i].brandCode;
+		brandObj.brandName = jsonData[i].brandName;
+		brandArr.push(brandObj);	 
+	}
+	
+	// 브랜드 셀렉트 박스에 데이터 삽입
+	var brandSelect = $("select.brand")
+
+	for(var i = 0; i < brandArr.length; i++) {
+		brandSelect.append("<option value='" + brandArr[i].brandCode + "'>"
+	      + brandArr[i].brandName + "</option>"); 
+	}
+
+	// 컨트롤러에서 카테고리 데이터 받기
+	var jsonData = JSON.parse('${categoryList}');
+	console.log(jsonData);
+	
+	var categoryArr = new Array();
+	var categoryObj = new Object();
+	
+	// 카테고리 셀렉트 박스에 삽입할 데이터 준비
+	for(var i = 0; i < jsonData.length; i++) {
+		categoryObj = new Object();  //초기화
+		categoryObj.productCategoryCode = jsonData[i].productCategoryCode;
+		categoryObj.category = jsonData[i].category;
+		categoryArr.push(categoryObj);	 
+	}
+	
+	// 카테고리 셀렉트 박스에 데이터 삽입
+	var categorySelect = $("select.category")
+
+	for(var i = 0; i < categoryArr.length; i++) {
+		categorySelect.append("<option value='" + categoryArr[i].productCategoryCode + "'>"
+	      + categoryArr[i].category + "</option>"); 
+	}
+	
+	// 컨트롤러에서 직원 데이터 받기
+	var jsonData = JSON.parse('${employeeList}');
+	console.log(jsonData);
+	
+	var employeeArr = new Array();
+	var employeeObj = new Object();
+	
+	// 직원 셀렉트 박스에 삽입할 데이터 준비
+	for(var i = 0; i < jsonData.length; i++) {
+		employeeObj = new Object();  //초기화
+		employeeObj.empNumber = jsonData[i].empNumber;
+		employeeObj.empName = jsonData[i].empName;
+		employeeArr.push(employeeObj);	 
+	}
+	
+</script>
 
 </body>
 </html>

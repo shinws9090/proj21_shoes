@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import proj21_shoes.dto.Member;
 import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.dto.Product;
+import proj21_shoes.dto.ProductPost;
 import proj21_shoes.service.GetMemberDetailListService;
 import proj21_shoes.service.GetMemberDetailService;
 import proj21_shoes.service.ProductPostService;
@@ -78,6 +79,24 @@ public class AdminRestController {
 		}
 		return ResponseEntity.ok(productDeatil);
 	}
+	
+	@GetMapping("/productPostMgt")
+	public ResponseEntity<Object> PorductPostList() {
+		System.out.println("제품 리스트");
+
+		List<ProductPost> productPosts = productPostService.productPostByAll();		
+		return ResponseEntity.ok(productPosts);
+	}
+	
+	@GetMapping("/productMod/{no}")
+	public ResponseEntity<Object> ProductModify(@PathVariable int no, HttpServletResponse response) {
+		Product productModify = productService.productByCode(no);
+		if (productModify == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+		return ResponseEntity.ok(productModify);
+	}
+	
 
 	/*
 	 * @PostMapping("/productMgt/")

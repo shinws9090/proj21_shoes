@@ -21,24 +21,17 @@
 <script type="text/javascript">
 	$(function() {
 		var contextPath = "${contextPath}";
-		$.get(contextPath + "/api/productMgt", function(json) {
+		$.get(contextPath + "/api/productPostMgt", function(json) {
 			var dataLength = json.length;
 			if (dataLength >= 1) {
 				var sCont = "";
 				for (i = 0; i < dataLength; i++) {
 					sCont += "<tr>";
 					sCont += "<td>" + json[i].productCode + "</td>";
-					sCont += "<td>" + json[i].productName + "</a></td>";
-					sCont += "<td>" + json[i].brand.brandName + "</td>";
-					sCont += "<td>" + json[i].gender + "</td>";
-					sCont += "<td>" + json[i].category.category + "</td>";
-					sCont += "<td>" + json[i].costPrice + "</td>";
-					sCont += "<td>" + json[i].sellPrice + "</td>";
-					sCont += "<td>" + json[i].registDate + "</td>";
-					sCont += "<td>" + json[i].cumulativeRegistCount + "</td>";
-					sCont += "<td>" + json[i].cumulativeSellCount + "</td>";
+					sCont += "<td>" + json[i].productName + "</td>";
+					sCont += "<td>" + json[i].productMainImage + "</a></td>";
+					sCont += "<td>" + json[i].content + "</td>";
 					sCont += "<td><a href='read?productCode=" + json[i].productCode + "'>" + "[상세보기]" + "</a></td>";
-					/* sCont += "<td>" + "<a href='#'>[수정]</a>&nbsp;" + "<a href='#'>[삭제]</a>" + "</td>"; */
 					sCont += "</tr>";
 				}
 				$("#load:last-child").append(sCont);
@@ -69,20 +62,13 @@
 			<tr style="background-color: lightgrey; text-align: center">
 				<td>번호</td>
 				<td>상품명</td>
-				<td>브랜드</td>				
-				<td>성별</td>
-				<td>카테고리</td>
-				<td>원가</td>
-				<td>판매가격</td>
-				<td>등록일</td>
-				<td>등록수량</td>
-				<td>판매량</td>
+				<td>상품대표 이미지</td>
+				<td>내용</td>
 				<td>상세보기</td>
-				<td>기타</td>
 
 			</tr>
 			<tr>
-				<tbody id="load"/>				
+				<tbody id="load"/>			
 			</tr>
 		</table>
 

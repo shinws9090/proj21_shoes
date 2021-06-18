@@ -11,10 +11,10 @@
 <body>
 		<table style="width: 50%">
 			<tr style="background-color: e9e9e9; text-align: center;">
-				<td><a href="${contextPath}/admin/adminMain">상품 목록</a></td>
-				<td><a href="${contextPath}/admin/memberMgt">상품판매글 목록</a></td>
-				<td><a href="${contextPath}/admin/productMgt">상품 등록</a></td>
-				<td><a href="${contextPath}/admin/orderMgt">상품판매글 등록</a></td>
+				<td><a href="${contextPath}/admin/productMgt">상품 목록</a></td>
+				<td><a href="${contextPath}/admin/productPostMgt">상품판매글 목록</a></td>
+				<td><a href="${contextPath}/admin/product/productReg">상품 등록</a></td>
+				<td><a href="${contextPath}/admin/product/productPostReg">상품판매글 등록</a></td>
 			</tr>
 		</table>
 </body>

@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -73,13 +72,20 @@ public class AdminController {
 		return mav;
 	}
 
+	@RequestMapping("/admin/productPostMgt") // 제품등록관리 화면
+	public ModelAndView productPostList() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("admin/productPostMgt");
+		return mav;
+	}
+
 	/*
 	 * @RequestMapping("/viewProductReg") // 제품등록 화면 public ModelAndView
 	 * productReg() { ModelAndView mav = new ModelAndView();
 	 * mav.setViewName("/admin/product/productReg"); return mav; }
 	 */
 
-	@RequestMapping("/admin/read")
+	@RequestMapping("/admin/read") // 제품상세 화면
 	public ModelAndView productDetail(@RequestParam(value = "productCode") long productCode) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("productCode", productCode);
@@ -200,11 +206,40 @@ public class AdminController {
 	 * return "redirect:productMgt"; }
 	 */
 
-	@RequestMapping("/viewProductMod")
-	public ModelAndView productMod() {
+	@GetMapping("/admin/product/productMod")
+	public void getProductModify(@RequestParam("n") int productCode,  Model model) {
+		System.out.println("상품수정페이지");
 
+		Product products = productService.productByCode(productCode);
+		model.addAttribute("products", products);
+
+		List<Brand> brandList = brandService.brandList();
+		model.addAttribute("brandList", JSONArray.fromObject(brandList));
+
+		List<Category> categoryList = categoryService.categoryList();
+		model.addAttribute("categoryList", JSONArray.fromObject(categoryList));
+
+		List<Employee> employeeList = employeeService.employeeList();
+		model.addAttribute("employeeList", JSONArray.fromObject(employeeList));
+	}
+	
+	@RequestMapping("/admin/update")
+	public ModelAndView productModify(@RequestParam(value = "productCode") int productCode, Model model) {
+		Product products = productService.productByCode(productCode);
+		model.addAttribute("products", products);
+
+		List<Brand> brandList = brandService.brandList();
+		model.addAttribute("brandList", JSONArray.fromObject(brandList));
+
+		List<Category> categoryList = categoryService.categoryList();
+		model.addAttribute("categoryList", JSONArray.fromObject(categoryList));
+
+		List<Employee> employeeList = employeeService.employeeList();
+		model.addAttribute("employeeList", JSONArray.fromObject(employeeList));
+		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/admin/product/productMod");
+		mav.addObject("productCode", productCode);
+		mav.setViewName("admin/product/productMod");
 		return mav;
 	}
 
