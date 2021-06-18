@@ -8,6 +8,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,7 +113,6 @@ section#pageList{
 	<!-- end header -->
 		<div id="myPage"> <!-- style="display:inline;"  -->
 	<section id = "maPage">
-	
 	<c:if test="${empty authInfo}"> 
 				<p style="text-align: center;">로그인해주세요.</p> 
 				<p></p>
@@ -163,7 +163,7 @@ section#pageList{
 					<c:forEach var="myOrderList" items="${myOrderList}">
 					<tr>
 						<td>${myOrderList.orderCode }</td>
-						<td><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/../images/${myOrderList.productMainImage }"></td>
+						<td><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myOrderList.productMainImage }"></td>
 						<td>${myOrderList.productName }</td>
 						<td>${myOrderList.paymentAmount }</td>
 						<td>${myOrderList.orderCount }</td>
