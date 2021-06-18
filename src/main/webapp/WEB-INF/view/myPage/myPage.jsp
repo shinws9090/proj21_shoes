@@ -8,6 +8,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath"  value="<%=request.getContextPath() %>"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -105,6 +106,7 @@ section#pageList{
 	
 </head>
 <body class="main-layout">
+
 	<!-- header -->
 	<header>
 		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
