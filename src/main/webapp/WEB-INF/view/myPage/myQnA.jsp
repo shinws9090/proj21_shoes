@@ -198,6 +198,9 @@ section#pageList{
 					<tr>
 					<td><a href="${contextPath}/myPage/myQnA/${member.memberId}">-문의내역</a></td>
 				</tr>
+				<tr>
+					<td><a href="${contextPath}/cartList">-장바구니</a></td>
+				</tr>
 			</table>
 			
 				
