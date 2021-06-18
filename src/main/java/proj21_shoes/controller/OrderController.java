@@ -142,7 +142,7 @@ public class OrderController {
 		
 		oService.insertOrder(order,codeList,point);
 		session.setAttribute("order",order);
-		return "product/orderOK"; 
+		return "redirect:/myPage/myOrder/"+order.getMemberCode().getMemberId().getMemberId(); 
 	}
 
 }
