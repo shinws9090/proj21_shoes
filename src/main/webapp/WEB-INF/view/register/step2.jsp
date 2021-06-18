@@ -7,7 +7,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="<%=request.getContextPath() %>" />
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,7 +100,7 @@
 	</article>
 		<form:form action="step3" modelAttribute="registerRequest">
 		<form:errors/>
-		<div class="left">
+		<div>
 		<p>
 			<label>회원 아이디: 
 			<form:input  type="text" path="memberId" placeholder="ID" id="member_id" />  

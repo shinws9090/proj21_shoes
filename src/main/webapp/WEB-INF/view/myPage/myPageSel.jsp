@@ -7,7 +7,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="<%=request.getContextPath() %>" />
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,9 +21,7 @@
 <title>회원가입</title>
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/step1.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/step2.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/myPage.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -36,7 +35,7 @@
 	</header>
 	<!-- end header -->
 		<div id="myPage">
-	<section id = "maPage">
+	<section id ="maPage">
 	
 	<c:if test="${empty authInfo}"> 
 				<p>로그인해주세요.</p> 
@@ -46,57 +45,66 @@
 				
 			</c:if>
 			<c:if test="${!empty authInfo}">
-							<h1>회원정보 변경</h1>
-				<div>
+				
+				<article id="my_menu">
+				<h3>회원정보</h3>
+				<a href="${contextPath}/myPage/myPageSel/${member.memberId}">-회원정보 조회 / 변경</a><br>
+				<a href="${contextPath}/myPage/quitMember/${member.memberId}">-회원탈퇴</a>
+				<br>
+				<h3>나의 쇼핑정보</h3>
+				<a href="${contextPath}/myPage/myOrder/${member.memberId}">-주문내역</a><br>
+				<a href="${contextPath}/myPage/myQnA/${member.memberId}">-문의내역</a><br>
+				<a href="${contextPath}/cartList">-장바구니</a>
+			
+				</article>
+			
+			<div id="myData">
+				<h1>나의정보</h1>
 				<form:form action="modify" modelAttribute="memberDetail">
 				<form:errors/>
-				<table style="width: 80%">
-			<tr>
-				<td colspan="7" class="td_title">나의정보</td>
-			</tr>
-			
-			<tr style="background-color: white-space; text-align: left">
-				<td>회원아이디</td>	<td>${member.memberId }</td>				
-			</tr>
-			<tr style="background-color: white-space; text-align: left">
-				<td>비밀번호</td>		<td>비밀★</td><%-- <td>${member.memberPwd }</td> --%>
-			</tr>
-			<tr style="background-color: white-space; text-align: left">
-				<td>회원이름</td>		<td>${member.memberName }</td>
-			</tr>
-			<tr style="background-color: white-space; text-align: left">
-				<td>성별</td>		<td>${member.gender }</td>
-			</tr>
-			<tr style="background-color: white-space; text-align: left">
-				<td>생년월일</td>		<td>${member.birthday }</td>
-			</tr>
-			<tr style="background-color: white-space; text-align: left">
-				<td>이메일</td>		<td>${member.email }</td>
-			</tr>
-			<tr style="background-color: white-space; text-align: left">
-				<td>연락처</td>		<td>${member.tel }</td>
-			</tr>
-			<tr style="background-color: white-space; text-align: left">
-				<td>우편번호</td>		<td>${member.zipCode }</td>
-			</tr>
-			<tr style="background-color: white-space; text-align: left">
-				<td>주소</td>		<td>${member.address }</td>
-			</tr>
-			<tr style="background-color: white-space; text-align: left">
-				<td>상세주소</td>		<td>${member.detailAddress }</td>
-			</tr>
-			<tr style="background-color: white-space; text-align: left">
-				<td>포인트</td>		<td>${member.point }</td>
-			</tr>
-			<tr style="background-color: white-space; text-align: left">
-				<td>누적구매금액</td>	<td>${member.cumulativeBuyAmount }</td>
-			</tr>
-			<tr style="background-color: white-space; text-align: left">
-				<td>등급</td>		<td>${member.grade }</td>
-			</tr>
-			<tr style="background-color: white-space; text-align: left">
-				<td>가입일</td>		<td><tf:formatDateTime value="${member.signUpDate }" pattern="yyyy-MM-dd:mm"/>
-			</td>
+				<table  class="tbl_myData" border="1">
+					<tr>
+						<td id="myData_left_td">회원아이디</td><td>${member.memberId }</td>				
+					</tr>
+					<tr>
+						<td id="myData_left_td">비밀번호</td>		<td>********</td><%-- <td>${member.memberPwd }</td> --%>
+					</tr>
+				<tr>
+						<td id="myData_left_td">회원이름</td>		<td>${member.memberName }</td>
+					</tr>
+					<tr>
+						<td id="myData_left_td">성별</td>		<td>${member.gender }</td>
+					</tr>
+					<tr>
+						<td id="myData_left_td">생년월일</td>		<td>${member.birthday }</td>
+					</tr>
+					<tr>
+						<td id="myData_left_td">이메일</td>		<td>${member.email }</td>
+					</tr>
+					<tr>
+						<td id="myData_left_td">연락처</td>		<td>${member.tel }</td>
+					</tr>
+					<tr>
+						<td id="myData_left_td">우편번호</td>		<td>${member.zipCode }</td>
+					</tr>
+					<tr>
+						<td id="myData_left_td">주소</td>		<td>${member.address }</td>
+					</tr>
+					<tr>
+						<td id="myData_left_td">상세주소</td>		<td>${member.detailAddress }</td>
+					</tr>
+					<tr>
+						<td id="myData_left_td">포인트</td>		<td>${member.point }</td>
+					</tr>
+					<tr>
+						<td id="myData_left_td">누적구매금액</td>	<td>${member.cumulativeBuyAmount }</td>
+					</tr>
+					<tr>
+						<td id="myData_left_td">등급</td>		<td>${member.grade }</td>
+					</tr>
+					<tr>
+						<td id="myData_left_td">가입일</td>		<td><tf:formatDateTime value="${member.signUpDate }" pattern="yyyy-MM-dd:mm"/>
+					</td>
 				
 						
 		 <%-- 	<c:forEach var="MyPageSelectCommend" items="${MyPageSelectCommend}">  --%>
@@ -105,14 +113,14 @@
 		<%--  	</c:forEach>  --%>
 		
 		</table>
-		
+			<article id="myData_btn">
+				<a href="${contextPath}/myPage/${authInfo.memberId}">회원정보 변경</a>
+				<a style="color: gray;">     |     </a>
+				<a href="${contextPath}/myPage/quitMember/${member.memberId}">회원탈퇴</a>
+			</article>
 				</form:form>
 				
 				</div>
-	
-				<li><a href="${contextPath}/myPage/${authInfo.memberId}">회원정보 변경</a></li>
-				<li><a href="${contextPath}/myPage/quitMember/${member.memberId}">회원탈퇴</a></li>
-				
 				
 				
 			</c:if>
