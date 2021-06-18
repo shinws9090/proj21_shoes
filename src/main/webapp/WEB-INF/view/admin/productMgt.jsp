@@ -57,10 +57,15 @@
 
 	<section>
 		<jsp:include page="/WEB-INF/view/admin/include/adminMenu.jsp" />
+		<jsp:include page="/WEB-INF/view/admin/include/productMenu.jsp" />
+		
+		
+		
 		<table style="width: 80%">
 			<tr>
 				<td colspan="7" class="td_title">상품 목록</td>
-				<td><a href="admin/product/productReg">[상품등록]</a></td>
+				<td><a href="${contextPath}/admin/product/productReg">[상품추가]</a></td>
+				<td><a href="${contextPath}/admin/product/productPostReg">[상품판매글등록]</a></td>
 			</tr>
 
 			<tr style="background-color: lightgrey; text-align: center">

@@ -23,6 +23,11 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> productByAll() {
 		return mapper.productByAll();
 	}
+	
+	@Override
+	public List<Product> productByOnlyProuct() {
+		return mapper.productByOnlyProuct();
+	}
 
 	@Override
 	public List<Product> productByMenu(String menu) {
@@ -72,8 +77,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public int deleteProduct(Product product) {
-		return mapper.deleteProduct(product);
+	public int deleteProduct(int code) {
+		return mapper.deleteProduct(code);
 	}
 
 	@Override
