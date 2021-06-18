@@ -1,0 +1,115 @@
+@charset "UTF-8";
+/*예진 담당기능 css   (회원가입 입력폼,로그인입력폼,마이페이지-회원정보조회,나의 QnA,나의Order 등*/
+
+/* 회원가입 입력폼. id = #, class = . */
+
+
+/* 
+ css 주는법!
+ .클래스명{}
+ #아이디명{}
+ .클래스명#아이디명{}
+ .클래스명,#클래스명{}
+*/
+
+/* ------------------------------------------------------------------------------- */
+
+/* start-- step1 */
+#signUpForm_agree{
+	padding: 30px;  	/*  칸 내부 여백 */
+	text-align: left;	/*  글자위치 */
+	margin-left:30px;	/* 칸 외부 여백 */
+	color: #4d4d51 		/* 글자컬러 */
+}
+
+.box1{
+	text-align: center;   /* 글자 위치 */
+	width: 300px;		  /* 상자 넓이 */
+	height: 300px;		  /* 상자 높이 */
+	border: 3px solid #c0c0c0 ;  /* 상자테두리 굵이,선,색상 */
+	padding: inherit;			/* 상자 내부 4면 공통 여백 */
+	margin-left: 40%; 			 /* 상자 외부여백 */
+	margin-right: 40%; 			 /* 상자 외부 여백 */
+	margin-top: 150px; 			 /* 상자 외부여백 */
+	margin-bottom: 50px; 			 /* 상자 외부여백 */
+}
+/* 이용약관 */
+#agree_content{
+	padding: 20px; 		/* 이용약관 내용 위아래 여백 */
+}
+
+
+
+/* end-- step1 */
+
+
+/* ------------------------------------------------------------------------------- */
+
+/* step2 */
+
+#step2.titme_h2{
+	text-align:center;
+	padding-top: 10px;
+	padding-bottom :10px;
+	color: #4d4d51 
+}
+
+/*  */
+
+#signUpForm{
+color: #2c2c2c ; 
+}
+
+
+
+
+
+.myPage #h1{
+	text-align:center;
+	margin-left:10px;
+	color: #4d4d51 ;
+	padding-top: 10px;
+			padding-bottom :10px;
+	
+}
+
+h2{
+	text-align:center;
+	padding-top: 10px;
+	padding-bottom :10px;
+	color: #4d4d51 
+}
+
+
+h3{
+	text-align:center;
+	color: #4d4d51; 
+	padding-top: 10px;
+	padding-bottom :10px;
+}
+
+div id
+#myPage{
+	padding-left:30px;
+	margin-left:40px;	
+}
+
+
+td{
+	width:10;
+	padding-right:10px;
+	padding-left:10px;
+	background: #ffffff ;
+}
+
+.td_right {
+	text-align:left;
+	width:10;
+	background: #ffffff ;
+	
+}
+div{
+	text-align: center;
+}
+ 
+

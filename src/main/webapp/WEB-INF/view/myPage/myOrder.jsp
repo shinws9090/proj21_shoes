@@ -110,7 +110,7 @@ section#pageList{
 		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
 	</header>
 	<!-- end header -->
-		<div id="myPage">
+		<div id="myPage"> <!-- style="display:inline;"  -->
 	<section id = "maPage">
 	
 	<c:if test="${empty authInfo}"> 
@@ -203,6 +203,9 @@ section#pageList{
 				
 					<tr>
 					<td><a href="${contextPath}/myPage/myQnA/${member.memberId}">-문의내역</a></td>
+				</tr>
+				<tr>
+					<td><a href="${contextPath}/cartList">-장바구니</a></td>
 				</tr>
 			</table>
 			
