@@ -46,6 +46,28 @@ public class MyOrderController {
 		System.out.println(myOrderList);
 		return "/myPage/myOrder";
 	}
+	@GetMapping("/myPage/myOrder/orderDetail/{memberId}/{orderCode}")
+	public String myOrderDetail(@PathVariable("orderCode") int orderCode, @PathVariable("memberId") String memberId,  HttpSession session,HttpServletResponse response) {
+		System.out.println("orderCode >> " + orderCode);
+		
+		MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
+		MyOrderCommend  myOrderDetail  =myOrderService.selectMyOrderByOrderCode(orderCode);
+		System.out.println("myOrderDetail>>>>" + myOrderDetail);
+		if(member ==null) {
+			throw new MemberNotFoundException();
+		}
+		if(myOrderDetail ==null) {
+			System.out.println("주문내역  없당");
+		}
+		session.setAttribute("member", member);
+		session.setAttribute("myOrderDetail", myOrderDetail);  // 요고 해줘야 jsp 에서 받을수 있당
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("myOrderDetail",myOrderDetail);
+		mav.addObject("member",member);
+	//	mav.setViewName("myPage/qna/{memberId}");
+		System.out.println(myOrderDetail);
+		return "/myPage/myOrderDetail";
+	}
 	
 	
 	

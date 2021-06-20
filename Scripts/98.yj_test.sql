@@ -2,6 +2,9 @@ desc memberdetail ;
 select  * from memberdetail;
 select  * from  member;
 
+
+select * from vw_myorderdata where order_code=10006;
+
 select member_code, member_id, `point`, cumulative_buy_amount, grade_code, quit_state, signUp_date from member;
 
 	select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address 

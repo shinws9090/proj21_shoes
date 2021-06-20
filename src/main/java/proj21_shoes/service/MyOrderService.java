@@ -9,5 +9,6 @@ import proj21_shoes.commend.MyOrderCommend;
 @Service
 public interface MyOrderService {
 	List<MyOrderCommend> selectMyOrderById(String memberid);					//회원id로 검색
+	MyOrderCommend selectMyOrderByOrderCode(int orderCode);					//주문코드로 검색
 
 }

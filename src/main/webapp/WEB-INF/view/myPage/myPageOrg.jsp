@@ -49,18 +49,16 @@
 				
 				<table id="tbl_maGrade"> 
 					<tr id="tr_myGrade">
-						<td><h2>${member.memberName }[${member.memberId}]님의 멤버십 등급은 ${member.grade}입니다.		</h2>
-						</td><td ><a href="${contextPath}/grade/${member.memberId}">등급별 혜택 보기 〉</a></td>
-						<td> 포인트 〉 </td><td id="myPoint"> ${member.point }점 </td>
+						<td><h2>${member.memberName }[${member.memberId}]님의 멤버십 등급은 ${member.grade}입니다.		</h2></td>
+						<td ><a href="${contextPath}/grade/${member.memberId}">등급별 혜택 보기 〉</a></td><td id="myPoint"> 포인트 〉 </td>
+						<td> ${member.point }점 </td>
 					</tr>
 			
 				
 				</table>
-
-				<!-- 최근 주문내역 테이블  -->
-				<h4>${authInfo.memberName }님의  최근 주문내역</h4>
-				<br>
 				
+				<!-- 최근 주문내역 테이블  -->
+				<h4>${authInfo.memberName }님의 최근 주문내역</h4>
 				<table  class="tbl_type" border="1"> 
 			
 					<tr>
@@ -70,16 +68,17 @@
 						<td>결제금액</td>
 						<td>주문수량</td>
 					 	<td>주문일</td> 
+						<td>송장번호</td>
 					</tr>
 					<c:forEach var="myOrderList" items="${myOrderList}">
 					<tr>
-						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myOrderList.orderCode}">${myOrderList.orderCode }<br>[상세보기]</a></td>
+						<td>${myOrderList.orderCode }</td>
 						<td><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myOrderList.productMainImage }"></td>
-						<td><a href="${contextPath}/productDetail/${myOrderDetail.productCode}">${myOrderList.productName }<br>[상품 주문페이지]</a></td>
+						<td>${myOrderList.productName }</td>
 						<td>${myOrderList.paymentAmount }</td>
 						<td>${myOrderList.orderCount }</td>
 						 <td>${myOrderList.orderDate }</td> 
-
+						<td>${myOrderList.deliveryCode }</td>
 						
 					</tr>
 					</c:forEach>
