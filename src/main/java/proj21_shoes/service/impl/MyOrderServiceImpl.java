@@ -19,4 +19,11 @@ public class MyOrderServiceImpl implements MyOrderService {
 		return mapper.selectMyOrderById(memberid);
 	}
 
+
+	@Override
+	public MyOrderCommend selectMyOrderByOrderCode(int orderCode) {
+		
+		return mapper.selectMyOrderByOrderCode(orderCode);
+	}
+
 }

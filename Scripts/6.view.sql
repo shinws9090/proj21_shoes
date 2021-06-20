@@ -42,6 +42,7 @@ opd.product_code ,			-- 상품코드
 pd.product_name,			-- 상품명
 opd.style_code ,			-- 스타일코드
 opd.`size` ,				-- 사이즈
+op.color ,					-- 컬러
 opd.order_count, 			-- 주문수량
 pdpost.product_main_image   -- 상품대표이미지
 from `order` as od 

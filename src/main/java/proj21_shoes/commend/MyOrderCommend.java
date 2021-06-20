@@ -25,6 +25,7 @@ public class MyOrderCommend {
 	private int size;				//사이즈
 	private int orderCount;		//주문수량
 	private String productMainImage; //상품 대표이미지
+	private String color; //색상
 	
 	
 	public MyOrderCommend() {
@@ -39,6 +40,16 @@ public class MyOrderCommend {
 	
 	public boolean isByConfirmState() {
 		return buyConfirmState;
+	}
+
+
+	public String getColor() {
+		return color;
+	}
+
+
+	public void setColor(String color) {
+		this.color = color;
 	}
 
 
@@ -178,10 +189,11 @@ public class MyOrderCommend {
 
 	
 
+
 	public MyOrderCommend(int orderCode, int membeCode, String memberId, LocalDate orderDate, int paymentAmount,
 			boolean paymentState, String deliveryCode, boolean buyConfirmState, String recipient, String zipCode,
 			String address, String detailAddress, String tel, int productCode, String productName, int styleCode,
-			int size, int orderCount, String productMainImage) {
+			int size, int orderCount, String productMainImage, String color) {
 		super();
 		this.orderCode = orderCode;
 		this.membeCode = membeCode;
@@ -202,20 +214,20 @@ public class MyOrderCommend {
 		this.size = size;
 		this.orderCount = orderCount;
 		this.productMainImage = productMainImage;
+		this.color = color;
 	}
-
-
-
 
 
 	@Override
 	public String toString() {
 		return String.format(
-				"MyOrderCommend [orderCode=%s, membeCode=%s, memberId=%s, orderDate=%s, paymentAmount=%s, paymentState=%s, deliveryCode=%s, buyConfirmState=%s, recipient=%s, zipCode=%s, address=%s, detailAddress=%s, tel=%s, productCode=%s, productName=%s, styleCode=%s, size=%s, orderCount=%s, productMainImage=%s]",
+				"MyOrderCommend [orderCode=%s, membeCode=%s, memberId=%s, orderDate=%s, paymentAmount=%s, paymentState=%s, deliveryCode=%s, buyConfirmState=%s, recipient=%s, zipCode=%s, address=%s, detailAddress=%s, tel=%s, productCode=%s, productName=%s, styleCode=%s, size=%s, orderCount=%s, productMainImage=%s, color=%s]",
 				orderCode, membeCode, memberId, orderDate, paymentAmount, paymentState, deliveryCode, buyConfirmState,
 				recipient, zipCode, address, detailAddress, tel, productCode, productName, styleCode, size, orderCount,
-				productMainImage);
+				productMainImage, color);
 	}
-	
+
+
+
 
 }
