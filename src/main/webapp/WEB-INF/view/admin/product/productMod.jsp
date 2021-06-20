@@ -60,7 +60,7 @@
 						</div>
 						<div class="form_section_content">
 							<select name="brand" class="brand">
-								<option selected="selected" value="${products.brand}">${products.brand.brandName}</option>
+								<option selected="selected" value="${products.brand.brandCode}">${products.brand.brandName}</option>
 							</select>
 						</div>
 					</div>
@@ -69,13 +69,10 @@
 						<div class="form_section_title">
 							<label>성별</label>
 						</div>
+						
 						<div class="form_section_content">
-							<select name="gender" class="form_select_option">
-								<option selected="selected" value="">옵션을 선택해주세요</option>
-								<option value="WOMEN">WOMEN</option>						
-								<option value="MEN">MEN</option>						
-								<option value="ALL">ALL</option>
-								<option value="KIDS">KIDS</option>
+							<select name="gender" class="gender">
+								<option selected="selected" value="${products.gender}">${products.gender}</option>
 							</select>
 						</div>
 					</div>
@@ -86,7 +83,7 @@
 						</div>
 						<div class="form_section_content">
 							<select name="category" class="category">
-								<option selected="selected" value="">카테고리를 선택해주세요</option>
+								<option selected="selected" value="${products.category.productCategoryCode}">${products.category.category}</option>
 							</select>
 						</div>
 					</div>
@@ -210,12 +207,15 @@
 	
 	// 브랜드 셀렉트 박스에 데이터 삽입
 	var brandSelect = $("select.brand")
-
+	
 	for(var i = 0; i < brandArr.length; i++) {
-		brandSelect.append("<option value='" + brandArr[i].brandCode + "'>"
-	      + brandArr[i].brandName + "</option>"); 
+		if ('${products.brand.brandCode}' != brandArr[i].brandCode){			
+			brandSelect.append("<option value='" + brandArr[i].brandCode + "'>"
+		      + brandArr[i].brandName + "</option>"); 
+		}		
 	}
 
+	
 	// 컨트롤러에서 카테고리 데이터 받기
 	var jsonData = JSON.parse('${categoryList}');
 	console.log(jsonData);
@@ -235,8 +235,10 @@
 	var categorySelect = $("select.category")
 
 	for(var i = 0; i < categoryArr.length; i++) {
-		categorySelect.append("<option value='" + categoryArr[i].productCategoryCode + "'>"
-	      + categoryArr[i].category + "</option>"); 
+		if('${products.category.productCategoryCode}' !=  categoryArr[i].productCategoryCode) {
+			categorySelect.append("<option value='" + categoryArr[i].productCategoryCode + "'>"
+		      + categoryArr[i].category + "</option>");
+		}
 	}
 	
 	// 컨트롤러에서 직원 데이터 받기
@@ -253,6 +255,29 @@
 		employeeObj.empName = jsonData[i].empName;
 		employeeArr.push(employeeObj);	 
 	}
+	
+	// 직원 셀렉트 박스에 데이터 삽입
+	var employeeSelect = $("select.employee")
+
+	for(var i = 0; i < employeeArr.length; i++) {
+		employeeSelect.append("<option value='" + employeeArr[i].empNumber + "'>" + employeeArr[i].empNumber + " : "
+	      + employeeArr[i].empName + "</option>"); 
+	}
+	
+	// 성별 박스에 데이터 삽입
+	var genderSelect = $("select.gender")
+	
+	genderArr = new Array();
+	genderArr[0] = "WOMEN";
+	genderArr[1] = "MEN";
+	genderArr[2] = "ALL";
+	genderArr[3] = "KIDS";
+	
+	for(var i = 0; i < genderArr.length; i++) {
+		if('${products.gender}'.toUpperCase() !=  genderArr[i]) {
+		genderSelect.append("<option value='" + genderArr[i] + "'>" + genderArr[i] + "</option>");			
+		}	
+	}	
 	
 </script>
 

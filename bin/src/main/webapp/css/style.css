@@ -5,28 +5,34 @@
 
 /* Google Web Fonts CDN */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+button{
+	cursor: pointer;
+}
+
 body *{
 	padding: 0;
 	margin: 0;
 }
+
 body{
 	font-family: 'Noto Sans KR', sans-serif;
 }
 header{
 	position: fixed;
+	z-index: 10000;
 	height: 8em;
 	min-width: 1300px;
     top: 0;
     left: 0;
     right: 0;
     background-color: #ffffff;
-    border-bottom: 2px solid #e9e9e9;
+    border-bottom: 1px solid #e9e9e9;
     /* 배경색은 구분용 최종으론 아마도 흰색? */
 }
 
 section{
 	/* 내용들어갈때 패딩탑 줘야 헤더랑 영역 구분됨 */
-	padding-top: 125px
+	padding-top: 150px
 }
 
 
@@ -66,20 +72,23 @@ a{
 
 /* footer */
 footer{
-	padding:2em;
-	padding-top:0;
-	padding-bottom: 1em;
+	padding:3em;
+	padding-top:1em;
+	padding-bottom: 2em;
 	background: #e9e9e9;
+	/* 이상하면 여기 지워야함 */
+	position: relative;
+    bottom: 0;
 }
 footer *{
 	text-align:center;
-	color: #808080;
+	color: #a5a5a5;
 }
 
 .footer-list{
 	column-count: 4;
 	column-rule-width: 2px;
-	column-rule-style: dotted;
+	column-rule-style: solid;
 	column-rule-color: #fff;
 	column-gap: 6em;
 }
@@ -90,4 +99,5 @@ footer div{
 .bottom{
 	margin:auto;
 	margin-top: 2em;
+
 }

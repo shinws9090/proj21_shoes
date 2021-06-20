@@ -43,8 +43,8 @@ insert into product values
 	(11111,'카시안 다크브라운 샌들',1,'men',555,'천연(소)가죽','S/S',now(),178000,124900,now(),1,1,101),
 	(22222,'팀버랜드 프리미엄',3,'men',777,'레더','S/S',now(),258000,246000,now(),1,1,101),
 	(33333,'큐빅 블링 스퀘어뮬',4,'women',111,'합성섬유+천연소가죽','여름',now(),69000,59000,now(),1,1,101),
-	(55555,'척70하이',5,'all',888,'면','사계절',now(),1250000,105000,now(),1,1,101),
-	(66666,'비-쿨',6,'all',666,'니트 메쉬','여름',now(),94000,84000,now(),1,1,101);
+	(55555,'척70하이',5,'free',888,'면','사계절',now(),1250000,105000,now(),1,1,101),
+	(66666,'비-쿨',6,'free',666,'니트 메쉬','여름',now(),94000,84000,now(),1,1,101);
 
 insert into productpost values
 	(11111,'DrMartin1-main.jpg','닥터마틴 샌들'),
@@ -77,11 +77,11 @@ insert into grade values
 	(5,'FAMILY');
 
 insert into memberdetail values
-	('aaa','rootroot','테스트1',true,now(),'test1@test.co.kr','010-111-8888','12345','국채보상로 438','서구 치과의원'),
-	('bbb','rootroot','테스트2',true,now(),'test2@test.co.kr','010-222-7777','12345','동대구로 386','킹덤 오피스텔 지하 1층'),
-	('ccc','rootroot','테스트3',true,now(),'test3@test.co.kr','010-333-6666','12345','상화로 373','비둘기 아파트 2단지'),
-	('ddd','rootroot','테스트4',true,now(),'test4@test.co.kr','010-666-5555','12345','서대구로 30','맨투맨 빌딩 4층'),
-	('eee','rootroot','테스트5',true,now(),'test5@test.co.kr','010-999-3333','12345','안심로90길 22','해피키즈 유치원');
+	('aaa',password('rootroot'),'테스트1',true,now(),'test1@test.co.kr','010-111-8888','12345','국채보상로 438','서구 치과의원'),
+	('bbb',password('rootroot'),'테스트2',true,now(),'test2@test.co.kr','010-222-7777','12345','동대구로 386','킹덤 오피스텔 지하 1층'),
+	('ccc',password('rootroot'),'테스트3',true,now(),'test3@test.co.kr','010-333-6666','12345','상화로 373','비둘기 아파트 2단지'),
+	('ddd',password('rootroot'),'테스트4',true,now(),'test4@test.co.kr','010-666-5555','12345','서대구로 30','맨투맨 빌딩 4층'),
+	('eee',password('rootroot'),'테스트5',true,now(),'test5@test.co.kr','010-999-3333','12345','안심로90길 22','해피키즈 유치원');
 
 insert into `member` values
 	(111111,'aaa',1000,0,5,false,now()),

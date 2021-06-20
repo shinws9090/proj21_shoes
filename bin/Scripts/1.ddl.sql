@@ -83,9 +83,9 @@ CREATE TABLE sinabro.order (
 	member_code       INT         NULL     COMMENT '회원코드', -- 회원코드
 	order_date        DATETIME    NOT NULL COMMENT '주문일', -- 주문일
 	payment_amount    INT         NOT NULL COMMENT '결제금액', -- 결제금액
-	payment_state     BOOLEAN     NOT NULL COMMENT '결제여부', -- 결제여부
+	payment_state     BOOL    	  NOT NULL DEFAULT false COMMENT '결제여부', -- 결제여부
 	delivery_code     VARCHAR(50) NULL     COMMENT '배송코드', -- 배송코드
-	buy_confirm_state BOOLEAN     NOT NULL COMMENT '구매확정여부' -- 구매확정여부
+	buy_confirm_state BOOL        NOT NULL DEFAULT false COMMENT '구매확정여부' -- 구매확정여부
 )
 COMMENT '주문정보';
 
@@ -114,7 +114,9 @@ ALTER TABLE sinabro.orderProduct
 	ADD CONSTRAINT PK_orderProduct -- 주문상품 기본키
 		PRIMARY KEY (
 			order_code,   -- 주문코드
-			product_code  -- 상품코드
+			product_code,  -- 상품코드
+			style_code,  -- 스타일코드
+			size  -- 사이즈
 		);
 
 -- 상품주문정보
@@ -257,7 +259,7 @@ ALTER TABLE sinabro.address
 -- 상품게시글
 CREATE TABLE sinabro.productPost (
 	product_code       INT           NOT NULL COMMENT '상품코드', -- 상품코드
-	product_main_image LONGBLOB      NOT NULL COMMENT '상품대표이미지', -- 상품대표이미지
+	product_main_image VARCHAR(50)   NOT NULL COMMENT '상품대표이미지', -- 상품대표이미지
 	content            VARCHAR(2000) NULL     COMMENT '내용' -- 내용
 )
 COMMENT '상품게시글';

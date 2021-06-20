@@ -54,10 +54,35 @@
 	<select id="BrandByAll" resultType="Brand">
 		select * from brand
 	</select>
+	<select id="brandBySel" resultType="Brand">
+		select * from brand 
+		<if test="code != 'ALL'">
+			where brand_eng_name like concat(#{code},'%')
+		</if>
+	</select>
 	
 	<select id="OrderOptionByCode" resultType="OrderOption" parameterType="int">
 		select * from orderoption where product_code = #{code}
 	</select>
+	
+	<select id="OrderOptionByStyle" resultType="OrderOption" parameterType="int">
+		select * from orderoption where product_code = #{param2} and style_code =#{param1}
+	</select>
+	
+	<select id="OrderOptionBy3" resultType="OrderOption" parameterType="int">
+		select * from orderoption where product_code = #{param2} and style_code =#{param1} and size = #{param3}
+	</select>
+	<update id="updateOrderOptionStock" parameterType="OrderProduct">
+		update orderoption set stock= stock-#{orderCount} 
+		where product_code = #{orderOption.productCode} and style_code =#{orderOption.styleCode} and size = #{orderOption.size}
+	</update>
+	
+	<update id="updateCumulativeSellCount" parameterType="OrderProduct">
+		update product set cumulative_sell_count = cumulative_sell_count+#{orderCount} 
+		where product_code = #{orderOption.productCode}
+	</update>
+	
+	
 	
 	<select id="productByAll" resultMap="ProductList">
 		<include refid="selProductList" />
@@ -80,6 +105,7 @@
 	
 	<select id="productBycommand" resultMap="ProductList" parameterType="ProductSelectCommend">
 		<include refid="selProductList" />
+		<if test="main ==null">
 			<where>
 				<if test="gender !=null">
 					and gender = #{gender}
@@ -91,26 +117,53 @@
 					and p.brand_code = #{brandCode}
 				</if>
 			</where>
+		</if>
+			<if test="main !=null">
+				<if test="main=='new'">
+					order by cumulative_sell_count desc
+					limit 4
+				</if>
+				<if test="main=='best'">
+					order by regist_date desc
+					limit 4
+				</if>
+			</if>
+	</select>
+	
+	<resultMap type="Product" id="OnlyProductList">
+		<id column="product_code" property="productCode" />
+		<association property="brand" javaType="Brand" />
+		<association property="category" javaType="Category" />
+	</resultMap>	
+	
+	<select id="productByOnlyProuct" resultMap="OnlyProductList">
+		select *
+		  from product p
+		  join brand b on p.brand_code = b.brand_code
+		  join category c on c.product_category_code =p.product_category_code
 	</select>
 	
 	<insert id="insertProduct" parameterType="Product">
 		insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, 
 							made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number)
 		values (#{productCode}, #{productName}, #{brand.brandCode}, #{gender}, #{category.productCategoryCode}, #{material}, #{season}, 
-				#{madeDate}, #{costPrice}, #{sellPrice}, #{registDate}, #{cumulativeRegistCount}, #{cumulativeSellCount}, #{employee.empNumber})
+				now(), #{costPrice}, #{sellPrice}, now(), #{cumulativeRegistCount}, #{cumulativeSellCount}, #{employee.empNumber})
 	</insert>
 	
-	<update id="updateProduct" parameterType="Product">
-		update product set product_name = #{productName}, brand_code = #{brand.brandCode}, gender = #{gender}, 
+	<update id="updateProduct">
+		update product 
+		set product_name = #{productName}, brand_code = #{brand.brandCode}, gender = #{gender}, 
 							product_category_code = #{category.productCategoryCode}, material = #{material}, season = #{season}, made_date = #{madeDate}, costPrice = #{costPrice}, sell_Price = #{sellPrice}, regist_date = #{registDate}, 
 							cumulative_regist_count = #{cumulativeRegistCount}, cumulative_sell_count = #{cumulativeSellCount}, emp_number = #{employee.empNumber}
-		 where product_code = #{productCode}
+		where product_code = #{productCode}
 	</update>
 
 	<delete id="deleteProduct">
 		delete from product
 		 where product_code = #{productCode}
 	</delete>
+	
+	
 
 
 </mapper>
