@@ -264,7 +264,7 @@
 	      + employeeArr[i].empName + "</option>"); 
 	}
 	
-	// 성별 박스에 데이터 삽입
+	// 성별 데이터 준비
 	var genderSelect = $("select.gender")
 	
 	genderArr = new Array();
@@ -273,6 +273,7 @@
 	genderArr[2] = "ALL";
 	genderArr[3] = "KIDS";
 	
+	// 성별 데이터 박스에 삽입
 	for(var i = 0; i < genderArr.length; i++) {
 		if('${products.gender}'.toUpperCase() !=  genderArr[i]) {
 		genderSelect.append("<option value='" + genderArr[i] + "'>" + genderArr[i] + "</option>");			
