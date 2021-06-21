@@ -75,4 +75,9 @@ public class MvcConfig implements WebMvcConfigurer {
 		return multipartResolver;
 	}
 	
+	@Bean
+	public String uploadPath() {
+		return "C:\\workspace_web\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\proj21_shoes\\images";
+	}
+	
 }

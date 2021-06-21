@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="proj21_shoes.mapper.ImageMapper">
+	
+	<insert id="insertImage" parameterType="Image">
+		insert into image (product_code, image)
+			 values (#{productCode}, #{image})
+	</insert>
+	
+	<update id="updateImage" parameterType="Image">
+		update image
+		   set image = #{image}
+		 where product_code = #{productCode}
+	</update>
+	
+	<delete id="deleteImage">
+		delete from image
+		 where product_code = #{productCode}
+	</delete>
+	
+</mapper>

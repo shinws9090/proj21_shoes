@@ -24,6 +24,14 @@
 <link rel="stylesheet"
 	href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+$(function(){
+	var contextPath = "<%=request.getContextPath()%>";
+		$('#cancel').on("click", function(e) {
+			history.back();
+		});			
+});
+</script>
 </head>
 <body class="main-layout">
 
@@ -183,7 +191,7 @@
 					
 					<div class="btn_section">
 						<button type="submit" id="new">추가</button>
-						<button id="cancel">취소</button>
+						<button type="button" id="cancel">취소</button>
 					</div>
 
 				</form>

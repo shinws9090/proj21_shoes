@@ -25,6 +25,7 @@
 <script type="text/javascript">
 	$(function() {
 		var contextPath = "<%= request.getContextPath()%>";
+		
 		var productCode = ${productCode};
 		$.get(contextPath + "/api/productMgt/"+productCode,
 			function(json) {
@@ -40,10 +41,9 @@
 					sCont += "<td>" + json.sellPrice + "</td>";
 					sCont += "<td>" + json.registDate + "</td>";
 					sCont += "<td>" + json.cumulativeRegistCount + "</td>";
-					sCont += "<td>" + json.cumulativeSellCount + "</td>";
-					
-					sCont += "<td><a href='update?productCode=" + json.productCode + "'>[수정]</a></td>";
-					sCont += "<td><a href='${contextPath}/admin/product/productDel'>[삭제]</a></td>";
+					sCont += "<td>" + json.cumulativeSellCount + "</td>";					
+					sCont += "<td><a href='${contextPath}/admin/product/productMod?productCode=" + json.productCode + "'>[수정]</a></td>";
+					sCont += "<td><a href='${contextPath}/admin/product/productDel?productCode=" + json.productCode + "'>[삭제]</a></td>";
 					sCont += "</tr>";
 				$("#load:last-child").append(sCont);
 		});

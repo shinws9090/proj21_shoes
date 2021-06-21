@@ -1,11 +1,13 @@
 <%@ page import="com.sun.xml.internal.bind.CycleRecoverable.Context"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.time.LocalDateTime"%>
 <%@ taglib prefix="tf" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="contextPath" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +24,15 @@
 <link rel="stylesheet"
 	href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+$(function(){
+	var contextPath = "<%=request.getContextPath()%>";
+		$('#cancel').on("click", function(e) {
+			history.back();
+		});			
+});
+</script>
+
 </head>
 <body class="main-layout">
 	<!-- header -->
@@ -93,7 +104,7 @@
 							<label>소재</label>
 						</div>
 						<div class="form_section_content">
-							<input name="material" value="소재">
+							<input name="material" value="${products.material}">
 						</div>
 					</div>
 
@@ -102,7 +113,7 @@
 							<label>계절</label>
 						</div>
 						<div class="form_section_content">
-							<input name="season" value="계절">
+							<input name="season" value="${products.season}">
 						</div>
 					</div>
 
@@ -111,7 +122,7 @@
 							<label>제조일</label>
 						</div>
 						<div class="form_section_content">
-							<input type="date" name="madeDate">
+							<input type="date" name="madeDate" value="${products.madeDate}">
 						</div>
 					</div>
 
@@ -120,7 +131,7 @@
 							<label>공급가격</label>
 						</div>
 						<div class="form_section_content">
-							<input name="costPrice" value="50000">
+							<input name="costPrice" value="${products.costPrice}">
 						</div>
 					</div>
 
@@ -129,16 +140,19 @@
 							<label>판매가격</label>
 						</div>
 						<div class="form_section_content">
-							<input name="sellPrice" value="60000">
+							<input name="sellPrice" value="${products.sellPrice}">
 						</div>
 					</div>
 
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>등록일</label>
+							<label>수정일</label>
 						</div>
 						<div class="form_section_content">
-							<input type="date" name="registDate">
+							<c:set var="now" value="<%=LocalDateTime.now()%>" />
+							<input type="date" name="registDate"
+								value='<tf:formatDateTime value="${now}" pattern = "yyyy-MM-dd" />'
+								readonly="readonly">
 						</div>
 					</div>
 
@@ -147,7 +161,7 @@
 							<label>누적등록수량</label>
 						</div>
 						<div class="form_section_content">
-							<input name="cumulativeRegistCount" value="1">
+							<input name="cumulativeRegistCount" value="${products.cumulativeRegistCount}">
 						</div>
 					</div>
 
@@ -156,24 +170,24 @@
 							<label>누적판매수량</label>
 						</div>
 						<div class="form_section_content">
-							<input name="cumulativeSellCount" value="1">
+							<input name="cumulativeSellCount" value="${products.cumulativeSellCount}">
 						</div>
 					</div>
 
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>등록사원정보</label>
+							<label>수정사원정보</label>
 						</div>
 						<div class="form_section_content">
 							<select name="employee" class="employee">
-								<option selected="selected" value="">등록사원을 선택해주세요</option>
+								<option selected="selected" value="${products.employee.empNumber}">${products.employee.empNumber} : ${products.employee.empName}</option>
 							</select>
 						</div>
 					</div>
 					
 					<div class="btn_section">
-						<button type="submit" id="new">추가</button>
-						<button id="cancel">취소</button>
+						<button type="submit" id="new">수정</button>
+						<button type="button" id="cancel">취소</button>
 					</div>
 
 				</form>
@@ -260,8 +274,11 @@
 	var employeeSelect = $("select.employee")
 
 	for(var i = 0; i < employeeArr.length; i++) {
+		if ('${products.employee.empNumber}' != employeeArr[i].empNumber) {
 		employeeSelect.append("<option value='" + employeeArr[i].empNumber + "'>" + employeeArr[i].empNumber + " : "
-	      + employeeArr[i].empName + "</option>"); 
+	      + employeeArr[i].empName + "</option>");
+		}
+		
 	}
 	
 	// 성별 데이터 준비
