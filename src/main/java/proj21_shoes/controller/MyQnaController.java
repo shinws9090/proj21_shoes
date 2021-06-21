@@ -37,18 +37,47 @@ public class MyQnaController {
 			System.out.println("리스트 없당");
 			//throw new ListNotFoundException();
 		}
+	
 		
 //		MemberDetail member =mdtService.getMemberDetail(memberId);
 		session.setAttribute("member", member);
 		session.setAttribute("myQnaList", myQnaList);  // 요고 해줘야 jsp 에서 받을수 있당
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("myQnaList",myQnaList);
+		mav.addObject("member",member);
+
 	//	mav.setViewName("myPage/qna/{memberId}");
 		System.out.println(myQnaList);
 		
 		return "/myPage/myQnA";
 		
 	}
+	//문의내역 상세보기
+	@GetMapping("/myPage/myQnADetail/{memberId}/{boardCode}")
+	public String myQnaDetail(@PathVariable("memberId") String memberId, @PathVariable("boardCode") int boardCode,HttpSession session,HttpServletResponse response) {
+		System.out.println("memberId>>"+ memberId );
+		System.out.println("boardCode>>"+ boardCode );
+		MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
+		MyQnaCommand myQnADetail =myQnaService.selectbyBoardCode(boardCode);
+
+		if(myQnADetail ==null) {
+			System.out.println("리스트 없당");
+			//throw new ListNotFoundException();
+		}
+		
+//		MemberDetail member =mdtService.getMemberDetail(memberId);
+		session.setAttribute("member", member);
+		session.setAttribute("myQnADetail", myQnADetail);  // 요고 해줘야 jsp 에서 받을수 있당
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("myQnADetail",myQnADetail);
+		mav.addObject("member",member);
+		mav.setViewName("/myPage/myQnADetail");
+		System.out.println(myQnADetail);
+		
+		return "/myPage/myQnADetail";
+		
+	}
+	
 	
 	
 	

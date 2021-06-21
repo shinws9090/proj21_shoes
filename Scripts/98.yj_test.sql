@@ -2,6 +2,8 @@ desc memberdetail ;
 select  * from memberdetail;
 select  * from  member;
 
+select board_code, member_code, member_id, product_code, product_name, title, content, regist_date from vw_myqna where member_id='1234';
+
 
 select * from vw_myorderdata where order_code=10006;
 
@@ -79,6 +81,7 @@ where  member_id ='33' and  member_name='김예진' and email ='chamdodari@gmail
 
 /*111124*/
 
+select * from product;
 
 select * from member;
 
@@ -87,6 +90,7 @@ select * from member;
 select board_code, -- 게시판코드
 member_code,	   -- 회원코드 (member)
 product_code,  		-- 상품코드 (productPost) 상품게시글에이:ㅆ음
+(select product_name from product where product_code=11111)as product_name,
 title, 				-- 제목
 content, 			-- 내용
 reply, 				-- 답글
@@ -149,7 +153,20 @@ from `order` where order_code = 10001 and member_code=111111 ;
 
  select  order_code, member_code, member_id, order_date, payment_amount, payment_state, delivery_code, buy_confirm_state, recipient, zipCode, address, detail_address, tel, product_code, product_name, style_code, `size`, order_count, product_main_image from vw_myOrderData where member_id='aaa';
 
-
+-- - 예진_ 나의 문의사항 뷰 --
+create or replace view  vw_myQnA as
+select 
+q.board_code ,
+q.member_code ,
+m.member_id ,
+q.product_code ,
+pd.product_name ,
+q.title ,
+q.content ,
+q.regist_date 
+from qna as q 
+left join product as pd on q.product_code =pd. product_code 
+left join member as m on q.member_code =m.member_code ;
 
 -- ---예진_ 마이페이지  나의주문내역 확인용  뷰   최종-------------------------------------------------------------------------------------------------------------------------------------------------------
 create or replace view  vw_myOrderData as
@@ -211,3 +228,22 @@ create or replace view  vw_mypageData as
 		   m.point,m.cumulative_buy_amount,g.grade, m.signUp_date -- 탈퇴여부 뺌
 from memberdetail  md left join member m  on md.member_id =m.member_id  left join grade g on m.grade_code =g.grade_code ;
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- 3. 예진_ 마이페이지 나의 문의사항 뷰 최종(안씀-> 써야함 ㅠ 안그러면 매개변수 두개넣어야해)) -------------------------------------------------------------------------------------------------------------------------------------------------------
+create or replace view  vw_myQnA as
+select 
+q.board_code ,      -- 게시판코드
+q.member_code ,	    -- 회원코드
+m.member_id ,		-- 회원ID
+q.product_code ,	-- 상품코드
+pd.product_name ,	-- 상품명
+pp.product_main_image, -- 상품대표이미지
+q.title ,			-- 문의제목
+q.content ,			-- 문의내용
+q.reply ,			-- 답글
+q.regist_date 		-- 등록일
+from qna as q 
+left join product as pd on q.product_code =pd. product_code 
+left join member as m on q.member_code =m.member_code 
+left join productpost as pp on q.product_code = pp.product_code;
+-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------

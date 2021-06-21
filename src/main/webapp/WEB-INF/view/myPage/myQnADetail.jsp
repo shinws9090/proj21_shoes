@@ -52,30 +52,30 @@
 					</tr>		
 				</table>
 		
-				<h4>${authInfo.memberName }님의 최근 상품문의내역</h4>
+				<h4>문의내역 상세보기</h4>
 				<br>
-				<table class="tbl_type" border="1">
-				<tr>
-				
-					<td>문의상품</td>
-					<td>상품사진</td>
-					<td>제목</td>						
-					<td>작성일</td>
-					<td>답변유무</td>
+				<table  class="tbl_type" border="1"> 
+				<tr><td>${myQnADetail.productName } </td></tr>
+				<tr><td>	<img style="max-width:20%; max-height: 20%; "  alt="" src="${contextPath}/images/${myQnADetail.productMainImage }"></td></tr>
 
+				
+				</table>
+					<br>
+				<table class="tbl_type" border="1">
+				<tr>	
+					<td>문의제목 : ${myQnADetail.title }   (${myQnADetail.registDate })</td>	
+								
 				</tr>
-				<c:forEach var="myQna" items="${myQnaList }">
-				<tr>
-			<%-- 	<td><a href="${contextPath}/myPage/myQnADetail/${authInfo.memberId}/${myQna.boardCode}">${myQna.boardCode }</a></td> <!-- 문의코드 --> --%>
 			
-				<td><a href="${contextPath}/myPage/myQnADetail/${myQna.memberId}/${myQna.boardCode}">${myQna.productName }</a></td>	<!-- 상품명 -->
-				<td><a href="${contextPath}/myPage/myQnADetail/${myQna.memberId}/${myQna.boardCode}"><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myQna.productMainImage }"></a></td>				<td><a href="${contextPath}/myPage/myQnADetail/${myQna.memberId}/${myQna.boardCode}">${myQna.title }</a></td>	<!-- 제목 -->
-	<%-- 			<td>${myQna.content }</td>		<!-- 내용 --> --%>
-				<td>${myQna.registDate }</td>	<!-- 작성일 -->
-				<td>${myQna.resOX }</td>
+				<tr>
+			
+ 			<td>문의내용 : ${myQnADetail.content }</td>		<!-- 내용 -->
 				
 				</tr>
-				</c:forEach>
+				<tr>
+				<td>답변 : ${myQnADetail.reply }</td>
+				</tr>
+				
 	</table>
 					<!-- 좌측목록 테이블 -->
 				<table  style=" display:inline;  margin-left: 20px; margin-bottom: 20px; margin-top: 20px;">
