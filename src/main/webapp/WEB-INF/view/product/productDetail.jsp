@@ -131,7 +131,38 @@
 					</c:forEach>
 					<p>상품설명 : ${product.productPost.content}</p>
 				</div>
-				<div class='product-review'>상품후기</div>
+				<div class='product-review'>
+				<img src="../images/review_detailpage.jpg">
+				
+				<section id="articleForm">
+				<h2>상품 Review</h2>
+				<p>* </p><table class="table">
+			<thead>
+				<tr>
+					<th>No.</th>
+					<th>주문번호</th>
+					<th>사진</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>등록일</th>
+				</tr>
+				</thead>
+				</table>
+			
+		<article id="basicInfoArea">
+			
+		</article>
+		<article id="articleContentArea">
+			${article.review_content}
+		</article>
+		</section>
+		<section id="commandList">
+			<a href="reviewReplyForm.do?board_code=${article.board_code}&page=${page}"> [답변] </a> 
+			<a href="reviewModifyForm.do?board_code=${article.board_code}&page=${page}"> [수정] </a> 
+			<a href="reviewDeleteForm.do?board_code=${article.board_code}&page=${page}"> [삭제] </a>
+			<a href="reviewList.do?page=${page}">[목록]</a>&nbsp;&nbsp;
+		</section>
+		</div>
 				<div class='product-QnA'>상품문의</div>
 			</div>
 		</div>

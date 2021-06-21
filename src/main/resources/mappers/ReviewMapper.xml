@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="proj21_shoes.mapper.ReviewMapper">
+
+
+	<resultMap type="ReView" id="resReView" >
+
+		<id property="boardCode" column="board_code"/>
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="registDate" column="regist_Date" />
+		<association property="orderCode" resultMap="proj21_shoes.mapper.OrderMapper.resOrder"/>
+		<collection property="reviewImages" resultMap="resImage"/>
+	</resultMap>
+	
+	<resultMap type="ReviewImage" id="resImage"/>
+		
+
+	<select id="selectReviewByMemberId" resultMap="resReView">
+		select *
+		from review r
+		join `order` o on o.order_code = r.order_code
+		join `member` m on o.member_code = m.member_code
+		join memberdetail m2 on m.member_id = m2.member_id
+		join reviewimage r2 on r.board_code = r2.board_code
+		where m.member_id = #{memberId};
+	</select>
+	
+</mapper>
