@@ -46,6 +46,22 @@
 			<c:if test="${!empty authInfo}">
 							<h1>회원 탈퇴</h1>
 				
+				
+				<!-- 좌측메뉴 -->
+			
+				<article id="my_menu">
+				<h3>회원정보</h3>
+				<a href="${contextPath}/myPage/myPageSel/${member.memberId}">-회원정보 조회 / 변경</a><br>
+				<a href="${contextPath}/myPage/quitMember/${member.memberId}">-회원탈퇴</a>
+				<br>
+				<h3>나의 쇼핑정보</h3>
+				<a href="${contextPath}/myPage/myOrder/${member.memberId}">-주문내역</a><br>
+				<a href="${contextPath}/myPage/myQnA/${member.memberId}">-문의내역</a><br>
+				<a href="${contextPath}/cartList">-장바구니</a>
+			
+				</article>
+				
+			
 				<table style="width: 80%">
 			
 			<!-- 어느 컨트롤러로? -->
@@ -86,8 +102,7 @@
 				<%-- <p>회원정보</p>
 				<li><a href="${contextPath}/myPage/changeMemberData">회원정보 변경</a></li>
 				<li><a href="${contextPath}/myPage/">회원탈퇴</a></li> --%>
-				
-				
+		
 				
 			</c:if>
 
