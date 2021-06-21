@@ -62,7 +62,7 @@
 				<h4>주문 상세내역</h4>
 				<br>
 				<table  class="tbl_type" border="1"> 
-				<tr><td>상품 이미지</td></tr>
+				<tr><td>${myOrderDetail.productName }</td></tr>
 				<tr><td>	<img style="max-width:20%; max-height: 20%; "  alt="" src="${contextPath}/images/${myOrderDetail.productMainImage }"></td></tr>
 
 				

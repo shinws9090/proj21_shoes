@@ -7,22 +7,48 @@
 
 
  	 <resultMap type="MyQnaCommand" id="resQna">			
-		<id column="board_code" property="boardCode" />									<!-- 게시판코드 -->		
-		<result column="product_code" property="productCode" />			<!-- 상품코드	 -->
-		<result column="title" property="title" />									<!-- 제목 -->
-		<result column="content" property="content" />								<!-- 네영 -->
-		<result column="reply" property="reply" />								<!-- 답글 -->
-		<result column="regist_date" property="registDate" />								<!-- 작성일 -->
-		<result column="member_id" property="memberId" />								<!-- 회원코드 -->
+		<id column="board_code" property="boardCode" />						<!-- 게시판코드 -->		
+		<result column="member_code" property="memberCode" />				<!-- 회원코드	 -->
+		<result column="member_id" property="memberId" />					<!-- 회원아이디 -->
+		<result column="product_code" property="productCode" />				<!-- 상품코드	 -->
+		<result column="product_name" property="productName" />				<!-- 상품명	 -->
+		<result column="product_main_image" property="productMainImage" />	<!-- 상품 대표이미지-->
+		<result column="title" property="title" />							<!-- 제목 -->
+		<result column="content" property="content" />						<!-- 내용 -->
+		<result column="reply" property="reply" />							<!-- 답글 -->
+		<result column="regist_date" property="registDate" />				<!-- 작성일 -->
 	</resultMap>
 	
 	 
 	<select id="selectbyId" resultMap="resQna">
+	select board_code, member_code, member_id, product_code, product_name,product_main_image, title, content, regist_date 		
+	from vw_myqna where member_id=#{memberId};
+	
+	</select>
+	<select id="selectbyBoardCode" resultMap="resQna">
+	select board_code, member_code, member_id, product_code, product_name, product_main_image, title, content, regist_date		
+	from vw_myqna where board_code=#{boardCode};
+	
+	</select> 
+	 
+	 
+	 <!-- select만으로 하려했던것 ㅠ -->
+<!-- 	<select id="selectbyId" resultMap="resQna">
 	select board_code, 
-	member_code,product_code, title,content,reply,regist_date 		
+	member_code,product_code,
+	(select product_name from product where product_code=#{productCode})as product_name,
+	 title,content,reply,regist_date 		
 	from qna where member_code =(select member_code from member where member_id =#{memberId}) ;
 	
 	</select>
+	<select id="selectbyBoardCode" resultMap="resQna">
+	select board_code, 
+	member_code,product_code,
+	(select product_name from product where product_code=#{productCode})as product_name,
+	 title,content,reply,regist_date 		
+	from qna where member_code =(select member_code from member where board_code =#{board_Code}) ;
+	
+	</select> -->
 	
 </mapper>
 

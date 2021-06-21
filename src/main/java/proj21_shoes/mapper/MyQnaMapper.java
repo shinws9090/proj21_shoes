@@ -14,6 +14,7 @@ public interface MyQnaMapper {
 	//~로 검색  (모든 조건으로 검색할수있어야??)
 	//MyQnaCommand selectbyId(Member member);					//회원아이디로
 	List<MyQnaCommand> selectbyId(String member);					//회원아이디로
+	MyQnaCommand selectbyBoardCode(int boardCode);					//게시판코드로
 //MyQnaCommand selectMemberById(String memberId);					//회원아이디로 검색
 	
 	

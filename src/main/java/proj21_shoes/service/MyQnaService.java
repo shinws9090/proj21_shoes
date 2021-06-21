@@ -9,6 +9,7 @@ import proj21_shoes.commend.MyQnaCommand;
 public interface MyQnaService {
 	
 	List<MyQnaCommand> selectbyId(String member);					//회원아이디로
+	MyQnaCommand selectbyBoardCode(int boardCode);					//게시판코드로
 
 
 }
