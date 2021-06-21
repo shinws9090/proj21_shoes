@@ -43,10 +43,7 @@ import proj21_shoes.service.ProductService;
 @Controller
 public class AdminController {
 	protected static final Logger logger = LoggerFactory.getLogger(AdminController.class);
-	
-	@Resource(name="uploadPath")
-	private String uploadPath;
-	
+
 	@Autowired
 	private BrandService brandService;
 
