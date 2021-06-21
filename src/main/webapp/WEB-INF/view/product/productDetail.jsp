@@ -157,7 +157,7 @@
 								</tr>
 							-->
 						
-							<c:forEach items="${resReView }" var="resReView" varStatus="status">
+							<c:forEach items="${reviewList }" var="resReView" varStatus="status">
 							<tr>		
 								<td><c:out value="${resReView.boardCode }"></c:out></td>
 								<td><c:out value="${resReView.orderCode }"></c:out></td>
