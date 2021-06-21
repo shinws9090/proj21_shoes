@@ -136,26 +136,46 @@
 				
 				<section id="articleForm">
 				<h2>상품 Review</h2>
-				<p>* </p><table class="table">
-			<thead>
-				<tr>
-					<th>No.</th>
-					<th>주문번호</th>
-					<th>사진</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>등록일</th>
-				</tr>
-				</thead>
-				</table>
-			
-		<article id="basicInfoArea">
-			
-		</article>
-		<article id="articleContentArea">
-			${article.review_content}
-		</article>
-		</section>
+				<p>* </p><table class="table" border="1">
+							<tbody>
+								<tr>
+									<th scope="row">No.</th>
+									<th scope="row">주문번호</th>
+									<th scope="row">사진</th>
+									<th scope="row">제목</th>
+									<th scope="row">작성자</th>
+									<th scope="row">등록일</th>
+								</tr>
+									<!-- 
+								<tr>
+								<td class="ta-c">1</td>
+								<td class="ta-c">1</td>
+								<td class="ta-c">1</td>
+								<td class="ta-c">1</td>
+								<td class="ta-c">1</td>
+								<td class="ta-c">1</td>
+								</tr>
+							-->
+						
+							<c:forEach items="${resReView }" var="resReView" varStatus="status">
+							<tr>		
+								<td><c:out value="${resReView.boardCode }"></c:out></td>
+								<td><c:out value="${resReView.orderCode }"></c:out></td>
+								<td><c:out value="${resReView.reviewImages }"></c:out></td>
+								<td><c:out value="${resReView.title }"></c:out></td>
+								<td><c:out value="${resReView.memberId }"></c:out></td>
+								<td><c:out value="${resReView.registDate }"></c:out></td>
+							</tr>
+								 
+					</c:forEach>
+					
+					</tbody>
+							</table>
+
+
+						<article id="articleContentArea">
+							${article.review_content}</article>
+					</section>
 		<section id="commandList">
 			<a href="reviewReplyForm.do?board_code=${article.board_code}&page=${page}"> [답변] </a> 
 			<a href="reviewModifyForm.do?board_code=${article.board_code}&page=${page}"> [수정] </a> 
