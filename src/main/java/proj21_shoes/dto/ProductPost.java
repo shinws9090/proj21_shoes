@@ -71,4 +71,9 @@ public class ProductPost { // 상품게시글
 				productMainImage, content, images);
 	}
 
+	public void setProductMainImage(Object transferTo) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

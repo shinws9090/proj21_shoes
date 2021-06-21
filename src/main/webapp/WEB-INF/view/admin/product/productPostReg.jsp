@@ -46,7 +46,7 @@ $(function(){
 
 		<div class="admin_content_wrap">
 			<div class="admin_content_main">
-				<form id="productPostRegForm" method="post" autocomplete="off">
+				<form id="productPostRegForm" method="post" autocomplete="off" enctype="multipart/form-data">
 
 					<div class="form_section">
 						<div class="form_section_title">
@@ -97,9 +97,22 @@ $(function(){
 							<label>상품이미지들</label>
 						</div>
 						<div class="form_section_content">
-							<input name="images">
+							<input type="file" id="images" name="images" />
+							<div class="select_imgs"><img src="" /></div>					
 						</div>
 					</div>
+					
+					<script>
+						$("#images").change(function(){
+							if(this.files && this.files[0]) {
+								var reader = new FileReader;
+								reader.onload = function(data) {
+									$(".select_imgs img").attr("src", data.target.result).width(500);        
+								}
+								reader.readAsDataURL(this.files[0]);
+							}
+						});
+					</script>
 					
 					<div class="btn_section">
 						<button type="submit" id="new">추가</button>

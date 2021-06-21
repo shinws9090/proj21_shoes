@@ -1,10 +1,14 @@
 package proj21_shoes.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -18,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.sf.json.JSONArray;
@@ -38,7 +43,10 @@ import proj21_shoes.service.ProductService;
 @Controller
 public class AdminController {
 	protected static final Logger logger = LoggerFactory.getLogger(AdminController.class);
-
+	
+	@Resource(name="uploadPath")
+	private String uploadPath;
+	
 	@Autowired
 	private BrandService brandService;
 
@@ -162,86 +170,46 @@ public class AdminController {
 	
 	@PostMapping("/admin/product/productPostReg")
 	@Transactional
-	public String postProductPostRegister(HttpServletRequest request, MultipartFile file, Model model) {
+	public String postProductPostRegister(MultipartHttpServletRequest request, MultipartFile file, Model model) throws IOException, Exception {
 		System.out.println("상품판매글등록실행");
-
-		ProductPost productpost = new ProductPost();
-		productpost.setProductCode(Integer.parseInt(request.getParameter("productCode")));
-		productpost.setProductMainImage("productMainImage");
-		productpost.setContent("content");
-		List<Image> list = new ArrayList<Image>();
-		productpost.setImages(list);
-//		productpost.setProductCode(Integer.parseInt(request.getParameter("productCode")));
-//		productpost.setProductMainImage(request.getParameter("productMainImage"));
-//		productpost.setContent(request.getParameter("content"));
 		
-		Image image = new Image();
-		image.setProductCode(Integer.parseInt(request.getParameter("productCode")));
-		image.setImage("image");
+		ProductPost productpost = new ProductPost();		
+		productpost.setProductCode(Integer.parseInt(request.getParameter("productCode")));
+		productpost.setContent("content");
+		
+		String pathMainImage = request.getSession().getServletContext().getRealPath("/") + "images/";
+		MultipartFile mf = request.getFile("productMainImage");
+		UUID uuid = UUID.randomUUID();
+		String savedName = uuid.toString() + "_" + mf.getOriginalFilename();
+		File savedFile = new File(pathMainImage + savedName);
+		mf.transferTo(savedFile);
+		productpost.setProductMainImage(savedName);
 		
 		System.out.println(productpost);
 		productPostService.insertProductPost(productpost);
 		
+		System.out.println("메인이미지 등록");
+		
+		Image image = new Image();
+		image.setProductCode(Integer.parseInt(request.getParameter("productCode")));
+		
+		String imageFolder = request.getParameter("productCode");
+		System.out.println("imageFolder : " + imageFolder);
+		
+		String pathImages = request.getSession().getServletContext().getRealPath("/") + "images/" + imageFolder + "/";
+		System.out.println("pathImages : " + pathImages);
+		
+		MultipartFile mfs = request.getFile("images");
+		String savedNames = uuid.toString() + "_" + mfs.getOriginalFilename();
+		File savedFiles = new File(pathImages + savedNames);
+		mfs.transferTo(savedFiles);
+		image.setImage(savedNames);		
+				
 		System.out.println(image);
-		imageService.insertImage(image);
-	
+		imageService.insertImage(image);	
 		
 		return "redirect:/admin/productPostMgt";
 	}
-
-	/*
-	 * @PostMapping("/productReg")
-	 * 
-	 * public String newProduct(HttpServletRequest request, MultipartFile file)
-	 * throws IOException, Exception {
-	 * System.out.println(Integer.parseInt(request.getParameter("productCode")));
-	 * 
-	 * Product product = new Product();
-	 * product.setProductCode(Integer.parseInt(request.getParameter("productCode")))
-	 * ; product.setProductName(request.getParameter("productName"));
-	 * product.setBrand(new Brand(Integer.parseInt(request.getParameter("brand"))));
-	 * product.setGender(request.getParameter("gender")); product.setCategory(new
-	 * Category(Integer.parseInt(request.getParameter("category"))));
-	 * product.setMaterial(request.getParameter("material"));
-	 * product.setSeason(request.getParameter("season"));
-	 * product.setMadeDate(LocalDateTime.now());
-	 * product.setCostPrice(Integer.parseInt(request.getParameter("costPrice")));
-	 * product.setSellPrice(Integer.parseInt(request.getParameter("sellPrice")));
-	 * product.setRegistDate(LocalDateTime.now());
-	 * product.setCumulativeRegistCount(Integer.parseInt(request.getParameter(
-	 * "cumulativeRegistCount")));
-	 * product.setCumulativeSellCount(Integer.parseInt(request.getParameter(
-	 * "cumulativeSellCount"))); product.setEmployee(new
-	 * Employee(Integer.parseInt(request.getParameter("employee"))));
-	 * 
-	 * ProductPost productpost = new ProductPost();
-	 * productpost.setProductCode(Integer.parseInt(request.getParameter(
-	 * "productCode")));
-	 * productpost.setProductMainImage(request.getParameter("productMainImage"));
-	 * productpost.setContent(request.getParameter("content"));
-	 * 
-	 * String uploadPath =
-	 * "C:\\workspace_web\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\proj21_shoes\\";
-	 * 
-	 * String imgUploadPath = uploadPath + File.separator + "imgUpload"; String
-	 * ymdPath = UploadFileUtils.calcPath(imgUploadPath); String fileName = null;
-	 * 
-	 * if (file != null) { fileName = UploadFileUtils.fileUpload(imgUploadPath,
-	 * file.getOriginalFilename(), file.getBytes(), ymdPath); } else { fileName =
-	 * uploadPath + File.separator + "images" + File.separator + "none.png"; }
-	 * 
-	 * productpost.setProductMainImage(File.separator + "imgUpload" + ymdPath +
-	 * File.separator + fileName);
-	 * 
-	 * List<Image> list = new ArrayList<Image>(); productpost.setImages(list);
-	 * 
-	 * System.out.println(product); productService.insertProduct(product);
-	 * 
-	 * System.out.println(productpost);
-	 * productPostService.insertProductPost(productpost);
-	 * 
-	 * return "redirect:productMgt"; }
-	 */
 
 	@GetMapping("/admin/product/productMod")
 	public void productModify(@RequestParam(value = "productCode") int productCode, Model model) {

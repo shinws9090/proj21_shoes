@@ -259,7 +259,7 @@ ALTER TABLE sinabro.address
 -- 상품게시글
 CREATE TABLE sinabro.productPost (
 	product_code       INT           NOT NULL COMMENT '상품코드', -- 상품코드
-	product_main_image VARCHAR(50)   NOT NULL COMMENT '상품대표이미지', -- 상품대표이미지
+	product_main_image VARCHAR(500)   NOT NULL COMMENT '상품대표이미지', -- 상품대표이미지
 	content            VARCHAR(2000) NULL     COMMENT '내용' -- 내용
 )
 COMMENT '상품게시글';
@@ -343,7 +343,7 @@ ALTER TABLE sinabro.grade
 CREATE TABLE sinabro.image (
 	image_code   INT         NOT NULL COMMENT '이미지코드', -- 이미지코드
 	product_code INT         NOT NULL COMMENT '상품코드', -- 상품코드
-	image        VARCHAR(30) NOT NULL COMMENT '이미지' -- 이미지
+	image        VARCHAR(500) NOT NULL COMMENT '이미지' -- 이미지
 )
 COMMENT '상품이미지';
 
@@ -361,7 +361,7 @@ ALTER TABLE sinabro.image
 CREATE TABLE sinabro.reviewImage (
 	image_code INT         NOT NULL COMMENT '이미지코드', -- 이미지코드
 	board_code INT         NOT NULL COMMENT '게시판코드', -- 게시판코드
-	image      VARCHAR(30) NOT NULL COMMENT '이미지' -- 이미지
+	image      VARCHAR(500) NOT NULL COMMENT '이미지' -- 이미지
 )
 COMMENT '후기이미지';
 
