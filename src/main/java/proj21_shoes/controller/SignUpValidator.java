@@ -10,12 +10,12 @@ import proj21_shoes.commend.RegisterRequest;
 
 
 
-public class RegisterRequestValidator implements Validator { // dto에 있는 항목들(이름,이메일,패스워드.패스워드확인 등 모두 점검하겠당
+public class SignUpValidator implements Validator { // dto에 있는 항목들(이름,이메일,패스워드.패스워드확인 등 모두 점검하겠당
 
 	private static final String emailRegExp = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 	private Pattern pattern;
 
-	public RegisterRequestValidator() {
+	public SignUpValidator() {
 		this.pattern = Pattern.compile(emailRegExp);
 	}
 

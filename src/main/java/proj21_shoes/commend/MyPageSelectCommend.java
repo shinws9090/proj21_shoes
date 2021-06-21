@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 import proj21_shoes.dto.Grade;
 import proj21_shoes.dto.MemberDetail;
@@ -23,7 +24,6 @@ public class MyPageSelectCommend {
 	private String zipCode; 		// 	우편번호
 	private String address; 		// 	주소
 	private String detailAddress;	// 	상세주소
-	
 	private int point; 					//	 포인트
 	private int cumulativeBuyAmount;	// 	누적구매금액
 	private String grade;				// 	등급
@@ -115,8 +115,10 @@ public class MyPageSelectCommend {
 		this.detailAddress = detailAddress;
 	}
 
-	public int getPoint() {
-		return point;
+
+	public String getPoint() {
+		String point2 = java.text.NumberFormat.getInstance().format(point);
+		return point2;
 	}
 
 	public void setPoint(int point) {
@@ -150,6 +152,28 @@ public class MyPageSelectCommend {
 	public MyPageSelectCommend(String memberId) {
 		super();
 		this.memberId = memberId;
+	}
+	
+	
+
+	public MyPageSelectCommend(String memberId, String memberPwd, String memberName, String gender, LocalDate birthday,
+			String email, String tel, String zipCode, String address, String detailAddress, int point,
+			int cumulativeBuyAmount, String grade, LocalDateTime signUpDate) {
+		super();
+		this.memberId = memberId;
+		this.memberPwd = memberPwd;
+		this.memberName = memberName;
+		this.gender = gender;
+		this.birthday = birthday;
+		this.email = email;
+		this.tel = tel;
+		this.zipCode = zipCode;
+		this.address = address;
+		this.detailAddress = detailAddress;
+		this.point = point;
+		this.cumulativeBuyAmount = cumulativeBuyAmount;
+		this.grade = grade;
+		this.signUpDate = signUpDate;
 	}
 
 	@Override

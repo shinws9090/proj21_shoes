@@ -1,8 +1,9 @@
 desc memberdetail ;
 select  * from memberdetail;
-select  * from  member;
+select  * from  member where member_id ='1234';
 
-select board_code, member_code, member_id, product_code, product_name, title, content, regist_date from vw_myqna where member_id='1234';
+select board_code, member_code, member_id, product_code, product_name, title, content, regist_date from vw_myqna 
+where member_id='1234' and product_code is not null;
 
 
 select * from vw_myorderdata where order_code=10006;
@@ -21,6 +22,25 @@ from memberdetail where member_id ='123' and member_pwd = password('123123');
 
 
 	
+
+111124
+
+
+insert into qna (member_code, product_code, title, content, reply, regist_date)values
+	(111124,null,'질문 있습니다.','추천 해주세요','이 상품은 어떠신가요?',now()),
+	(111124,null,'재고 있나요?','사이즈 240인데, 품절이길래 질문 남깁니다.','입고 예정입니다',now()),
+	(111124,null,'발볼 때문에 사이즈가 고민 됩니다','발볼이 넓어서요','반 사이즈 크게 추천드려요',now()),
+	(111124,null,'수선 가능할까요?','뒷꿈치가 좀 헐렁해서요','가능합니다',now()),
+	(111124,null,'쿠션감이 충분한가요?','쿠션이 어느정도인지 모르겠어요','충분히 있어서 불편하지 않아요',now());
+
+
+
+
+
+
+
+
+
 	-- 등급, 회원상세정보, 회원정보
 insert into grade values
 	(1,'등급');
