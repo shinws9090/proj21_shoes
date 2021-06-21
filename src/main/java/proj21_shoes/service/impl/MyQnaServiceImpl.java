@@ -20,4 +20,9 @@ public class MyQnaServiceImpl implements MyQnaService {
 		return mapper.selectbyId(member);
 	}
 
+	@Override
+	public MyQnaCommand selectbyBoardCode(int boardCode) {
+		return mapper.selectbyBoardCode(boardCode);
+	}
+
 }
