@@ -74,9 +74,14 @@
 				</article>
 				
 			
-				<h4>문의내역 상세보기</h4>
+				<h4> 상품문의내역 상세보기</h4>
 				<br>
+				<table  class="tbl_type" border="1"> 
+				<tr><td>${myQnADetail.productName } </td></tr>
+				<tr><td>	<img style="max-width:20%; max-height: 20%; "  alt="" src="${contextPath}/images/${myQnADetail.productMainImage }"></td></tr>
+
 				
+				</table>
 					<br>
 				<table class="tbl_type" border="1">
 				<tr>	

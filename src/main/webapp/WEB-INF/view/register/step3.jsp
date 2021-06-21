@@ -8,6 +8,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="contextPath" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,28 +67,22 @@
 	<div id="signUpForm">
 		<section id="signUpForm">
 
-
+			<fieldset>
 			<h2>회원가입이 완료되었습니다.</h2>
-			<c:forEach var="memberDetail" items="${members}">
-				<tr>
-					<td>${memberDetail.memberId }</td>
-					<td>${memberDetail.memberName }</td>
-					<td>${memberDetail.gender }</td>
-					<td>${memberDetail.email }</td>
-					<td>${memberDetail.tel }</td>
-					<td><a href="#">[상세보기]</a></td>	
-					<td><a href="#">[수정]</a>&nbsp;
-						<a href="#">[삭제]</a></td>
-				</tr>
-			</c:forEach>
-
-
+			<a>아이디 > ${newMember.memberId }</a>
+			<a>이름 > ${newMember.memberName }</a>
+			<a>이메일 > ${newMember.email }</a>
+			
+			</fieldset>
 			<%-- <form action="step4" method="post">
 				<!-- 일로 보내조 -->
 				<input type="submit" value="다음단계" />
 				<!--다음단계  -->
 
 			</form> --%>
+			<a href="${contextPath}/index">메인으로</a>
+			
+			
 			<form action="../index" method="get">
 				<input type="submit" value="메인으로" />
 			</form>

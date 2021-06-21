@@ -92,10 +92,11 @@
 				
 				</tr>
 				</c:forEach>
-	</table>
-	
+	</table> 	
+	<article id="myData_btn">
+			<a href="${contextPath}/myPage/qnaRegist">일반문의하기(기능안넣음)</a>
 			
-				
+	</article>
 			
 				
 			</c:if>
