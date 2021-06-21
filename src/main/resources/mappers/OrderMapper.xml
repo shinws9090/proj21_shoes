@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="proj21_shoes.mapper.OrderMapper">
-
+	
+		<resultMap type="Order" id="resOrder">
+			<id property="orderCode" column="order_code"/>
+			<association property="memberCode" resultMap="proj21_shoes.mapper.MemberMapper.resMember"/>
+			<association property="address"/>
+			<collection property="orderProduct" resultMap="resOrPr"/>
+		</resultMap>
+		
+		<resultMap type="OrderProduct" id="resOrPr">
+			<association property="orderOption" javaType="OrderOption"/>
+		</resultMap>
+	
+	<select id="selectOrderList" resultMap="resOrder">
+		select * 
+			from `order` o
+			join `member` m on o.member_code = m.member_code
+			join address a2 on a2.order_code = o.order_code 
+			join orderproduct o2 on o.order_code = o2.order_code ;
+	</select>
+	
+	
 	<insert id="insertOrder" parameterType="Order">
 		insert into `order`(member_code, order_date, payment_amount) values
 			(#{memberCode.memberCode},#{orderDate},#{paymentAmount})
