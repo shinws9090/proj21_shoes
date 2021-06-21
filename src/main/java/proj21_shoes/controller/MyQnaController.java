@@ -28,9 +28,11 @@ public class MyQnaController {
 	
 	//@Autowired
 	
-	@GetMapping("/myPage/myQnA/{memberId}")
-	public String myQnaBoard(@PathVariable("memberId") String memberId,HttpSession session,HttpServletResponse response) {
-		List<MyQnaCommand> myQnaList =myQnaService.selectbyId(memberId);
+	
+	//상품문의내역 페이지
+	@GetMapping("/myPage/myProductQnA/{memberId}")
+	public String myProductQnABoard(@PathVariable("memberId") String memberId,HttpSession session,HttpServletResponse response) {
+		List<MyQnaCommand> myQnaList =myQnaService.selectProductQnAbyId(memberId);
 		MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
 
 		if(myQnaList ==null) {
@@ -49,16 +51,18 @@ public class MyQnaController {
 	//	mav.setViewName("myPage/qna/{memberId}");
 		System.out.println(myQnaList);
 		
-		return "/myPage/myQnA";
+		return "/myPage/myProductQnA";
 		
 	}
-	//문의내역 상세보기
-	@GetMapping("/myPage/myQnADetail/{memberId}/{boardCode}")
-	public String myQnaDetail(@PathVariable("memberId") String memberId, @PathVariable("boardCode") int boardCode,HttpSession session,HttpServletResponse response) {
+	
+	
+	//상품문의상세내역 페이지
+	@GetMapping("/myPage/myProductQnADetail/{memberId}/{boardCode}")
+	public String myProductQnADetail(@PathVariable("memberId") String memberId, @PathVariable("boardCode") int boardCode,HttpSession session,HttpServletResponse response) {
 		System.out.println("memberId>>"+ memberId );
 		System.out.println("boardCode>>"+ boardCode );
 		MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
-		MyQnaCommand myQnADetail =myQnaService.selectbyBoardCode(boardCode);
+		MyQnaCommand myQnADetail =myQnaService.selectProductQnAbyBoardCode(boardCode);
 
 		if(myQnADetail ==null) {
 			System.out.println("리스트 없당");
@@ -71,10 +75,60 @@ public class MyQnaController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("myQnADetail",myQnADetail);
 		mav.addObject("member",member);
-		mav.setViewName("/myPage/myQnADetail");
+		mav.setViewName("/myPage/myProductQnADetail");
 		System.out.println(myQnADetail);
 		
-		return "/myPage/myQnADetail";
+		return "/myPage/myProductQnADetail";
+		
+	}
+	//일반문의내역 페이지
+		@GetMapping("/myPage/myNormalQnA/{memberId}")
+		public String myNormalQnABoard(@PathVariable("memberId") String memberId,HttpSession session,HttpServletResponse response) {
+			List<MyQnaCommand> myQnaList =myQnaService.selectNormalQnAbyId(memberId);
+			MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
+
+			if(myQnaList ==null) {
+				System.out.println("리스트 없당");
+				//throw new ListNotFoundException();
+			}
+		
+			
+//			MemberDetail member =mdtService.getMemberDetail(memberId);
+			session.setAttribute("member", member);
+			session.setAttribute("myQnaList", myQnaList);  // 요고 해줘야 jsp 에서 받을수 있당
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("myQnaList",myQnaList);
+			mav.addObject("member",member);
+
+		//	mav.setViewName("myPage/qna/{memberId}");
+			System.out.println(myQnaList);
+			
+			return "/myPage/myNormarQnA";
+			
+		}
+	//일반문의상세내역 페이지
+	@GetMapping("/myPage/myNormalQnADetail/{memberId}/{boardCode}")
+	public String myNormarQnADetail(@PathVariable("memberId") String memberId, @PathVariable("boardCode") int boardCode,HttpSession session,HttpServletResponse response) {
+		System.out.println("memberId>>"+ memberId );
+		System.out.println("boardCode>>"+ boardCode );
+		MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
+		MyQnaCommand myQnADetail =myQnaService.selectNormalQnAbyBoardCode(boardCode);
+
+		if(myQnADetail ==null) {
+			System.out.println("리스트 없당");
+			//throw new ListNotFoundException();
+		}
+		
+//		MemberDetail member =mdtService.getMemberDetail(memberId);
+		session.setAttribute("member", member);
+		session.setAttribute("myQnADetail", myQnADetail);  // 요고 해줘야 jsp 에서 받을수 있당
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("myQnADetail",myQnADetail);
+		mav.addObject("member",member);
+		mav.setViewName("/myPage/myNormalQnADetail");
+		System.out.println(myQnADetail);
+		
+		return "/myPage/myNormalQnADetail";
 		
 	}
 	
