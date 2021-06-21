@@ -66,18 +66,16 @@
 				<br>
 				<h3>나의 쇼핑정보</h3>
 				<a href="${contextPath}/myPage/myOrder/${member.memberId}">-주문내역</a><br>
-				<a href="${contextPath}/myPage/myQnA/${member.memberId}">-문의내역</a><br>
+				<a href="${contextPath}/myPage/myProductQnA/${member.memberId}">-상품문의내역</a><br>
+				<a href="${contextPath}/myPage/myNormalQnA/${member.memberId}">-일반문의내역</a><br>
 				<a href="${contextPath}/cartList">-장바구니</a>
 			
 				</article>
 	
-				<h4>${authInfo.memberName }님의 최근 상품문의내역</h4>
+				<h4>${authInfo.memberName }님의 최근 일반문의내역</h4>
 				<br>
 				<table class="tbl_type" border="1">
 				<tr>
-				
-					<td>문의상품</td>
-					<td>상품사진</td>
 					<td>제목</td>						
 					<td>작성일</td>
 					<td>답변유무</td>
@@ -87,9 +85,8 @@
 				<tr>
 			<%-- 	<td><a href="${contextPath}/myPage/myQnADetail/${authInfo.memberId}/${myQna.boardCode}">${myQna.boardCode }</a></td> <!-- 문의코드 --> --%>
 			
-				<td><a href="${contextPath}/myPage/myQnADetail/${myQna.memberId}/${myQna.boardCode}">${myQna.productName }</a></td>	<!-- 상품명 -->
-				<td><a href="${contextPath}/myPage/myQnADetail/${myQna.memberId}/${myQna.boardCode}"><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myQna.productMainImage }"></a></td>				<td><a href="${contextPath}/myPage/myQnADetail/${myQna.memberId}/${myQna.boardCode}">${myQna.title }</a></td>	<!-- 제목 -->
-	<%-- 			<td>${myQna.content }</td>		<!-- 내용 --> --%>
+			
+				<td><a href="${contextPath}/myPage/myNormalQnADetail/${myQna.memberId}/${myQna.boardCode}">${myQna.title }</a></td>	<!-- 작성일 -->
 				<td>${myQna.registDate }</td>	<!-- 작성일 -->
 				<td>${myQna.resOX }</td>
 				

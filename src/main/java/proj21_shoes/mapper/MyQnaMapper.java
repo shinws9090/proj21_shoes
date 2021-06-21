@@ -11,11 +11,17 @@ public interface MyQnaMapper {
 										
 //	List<MyQnaCommand> selectMyQnaAll();	
 									
-	//~로 검색  (모든 조건으로 검색할수있어야??)
-	//MyQnaCommand selectbyId(Member member);					//회원아이디로
-	List<MyQnaCommand> selectbyId(String member);					//회원아이디로
-	MyQnaCommand selectbyBoardCode(int boardCode);					//게시판코드로
-//MyQnaCommand selectMemberById(String memberId);					//회원아이디로 검색
+	
+	
+	//상품문의내역만 검색
+	List<MyQnaCommand> selectProductQnAbyId(String member);					//회원아이디로
+	MyQnaCommand selectProductQnAbyBoardCode(int boardCode);					//게시판코드로
+	
+	//일반문의내역만 검색
+	List<MyQnaCommand> selectNormalQnAbyId(String member);					//회원아이디로
+	MyQnaCommand selectNormalQnAbyBoardCode(int boardCode);					//게시판코드로
+	
+	
 	
 	
 //	int insertMember(MyQnaCommand req); 		 					//문의내ㅇ

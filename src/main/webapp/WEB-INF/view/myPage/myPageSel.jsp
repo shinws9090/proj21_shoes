@@ -65,7 +65,8 @@
 				<br>
 				<h3>나의 쇼핑정보</h3>
 				<a href="${contextPath}/myPage/myOrder/${member.memberId}">-주문내역</a><br>
-				<a href="${contextPath}/myPage/myQnA/${member.memberId}">-문의내역</a><br>
+				<a href="${contextPath}/myPage/myProductQnA/${member.memberId}">-상품문의내역</a><br>
+				<a href="${contextPath}/myPage/myNormalQnA/${member.memberId}">-일반문의내역</a><br>
 				<a href="${contextPath}/cartList">-장바구니</a>
 			
 				</article>
