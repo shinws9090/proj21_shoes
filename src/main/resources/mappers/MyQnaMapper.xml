@@ -19,17 +19,33 @@
 		<result column="regist_date" property="registDate" />				<!-- 작성일 -->
 	</resultMap>
 	
+	<!-- 상품문의만!!  (상품코드 입력해서문의했을떄) -->
 	 
-	<select id="selectbyId" resultMap="resQna">
+	<select id="selectProductQnAbyId" resultMap="resQna">
 	select board_code, member_code, member_id, product_code, product_name,product_main_image, title, content, regist_date 		
-	from vw_myqna where member_id=#{memberId};
+	from vw_myqna where member_id=#{memberId} and product_code is not null;
 	
 	</select>
-	<select id="selectbyBoardCode" resultMap="resQna">
+	<select id="selectProductQnAbyBoardCode" resultMap="resQna">
 	select board_code, member_code, member_id, product_code, product_name, product_main_image, title, content, regist_date		
-	from vw_myqna where board_code=#{boardCode};
-	
+	from vw_myqna where board_code=#{boardCode} and product_code is not null;
+	<!-- 상품문의만!!  (상품코드 입력해서문의했을떄) -->
 	</select> 
+	
+		<select id="selectNormalQnAbyId" resultMap="resQna">
+	select board_code, member_code, member_id, product_code, product_name,product_main_image, title, content, regist_date 		
+	from vw_myqna where member_id=#{memberId} and product_code is null;
+	
+	</select>
+	<select id="selectNormalQnAbyBoardCode" resultMap="resQna">
+	select board_code, member_code, member_id, product_code, product_name, product_main_image, title, content, regist_date		
+	from vw_myqna where board_code=#{boardCode} and product_code is null;
+	<!-- 상품문의만!!  (상품코드 입력해서문의했을떄) -->
+	</select> 
+	
+	
+	
+	
 	 
 	 
 	 <!-- select만으로 하려했던것 ㅠ -->

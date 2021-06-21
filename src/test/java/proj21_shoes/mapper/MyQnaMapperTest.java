@@ -39,7 +39,7 @@ public class MyQnaMapperTest {
 	@Test
 	public void test01SelectbyId() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-		List<MyQnaCommand> myQnaList = mapper.selectbyId("1234");
+		List<MyQnaCommand> myQnaList = mapper.selectProductQnAbyId("1234");
 	//	System.out.println("myQna>>>"+ myQnaList);
 		
 		Assert.assertNotNull(myQnaList);

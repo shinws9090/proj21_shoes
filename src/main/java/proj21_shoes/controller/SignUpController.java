@@ -2,6 +2,8 @@ package proj21_shoes.controller;
 
 import java.time.LocalDateTime;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,7 @@ import proj21_shoes.service.RegisterMemberDetailService;
 import proj21_shoes.service.RegisterMemberService;
 
 @Controller
-public class RegisterMemberDetailController {
+public class SignUpController {
 	@Autowired
 	private RegisterMemberDetailService memberService;
 	@Autowired
@@ -50,7 +52,7 @@ public class RegisterMemberDetailController {
 
 	@Transactional
 	@PostMapping("/register/step3")
-	public String handleStep3(@Valid RegisterRequest regReq,Errors errors) {
+	public String handleStep3(@Valid RegisterRequest regReq,Errors errors, HttpSession session, HttpServletResponse response) {
 		// 커맨드 객체(RegisterRequest 객체) 검증		
 		if (errors.hasErrors()) { //에러 있으면
 			System.out.println(1);
@@ -75,6 +77,9 @@ public class RegisterMemberDetailController {
 			memberService.regist(newMember);
 			memberDetailService.regist(newMember2); //객체로 담아서 넣어줘야한당
 
+			session.setAttribute("newMember", newMember);
+			
+			
 			return "/register/step3";
 		} catch (DuplicateMemberException e) {
 			errors.rejectValue("memberId", "duplicate");
