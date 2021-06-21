@@ -24,6 +24,14 @@
 <link rel="stylesheet"
 	href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+$(function(){
+	var contextPath = "<%=request.getContextPath()%>";
+		$('#cancel').on("click", function(e) {
+			history.back();
+		});			
+});
+</script>
 </head>
 <body class="main-layout">
 
@@ -38,14 +46,14 @@
 
 		<div class="admin_content_wrap">
 			<div class="admin_content_main">
-				<form id="productPostRegForm" method="post" enctype="multipart/form-data" autocomplete="off">
+				<form id="productPostRegForm" method="post" autocomplete="off">
 
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>상품코드</label>
 						</div>
 						<div class="form_section_content">
-							<select name="product" class="product">
+							<select name="productCode" class="productCode">
 								<option selected="selected" value="">판매상품을 선택해주세요</option>
 							</select>
 						</div>
@@ -95,7 +103,7 @@
 					
 					<div class="btn_section">
 						<button type="submit" id="new">추가</button>
-						<button id="cancel">취소</button>
+						<button type="button" id="cancel">취소</button>
 					</div>
 
 				</form>
@@ -128,7 +136,7 @@
 	}
 	
 	// 상품 셀렉트 박스에 데이터 삽입
-	var productSelect = $("select.product")
+	var productSelect = $("select.productCode")
 
 	for(var i = 0; i < productArr.length; i++) {
 		productSelect.append("<option value='" + productArr[i].productCode + "'>" + productArr[i].productCode + " : " 

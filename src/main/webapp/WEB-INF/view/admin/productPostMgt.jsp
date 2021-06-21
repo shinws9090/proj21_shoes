@@ -31,7 +31,7 @@
 					sCont += "<td>" + json[i].productName + "</td>";
 					sCont += "<td>" + json[i].productMainImage + "</a></td>";
 					sCont += "<td>" + json[i].content + "</td>";
-					sCont += "<td><a href='read?productCode=" + json[i].productCode + "'>" + "[상세보기]" + "</a></td>";
+					sCont += "<td><a href='productDetailMgt?productCode=" + json[i].productCode + "'>" + "[상세보기]" + "</a></td>";
 					sCont += "</tr>";
 				}
 				$("#load:last-child").append(sCont);

@@ -16,6 +16,17 @@ select emp_number, emp_name, authority_code, emp_id, email, tel_number from empl
 
 select * from product;
 select * from productpost;
+select * from image;
+
+insert into image (product_code, image)
+	values (11112, "11112.jpg")
+	
+update image
+		   set image = "11112.jpg"
+		 where product_code = 11112;
+
+delete from image
+		 where product_code = 11112;		
 
 select brand_code, brand_name, brand_eng_name from brand;
 

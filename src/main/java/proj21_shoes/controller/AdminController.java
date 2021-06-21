@@ -2,6 +2,7 @@ package proj21_shoes.controller;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,11 +24,14 @@ import net.sf.json.JSONArray;
 import proj21_shoes.dto.Brand;
 import proj21_shoes.dto.Category;
 import proj21_shoes.dto.Employee;
+import proj21_shoes.dto.Image;
 import proj21_shoes.dto.Product;
+import proj21_shoes.dto.ProductPost;
 import proj21_shoes.service.BrandService;
 import proj21_shoes.service.CategoryService;
 import proj21_shoes.service.EmployeeService;
 import proj21_shoes.service.GetMemberDetailListService;
+import proj21_shoes.service.ImageService;
 import proj21_shoes.service.ProductPostService;
 import proj21_shoes.service.ProductService;
 
@@ -48,6 +53,9 @@ public class AdminController {
 
 	@Autowired
 	private ProductPostService productPostService;
+	
+	@Autowired
+	private ImageService imageService;
 
 	@Autowired
 	private GetMemberDetailListService memListService;
@@ -85,7 +93,7 @@ public class AdminController {
 	 * mav.setViewName("/admin/product/productReg"); return mav; }
 	 */
 
-	@RequestMapping("/admin/read") // 제품상세 화면
+	@RequestMapping("/admin/productDetailMgt") // 제품상세 화면
 	public ModelAndView productDetail(@RequestParam(value = "productCode") long productCode) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("productCode", productCode);
@@ -151,6 +159,35 @@ public class AdminController {
 		model.addAttribute("productList", JSONArray.fromObject(productList));
 
 	}
+	
+	@PostMapping("/admin/product/productPostReg")
+	@Transactional
+	public String postProductPostRegister(HttpServletRequest request, MultipartFile file, Model model) {
+		System.out.println("상품판매글등록실행");
+
+		ProductPost productpost = new ProductPost();
+		productpost.setProductCode(Integer.parseInt(request.getParameter("productCode")));
+		productpost.setProductMainImage("productMainImage");
+		productpost.setContent("content");
+		List<Image> list = new ArrayList<Image>();
+		productpost.setImages(list);
+//		productpost.setProductCode(Integer.parseInt(request.getParameter("productCode")));
+//		productpost.setProductMainImage(request.getParameter("productMainImage"));
+//		productpost.setContent(request.getParameter("content"));
+		
+		Image image = new Image();
+		image.setProductCode(Integer.parseInt(request.getParameter("productCode")));
+		image.setImage("image");
+		
+		System.out.println(productpost);
+		productPostService.insertProductPost(productpost);
+		
+		System.out.println(image);
+		imageService.insertImage(image);
+	
+		
+		return "redirect:/admin/productPostMgt";
+	}
 
 	/*
 	 * @PostMapping("/productReg")
@@ -207,9 +244,7 @@ public class AdminController {
 	 */
 
 	@GetMapping("/admin/product/productMod")
-	public void getProductModify(@RequestParam("n") int productCode,  Model model) {
-		System.out.println("상품수정페이지");
-
+	public void productModify(@RequestParam(value = "productCode") int productCode, Model model) {
 		Product products = productService.productByCode(productCode);
 		model.addAttribute("products", products);
 
@@ -221,26 +256,41 @@ public class AdminController {
 
 		List<Employee> employeeList = employeeService.employeeList();
 		model.addAttribute("employeeList", JSONArray.fromObject(employeeList));
+
+	}
+
+	@PostMapping("/admin/product/productMod")
+	public String postProductModify(HttpServletRequest request, MultipartFile file) {
+		System.out.println("상품수정실행");
+
+		Product product = new Product();
+		product.setProductCode(Integer.parseInt(request.getParameter("productCode")));
+		product.setProductName(request.getParameter("productName"));
+		product.setBrand(new Brand(Integer.parseInt(request.getParameter("brand"))));
+		product.setGender(request.getParameter("gender"));
+		product.setCategory(new Category(Integer.parseInt(request.getParameter("category"))));
+		product.setMaterial(request.getParameter("material"));
+		product.setSeason(request.getParameter("season"));
+		product.setMadeDate(
+				LocalDate.parse(request.getParameter("madeDate"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+		product.setCostPrice(Integer.parseInt(request.getParameter("costPrice")));
+		product.setSellPrice(Integer.parseInt(request.getParameter("sellPrice")));
+		product.setRegistDate(
+				LocalDate.parse(request.getParameter("registDate"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+		product.setCumulativeRegistCount(Integer.parseInt(request.getParameter("cumulativeRegistCount")));
+		product.setCumulativeSellCount(Integer.parseInt(request.getParameter("cumulativeSellCount")));
+		product.setEmployee(new Employee(Integer.parseInt(request.getParameter("employee"))));
+
+		productService.updateProduct(product);
+		System.out.println(product);
+
+		return "redirect:/admin/productMgt";
 	}
 	
-	@RequestMapping("/admin/update")
-	public ModelAndView productModify(@RequestParam(value = "productCode") int productCode, Model model) {
-		Product products = productService.productByCode(productCode);
-		model.addAttribute("products", products);
-
-		List<Brand> brandList = brandService.brandList();
-		model.addAttribute("brandList", JSONArray.fromObject(brandList));
-
-		List<Category> categoryList = categoryService.categoryList();
-		model.addAttribute("categoryList", JSONArray.fromObject(categoryList));
-
-		List<Employee> employeeList = employeeService.employeeList();
-		model.addAttribute("employeeList", JSONArray.fromObject(employeeList));
-		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("productCode", productCode);
-		mav.setViewName("admin/product/productMod");
-		return mav;
+	@GetMapping("/admin/product/productDel")
+	public String productDelete(@RequestParam(value = "productCode") int productCode) {
+		productService.deleteProduct(productCode);		
+		return "redirect:/admin/productMgt";
 	}
 
 }
