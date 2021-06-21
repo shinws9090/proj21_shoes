@@ -46,12 +46,33 @@
 			</c:if>
 			<c:if test="${!empty authInfo}">
 				
+						<!-- 상단 등급 바 -->
 				<table id="tbl_maGrade"> 
 					<tr id="tr_myGrade">
-						<td><h2>${member.memberName }[${member.memberId}]님의 멤버십 등급은 ${member.grade}입니다.		</h2></td><td ><a href="${contextPath}/grade/${member.memberId}">등급별 혜택 보기 〉</a></td><td> 포인트 〉 </td><td style="color: red;"> ${member.point }점 </td>
-					</tr>		
+						<td><h2>${member.memberName }[${member.memberId}]님의 멤버십 등급은 ${member.grade}입니다.	</h2>
+							<article id="myGrade_detail">
+								<a href="${contextPath}/grade/${member.memberId}">등급별 혜택 보기 〉</a>
+								포인트 〉 <a id="myPoint"> ${member.point }점 </a>
+							</article>
+						</td>
+					</tr>
 				</table>
-		
+				
+				<!-- 좌측메뉴 -->
+			
+				<article id="my_menu">
+				<h3>회원정보</h3>
+				<a href="${contextPath}/myPage/myPageSel/${member.memberId}">-회원정보 조회 / 변경</a><br>
+				<a href="${contextPath}/myPage/quitMember/${member.memberId}">-회원탈퇴</a>
+				<br>
+				<h3>나의 쇼핑정보</h3>
+				<a href="${contextPath}/myPage/myOrder/${member.memberId}">-주문내역</a><br>
+				<a href="${contextPath}/myPage/myQnA/${member.memberId}">-문의내역</a><br>
+				<a href="${contextPath}/cartList">-장바구니</a>
+			
+				</article>
+				
+			
 				<h4>문의내역 상세보기</h4>
 				<br>
 				<table  class="tbl_type" border="1"> 
@@ -76,40 +97,8 @@
 				<td>답변 : ${myQnADetail.reply }</td>
 				</tr>
 				
-	</table>
-					<!-- 좌측목록 테이블 -->
-				<table  style=" display:inline;  margin-left: 20px; margin-bottom: 20px; margin-top: 20px;">
-			
-				<tr><td>회원정보<td></td></tr>
-				<tr >
-					<td><a href="${contextPath}/myPage/myPageSel/${member.memberId}">-회원정보 조회 / 변경</a></td>
-				</tr>
-				<tr >
-					<td><a href="${contextPath}/myPage/quitMember/${member.memberId}">-회원탈퇴</a></td>
-					<td></td>
-				</tr>
-				
-				</table>
-		
-				<h1></h1>
-				<h1></h1>
-				
-		
-				<h1></h1>
-				<h1></h1>
-			<table style=" display:inline; margin-left: 20px;  margin-top :20px; margin-bottom:  20px;">
-				<tr><td>나의 쇼핑정보<td><tr>
-				<tr>
-					<td><a href="${contextPath}/myPage/myOrder/${member.memberId}">-주문내역</a></td>
-				</tr>
-				
-					<tr>
-					<td><a href="${contextPath}/myPage/myQnA/${member.memberId}">-문의내역</a></td>
-				</tr>
-				<tr>
-					<td><a href="${contextPath}/cartList">-장바구니</a></td>
-				</tr>
 			</table>
+		
 			
 				
 			

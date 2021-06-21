@@ -45,7 +45,19 @@
 				
 			</c:if>
 			<c:if test="${!empty authInfo}">
-				
+						<!-- 상단 등급 바 -->
+				<table id="tbl_maGrade"> 
+					<tr id="tr_myGrade">
+						<td><h2>${member.memberName }[${member.memberId}]님의 멤버십 등급은 ${member.grade}입니다.	</h2>
+							<article id="myGrade_detail">
+								<a href="${contextPath}/grade/${member.memberId}">등급별 혜택 보기 〉</a>
+								포인트 〉 <a id="myPoint"> ${member.point }점 </a>
+							</article>
+						</td>
+					</tr>
+				</table>
+			<!-- 좌측메뉴 -->
+			
 				<article id="my_menu">
 				<h3>회원정보</h3>
 				<a href="${contextPath}/myPage/myPageSel/${member.memberId}">-회원정보 조회 / 변경</a><br>
@@ -58,11 +70,13 @@
 			
 				</article>
 			
+			
+		
 			<div id="myData">
 				<h1>나의정보</h1>
 				<form:form action="modify" modelAttribute="memberDetail">
 				<form:errors/>
-				<table  class="tbl_myData" border="1">
+				<table  class="tbl_type" border="1">
 					<tr>
 						<td id="myData_left_td">회원아이디</td><td>${member.memberId }</td>				
 					</tr>
@@ -121,6 +135,7 @@
 				</form:form>
 				
 				</div>
+			
 				
 				
 			</c:if>

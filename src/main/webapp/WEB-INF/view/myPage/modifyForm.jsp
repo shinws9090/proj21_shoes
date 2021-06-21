@@ -123,8 +123,9 @@
 			
 				</article>
 			
-			
+	
 			<div id="myData_modify">
+			
 			<h4>회원정보 변경</h4>
 			<form:form action="/myPage/modify/${member.memberId }" modelAttribute="memberDetailUpdateCommend"><!-- 보내는거? -->
 				<table class="tbl_myData" border="1">
@@ -196,6 +197,7 @@
 
 			</form:form>
 		</div>	
+
 
 			</c:if>
 
