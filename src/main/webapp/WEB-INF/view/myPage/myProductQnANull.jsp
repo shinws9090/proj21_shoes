@@ -72,32 +72,12 @@
 			
 				</article>
 	
-				<h4>${authInfo.memberName }님의 최근 상품문의내역</h4>
+				<h4>${authInfo.memberName }님의 최근 상품문의내역은 없습니다.</h4>
 				<br>
-				<table class="tbl_type" border="1">
-				<tr>
-				
-					<td>문의상품</td>
-					<td>상품사진</td>
-					<td>제목</td>						
-					<td>작성일</td>
-					<td>답변유무</td>
-
-				</tr>
-				<c:forEach var="myQnAList" items="${myQnAList }">
-				<tr>
-			<%-- 	<td><a href="${contextPath}/myPage/myQnADetail/${authInfo.memberId}/${myQna.boardCode}">${myQna.boardCode }</a></td> <!-- 문의코드 --> --%>
-			
-				<td><a href="${contextPath}/myPage/myProductQnADetail/${myQnAList.memberId}/${myQnAList.boardCode}">${myQnAList.productName }</a></td>	<!-- 상품명 -->
-				<td><a href="${contextPath}/myPage/myProductQnADetail/${myQnAList.memberId}/${myQnAList.boardCode}"><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myQnAList.productMainImage }"></a></td>				
-				<td><a href="${contextPath}/myPage/myQnADetail/${myQnAList.memberId}/${myQnAList.boardCode}">${myQna.title }</a></td>	<!-- 제목 -->
-	<%-- 			<td>${myQna.content }</td>		<!-- 내용 --> --%>
-				<td>${myQnAList.registDate }</td>	<!-- 작성일 -->
-				<td>${myQnAList.resOX }</td>
-				
-				</tr>
-				</c:forEach>
-	</table>
+					<br>
+				<br>
+				<br>
+				<h1></h1>
 	
 			
 				

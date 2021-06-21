@@ -7,8 +7,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="<%=request.getContextPath() %>" />
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +19,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>마이페이지</title>
+
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/table.css">
@@ -57,57 +58,39 @@
 						</td>
 					</tr>
 				</table>
+				
 				<!-- 좌측메뉴 -->
 			
 				<article id="my_menu">
 				<h3>회원정보</h3>
 				<a href="${contextPath}/myPage/myPageSel/${member.memberId}">-회원정보 조회 / 변경</a><br>
 				<a href="${contextPath}/myPage/quitMember/${member.memberId}">-회원탈퇴</a>
-				<br>
-				<h3>나의 쇼핑정보</h3>
+
+				<h3>나의 쇼핑정보</h3>			
 				<a href="${contextPath}/myPage/myOrder/${member.memberId}">-주문내역</a><br>
 				<a href="${contextPath}/myPage/myProductQnA/${member.memberId}">-상품문의내역</a><br>
 				<a href="${contextPath}/myPage/myNormalQnA/${member.memberId}">-일반문의내역</a><br>
 				<a href="${contextPath}/cartList">-장바구니</a>
 			
 				</article>
-	
-				<h4>${authInfo.memberName }님의 최근 상품문의내역</h4>
+				
+		
+				<!-- 최근 주문내역 테이블  -->
+				<h4>${authInfo.memberName }님은  주문하신 내역이 없습니다.</h4>
 				<br>
-				<table class="tbl_type" border="1">
-				<tr>
 				
-					<td>문의상품</td>
-					<td>상품사진</td>
-					<td>제목</td>						
-					<td>작성일</td>
-					<td>답변유무</td>
-
-				</tr>
-				<c:forEach var="myQnAList" items="${myQnAList }">
-				<tr>
-			<%-- 	<td><a href="${contextPath}/myPage/myQnADetail/${authInfo.memberId}/${myQna.boardCode}">${myQna.boardCode }</a></td> <!-- 문의코드 --> --%>
 			
-				<td><a href="${contextPath}/myPage/myProductQnADetail/${myQnAList.memberId}/${myQnAList.boardCode}">${myQnAList.productName }</a></td>	<!-- 상품명 -->
-				<td><a href="${contextPath}/myPage/myProductQnADetail/${myQnAList.memberId}/${myQnAList.boardCode}"><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myQnAList.productMainImage }"></a></td>				
-				<td><a href="${contextPath}/myPage/myQnADetail/${myQnAList.memberId}/${myQnAList.boardCode}">${myQna.title }</a></td>	<!-- 제목 -->
-	<%-- 			<td>${myQna.content }</td>		<!-- 내용 --> --%>
-				<td>${myQnAList.registDate }</td>	<!-- 작성일 -->
-				<td>${myQnAList.resOX }</td>
-				
-				</tr>
-				</c:forEach>
-	</table>
 	
-			
+				</section>
 				
+					
 			
 				
 			</c:if>
 
 	
 	
-	</section>
+
 </div>
 	
 	<section>
