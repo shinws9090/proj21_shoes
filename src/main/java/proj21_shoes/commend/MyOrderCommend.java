@@ -10,6 +10,7 @@ public class MyOrderCommend {
 	private String memberId;		//회원아이디
 	@DateTimeFormat(pattern = "yyyyMMdd")	
 	private LocalDate orderDate; 	//주문일
+	
 	private int paymentAmount;		//결제금액
 	private boolean paymentState; 	//결제여부
 	private String deliveryCode;		//배송코드(송장번호)
@@ -86,8 +87,13 @@ public class MyOrderCommend {
 	public void setOrderDate(LocalDate orderDate) {
 		this.orderDate = orderDate;
 	}
-	public int getPaymentAmount() {
-		return paymentAmount;
+	
+	
+
+	
+	public String getPaymentAmount() {
+		String paymentAmount2 =java.text.NumberFormat.getInstance().format(paymentAmount);
+		return paymentAmount2;
 	}
 	public void setPaymentAmount(int paymentAmount) {
 		this.paymentAmount = paymentAmount;
@@ -188,6 +194,8 @@ public class MyOrderCommend {
 
 
 	
+
+
 
 
 	public MyOrderCommend(int orderCode, int membeCode, String memberId, LocalDate orderDate, int paymentAmount,

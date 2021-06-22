@@ -75,7 +75,7 @@ public class SignUpController {
 			//위에서 담은 아이디 가져와서 담기
 			Member newMember2 = new Member(newMember,1000,0,new Grade(5),false,LocalDateTime.now()); //
 			memberService.regist(newMember);
-			memberDetailService.regist(newMember2); //객체로 담아서 넣어줘야한당
+			memberDetailService.regist(newMember2); //객체로 담아서 넣어줘야한당   //객체로 담아서 넣어주면 mapper.xml 에서 dto변수명으로 사용가능! param1, param2 안해두된당
 
 			session.setAttribute("newMember", newMember);
 			

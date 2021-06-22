@@ -17,7 +17,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import proj21_shoes.commend.MyQnaCommand;
+import proj21_shoes.commend.MyQnaViewCommand;
 import proj21_shoes.config.ContextRoot;
 import proj21_shoes.dto.ProductPost;
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -39,7 +39,7 @@ public class MyQnaMapperTest {
 	@Test
 	public void test01SelectbyId() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-		List<MyQnaCommand> myQnaList = mapper.selectProductQnAbyId("1234");
+		List<MyQnaViewCommand> myQnaList = mapper.selectProductQnAbyId("1234");
 	//	System.out.println("myQna>>>"+ myQnaList);
 		
 		Assert.assertNotNull(myQnaList);

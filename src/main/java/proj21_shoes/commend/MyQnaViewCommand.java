@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class MyQnaCommand { 				// 상품문의게시판
+public class MyQnaViewCommand { 				// 상품문의게시판
 
 	private int boardCode; 		// 게시판코드
 	private String memberCode; 		// 회원코드
@@ -23,7 +23,7 @@ public class MyQnaCommand { 				// 상품문의게시판
 	
 
 
-	public MyQnaCommand() {
+	public MyQnaViewCommand() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -120,7 +120,7 @@ public class MyQnaCommand { 				// 상품문의게시판
 			}
 	}
 
-	public MyQnaCommand(int boardCode, String memberCode, String memberId, int productCode, String productName,
+	public MyQnaViewCommand(int boardCode, String memberCode, String memberId, int productCode, String productName,
 			String productMainImage, String title, String content, String reply, LocalDate registDate, String resOX) {
 		super();
 		this.boardCode = boardCode;

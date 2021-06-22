@@ -36,6 +36,7 @@ public class MyOrderController {
 		}
 		if(myOrderList ==null) {
 			System.out.println("리스트 없당");
+			return"/myPage/myOrderNull";
 		}
 		session.setAttribute("member", member);
 		session.setAttribute("myOrderList", myOrderList);  // 요고 해줘야 jsp 에서 받을수 있당

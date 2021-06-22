@@ -72,32 +72,13 @@
 			
 				</article>
 	
-				<h4>${authInfo.memberName }님의 최근 일반문의내역</h4>
+				<h4>${authInfo.memberName }님의 최근 일반문의내역은 없습니다.</h4>
 				<br>
-				<table class="tbl_type" border="1">
-				<tr>
-					<td>제목</td>						
-					<td>작성일</td>
-					<td>답변유무</td>
-
-				</tr>
-				<c:forEach var="myQnAList" items="${myQnAList }">
-				<tr>
-			<%-- 	<td><a href="${contextPath}/myPage/myQnADetail/${authInfo.memberId}/${myQna.boardCode}">${myQna.boardCode }</a></td> <!-- 문의코드 --> --%>
-			
-			
-				<td><a href="${contextPath}/myPage/myNormalQnADetail/${myQnAList.memberId}/${myQnAList.boardCode}">${myQnAList.title }</a></td>	<!-- 작성일 -->
-				<td>${myQnAList.registDate }</td>	<!-- 작성일 -->
-				<td>${myQnAList.resOX }</td>
-				
-				</tr>
-				</c:forEach>
-	</table> 	
-	<br>
-	<br>
-	<article id="myData_btn" >
-	
-			<a href="${contextPath}/myPage/normalQnARegist/1/${authInfo.memberId}">일반문의하러가기</a>
+				<br>
+				<br>
+				<h1></h1>
+	<article id="myData_btn">
+			<a href="${contextPath}/myPage/qnaRegist">일반문의하기(기능안넣음)</a>
 			
 	</article>
 			
