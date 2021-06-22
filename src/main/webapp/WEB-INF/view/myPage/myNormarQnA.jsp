@@ -97,7 +97,7 @@
 	<br>
 	<article id="myData_btn" >
 	
-			<a href="${contextPath}/myPage/normalQnARegist/1/${authInfo.memberId}">일반문의하기(기능안넣음)</a>
+			<a href="${contextPath}/myPage/normalQnARegist/1/${authInfo.memberId}">일반문의하러가기</a>
 			
 	</article>
 			

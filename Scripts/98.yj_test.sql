@@ -1,12 +1,16 @@
 desc memberdetail ;
 select  * from memberdetail;
 
+select * from qna q ;
+
 
 select  * from  member where member_id ='1234';
 
 select board_code, member_code, member_id, product_code, product_name, title, content, regist_date from vw_myqna 
 where member_id='1234';
 
+
+delete qna where board_code=21;
 
 select * from vw_myorderdata where order_code=10006;
 
