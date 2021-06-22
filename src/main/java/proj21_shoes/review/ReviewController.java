@@ -15,8 +15,8 @@ public class ReviewController {
 	@Autowired
 	private ReviewService service;
 	
-	@GetMapping("review/{memberId}")
-	public ResponseEntity<Object> review(@RequestParam(value = "memberId", required = false) String memberId){
-		return ResponseEntity.ok(service.selectReviewByMember(memberId));
+	@GetMapping("review/{productCode}")
+	public ResponseEntity<Object> review(@RequestParam(value = "productCode", required = false) String productCode){
+		return ResponseEntity.ok(service.selectReviewByProductCode(productCode));
 	}
 }

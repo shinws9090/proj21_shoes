@@ -17,8 +17,8 @@ public class ReviewServiceImpl implements ReviewService {
 	private ReviewMapper mapper;
 	
 	@Override
-	public List<ReView> selectReviewByMember(String memberId) {
-		return mapper.selectReviewByMemberId(memberId);
+	public List<ReView> selectReviewByProductCode(String productCode) {
+		return mapper.selectReviewByProductCode(productCode);
 	}
 
 	@Override
