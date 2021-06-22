@@ -45,10 +45,12 @@ order memberdetail member
 select * from review r;
 select * from `order` o ;
 
-select r.board_code, r.order_code, r2.image, r.title, m2.member_id, r.regist_date
+select *
 from review r
 join `order` o on o.order_code = r.order_code
 join `member` m on o.member_code = m.member_code 
 join memberdetail m2 on m.member_id = m2.member_id
 join reviewimage r2 on r.board_code = r2.board_code
-where m.member_id = 'bbb';
+join orderproduct o2 on o.order_code = o2.order_code
+where o2.product_code = '11111';
+

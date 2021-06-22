@@ -42,7 +42,7 @@ public class ReviewMapperTest {
 	public void test01SelectReviewByMemberId() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 
-		List<ReView> rList = mapper.selectReviewByMemberId("aaa");
+		List<ReView> rList = mapper.selectReviewByProductCode("11111");
 		rList.stream().forEach(System.out::println);
 		Assert.assertNotNull(rList);
 		log.debug(rList.toString());

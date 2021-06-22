@@ -10,10 +10,10 @@ import proj21_shoes.dto.ReView;
 @Service
 public interface ReviewService {
 
-	List<ReView> selectReviewByMember(String memberId);
-
 	int getListCount();
 
 	ArrayList<ReView> getArticleList(int page, int limit);
+
+	List<ReView> selectReviewByProductCode(String productCode);
 	
 }
