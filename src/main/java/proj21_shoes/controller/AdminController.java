@@ -4,11 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -30,6 +28,7 @@ import proj21_shoes.dto.Brand;
 import proj21_shoes.dto.Category;
 import proj21_shoes.dto.Employee;
 import proj21_shoes.dto.Image;
+import proj21_shoes.dto.OrderOption;
 import proj21_shoes.dto.Product;
 import proj21_shoes.dto.ProductPost;
 import proj21_shoes.service.BrandService;
@@ -37,6 +36,7 @@ import proj21_shoes.service.CategoryService;
 import proj21_shoes.service.EmployeeService;
 import proj21_shoes.service.GetMemberDetailListService;
 import proj21_shoes.service.ImageService;
+import proj21_shoes.service.OrderOptionService;
 import proj21_shoes.service.ProductPostService;
 import proj21_shoes.service.ProductService;
 
@@ -61,6 +61,9 @@ public class AdminController {
 	
 	@Autowired
 	private ImageService imageService;
+	
+	@Autowired
+	private OrderOptionService orderOptionService;
 
 	@Autowired
 	private GetMemberDetailListService memListService;
@@ -152,7 +155,7 @@ public class AdminController {
 
 		System.out.println(product);
 		productService.insertProduct(product);
-
+		
 		return "redirect:/admin/productMgt";
 	}
 
@@ -200,10 +203,20 @@ public class AdminController {
 		String savedNames = uuid.toString() + "_" + mfs.getOriginalFilename();
 		File savedFiles = new File(pathImages + savedNames);
 		mfs.transferTo(savedFiles);
-		image.setImage(savedNames);		
+		image.setImage(savedNames);
 				
 		System.out.println(image);
-		imageService.insertImage(image);	
+		imageService.insertImage(image);
+		
+		OrderOption orderOption = new OrderOption();		
+		for (int size = 130; size <= 300; size += 10 ) {
+			orderOption.setProductCode(Integer.parseInt(request.getParameter("productCode")));
+			orderOption.setStyleCode(Integer.parseInt(request.getParameter("styleCode")));
+			orderOption.setSize(size);
+			orderOption.setStock(0);
+			orderOption.setColor(request.getParameter("color"));
+			orderOptionService.insertOrderOption(orderOption);
+		}
 		
 		return "redirect:/admin/productPostMgt";
 	}
@@ -256,6 +269,65 @@ public class AdminController {
 	public String productDelete(@RequestParam(value = "productCode") int productCode) {
 		productService.deleteProduct(productCode);		
 		return "redirect:/admin/productMgt";
+	}
+	
+	@GetMapping("/admin/product/productOrderOptionReg")
+	public void getProductOrderOptionRegister(Model model) {
+
+		List<Product> productList = productService.productByOnlyProuct();
+		model.addAttribute("productList", JSONArray.fromObject(productList));
+
+	}
+	@PostMapping("/admin/product/productOrderOptionReg")
+	@Transactional
+	public String postProductOrderOptionRegister(MultipartHttpServletRequest request, MultipartFile file, Model model) throws IOException, Exception {
+		
+		ProductPost productpost = new ProductPost();		
+		productpost.setProductCode(Integer.parseInt(request.getParameter("productCode")));
+		productpost.setContent("content");
+		
+		String pathMainImage = request.getSession().getServletContext().getRealPath("/") + "images/";
+		MultipartFile mf = request.getFile("productMainImage");
+		UUID uuid = UUID.randomUUID();
+		String savedName = uuid.toString() + "_" + mf.getOriginalFilename();
+		File savedFile = new File(pathMainImage + savedName);
+		mf.transferTo(savedFile);
+		productpost.setProductMainImage(savedName);
+		
+		System.out.println(productpost);
+		productPostService.insertProductPost(productpost);
+		
+		System.out.println("메인이미지 등록");
+		
+		Image image = new Image();
+		image.setProductCode(Integer.parseInt(request.getParameter("productCode")));
+		
+		String imageFolder = request.getParameter("productCode");
+		System.out.println("imageFolder : " + imageFolder);
+		
+		String pathImages = request.getSession().getServletContext().getRealPath("/") + "images/" + imageFolder + "/";
+		System.out.println("pathImages : " + pathImages);
+		
+		MultipartFile mfs = request.getFile("images");
+		String savedNames = uuid.toString() + "_" + mfs.getOriginalFilename();
+		File savedFiles = new File(pathImages + savedNames);
+		mfs.transferTo(savedFiles);
+		image.setImage(savedNames);
+				
+		System.out.println(image);
+		imageService.insertImage(image);
+		
+		OrderOption orderOption = new OrderOption();		
+		for (int size = 130; size <= 300; size += 10 ) {
+			orderOption.setProductCode(Integer.parseInt(request.getParameter("productCode")));
+			orderOption.setStyleCode(Integer.parseInt(request.getParameter("styleCode")));
+			orderOption.setSize(size);
+			orderOption.setStock(0);
+			orderOption.setColor(request.getParameter("color"));
+			orderOptionService.insertOrderOption(orderOption);
+		}
+		
+		return "redirect:/admin/productPostMgt";
 	}
 
 }
