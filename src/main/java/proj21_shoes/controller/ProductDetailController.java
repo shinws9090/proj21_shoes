@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_shoes.dto.Product;
+import proj21_shoes.review.ReviewService;
 import proj21_shoes.service.ProductService;
 
 @RestController
@@ -20,6 +21,9 @@ public class ProductDetailController {
 	@GetMapping("/productDetail/{code}")
 	public ModelAndView productDetail(@PathVariable("code")int code) {
 		Product product = service.productByCode(code);
+		ModelAndView mav = new ModelAndView("product/productDetail","product",product);
+		
+		
 		return new ModelAndView("product/productDetail","product",product);
 	}
 	
