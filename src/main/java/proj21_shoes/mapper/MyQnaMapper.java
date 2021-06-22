@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import proj21_shoes.commend.ModifyMyNormalQnA;
 import proj21_shoes.commend.MyQnaViewCommand;
 import proj21_shoes.commend.NormalQnARegistCommand;
-import proj21_shoes.dto.MemberDetail;
 
 @Component
 public interface MyQnaMapper {
@@ -25,10 +25,10 @@ public interface MyQnaMapper {
 	
 	//일반문의하기
 	int insertNormalQnA(NormalQnARegistCommand qna); 		 //일반문의하기
+	int updateNormalQnA(ModifyMyNormalQnA qna);  				//일반문의내용 수정
 	
 	
 //	int insertMember(MyQnaCommand req); 		 					//문의내ㅇ
-	int updateMember(String member);  				//문의내용 수정
 	int deleteMember(long id);  							//문의내용 삭제
 	
 	

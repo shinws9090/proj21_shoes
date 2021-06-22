@@ -7,8 +7,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="<%=request.getContextPath() %>" />
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +19,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>마이페이지</title>
-
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/table.css">
@@ -58,15 +57,14 @@
 						</td>
 					</tr>
 				</table>
-				
 				<!-- 좌측메뉴 -->
 			
 				<article id="my_menu">
 				<h3>회원정보</h3>
 				<a href="${contextPath}/myPage/myPageSel/${member.memberId}">-회원정보 조회 / 변경</a><br>
 				<a href="${contextPath}/myPage/quitMember/${member.memberId}">-회원탈퇴</a>
-
-				<h3>나의 쇼핑정보</h3>			
+				<br>
+				<h3>나의 쇼핑정보</h3>
 				<a href="${contextPath}/myPage/myOrder/${member.memberId}">-주문내역</a><br>
 				<a href="${contextPath}/myPage/myProductQnA/${member.memberId}">-상품문의내역</a><br>
 				<a href="${contextPath}/myPage/myNormalQnA/${member.memberId}">-일반문의내역</a><br>
@@ -74,47 +72,77 @@
 			
 				</article>
 				
-		
-				<!-- 최근 주문내역 테이블  -->
-				<h4>${authInfo.memberName }님의  최근 주문내역</h4>
-				<br>
 				
-				<table  class="tbl_type" border="1"> 
-			
-					<tr>
-						<td>주문번호</td>
-						<td>상품사진</td>
-						<td>상품명</td>
-						<td>결제금액</td>
-						<td>주문수량</td>
-					 	<td>주문일</td> 
-					</tr>
-					<c:forEach var="myOrderList" items="${myOrderList}">
-					<tr>
-						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myOrderList.orderCode}">${myOrderList.orderCode }<br>[상세보기]</a></td>
-						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myOrderList.orderCode}"><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myOrderList.productMainImage }"></a></td>
-						<td><a href="${contextPath}/productDetail/${myOrderList.productCode}">${myOrderList.productName }<br>[상품 주문페이지]</a></td>
-						<td>${myOrderList.paymentAmount }</td>
-						<td>${myOrderList.orderCount }</td>
-						 <td>${myOrderList.orderDate }</td> 
-
-						
-					</tr>
-					</c:forEach>
 				
-				</table>
+	<!-- 문의하기  입력  -->
+		<h4>문의글 수정</h4>
 		<br>
-				</section>
-				<br>
-				<br>
-					
+		<!-- 해당컨트롤러로 이동 --> <!-- 모델어트리뷰트에 적힌 dto에  없는 변수명이 value에 들어가면 못쓴당. 귀찮아도 dto 새로만들쟈   +++ 그래도 에러뜰경우 컨트롤러쪽 오타다!! 벨리드 없애고 보자  -->
+		 <form:form action="/myPage/${myQnADetail.boardCode}/${myQnADetail.memberId}/modify/2" modelAttribute="modifyMyNormalQnA"  id="test" onsubmit="return false" >
+		<form:errors/>
+		<div>
+		<table class="tbl_type">
+		  <tr>
+			<td><a>회원 아이디:</a></td>
+			<td>
+			<input hidden="hidden"/>
+			<form:input  type="text" path="memberId"  value="${authInfo.memberId }" readonly="true" size="100"/>  
+			</td>
+			<form:errors path="memberId" />
+		</tr>
+
+		<tr>
+			<td><a>회원 이름:</a></td> 
+			<td>
+			<input hidden="hidden"/>
+			<form:input path="memberName"  value="${authInfo.memberName }" readonly="true" size="100"/>  
+		</td>
+			<form:errors path="memberName" />
+		</tr> 
+		<tr>
+			<td>
+			<a>문의제목:</a></td> 
+			<td>
+			<input hidden="hidden"/>
+			<form:errors path="title" style="color:red"/>
+			<br> 
+			<form:input type="text" path="title" id="title"  value="${myQnADetail.title }" placeholder="문의제목을 작성해주세요" size="100"/> 
+			</td>
+			</tr>
+		<tr>
+			<td><a>문의내용:</a></td> 
+			<td style="height: 500px">
+			<input hidden="hidden"/>
+			<form:errors path="content"  style="color:red"/>
+			<br> 
+			<form><textarea rows="10" cols="50"  id="content"   placeholder="문의내용을 작성해주세요" style="width:98%; height:98%;" maxlength="1000" >${myQnADetail.content }</textarea>
+			</form>
+			</td>
+		</tr>
+
+		</table>
+			
+		</div>
+		
+			 <article style="margin-left:50%;">	
+				<form action="/myPage/${myQnADetail.boardCode}/${myQnADetail.memberId}/modify/2" method="post"> <!-- 일로 보내조 -->
+				<input type="submit" value="수정하기" /><!--다음단계  -->
+				
+				</form> 
+
+				<a href="${contextPath}/myPage/myNormalQnA/${member.memberId }">취소</a>
+		
+				
+		</article> 
+			
+		</form:form> 
 			
 				
 			</c:if>
 
 	
 	
-
+	</section>
 </div>
 	
 	<section>

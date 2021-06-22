@@ -75,44 +75,21 @@
 				</article>
 				
 		
-				<!-- 최근 주문내역 테이블  -->
-				<h4>${authInfo.memberName }님의  최근 주문내역</h4>
-				<br>
-				
-				<table  class="tbl_type" border="1"> 
 			
-					<tr>
-						<td>주문번호</td>
-						<td>상품사진</td>
-						<td>상품명</td>
-						<td>결제금액</td>
-						<td>주문수량</td>
-					 	<td>주문일</td> 
-					</tr>
-					<c:forEach var="myOrderList" items="${myOrderList}">
-					<tr>
-						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myOrderList.orderCode}">${myOrderList.orderCode }<br>[상세보기]</a></td>
-						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myOrderList.orderCode}"><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myOrderList.productMainImage }"></a></td>
-						<td><a href="${contextPath}/productDetail/${myOrderList.productCode}">${myOrderList.productName }<br>[상품 주문페이지]</a></td>
-						<td>${myOrderList.paymentAmount }</td>
-						<td>${myOrderList.orderCount }</td>
-						 <td>${myOrderList.orderDate }</td> 
-
-						
-					</tr>
-					</c:forEach>
+				<h4>문의글 등록이 완료되었습니다.</h4>
+				<br>
 				
-				</table>
-		<br>
+			
+	
 				</section>
-				<br>
-				<br>
+				<br><!-- 임시로 푸터랑 사이 띄우려고 넣은거! -->
+				<br><!-- 임시로 푸터랑 사이 띄우려고 넣은거! -->
 					
 			
 				
 			</c:if>
 
-	
+	<br>
 	
 
 </div>

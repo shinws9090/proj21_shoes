@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import proj21_shoes.commend.ModifyMyNormalQnA;
 import proj21_shoes.commend.MyPageSelectCommend;
 import proj21_shoes.commend.MyQnaViewCommand;
 import proj21_shoes.commend.NormalQnARegistCommand;
@@ -28,6 +29,9 @@ import proj21_shoes.service.MyQnaService;
 
 @Controller
 public class MyQnaController {
+	
+	@Autowired
+	GetMemberDetailService getMemberService;
 	@Autowired
 	MyPageService getMyPageService;
 	@Autowired
@@ -121,6 +125,8 @@ public class MyQnaController {
 		System.out.println("boardCode>>"+ boardCode );
 		MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
 		MyQnaViewCommand myQnADetail =myQnaService.selectNormalQnAbyBoardCode(boardCode);
+		
+		
 
 		if(myQnADetail ==null) {
 			System.out.println("리스트 없당");
@@ -139,6 +145,9 @@ public class MyQnaController {
 		return "/myPage/myNormalQnADetail";
 		
 	}
+	
+	
+	//일반문의글 작성페이지
 	@RequestMapping("/myPage/normalQnARegist/1/{memberId}")  //문의글 작성페이지로 이동
 	public String mormalQnAReg(@PathVariable("memberId")  String memberId, NormalQnARegistCommand normalQnARegistCommand, HttpSession session,HttpServletResponse response) {
 			// 에러떠서 수정했음! --> NormalQnARegistCommand 객체 + 	@RequestMapping
@@ -146,7 +155,7 @@ public class MyQnaController {
 		return "myPage/normalQnARegist";
 	}
 	
-	
+	//입력받은 문의글 받아서 통과시 작성성공페이지로 이동
 	@PostMapping("/myPage/normalQnARegist/2/{memberId}")  //문의글 작성한거 받아서
 	public String normalQnARegSuc(@PathVariable("memberId")  String memberId ,@Valid @ModelAttribute NormalQnARegistCommand normalQnARegistCommand,Errors errors,HttpSession session,HttpServletResponse response) {
 		if (errors.hasErrors()) { //에러 있으면
@@ -172,7 +181,67 @@ public class MyQnaController {
 			
 		
 		//return "myPage/normalQnARegistS";}
+	
+	
+	//일반문의글 수정하기 페이지 (게시글번호 가져와서, 답변글 없으면!
+	@RequestMapping("/myPage/{boardCode}/{memberId}/modify")
+	public String modifyMyNormalQnA( @PathVariable("boardCode") int boardCode,
+			@PathVariable("memberId") String memberId,@ModelAttribute("modifyMyNormalQnA") ModifyMyNormalQnA modifyMyNormalQnA,
+			MyQnaViewCommand myQnADetail , Errors errors, HttpSession session,HttpServletResponse response) {
+		
+		if (errors.hasErrors()) { //에러 있으면
+			System.out.println(1);
+			System.out.println(errors);
+			System.out.println("무슨에러고");
+			return "/myPage/myNormalQnADetail"; //일로 돌려보내고
+		}
+		if(myQnADetail.getReply()!= null) {
+			System.out.println("답변글이 있어서 수정할수 없당.");
+			return "/myPage/myNormalQnADetail";
+		}
+		//ModifyMyNormalQnA modifyMyNormalQna = new ModifyMyNormalQnA();
+		
+	
+		return"/myPage/modifyMyNormalQnA";
 	}
+
+		
+	@PostMapping("/myPage/{boardCode}/{memberId}/modify/2")  //문의글 작성한거 받아서
+	public String normalQnAModifySuc(@PathVariable("boardCode") int boardCode, @PathVariable("memberId")  String memberId ,
+			@Valid @ModelAttribute("modifyMyNormalQnA") ModifyMyNormalQnA modifyMyNormalQnA, Errors errors, HttpSession session,HttpServletResponse response) {
+		
+		if (errors.hasErrors()) { //에러 있으면
+			System.out.println(1);
+			System.out.println(errors);
+			return "/myPage/myNormalQnADetail"; //일로 돌려보내고
+		}
+		
+		//에러업으면
+		try {
+			//Member  member = memberMapper.selectMemberById(memberId);
+			//int selMemberCode = member.getMemberCode();
+			
+			ModifyMyNormalQnA updateQnA = new ModifyMyNormalQnA(boardCode, modifyMyNormalQnA.getTitle(), modifyMyNormalQnA.getContent());
+			myQnaService.updateNormalQnA(updateQnA);
+			session.setAttribute("updateQnA", updateQnA);
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("updateQnA",updateQnA);
+			return "myPage/normalQnAmodifyS";
+		}catch(MyNormalQnAEmptyException e) {
+			errors.reject("title", "required");
+			errors.reject("content", "required");
+			return "/myPage/myNormalQnADetail"; //일로 돌려보내고
+		}catch(Exception e) {
+			System.out.println("뭐가문제고");
+			return "/myPage/myNormalQnADetail"; //일로 돌려보내고		}
+			
+		}
+	
+	
+	
+	
+	}
+}
 	
 	
 	

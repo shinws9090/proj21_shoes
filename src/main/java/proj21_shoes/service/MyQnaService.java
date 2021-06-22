@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import proj21_shoes.commend.ModifyMyNormalQnA;
 import proj21_shoes.commend.MyQnaViewCommand;
 import proj21_shoes.commend.NormalQnARegistCommand;
 @Service
@@ -21,4 +22,8 @@ public interface MyQnaService {
 	
 	//일반문의하기
 	int insertNormalQnA(NormalQnARegistCommand qna); 		 //일반문의하기
+	
+	int updateNormalQnA(ModifyMyNormalQnA updateQnA);  				//일반문의내용 수정
+
+	
 }
