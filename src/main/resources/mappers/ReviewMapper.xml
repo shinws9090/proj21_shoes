@@ -15,7 +15,7 @@
 	
 	<resultMap type="ReviewImage" id="resImage"/>
 		
-	<select id="selectReviewByProductCode" resultMap="resReView">
+	<select id="selectReviewByProductCode" parameterType="int" resultMap="resReView">
 	select *
 		from review r
 		join `order` o on o.order_code = r.order_code

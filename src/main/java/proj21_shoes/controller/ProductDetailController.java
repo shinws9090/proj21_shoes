@@ -1,5 +1,7 @@
 package proj21_shoes.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_shoes.dto.Product;
+import proj21_shoes.dto.ReView;
 import proj21_shoes.review.ReviewService;
 import proj21_shoes.service.ProductService;
 
@@ -17,14 +20,20 @@ public class ProductDetailController {
 	
 	@Autowired
 	ProductService service;
+	
+	@Autowired
+	ReviewService rService;
 
 	@GetMapping("/productDetail/{code}")
 	public ModelAndView productDetail(@PathVariable("code")int code) {
 		Product product = service.productByCode(code);
+		List<ReView> reViewList = rService.selectReviewByProductCode(code);
+		System.out.println(reViewList);
+		
 		ModelAndView mav = new ModelAndView("product/productDetail","product",product);
+		mav.addObject("reviewList",reViewList);
 		
-		
-		return new ModelAndView("product/productDetail","product",product);
+		return mav;
 	}
 	
 	@GetMapping("api/size")

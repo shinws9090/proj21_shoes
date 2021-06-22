@@ -110,7 +110,8 @@
 		<jsp:include page="/WEB-INF/view/include/header.jsp" />
 	</header>
 	<section>
-		<p>${product}</p>
+		<%-- <p>${product}</p> --%>
+		<p>${reviewList }</p>
 
 		<div class='main'>
 			<div class='main-image'>
@@ -160,10 +161,12 @@
 							<c:forEach items="${reviewList }" var="resReView" varStatus="status">
 							<tr>		
 								<td><c:out value="${resReView.boardCode }"></c:out></td>
-								<td><c:out value="${resReView.orderCode }"></c:out></td>
-								<td><c:out value="${resReView.reviewImages }"></c:out></td>
+								<td><c:out value="${resReView.orderCode.orderCode }"></c:out></td>
+								<c:forEach items="${resReView.reviewImages}" var="reviewImage">
+									<td><c:out value="${reviewImage.image }"></c:out></td>
+								</c:forEach>
 								<td><c:out value="${resReView.title }"></c:out></td>
-								<td><c:out value="${resReView.memberId }"></c:out></td>
+								<td><c:out value="${resReView.orderCode.memberCode.memberId.memberId }"></c:out></td>
 								<td><c:out value="${resReView.registDate }"></c:out></td>
 							</tr>
 								 
