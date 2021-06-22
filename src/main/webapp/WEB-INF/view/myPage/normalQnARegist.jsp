@@ -71,35 +71,60 @@
 				<a href="${contextPath}/cartList">-장바구니</a>
 			
 				</article>
-	
-				<h4>${authInfo.memberName }님의 최근 상품문의내역</h4>
-				<br>
-				<table class="tbl_type" border="1">
-				<tr>
 				
-					<td>문의상품</td>
-					<td>상품사진</td>
-					<td>제목</td>						
-					<td>작성일</td>
-					<td>답변유무</td>
+				
+				
+	<!-- 문의하기  입력  -->
+		<h4>일반문의하기</h4>
+		<br>
+		<!-- 해당컨트롤러로 이동 -->
+		<form:form action="/myPage/normalQnARegist/2/${member.memberId }" modelAttribute="normalQnARegistCommand">
+		<form:errors/>
+		<div>
+		<table class="tbl_type">
+		 <tr>
+			<td><a>회원 아이디:</a></td>
+			<td><form:input  type="text" path="memberId" placeholder="ID" value="${member.memberId }" readonly="true" size="100"/>  
+			</td>
+			<form:errors path="memberId" />
+		</tr>
 
-				</tr>
-				<c:forEach var="myQnAList" items="${myQnAList }">
-				<tr>
-			<%-- 	<td><a href="${contextPath}/myPage/myQnADetail/${authInfo.memberId}/${myQna.boardCode}">${myQna.boardCode }</a></td> <!-- 문의코드 --> --%>
+		<tr>
+			<td><a>회원 이름:</a></td> 
+			<td><form:input path="memberName"  value="${member.memberName }" readonly="true" size="100"/>  
+		</td>
+			<form:errors path="memberName" />
+		</tr>
+		<tr>
+			<td>
+			<a>문의제목:</a></td> 
+			<td><form:input type="text" path="title" id="title" placeholder="문의제목을 작성해주세요" size="100"/>  
+			</td>
+			<form:errors path="title" />
+			</tr>
+		<tr>
+			<td><a>문의내용:</a></td> 
+			<td style="height: 500px"><form:input type="text" path="content" id="content" placeholder="문의내용을 작성해주세요" style="width:98%; height:98%;" size="100" maxlength="1000" />  
+			</td>
+			<form:errors path="content" />
+		</tr>
+
+		</table>
 			
-				<td><a href="${contextPath}/myPage/myProductQnADetail/${myQnAList.memberId}/${myQnAList.boardCode}">${myQnAList.productName }</a></td>	<!-- 상품명 -->
-				<td><a href="${contextPath}/myPage/myProductQnADetail/${myQnAList.memberId}/${myQnAList.boardCode}"><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myQnAList.productMainImage }"></a></td>				
-				<td><a href="${contextPath}/myPage/myProductQnADetail/${myQnAList.memberId}/${myQnAList.boardCode}">${myQnAList.title }</a></td>	<!-- 제목 -->
-	<%-- 			<td>${myQna.content }</td>		<!-- 내용 --> --%>
-				<td>${myQnAList.registDate }</td>	<!-- 작성일 -->
-				<td>${myQnAList.resOX }</td>
-				</tr>
-				</c:forEach>
-	</table>
-	
-			
+		</div>
+		
+			<article style="margin-left:50%;">	
+				<form action="/myPage/normalQnARegist/2/${member.memberId }" method="post"> <!-- 일로 보내조 -->
+				<input type="submit" value="작성하기" /><!--다음단계  -->
 				
+				</form> 
+
+				<a href="${contextPath}/myPage/myNormalQnA/${member.memberId }">취소</a>
+		
+				
+		</article>
+			
+		</form:form>
 			
 				
 			</c:if>

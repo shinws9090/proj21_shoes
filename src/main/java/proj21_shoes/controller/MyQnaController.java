@@ -4,16 +4,23 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.sound.midi.Soundbank;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_shoes.commend.MyPageSelectCommend;
-import proj21_shoes.commend.MyQnaCommand;
+import proj21_shoes.commend.MyQnaViewCommand;
+import proj21_shoes.commend.NormalQnARegistCommand;
+import proj21_shoes.dto.Member;
+import proj21_shoes.mapper.MemberMapper;
 import proj21_shoes.service.GetMemberDetailService;
 import proj21_shoes.service.MyPageService;
 import proj21_shoes.service.MyQnaService;
@@ -27,10 +34,13 @@ public class MyQnaController {
 	@Autowired
 	MyQnaService myQnaService;
 	
+	@Autowired
+	MemberMapper memberMapper;
+	
 	//상품문의내역 페이지
 	@GetMapping("/myPage/myProductQnA/{memberId}")
 	public String myProductQnABoard(@PathVariable("memberId") String memberId,HttpSession session,HttpServletResponse response) {
-		List<MyQnaCommand> myQnAList =myQnaService.selectProductQnAbyId(memberId);
+		List<MyQnaViewCommand> myQnAList =myQnaService.selectProductQnAbyId(memberId);
 		MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
 	
 		if (myQnAList == null  || myQnAList.size()==0 ) {
@@ -54,7 +64,7 @@ public class MyQnaController {
 	//일반문의내역 페이지
 		@GetMapping("/myPage/myNormalQnA/{memberId}")
 		public String myNormalQnABoard(@PathVariable("memberId") String memberId,HttpSession session,HttpServletResponse response) {
-			List<MyQnaCommand> myQnAList =myQnaService.selectNormalQnAbyId(memberId);
+			List<MyQnaViewCommand> myQnAList =myQnaService.selectNormalQnAbyId(memberId);
 			MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
 
 			if (myQnAList == null  || myQnAList.size()==0 )  {
@@ -84,7 +94,7 @@ public class MyQnaController {
 			System.out.println("memberId>>"+ memberId );
 			System.out.println("boardCode>>"+ boardCode );
 			MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
-			MyQnaCommand myQnADetail =myQnaService.selectProductQnAbyBoardCode(boardCode);
+			MyQnaViewCommand myQnADetail =myQnaService.selectProductQnAbyBoardCode(boardCode);
 
 			if(myQnADetail ==null) {
 				System.out.println("리스트 없당");
@@ -109,7 +119,7 @@ public class MyQnaController {
 		System.out.println("memberId>>"+ memberId );
 		System.out.println("boardCode>>"+ boardCode );
 		MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
-		MyQnaCommand myQnADetail =myQnaService.selectNormalQnAbyBoardCode(boardCode);
+		MyQnaViewCommand myQnADetail =myQnaService.selectNormalQnAbyBoardCode(boardCode);
 
 		if(myQnADetail ==null) {
 			System.out.println("리스트 없당");
@@ -128,7 +138,26 @@ public class MyQnaController {
 		return "/myPage/myNormalQnADetail";
 		
 	}
+	@RequestMapping("/myPage/normalQnARegist/1/{memberId}")  //문의글 작성페이지로 이동
+	public String mormalQnAReg(@PathVariable("memberId")  String memberId, NormalQnARegistCommand normalQnARegistCommand, HttpSession session,HttpServletResponse response) {
+			// 에러떠서 수정했음! --> NormalQnARegistCommand 객체 + 	@RequestMapping
 	
+		return "myPage/normalQnARegist";
+	}
+	
+	
+	@PostMapping("/myPage/normalQnARegist/2/{memberId}")  //문의글 작성한거 받아서
+	public String normalQnARegSuc(@PathVariable("memberId")  String memberId ,@Valid @ModelAttribute NormalQnARegistCommand normalQnARegistCommand,Errors errors,HttpSession session,HttpServletResponse response) {
+		
+			Member  member = memberMapper.selectMemberById(memberId);
+			int selMemberCode = member.getMemberCode();
+		//	NormalQnARegistCommand newQnA = new NormalQnARegistCommand(selMemberCode,  normalQnARegistCommand.getTitle(), normalQnARegistCommand.getContent(), normalQnARegistCommand.getReply());
+			NormalQnARegistCommand newQnA = new NormalQnARegistCommand(selMemberCode,  normalQnARegistCommand.getTitle(), normalQnARegistCommand.getContent(), normalQnARegistCommand.getReply(), memberId,normalQnARegistCommand.getMemberName());
+			myQnaService.insertNormalQnA(newQnA);
+			session.setAttribute("newQnA", newQnA);
+		
+		return "myPage/normalQnARegistS";
+	}
 	
 	
 	

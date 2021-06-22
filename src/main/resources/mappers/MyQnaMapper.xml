@@ -5,8 +5,16 @@
 	<!-- resultMap type : dto 클래스명 , id : 외부에서 지정할이름? -->
 	<!-- result column : db속 컬럼명, property : dto속 변수명 -->
 
+ <resultMap type="NormalQnARegistCommand" id="registQna">	
+ 	<id column="board_code" property="boardCode" />						<!-- 게시판코드 -->		
+		<result column="member_code" property="memberCode" />				<!-- 회원코드	 -->	
+		<result column="title" property="title" />							<!-- 제목 -->
+		<result column="content" property="content" />						<!-- 내용 -->
+		<result column="reply" property="reply" />							<!-- 답글 -->
+		<result column="regist_date" property="registDate" />				<!-- 작성일 -->
+	</resultMap>
 
- 	 <resultMap type="MyQnaCommand" id="resQna">			
+ 	 <resultMap type="MyQnaViewCommand" id="resQna">			
 		<id column="board_code" property="boardCode" />						<!-- 게시판코드 -->		
 		<result column="member_code" property="memberCode" />				<!-- 회원코드	 -->
 		<result column="member_id" property="memberId" />					<!-- 회원아이디 -->
@@ -43,7 +51,11 @@
 	<!-- 상품문의만!!  (상품코드 입력해서문의했을떄) -->
 	</select> 
 	
-	
+	<insert id="insertNormalQnA" >
+	insert into qna  
+	(member_code, product_code, title, content, reply, regist_date)
+	VALUES(#{memberCode}, null, #{title}, #{content}, #{reply}, now());
+	</insert>
 	
 	
 	 
