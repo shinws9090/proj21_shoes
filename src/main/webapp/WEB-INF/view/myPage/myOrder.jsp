@@ -103,9 +103,10 @@
 					</c:forEach>
 				
 				</table>
-	
+		<br>
 				</section>
-				
+				<br>
+				<br>
 					
 			
 				

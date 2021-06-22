@@ -20,6 +20,7 @@ import proj21_shoes.commend.MyPageSelectCommend;
 import proj21_shoes.commend.MyQnaViewCommand;
 import proj21_shoes.commend.NormalQnARegistCommand;
 import proj21_shoes.dto.Member;
+import proj21_shoes.exeption.MyNormalQnAEmptyException;
 import proj21_shoes.mapper.MemberMapper;
 import proj21_shoes.service.GetMemberDetailService;
 import proj21_shoes.service.MyPageService;
@@ -148,19 +149,33 @@ public class MyQnaController {
 	
 	@PostMapping("/myPage/normalQnARegist/2/{memberId}")  //문의글 작성한거 받아서
 	public String normalQnARegSuc(@PathVariable("memberId")  String memberId ,@Valid @ModelAttribute NormalQnARegistCommand normalQnARegistCommand,Errors errors,HttpSession session,HttpServletResponse response) {
-		
+		if (errors.hasErrors()) { //에러 있으면
+			System.out.println(1);
+			System.out.println(errors);
+			return "myPage/normalQnARegist";  //일로 돌려보내고
+		}
+		try {
 			Member  member = memberMapper.selectMemberById(memberId);
 			int selMemberCode = member.getMemberCode();
 		//	NormalQnARegistCommand newQnA = new NormalQnARegistCommand(selMemberCode,  normalQnARegistCommand.getTitle(), normalQnARegistCommand.getContent(), normalQnARegistCommand.getReply());
 			NormalQnARegistCommand newQnA = new NormalQnARegistCommand(selMemberCode,  normalQnARegistCommand.getTitle(), normalQnARegistCommand.getContent(), normalQnARegistCommand.getReply(), memberId,normalQnARegistCommand.getMemberName());
 			myQnaService.insertNormalQnA(newQnA);
 			session.setAttribute("newQnA", newQnA);
+			return "myPage/normalQnARegistS";
+		}catch(MyNormalQnAEmptyException e) {
+			errors.reject("title", "required");
+			errors.reject("content", "required");
+			return "myPage/normalQnARegist";  //일로
+		}
+			
+		}
+			
 		
-		return "myPage/normalQnARegistS";
+		//return "myPage/normalQnARegistS";}
 	}
 	
 	
 	
 	
 
-}
+
