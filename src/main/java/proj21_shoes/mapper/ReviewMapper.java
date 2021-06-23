@@ -9,9 +9,14 @@ public interface ReviewMapper {
 	
 
 	List<ReView> selectReviewByProductCode(int productCode);
-	List<ReviewCommand> selectReviewbyProductCode(int productCode);
-	
+	List<ReviewCommand> selectProductReviewbyCode(int productCode, int startrow, int limit);
+
 	int updateProductCode(String ProductCode);
 	int deleteProductCode(String ProductCode);
+	
+	int productReviewInsert(ReView review);
+	int productReviewDelete(int boardCode);
+	int productReviewUpdate(ReView review);
+	int selectProductReviewCount(int code);
 
 }
