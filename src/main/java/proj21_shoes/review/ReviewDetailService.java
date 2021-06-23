@@ -1,8 +1,14 @@
 package proj21_shoes.review;
 
-public class ReviewDetailService {
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import proj21_shoes.commend.ReviewCommand;
+
+@Service
+public interface ReviewDetailService {
 	
-	private ReviewServiceImpl dao = ReviewServiceImpl.getInstance();
-	
+	List<ReviewCommand> selectReviewProductbyCode(int productCode);
 
 }

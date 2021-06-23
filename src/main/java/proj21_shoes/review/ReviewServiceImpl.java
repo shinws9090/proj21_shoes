@@ -20,7 +20,8 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<ReView> selectReviewByProductCode(int productCode) {
 		return mapper.selectReviewByProductCode(productCode);
 	}
-
+	
+	
 	@Override
 	public int getListCount() {
 		return 0;

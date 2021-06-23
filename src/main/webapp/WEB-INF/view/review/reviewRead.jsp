@@ -1,53 +1,59 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+       <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+   <c:set var="contextPath" value="<%=request.getContextPath()%>" />
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>MVC ê²Œì‹œíŒ</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/view.css">
-<SCRIPT LANGUAGE="JavaScript">
-$(document).ready(function(){ /* update í´ë¦­ */ $('#update').on('click',function(){ }); 
-/* ì‚­ì œ í´ë¦­ */ 
- */$('#delete').on('click',function(){ }); }); </script>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
-
-
-</head>
-
 <body>
-	<table class="review_view">
-		<colgroup>
-			<col width="15%" />
-			<col width="35%" />
-			<col width="15%" />
-			<col width="35%" />
-		</colgroup>
-		<caption style="background-color: #ccc">ê²Œì‹œê¸€ ìƒì„¸</caption>
-		<tbody>
-			<tr>
-				<th scope="row">ê¸€ ë²ˆí˜¸</th>
-				<td>${list[0].DOCNUM }</td>
-				<th scope="row">ì¡°íšŒìˆ˜</th>
-				<td>${list[0].VIEWCOUNT }</td>
-			</tr>
-			<tr>
-				<th scope="row">ì‘ì„±ì</th>
-				<td>${list[0].ADD_USR_NM }</td>
-				<th scope="row">ì‘ì„±ì‹œê°„</th>
-				<td>2016-10-21</td>
-			</tr>
-			<tr>
-				<th scope="row">ì œëª©</th>
-				<td colspan="3">${list[0].TITLE }</td>
-			</tr>
-			<tr>
-				<td colspan="4" style="border: 1px solid #ccc; height: 100px;">${listp[0].CONTENTS }</td>
-			</tr>
-		</tbody>
-	</table>
-	<a href="#this" class="btn" id="update">ìˆ˜ì •í•˜ê¸°</a>
-	<a href="#this" class="btn" id="delete">ì‚­ì œí•˜ê¸°</a>
+	<!-- header -->
+	<header>
+		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
+	</header>
+	<!-- end header -->
+		<div id="productDetail">
+	<section id = "productDetail">
+			
+				<h4> »óÇ°ÈÄ±â</h4>
+				<br>
+				<table  class="tbl_type" border="1"> 
+				<tr><td>${reviewRead.productName } </td></tr>
+				<tr><td>	<img style="max-width:20%; max-height: 20%; "  alt="" src="${contextPath}/images/${reviewRead.productMainImage }"></td></tr>
+
+				
+				</table>
+					<br>
+				<table class="tbl_type" border="1">
+				<tr>	
+					<td>¸®ºä Á¦¸ñ : ${reviewRead.title }   (${reviewRead.registDate })</td>	
+								
+				</tr>
+			
+				<tr>
+			
+ 			<td>¸®ºä³»¿ë : ${reviewRead.content }</td>		<!-- ³»¿ë -->
+				
+				</tr>
+				
+			</table>
+		
+	
+	</section>
+</div>
+	
+	<section>
+
+	</section>
+
+	<!-- end our product -->
+	<footer>
+		<jsp:include page="/WEB-INF/view/include/footer.jsp"/>
+	</footer>
 </body>
 </html>

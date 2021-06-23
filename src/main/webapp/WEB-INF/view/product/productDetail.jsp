@@ -33,7 +33,6 @@
 		$(".tab-btn li").click(function() {
 			$(this).addClass("active");
 			$(this).siblings().removeClass("active");
-
 			var tab = $(this).attr("data-alt");
 			$(".tabs div").removeClass("active");
 			$(".tabs div").eq($(this).index()).addClass("active");
@@ -175,7 +174,12 @@
 								<c:forEach items="${resReView.reviewImages}" var="reviewImage">
 									<td><c:out value="${reviewImage.image }"></c:out></td>
 								</c:forEach>
-								<td><a href="/reviewRead?boardCode=${reivew.boardCode}">
+								
+								<!-- 아래 코드 수정 필요할듯...? -->
+								<td><a href="/reviewRead?boardCode=${resReView.boardCode}">
+								
+								
+								
 								<c:out value="${resReView.title }"></c:out></a></td>
 								<td><c:out value="${resReView.orderCode.memberCode.memberId.memberId }"></c:out></td>
 								<td><c:out value="${resReView.registDate }"></c:out></td>
@@ -201,6 +205,7 @@
 				<div class='product-QnA'>상품문의</div>
 
 				<div class='product-review'>상품후기</div>
+				
 				<div class='product-QnA'>
 					<jsp:include page="/WEB-INF/view/include/product_QnA.jsp" />
 				</div>

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import proj21_shoes.commend.ReviewCommand;
 import proj21_shoes.dto.ReView;
 
 
@@ -15,5 +16,6 @@ public interface ReviewService {
 	ArrayList<ReView> getArticleList(int page, int limit);
 
 	List<ReView> selectReviewByProductCode(int productCode);
+
 	
 }
