@@ -1,4 +1,4 @@
-package proj21_shoes.controller;
+package proj21_shoes.validator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
