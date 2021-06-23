@@ -111,8 +111,7 @@
 			<input hidden="hidden"/>
 			<form:errors path="content"  style="color:red;" />
 			<br>
-			 <textarea rows="10" cols="50"  name="content" id="content" placeholder="문의내용을 작성해주세요" style="width:98%; height:98%;" maxlength="1000" >
-			 	${myQnADetail.content }
+			 <textarea rows="10" cols="50"  name="content" id="content" placeholder="문의내용을 작성해주세요" style="width:98%; height:98%;" maxlength="1000" >${myQnADetail.content }
 			 </textarea>
 			</td>
 		</tr>
