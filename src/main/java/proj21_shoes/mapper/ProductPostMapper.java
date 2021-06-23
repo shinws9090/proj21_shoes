@@ -10,6 +10,10 @@ public interface ProductPostMapper {
 	int insertProductPost(ProductPost productPost);
 
 	int updateProductPost(ProductPost productPost);
+	
+	int updateProductPostContent(ProductPost productPost);
+	
+	int updateProductPostImage(ProductPost productPost);
 
 	int deleteProductPost(ProductPost productPost);
 }

@@ -23,6 +23,7 @@ public interface ProductService {
 	
 	int insertProduct(Product product);
 	int updateProduct(Product product);
+	int updateProductRegDateEmp(Product product);
 	int deleteProduct(int code);
 	List<Brand> brandBySel(String code);
 }
