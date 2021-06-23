@@ -174,7 +174,8 @@
 								<c:forEach items="${resReView.reviewImages}" var="reviewImage">
 									<td><c:out value="${reviewImage.image }"></c:out></td>
 								</c:forEach>
-								<td><c:out value="${resReView.title }"></c:out></td>
+								<td><a href="/reviewRead?boardCode=${reivew.boardCode}">
+								<c:out value="${resReView.title }"></c:out></a></td>
 								<td><c:out value="${resReView.orderCode.memberCode.memberId.memberId }"></c:out></td>
 								<td><c:out value="${resReView.registDate }"></c:out></td>
 								
