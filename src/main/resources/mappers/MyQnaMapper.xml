@@ -13,14 +13,16 @@
 		<result column="reply" property="reply" />							<!-- 답글 -->
 		<result column="regist_date" property="registDate" />				<!-- 작성일 -->
 	</resultMap>
+	
+	
 	 <resultMap type="ModifyMyNormalQnA" id="updateQna">	
- 	<id column="board_code" property="boardCode" />						<!-- 게시판코드 -->		
+ 	<id column="board_code" property="boardCode" />						<!-- 게시판코드	 -->	
 		<result column="member_code" property="memberCode" />				<!-- 회원코드	 -->	
 		<result column="title" property="title" />							<!-- 제목 -->
 		<result column="content" property="content" />						<!-- 내용 -->
 		<result column="reply" property="reply" />							<!-- 답글 -->
 		<result column="regist_date" property="registDate" />				<!-- 작성일 -->
-	</resultMap>
+	</resultMap> 
 
  	 <resultMap type="MyQnaViewCommand" id="resQna">			
 		<id column="board_code" property="boardCode" />						<!-- 게시판코드 -->		
@@ -64,12 +66,14 @@
 		(member_code, product_code, title, content, reply, regist_date)
 		VALUES(#{memberCode}, null, #{title}, #{content}, #{reply}, now());
 	</insert>
-	<update id="updateNormalQnA">
+	
+	
+	 <update id="updateNormalQnA">
 		UPDATE qna
 		SET  title=#{title}, content=#{content}
 		WHERE board_code=#{boardCode};
 	</update>
-	
+	 
 	 
 	 
 	 <!-- select만으로 하려했던것 ㅠ -->

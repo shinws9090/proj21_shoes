@@ -16,8 +16,8 @@ table {
 	color: #666;
 	font-size: 12px;
 	text-shadow: 1px 1px 0px #fff;
-	border-radius: 10px;
 	box-shadow: 0 1px 2px #d1d1d1;
+	width: 60em;
 }
 table > thead th {
 	padding: 10px;
@@ -37,7 +37,6 @@ form table{
 }
 form table tr{
 	padding: 10px;
-	border-top: #ccc 1px solid;
 }
 form table td{
 	text-align: left;
@@ -45,6 +44,18 @@ form table td{
 
 .btn{
 	margin: 2em;
+}
+
+#zipCode{
+	width: 6em;
+	margin: 0.5em;
+}
+#address,#detail_address{
+	width: 30em;
+	margin: 0.5em;
+}
+#tel,#recipient{
+	margin: 0.5em;
 }
 
 

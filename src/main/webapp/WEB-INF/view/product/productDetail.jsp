@@ -139,6 +139,7 @@
 					</c:forEach>
 					<p>상품설명 : ${product.productPost.content}</p>
 				</div>
+
 				<div class='product-review'>
 				<img src="../images/review_detailpage.jpg">
 				
@@ -198,6 +199,12 @@
 		</section>
 		</div>
 				<div class='product-QnA'>상품문의</div>
+
+				<div class='product-review'>상품후기</div>
+				<div class='product-QnA'>
+					<jsp:include page="/WEB-INF/view/include/product_QnA.jsp" />
+				</div>
+
 			</div>
 		</div>
 		

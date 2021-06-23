@@ -58,10 +58,10 @@ public class AdminController {
 
 	@Autowired
 	private ProductPostService productPostService;
-	
+
 	@Autowired
 	private ImageService imageService;
-	
+
 	@Autowired
 	private OrderOptionService orderOptionService;
 
@@ -155,7 +155,7 @@ public class AdminController {
 
 		System.out.println(product);
 		productService.insertProduct(product);
-		
+
 		return "redirect:/admin/productMgt";
 	}
 
@@ -167,16 +167,17 @@ public class AdminController {
 		model.addAttribute("productList", JSONArray.fromObject(productList));
 
 	}
-	
+
 	@PostMapping("/admin/product/productPostReg")
 	@Transactional
-	public String postProductPostRegister(MultipartHttpServletRequest request, MultipartFile file, Model model) throws IOException, Exception {
+	public String postProductPostRegister(MultipartHttpServletRequest request, MultipartFile file, Model model)
+			throws IOException, Exception {
 		System.out.println("상품판매글등록실행");
-		
-		ProductPost productpost = new ProductPost();		
+
+		ProductPost productpost = new ProductPost();
 		productpost.setProductCode(Integer.parseInt(request.getParameter("productCode")));
 		productpost.setContent("content");
-		
+
 		String pathMainImage = request.getSession().getServletContext().getRealPath("/") + "images/";
 		MultipartFile mf = request.getFile("productMainImage");
 		UUID uuid = UUID.randomUUID();
@@ -184,32 +185,32 @@ public class AdminController {
 		File savedFile = new File(pathMainImage + savedName);
 		mf.transferTo(savedFile);
 		productpost.setProductMainImage(savedName);
-		
+
 		System.out.println(productpost);
 		productPostService.insertProductPost(productpost);
-		
+
 		System.out.println("메인이미지 등록");
-		
+
 		Image image = new Image();
 		image.setProductCode(Integer.parseInt(request.getParameter("productCode")));
-		
+
 		String imageFolder = request.getParameter("productCode");
 		System.out.println("imageFolder : " + imageFolder);
-		
+
 		String pathImages = request.getSession().getServletContext().getRealPath("/") + "images/" + imageFolder + "/";
 		System.out.println("pathImages : " + pathImages);
-		
+
 		MultipartFile mfs = request.getFile("images");
 		String savedNames = uuid.toString() + "_" + mfs.getOriginalFilename();
 		File savedFiles = new File(pathImages + savedNames);
 		mfs.transferTo(savedFiles);
 		image.setImage(savedNames);
-				
+
 		System.out.println(image);
 		imageService.insertImage(image);
-		
-		OrderOption orderOption = new OrderOption();		
-		for (int size = 130; size <= 300; size += 10 ) {
+
+		OrderOption orderOption = new OrderOption();
+		for (int size = 130; size <= 300; size += 10) {
 			orderOption.setProductCode(Integer.parseInt(request.getParameter("productCode")));
 			orderOption.setStyleCode(Integer.parseInt(request.getParameter("styleCode")));
 			orderOption.setSize(size);
@@ -217,7 +218,7 @@ public class AdminController {
 			orderOption.setColor(request.getParameter("color"));
 			orderOptionService.insertOrderOption(orderOption);
 		}
-		
+
 		return "redirect:/admin/productPostMgt";
 	}
 
@@ -264,13 +265,57 @@ public class AdminController {
 
 		return "redirect:/admin/productMgt";
 	}
-	
+
 	@GetMapping("/admin/product/productDel")
 	public String productDelete(@RequestParam(value = "productCode") int productCode) {
-		productService.deleteProduct(productCode);		
+		productService.deleteProduct(productCode);
 		return "redirect:/admin/productMgt";
 	}
-	
+
+	@GetMapping("/admin/product/productOrderOption")
+	public void productOrderOption(@RequestParam(value = "productCode") int productCode, Model model) {
+		Product products = productService.productByCode(productCode);
+		model.addAttribute("products", products);
+
+		List<OrderOption> orderOptionListByProductCode = orderOptionService.orderOptionByProductCode(productCode);
+		model.addAttribute("orderOptionListByProductCode", JSONArray.fromObject(orderOptionListByProductCode));
+
+		List<Brand> brandList = brandService.brandList();
+		model.addAttribute("brandList", JSONArray.fromObject(brandList));
+
+		List<Category> categoryList = categoryService.categoryList();
+		model.addAttribute("categoryList", JSONArray.fromObject(categoryList));
+
+		List<Employee> employeeList = employeeService.employeeList();
+		model.addAttribute("employeeList", JSONArray.fromObject(employeeList));
+
+	}
+
+	@PostMapping("/admin/product/productOrderOption")
+	public String postProductModify(HttpServletRequest request) {
+
+		OrderOption orderOption = new OrderOption();
+		
+		orderOption.setProductCode(Integer.parseInt(request.getParameter("productCode")));
+		orderOption.setStyleCode(Integer.parseInt(request.getParameter("styleCode")));
+		orderOption.setSize(Integer.parseInt(request.getParameter("size")));
+		orderOption.setStock(Integer.parseInt(request.getParameter("stock")));
+		orderOption.setColor(request.getParameter("color"));
+		orderOptionService.insertOrderOption(orderOption);
+		
+		/*
+		 * for (int size = 130; size <= 300; size += 10) {
+		 * orderOption.setProductCode(Integer.parseInt(request.getParameter(
+		 * "productCode")));
+		 * orderOption.setStyleCode(Integer.parseInt(request.getParameter("styleCode")))
+		 * ; orderOption.setSize(size); orderOption.setStock(0);
+		 * orderOption.setColor(request.getParameter("color"));
+		 * orderOptionService.insertOrderOption(orderOption); }
+		 */
+		
+		return "redirect:/admin/product/productOrderOption?productCode=" + Integer.parseInt(request.getParameter("productCode"));
+	}
+
 	@GetMapping("/admin/product/productOrderOptionReg")
 	public void getProductOrderOptionRegister(Model model) {
 
@@ -278,14 +323,16 @@ public class AdminController {
 		model.addAttribute("productList", JSONArray.fromObject(productList));
 
 	}
+
 	@PostMapping("/admin/product/productOrderOptionReg")
 	@Transactional
-	public String postProductOrderOptionRegister(MultipartHttpServletRequest request, MultipartFile file, Model model) throws IOException, Exception {
-		
-		ProductPost productpost = new ProductPost();		
+	public String postProductOrderOptionRegister(MultipartHttpServletRequest request, MultipartFile file, Model model)
+			throws IOException, Exception {
+
+		ProductPost productpost = new ProductPost();
 		productpost.setProductCode(Integer.parseInt(request.getParameter("productCode")));
 		productpost.setContent("content");
-		
+
 		String pathMainImage = request.getSession().getServletContext().getRealPath("/") + "images/";
 		MultipartFile mf = request.getFile("productMainImage");
 		UUID uuid = UUID.randomUUID();
@@ -293,32 +340,32 @@ public class AdminController {
 		File savedFile = new File(pathMainImage + savedName);
 		mf.transferTo(savedFile);
 		productpost.setProductMainImage(savedName);
-		
+
 		System.out.println(productpost);
 		productPostService.insertProductPost(productpost);
-		
+
 		System.out.println("메인이미지 등록");
-		
+
 		Image image = new Image();
 		image.setProductCode(Integer.parseInt(request.getParameter("productCode")));
-		
+
 		String imageFolder = request.getParameter("productCode");
 		System.out.println("imageFolder : " + imageFolder);
-		
+
 		String pathImages = request.getSession().getServletContext().getRealPath("/") + "images/" + imageFolder + "/";
 		System.out.println("pathImages : " + pathImages);
-		
+
 		MultipartFile mfs = request.getFile("images");
 		String savedNames = uuid.toString() + "_" + mfs.getOriginalFilename();
 		File savedFiles = new File(pathImages + savedNames);
 		mfs.transferTo(savedFiles);
 		image.setImage(savedNames);
-				
+
 		System.out.println(image);
 		imageService.insertImage(image);
-		
-		OrderOption orderOption = new OrderOption();		
-		for (int size = 130; size <= 300; size += 10 ) {
+
+		OrderOption orderOption = new OrderOption();
+		for (int size = 130; size <= 300; size += 10) {
 			orderOption.setProductCode(Integer.parseInt(request.getParameter("productCode")));
 			orderOption.setStyleCode(Integer.parseInt(request.getParameter("styleCode")));
 			orderOption.setSize(size);
@@ -326,7 +373,7 @@ public class AdminController {
 			orderOption.setColor(request.getParameter("color"));
 			orderOptionService.insertOrderOption(orderOption);
 		}
-		
+
 		return "redirect:/admin/productPostMgt";
 	}
 

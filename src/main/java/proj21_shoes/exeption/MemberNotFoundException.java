@@ -9,7 +9,7 @@ public class MemberNotFoundException extends RuntimeException {
 	}
 
 	public MemberNotFoundException() {
-		// TODO Auto-generated constructor stub
+		System.out.println("이거뭐지");
 	}
 	
 

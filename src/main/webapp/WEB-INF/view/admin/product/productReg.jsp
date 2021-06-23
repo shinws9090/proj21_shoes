@@ -206,7 +206,6 @@ $(function(){
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp" />
 	</footer>
-
 <script>
 	//컨트롤러에서 브랜드 데이터 받기
 	var jsonData = JSON.parse('${brandList}');

@@ -160,7 +160,7 @@ $(function() {
 
 	<section>
 		<%-- ${cartList} --%>
-		${productList}
+		<%-- ${productList} --%>
 			<table>
 				<thead>
 				<tr>
