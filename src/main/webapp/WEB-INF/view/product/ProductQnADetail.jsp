@@ -19,7 +19,6 @@
 		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
 	</header>
 	<!-- end header -->
-		<div id="myPage">
 	<section id = "maPage">
 			
 				<h4> 상품문의내역 상세보기</h4>
@@ -34,23 +33,20 @@
 				<table class="tbl_type" border="1">
 				<tr>	
 					<td>문의제목 : ${myQnADetail.title }   (${myQnADetail.registDate })</td>	
-								
 				</tr>
-			
 				<tr>
-			
- 			<td>문의내용 : ${myQnADetail.content }</td>		<!-- 내용 -->
-				
+ 				<td>문의내용 : ${myQnADetail.content }</td>		<!-- 내용 -->
 				</tr>
 				<tr>
 				<td>답변 : ${myQnADetail.reply }</td>
 				</tr>
+				</table>
+				${myQnADetail.boardCode}
+				<a href="${contextPath}/ProductQnAInsertAndUpdateForm/${myQnADetail.productCode},update,${myQnADetail.boardCode}">문의글 수정</a>
+				<a href="${contextPath}/ProductQnADelete/${myQnADetail.boardCode},${myQnADetail.productCode}">삭제</a>
 				
-			</table>
-		
 	
 	</section>
-</div>
 	
 	<section>
 

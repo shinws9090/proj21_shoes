@@ -42,18 +42,26 @@
 			<li style="text-align: center;"><a href="${contextPath}/login/loginForm">로그인</a></li>
 		</c:if>
 		<c:if test="${!empty authInfo}">
-			<form action="/myPage/normalQnARegist/2/${member.memberId.memberId }" method="post"> 
+			
+			
+			<form action="${contextPath}/productQnARegist" method="post"> 
 		<!-- 문의하기  입력  -->
-				<h4>일반문의하기</h4>
+				<c:if test="${commend=='insert'}">
+				<h4>상품문의하기</h4>
+				</c:if>
+				<c:if test="${commend=='update'}">
+				<h4>상품문의 수정</h4>
+				<input type="hidden" name="boardCode"value="${boardCode}" />
+				</c:if>
 				${member }
 				<br>
 				<!-- 해당컨트롤러로 이동 -->
 				<div>
-				<table class="tbl_type">
+				<table>
 					 <tr>
 						<td><a>회원 아이디:</a></td>
 						<td>
-						<input type="text" placeholder="ID" value="${member.memberId.memberId }" readonly size="100"/>  
+						<input type="text" placeholder="ID" value="${member.memberId.memberId }" readonly size="100"/>
 						</td>
 					</tr>
 			
@@ -62,25 +70,24 @@
 						<td>
 						<input value="${member.memberId.memberName }" readonly size="100"/> 
 						</td>
-					<tr>
+					</tr>
 					<tr>
 						<td><a>문의상품 코드:</a></td> 
 						<td>
-						<input value="${productCode}" readonly size="100"/>  
+						<input name="productCode" value="${productCode}" readonly size="100"/>  
 						</td>
 					<tr>
 						<td>
 						<a>문의제목:</a></td> 
 						<td>
 						<br> 
-						<input type="text" id="title" placeholder="문의제목을 작성해주세요" size="100"/> 
+						<input name="title" type="text" id="title" placeholder="문의제목을 작성해주세요" size="100"/> 
 						</td>
 					</tr>
 					<tr>
 						<td><a>문의내용:</a></td> 
 						<td>
-						<textarea rows="10" cols="50"  id="content" style="width:98%; height:98%;" maxlength="1000" >
-						</textarea>
+						<textarea name="content" rows="10" cols="50"  id="content" style="width:98%; height:98%;" maxlength="1000" ></textarea>
 						</td>
 					</tr>
 		
@@ -88,6 +95,7 @@
 					
 				</div>
 				
+				<input type="hidden" name="commend"value="${commend}" /><!--다음단계  -->
 				<input type="submit" value="작성하기" /><!--다음단계  -->
 					
 			</form> 
