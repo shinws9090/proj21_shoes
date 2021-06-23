@@ -42,18 +42,21 @@
 			<li style="text-align: center;"><a href="${contextPath}/login/loginForm">로그인</a></li>
 		</c:if>
 		<c:if test="${!empty authInfo}">
-			<form action="/myPage/normalQnARegist/2/${member.memberId.memberId }" method="post"> 
+			
+			
+			<form action="/normalQnARegist/2/${member.memberId.memberId }" method="post"> 
 		<!-- 문의하기  입력  -->
 				<h4>일반문의하기</h4>
 				${member }
 				<br>
 				<!-- 해당컨트롤러로 이동 -->
 				<div>
-				<table class="tbl_type">
+				<table>
 					 <tr>
 						<td><a>회원 아이디:</a></td>
 						<td>
-						<input type="text" placeholder="ID" value="${member.memberId.memberId }" readonly size="100"/>  
+						<input type="text" placeholder="ID" value="${member.memberId.memberId }" readonly size="100"/>
+						<input name="member" type="hidden" value="${member}">
 						</td>
 					</tr>
 			
@@ -62,24 +65,24 @@
 						<td>
 						<input value="${member.memberId.memberName }" readonly size="100"/> 
 						</td>
-					<tr>
+					</tr>
 					<tr>
 						<td><a>문의상품 코드:</a></td> 
 						<td>
-						<input value="${productCode}" readonly size="100"/>  
+						<input name="productCode" value="${productCode}" readonly size="100"/>  
 						</td>
 					<tr>
 						<td>
 						<a>문의제목:</a></td> 
 						<td>
 						<br> 
-						<input type="text" id="title" placeholder="문의제목을 작성해주세요" size="100"/> 
+						<input name="title" type="text" id="title" placeholder="문의제목을 작성해주세요" size="100"/> 
 						</td>
 					</tr>
 					<tr>
 						<td><a>문의내용:</a></td> 
 						<td>
-						<textarea rows="10" cols="50"  id="content" style="width:98%; height:98%;" maxlength="1000" >
+						<textarea name="content" rows="10" cols="50"  id="content" style="width:98%; height:98%;" maxlength="1000" >
 						</textarea>
 						</td>
 					</tr>

@@ -6,10 +6,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_shoes.commend.MyQnaViewCommand;
+import proj21_shoes.dto.Qna;
 import proj21_shoes.service.MyQnaService;
 
 @RestController
@@ -37,10 +39,12 @@ public class ProductDetailQnaController {
 		return mav;
 	}
 	@GetMapping("/ProductQnAInsert/{productCode}")
-	public ModelAndView ProductQnAInsert(@PathVariable("productCode") int productCode,HttpSession session,HttpServletResponse response) {
+	public ModelAndView ProductQnAInsertForm(@PathVariable("productCode") int productCode,HttpSession session,HttpServletResponse response) {
 		System.out.println("productCode>>"+ productCode );
-		
-		
 		return new ModelAndView("/product/productQnARegist","productCode",productCode);
+	}
+	@PostMapping("")
+	public ModelAndView ProductQnAInsert(Qna qna) {
+		return new ModelAndView("/productDetail/");
 	}
 }
