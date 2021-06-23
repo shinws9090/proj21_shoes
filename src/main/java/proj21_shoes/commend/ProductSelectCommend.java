@@ -5,9 +5,23 @@ public class ProductSelectCommend {
 	private int brandCode;
 	private int productCategoryCode;
 	private String main;
+	private int page;
+	private int limit;
 	
 	
 	
+	public int getLimit() {
+		return (page+1)*8;
+	}
+	public void setLimit(int limit) {
+		this.limit = limit;
+	}
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
+	}
 	public String getMain() {
 		return main;
 	}

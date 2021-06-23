@@ -12,20 +12,25 @@
 <!-- basic -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<!-- mobile metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+<!-- bootstrap -->
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<link href="${contextPath}/css/bootstrap.min.css" rel="stylesheet">
+<link href="${contextPath}/css/buttons.css" rel="stylesheet">
+<link rel="stylesheet" href="${contextPath}/css/reset.css">
+<!-- bootstrap end -->
 <title>lighten</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/productDetail.css">
+<link >
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 	$(function() {
 		var contextPath = "${contextPath}"
 		/* tab기능 */
-		$(".btn li").click(function() {
+		$(".tab-btn li").click(function() {
 			$(this).addClass("active");
 			$(this).siblings().removeClass("active");
 
@@ -65,7 +70,8 @@
 		}); 
 		
 		/* 장바구니 담기 */
-		$("#cart").click(function(){
+		$("#cart").click(function(e){
+			e.preventDefault();
 			var data = {
 					productCode:${product.productCode},
 					styleCode:$(".styleCode").val(),
@@ -120,7 +126,7 @@
 			</div>
 
 
-			<ul class="btn">
+			<ul class="tab-btn">
 				<li class="active">상세정보</li>
 				<li>상품후기</li>
 				<li>상품문의</li>
@@ -196,9 +202,10 @@
 		
 		
 		<div class="order-options">
-			<strong>${product.brand.brandEngName }</strong>
+			<h2>${product.brand.brandEngName }</h2>
 			<p>	${product.productName}</p>
 			<form action="${contextPath}/addOrderOne" method="post">
+			<br>
 			<div>
 				<p>색상(색상코드{스타일코드})</p>
 			<select name="styleCode" class="styleCode" >
@@ -236,11 +243,11 @@
 			</div>
 			
 			<p>${product.sellPrice}원</p>
-			<input type="number" name="count" id="count" min="0" required>
+			<span>수량: </span>  <input type="number" name="count" id="count" min="0" required>
 			<div class='submitBtns'>
-				<span id='cart'> 장바구니 </span>
+				<button class='btn btn-secondary btn-sm' id="cart"> 장바구니 </button>
 				<input type="hidden" name="productCode" value="${product.productCode }">
-				<input type='submit' value='구매하기' />
+				<input class="btn btn-dark btn-sm" id="purchase" type='submit' value='구매하기' />
 				<!--// mode : development or production-->
 				<script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"
 				    data-client-id="{#_clientId}"

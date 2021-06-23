@@ -1,13 +1,24 @@
 desc memberdetail ;
 select  * from memberdetail;
 
-select * from qna q ;
+select * from qna
+ where member_code =(select member_code from member where member_id ='1234') ;
 
+
+select * from qna;
 
 select  * from  member where member_id ='1234';
 
 select board_code, member_code, member_id, product_code, product_name, title, content, regist_date from vw_myqna 
 where member_id='1234';
+--  -------------------문의글 수정
+UPDATE qna
+SET  title='업데이트테스트제목', content='업데이트테스트내용'
+WHERE board_code=1;
+-- --------------------------------------------
+
+
+
 
 
 delete qna where board_code=21;

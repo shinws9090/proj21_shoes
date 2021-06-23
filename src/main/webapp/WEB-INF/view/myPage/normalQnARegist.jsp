@@ -78,35 +78,47 @@
 		<h4>일반문의하기</h4>
 		<br>
 		<!-- 해당컨트롤러로 이동 -->
-		<form:form action="/myPage/normalQnARegist/2/${member.memberId }" modelAttribute="normalQnARegistCommand">
+		<form:form action="/myPage/normalQnARegist/2/${member.memberId }" modelAttribute="normalQnARegistCommand"  id="test" onsubmit="return false" >
 		<form:errors/>
 		<div>
 		<table class="tbl_type">
 		 <tr>
 			<td><a>회원 아이디:</a></td>
-			<td><form:input  type="text" path="memberId" placeholder="ID" value="${member.memberId }" readonly="true" size="100"/>  
+			<td>
+			<input hidden="hidden"/>
+			<form:input  type="text" path="memberId" placeholder="ID" value="${member.memberId }" readonly="true" size="100"/>  
 			</td>
 			<form:errors path="memberId" />
 		</tr>
 
 		<tr>
 			<td><a>회원 이름:</a></td> 
-			<td><form:input path="memberName"  value="${member.memberName }" readonly="true" size="100"/>  
+			<td>
+			<input hidden="hidden"/>
+			<form:input path="memberName"  value="${member.memberName }" readonly="true" size="100"/>  
 		</td>
 			<form:errors path="memberName" />
 		</tr>
 		<tr>
 			<td>
 			<a>문의제목:</a></td> 
-			<td><form:input type="text" path="title" id="title" placeholder="문의제목을 작성해주세요" size="100"/>  
+			<td>
+			<input hidden="hidden"/>
+			<form:errors path="title" style="color:red"/>
+			<br> 
+			<form:input type="text" path="title" id="title" placeholder="문의제목을 작성해주세요" size="100"/> 
 			</td>
-			<form:errors path="title" />
 			</tr>
 		<tr>
 			<td><a>문의내용:</a></td> 
-			<td style="height: 500px"><form:input type="text" path="content" id="content" placeholder="문의내용을 작성해주세요" style="width:98%; height:98%;" size="100" maxlength="1000" />  
+			<td style="height: 500px">
+			<input hidden="hidden"/>
+			<form:errors path="content"  style="color:red"/>
+			<br> 
+	<%-- 		<form:input type="textarea" path="content" id="content" placeholder="문의내용을 작성해주세요" style="width:98%; height:98%;" size="100" maxlength="1000" /> --%>  
+			<form><textarea rows="10" cols="50"  id="content" placeholder="문의내용을 작성해주세요" style="width:98%; height:98%;" maxlength="1000" ></textarea>
+			</form>
 			</td>
-			<form:errors path="content" />
 		</tr>
 
 		</table>

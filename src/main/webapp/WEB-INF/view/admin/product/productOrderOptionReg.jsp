@@ -115,25 +115,6 @@ $(function(){
 						});
 					</script>
 					
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>스타일코드</label>
-						</div>
-						<div class="form_section_content">
-							<input name="styleCode" value="">
-						</div>
-					</div>					
-					
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>색상</label>
-						</div>
-						<div class="form_section_content">
-							<input name="color" value="">
-						</div>
-					</div>
-					
-					
 					<div class="btn_section">
 						<button type="submit" id="new">추가</button>
 						<button type="button" id="cancel">취소</button>

@@ -62,9 +62,14 @@ select *
 		join productpost p2 on p2.product_code = p.product_code;		
 		
 	
-	
+select * from  product;
 select * from  productPost;
 select * from  image;
+select * from  orderOption;
+
+insert into orderOption (product_code, style_code, `size`, stock, color)
+	 values (11111, 1, 250, 1000, "balck");
+
 
 select pp.product_code, pp.product_main_image, pp.content, im.image_code, im.product_code, im.image from  productPost pp join image im on pp.product_code = im.product_code;
 

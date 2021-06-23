@@ -15,6 +15,7 @@
 				<td><a href="${contextPath}/admin/productPostMgt">상품판매글 목록</a></td>
 				<td><a href="${contextPath}/admin/product/productReg">상품 등록</a></td>
 				<td><a href="${contextPath}/admin/product/productPostReg">상품판매글 등록</a></td>
+				<td><a href="${contextPath}/admin/product/productOrderOptionReg">재고 관리</a></td>
 			</tr>
 		</table>
 </body>

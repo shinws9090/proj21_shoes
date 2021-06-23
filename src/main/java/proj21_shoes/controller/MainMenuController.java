@@ -19,7 +19,9 @@ import com.mysql.jdbc.StringUtils;
 
 import proj21_shoes.commend.ProductSelectCommend;
 import proj21_shoes.dto.Brand;
+import proj21_shoes.dto.Category;
 import proj21_shoes.dto.Product;
+import proj21_shoes.service.CategoryService;
 import proj21_shoes.service.ProductService;
 
 @RestController
@@ -27,6 +29,8 @@ public class MainMenuController {
 	
 	@Autowired
 	ProductService service;
+	@Autowired
+	CategoryService cService;
 	
 	@GetMapping("/api/brandSel/{code}")
 	public ResponseEntity<Object> images(@PathVariable("code") String code){
@@ -62,17 +66,31 @@ public class MainMenuController {
 //		List<Product> products = service.productByBrand(code);
 		ProductSelectCommend commend = new ProductSelectCommend();
 		commend.setBrandCode(code);
-		List<Product> products = service.productBycommand(commend);
-		System.out.println(products);
-		return new ModelAndView("product/productList","products",products)
-				.addObject("productSelectCommend", commend);
+		
+		
+//		List<Product> products = service.productBycommand(commend);
+//		System.out.println(products);
+//		return new ModelAndView("product/productList","products",products)
+//				.addObject("productSelectCommend", commend);
+		return productList(commend, 0);
 	}
 	
 	@PostMapping("/productList")
-	public ModelAndView productList(ProductSelectCommend productSelectCommend) {
+	public ModelAndView productList1(ProductSelectCommend productSelectCommend,
+									@RequestParam( defaultValue = "0" , name ="scrollHeight")long scrollHeight) {
+		return productList(productSelectCommend, scrollHeight);
+	}
+
+
+	private ModelAndView productList(ProductSelectCommend productSelectCommend, long scrollHeight) {
 		List<Product> products = service.productBycommand(productSelectCommend);
-		return new ModelAndView("product/productList","products",products)
-				.addObject("productSelectCommend", productSelectCommend);
+		List<Category> categories = cService.categoryList();
+		ModelAndView mav = new ModelAndView("product/productList","products",products);
+		mav.addObject("scrollHeight",scrollHeight);
+		mav.addObject("productSelectCommend", productSelectCommend);
+		mav.addObject("categories", categories);
+		
+		return mav;
 	}
 	
 	@GetMapping("/productList")
@@ -83,10 +101,13 @@ public class MainMenuController {
 		}else {
 			ProductSelectCommend commend = new ProductSelectCommend();
 			commend.setGender(menu);
-			List<Product> products = service.productBycommand(commend);
-			System.out.println(products);
-			return new ModelAndView("product/productList","products",products)
-					.addObject("productSelectCommend", commend);
+			
+			
+//			List<Product> products = service.productBycommand(commend);
+//			System.out.println(products);
+//			return new ModelAndView("product/productList","products",products)
+//					.addObject("productSelectCommend", commend);
+			return productList(commend, 0);
 		}
 	}
 }
