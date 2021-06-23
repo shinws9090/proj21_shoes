@@ -10,5 +10,6 @@ import proj21_shoes.commend.ReviewCommand;
 public interface ReviewDetailService {
 	
 	List<ReviewCommand> selectReviewProductbyCode(int productCode);
+	
 
 }
