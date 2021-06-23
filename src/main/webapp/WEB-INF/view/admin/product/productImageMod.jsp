@@ -48,7 +48,7 @@ $(function(){
 		<div class="admin_content_wrap">
 			<div class="admin_content_main">
 				
-				<form id="productModForm" method="post" autocomplete="off">
+				<form id="productModForm" method="post" autocomplete="off" enctype="multipart/form-data">
 				
 					<div class="form_section">
 						<div class="form_section_title">
@@ -60,91 +60,49 @@ $(function(){
 
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>상품명</label>
+							<label>상품대표이미지</label>
 						</div>
 						<div class="form_section_content">
-							<input name="productName" value="${products.productName}">
+							<input type="file" id="productMainImage" name="productMainImage" />
+							<div class="select_img"><img src="" /></div>
 						</div>
 					</div>
+					
+					<script>
+						$("#productMainImage").change(function(){
+							if(this.files && this.files[0]) {
+								var reader = new FileReader;
+								reader.onload = function(data) {
+									$(".select_img img").attr("src", data.target.result).width(500);        
+								}
+								reader.readAsDataURL(this.files[0]);
+							}
+						});
+					</script>
+					
+					<%=request.getRealPath("/") %>
 
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>브랜드</label>
+							<label>상품이미지들</label>
 						</div>
 						<div class="form_section_content">
-							<select name="brand" class="brand">
-								<option selected="selected" value="${products.brand.brandCode}">${products.brand.brandName}</option>
-							</select>
+							<input type="file" id="images" name="images" />
+							<div class="select_imgs"><img src="" /></div>					
 						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>성별</label>
-						</div>
-						
-						<div class="form_section_content">
-							<select name="gender" class="gender">
-								<option selected="selected" value="${products.gender}">${products.gender}</option>
-							</select>
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>카테고리</label>
-						</div>
-						<div class="form_section_content">
-							<select name="category" class="category">
-								<option selected="selected" value="${products.category.productCategoryCode}">${products.category.category}</option>
-							</select>
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>소재</label>
-						</div>
-						<div class="form_section_content">
-							<input name="material" value="${products.material}">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>계절</label>
-						</div>
-						<div class="form_section_content">
-							<input name="season" value="${products.season}">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>제조일</label>
-						</div>
-						<div class="form_section_content">
-							<input type="date" name="madeDate" value="${products.madeDate}">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>공급가격</label>
-						</div>
-						<div class="form_section_content">
-							<input name="costPrice" value="${products.costPrice}">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>판매가격</label>
-						</div>
-						<div class="form_section_content">
-							<input name="sellPrice" value="${products.sellPrice}">
-						</div>
-					</div>
+					</div>					
+					
+					<script>
+						$("#images").change(function(){
+							if(this.files && this.files[0]) {
+								var reader = new FileReader;
+								reader.onload = function(data) {
+									$(".select_imgs img").attr("src", data.target.result).width(500);        
+								}
+								reader.readAsDataURL(this.files[0]);
+							}
+						});
+					</script>
 
 					<div class="form_section">
 						<div class="form_section_title">
@@ -157,34 +115,7 @@ $(function(){
 								readonly="readonly">
 						</div>
 					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>누적등록수량</label>
-						</div>
-						<div class="form_section_content">
-							<input name="cumulativeRegistCount" value="${products.cumulativeRegistCount}">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>누적판매수량</label>
-						</div>
-						<div class="form_section_content">
-							<input name="cumulativeSellCount" value="${products.cumulativeSellCount}">
-						</div>
-					</div>
-										
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>내용</label>
-						</div>
-						<div class="form_section_content">
-							<textarea rows="5" cols="50"  name="content">${products.productPost.content}</textarea>
-						</div>
-					</div>
-
+					
 					<div class="form_section">
 						<div class="form_section_title">
 							<label>수정사원정보</label>

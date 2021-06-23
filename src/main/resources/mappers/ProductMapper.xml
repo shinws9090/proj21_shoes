@@ -158,6 +158,12 @@
 							cumulative_regist_count = #{cumulativeRegistCount}, cumulative_sell_count = #{cumulativeSellCount}, emp_number = #{employee.empNumber}
 		where product_code = #{productCode}
 	</update>
+	
+	<update id="updateProductRegDateEmp" parameterType="Product">
+		update product 
+		set regist_date = #{registDate}, emp_number = #{employee.empNumber}
+		where product_code = #{productCode}
+	</update>
 
 	<delete id="deleteProduct">
 		delete from product

@@ -14,5 +14,9 @@ public interface ProductPostService {
 
 	int updateProductPost(ProductPost productPost);
 
+	int updateProductPostContent(ProductPost productPost);
+
+	int updateProductPostImage(ProductPost productPost);
+
 	int deleteProductPost(ProductPost productPost);
 }

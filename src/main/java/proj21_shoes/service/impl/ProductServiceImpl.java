@@ -23,7 +23,7 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> productByAll() {
 		return mapper.productByAll();
 	}
-	
+
 	@Override
 	public List<Product> productByOnlyProuct() {
 		return mapper.productByOnlyProuct();
@@ -74,6 +74,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public int updateProduct(Product product) {
 		return mapper.updateProduct(product);
+	}
+	
+	@Override
+	public int updateProductRegDateEmp(Product product) {
+		return mapper.updateProductRegDateEmp(product);
 	}
 
 	@Override

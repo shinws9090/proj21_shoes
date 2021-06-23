@@ -11,10 +11,10 @@ import proj21_shoes.service.ProductPostService;
 
 @Service
 public class ProductPostServiceImpl implements ProductPostService {
-	
+
 	@Autowired
 	ProductPostMapper mapper;
-	
+
 	@Override
 	public List<ProductPost> productPostByAll() {
 		return mapper.productPostByAll();
@@ -33,6 +33,16 @@ public class ProductPostServiceImpl implements ProductPostService {
 	@Override
 	public int deleteProductPost(ProductPost productPost) {
 		return mapper.deleteProductPost(productPost);
+	}
+
+	@Override
+	public int updateProductPostContent(ProductPost productPost) {
+		return mapper.updateProductPostContent(productPost);
+	}
+
+	@Override
+	public int updateProductPostImage(ProductPost productPost) {
+		return mapper.updateProductPostImage(productPost);
 	}
 
 }
