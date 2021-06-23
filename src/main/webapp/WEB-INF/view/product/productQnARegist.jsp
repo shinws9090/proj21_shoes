@@ -44,9 +44,15 @@
 		<c:if test="${!empty authInfo}">
 			
 			
-			<form action="/normalQnARegist/2/${member.memberId.memberId }" method="post"> 
+			<form action="${contextPath}/productQnARegist" method="post"> 
 		<!-- 문의하기  입력  -->
-				<h4>일반문의하기</h4>
+				<c:if test="${commend=='insert'}">
+				<h4>상품문의하기</h4>
+				</c:if>
+				<c:if test="${commend=='update'}">
+				<h4>상품문의 수정</h4>
+				<input type="hidden" name="boardCode"value="${boardCode}" />
+				</c:if>
 				${member }
 				<br>
 				<!-- 해당컨트롤러로 이동 -->
@@ -56,7 +62,6 @@
 						<td><a>회원 아이디:</a></td>
 						<td>
 						<input type="text" placeholder="ID" value="${member.memberId.memberId }" readonly size="100"/>
-						<input name="member" type="hidden" value="${member}">
 						</td>
 					</tr>
 			
@@ -82,8 +87,7 @@
 					<tr>
 						<td><a>문의내용:</a></td> 
 						<td>
-						<textarea name="content" rows="10" cols="50"  id="content" style="width:98%; height:98%;" maxlength="1000" >
-						</textarea>
+						<textarea name="content" rows="10" cols="50"  id="content" style="width:98%; height:98%;" maxlength="1000" ></textarea>
 						</td>
 					</tr>
 		
@@ -91,6 +95,7 @@
 					
 				</div>
 				
+				<input type="hidden" name="commend"value="${commend}" /><!--다음단계  -->
 				<input type="submit" value="작성하기" /><!--다음단계  -->
 					
 			</form> 
