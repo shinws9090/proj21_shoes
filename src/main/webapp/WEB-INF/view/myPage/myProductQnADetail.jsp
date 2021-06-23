@@ -99,7 +99,10 @@
 				</tr>
 				
 			</table>
-		
+			<article id="myData_btn" >
+			 <a href="${contextPath}/myPage/${myQnADetail.boardCode}/${member.memberId}/modify">수정하러가기(${myQnADetail.boardCode})</a>
+			 
+			 </article>
 			
 				
 			

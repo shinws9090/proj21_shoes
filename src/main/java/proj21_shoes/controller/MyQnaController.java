@@ -42,7 +42,7 @@ public class MyQnaController {
 	@Autowired
 	MemberMapper memberMapper;
 	
-	//상품문의내역 페이지
+	//상품!!!!!!!!!!문의내역  리스트  페이지
 	@GetMapping("/myPage/myProductQnA/{memberId}")
 	public String myProductQnABoard(@PathVariable("memberId") String memberId,HttpSession session,HttpServletResponse response) {
 		List<MyQnaViewCommand> myQnAList =myQnaService.selectProductQnAbyId(memberId);
@@ -66,7 +66,7 @@ public class MyQnaController {
 	}
 	
 		
-	//일반문의내역 페이지
+	//일반!!!!!!!!문의내역리스트  페이지
 		@GetMapping("/myPage/myNormalQnA/{memberId}")
 		public String myNormalQnABoard(@PathVariable("memberId") String memberId,HttpSession session,HttpServletResponse response) {
 			List<MyQnaViewCommand> myQnAList =myQnaService.selectNormalQnAbyId(memberId);
@@ -93,7 +93,7 @@ public class MyQnaController {
 		}
 		
 		
-		//상품문의상세내역 페이지
+		//상품문의내역 게시글 상세보기!!! 페이지
 		@GetMapping("/myPage/myProductQnADetail/{memberId}/{boardCode}")
 		public String myProductQnADetail(@PathVariable("memberId") String memberId, @PathVariable("boardCode") int boardCode,HttpSession session,HttpServletResponse response) {
 			System.out.println("memberId>>"+ memberId );
@@ -105,9 +105,11 @@ public class MyQnaController {
 				System.out.println("리스트 없당");
 			
 			}
+			int productCode = myQnADetail.getProductCode();
 			
 //			MemberDetail member =mdtService.getMemberDetail(memberId);
 			session.setAttribute("member", member);
+			session.setAttribute("productCode", productCode);  // 요고 해줘야 jsp 에서 받을수 있당
 			session.setAttribute("myQnADetail", myQnADetail);  // 요고 해줘야 jsp 에서 받을수 있당
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("myQnADetail",myQnADetail);
@@ -118,7 +120,7 @@ public class MyQnaController {
 			return "/myPage/myProductQnADetail";
 			
 		}
-	//일반문의상세내역 페이지
+	//일반문의내역 게시글 상세보기!!! 페이지
 	@GetMapping("/myPage/myNormalQnADetail/{memberId}/{boardCode}")
 	public String myNormarQnADetail(@PathVariable("memberId") String memberId, @PathVariable("boardCode") int boardCode,HttpSession session,HttpServletResponse response) {
 		System.out.println("memberId>>"+ memberId );
@@ -147,7 +149,7 @@ public class MyQnaController {
 	}
 	
 	
-	//일반문의글 작성페이지
+	//일반!!!!!!!!문의글 작성페이지
 	@RequestMapping("/myPage/normalQnARegist/1/{memberId}")  //문의글 작성페이지로 이동
 	public String mormalQnAReg(@PathVariable("memberId")  String memberId, NormalQnARegistCommand normalQnARegistCommand, HttpSession session,HttpServletResponse response) {
 			// 에러떠서 수정했음! --> NormalQnARegistCommand 객체 + 	@RequestMapping
@@ -155,7 +157,7 @@ public class MyQnaController {
 		return "myPage/normalQnARegist";
 	}
 	
-	//입력받은 문의글 받아서 통과시 작성성공페이지로 이동
+	//작성한 문의글 받는곳!!
 	@PostMapping("/myPage/normalQnARegist/2/{memberId}")  //문의글 작성한거 받아서
 	public String normalQnARegSuc(@PathVariable("memberId")  String memberId ,@Valid @ModelAttribute NormalQnARegistCommand normalQnARegistCommand,Errors errors,HttpSession session,HttpServletResponse response) {
 		if (errors.hasErrors()) { //에러 있으면
@@ -189,8 +191,7 @@ public class MyQnaController {
 			@PathVariable("memberId") String memberId, @ModelAttribute("modifyMyNormalQnA") ModifyMyNormalQnA modifyMyNormalQnA,
 			MyQnaViewCommand myQnADetail , Errors errors, HttpSession session,HttpServletResponse response) {
 		System.out.println(session.getAttribute("myQnaDetail"));
-		
-		
+				
 		if (errors.hasErrors()) { //에러 있으면
 			System.out.println(1);
 			System.out.println(errors);
@@ -207,25 +208,29 @@ public class MyQnaController {
 		return"/myPage/modifyMyNormalQnA";
 	}
 
-		
+		//수정한 문의글 받는곳!!!
 	@PostMapping("/myPage/{boardCode}/{memberId}/modify/2")  //문의글 작성한거 받아서
 	public String normalQnAModifySuc(@PathVariable("boardCode") int boardCode, @PathVariable("memberId")  String memberId ,
 			@Valid @ModelAttribute("modifyMyNormalQnA") ModifyMyNormalQnA modifyMyNormalQnA, Errors errors, HttpSession session,HttpServletResponse response) {
 	//	System.out.println("555"+session.getAttribute("myQnADetail"));
+	//	MyQnaViewCommand myQnADetail2 =myQnaService.selectNormalQnAbyBoardCode(boardCode);
+	//	int proudctCode = myQnADetail2.getProductCode();
+		
 		System.out.println("modifyMyNormalQnA title >>> "+ modifyMyNormalQnA.getTitle());
-		if (errors.hasErrors()) { //에러 있으면
+	
+		if (errors.hasErrors() ) { //에러 있으면
 			System.out.println(1);
 			System.out.println(errors);
-			System.out.println("modifyMyNormalQnA>>>" + modifyMyNormalQnA);
-			return "/myPage/myNormalQnADetail"; //일로 돌려보내고
+			return "/myPage/modifyMyNormalQnA"; //일로 돌려보내고
 		}
 		
-		if(modifyMyNormalQnA.getTitle()==null ||modifyMyNormalQnA.getContent()==null) {
+		if(modifyMyNormalQnA.getTitle()== null || modifyMyNormalQnA.getContent()== null) {
 			System.out.println("널이다");
 			errors.reject("title", "required");
 			errors.reject("content", "required");
-			return "/myPage/myNormalQnADetail"; //일로 돌려보내고
+			return "/myPage/modifyMyNormalQnA"; //일로 돌려보내고
 		}
+		
 		
 		//에러업으면
 		try {
@@ -242,10 +247,9 @@ public class MyQnaController {
 		}catch(MyNormalQnAEmptyException e) {
 			errors.reject("title", "required");
 			errors.reject("content", "required");
-			return "/myPage/myNormalQnADetail"; //일로 돌려보내고
+			return "/myPage/modifyMyNormalQnA"; //일로 돌려보내고
 		}catch(Exception e) {
-			System.out.println("뭐가문제고");
-			return "/myPage/myNormalQnADetail"; //일로 돌려보내고		}
+			return "/myPage/modifyMyNormalQnA"; //일로 돌려보내고
 			
 		}
 	
