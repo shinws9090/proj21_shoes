@@ -157,7 +157,7 @@ public class MyQnaController {
 		return "myPage/normalQnARegist";
 	}
 	
-	//입력받은 문의글 받아서 통과시 작성성공페이지로 이동
+	//작성한 문의글 받는곳!!
 	@PostMapping("/myPage/normalQnARegist/2/{memberId}")  //문의글 작성한거 받아서
 	public String normalQnARegSuc(@PathVariable("memberId")  String memberId ,@Valid @ModelAttribute NormalQnARegistCommand normalQnARegistCommand,Errors errors,HttpSession session,HttpServletResponse response) {
 		if (errors.hasErrors()) { //에러 있으면
@@ -191,8 +191,7 @@ public class MyQnaController {
 			@PathVariable("memberId") String memberId, @ModelAttribute("modifyMyNormalQnA") ModifyMyNormalQnA modifyMyNormalQnA,
 			MyQnaViewCommand myQnADetail , Errors errors, HttpSession session,HttpServletResponse response) {
 		System.out.println(session.getAttribute("myQnaDetail"));
-		
-		
+				
 		if (errors.hasErrors()) { //에러 있으면
 			System.out.println(1);
 			System.out.println(errors);
@@ -209,25 +208,29 @@ public class MyQnaController {
 		return"/myPage/modifyMyNormalQnA";
 	}
 
-		
+		//수정한 문의글 받는곳!!!
 	@PostMapping("/myPage/{boardCode}/{memberId}/modify/2")  //문의글 작성한거 받아서
 	public String normalQnAModifySuc(@PathVariable("boardCode") int boardCode, @PathVariable("memberId")  String memberId ,
 			@Valid @ModelAttribute("modifyMyNormalQnA") ModifyMyNormalQnA modifyMyNormalQnA, Errors errors, HttpSession session,HttpServletResponse response) {
 	//	System.out.println("555"+session.getAttribute("myQnADetail"));
+	//	MyQnaViewCommand myQnADetail2 =myQnaService.selectNormalQnAbyBoardCode(boardCode);
+	//	int proudctCode = myQnADetail2.getProductCode();
+		
 		System.out.println("modifyMyNormalQnA title >>> "+ modifyMyNormalQnA.getTitle());
-		if (errors.hasErrors()) { //에러 있으면
+	
+		if (errors.hasErrors() ) { //에러 있으면
 			System.out.println(1);
 			System.out.println(errors);
-			System.out.println("modifyMyNormalQnA>>>" + modifyMyNormalQnA);
-			return "/myPage/myNormalQnADetail"; //일로 돌려보내고
+			return "/myPage/modifyMyNormalQnA"; //일로 돌려보내고
 		}
 		
-		if(modifyMyNormalQnA.getTitle()==null ||modifyMyNormalQnA.getContent()==null) {
+		if(modifyMyNormalQnA.getTitle()== null || modifyMyNormalQnA.getContent()== null) {
 			System.out.println("널이다");
 			errors.reject("title", "required");
 			errors.reject("content", "required");
-			return "/myPage/myNormalQnADetail"; //일로 돌려보내고
+			return "/myPage/modifyMyNormalQnA"; //일로 돌려보내고
 		}
+		
 		
 		//에러업으면
 		try {
@@ -244,10 +247,9 @@ public class MyQnaController {
 		}catch(MyNormalQnAEmptyException e) {
 			errors.reject("title", "required");
 			errors.reject("content", "required");
-			return "/myPage/myNormalQnADetail"; //일로 돌려보내고
+			return "/myPage/modifyMyNormalQnA"; //일로 돌려보내고
 		}catch(Exception e) {
-			System.out.println("뭐가문제고");
-			return "/myPage/myNormalQnADetail"; //일로 돌려보내고		}
+			return "/myPage/modifyMyNormalQnA"; //일로 돌려보내고
 			
 		}
 	
