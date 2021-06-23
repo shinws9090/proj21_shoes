@@ -67,6 +67,12 @@ select * from  productPost;
 select * from  image;
 select * from  orderOption;
 
+insert into orderoption values(11111, 1, 260, 999, "brown");
+
+select product_code, style_code, `size`, stock, color
+  from orderOption
+ where product_code = 11111;
+
 insert into orderOption (product_code, style_code, `size`, stock, color)
 	 values (11111, 1, 250, 1000, "balck");
 

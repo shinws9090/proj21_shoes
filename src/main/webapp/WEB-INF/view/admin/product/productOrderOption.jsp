@@ -29,7 +29,27 @@ $(function(){
 	var contextPath = "<%=request.getContextPath()%>";
 		$('#cancel').on("click", function(e) {
 			history.back();
-		});			
+		});
+		
+	var contextPath = "<%= request.getContextPath()%>";
+	
+	var jsonData = JSON.parse('${orderOptionListByProductCode}');
+	var productCode = jsonData[0].productCode
+	for(var i = 0; i < jsonData.length; i++) {		
+		var sCont = "";
+			sCont += "<tr>";
+			sCont += "<td>" + jsonData[i].productCode + "</td>";
+			sCont += "<td>" + jsonData[i].styleCode + "</td>";
+			sCont += "<td>" + jsonData[i].color + "</td>";										
+			sCont += "<td>" + jsonData[i].size + "</td>";
+			sCont += "<td>" + jsonData[i].stock + "</td>";
+			sCont += "</tr>";
+		$("#load:last-child").append(sCont); 
+	}
+	
+	var lastData = jsonData.length - 1;
+	document.getElementById("styleCode").value = jsonData[lastData].styleCode;
+	document.getElementById("color").value = jsonData[lastData].color;
 });
 </script>
 </head>
@@ -40,124 +60,88 @@ $(function(){
 		<jsp:include page="/WEB-INF/view/include/header.jsp" />
 	</header>
 	<!-- end header -->
-
 	<section>
 		<jsp:include page="/WEB-INF/view/admin/include/adminMenu.jsp" />
+		
+		<table style="width: 80%">
+			<tr>
+				<td colspan="7" class="td_title">상품 재고 목록</td>
+			</tr>
 
+			<tr style="background-color: lightgrey; text-align: center">
+				<td>번호</td>
+				<td>스타일코드</td>
+				<td>색상</td>
+				<td>사이즈</td>
+				<td>재고</td>
+			</tr>
+			<tr>
+				<tbody id="load"/>
+			</tr>
+		</table>
+		
 		<div class="admin_content_wrap">
 			<div class="admin_content_main">
-				<form id="productPostRegForm" method="post" autocomplete="off" enctype="multipart/form-data">
+				<form id="productOrderOptionForm" method="post" autocomplete="off">
 
-					<div class="form_section">
+					<div class="form_section" hidden="true">
 						<div class="form_section_title">
 							<label>상품코드</label>
 						</div>
 						<div class="form_section_content">
-							<select name="productCode" class="productCode">
-								<option selected="selected" value="">판매상품을 선택해주세요</option>
-							</select>
+							<input name="productCode" id="productCode" value="${products.productCode}">
 						</div>
 					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>상품대표이미지</label>
-						</div>
-						<div class="form_section_content">
-							<input type="file" id="productMainImage" name="productMainImage" />
-							<div class="select_img"><img src="" /></div>
-						</div>
-					</div>
-					
-					<script>
-						$("#productMainImage").change(function(){
-							if(this.files && this.files[0]) {
-								var reader = new FileReader;
-								reader.onload = function(data) {
-									$(".select_img img").attr("src", data.target.result).width(500);        
-								}
-								reader.readAsDataURL(this.files[0]);
-							}
-						});
-					</script>
-					
-					<%=request.getRealPath("/") %>
 					
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>내용</label>
-						</div>
+							<label>스타일코드</label>
+						</div >
 						<div class="form_section_content">
-							<textarea rows="5" cols="50"  name="content"></textarea>
+							<input name="styleCode" id="styleCode" value="">
 						</div>
-					</div>
-
+					</div>					
+					
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>상품이미지들</label>
+							<label>색상</label>
 						</div>
 						<div class="form_section_content">
-							<input type="file" id="images" name="images" />
-							<div class="select_imgs"><img src="" /></div>					
+							<input name="color" id="color" value="">
 						</div>
 					</div>
 					
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>사이즈</label>
+						</div>
+						<div class="form_section_content">
+							<input name="size" value="">
+						</div>
+					</div>
 					
-					<script>
-						$("#images").change(function(){
-							if(this.files && this.files[0]) {
-								var reader = new FileReader;
-								reader.onload = function(data) {
-									$(".select_imgs img").attr("src", data.target.result).width(500);        
-								}
-								reader.readAsDataURL(this.files[0]);
-							}
-						});
-					</script>
-					
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>재고</label>
+						</div>
+						<div class="form_section_content">
+							<input name="stock" value="">
+						</div>
+					</div>
+								
 					<div class="btn_section">
-						<button type="submit" id="new">추가</button>
+						<button type="submit" id= "new">추가</button>
 						<button type="button" id="cancel">취소</button>
 					</div>
 
 				</form>
-
-
 			</div>
 		</div>
 
 	</section>
-
 	<!-- end our product -->
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp" />
 	</footer>
-
-<script>
-	//컨트롤러에서 상품 데이터 받기
-	var jsonData = JSON.parse('${productList}');
-	console.log(jsonData);
-	
-	var productArr = new Array();
-	var productObj = new Object();
-	
-	// 상품 셀렉트 박스에 삽입할 데이터 준비
-	for(var i = 0; i < jsonData.length; i++) {
-		productObj = new Object();  //초기화
-		productObj.productCode = jsonData[i].productCode;
-		productObj.productName = jsonData[i].productName;
-		productArr.push(productObj);	 
-	}
-	
-	// 상품 셀렉트 박스에 데이터 삽입
-	var productSelect = $("select.productCode")
-
-	for(var i = 0; i < productArr.length; i++) {
-		productSelect.append("<option value='" + productArr[i].productCode + "'>" + productArr[i].productCode + " : " 
-	      + productArr[i].productName + "</option>");
-		
-	}
-</script>
-
 </body>
 </html>

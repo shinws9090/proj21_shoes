@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="proj21_shoes.mapper.OrderOptionMapper">
-
+	
+	<resultMap type="OrderOption" id="OrderOptionList">
+		<id column="product_code" property="productCode"/>
+		<id column="style_code" property="styleCode"/>		
+	</resultMap>
+	
+	<select id="orderOptionByProductCode" resultType="OrderOption">
+		select product_code, style_code, `size`, stock, color
+		from orderOption
+		where product_code = #{productCode}
+	</select>
+	
 	<insert id="insertOrderOption" parameterType="OrderOption">
 		insert into orderOption (product_code, style_code, `size`, stock, color)
 			 values (#{productCode}, #{styleCode}, #{size}, #{stock}, #{color});

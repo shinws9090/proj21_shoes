@@ -1,5 +1,7 @@
 package proj21_shoes.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,12 @@ public class OrderOptionServiceImpl implements OrderOptionService {
 
 	@Autowired
 	OrderOptionMapper mapper;
-	
+
+	@Override
+	public List<OrderOption> orderOptionByProductCode(int productCode) {
+		return mapper.orderOptionByProductCode(productCode);
+	}
+
 	@Override
 	public int insertOrderOption(OrderOption orderOption) {
 		return mapper.insertOrderOption(orderOption);

@@ -36,12 +36,13 @@
 					sCont += "<td>" + json.brand.brandName + "</td>";
 					sCont += "<td>" + json.gender + "</td>";
 					sCont += "<td>" + json.category.category + "</td>";
-					sCont += "<td>" + json.productMainImage + "</td>";					
+					sCont += "<td>" + json.productPost.productMainImage + "</td>";					
 					sCont += "<td>" + json.costPrice + "</td>";
 					sCont += "<td>" + json.sellPrice + "</td>";
 					sCont += "<td>" + json.registDate + "</td>";
 					sCont += "<td>" + json.cumulativeRegistCount + "</td>";
 					sCont += "<td>" + json.cumulativeSellCount + "</td>";					
+					sCont += "<td><a href='${contextPath}/admin/product/productOrderOption?productCode=" + json.productCode + "'>[재고관리]</a></td>";
 					sCont += "<td><a href='${contextPath}/admin/product/productMod?productCode=" + json.productCode + "'>[수정]</a></td>";
 					sCont += "<td><a href='${contextPath}/admin/product/productDel?productCode=" + json.productCode + "'>[삭제]</a></td>";
 					sCont += "</tr>";
@@ -77,6 +78,7 @@
 				<td>등록일</td>
 				<td>등록수량</td>
 				<td>판매량</td>
+				<td>재고관리</td>
 				<td>수정</td>
 				<td>삭제</td>
 
