@@ -183,11 +183,13 @@ public class MyQnaController {
 		//return "myPage/normalQnARegistS";}
 	
 	
-	//일반문의글 수정하기 페이지 (게시글번호 가져와서, 답변글 없으면!
+	//일반문의글 수정하기 작성 페이지 (게시글번호 가져와서, 답변글 없으면!
 	@RequestMapping("/myPage/{boardCode}/{memberId}/modify")
 	public String modifyMyNormalQnA( @PathVariable("boardCode") int boardCode,
-			@PathVariable("memberId") String memberId,@ModelAttribute("modifyMyNormalQnA") ModifyMyNormalQnA modifyMyNormalQnA,
+			@PathVariable("memberId") String memberId, @ModelAttribute("modifyMyNormalQnA") ModifyMyNormalQnA modifyMyNormalQnA,
 			MyQnaViewCommand myQnADetail , Errors errors, HttpSession session,HttpServletResponse response) {
+		System.out.println(session.getAttribute("myQnaDetail"));
+		
 		
 		if (errors.hasErrors()) { //에러 있으면
 			System.out.println(1);
@@ -201,7 +203,7 @@ public class MyQnaController {
 		}
 		//ModifyMyNormalQnA modifyMyNormalQna = new ModifyMyNormalQnA();
 		
-	
+	System.out.println("modifyMyNormalQnA  수정하기 페이지로 넘어오는것 >> " + modifyMyNormalQnA);
 		return"/myPage/modifyMyNormalQnA";
 	}
 
@@ -209,24 +211,34 @@ public class MyQnaController {
 	@PostMapping("/myPage/{boardCode}/{memberId}/modify/2")  //문의글 작성한거 받아서
 	public String normalQnAModifySuc(@PathVariable("boardCode") int boardCode, @PathVariable("memberId")  String memberId ,
 			@Valid @ModelAttribute("modifyMyNormalQnA") ModifyMyNormalQnA modifyMyNormalQnA, Errors errors, HttpSession session,HttpServletResponse response) {
-		
+	//	System.out.println("555"+session.getAttribute("myQnADetail"));
+		System.out.println("modifyMyNormalQnA title >>> "+ modifyMyNormalQnA.getTitle());
 		if (errors.hasErrors()) { //에러 있으면
 			System.out.println(1);
 			System.out.println(errors);
+			System.out.println("modifyMyNormalQnA>>>" + modifyMyNormalQnA);
+			return "/myPage/myNormalQnADetail"; //일로 돌려보내고
+		}
+		
+		if(modifyMyNormalQnA.getTitle()==null ||modifyMyNormalQnA.getContent()==null) {
+			System.out.println("널이다");
+			errors.reject("title", "required");
+			errors.reject("content", "required");
 			return "/myPage/myNormalQnADetail"; //일로 돌려보내고
 		}
 		
 		//에러업으면
 		try {
-			//Member  member = memberMapper.selectMemberById(memberId);
-			//int selMemberCode = member.getMemberCode();
+		//	Member  member = memberMapper.selectMemberById(memberId);
+		//	int selMemberCode = member.getMemberCode();
 			
 			ModifyMyNormalQnA updateQnA = new ModifyMyNormalQnA(boardCode, modifyMyNormalQnA.getTitle(), modifyMyNormalQnA.getContent());
 			myQnaService.updateNormalQnA(updateQnA);
 			session.setAttribute("updateQnA", updateQnA);
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("updateQnA",updateQnA);
-			return "myPage/normalQnAmodifyS";
+			return "myPage/normalQnAModifyS";
+			
 		}catch(MyNormalQnAEmptyException e) {
 			errors.reject("title", "required");
 			errors.reject("content", "required");
@@ -242,9 +254,3 @@ public class MyQnaController {
 	
 	}
 }
-	
-	
-	
-	
-
-

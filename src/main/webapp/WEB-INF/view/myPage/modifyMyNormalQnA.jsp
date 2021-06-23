@@ -26,7 +26,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-	
+
 </head>
 <body class="main-layout">
 	<!-- header -->
@@ -36,16 +36,16 @@
 	<!-- end header -->
 		<div id="myPage">
 	<section id = "maPage">
-	
+
 	<c:if test="${empty authInfo}"> 
 				<p style="text-align: center;">로그인해주세요.</p> 
 				<p></p>
 				<li style="text-align: center;"><a href="${contextPath}/register/step1">회원가입</a></li>
 				<li style="text-align: center;"><a href="${contextPath}/login/loginForm">로그인</a></li>
-				
+
 			</c:if>
 			<c:if test="${!empty authInfo}">
-				
+
 					<!-- 상단 등급 바 -->
 				<table id="tbl_maGrade"> 
 					<tr id="tr_myGrade">
@@ -58,7 +58,7 @@
 					</tr>
 				</table>
 				<!-- 좌측메뉴 -->
-			
+
 				<article id="my_menu">
 				<h3>회원정보</h3>
 				<a href="${contextPath}/myPage/myPageSel/${member.memberId}">-회원정보 조회 / 변경</a><br>
@@ -69,82 +69,79 @@
 				<a href="${contextPath}/myPage/myProductQnA/${member.memberId}">-상품문의내역</a><br>
 				<a href="${contextPath}/myPage/myNormalQnA/${member.memberId}">-일반문의내역</a><br>
 				<a href="${contextPath}/cartList">-장바구니</a>
-			
+
 				</article>
-				
-				
-				
+
+
+
 	<!-- 문의하기  입력  -->
-		<h4>문의글 수정</h4>
+		<h4>일반문의하기</h4>
 		<br>
-		<!-- 해당컨트롤러로 이동 --> <!-- 모델어트리뷰트에 적힌 dto에  없는 변수명이 value에 들어가면 못쓴당. 귀찮아도 dto 새로만들쟈   +++ 그래도 에러뜰경우 컨트롤러쪽 오타다!! 벨리드 없애고 보자  -->
-		 <form:form action="/myPage/${myQnADetail.boardCode}/${myQnADetail.memberId}/modify/2" modelAttribute="modifyMyNormalQnA"  id="test" onsubmit="return false" >
+		<!-- 해당컨트롤러로 이동 -->
+		<form:form action="/myPage/${myQnADetail.boardCode}/${myQnADetail.memberId}/modify/2" modelAttribute="modifyMyNormalQnA"   >
 		<form:errors/>
 		<div>
 		<table class="tbl_type">
-		  <tr>
+		 <tr>
 			<td><a>회원 아이디:</a></td>
-			<td>
-			<input hidden="hidden"/>
-			<form:input  type="text" path="memberId"  value="${authInfo.memberId }" readonly="true" size="100"/>  
+			<td><form:input  type="text" path="memberId" placeholder="ID" value="${member.memberId }" readonly="true" size="100"/>  
 			</td>
 			<form:errors path="memberId" />
 		</tr>
 
 		<tr>
 			<td><a>회원 이름:</a></td> 
-			<td>
-			<input hidden="hidden"/>
-			<form:input path="memberName"  value="${authInfo.memberName }" readonly="true" size="100"/>  
+			<td><form:input path="memberName"  value="${member.memberName }" readonly="true" size="100"/>  
 		</td>
 			<form:errors path="memberName" />
-		</tr> 
+		</tr>
 		<tr>
 			<td>
 			<a>문의제목:</a></td> 
 			<td>
 			<input hidden="hidden"/>
-			<form:errors path="title" style="color:red"/>
-			<br> 
-			<form:input type="text" path="title" id="title"  value="${myQnADetail.title }" placeholder="문의제목을 작성해주세요" size="100"/> 
+			<form:errors path="title"  style="color:red;"/>
+			<br>
+			<form:input type="text" name="title" path="title" id="title"  value="${myQnADetail.title }"  placeholder="문의제목을 작성해주세요" size="100"/>  
 			</td>
 			</tr>
 		<tr>
-			<td><a>문의내용:</a></td> 
+			<td><a>문의내용:</a></td>
 			<td style="height: 500px">
 			<input hidden="hidden"/>
-			<form:errors path="content"  style="color:red"/>
-			<br> 
-			<form><textarea rows="10" cols="50"  id="content"   placeholder="문의내용을 작성해주세요" style="width:98%; height:98%;" maxlength="1000" >${myQnADetail.content }</textarea>
-			</form>
+			<form:errors path="content"  style="color:red;" />
+			<br>
+			 <textarea rows="10" cols="50"  name="content" id="content" placeholder="문의내용을 작성해주세요" style="width:98%; height:98%;" maxlength="1000" >
+			 	${myQnADetail.content }
+			 </textarea>
 			</td>
 		</tr>
 
 		</table>
-			
+
 		</div>
-		
-			 <article style="margin-left:50%;">	
+
+			<article style="margin-left:50%;">	
 				<form action="/myPage/${myQnADetail.boardCode}/${myQnADetail.memberId}/modify/2" method="post"> <!-- 일로 보내조 -->
-				<input type="submit" value="수정하기" /><!--다음단계  -->
-				
+				<input type="submit" value="작성하기" /><!--다음단계  -->
+
 				</form> 
 
 				<a href="${contextPath}/myPage/myNormalQnA/${member.memberId }">취소</a>
-		
-				
-		</article> 
-			
-		</form:form> 
-			
-				
+
+
+		</article>
+
+		</form:form>
+
+
 			</c:if>
 
-	
-	
+
+
 	</section>
 </div>
-	
+
 	<section>
 
 	</section>
@@ -154,4 +151,4 @@
 		<jsp:include page="/WEB-INF/view/include/footer.jsp"/>
 	</footer>
 </body>
-</html>
+</html> 

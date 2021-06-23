@@ -98,6 +98,8 @@ public class MyPageController {
 		
 		MemberDetail member = getMemberService.getMemberDetail(memberId); //주소에 찍힌 id로  멤버검색후 데이터 담아서
 		
+		System.out.println("dfjslfjslfjsfjl"+memberUpdate.getMemberId());
+		
 		if(member ==null) {
 			throw new MemberNotFoundException();
 		}
