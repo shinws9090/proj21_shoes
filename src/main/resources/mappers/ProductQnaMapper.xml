@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="proj21_shoes.mapper.ProductQnaMapper">
+
+	<select id="selectProductQnAbyCode" resultMap="proj21_shoes.mapper.MyQnaMapper.resQna">
+		select board_code, member_code, member_id, product_code, product_name,product_main_image, title, content, regist_date 		
+		from vw_myqna where product_code=#{productCode}
+	</select>
+	
+	<insert id="" >
+		insert into qna  
+		(member_code, product_code, title, content, reply, regist_date)
+		VALUES(#{memberCode}, null, #{title}, #{content}, #{reply}, now());
+	</insert>
+</mapper>

@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 	<c:set var="contextPath" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
 <html lang="en">
@@ -28,6 +29,17 @@ $(function() {
 	$(".category").click(function(){
 		$(this).submit();
 	});
+	
+	var scrollHeight = "${scrollHeight}";
+	$(window).scroll(function () {
+        scrollHeight = $(document).scrollTop();
+        /* if (scrollHeight != null && scrollHeight != '' && scrollHeight > 0) {
+            scrollHeight = Math.round(scrollHeight)  // scroll값은 소수점까지 있을 수 있기 때문에 반올림 처리
+        } */
+        $("#scrollHeight").val(scrollHeight);
+    });
+	$('html, body').animate({scrollTop:scrollHeight},1);
+	
 });
 </script>
 </head>
@@ -37,7 +49,8 @@ $(function() {
 	</header>
 
 	<section>
-		${products}
+		<%-- ${products} --%>
+		<%-- ${categories } --%>
 		<nav class="category-menu">
 			<ul>
 				<li>
@@ -47,7 +60,19 @@ $(function() {
 						<form:hidden path="brandCode"/>
 					</form:form>
 				</li>
-				<c:forEach var="product" items="${products}">
+				<c:forEach var="categorie" items="${categories }">
+					<li>
+						<form:form class="category" modelAttribute="productSelectCommend" action="${contextPath}/productList">
+							${categorie.category}
+							<form:hidden path="gender" value="${products[0].gender}"/>
+							<form:hidden path="brandCode"/>
+							<form:hidden path="productCategoryCode" value="${categorie.productCategoryCode}"/>
+						</form:form>
+					</li>
+				</c:forEach>
+				<%-- <c:forEach var="product" items="${products}" varStatus="status">
+					<c:choose>
+						<c:when test="${status.first}">
 					<li>
 						<form:form class="category" modelAttribute="productSelectCommend" action="${contextPath}/productList">
 							${product.category.category}
@@ -56,7 +81,21 @@ $(function() {
 							<form:hidden path="productCategoryCode" value="${product.category.productCategoryCode}"/>
 						</form:form>
 					</li>
-				</c:forEach>
+						</c:when>
+						<c:when test="${product.category.category == products[status.index-1].category.category}">
+						</c:when>
+						<c:otherwise>
+					<li>
+						<form:form class="category" modelAttribute="productSelectCommend" action="${contextPath}/productList">
+							${product.category.category}
+							<form:hidden path="gender" value="${products[0].gender}"/>
+							<form:hidden path="brandCode"/>
+							<form:hidden path="productCategoryCode" value="${product.category.productCategoryCode}"/>
+						</form:form>
+					</li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach> --%>
 			</ul>
 		</nav>
 		<c:forEach var="product" items="${products}">
@@ -81,6 +120,20 @@ $(function() {
 				</div>
 			</div>
 		</c:forEach>
+		
+		<div>
+			<form:form modelAttribute="productSelectCommend" action="${contextPath}/productList">
+				<form:hidden path="gender" value="${products[0].gender}"/>
+				<form:hidden path="brandCode"/>
+				<form:hidden path="productCategoryCode" value="${product.category.productCategoryCode}"/>
+				<form:hidden path="page" value="${productSelectCommend.page+1}"/>
+				<input type="hidden" name="scrollHeight" id="scrollHeight">
+				<c:if test="${fn:length(products)>=productSelectCommend.limit}">
+				<input type="submit" value="더보기">
+				</c:if>
+			</form:form>
+		</div>
+		
 	</section>
 
 	<footer>

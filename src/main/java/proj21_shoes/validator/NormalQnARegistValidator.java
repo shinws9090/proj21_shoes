@@ -1,4 +1,4 @@
-package proj21_shoes.controller;
+package proj21_shoes.validator;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -8,7 +8,7 @@ import proj21_shoes.commend.RegisterRequest;
 
 
 
-public class NormalQnARegistValidatorValidator implements Validator { // dto에 있는 항목들(이름,이메일,패스워드.패스워드확인 등 모두 점검하겠당
+public class NormalQnARegistValidator implements Validator { // dto에 있는 항목들(이름,이메일,패스워드.패스워드확인 등 모두 점검하겠당
 
 	
 

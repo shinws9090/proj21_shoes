@@ -12,25 +12,6 @@ section {
   /* border: 1px solid #000; */
 }
 
-.order-options {
-	padding: 0.5em;
-	text-align: left;
-	width:15%;
-	display: inline-block;
-	float: right;
-	position: sticky;
-	top: 25%;
-	right: 10%;
-	box-shadow: 10px 10px 20px #c0c0c0;
-	border-radius: 15px;
-}
-
-.order-options input{
-	width: 80%;
-	background-color:white;
-	border-radius: 7px;
-	
-}
 .product-content img{
 	width: 80%;
 }
@@ -40,11 +21,11 @@ section {
 .main-image{
 	padding: 2em;
 }
-.btn{
+.tab-btn{
 	border-bottom: 1px solid #ccc;
 	border-top: 1px solid #ccc;
 }
-.btn li{
+.tab-btn li{
 	margin-bottom: 0.5em;
 	margin-top: 0.5em;
 }
@@ -65,4 +46,42 @@ section {
 	color:red;
 	/* border: 1px solid #000; */
 	
+}
+
+
+/* 옵션  */
+.order-options {
+	padding: 1em;
+	text-align: left;
+	width:15%;
+	display: inline-block;
+	float: right;
+	position: sticky;
+	top: 25%;
+	right: 10%;
+	box-shadow: 10px 10px 20px #c0c0c0;
+	border-radius: 15px;
+}
+.order-options *{
+	margin-top: 0.5em;
+}
+
+.order-options input{
+	width: 80%;
+	background-color:white;
+	border-radius: 7px;
+	
+}
+
+#cart,#purchase{
+	margin: 1%;
+	padding:5%;
+	float:left;
+	border: 0;
+	width: 7em;
+	font-size: 1em;
+	border-radius: 6px;
+}
+#count{
+	width: 50%;
 }
