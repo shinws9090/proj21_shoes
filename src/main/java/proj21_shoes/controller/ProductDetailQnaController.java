@@ -37,10 +37,8 @@ public class ProductDetailQnaController {
 		return mav;
 	}
 	@GetMapping("/ProductQnAInsert/{productCode}")
-	public ModelAndView ProductQnAInsert(@PathVariable("productCode") int productCode,HttpSession session,HttpServletResponse response) {
+	public ModelAndView ProductQnAInsert(@PathVariable("productCode") int productCode) {
 		System.out.println("productCode>>"+ productCode );
-		
-		
 		return new ModelAndView("/product/productQnARegist","productCode",productCode);
 	}
 }
