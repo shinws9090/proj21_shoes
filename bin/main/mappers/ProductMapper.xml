@@ -33,7 +33,7 @@
 		from product p
 		join brand b on p.brand_code = b.brand_code
 		join category c on c.product_category_code =p.product_category_code
-		join productpost p2 on p2.product_code = p.product_code
+		left join productpost p2 on p2.product_code = p.product_code
 	</sql>
 	<sql id="selProductDetail">
 		select *
@@ -117,17 +117,18 @@
 					and p.brand_code = #{brandCode}
 				</if>
 			</where>
+			limit #{limit}
 		</if>
-			<if test="main !=null">
-				<if test="main=='new'">
-					order by cumulative_sell_count desc
-					limit 4
-				</if>
-				<if test="main=='best'">
-					order by regist_date desc
-					limit 4
-				</if>
+		<if test="main !=null">
+			<if test="main=='new'">
+				order by cumulative_sell_count desc
+				limit 4
 			</if>
+			<if test="main=='best'">
+				order by regist_date desc
+				limit 4
+			</if>
+		</if>
 	</select>
 	
 	<resultMap type="Product" id="OnlyProductList">
