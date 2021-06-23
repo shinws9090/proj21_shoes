@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="from" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="contextPath" value="<%=request.getContextPath()%>" />
 <c:set var="session" value="<%=request.getSession()%>" />
 <!DOCTYPE html>
@@ -136,8 +137,10 @@
 				<img src="../images/review_detailpage.jpg">
 				
 				<section id="articleForm">
-				<h2>상품 Review</h2>
-				<p>* </p><table class="table" border="1">
+				<h2>Review</h2>
+				<p>주문하신 상품의 후기를 작성해주세요 :) </p>
+				<br>
+				<table class="table" border="1">
 							<tbody>
 								<tr>
 									<th scope="row">No.</th>
@@ -168,6 +171,7 @@
 								<td><c:out value="${resReView.title }"></c:out></td>
 								<td><c:out value="${resReView.orderCode.memberCode.memberId.memberId }"></c:out></td>
 								<td><c:out value="${resReView.registDate }"></c:out></td>
+								
 							</tr>
 								 
 					</c:forEach>

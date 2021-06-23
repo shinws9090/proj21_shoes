@@ -1,5 +1,6 @@
 package proj21_shoes.mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.logging.Log;
@@ -16,7 +17,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import proj21_shoes.config.ContextRoot;
+import proj21_shoes.dto.Image;
 import proj21_shoes.dto.Order;
+import proj21_shoes.dto.ProductPost;
 import proj21_shoes.dto.ReView;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -39,7 +42,7 @@ public class ReviewMapperTest {
 	}
 
 	@Test
-	public void test01SelectReviewByMemberId() {
+	public void test01SelectReviewByProductCode() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 
 		List<ReView> rList = mapper.selectReviewByProductCode(11111);
@@ -52,5 +55,7 @@ public class ReviewMapperTest {
 //		Assert.assertNotNull(rList);
 
 	}
+	
+	
 
 }

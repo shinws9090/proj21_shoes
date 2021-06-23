@@ -54,3 +54,7 @@ join reviewimage r2 on r.board_code = r2.board_code
 join orderproduct o2 on o.order_code = o2.order_code
 where o2.product_code = '11111';
 
+
+insert into review values
+	(1,10001,'이 가격에 이 퀄리티 리얼?','가성비 좋아요~',now()),
+

@@ -32,4 +32,9 @@ public class ReviewServiceImpl implements ReviewService {
 		return null;
 	}
 
+	public static ReviewServiceImpl getInstance() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
