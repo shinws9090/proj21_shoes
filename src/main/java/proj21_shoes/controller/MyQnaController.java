@@ -42,7 +42,7 @@ public class MyQnaController {
 	@Autowired
 	MemberMapper memberMapper;
 	
-	//상품문의내역 페이지
+	//상품!!!!!!!!!!문의내역  리스트  페이지
 	@GetMapping("/myPage/myProductQnA/{memberId}")
 	public String myProductQnABoard(@PathVariable("memberId") String memberId,HttpSession session,HttpServletResponse response) {
 		List<MyQnaViewCommand> myQnAList =myQnaService.selectProductQnAbyId(memberId);
@@ -66,7 +66,7 @@ public class MyQnaController {
 	}
 	
 		
-	//일반문의내역 페이지
+	//일반!!!!!!!!문의내역리스트  페이지
 		@GetMapping("/myPage/myNormalQnA/{memberId}")
 		public String myNormalQnABoard(@PathVariable("memberId") String memberId,HttpSession session,HttpServletResponse response) {
 			List<MyQnaViewCommand> myQnAList =myQnaService.selectNormalQnAbyId(memberId);
@@ -93,7 +93,7 @@ public class MyQnaController {
 		}
 		
 		
-		//상품문의상세내역 페이지
+		//상품문의내역 게시글 상세보기!!! 페이지
 		@GetMapping("/myPage/myProductQnADetail/{memberId}/{boardCode}")
 		public String myProductQnADetail(@PathVariable("memberId") String memberId, @PathVariable("boardCode") int boardCode,HttpSession session,HttpServletResponse response) {
 			System.out.println("memberId>>"+ memberId );
@@ -105,9 +105,11 @@ public class MyQnaController {
 				System.out.println("리스트 없당");
 			
 			}
+			int productCode = myQnADetail.getProductCode();
 			
 //			MemberDetail member =mdtService.getMemberDetail(memberId);
 			session.setAttribute("member", member);
+			session.setAttribute("productCode", productCode);  // 요고 해줘야 jsp 에서 받을수 있당
 			session.setAttribute("myQnADetail", myQnADetail);  // 요고 해줘야 jsp 에서 받을수 있당
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("myQnADetail",myQnADetail);
@@ -118,7 +120,7 @@ public class MyQnaController {
 			return "/myPage/myProductQnADetail";
 			
 		}
-	//일반문의상세내역 페이지
+	//일반문의내역 게시글 상세보기!!! 페이지
 	@GetMapping("/myPage/myNormalQnADetail/{memberId}/{boardCode}")
 	public String myNormarQnADetail(@PathVariable("memberId") String memberId, @PathVariable("boardCode") int boardCode,HttpSession session,HttpServletResponse response) {
 		System.out.println("memberId>>"+ memberId );
@@ -147,7 +149,7 @@ public class MyQnaController {
 	}
 	
 	
-	//일반문의글 작성페이지
+	//일반!!!!!!!!문의글 작성페이지
 	@RequestMapping("/myPage/normalQnARegist/1/{memberId}")  //문의글 작성페이지로 이동
 	public String mormalQnAReg(@PathVariable("memberId")  String memberId, NormalQnARegistCommand normalQnARegistCommand, HttpSession session,HttpServletResponse response) {
 			// 에러떠서 수정했음! --> NormalQnARegistCommand 객체 + 	@RequestMapping
