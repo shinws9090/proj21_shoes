@@ -78,7 +78,7 @@
 		<h4>일반문의하기</h4>
 		<br>
 		<!-- 해당컨트롤러로 이동 -->
-		<form:form action="${contextPath}/myPage/normalQnARegist/2/${member.memberId}" modelAttribute="normalQnARegistCommand"   >
+		<form:form action="${contextPath}/myPage/normalQnARegist/2/${member.memberId }" modelAttribute="normalQnARegistCommand"   >
 		<form:errors/>
 		<div>
 		<table class="tbl_type">
