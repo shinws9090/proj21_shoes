@@ -137,7 +137,9 @@
 					</c:forEach>
 					<p>상품설명 : ${product.productPost.content}</p>
 				</div>
-				<div class='product-review'>상품후기</div>
+				<div class='product-review'>
+					<jsp:include page="/WEB-INF/view/include/product_review.jsp" />
+				</div>
 				<div class='product-QnA'>
 					<jsp:include page="/WEB-INF/view/include/product_QnA.jsp" />
 				</div>

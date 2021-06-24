@@ -12,33 +12,33 @@
 <script type="text/javascript">
 $(function() {
 	
-	function pageShowHide(page){
-		if(Number("${fn:length(pages)}")==1){
-			$(".pagejun").hide();
-			$(".pageNext").hide();
-		}else if(page<=1){
-			$(".pagejun").hide();
-			$(".pageNext").show();
-		}else if(page>=Number("${fn:length(pages)}")){
-			$(".pageNext").hide();
-			$(".pagejun").show();
+	function pageShowHide(qnaPage){
+		if(Number("${fn:length(qnaPages)}")==1){
+			$(".qnaPagejun").hide();
+			$(".qnaPageNext").hide();
+		}else if(qnaPage<=1){
+			$(".qnaPagejun").hide();
+			$(".qnaPageNext").show();
+		}else if(qnaPage>=Number("${fn:length(qnaPages)}")){
+			$(".qnaPageNext").hide();
+			$(".qnaPagejun").show();
 		}else{
-			$(".pagejun").show();
-			$(".pageNext").show();
+			$(".qnaPagejun").show();
+			$(".qnaPageNext").show();
 		}
 	}
-	function pageAticle(page){
-		$(".pageButton").each(function(){
-			if(Number($(this).val())==page){
+	function pageAticle(qnaPage){
+		$(".qnaPageButton").each(function(){
+			if(Number($(this).val())==qnaPage){
 				$(this).attr("disabled", true);
 			}else{
 				$(this).attr("disabled", false);
 			}
 		});
 	}
-	function listDB(page){
+	function listDB(qnaPage){
 		$.ajax({
-			url : "${contextPath}/api/ProductQnAList/${product.productCode},"+page,
+			url : "${contextPath}/api/ProductQnAList/${product.productCode},"+qnaPage,
 			type : 'get',
 			contentType : "application/json; charset=utf-8",
 			data:null,
@@ -63,30 +63,30 @@ $(function() {
 						+request.responseText+"\n"+"error:"+error); */
 			}
 		});
-		pageShowHide(page);
-		pageAticle(page);
+		pageShowHide(qnaPage);
+		pageAticle(qnaPage);
 	}
 	
 	
-	var page=1;
-	listDB(page);
+	var qnaPage=1;
+	listDB(qnaPage);
 	
 	
-	$(".pageButton").click(function(){
-		page=Number($(this).val());
-		listDB(page);
+	$(".qnaPageButton").click(function(){
+		qnaPage=Number($(this).val());
+		listDB(qnaPage);
 	});
-	$(".pagejun").click(function(){
-		if(page>1){
-			page -=1;
-			listDB(page);
+	$(".qnaPagejun").click(function(){
+		if(qnaPage>1){
+			qnaPage -=1;
+			listDB(qnaPage);
 		}
 	});
-	$(".pageNext").click(function(){
-		if(page<Number("${fn:length(pages)}")){
-			alert(page);
-			page +=1;
-			listDB(page);
+	$(".qnaPageNext").click(function(){
+		if(qnaPage<Number("${fn:length(qnaPages)}")){
+			alert(qnaPage);
+			qnaPage +=1;
+			listDB(qnaPage);
 		}
 	});
 });
@@ -117,10 +117,10 @@ $(function() {
 		</c:forEach> --%>
 		</tbody>
 	</table>
-		<button class="pagejun">이전</button>
-		<c:forEach var="page" items="${pages}">
-			<button class="pageButton" value="${page}">${page}</button>
+		<button class="qnaPagejun">이전</button>
+		<c:forEach var="qnaPage" items="${qnaPages}">
+			<button class="qnaPageButton" value="${qnaPage}">${qnaPage}</button>
 		</c:forEach>
-		<button class="pageNext">다음</button>
+		<button class="qnaPageNext">다음</button>
 </body>
 </html>
