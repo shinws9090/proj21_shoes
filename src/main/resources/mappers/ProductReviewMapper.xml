@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="proj21_shoes.mapper.ProductReviewMapper">
+	
+	<resultMap type="ReView" id="resReView" >
+
+		<id property="boardCode" column="board_code"/>
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="registDate" column="regist_Date" />
+		<association property="orderCode" resultMap="proj21_shoes.mapper.OrderMapper.resOrder"/>
+		<collection property="reviewImages" resultMap="resImage"/>
+	</resultMap>
+	<resultMap type="ReviewImage" id="resImage"/>
+	<sql id="listJoin">
+		from review r
+		join `order` o on o.order_code = r.order_code
+		join `member` m on o.member_code = m.member_code
+		join memberdetail m2 on m.member_id = m2.member_id
+		join reviewimage r2 on r.board_code = r2.board_code
+		join orderproduct o2 on o.order_code = o2.order_code
+	</sql>
+	<select id="selectProductReviewbyCode" resultMap="resReView">
+		select *
+		<include refid="listJoin"/>
+		where o2.product_code = #{param1}
+		limit #{param2},#{param3}
+	</select>
+	
+	<select id="selectProductReviewCount" resultType="int">
+		select count(*) 
+		<include refid="listJoin"/>	
+		where product_code=#{param1}
+	</select>
+	
+	<select id="selectReviewbyBoardCode" resultMap="resReView">
+		select *
+		<include refid="listJoin"/>
+		where r.board_code=#{boardCode}
+	</select>
+	
+	
+	
+	
+	<insert id="productReviewInsert" parameterType="Qna">
+		insert into qna  
+		(member_code, product_code, title, content, regist_date)
+		VALUES(#{member.memberCode}, #{productCode}, #{title}, #{content}, now());
+	</insert>
+	
+	<delete id="productReviewDelete">
+		delete from qna where board_code=#{boardCode}
+	</delete>
+	
+	<update id="productReviewUpdate">
+		UPDATE qna
+		SET  title=#{title}, content=#{content}
+		WHERE board_code=#{boardCode};
+	</update>
+	
+</mapper>
