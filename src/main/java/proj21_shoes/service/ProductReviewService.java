@@ -23,6 +23,8 @@ public interface ProductReviewService {
 
 	int selectProductReviewCount(int code);
 
+	List<Integer> selectOrderCode(int memberCode, int productCode);
+
 
 
 	

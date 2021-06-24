@@ -49,4 +49,10 @@ public class ProductReviewServiceImpl implements ProductReviewService {
 		return mapper.selectReviewbyBoardCode(boardCode);
 	}
 
+	@Override
+	public List<Integer> selectOrderCode(int memberCode, int productCode) {
+		// TODO Auto-generated method stub
+		return mapper.selectOrderCode(memberCode,productCode);
+	}
+
 }

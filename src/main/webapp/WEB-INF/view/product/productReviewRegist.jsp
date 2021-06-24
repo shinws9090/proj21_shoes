@@ -47,11 +47,11 @@
 			<form action="${contextPath}/productReviewRegist" method="post"> 
 		<!-- 문의하기  입력  -->
 				<c:if test="${commend=='insert'}">
-				<h4>리뷰등록</h4>
+					<h4>리뷰등록</h4>
 				</c:if>
 				<c:if test="${commend=='update'}">
-				<h4>리뷰 수정</h4>
-				<input type="hidden" name="boardCode"value="${boardCode}" />
+					<h4>리뷰 수정</h4>
+					<input type="hidden" name="boardCode"value="${boardCode}" />
 				</c:if>
 				${member }
 				<br>
@@ -72,9 +72,9 @@
 						</td>
 					</tr>
 					<tr>
-						<td><a>상품 코드:</a></td> 
+						<td><a>주문 코드:</a></td> 
 						<td>
-						<input name="productCode" value="${productCode}" readonly size="100"/>  
+						<input name="orderNum" value="${orderCode[0]}" readonly size="100"/>  
 						</td>
 					<tr>
 						<td>

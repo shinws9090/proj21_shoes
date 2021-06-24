@@ -17,7 +17,7 @@
 		join `order` o on o.order_code = r.order_code
 		join `member` m on o.member_code = m.member_code
 		join memberdetail m2 on m.member_id = m2.member_id
-		join reviewimage r2 on r.board_code = r2.board_code
+		left join reviewimage r2 on r.board_code = r2.board_code
 		join orderproduct o2 on o.order_code = o2.order_code
 	</sql>
 	<select id="selectProductReviewbyCode" resultMap="resReView">
@@ -39,13 +39,19 @@
 		where r.board_code=#{boardCode}
 	</select>
 	
+	<select id="selectOrderCode" resultType="int">
+		select *
+		from `order` o
+		join orderproduct o2 on o.order_code = o2.order_code
+		where member_code=#{param1} and o2.product_code=#{param2}
+		order by order_date desc
+	</select>
 	
 	
 	
 	<insert id="productReviewInsert" parameterType="Qna">
-		insert into qna  
-		(member_code, product_code, title, content, regist_date)
-		VALUES(#{member.memberCode}, #{productCode}, #{title}, #{content}, now());
+		insert into review(order_code, title, content, regist_date) 
+			values (#{orderCode.orderCode},#{title},#{content},now())
 	</insert>
 	
 	<delete id="productReviewDelete">
@@ -53,7 +59,7 @@
 	</delete>
 	
 	<update id="productReviewUpdate">
-		UPDATE qna
+		UPDATE review
 		SET  title=#{title}, content=#{content}
 		WHERE board_code=#{boardCode};
 	</update>
