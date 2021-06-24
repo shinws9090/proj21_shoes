@@ -81,32 +81,6 @@ select * from member ;
 
 select * from brand ;where brand_eng_name like concat('n','%');
 
-
-	select *
-		from review r
-		join orderproduct o2 on r.order_code = o2.order_code;
-		join `order` o on o.order_code = r.order_code
-		join `member` m on o.member_code = m.member_code
-		join memberdetail m2 on m.member_id = m2.member_id
-		join reviewimage r2 on r.board_code = r2.board_code;
-	
-	
-	select *
-		from orderproduct o 
-		
-
-	select * 
-			from `order` o
-			join `member` m on o.member_code = m.member_code
-			join address a2 on a2.order_code = o.order_code 
-			join orderproduct o2 on o.order_code = o2.order_code;
-
-
-
-
-
-
-
 insert into product values
 	(11112,'카시안 다크브라운 샌들',1,'men',555,'천연(소)가죽','S/S',now(),178000,124900,now(),1,1,101),
 	(11113,'카시안 다크브라운 샌들',1,'men',555,'천연(소)가죽','S/S',now(),178000,124900,now(),1,1,101),
@@ -172,3 +146,22 @@ UPDATE qna
 select count(*) 		
 		from vw_myqna where product_code=11111
 		
+select *
+from review r
+		join `order` o on o.order_code = r.order_code
+		join `member` m on o.member_code = m.member_code
+		join memberdetail m2 on m.member_id = m2.member_id
+		left join reviewimage r2 on r.board_code = r2.board_code
+		join orderproduct o2 on o.order_code = o2.order_code
+		where product_code =11111;
+		where r.board_code= 1;
+select *
+from `order` o
+		join orderproduct o2 on o.order_code = o2.order_code
+	where member_code=111111 and o2.product_code=11111
+	order by order_date desc;
+
+select *
+	from review r ;
+insert into review(order_code, title, content, regist_date) 
+	values ()

@@ -7,7 +7,8 @@ import proj21_shoes.dto.Order;
 
 public interface OrderMapper {
 	
-	List<Order> selectOrderList();
+	List<Order>selectOrderList(); 
+	
 	int insertOrder(Order order);
 	int insertOrderProduct(Order order);
 	int insertAddress(Order order);

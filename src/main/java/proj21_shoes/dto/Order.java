@@ -16,10 +16,20 @@ public class Order { 						// 	주문정보
 	private Address address;
 	
 	
-
+	
 	
 
 	
+
+	public Order() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Order(int orderCode) {
+		super();
+		this.orderCode = orderCode;
+	}
 
 	public List<OrderProduct> getOrderProduct() {
 		return orderProduct;

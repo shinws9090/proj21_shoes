@@ -21,7 +21,6 @@
 			join orderproduct o2 on o.order_code = o2.order_code ;
 	</select>
 	
-	
 	<insert id="insertOrder" parameterType="Order">
 		insert into `order`(member_code, order_date, payment_amount) values
 			(#{memberCode.memberCode},#{orderDate},#{paymentAmount})

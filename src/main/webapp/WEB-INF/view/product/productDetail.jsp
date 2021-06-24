@@ -3,7 +3,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="from" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="contextPath" value="<%=request.getContextPath()%>" />
 <c:set var="session" value="<%=request.getSession()%>" />
 <!DOCTYPE html>
@@ -116,8 +115,7 @@
 		<jsp:include page="/WEB-INF/view/include/header.jsp" />
 	</header>
 	<section>
-		<%-- <p>${product}</p> --%>
-		<p>${reviewList }</p>
+		<p>${product}</p>
 
 		<div class='main'>
 			<div class='main-image'>
@@ -132,109 +130,18 @@
 			</ul>
 
 			<div class="tabs">
-			<!-- 상품내용 시작 -->
 				<div class='product-content active'>
 					<c:forEach var="image" items="${product.productPost.images}">
 					<img src="${contextPath}/images/${image.productCode}/${image.image}">
 					</c:forEach>
 					<p>상품설명 : ${product.productPost.content}</p>
 				</div>
-			<!-- 상품내용 end -->
-
-
-
-
-
-
-
-			<!-- 상품후기 시작 -->
 				<div class='product-review'>
-				
-				
-				
-				<img src="../images/review_detailpage.jpg">
-				
-				<section id="articleForm">
-				<h2>Review</h2>
-				<p>주문하신 상품의 후기를 작성해주세요 :) </p>
-				<br>
-				<table class="table" border="1">
-							<tbody>
-								<tr>
-									<th scope="row">No.</th>
-									<th scope="row">주문번호</th>
-									<th scope="row">사진</th>
-									<th scope="row">제목</th>
-									<th scope="row">작성자</th>
-									<th scope="row">등록일</th>
-								</tr>
-									<!-- 
-								<tr>
-								<td class="ta-c">1</td>
-								<td class="ta-c">1</td>
-								<td class="ta-c">1</td>
-								<td class="ta-c">1</td>
-								<td class="ta-c">1</td>
-								<td class="ta-c">1</td>
-								</tr>
-							-->
-						
-							<c:forEach items="${reviewList }" var="resReView" varStatus="status">
-							<tr>		
-								<td><c:out value="${resReView.boardCode }"></c:out></td>
-								<td><c:out value="${resReView.orderCode.orderCode }"></c:out></td>
-								<c:forEach items="${resReView.reviewImages}" var="reviewImage">
-									<td><c:out value="${reviewImage.image }"></c:out></td>
-								</c:forEach>
-								
-								<!-- 아래 코드 수정 필요할듯...? -->
-								<td><a href="${contextPath}/reviewRead/${resReView.boardCode}">
-								
-								
-								
-								<c:out value="${resReView.title }"></c:out></a></td>
-								<td><c:out value="${resReView.orderCode.memberCode.memberId.memberId }"></c:out></td>
-								<td><c:out value="${resReView.registDate }"></c:out></td>
-								
-							</tr>
-								 
-					</c:forEach>
-					
-					</tbody>
-							</table>
-
-
-						<article id="articleContentArea">
-							${article.review_content}</article>
-				</section>
-				<section id="commandList">
-					<a href="reviewReplyForm.do?board_code=${article.board_code}&page=${page}"> [답변] </a> 
-					<a href="reviewModifyForm.do?board_code=${article.board_code}&page=${page}"> [수정] </a> 
-					<a href="reviewDeleteForm.do?board_code=${article.board_code}&page=${page}"> [삭제] </a>
-					<a href="reviewList.do?page=${page}">[목록]</a>&nbsp;&nbsp;
-				</section>
-		
-		
-		
-		
-		
+					<jsp:include page="/WEB-INF/view/include/product_review.jsp" />
 				</div>
-				<!-- 상품후기 end -->
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				<!-- 상품문의 시작 -->
 				<div class='product-QnA'>
 					<jsp:include page="/WEB-INF/view/include/product_QnA.jsp" />
 				</div>
-				<!-- 상품후기 end -->
 			</div>
 		</div>
 		
