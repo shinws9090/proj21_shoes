@@ -6,4 +6,20 @@
 		select product_category_code, category from category
 	</select>
 	
+	<insert id="insertCategory" parameterType="Category">
+		insert into category (product_category_code, category)
+			 values (#{productCategoryCode}, #{category})
+	</insert>
+	
+	<update id="updateCategory" parameterType="Category">
+		update category
+		   set category = #{category}
+		 where product_category_code = #{productCategoryCode}
+	</update>
+	
+	<delete id="deleteCategory">
+		delete from category
+		 where product_category_code = #{productCategoryCode}
+	</delete>
+
 </mapper>

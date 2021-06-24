@@ -21,4 +21,22 @@ public class BrandServiceImpl implements BrandService {
 		return mapper.brandList();
 	}
 
+	@Override
+	public int insertBrand(Brand brand) {
+		// TODO Auto-generated method stub
+		return mapper.insertBrand(brand);
+	}
+
+	@Override
+	public int updateBrand(Brand brand) {
+		// TODO Auto-generated method stub
+		return mapper.updateBrand(brand);
+	}
+
+	@Override
+	public int deleteBrand(int code) {
+		// TODO Auto-generated method stub
+		return mapper.deleteBrand(code);
+	}
+
 }

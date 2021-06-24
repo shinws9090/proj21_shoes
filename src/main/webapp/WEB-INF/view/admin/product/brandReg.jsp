@@ -28,29 +28,21 @@
 $(function(){
 	var contextPath = "<%=request.getContextPath()%>";
 		$('#cancel').on("click", function(e) {
-			history.back();
+			location.href="${contextPath}/admin/product/brandReg";
 		});
 		
-	var contextPath = "<%= request.getContextPath()%>";
-	
-	var jsonData = JSON.parse('${orderOptionListByProductCode}');
+	var jsonData = JSON.parse('${brandList}');
 	var productCode = jsonData[0].productCode
 	for(var i = 0; i < jsonData.length; i++) {		
 		var sCont = "";
 			sCont += "<tr>";
-			sCont += "<td>" + jsonData[i].productCode + "</td>";
-			sCont += "<td>" + jsonData[i].styleCode + "</td>";
-			sCont += "<td>" + jsonData[i].color + "</td>";										
-			sCont += "<td>" + jsonData[i].size + "</td>";
-			sCont += "<td>" + jsonData[i].stock + "</td>";
-			sCont += "<td><button type='button'><a href='${contextPath}/admin/product/productOrderOptionMod?productCode=" + jsonData[i].productCode + "'>수정</a></button>";
-			sCont += "</tr>";
-		$("#load:last-child").append(sCont); 
-	}
-	
-	var lastData = jsonData.length - 1;
-	document.getElementById("styleCode").value = jsonData[lastData].styleCode;
-	document.getElementById("color").value = jsonData[lastData].color;
+			sCont += "<td>" + jsonData[i].brandCode + "</td>";
+			sCont += "<td>" + jsonData[i].brandName + "</td>";
+			sCont += "<td>" + jsonData[i].brandEngName + "</td>";
+			sCont += "<td><button type='button'><a href='${contextPath}/admin/product/brandMod?brandCode=" + jsonData[i].brandCode + "'>관리</a></button>";
+			sCont += "</tr>";		
+		$("#load:last-child").append(sCont);	
+	}	
 });
 </script>
 </head>
@@ -61,80 +53,61 @@ $(function(){
 		<jsp:include page="/WEB-INF/view/include/header.jsp" />
 	</header>
 	<!-- end header -->
+
 	<section>
 		<jsp:include page="/WEB-INF/view/admin/include/adminMenu.jsp" />
 		<jsp:include page="/WEB-INF/view/admin/include/productMenu.jsp" />
-		
+				
 		<table style="width: 80%">
 			<tr>
-				<td colspan="7" class="td_title"><h2>상품 재고 목록</h2></td>
+				<td colspan="7" class="td_title"><h2>브랜드 목록</h2></td>
 			</tr>
 
 			<tr style="background-color: lightgrey; text-align: center">
-				<td>번호</td>
-				<td>스타일코드</td>
-				<td>색상</td>
-				<td>사이즈</td>
-				<td>현재재고</td>
-				<td>재고수정</td>
+				<td>브랜드코드</td>
+				<td>브랜드명</td>
+				<td>브랜드영어명</td>
+				<td>관리</td>
 			</tr>
 			<tr>
 				<tbody id="load"/>
 			</tr>
 		</table>
 		
-		<h2>재고 추가</h2>
+		<h2>브랜드 추가</h2>
 		<div class="admin_content_wrap">
 			<div class="admin_content_main">
-				<form id="productOrderOptionForm" method="post" autocomplete="off">
+				<form id="productRegForm" method="post" autocomplete="off" enctype="multipart/form-data">
 
-					<div class="form_section" hidden="true">
+					<div class="form_section">
 						<div class="form_section_title">
-							<label>상품코드</label>
+							<label>브랜드 코드</label>
 						</div>
 						<div class="form_section_content">
-							<input name="productCode" id="productCode" value="${products.productCode}">
+							<input name="brandCode" value="">
+						</div>
+					</div>
+
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>브랜드명</label>
+						</div>
+						<div class="form_section_content">
+							<input name="brandName" value="">
 						</div>
 					</div>
 					
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>스타일코드</label>
-						</div >
-						<div class="form_section_content">
-							<input name="styleCode" id="styleCode" value="">
-						</div>
-					</div>					
-					
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>색상</label>
+							<label>브랜드영어명</label>
 						</div>
 						<div class="form_section_content">
-							<input name="color" id="color" value="">
+							<input name="brandEngName" value="">
 						</div>
 					</div>
 					
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>사이즈</label>
-						</div>
-						<div class="form_section_content">
-							<input name="size" value="">
-						</div>
-					</div>
-					
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>재고</label>
-						</div>
-						<div class="form_section_content">
-							<input name="stock" value="">
-						</div>
-					</div>
-								
 					<div class="btn_section">
-						<button type="submit" id= "new">추가</button>
+						<button type="submit" id="new">추가</button>
 						<button type="button" id="cancel">취소</button>
 					</div>
 
@@ -143,9 +116,11 @@ $(function(){
 		</div>
 
 	</section>
+
 	<!-- end our product -->
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp" />
 	</footer>
+
 </body>
 </html>

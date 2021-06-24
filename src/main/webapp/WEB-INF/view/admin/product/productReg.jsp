@@ -28,8 +28,12 @@
 $(function(){
 	var contextPath = "<%=request.getContextPath()%>";
 		$('#cancel').on("click", function(e) {
-			history.back();
-		});			
+			location.href="${contextPath}/admin/productMgt"
+		});
+		
+		/* $('#new').on("click", function(e) {
+			document.getElementById("productRegForm").submit();
+		}); */
 });
 </script>
 </head>
@@ -43,7 +47,9 @@ $(function(){
 
 	<section>
 		<jsp:include page="/WEB-INF/view/admin/include/adminMenu.jsp" />
-
+		<jsp:include page="/WEB-INF/view/admin/include/productMenu.jsp" />
+		
+		<h2>상품 등록</h2>
 		<div class="admin_content_wrap">
 			<div class="admin_content_main">
 				<form id="productRegForm" method="post" autocomplete="off" enctype="multipart/form-data">

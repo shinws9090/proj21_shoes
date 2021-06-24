@@ -43,7 +43,7 @@ $(function(){
 			sCont += "<td>" + jsonData[i].color + "</td>";										
 			sCont += "<td>" + jsonData[i].size + "</td>";
 			sCont += "<td>" + jsonData[i].stock + "</td>";
-			sCont += "<td><button type='button'><a href='${contextPath}/admin/product/productOrderOptionMod?productCode=" + jsonData[i].productCode + "'>수정</a></button>";
+			sCont += "<td>" + jsonData[i].stock + "</td>";
 			sCont += "</tr>";
 		$("#load:last-child").append(sCont); 
 	}
@@ -75,8 +75,7 @@ $(function(){
 				<td>스타일코드</td>
 				<td>색상</td>
 				<td>사이즈</td>
-				<td>현재재고</td>
-				<td>재고수정</td>
+				<td>재고</td>
 			</tr>
 			<tr>
 				<tbody id="load"/>
