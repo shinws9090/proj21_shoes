@@ -23,8 +23,6 @@ import proj21_shoes.dto.ReView;
 
 
 @RestController
-@RequestMapping("/api")
-
 public class ReviewController {
 
 

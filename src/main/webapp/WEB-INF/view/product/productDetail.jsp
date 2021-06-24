@@ -188,7 +188,7 @@
 								</c:forEach>
 								
 								<!-- 아래 코드 수정 필요할듯...? -->
-								<td><a href="/reviewRead?boardCode=${resReView.boardCode}">
+								<td><a href="${contextPath}/reviewRead/${resReView.boardCode}">
 								
 								
 								
