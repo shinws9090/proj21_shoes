@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import proj21_shoes.commend.MyPWConfirmCommand;
 import proj21_shoes.dto.MemberDetail;
 
 
@@ -18,6 +19,8 @@ public interface MemberDetailMapper {//우선 회원가입용!! 회원가입시�
 	MemberDetail selectMemberByNameEmail(String memberName, String email);
 	MemberDetail selectPwdByIdNameEmail(String memberId, String memberName, String email);
 
+	MyPWConfirmCommand selectConfirmPw(String memberId, String memberPw);
+	
 	int insertMemberDetail(MemberDetail req); 		 //회원상세정보 추가
 	int updateMemberDetail(MemberDetail memberDetail);  	//회원상세정보 수정
 	int deleteMemberDetail(long id);  						//회원상세정보 삭제

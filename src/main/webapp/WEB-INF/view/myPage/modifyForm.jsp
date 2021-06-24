@@ -133,8 +133,9 @@
 				<table class="tbl_myData" border="1">
 			<tr>
 				<td id="myData_left_td"><label for="memberId">회원아이디</label></td>
-				<td><form:input path="memberId" id="memberId" readonly="true" value="${member.memberId }" /></td>				
+				<td><form:input path="memberId"  id="memberId" readonly="true" value="${member.memberId }" /></td>				
 			</tr>
+			
 		
 			<tr>
 					<td id="myData_left_td"><label for="confirmPassword"></label>기존비밀번호 확인</td>		

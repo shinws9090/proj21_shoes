@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -17,15 +19,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import proj21_shoes.commend.MemberDetailUpdateCommend;
 import proj21_shoes.commend.MyOrderCommend;
+import proj21_shoes.commend.MyPWConfirmCommand;
 import proj21_shoes.commend.MyPageSelectCommend;
 import proj21_shoes.dto.Member;
 import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.exeption.MemberNotFoundException;
 import proj21_shoes.service.GetMemberDetailService;
-import proj21_shoes.service.MyPageService;
 import proj21_shoes.service.ModifyMemberDetailService;
 import proj21_shoes.service.ModifyMemberService;
 import proj21_shoes.service.MyOrderService;
+import proj21_shoes.service.MyPageService;
 
 @Controller
 public class MyPageController {
@@ -37,6 +40,7 @@ public class MyPageController {
 	GetMemberDetailService getMemberService;
 	@Autowired
 	ModifyMemberService quitMemberService;
+	
 
 	@Autowired
 	MyOrderService myOrderService;
@@ -98,7 +102,7 @@ public class MyPageController {
 		
 		MemberDetail member = getMemberService.getMemberDetail(memberId); //주소에 찍힌 id로  멤버검색후 데이터 담아서
 		
-		System.out.println("dfjslfjslfjsfjl"+memberUpdate.getMemberId());
+	//	System.out.println("dfjslfjslfjsfjl"+memberUpdate.getMemberId());
 		
 		if(member ==null) {
 			throw new MemberNotFoundException();
@@ -114,41 +118,50 @@ public class MyPageController {
 
 		return "/myPage/modifyForm";
 	}
-	//회원정보수정용  컨트롤러로 이동시킬예정!!
+	//회원정보수정 입력페이지에서 저장 누를시 
 	@PostMapping("/myPage/modify/{memberId}")
-	public String modify(@PathVariable("memberId") String memberId,
-			@ModelAttribute("memberDetailUpdateCommend") 
-	 MemberDetailUpdateCommend memberUpdate,  HttpSession session, HttpServletResponse response, Errors errors) {
+	public String modify(@PathVariable("memberId") String memberId2,
+			 @ModelAttribute("memberDetailUpdateCommend")  MemberDetailUpdateCommend memberUpdate,
+			 @Param("memberId") String memberId, @Param("confirmPassword") String confirmPassword, HttpSession session, HttpServletResponse response, Errors errors) {
+	
+		System.out.println("여기냐1");
+		MemberDetail memberDetail = getMemberService.getMemberDetail(memberId2);
+		MyPWConfirmCommand myPWConfirmCommand = modifyService.selectConfirmPw(memberId, confirmPassword);
 		
-	MemberDetail memberDetail = getMemberService.getMemberDetail(memberId);
-
-
 		if (errors.hasErrors()) { //에러 있으면
 			System.out.println(1);
 			System.out.println(errors);
 			return "/myPage/modifyForm";  //일로 돌려보내고
 		}
+			//기존 비밀번호.equls(새로입력받은 번호) 
 		
-			//기존 비밀번호.equls(새로입력받은 번호)
-		if(!memberDetail.getMemberPwd().equals(memberUpdate.getConfirmPassword())) {  //기존 비밀번호 불일치시
+		try {
+		if(!memberDetail.getMemberPwd().equals(myPWConfirmCommand.getMemberPwd())) {  //기존 비밀번호 불일치시
 			System.out.println("기존비밀번호>>> "+ memberDetail.getMemberPwd());
 			System.out.println("입력받은 기존비번>>> "+ memberUpdate.getConfirmPassword());
 			errors.rejectValue("confirmPassword", "nomatch");
 			return  "/myPage/modifyForm";
-
+		}
+		}catch (NullPointerException e) {
+			errors.rejectValue("confirmPassword", "nomatch");
+			return  "/myPage/modifyForm";
 		}
 		
+	System.out.println("일로넘어오냐");
 
-//		MemberDetail member = getMemberService.getMemberDetail(memberId); //주소에 찍힌 id로  멤버검색후 데이터 담아서
-//		session.setAttribute("member", member);  // jsp에 보내서 보여주기! 요고 해줘야 jsp 에서 받을수 있당
-//		ModelAndView mav = new ModelAndView();
-//		mav.addObject("member",member);
-//		mav.setViewName("myPage/modifyForm");
 		
-		MemberDetail updateMember =new MemberDetail(memberUpdate.getMemberId(),memberUpdate.getMemberPwd(),memberUpdate.getMemberName(),memberUpdate.isGender(),memberUpdate.getBirthday(),memberUpdate.getEmail(),memberUpdate.getTel(),memberUpdate.getZipCode(),memberUpdate.getAddress(),memberUpdate.getDetailAddress()); 
 		//위에서 담은 아이디 가져와서 담기
 		try {
+		
+			MemberDetail updateMember =new MemberDetail(memberUpdate.getMemberId(),memberUpdate.getMemberPwd(),memberUpdate.getMemberName(),memberUpdate.isGender(),memberUpdate.getBirthday(),memberUpdate.getEmail(),memberUpdate.getTel(),memberUpdate.getZipCode(),memberUpdate.getAddress(),memberUpdate.getDetailAddress()); 
 		modifyService.modifyMemberDetail(updateMember);  //여기서 수정완료!
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("updateMember",updateMember);
+		MemberDetail memberDetail2 = getMemberService.getMemberDetail(memberId);
+
+		System.out.println("변경된 비밀번호>>> "+ memberDetail2.getMemberPwd());
+
+		System.out.println("수정완료");
 		return"/myPage/modifyForm";
 		}catch(Exception e) {
 			errors.reject("error");
@@ -182,12 +195,15 @@ public class MyPageController {
 		return "/myPage/quitMember";
 	}
 	
+	
+	///탈퇴버튼 클릭시
 	@PostMapping("/myPage/quitMember/{memberId}")
-	public String quitMemberSec(@PathVariable("memberId") String memberId,
-			@ModelAttribute("memberDetailUpdateCommend") 
-	 MemberDetailUpdateCommend memberUpdate,  HttpSession session, HttpServletResponse response, Errors errors) {
-	MemberDetail memberDetail = getMemberService.getMemberDetail(memberId);
-	Member member = quitMemberService.selectMemberById(memberId);
+	public String quitMemberSec(@PathVariable("memberId") String memberId2,
+			@ModelAttribute("memberDetailUpdateCommend")  MemberDetailUpdateCommend memberUpdate, 
+			@Param("memberId") String memberId, @Param("confirmPassword") String confirmPassword,  HttpSession session, HttpServletResponse response, Errors errors) {
+	MemberDetail memberDetail = getMemberService.getMemberDetail(memberId2);
+	Member member = quitMemberService.selectMemberById(memberId2);
+	MyPWConfirmCommand myPWConfirmCommand = modifyService.selectConfirmPw(memberId, confirmPassword);
 	System.out.println();
 
 
@@ -196,15 +212,32 @@ public class MyPageController {
 			System.out.println(errors);
 			return "/myPage/quitMember";  //일로 돌려보내고
 		}
+
 		
+		try {
 			//기존 비밀번호.equls(새로입력받은 번호)
-		if(!memberDetail.getMemberPwd().equals(memberUpdate.getConfirmPassword())) {  //기존 비밀번호 불일치시
+		if(!memberDetail.getMemberPwd().equals(myPWConfirmCommand.getMemberPwd())) {  //기존 비밀번호 불일치시
 			System.out.println("기존비밀번호>>> "+ memberDetail.getMemberPwd());
 			System.out.println("입력받은 기존비번>>> "+ memberUpdate.getConfirmPassword());
 			errors.rejectValue("confirmPassword", "nomatch");
 			return "/myPage/quitMember";
 
 		}
+		}catch (NullPointerException e) {
+			errors.rejectValue("confirmPassword", "nomatch");
+			return "/myPage/quitMember";
+			// TODO: handle exception
+		}
+//		MemberDetail confirmPw = modifyService.selectConfirmPw(memberId, memberUpdate.getConfirmPassword());
+//		System.out.println("confirmPw>>>>>"+confirmPw);
+//		if(confirmPw==null){
+//			System.out.println("confirmPw>>>"+confirmPw);
+//			System.out.println("기존비밀번호>>> "+ memberDetail.getMemberPwd());
+//			System.out.println("입력받은 기존비번>>> "+ confirmPw);
+//			errors.rejectValue("confirmPassword", "nomatch");
+//			return "/myPage/quitMember";
+//		}
+		
 
 		//위에서 담은 아이디 가져와서 담기
 		try {

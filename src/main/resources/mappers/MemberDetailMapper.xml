@@ -18,7 +18,18 @@
 		<result column="detail_address" property="detailAddress" />	상세주소
 	</resultMap> 
 	-->
-	
+	 	 <resultMap type="MyPWConfirmCommand" id="resPw">
+		<id column="member_id" property="memberId" />			<!--  회원id-->
+		<result column="member_pwd" property="memberPwd" />		<!-- 회원password -->
+		<result column="member_name" property="memberName" /><!-- 	회원이름 -->
+		<result column="gender" property="gender" />			<!-- 성별	 -->
+		<result column="birthday" property="birthday" />		<!-- 생년월일 -->
+		<result column="email" property="email" />				<!-- 이메일 -->
+		<result column="tel" property="tel" />					<!-- 연락처 -->
+		<result column="zipCode" property="zipCode" />			<!-- 우편번호 -->
+		<result column="address" property="address" />			<!-- 주소 -->
+		<result column="detail_address" property="detailAddress" />	<!-- 상세주소 -->
+	</resultMap> 
 	
 	
 	
@@ -70,6 +81,11 @@ where member_id=#{param1} and member_name=#{param2} and email =#{param3}
 	
 	</select>
 	
+	<!-- 비밀번호 일치여부 확인용 -->
+	<select id="selectConfirmPw" resultMap="resPw"> 
+	select  member_id, member_pwd from memberDetail where member_id =#{param1} and member_pwd =password(#{param2});<!-- 입력받는거 -->
+	
+	</select>
 	
 	<update id="updateMemberDetail" parameterType="MemberDetail">
 	update memberDetail
