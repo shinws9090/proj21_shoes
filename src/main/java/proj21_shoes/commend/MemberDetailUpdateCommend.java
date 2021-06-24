@@ -57,6 +57,15 @@ public class MemberDetailUpdateCommend {  					//회원정보 입력란 컨펌
 	
 	
 	public MemberDetailUpdateCommend(@NotBlank(message = "아이디를 입력해주세요!") String memberId,
+			@NotEmpty(message = "비밀번호를 입력해주세요!") @Size(min = 6, message = "6자리수 이상 입력해주세요!") String memberPwd) {
+		super();
+		this.memberId = memberId;
+		this.memberPwd = memberPwd;
+	}
+
+
+
+	public MemberDetailUpdateCommend(@NotBlank(message = "아이디를 입력해주세요!") String memberId,
 			@NotEmpty(message = "비밀번호를 입력해주세요!") @Size(min = 6, message = "6자리수 이상 입력해주세요!") String memberPwd,
 			@NotEmpty(message = "비밀번호 확인을 입력해주세요!") String confirmPassword,
 			@NotEmpty(message = "이름을 입력해주세요!") String memberName, boolean gender,

@@ -21,6 +21,11 @@
 <script type="text/javascript">
 	$(function() {
 		var contextPath = "${contextPath}";
+		
+		$('#new').on("click", function(e) {
+			location.href="${contextPath}/admin/product/productReg";
+		});		
+		
 		$.get(contextPath + "/api/productMgt", function(json) {
 			var dataLength = json.length;
 			if (dataLength >= 1) {
@@ -37,7 +42,7 @@
 					sCont += "<td>" + json[i].registDate + "</td>";
 					sCont += "<td>" + json[i].cumulativeRegistCount + "</td>";
 					sCont += "<td>" + json[i].cumulativeSellCount + "</td>";
-					sCont += "<td><a href='productDetailMgt?productCode=" + json[i].productCode + "'>" + "[상세보기]" + "</a></td>";
+					sCont += "<td><button type='button'><a href='productDetailMgt?productCode=" + json[i].productCode + "'>관리</a></button></td>";
 					/* sCont += "<td>" + "<a href='#'>[수정]</a>&nbsp;" + "<a href='#'>[삭제]</a>" + "</td>"; */
 					sCont += "</tr>";
 				}
@@ -63,7 +68,7 @@
 		
 		<table style="width: 80%">
 			<tr>
-				<td colspan="7" class="td_title">상품 목록</td>
+				<td colspan="7" class="td_title"><h2>상품 목록</h2></td>
 			</tr>
 
 			<tr style="background-color: lightgrey; text-align: center">
@@ -77,7 +82,7 @@
 				<td>등록일</td>
 				<td>등록수량</td>
 				<td>판매량</td>
-				<td>상세보기</td>
+				<td>관리</td>
 				<td>기타</td>
 
 			</tr>
@@ -85,7 +90,11 @@
 				<tbody id="load"/>				
 			</tr>
 		</table>
-
+		
+		<div class="btn_section">
+			<button type="button" id="new">상품 등록</button>
+		</div>
+		
 	</section>
 
 	<!-- end our product -->

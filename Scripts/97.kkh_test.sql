@@ -86,3 +86,19 @@ select pp.product_code, p.product_name, pp.product_main_image, pp.content, im.im
 		  from  productPost pp 
 		  join image im  on pp.product_code = im.product_code
 		  join product p on pp.product_code = p.product_code;
+		  
+select * from category;
+
+insert into category (product_category_code, category) values (999, "신발");
+
+update category set category = "수정"  where product_category_code = 999;
+
+delete from category where product_category_code = 999;
+
+select * from brand;
+
+insert into brand (brand_code, brand_name, brand_eng_name) values (7, "뉴발란스", "NewBalance");
+
+update brand set brand_name = "뉴발", brand_eng_name ="newBal" where brand_code = 7;
+
+delete from brand where brand_code = 7;

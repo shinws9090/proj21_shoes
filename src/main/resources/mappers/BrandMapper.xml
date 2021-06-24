@@ -6,4 +6,20 @@
 		select brand_code, brand_name, brand_eng_name from brand
 	</select>
 	
+	<insert id="insertBrand" parameterType="Brand">
+		insert into brand (brand_code, brand_name, brand_eng_name)
+			 values (#{brandCode}, #{brandName}, #{brandEngName})		
+	</insert>
+	
+	<update id="updateBrand" parameterType="Brand">
+		update brand
+		   set brand_name = #{brandName}, brand_eng_name = #{brandEngName}
+		 where brand_code = #{brandCode}
+	</update>
+	
+	<delete id="deleteBrand">
+		delete from brand
+		 where brand_code = #{brandCode}
+	</delete>
+	
 </mapper>

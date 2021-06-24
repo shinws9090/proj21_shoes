@@ -27,6 +27,13 @@ public class MemberDetailUpdateValidator implements Validator { // dto에 있는
 	@Override
 	public void validate(Object target, Errors errors) {
 		MemberDetailUpdateCommend regReq = (MemberDetailUpdateCommend) target;
+		if (regReq.getConfirmPassword() == null || regReq.getConfirmPassword().trim().isEmpty()) {
+			errors.rejectValue("confirmPassword", "required");
+		}
+		if (regReq.getMemberPwd() == null || regReq.getMemberPwd().trim().isEmpty()) {
+			errors.rejectValue("memberPwd", "required");
+		}
+		
 		if (regReq.getEmail() == null || regReq.getEmail().trim().isEmpty()) {
 			errors.rejectValue("email", "required");
 		} else {

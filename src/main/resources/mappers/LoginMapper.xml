@@ -40,7 +40,7 @@
 	
 	
 		<select id="loginIdPw" resultMap="resLogin">
-select  member_id, member_pwd,member_name
+select  member_id, password(member_pwd),member_name
 from memberDetail where member_id =#{param1} and member_pwd =password(#{param2})
 	
 	</select>

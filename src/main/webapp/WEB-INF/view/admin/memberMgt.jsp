@@ -57,7 +57,7 @@
 
 		<table style="width: 80%">
 			<tr>
-				<td colspan="7" class="td_title">회원 목록</td>
+				<td colspan="7" class="td_title"><h2>회원 목록</h2></td>
 			</tr>
 
 			<tr style="background-color: lightgrey; text-align: center">

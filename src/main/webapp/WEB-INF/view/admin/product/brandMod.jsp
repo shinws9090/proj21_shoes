@@ -26,24 +26,51 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 $(function(){
-	var contextPath = "<%=request.getContextPath()%>";
+	var contextPath = "<%=request.getContextPath()%>";	
 	
 	function getParameterByName(name) {
 	    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 	    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
 	        results = regex.exec(location.search);
 	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-	}
+	}	
 	
 	$('#cancel').on("click", function(e) {
-		var productCode = getParameterByName("productCode");
-		location.href="${contextPath}/admin/productDetailMgt?productCode=" + productCode;
+		location.href="${contextPath}/admin/product/brandReg";
 	});
+
+	
+	$('#delete_btn').on("click", function(e) {
+		var brandCode = getParameterByName("brandCode")
+		location.href="${contextPath}/admin/product/brandDel?brandCode=" + brandCode;
+	});
+		
+	var jsonData = JSON.parse('${brandList}');
+	var productCode = jsonData[0].productCode
+	for(var i = 0; i < jsonData.length; i++) {		
+		if (getParameterByName("brandCode") == jsonData[i].brandCode){
+			var sCont = "";
+				sCont += "<tr>";
+				sCont += "<td>" + jsonData[i].brandCode + "</td>";
+				sCont += "<td>" + jsonData[i].brandName + "</td>";
+				sCont += "<td>" + jsonData[i].brandEngName + "</td>";
+				sCont += "</tr>";
+			$("#load:last-child").append(sCont);
+		}
+	}	
+	
+	for(var i = 0; i < jsonData.length; i++) {		
+		if (getParameterByName("brandCode") == jsonData[i].brandCode){
+			document.getElementById("brandCode").value = jsonData[i].brandCode;
+			document.getElementById("brandName").value = jsonData[i].brandName;
+			document.getElementById("brandEngName").value = jsonData[i].brandEngName;
+		}
+	}	
 });
 </script>
-
 </head>
 <body class="main-layout">
+
 	<!-- header -->
 	<header>
 		<jsp:include page="/WEB-INF/view/include/header.jsp" />
@@ -53,93 +80,58 @@ $(function(){
 	<section>
 		<jsp:include page="/WEB-INF/view/admin/include/adminMenu.jsp" />
 		<jsp:include page="/WEB-INF/view/admin/include/productMenu.jsp" />
-		<div><a href="${contextPath}/admin/product/productMod?productCode=${products.productCode}"><h2>[상품 수정]</h2></a></div>
-		<div><a href="${contextPath}/admin/product/productImageMod?productCode=${products.productCode}"><h2>[이미지 수정]</h2></a></div>
+		
+		<table style="width: 80%">
+			<tr>
+				<td colspan="7" class="td_title"><h2>브랜드 목록</h2></td>
+			</tr>
+
+			<tr style="background-color: lightgrey; text-align: center">
+				<td>브랜드코드</td>
+				<td>브랜드명</td>
+				<td>브랜드영어명</td>
+			</tr>
+			<tr>
+				<tbody id="load"/>
+			</tr>
+		</table>
+		
+		<h2>브랜드 수정</h2>
 		<div class="admin_content_wrap">
 			<div class="admin_content_main">
-				
-				<form id="productModForm" method="post" autocomplete="off" enctype="multipart/form-data">
-				
+				<form id="productRegForm" method="post" autocomplete="off" enctype="multipart/form-data">
+
 					<div class="form_section">
 						<div class="form_section_title">
+							<label>브랜드 코드</label>
 						</div>
 						<div class="form_section_content">
-							<input type="hidden" name="productCode" value="${products.productCode}">
+							<input name="brandCode" id="brandCode" value="" readonly>
 						</div>
 					</div>
 
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>상품대표이미지</label>
+							<label>브랜드명</label>
 						</div>
 						<div class="form_section_content">
-							<input type="file" id="productMainImage" name="productMainImage" />
-							<div class="select_img"><img src="" /></div>
-						</div>
-					</div>
-					
-					<script>
-						$("#productMainImage").change(function(){
-							if(this.files && this.files[0]) {
-								var reader = new FileReader;
-								reader.onload = function(data) {
-									$(".select_img img").attr("src", data.target.result).width(500);        
-								}
-								reader.readAsDataURL(this.files[0]);
-							}
-						});
-					</script>
-					
-					<%=request.getRealPath("/") %>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>상품이미지들</label>
-						</div>
-						<div class="form_section_content">
-							<input type="file" id="images" name="images" />
-							<div class="select_imgs"><img src="" /></div>					
-						</div>
-					</div>					
-					
-					<script>
-						$("#images").change(function(){
-							if(this.files && this.files[0]) {
-								var reader = new FileReader;
-								reader.onload = function(data) {
-									$(".select_imgs img").attr("src", data.target.result).width(500);        
-								}
-								reader.readAsDataURL(this.files[0]);
-							}
-						});
-					</script>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>수정일</label>
-						</div>
-						<div class="form_section_content">
-							<c:set var="now" value="<%=LocalDateTime.now()%>" />
-							<input type="date" name="registDate"
-								value='<tf:formatDateTime value="${now}" pattern = "yyyy-MM-dd" />'
-								readonly="readonly">
+							<input name="brandName" id="brandName" value="">
 						</div>
 					</div>
 					
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>수정사원정보</label>
+							<label>브랜드영어명</label>
 						</div>
 						<div class="form_section_content">
-							<select name="employee" class="employee">
-								<option selected="selected" value="${products.employee.empNumber}">${products.employee.empNumber} : ${products.employee.empName}</option>
-							</select>
+							<input name="brandEngName" id="brandEngName" value="">
 						</div>
 					</div>
 					
 					<div class="btn_section">
 						<button type="submit" id="new">수정</button>
-						<button type="button" id="cancel">취소</button>
+						<button type="button" id="cancel">돌아가기</button>
+						<button type="button" id="delete_btn">삭제</button>
 					</div>
 
 				</form>
@@ -154,7 +146,6 @@ $(function(){
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp" />
 	</footer>
-
 <script>
 	//컨트롤러에서 브랜드 데이터 받기
 	var jsonData = JSON.parse('${brandList}');
@@ -173,15 +164,12 @@ $(function(){
 	
 	// 브랜드 셀렉트 박스에 데이터 삽입
 	var brandSelect = $("select.brand")
-	
+
 	for(var i = 0; i < brandArr.length; i++) {
-		if ('${products.brand.brandCode}' != brandArr[i].brandCode){			
-			brandSelect.append("<option value='" + brandArr[i].brandCode + "'>"
-		      + brandArr[i].brandName + "</option>"); 
-		}		
+		brandSelect.append("<option value='" + brandArr[i].brandCode + "'>"
+	      + brandArr[i].brandName + "</option>"); 
 	}
 
-	
 	// 컨트롤러에서 카테고리 데이터 받기
 	var jsonData = JSON.parse('${categoryList}');
 	console.log(jsonData);
@@ -201,10 +189,8 @@ $(function(){
 	var categorySelect = $("select.category")
 
 	for(var i = 0; i < categoryArr.length; i++) {
-		if('${products.category.productCategoryCode}' !=  categoryArr[i].productCategoryCode) {
-			categorySelect.append("<option value='" + categoryArr[i].productCategoryCode + "'>"
-		      + categoryArr[i].category + "</option>");
-		}
+		categorySelect.append("<option value='" + categoryArr[i].productCategoryCode + "'>"
+	      + categoryArr[i].category + "</option>"); 
 	}
 	
 	// 컨트롤러에서 직원 데이터 받기
@@ -226,29 +212,9 @@ $(function(){
 	var employeeSelect = $("select.employee")
 
 	for(var i = 0; i < employeeArr.length; i++) {
-		if ('${products.employee.empNumber}' != employeeArr[i].empNumber) {
 		employeeSelect.append("<option value='" + employeeArr[i].empNumber + "'>" + employeeArr[i].empNumber + " : "
-	      + employeeArr[i].empName + "</option>");
-		}
-		
+	      + employeeArr[i].empName + "</option>"); 
 	}
-	
-	// 성별 데이터 준비
-	var genderSelect = $("select.gender")
-	
-	genderArr = new Array();
-	genderArr[0] = "WOMEN";
-	genderArr[1] = "MEN";
-	genderArr[2] = "ALL";
-	genderArr[3] = "KIDS";
-	
-	// 성별 데이터 박스에 삽입
-	for(var i = 0; i < genderArr.length; i++) {
-		if('${products.gender}'.toUpperCase() !=  genderArr[i]) {
-		genderSelect.append("<option value='" + genderArr[i] + "'>" + genderArr[i] + "</option>");			
-		}	
-	}	
-	
 </script>
 
 </body>

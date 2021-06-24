@@ -27,23 +27,14 @@
 <script type="text/javascript">
 $(function(){
 	var contextPath = "<%=request.getContextPath()%>";
-	
-	function getParameterByName(name) {
-	    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-	    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-	        results = regex.exec(location.search);
-	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-	}	
-	
-	$('#cancel').on("click", function(e) {
-		var productCode = getParameterByName("productCode");
-		location.href="${contextPath}/admin/productDetailMgt?productCode=" + productCode;
-	});
+		$('#cancel').on("click", function(e) {
+			history.back();
+		});			
 });
 </script>
-
 </head>
 <body class="main-layout">
+
 	<!-- header -->
 	<header>
 		<jsp:include page="/WEB-INF/view/include/header.jsp" />
@@ -53,18 +44,17 @@ $(function(){
 	<section>
 		<jsp:include page="/WEB-INF/view/admin/include/adminMenu.jsp" />
 		<jsp:include page="/WEB-INF/view/admin/include/productMenu.jsp" />
-		<div><a href="${contextPath}/admin/product/productMod?productCode=${products.productCode}"><h2>[상품 수정]</h2></a></div>
-		<div><a href="${contextPath}/admin/product/productImageMod?productCode=${products.productCode}"><h2>[이미지 수정]</h2></a></div>
+
 		<div class="admin_content_wrap">
 			<div class="admin_content_main">
-				
-				<form id="productModForm" method="post" autocomplete="off">
-				
+				<form id="productRegForm" method="post" autocomplete="off" enctype="multipart/form-data">
+
 					<div class="form_section">
 						<div class="form_section_title">
+							<label>상품코드</label>
 						</div>
 						<div class="form_section_content">
-							<input type="hidden" name="productCode" value="${products.productCode}">
+							<input name="productCode" value="">
 						</div>
 					</div>
 
@@ -73,7 +63,7 @@ $(function(){
 							<label>상품명</label>
 						</div>
 						<div class="form_section_content">
-							<input name="productName" value="${products.productName}">
+							<input name="productName" value="신발">
 						</div>
 					</div>
 
@@ -83,7 +73,7 @@ $(function(){
 						</div>
 						<div class="form_section_content">
 							<select name="brand" class="brand">
-								<option selected="selected" value="${products.brand.brandCode}">${products.brand.brandName}</option>
+								<option selected="selected" value="">브랜드를 선택해주세요</option>
 							</select>
 						</div>
 					</div>
@@ -92,10 +82,13 @@ $(function(){
 						<div class="form_section_title">
 							<label>성별</label>
 						</div>
-						
 						<div class="form_section_content">
-							<select name="gender" class="gender">
-								<option selected="selected" value="${products.gender}">${products.gender}</option>
+							<select name="gender" class="form_select_option">
+								<option selected="selected" value="">옵션을 선택해주세요</option>
+								<option value="WOMEN">WOMEN</option>						
+								<option value="MEN">MEN</option>						
+								<option value="ALL">ALL</option>
+								<option value="KIDS">KIDS</option>
 							</select>
 						</div>
 					</div>
@@ -106,7 +99,7 @@ $(function(){
 						</div>
 						<div class="form_section_content">
 							<select name="category" class="category">
-								<option selected="selected" value="${products.category.productCategoryCode}">${products.category.category}</option>
+								<option selected="selected" value="">카테고리를 선택해주세요</option>
 							</select>
 						</div>
 					</div>
@@ -116,7 +109,7 @@ $(function(){
 							<label>소재</label>
 						</div>
 						<div class="form_section_content">
-							<input name="material" value="${products.material}">
+							<input name="material" value="소재">
 						</div>
 					</div>
 
@@ -125,7 +118,7 @@ $(function(){
 							<label>계절</label>
 						</div>
 						<div class="form_section_content">
-							<input name="season" value="${products.season}">
+							<input name="season" value="계절">
 						</div>
 					</div>
 
@@ -134,7 +127,7 @@ $(function(){
 							<label>제조일</label>
 						</div>
 						<div class="form_section_content">
-							<input type="date" name="madeDate" value="${products.madeDate}">
+							<input type="date" name="madeDate">
 						</div>
 					</div>
 
@@ -143,7 +136,7 @@ $(function(){
 							<label>공급가격</label>
 						</div>
 						<div class="form_section_content">
-							<input name="costPrice" value="${products.costPrice}">
+							<input name="costPrice" value="50000">
 						</div>
 					</div>
 
@@ -152,13 +145,13 @@ $(function(){
 							<label>판매가격</label>
 						</div>
 						<div class="form_section_content">
-							<input name="sellPrice" value="${products.sellPrice}">
+							<input name="sellPrice" value="60000">
 						</div>
 					</div>
 
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>수정일</label>
+							<label>등록일</label>
 						</div>
 						<div class="form_section_content">
 							<c:set var="now" value="<%=LocalDateTime.now()%>" />
@@ -173,7 +166,7 @@ $(function(){
 							<label>누적등록수량</label>
 						</div>
 						<div class="form_section_content">
-							<input name="cumulativeRegistCount" value="${products.cumulativeRegistCount}">
+							<input name="cumulativeRegistCount" value="1">
 						</div>
 					</div>
 
@@ -182,32 +175,79 @@ $(function(){
 							<label>누적판매수량</label>
 						</div>
 						<div class="form_section_content">
-							<input name="cumulativeSellCount" value="${products.cumulativeSellCount}">
-						</div>
-					</div>
-										
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>내용</label>
-						</div>
-						<div class="form_section_content">
-							<textarea rows="5" cols="50"  name="content">${products.productPost.content}</textarea>
+							<input name="cumulativeSellCount" value="1">
 						</div>
 					</div>
 
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>수정사원정보</label>
+							<label>상품대표이미지</label>
+						</div>
+						<div class="form_section_content">
+							<input type="file" id="productMainImage" name="productMainImage" />
+							<div class="select_img"><img src="" /></div>
+						</div>
+					</div>
+					
+					<script>
+						$("#productMainImage").change(function(){
+							if(this.files && this.files[0]) {
+								var reader = new FileReader;
+								reader.onload = function(data) {
+									$(".select_img img").attr("src", data.target.result).width(500);        
+								}
+								reader.readAsDataURL(this.files[0]);
+							}
+						});
+					</script>
+					
+					<%=request.getRealPath("/") %>
+					
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>내용</label>
+						</div>
+						<div class="form_section_content">
+							<textarea rows="5" cols="50"  name="content"></textarea>
+						</div>
+					</div>
+
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>상품이미지들</label>
+						</div>
+						<div class="form_section_content">
+							<input type="file" id="images" name="images" />
+							<div class="select_imgs"><img src="" /></div>					
+						</div>
+					</div>
+					
+					
+					<script>
+						$("#images").change(function(){
+							if(this.files && this.files[0]) {
+								var reader = new FileReader;
+								reader.onload = function(data) {
+									$(".select_imgs img").attr("src", data.target.result).width(500);        
+								}
+								reader.readAsDataURL(this.files[0]);
+							}
+						});
+					</script>					
+					
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>등록사원정보</label>
 						</div>
 						<div class="form_section_content">
 							<select name="employee" class="employee">
-								<option selected="selected" value="${products.employee.empNumber}">${products.employee.empNumber} : ${products.employee.empName}</option>
+								<option selected="selected" value="">등록사원을 선택해주세요</option>
 							</select>
 						</div>
 					</div>
 					
 					<div class="btn_section">
-						<button type="submit" id="new">수정</button>
+						<button type="submit" id="new">추가</button>
 						<button type="button" id="cancel">취소</button>
 					</div>
 
@@ -223,7 +263,6 @@ $(function(){
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp" />
 	</footer>
-
 <script>
 	//컨트롤러에서 브랜드 데이터 받기
 	var jsonData = JSON.parse('${brandList}');
@@ -242,15 +281,12 @@ $(function(){
 	
 	// 브랜드 셀렉트 박스에 데이터 삽입
 	var brandSelect = $("select.brand")
-	
+
 	for(var i = 0; i < brandArr.length; i++) {
-		if ('${products.brand.brandCode}' != brandArr[i].brandCode){			
-			brandSelect.append("<option value='" + brandArr[i].brandCode + "'>"
-		      + brandArr[i].brandName + "</option>"); 
-		}		
+		brandSelect.append("<option value='" + brandArr[i].brandCode + "'>"
+	      + brandArr[i].brandName + "</option>"); 
 	}
 
-	
 	// 컨트롤러에서 카테고리 데이터 받기
 	var jsonData = JSON.parse('${categoryList}');
 	console.log(jsonData);
@@ -270,10 +306,8 @@ $(function(){
 	var categorySelect = $("select.category")
 
 	for(var i = 0; i < categoryArr.length; i++) {
-		if('${products.category.productCategoryCode}' !=  categoryArr[i].productCategoryCode) {
-			categorySelect.append("<option value='" + categoryArr[i].productCategoryCode + "'>"
-		      + categoryArr[i].category + "</option>");
-		}
+		categorySelect.append("<option value='" + categoryArr[i].productCategoryCode + "'>"
+	      + categoryArr[i].category + "</option>"); 
 	}
 	
 	// 컨트롤러에서 직원 데이터 받기
@@ -295,29 +329,9 @@ $(function(){
 	var employeeSelect = $("select.employee")
 
 	for(var i = 0; i < employeeArr.length; i++) {
-		if ('${products.employee.empNumber}' != employeeArr[i].empNumber) {
 		employeeSelect.append("<option value='" + employeeArr[i].empNumber + "'>" + employeeArr[i].empNumber + " : "
-	      + employeeArr[i].empName + "</option>");
-		}
-		
+	      + employeeArr[i].empName + "</option>"); 
 	}
-	
-	// 성별 데이터 준비
-	var genderSelect = $("select.gender")
-	
-	genderArr = new Array();
-	genderArr[0] = "WOMEN";
-	genderArr[1] = "MEN";
-	genderArr[2] = "ALL";
-	genderArr[3] = "KIDS";
-	
-	// 성별 데이터 박스에 삽입
-	for(var i = 0; i < genderArr.length; i++) {
-		if('${products.gender}'.toUpperCase() !=  genderArr[i]) {
-		genderSelect.append("<option value='" + genderArr[i] + "'>" + genderArr[i] + "</option>");			
-		}	
-	}	
-	
 </script>
 
 </body>
