@@ -8,6 +8,7 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/ProductQnADetail.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
