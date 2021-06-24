@@ -29,6 +29,18 @@
 		 where product_code = #{productCode};
 	</update>
 	
+	<update id="updateProductPostContent" parameterType="ProductPost">
+		update productPost
+		   set content = #{content}
+		 where product_code = #{productCode};
+	</update>
+	
+	<update id="updateProductPostImage" parameterType="ProductPost">
+		update productPost
+		   set product_main_image = #{productMainImage}
+		 where product_code = #{productCode};
+	</update>
+	
 	<delete id="deleteProductPost">
 		delete from productPost
 		 where product_code = #{productCode};

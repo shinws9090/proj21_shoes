@@ -4,12 +4,28 @@
 
 	<select id="selectProductQnAbyCode" resultMap="proj21_shoes.mapper.MyQnaMapper.resQna">
 		select board_code, member_code, member_id, product_code, product_name,product_main_image, title, content, regist_date 		
-		from vw_myqna where product_code=#{productCode}
+		from vw_myqna where product_code=#{param1}
+		limit #{param2},#{param3}
+	</select>
+	<select id="selectProductQnACount" resultType="int">
+		select count(*) 		
+		from vw_myqna where product_code=#{param1}
 	</select>
 	
-	<insert id="" >
+	<insert id="productQnAInsert" parameterType="Qna">
 		insert into qna  
-		(member_code, product_code, title, content, reply, regist_date)
-		VALUES(#{memberCode}, null, #{title}, #{content}, #{reply}, now());
+		(member_code, product_code, title, content, regist_date)
+		VALUES(#{member.memberCode}, #{productCode}, #{title}, #{content}, now());
 	</insert>
+	
+	<delete id="productQnADelete">
+		delete from qna where board_code=#{boardCode}
+	</delete>
+	
+	<update id="productQnAUpdate">
+		UPDATE qna
+		SET  title=#{title}, content=#{content}
+		WHERE board_code=#{boardCode};
+	</update>
+	
 </mapper>

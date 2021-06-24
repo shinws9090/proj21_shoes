@@ -40,7 +40,7 @@
 				<fieldset id="signSuccess">
 					<a>${authInfo.memberName }(${authInfo.memberId })님으로 로그인하셨습니다.</a>
 					<br>
-					<a href="<c:url value='${contextPath}/myPageHome/${authInfo.memberId }' />">마이페이지 가기</a>	
+					<a href="${contextPath}/myPageHome/${authInfo.memberId}">마이페이지</a>
 				</fieldset>			
 			</section>
 </div>

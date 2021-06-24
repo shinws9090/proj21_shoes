@@ -10,7 +10,15 @@ import proj21_shoes.dto.Qna;
 public interface ProductQnaService {
 	
 
-	List<MyQnaViewCommand> selectProductQnAbyCode(int productCode);					
+	List<MyQnaViewCommand> selectProductQnAbyCode(int productCode,int page);
+
+	int productQnAInsert(Qna qna);
+
+	int productQnADelete(int boardCode);
+
+	int productQnAUpdate(Qna qna);
+
+	int selectProductQnACount(int code);					
 
 
 	

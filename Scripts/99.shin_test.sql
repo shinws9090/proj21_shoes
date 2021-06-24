@@ -163,3 +163,12 @@ insert into productpost values
 	(11132,'DrMartin1-main.jpg','닥터마틴 샌들'),
 	(11133,'DrMartin1-main.jpg','닥터마틴 샌들');
 
+delete from qna where board_code=6;
+select * from qna ;
+UPDATE qna
+		SET  title=2222222, content='asdasdasd'
+		WHERE board_code=10;
+		
+select count(*) 		
+		from vw_myqna where product_code=11111
+		

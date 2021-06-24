@@ -1,5 +1,6 @@
 package proj21_shoes.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -39,8 +40,17 @@ public class ProductDetailController {
 	@GetMapping("/productDetail/{code}")
 	public ModelAndView productDetail(@PathVariable("code")int code) {
 		Product product = service.productByCode(code);
-		List<MyQnaViewCommand> qnaList = qService.selectProductQnAbyCode(code);
-		return new ModelAndView("product/productDetail","product",product).addObject("myQnAList",qnaList);
+		int count = qService.selectProductQnACount(code);
+		int limit = 5;
+		List<Integer> pages = new ArrayList<Integer>();
+		if(count==limit) {
+			pages.add(1);
+		}else {
+			for(int i = 0; i<=count/limit; i++) {
+				pages.add(i+1);
+			}
+		}
+		return new ModelAndView("product/productDetail","product",product).addObject("pages",pages);
 	}
 	*/
 	
@@ -56,6 +66,17 @@ public class ProductDetailController {
 
 		return mav;
 	}
+	
+	
+	@GetMapping("/api/ProductQnAList/{productCode},{page}")
+	public ResponseEntity<Object> myProductQnADetailListApi(@PathVariable int productCode,
+															@PathVariable int page) {
+		List<MyQnaViewCommand> qnaList = qService.selectProductQnAbyCode(productCode,page);
+		System.out.println(qnaList);
+		return ResponseEntity.ok(qnaList);
+	}
+	
+	
 	
 	@GetMapping("api/size")
 	public ResponseEntity<Object> getSize(@RequestParam(value = "styleCode") int styleCode,

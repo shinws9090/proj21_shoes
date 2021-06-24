@@ -3,7 +3,7 @@ package proj21_shoes.validator;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import proj21_shoes.commend.ModifyMyNormalQnA;
+import proj21_shoes.commend.ModifyMyNormalQnACommend;
 import proj21_shoes.commend.RegisterRequest;
 
 
@@ -19,7 +19,7 @@ public class NormalQnAModifyValidator implements Validator { // dto에 있는 �
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		ModifyMyNormalQnA modifyMyNormalQnA = (ModifyMyNormalQnA) target;
+		ModifyMyNormalQnACommend modifyMyNormalQnA = (ModifyMyNormalQnACommend) target;
 		if (modifyMyNormalQnA.getTitle() == null || modifyMyNormalQnA.getTitle().trim().isEmpty()) {
 			errors.rejectValue("title", "required");
 		} 

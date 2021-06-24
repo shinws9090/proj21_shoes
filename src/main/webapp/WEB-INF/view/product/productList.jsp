@@ -55,7 +55,7 @@ $(function() {
 			<ul>
 				<li>
 					<form:form class="category" modelAttribute="productSelectCommend" action="${contextPath}/productList">
-						ALL
+						<span class="category-btn"> ALL</span>
 						<form:hidden path="gender" value="${products[0].gender}"/>
 						<form:hidden path="brandCode"/>
 					</form:form>
@@ -63,7 +63,7 @@ $(function() {
 				<c:forEach var="categorie" items="${categories }">
 					<li>
 						<form:form class="category" modelAttribute="productSelectCommend" action="${contextPath}/productList">
-							${categorie.category}
+							<span class="category-btn"> ${categorie.category}</span>
 							<form:hidden path="gender" value="${products[0].gender}"/>
 							<form:hidden path="brandCode"/>
 							<form:hidden path="productCategoryCode" value="${categorie.productCategoryCode}"/>
@@ -129,7 +129,7 @@ $(function() {
 				<form:hidden path="page" value="${productSelectCommend.page+1}"/>
 				<input type="hidden" name="scrollHeight" id="scrollHeight">
 				<c:if test="${fn:length(products)>=productSelectCommend.limit}">
-				<input type="submit" value="더보기">
+					<input type="submit" value="더보기">
 				</c:if>
 			</form:form>
 		</div>
