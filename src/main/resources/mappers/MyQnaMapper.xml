@@ -10,12 +10,11 @@
 		<result column="member_code" property="memberCode" />				<!-- 회원코드	 -->	
 		<result column="title" property="title" />							<!-- 제목 -->
 		<result column="content" property="content" />						<!-- 내용 -->
-		<result column="reply" property="reply" />							<!-- 답글 -->
 		<result column="regist_date" property="registDate" />				<!-- 작성일 -->
 	</resultMap>
 	
 	
-	 <resultMap type="ModifyMyNormalQnA" id="updateQna">	
+	 <resultMap type="ModifyMyNormalQnACommend" id="updateQna">	
  	<id column="board_code" property="boardCode" />						<!-- 게시판코드	 -->	
 		<result column="member_code" property="memberCode" />				<!-- 회원코드	 -->	
 		<result column="title" property="title" />							<!-- 제목 -->
@@ -40,31 +39,31 @@
 	<!-- 상품문의만!!  (상품코드 입력해서문의했을떄) -->
 	 
 	<select id="selectProductQnAbyId" resultMap="resQna">
-	select board_code, member_code, member_id, product_code, product_name,product_main_image, title, content, regist_date 		
+	select board_code, member_code, member_id, product_code, product_name,product_main_image, title, content,reply, regist_date 		
 	from vw_myqna where member_id=#{memberId} and product_code is not null;
 	
 	</select>
 	<select id="selectProductQnAbyBoardCode" resultMap="resQna">
-	select board_code, member_code, member_id, product_code, product_name, product_main_image, title, content, regist_date		
+	select board_code, member_code, member_id, product_code, product_name, product_main_image, title, content,reply, regist_date		
 	from vw_myqna where board_code=#{boardCode} and product_code is not null;
 	<!-- 상품문의만!!  (상품코드 입력해서문의했을떄) -->
 	</select> 
 	
 		<select id="selectNormalQnAbyId" resultMap="resQna">
-	select board_code, member_code, member_id, product_code, product_name,product_main_image, title, content, regist_date 		
+	select board_code, member_code, member_id, product_code, product_name,product_main_image, title, content,reply, regist_date 		
 	from vw_myqna where member_id=#{memberId} and product_code is null;
 	
 	</select>
 	<select id="selectNormalQnAbyBoardCode" resultMap="resQna">
-	select board_code, member_code, member_id, product_code, product_name, product_main_image, title, content, regist_date		
+	select board_code, member_code, member_id, product_code, product_name, product_main_image, title, content,reply, regist_date		
 	from vw_myqna where board_code=#{boardCode} and product_code is null;
 	<!-- 상품문의만!!  (상품코드 입력해서문의했을떄) -->
 	</select> 
 	
 	<insert id="insertNormalQnA" >
 		insert into qna  
-		(member_code, product_code, title, content, reply, regist_date)
-		VALUES(#{memberCode}, null, #{title}, #{content}, #{reply}, now());
+		(member_code, product_code, title, content,  regist_date)
+		VALUES(#{memberCode}, null, #{title}, #{content},  now());
 	</insert>
 	
 	
