@@ -15,7 +15,6 @@ public class NormalQnARegistCommand { 				// 상품문의게시판
 	private String title; 		// 제목
 	@NotEmpty(message="문의내용을 작성해주세요")
 	private String content; 	// 내용
-	private String reply;		 // 답글
 	private String memberId; //회원아이디
 	private String memberName; //회원이름
 	
@@ -84,13 +83,7 @@ public class NormalQnARegistCommand { 				// 상품문의게시판
 		this.content = content;
 	}
 
-	public String getReply() {
-		return reply;
-	}
 
-	public void setReply(String reply) {
-		this.reply = reply;
-	}
 
 	public LocalDateTime getRegistDate() {
 		return registDate;
@@ -111,21 +104,21 @@ public class NormalQnARegistCommand { 				// 상품문의게시판
 	}
 
 	public NormalQnARegistCommand(int memberCode, @NotEmpty(message = "문의제목을 작성해주세요") String title,
-			@NotEmpty(message = "문의내용을 작성해주세요") String content, String reply) {
+			@NotEmpty(message = "문의내용을 작성해주세요") String content) {
 		super();
 		this.memberCode = memberCode;
 		this.title = title;
 		this.content = content;
-		this.reply = reply;
+		
 	}
 
 	public NormalQnARegistCommand(int memberCode, @NotEmpty(message = "문의제목을 작성해주세요") String title,
-			@NotEmpty(message = "문의내용을 작성해주세요") String content, String reply, String memberId, String memberName) {
+			@NotEmpty(message = "문의내용을 작성해주세요") String content, String memberId, String memberName) {
 		super();
 		this.memberCode = memberCode;
 		this.title = title;
 		this.content = content;
-		this.reply = reply;
+	
 		this.memberId = memberId;
 		this.memberName = memberName;
 	}
@@ -133,8 +126,8 @@ public class NormalQnARegistCommand { 				// 상품문의게시판
 	@Override
 	public String toString() {
 		return String.format(
-				"NormalQnARegistCommand [boardCode=%s, memberCode=%s, productCode=%s, title=%s, content=%s, reply=%s, memberId=%s, memberName=%s, registDate=%s]",
-				boardCode, memberCode, productCode, title, content, reply, memberId, memberName, registDate);
+				"NormalQnARegistCommand [boardCode=%s, memberCode=%s, productCode=%s, title=%s, content=%s,  memberId=%s, memberName=%s, registDate=%s]",
+				boardCode, memberCode, productCode, title, content,  memberId, memberName, registDate);
 	}
 
 

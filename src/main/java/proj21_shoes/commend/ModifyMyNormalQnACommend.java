@@ -6,7 +6,7 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class ModifyMyNormalQnA { 				// 상품문의게시판
+public class ModifyMyNormalQnACommend { 				// 상품문의게시판
 
 	private int boardCode; 		// 게시판코드
 	private int memberCode; 		// 회원코드
@@ -94,7 +94,7 @@ public class ModifyMyNormalQnA { 				// 상품문의게시판
 		this.registDate = registDate;
 	}
 
-	public ModifyMyNormalQnA(int boardCode, int memberCode, int productCode,
+	public ModifyMyNormalQnACommend(int boardCode, int memberCode, int productCode,
 			@NotEmpty(message = "문의제목을 작성해주세요") String title, @NotEmpty(message = "문의내용을 작성해주세요") String content,
 			String reply, String memberId, String memberName, LocalDateTime registDate) {
 		super();
@@ -109,7 +109,7 @@ public class ModifyMyNormalQnA { 				// 상품문의게시판
 		this.registDate = registDate;
 	}
 
-	public ModifyMyNormalQnA(int boardCode, @NotEmpty(message = "문의제목을 작성해주세요") String title,
+	public ModifyMyNormalQnACommend(int boardCode, @NotEmpty(message = "문의제목을 작성해주세요") String title,
 			@NotEmpty(message = "문의내용을 작성해주세요") String content) {
 		super();
 		this.boardCode = boardCode;
@@ -117,23 +117,23 @@ public class ModifyMyNormalQnA { 				// 상품문의게시판
 		this.content = content;
 	}
 
-	public ModifyMyNormalQnA(int boardCode) {
+	public ModifyMyNormalQnACommend(int boardCode) {
 		super();
 		this.boardCode = boardCode;
 	}
 
-	public ModifyMyNormalQnA(String memberId) {
+	public ModifyMyNormalQnACommend(String memberId) {
 		super();
 		this.memberId = memberId;
 	}
 
-	public ModifyMyNormalQnA(int boardCode, String memberId) {
+	public ModifyMyNormalQnACommend(int boardCode, String memberId) {
 		super();
 		this.boardCode = boardCode;
 		this.memberId = memberId;
 	}
 
-	public ModifyMyNormalQnA() {
+	public ModifyMyNormalQnACommend() {
 		// TODO Auto-generated constructor stub
 	}
 

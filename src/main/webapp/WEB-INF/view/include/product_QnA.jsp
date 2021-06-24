@@ -12,6 +12,30 @@
 <script type="text/javascript">
 $(function() {
 	
+	function pageShowHide(page){
+		if(Number("${fn:length(pages)}")==1){
+			$(".pagejun").hide();
+			$(".pageNext").hide();
+		}else if(page<=1){
+			$(".pagejun").hide();
+			$(".pageNext").show();
+		}else if(page>=Number("${fn:length(pages)}")){
+			$(".pageNext").hide();
+			$(".pagejun").show();
+		}else{
+			$(".pagejun").show();
+			$(".pageNext").show();
+		}
+	}
+	function pageAticle(page){
+		$(".pageButton").each(function(){
+			if(Number($(this).val())==page){
+				$(this).attr("disabled", true);
+			}else{
+				$(this).attr("disabled", false);
+			}
+		});
+	}
 	function listDB(page){
 		$.ajax({
 			url : "${contextPath}/api/ProductQnAList/${product.productCode},"+page,
@@ -24,8 +48,8 @@ $(function() {
 					
 					sCont +='<tr>';
 					sCont +='<td><a href="${contextPath}/ProductQnADetail/'+json[i].boardCode+'">'+json[i].productName+'</a></td>';	<!-- 상품명 -->
-					sCont +='<td><a href="${contextPath}/ProductQnADetail/'+json[i].boardCode+'">';
-					sCont +='<img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/'+json[i].productMainImage+'"></a></td>';		
+					/* sCont +='<td><a href="${contextPath}/ProductQnADetail/'+json[i].boardCode+'">'; */
+					/* sCont +='<img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/'+json[i].productMainImage+'"></a></td>'; */		
 					sCont +='<td><a href="${contextPath}/ProductQnADetail/'+json[i].boardCode+'">'+json[i].title+'</a></td>';	<!-- 제목 -->
 					sCont +='<td>'+json[i].registDate +'</td>';	<!-- 작성일 -->
 					sCont +='<td>'+json[i].resOX +'</td>';
@@ -39,13 +63,17 @@ $(function() {
 						+request.responseText+"\n"+"error:"+error); */
 			}
 		});
+		pageShowHide(page);
+		pageAticle(page);
 	}
 	
+	
 	var page=1;
-	listDB(page)
+	listDB(page);
+	
 	
 	$(".pageButton").click(function(){
-		page=$(this).val();
+		page=Number($(this).val());
 		listDB(page);
 	});
 	$(".pagejun").click(function(){
@@ -56,6 +84,7 @@ $(function() {
 	});
 	$(".pageNext").click(function(){
 		if(page<Number("${fn:length(pages)}")){
+			alert(page);
 			page +=1;
 			listDB(page);
 		}
@@ -69,7 +98,7 @@ $(function() {
 		<thead> 
 		<tr>
 			<td>문의상품</td>
-			<td>상품사진</td>
+			<!-- <td>상품사진</td> -->
 			<td>제목</td>						
 			<td>작성일</td>
 			<td>답변유무</td>
@@ -88,10 +117,10 @@ $(function() {
 		</c:forEach> --%>
 		</tbody>
 	</table>
-		<!-- <button class="pagejun">이전</button> -->
+		<button class="pagejun">이전</button>
 		<c:forEach var="page" items="${pages}">
 			<button class="pageButton" value="${page}">${page}</button>
 		</c:forEach>
-		<!-- <button class="pageNext">다음</button> -->
+		<button class="pageNext">다음</button>
 </body>
 </html>

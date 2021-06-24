@@ -80,7 +80,7 @@
 		<h4>일반문의 수정하기</h4>
 		<br>
 		<!-- 해당컨트롤러로 이동 -->
-		<form:form action="/myPage/${myQnADetail.boardCode}/${myQnADetail.memberId}/modify/2" modelAttribute="modifyMyNormalQnA"   >
+		<form:form action="${contextPath}/myPage/${myQnADetail.boardCode}/${myQnADetail.memberId}/modify/2" modelAttribute="modifyMyNormalQnA"   >
 		<form:errors/>
 		<div>
 		<table class="tbl_type">
