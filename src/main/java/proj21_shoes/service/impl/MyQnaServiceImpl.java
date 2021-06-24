@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import proj21_shoes.commend.ModifyMyNormalQnA;
+import proj21_shoes.commend.ModifyMyNormalQnACommend;
 import proj21_shoes.commend.MyQnaViewCommand;
 import proj21_shoes.commend.NormalQnARegistCommand;
 import proj21_shoes.mapper.MyQnaMapper;
@@ -43,7 +43,7 @@ public class MyQnaServiceImpl implements MyQnaService {
 	}
 
 	@Override
-	public int updateNormalQnA(ModifyMyNormalQnA qna) {
+	public int updateNormalQnA(ModifyMyNormalQnACommend qna) {
 		return mapper.updateNormalQnA(qna);
 	}
 
