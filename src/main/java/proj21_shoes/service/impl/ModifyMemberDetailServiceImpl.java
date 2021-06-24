@@ -5,6 +5,7 @@ import org.apache.ibatis.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import proj21_shoes.commend.MyPWConfirmCommand;
 import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.mapper.MemberDetailMapper;
 import proj21_shoes.service.ModifyMemberDetailService;
@@ -18,6 +19,11 @@ public class ModifyMemberDetailServiceImpl implements ModifyMemberDetailService 
 	public int modifyMemberDetail(MemberDetail memberDetail) {
 		log.debug("service - modifyMemberDetail() > " + memberDetail);
 		return mapper.updateMemberDetail(memberDetail);
+	}
+
+	@Override
+	public MyPWConfirmCommand selectConfirmPw(String memberId, String memberPw) {
+		return mapper.selectConfirmPw(memberId, memberPw);
 	}
 
 }

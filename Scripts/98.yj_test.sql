@@ -1,5 +1,6 @@
 desc memberdetail ;
-select  * from memberdetail;
+select  member_id,member_pwd from memberdetail where member_id ='1234'
+and member_pwd =password('111111');
 
 select * from qna
  where member_code =(select member_code from member where member_id ='1234') ;
