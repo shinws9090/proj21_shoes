@@ -54,10 +54,10 @@ $(function() {
 	}
 	function pageAticle(page){
 		$(".pageButton").each(function(){
-			if($(this).val()==page){
-				$(this).hide()
+			if(Number($(this).val())==page){
+				$(this).attr("disabled", true);
 			}else{
-				$(this).show()
+				$(this).attr("disabled", false);
 			}
 		});
 	}
@@ -69,11 +69,11 @@ $(function() {
 	pageAticle(page);
 	
 	$(".pageButton").click(function(){
-		page=$(this).val();
+		page=Number($(this).val());
 		listDB(page);
 		pageShowHide(page);
 		pageAticle(page);
-		
+		alert(page);
 	});
 	$(".pagejun").click(function(){
 		if(page>1){
@@ -81,14 +81,17 @@ $(function() {
 			listDB(page);
 			pageShowHide(page);
 			pageAticle(page);
+			alert(page);
 		}
 	});
 	$(".pageNext").click(function(){
 		if(page<Number("${fn:length(pages)}")){
+			alert(page);
 			page +=1;
 			listDB(page);
 			pageShowHide(page);
 			pageAticle(page);
+			alert(page);
 		}
 	});
 });
