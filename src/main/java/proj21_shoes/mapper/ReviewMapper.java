@@ -8,7 +8,7 @@ import proj21_shoes.dto.ReView;
 public interface ReviewMapper {
 	
 
-	List<ReView> selectReviewByProductCode(int productCode);
+	List<ReView> selectReviewByBoardCode(int boardCode);
 	List<ReviewCommand> selectProductReviewbyCode(int productCode, int startrow, int limit);
 
 	int updateProductCode(String ProductCode);
@@ -18,5 +18,6 @@ public interface ReviewMapper {
 	int productReviewDelete(int boardCode);
 	int productReviewUpdate(ReView review);
 	int selectProductReviewCount(int code);
+	
 
 }

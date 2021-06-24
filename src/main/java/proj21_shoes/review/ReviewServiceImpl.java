@@ -17,8 +17,8 @@ public class ReviewServiceImpl implements ReviewService {
 	private ReviewMapper mapper;
 	
 	@Override
-	public List<ReView> selectReviewByProductCode(int productCode) {
-		return mapper.selectReviewByProductCode(productCode);
+	public List<ReView> selectReviewByBoardCode(int boardCode) {
+		return mapper.selectReviewByBoardCode(boardCode);
 	}
 	
 	
@@ -58,6 +58,13 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public int selectProductReviewCount(int code) {
 		return 0;
+	}
+
+
+	@Override
+	public List<ReView> selectReviewByProductCode(int code) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

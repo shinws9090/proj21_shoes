@@ -26,7 +26,7 @@
 		where o2.product_code = #{productCode};
 	
 	</select>
-		<insert id="review">
+		<insert id="">
 		insert into review
 		(board_code, order_code, title ,content ,regist_date)
 		values(#{board_code}, null, #{title}, #{content}, now());

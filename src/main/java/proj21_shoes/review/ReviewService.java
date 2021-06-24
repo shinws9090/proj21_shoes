@@ -14,9 +14,6 @@ public interface ReviewService {
 	int getListCount();
 
 	ArrayList<ReView> getArticleList(int page, int limit);
-
-	List<ReView> selectReviewByProductCode(int productCode);
-
 	
 	int productReviewInsert(ReView reivew);
 	
@@ -25,6 +22,13 @@ public interface ReviewService {
 	int productReviewUpdate(ReView reivew);
 	
 	int selectProductReviewCount(int code);
+
+	List<ReView> selectReviewByBoardCode(int boardCode);
+
+	List<ReView> selectReviewByProductCode(int code);
+
+
+
 
 
 	

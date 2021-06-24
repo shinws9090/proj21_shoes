@@ -1,5 +1,7 @@
 package proj21_shoes.review;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -17,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import proj21_shoes.commend.ReviewCommand;
 import proj21_shoes.dto.Member;
 import proj21_shoes.dto.ReView;
-import proj21_shoes.service.ReviewDetailService;
+
 
 
 @RestController
@@ -29,16 +31,14 @@ public class ReviewController {
 	@Autowired
 	private ReviewService service;
 	
-	@Autowired
-	private ReviewDetailService rService;
 	
-	@GetMapping("/reviewRead/{productCode}")
-	public ModelAndView reviewDetail(@PathVariable("productCode") int productCode,HttpSession session,HttpServletResponse response) {
-		System.out.println("productCode>>"+ productCode );
-		ReviewCommand reviewRead =rService.selectReviewByProductCode(productCode);
+	@GetMapping("/reviewRead/{boardCode}")
+	public ModelAndView reviewDetail(@PathVariable("boardCode") int boardCode,HttpSession session,HttpServletResponse response) {
+		System.out.println("boardCode>>"+ boardCode );
+		List<ReView> reviewRead =service.selectReviewByBoardCode(boardCode);
 
 		if(reviewRead ==null) {
-			System.out.println("리스트 없");
+			System.out.println("x");
 		
 		}
 		session.setAttribute("reviewRead", reviewRead);  // 요고 해줘야 jsp 에서 받을수 있당
@@ -49,11 +49,10 @@ public class ReviewController {
 		return mav;
 	}
 	@GetMapping("/ReviewInsertAndUpdateForm/{productCode},{commend},{boardCode}")
-	public ModelAndView ReviewInsertAndUpdateForm(@PathVariable int productCode, @PathVariable int boardCode,
+	public ModelAndView ReviewInsertAndUpdateForm(@PathVariable int boardCode,
 			@PathVariable String commend) {
-		ModelAndView mav = new ModelAndView("/review/reviewRead", "productCode", productCode);
+		ModelAndView mav = new ModelAndView("/review/reviewRead", "boardCode", boardCode);
 		mav.addObject("commend", commend);
-		mav.addObject("boardCode", boardCode);
 		return mav;
 	}
 
@@ -66,17 +65,17 @@ public class ReviewController {
 		}
 		review.setMember(member);
 		if (commend.equals("insert")) {
-			rService.productReviewInsert(review);
+			service.productReviewInsert(review);
 		} else if (commend.equals("update")) {
-			rService.productReviewUpdate(review);
+			service.productReviewUpdate(review);
 		}
 		return new ModelAndView("redirect:/productDetail/" + review.getBoardCode());
 	}
 
-	@GetMapping("ReviewDelete/{boardCode},{productCode}")
-	public ModelAndView ReviewDelete(@PathVariable int boardCode, @PathVariable int productCode) {
-		rService.productReviewDelete(boardCode);
-		return new ModelAndView("redirect:/productDetail/" + productCode);
+	@GetMapping("ReviewDelete/{boardCode}")
+	public ModelAndView ReviewDelete(@PathVariable int boardCode) {
+		service.productReviewDelete(boardCode);
+		return new ModelAndView("redirect:/productDetail/" + boardCode);
 	}
 	
 }
