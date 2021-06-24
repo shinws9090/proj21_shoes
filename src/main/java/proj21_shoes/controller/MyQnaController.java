@@ -73,7 +73,7 @@ public class MyQnaController {
 			MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
 		
 			
-				System.out.println("답변내용 가져와지나? "+ myQnAList.get(1).getReply());
+//				System.out.println("답변내용 가져와지나? "+ myQnAList.get(1).getReply());
 			if (myQnAList == null  || myQnAList.size()==0 )  {
 				System.out.println("리스트 없당");
 				return"/myPage/myNormarQnANull";
