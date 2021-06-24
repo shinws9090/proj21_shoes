@@ -10,7 +10,6 @@
 		<result column="member_code" property="memberCode" />				<!-- 회원코드	 -->	
 		<result column="title" property="title" />							<!-- 제목 -->
 		<result column="content" property="content" />						<!-- 내용 -->
-		<result column="reply" property="reply" />							<!-- 답글 -->
 		<result column="regist_date" property="registDate" />				<!-- 작성일 -->
 	</resultMap>
 	
