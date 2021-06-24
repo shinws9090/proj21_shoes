@@ -132,14 +132,26 @@
 			</ul>
 
 			<div class="tabs">
+			<!-- 상품내용 시작 -->
 				<div class='product-content active'>
 					<c:forEach var="image" items="${product.productPost.images}">
 					<img src="${contextPath}/images/${image.productCode}/${image.image}">
 					</c:forEach>
 					<p>상품설명 : ${product.productPost.content}</p>
 				</div>
+			<!-- 상품내용 end -->
 
+
+
+
+
+
+
+			<!-- 상품후기 시작 -->
 				<div class='product-review'>
+				
+				
+				
 				<img src="../images/review_detailpage.jpg">
 				
 				<section id="articleForm">
@@ -194,22 +206,35 @@
 
 						<article id="articleContentArea">
 							${article.review_content}</article>
-					</section>
-		<section id="commandList">
-			<a href="reviewReplyForm.do?board_code=${article.board_code}&page=${page}"> [답변] </a> 
-			<a href="reviewModifyForm.do?board_code=${article.board_code}&page=${page}"> [수정] </a> 
-			<a href="reviewDeleteForm.do?board_code=${article.board_code}&page=${page}"> [삭제] </a>
-			<a href="reviewList.do?page=${page}">[목록]</a>&nbsp;&nbsp;
-		</section>
-		</div>
-				<div class='product-QnA'>상품문의</div>
-
-				<div class='product-review'>상품후기</div>
+				</section>
+				<section id="commandList">
+					<a href="reviewReplyForm.do?board_code=${article.board_code}&page=${page}"> [답변] </a> 
+					<a href="reviewModifyForm.do?board_code=${article.board_code}&page=${page}"> [수정] </a> 
+					<a href="reviewDeleteForm.do?board_code=${article.board_code}&page=${page}"> [삭제] </a>
+					<a href="reviewList.do?page=${page}">[목록]</a>&nbsp;&nbsp;
+				</section>
+		
+		
+		
+		
+		
+				</div>
+				<!-- 상품후기 end -->
 				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				<!-- 상품문의 시작 -->
 				<div class='product-QnA'>
 					<jsp:include page="/WEB-INF/view/include/product_QnA.jsp" />
 				</div>
-
+				<!-- 상품후기 end -->
 			</div>
 		</div>
 		
