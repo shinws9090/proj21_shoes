@@ -32,7 +32,7 @@ public class ReviewDetailServiceImpl implements ReviewDetailService {
 	}
 
 	@Override
-	public int productQReviewDelete(int boardCode) {
+	public int productReviewDelete(int boardCode) {
 		return mapper.productReviewDelete(boardCode);
 	}
 
@@ -45,7 +45,20 @@ public class ReviewDetailServiceImpl implements ReviewDetailService {
 	public int selectProductReviewCount(int code) {
 		return mapper.selectProductReviewCount(code);
 	}
-	
+
+	@Override
+	public ReviewCommand selectReviewByProductCode(int productCode) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<ReviewCommand> selectProductReviewbyCode(int productCode) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 	
 
 }

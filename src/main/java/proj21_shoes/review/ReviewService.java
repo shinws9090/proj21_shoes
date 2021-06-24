@@ -18,4 +18,14 @@ public interface ReviewService {
 	List<ReView> selectReviewByProductCode(int productCode);
 
 	
+	int productReviewInsert(ReView reivew);
+	
+	int productReviewDelete(int boardCode);
+	
+	int productReviewUpdate(ReView reivew);
+	
+	int selectProductReviewCount(int code);
+
+
+	
 }

@@ -26,7 +26,20 @@
 		where o2.product_code = #{productCode};
 	
 	</select>
+		<insert id="review">
+		insert into review
+		(board_code, order_code, title ,content ,regist_date)
+		values(#{board_code}, null, #{title}, #{content}, now());
+	</insert>
 	
-	
-	
+	<delete id="review">
+		delete from review where board_code=#{boardCode}
+	</delete>
+		
+	<update id="review">
+		update review
+		set title={title}, content=#{content}
+		where board_code=#{boardCode};
+	</update>	
+
 </mapper>

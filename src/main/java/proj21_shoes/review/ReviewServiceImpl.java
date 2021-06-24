@@ -29,13 +29,35 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public ArrayList<ReView> getArticleList(int page, int limit) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public static ReviewServiceImpl getInstance() {
-		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public int productReviewInsert(ReView reivew) {
+		return 0;
+	}
+
+
+	@Override
+	public int productReviewDelete(int boardCode) {
+		return 0;
+	}
+
+
+	@Override
+	public int productReviewUpdate(ReView reivew) {
+		return 0;
+	}
+
+
+	@Override
+	public int selectProductReviewCount(int code) {
+		return 0;
 	}
 
 }
