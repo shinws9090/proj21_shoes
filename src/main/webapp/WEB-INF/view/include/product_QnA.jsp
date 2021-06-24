@@ -40,24 +40,55 @@ $(function() {
 			}
 		});
 	}
+	function pageShowHide(page){
+		if(page<=1){
+			$(".pagejun").hide();
+			$(".pageNext").show();
+		}else if(page>=Number("${fn:length(pages)}")){
+			$(".pageNext").hide();
+			$(".pagejun").show();
+		}else{
+			$(".pagejun").show();
+			$(".pageNext").show();
+		}
+	}
+	function pageAticle(page){
+		$(".pageButton").each(function(){
+			if($(this).val()==page){
+				$(this).hide()
+			}else{
+				$(this).show()
+			}
+		});
+	}
+	
 	
 	var page=1;
-	listDB(page)
+	listDB(page);
+	pageShowHide(page);
+	pageAticle(page);
 	
 	$(".pageButton").click(function(){
 		page=$(this).val();
 		listDB(page);
+		pageShowHide(page);
+		pageAticle(page);
+		
 	});
 	$(".pagejun").click(function(){
 		if(page>1){
 			page -=1;
 			listDB(page);
+			pageShowHide(page);
+			pageAticle(page);
 		}
 	});
 	$(".pageNext").click(function(){
 		if(page<Number("${fn:length(pages)}")){
 			page +=1;
 			listDB(page);
+			pageShowHide(page);
+			pageAticle(page);
 		}
 	});
 });
@@ -88,10 +119,10 @@ $(function() {
 		</c:forEach> --%>
 		</tbody>
 	</table>
-		<!-- <button class="pagejun">이전</button> -->
+		<button class="pagejun">이전</button>
 		<c:forEach var="page" items="${pages}">
 			<button class="pageButton" value="${page}">${page}</button>
 		</c:forEach>
-		<!-- <button class="pageNext">다음</button> -->
+		<button class="pageNext">다음</button>
 </body>
 </html>
