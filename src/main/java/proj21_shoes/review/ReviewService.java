@@ -25,8 +25,7 @@ public interface ReviewService {
 
 	List<ReView> selectReviewByBoardCode(int boardCode);
 
-	List<ReView> selectReviewByProductCode(int code);
-
+	List<ReView> selectReviewByProductCode(int productCode);
 
 
 

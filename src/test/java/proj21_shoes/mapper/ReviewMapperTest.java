@@ -42,14 +42,14 @@ public class ReviewMapperTest {
 	}
 
 	@Test
-	public void test01SelectReviewByProductCode() {
+	public void test01SelectReviewByMemberId() {
 		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
 
-		List<ReView> rList = mapper.selectReviewByBoardCode(1);
+		List<ReView> rList = mapper.selectReviewByProductCode(11111);
 		rList.stream().forEach(System.out::println);
 		Assert.assertNotNull(rList);
 		log.debug(rList.toString());
-
+		
 //		List<Order> rList = oMapper.selectOrderList();
 //		rList.stream().forEach(System.out::println);
 //		Assert.assertNotNull(rList);

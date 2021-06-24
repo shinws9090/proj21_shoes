@@ -16,6 +16,10 @@ public class ReviewServiceImpl implements ReviewService {
 	@Autowired
 	private ReviewMapper mapper;
 	
+	public List<ReView> selectReviewByProductCode(int productCode) {
+		return mapper.selectReviewByProductCode(productCode);
+	}
+	
 	@Override
 	public List<ReView> selectReviewByBoardCode(int boardCode) {
 		return mapper.selectReviewByBoardCode(boardCode);
@@ -61,10 +65,5 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 
-	@Override
-	public List<ReView> selectReviewByProductCode(int code) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 }

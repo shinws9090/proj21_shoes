@@ -31,6 +31,9 @@ public class ReviewController {
 	@Autowired
 	private ReviewService service;
 	
+	public ResponseEntity<Object> review(@RequestParam(value = "productCode", required = false) int productCode){
+		return ResponseEntity.ok(service.selectReviewByProductCode(productCode));
+	}
 	
 	@GetMapping("/reviewRead/{boardCode}")
 	public ModelAndView reviewDetail(@PathVariable("boardCode") int boardCode,HttpSession session,HttpServletResponse response) {
