@@ -18,7 +18,7 @@ public class ProductQnaServiceImpl implements ProductQnaService {
 	
 	@Override
 	public List<MyQnaViewCommand> selectProductQnAbyCode(int productCode,int page) {
-		int limit = 2;
+		int limit = 5;
 		int startrow = (page - 1) * limit;
 		
 		return mapper.selectProductQnAbyCode(productCode,startrow,limit);

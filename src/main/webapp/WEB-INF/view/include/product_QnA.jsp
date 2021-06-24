@@ -12,36 +12,11 @@
 <script type="text/javascript">
 $(function() {
 	
-	function listDB(page){
-		$.ajax({
-			url : "${contextPath}/api/ProductQnAList/${product.productCode},"+page,
-			type : 'get',
-			contentType : "application/json; charset=utf-8",
-			data:null,
-			success : function(json) {
-				var sCont = "";
-				for(i = 0; i < json.length; i++){
-					
-					sCont +='<tr>';
-					sCont +='<td><a href="${contextPath}/ProductQnADetail/'+json[i].boardCode+'">'+json[i].productName+'</a></td>';	<!-- 惑前疙 -->
-					sCont +='<td><a href="${contextPath}/ProductQnADetail/'+json[i].boardCode+'">';
-					sCont +='<img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/'+json[i].productMainImage+'"></a></td>';		
-					sCont +='<td><a href="${contextPath}/ProductQnADetail/'+json[i].boardCode+'">'+json[i].title+'</a></td>';	<!-- 力格 -->
-					sCont +='<td>'+json[i].registDate +'</td>';	<!-- 累己老 -->
-					sCont +='<td>'+json[i].resOX +'</td>';
-					sCont +='</tr>';
-					
-				};
-				$("#QnAList").html(sCont);
-			},
-			error : function(request, status, error) {
-				/* alert("code:"+request.status+"\n"+"message:"
-						+request.responseText+"\n"+"error:"+error); */
-			}
-		});
-	}
 	function pageShowHide(page){
-		if(page<=1){
+		if(Number("${fn:length(pages)}")==1){
+			$(".pagejun").hide();
+			$(".pageNext").hide();
+		}else if(page<=1){
 			$(".pagejun").hide();
 			$(".pageNext").show();
 		}else if(page>=Number("${fn:length(pages)}")){
@@ -61,27 +36,50 @@ $(function() {
 			}
 		});
 	}
+	function listDB(page){
+		$.ajax({
+			url : "${contextPath}/api/ProductQnAList/${product.productCode},"+page,
+			type : 'get',
+			contentType : "application/json; charset=utf-8",
+			data:null,
+			success : function(json) {
+				var sCont = "";
+				for(i = 0; i < json.length; i++){
+					
+					sCont +='<tr>';
+					sCont +='<td><a href="${contextPath}/ProductQnADetail/'+json[i].boardCode+'">'+json[i].productName+'</a></td>';	<!-- 惑前疙 -->
+					/* sCont +='<td><a href="${contextPath}/ProductQnADetail/'+json[i].boardCode+'">'; */
+					/* sCont +='<img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/'+json[i].productMainImage+'"></a></td>'; */		
+					sCont +='<td><a href="${contextPath}/ProductQnADetail/'+json[i].boardCode+'">'+json[i].title+'</a></td>';	<!-- 力格 -->
+					sCont +='<td>'+json[i].registDate +'</td>';	<!-- 累己老 -->
+					sCont +='<td>'+json[i].resOX +'</td>';
+					sCont +='</tr>';
+					
+				};
+				$("#QnAList").html(sCont);
+			},
+			error : function(request, status, error) {
+				/* alert("code:"+request.status+"\n"+"message:"
+						+request.responseText+"\n"+"error:"+error); */
+			}
+		});
+		pageShowHide(page);
+		pageAticle(page);
+	}
 	
 	
 	var page=1;
 	listDB(page);
-	pageShowHide(page);
-	pageAticle(page);
+	
 	
 	$(".pageButton").click(function(){
 		page=Number($(this).val());
 		listDB(page);
-		pageShowHide(page);
-		pageAticle(page);
-		alert(page);
 	});
 	$(".pagejun").click(function(){
 		if(page>1){
 			page -=1;
 			listDB(page);
-			pageShowHide(page);
-			pageAticle(page);
-			alert(page);
 		}
 	});
 	$(".pageNext").click(function(){
@@ -89,9 +87,6 @@ $(function() {
 			alert(page);
 			page +=1;
 			listDB(page);
-			pageShowHide(page);
-			pageAticle(page);
-			alert(page);
 		}
 	});
 });
@@ -103,7 +98,7 @@ $(function() {
 		<thead> 
 		<tr>
 			<td>巩狼惑前</td>
-			<td>惑前荤柳</td>
+			<!-- <td>惑前荤柳</td> -->
 			<td>力格</td>						
 			<td>累己老</td>
 			<td>翠函蜡公</td>

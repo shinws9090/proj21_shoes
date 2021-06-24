@@ -33,10 +33,14 @@ public class ProductDetailController {
 	public ModelAndView productDetail(@PathVariable("code")int code) {
 		Product product = service.productByCode(code);
 		int count = qService.selectProductQnACount(code);
-		int limit = 2;
+		int limit = 5;
 		List<Integer> pages = new ArrayList<Integer>();
-		for(int i = 1; i<=count/limit+1; i++) {
-			pages.add(i);
+		if(count==limit) {
+			pages.add(1);
+		}else {
+			for(int i = 0; i<=count/limit; i++) {
+				pages.add(i+1);
+			}
 		}
 		return new ModelAndView("product/productDetail","product",product).addObject("pages",pages);
 	}
