@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="tf" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -8,15 +8,16 @@
 <c:set var="contextPath" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
 <html>
+
 <body>
-		<table style="width: 100%">
-			<tr style="background-color: #e9e9e9; text-align: center;">
-				<td><a href="${contextPath}/admin/adminMain">°ü¸®ÀÚÈ¨</a></td>
-				<td><a href="${contextPath}/admin/memberMgt">È¸¿ø°ü¸®</a></td>
-				<td><a href="${contextPath}/admin/productMgt">»óÇ°°ü¸®</a></td>
-				<td><a href="${contextPath}/admin/orderMgt">ÁÖ¹®°ü¸®</a></td>
-				<td><a href="${contextPath}/admin/adminMain">°Ô½ÃÆÇ°ü¸®</a></td>
-			</tr>
-		</table>
+		<div id="leftMenu">
+			<ul>
+				<li><a href="${contextPath}/admin/adminMain">ê´€ë¦¬ìží™ˆ</a></li>
+				<li><a href="${contextPath}/admin/memberMgt">íšŒì›ê´€ë¦¬</a></li>
+				<li><a href="${contextPath}/admin/productMgt">ìƒí’ˆê´€ë¦¬</a></li>
+				<li><a href="${contextPath}/admin/orderMgt">ì£¼ë¬¸ê´€ë¦¬</a></li>
+				<li><a href="${contextPath}/admin/adminMain">ê²Œì‹œíŒê´€ë¦¬</a></li>
+			</ul>
+		</div>
 </body>
 </html>

@@ -1,7 +1,7 @@
 -- 각 기능 수행시 필요한 뷰 붙여넣어주세용!
 
 
--- 1. 예진_마이페이지 회원정보 뷰----------------------------------------------------------------------------------------------------------------------------------------
+-- 1. 예진_마이페이지 나의 회원정보 뷰----------------------------------------------------------------------------------------------------------------------------------------
 create or replace view  vw_mypageData as
 	select md.member_id, 						-- 회원아이디
 	md.member_pwd,								-- 비밀번호
@@ -55,7 +55,7 @@ left join member as m on od.member_code =m.member_code ;
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
--- 3. 예진_ 마이페이지 나의 문의사항 뷰 (뷰 안만들면 매개변수 두개넣어야해ㅜ)) -------------------------------------------------------------------------------------------------------------------------------------------------------
+-- 4. 예진_ 마이페이지 나의 상품/일반문의내역 뷰 (뷰 안만들면 매개변수 두개넣어야해ㅜ)) -------------------------------------------------------------------------------------------------------------------------------------------------------
 create or replace view  vw_myQnA as
 select 
 q.board_code ,      -- 게시판코드
@@ -73,3 +73,48 @@ left join product as pd on q.product_code =pd. product_code
 left join member as m on q.member_code =m.member_code 
 left join productpost as pp on q.product_code = pp.product_code;
 -- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- 5.-------예진_ 마이페이지 나의 상품후기리스트 뷰--------------------------------------------------------------------------------------------------------------------------
+create or replace view  vw_myReview as
+	select 
+		rv.board_code, 			-- 게시판코드
+		rv.order_code,			-- 주문코드
+		rv.title, 				-- 제목
+		rv.content,				-- 내용
+		rv.regist_date,			-- 등록일
+		od.member_code ,		-- 회원코드
+		m.member_id,			-- 회원아이디
+		od.order_date ,			-- 주문일
+		od.payment_amount ,		-- 결제금액
+		od.payment_state ,  	-- 결제여부
+		od.delivery_code , 		-- 배송코드
+		od.buy_confirm_state, 	-- 구매확정여부
+		op.product_code ,  		-- 상품코드
+		op.style_code , 		-- 스타일코드
+		op.`size` , 			-- 사이즈
+		op.order_count ,		-- 주문수량
+		odop.color , 			-- 색상
+		pd.product_name , 		-- 상품명
+		pd.brand_code , 		-- 브랜드코드
+		pd.gender , 			-- 성별
+		pd.product_category_code, -- 상품종류코드
+		pd.material, 			-- 소재
+		pd.season, 				-- 계절
+		pd.made_date, 			-- 제조일
+		pd.sell_Price, 			-- 원가
+		b.brand_name, 			-- 판매가
+		p.product_main_image,	-- 상품대표이미지
+		rvi.image_code, 		-- 이미지코드
+		rvi.image 				-- 이미지		
+		from product as pd 
+		left join productpost as p on pd.product_code =p.product_code
+		left join orderoption as odop on pd.product_code =odop.product_code 
+		left join orderproduct as op on odop.product_code =op.product_code 
+		left join `order` as od on od.order_code =op.order_code 
+		left join review as rv	on rv.order_code =od.order_code 
+		left join reviewimage as rvi on rv.board_code =rvi.board_code 
+		left join brand as b on pd.brand_code =b.brand_code
+		left join category c on pd.product_category_code =c.product_category_code 
+		left join member m on od.member_code =m.member_code;
+	
+-- 	--------------------------------------------------------------------------------------------------------------------------------------------------
+

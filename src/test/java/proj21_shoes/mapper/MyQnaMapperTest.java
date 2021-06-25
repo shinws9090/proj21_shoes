@@ -36,16 +36,16 @@ public class MyQnaMapperTest {
 		System.out.println();
 	}
 	
-	@Test
-	public void test01SelectbyId() {
-		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
-		List<MyQnaViewCommand> myQnaList = mapper.selectProductQnAbyId("1234");
+//	@Test
+	//public void test01SelectbyId() {
+	//	log.debug(Thread.currentThread().getStackTrace()[1].getMethodName() + "()");
+	//	List<MyQnaViewCommand> myQnaList = mapper.selectProductQnAbyId("1234");
 	//	System.out.println("myQna>>>"+ myQnaList);
-		
-		Assert.assertNotNull(myQnaList);
-		log.debug(myQnaList.toString());
-		
-	}
+//		
+//		Assert.assertNotNull(myQnaList);
+//		log.debug(myQnaList.toString());
+//		
+//	}
 
 	//@Test
 	public void testUpdateMember() {

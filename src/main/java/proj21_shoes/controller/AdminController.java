@@ -497,5 +497,54 @@ public class AdminController {
 		}
 		return "redirect:/admin/product/brandReg";
 	}
+	
+	@GetMapping("/admin/product/categoryReg")
+	public void getCategoryRegister(Model model) {
+		List<Category> categoryList = categoryService.categoryList();
+		model.addAttribute("categoryList", JSONArray.fromObject(categoryList));
+	}
+
+	@PostMapping("/admin/product/categoryReg")
+	public String postCategoryRegister(HttpServletRequest request) {
+
+		Category category = new Category();
+		category.setProductCategoryCode(Integer.parseInt(request.getParameter("productCategoryCode")));
+		category.setCategory(request.getParameter("category"));
+
+		categoryService.insertCategory(category);
+		System.out.println(category);
+
+		return "redirect:/admin/product/categoryReg";
+	}
+
+	@GetMapping("/admin/product/categoryMod")
+	public void getCategoryModify(Model model) {
+		List<Category> categoryList = categoryService.categoryList();
+		model.addAttribute("categoryList", JSONArray.fromObject(categoryList));
+	}
+
+	@PostMapping("/admin/product/categoryMod")
+	public String postCategoryModify(HttpServletRequest request) {
+
+		Category category = new Category();
+		category.setProductCategoryCode(Integer.parseInt(request.getParameter("productCategoryCode")));
+		category.setCategory(request.getParameter("category"));
+
+		categoryService.updateCategory(category);
+		System.out.println(category);
+
+		return "redirect:/admin/product/categoryReg";
+	}
+
+	@GetMapping("/admin/product/categoryDel")
+	public String getCategoryDelete(@RequestParam(value = "categoryCode") int categoryCode) {
+		try {
+			categoryService.deleteCategory(categoryCode);
+			System.out.println("카테고리 삭제");
+		} catch (DataIntegrityViolationException e) {
+			System.out.println("외래키 에러");
+		}
+		return "redirect:/admin/product/categoryReg";
+	}
 
 }

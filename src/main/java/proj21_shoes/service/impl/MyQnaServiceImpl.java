@@ -18,21 +18,12 @@ public class MyQnaServiceImpl implements MyQnaService {
 	@Autowired
 	private MyQnaMapper mapper;
 
-	@Override
-	public List<MyQnaViewCommand> selectProductQnAbyId(String member){					//회원아이디로
-		
-		return mapper.selectProductQnAbyId(member);
-	}
 
 	@Override
 	public MyQnaViewCommand selectProductQnAbyBoardCode(int boardCode) {
 		return mapper.selectProductQnAbyBoardCode(boardCode);
 	}
 
-	@Override
-	public List<MyQnaViewCommand> selectNormalQnAbyId(String member) {
-		return mapper.selectNormalQnAbyId(member);
-	}
 
 	@Override
 	public MyQnaViewCommand selectNormalQnAbyBoardCode(int boardCode) {

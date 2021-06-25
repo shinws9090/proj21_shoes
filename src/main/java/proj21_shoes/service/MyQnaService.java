@@ -11,16 +11,10 @@ import proj21_shoes.commend.NormalQnARegistCommand;
 import proj21_shoes.commend.Pagination;
 @Service
 public interface MyQnaService {
-// 페이징 전에꺼라 안쓴다//////////////////////////////
-	//상품문의내역만 검색
-	List<MyQnaViewCommand> selectProductQnAbyId(String member);					//회원아이디로
-	MyQnaViewCommand selectProductQnAbyBoardCode(int boardCode);					//게시판코드로
-	//일반문의내역만 검색
-	List<MyQnaViewCommand> selectNormalQnAbyId(String member);					//회원아이디로
-	MyQnaViewCommand selectNormalQnAbyBoardCode(int boardCode);					//게시판코드로
-	
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
+	MyQnaViewCommand selectProductQnAbyBoardCode(int boardCode);				
+	MyQnaViewCommand selectNormalQnAbyBoardCode(int boardCode);				
+
 	//페이징 ( 상품문의만 
 	 List<Map<String, Object>> SelectMyPdQnAList (String memberId, Pagination pagination) throws Exception;
 	
@@ -32,9 +26,9 @@ public interface MyQnaService {
 	   
 	   
 	//일반문의하기
-	int insertNormalQnA(NormalQnARegistCommand qna); 		 //일반문의하기
+	int insertNormalQnA(NormalQnARegistCommand qna); 		 
 	
-	int updateNormalQnA(ModifyMyNormalQnACommend updateQnA);  				//일반문의내용 수정
+	int updateNormalQnA(ModifyMyNormalQnACommend updateQnA);  				
 
 	
 }

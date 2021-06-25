@@ -36,28 +36,15 @@
 		<result column="regist_date" property="registDate" />				<!-- 작성일 -->
 	</resultMap>
 	
-	<!-- 상품문의만!!  (상품코드 입력해서문의했을떄) -->
-	 
-	<select id="selectProductQnAbyId" resultMap="resQna">
-	select board_code, member_code, member_id, product_code, product_name,product_main_image, title, content,reply, regist_date 		
-	from vw_myqna where member_id=#{memberId} and product_code is not null;
-	
-	</select>
+
 	<select id="selectProductQnAbyBoardCode" resultMap="resQna">
 	select board_code, member_code, member_id, product_code, product_name, product_main_image, title, content,reply, regist_date		
 	from vw_myqna where board_code=#{boardCode} and product_code is not null;
-	<!-- 상품문의만!!  (상품코드 입력해서문의했을떄) -->
 	</select> 
-	
-		<select id="selectNormalQnAbyId" resultMap="resQna">
-	select board_code, member_code, member_id, product_code, product_name,product_main_image, title, content,reply, regist_date 		
-	from vw_myqna where member_id=#{memberId} and product_code is null;
-	
-	</select>
+		
 	<select id="selectNormalQnAbyBoardCode" resultMap="resQna">
 	select board_code, member_code, member_id, product_code, product_name, product_main_image, title, content,reply, regist_date		
 	from vw_myqna where board_code=#{boardCode} and product_code is null;
-	<!-- 상품문의만!!  (상품코드 입력해서문의했을떄) -->
 	</select> 
 	
 	<insert id="insertNormalQnA" >
@@ -74,8 +61,7 @@
 	</update>
 	 
 	 
-	 <!-- 나의 상품문의 내역 페이징  -->
-	 
+	 <!-- 나의 상품문의내역 페이징  -->	 
 	 <select id="SelectMyPdQnAList" resultMap="resQna">
        select R1.* FROM(
          select board_code, member_code, member_id, product_code, product_name,product_main_image, title, content,reply, regist_date 		
@@ -109,33 +95,7 @@
 	from vw_myqna  where 
 	member_id =#{memberId} and product_code is  null;
     </select>
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 <!-- select만으로 하려했던것 ㅠ -->
-<!-- 	<select id="selectbyId" resultMap="resQna">
-	select board_code, 
-	member_code,product_code,
-	(select product_name from product where product_code=#{productCode})as product_name,
-	 title,content,reply,regist_date 		
-	from qna where member_code =(select member_code from member where member_id =#{memberId}) ;
-	
-	</select>
-	<select id="selectbyBoardCode" resultMap="resQna">
-	select board_code, 
-	member_code,product_code,
-	(select product_name from product where product_code=#{productCode})as product_name,
-	 title,content,reply,regist_date 		
-	from qna where member_code =(select member_code from member where board_code =#{board_Code}) ;
-	
-	</select> -->
+
 	
 </mapper>
 
