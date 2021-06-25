@@ -1,6 +1,7 @@
 package proj21_shoes.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,12 +15,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import proj21_shoes.commend.ModifyMyNormalQnACommend;
 import proj21_shoes.commend.MyPageSelectCommend;
 import proj21_shoes.commend.MyQnaViewCommand;
 import proj21_shoes.commend.NormalQnARegistCommand;
+import proj21_shoes.commend.Pagination;
 import proj21_shoes.dto.Member;
 import proj21_shoes.exeption.MyNormalQnAEmptyException;
 import proj21_shoes.mapper.MemberMapper;
@@ -41,56 +44,115 @@ public class MyQnaController {
 	
 	@Autowired
 	MemberMapper memberMapper;
-	
-	///////////////////////////////////////좌측메뉴 나의 '상품'문의 클릭시 //////////////////////////////////////////////////////////////////////////////
-	@GetMapping("/myPage/myProductQnA/{memberId}")
-	public String myProductQnABoard(@PathVariable("memberId") String memberId,HttpSession session,HttpServletResponse response) {
-		List<MyQnaViewCommand> myQnAList =myQnaService.selectProductQnAbyId(memberId);
-		MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
-	
-		if (myQnAList == null  || myQnAList.size()==0 ) {
-			System.out.println("리스트 없당");
-			return"/myPage/myProductQnANull";
-		}
-		System.out.println(myQnAList);
-		System.out.println("길이쓰 >> " + myQnAList.size());
-		session.setAttribute("member", member);
-		session.setAttribute("myQnAList", myQnAList);  // 요고 해줘야 jsp 에서 받을수 있당
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("myQnAList",myQnAList);
-		mav.addObject("member",member);
-	//	mav.setViewName("myPage/qna/{memberId}");
-		System.out.println(myQnAList);
-		return "/myPage/myProductQnA";
-		
-	}
-	
-		
-	///////////////////////////////////////좌측메뉴 나의 '일반'문의 클릭시 //////////////////////////////////////////////////////////////////////////////
-		@GetMapping("/myPage/myNormalQnA/{memberId}")
-		public String myNormalQnABoard(@PathVariable("memberId") String memberId,HttpSession session,HttpServletResponse response) {
-			List<MyQnaViewCommand> myQnAList =myQnaService.selectNormalQnAbyId(memberId);
-			MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
-		
-			
-//				System.out.println("답변내용 가져와지나? "+ myQnAList.get(1).getReply());
-			if (myQnAList == null  || myQnAList.size()==0 )  {
-				System.out.println("리스트 없당");
-				return"/myPage/myNormarQnANull";
-			}
-		
-			
-			session.setAttribute("member", member);
-			session.setAttribute("myQnAList", myQnAList);  // 요고 해줘야 jsp 에서 받을수 있당
-			ModelAndView mav = new ModelAndView();
-			mav.addObject("myQnAList",myQnAList);
-			mav.addObject("member",member);
+	///////////////////////////////////////좌측메뉴 나의 '상품'문의 클릭시  페이징 버전//////////////////////////////////////////////////////////////////////////////
 
-			System.out.println(myQnAList);
-			
-			return "/myPage/myNormarQnA";
-			
-		}
+	@RequestMapping("/myPage/myProductQnA/{memberId}")
+	   public ModelAndView myProductQnABoard(
+			  @PathVariable("memberId") String memberId,
+	         @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+	         @RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
+	         @RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize, HttpSession session,
+	         HttpServletResponse response) throws Exception {
+	  //    UserAuthInfo user = (UserAuthInfo) session.getAttribute("authInfo");
+		MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
+	      ModelAndView mav = new ModelAndView();
+
+	      int listCnt1 = myQnaService.MyPdQnACount(memberId);
+	      Pagination pagination1 = new Pagination(currentPage, cntPerPage, pageSize);
+	      pagination1.setTotalRecordCount(listCnt1);
+	      session.setAttribute("pagination1", pagination1);
+	      session.setAttribute("member", member);
+
+	      mav.setViewName("/myPage/myProductQnA");
+	      mav.addObject("pagination1", pagination1);
+	      mav.addObject("myPdQna", myQnaService.SelectMyPdQnAList(memberId, pagination1));
+	      return mav;
+	   }
+	
+	
+	///////////////////////////////////////좌측메뉴 나의 '상품'문의 클릭시  기존//////////////////////////////////////////////////////////////////////////////
+	/*
+	 * @GetMapping("/myPage/myProductQnA/{memberId}") public String
+	 * myProductQnABoard(@PathVariable("memberId") String memberId,HttpSession
+	 * session,HttpServletResponse response) { List<MyQnaViewCommand> myQnAList
+	 * =myQnaService.selectProductQnAbyId(memberId); MyPageSelectCommend member =
+	 * getMyPageService.showMyPageById(memberId);
+	 * 
+	 * if (myQnAList == null || myQnAList.size()==0 ) {
+	 * System.out.println("리스트 없당"); return"/myPage/myProductQnANull"; }
+	 * System.out.println(myQnAList); System.out.println("길이쓰 >> " +
+	 * myQnAList.size()); session.setAttribute("member", member);
+	 * session.setAttribute("myQnAList", myQnAList); // 요고 해줘야 jsp 에서 받을수 있당
+	 * ModelAndView mav = new ModelAndView(); mav.addObject("myQnAList",myQnAList);
+	 * mav.addObject("member",member); // mav.setViewName("myPage/qna/{memberId}");
+	 * System.out.println(myQnAList); return "/myPage/myProductQnA";
+	 * 
+	 * }
+	 */
+	
+	///////////////////////////////////////좌측메뉴 나의 '일반'문의 클릭시  페이징//////////////////////////////////////////////////////////////////////////////
+
+	@RequestMapping("/myPage/myNormalQnA/{memberId}")
+	   public ModelAndView myNormalQnABoard(
+			  @PathVariable("memberId") String memberId,
+	         @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+	         @RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
+	         @RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize, HttpSession session,
+	         HttpServletResponse response) throws Exception {
+	  //    UserAuthInfo user = (UserAuthInfo) session.getAttribute("authInfo");
+		MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
+
+	      ModelAndView mav = new ModelAndView();
+
+	      int listCnt2 = myQnaService.MyNmQnACount(memberId);
+	      Pagination pagination2 = new Pagination(currentPage, cntPerPage, pageSize);
+	      pagination2.setTotalRecordCount(listCnt2);
+	      //test
+	      List<Map<String, Object>> test =  myQnaService.SelectMyNmQnAList(memberId, pagination2);
+	      session.setAttribute("pagination2", pagination2);
+	      System.out.println("testtest>>> " + test);
+	      //
+	      session.setAttribute("member", member);
+	      mav.setViewName("/myPage/myNormarQnA");
+	      mav.addObject("pagination2", pagination2);
+	      mav.addObject("myNmQna", myQnaService.SelectMyNmQnAList(memberId, pagination2));
+	      return mav;
+	   }
+	
+	
+	
+	
+	
+	
+	
+	
+		/*
+		 * ///////////////////////////////////////좌측메뉴 나의 '일반'문의 클릭시
+		 * /////////////////////////////////////////////////////////////////////////////
+		 * /
+		 * 
+		 * @GetMapping("/myPage/myNormalQnA/{memberId}") public String
+		 * myNormalQnABoard(@PathVariable("memberId") String memberId,HttpSession
+		 * session,HttpServletResponse response) { List<MyQnaViewCommand> myQnAList
+		 * =myQnaService.selectNormalQnAbyId(memberId); MyPageSelectCommend member =
+		 * getMyPageService.showMyPageById(memberId);
+		 * 
+		 * 
+		 * // System.out.println("답변내용 가져와지나? "+ myQnAList.get(1).getReply()); if
+		 * (myQnAList == null || myQnAList.size()==0 ) { System.out.println("리스트 없당");
+		 * return"/myPage/myNormarQnANull"; }
+		 * 
+		 * 
+		 * session.setAttribute("member", member); session.setAttribute("myQnAList",
+		 * myQnAList); // 요고 해줘야 jsp 에서 받을수 있당 ModelAndView mav = new ModelAndView();
+		 * mav.addObject("myQnAList",myQnAList); mav.addObject("member",member);
+		 * 
+		 * System.out.println(myQnAList);
+		 * 
+		 * return "/myPage/myNormarQnA";
+		 * 
+		 * }
+		 */
 		
 		
 ///////////////////////////////////////'상품'문의 목록에서 상세보기 클릭시 //////////////////////////////////////////////////////////////////////////////

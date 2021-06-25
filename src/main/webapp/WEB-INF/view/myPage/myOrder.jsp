@@ -8,6 +8,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <c:set var="contextPath" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +39,7 @@
 	<!-- end header -->
 		<div id="myPage">
 	<section id = "maPage">
-	
+<%-- 	${myOrderList} --%>
 	<c:if test="${empty authInfo}"> 
 				<p style="text-align: center;">로그인해주세요.</p> 
 				<p></p>
@@ -80,7 +82,7 @@
 				<br>
 				
 				<table  class="tbl_type" border="1"> 
-			
+				<thead>
 					<tr>
 						<td>주문번호</td>
 						<td>상품사진</td>
@@ -89,6 +91,10 @@
 						<td>주문수량</td>
 					 	<td>주문일</td> 
 					</tr>
+				</thead>
+				<tbody>
+				<c:choose>
+					<c:when test="${fn:length(myOrderList) > 0}">
 					<c:forEach var="myOrderList" items="${myOrderList}">
 					<tr>
 						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myOrderList.orderCode}">${myOrderList.orderCode }<br>[상세보기]</a></td>
@@ -97,11 +103,16 @@
 						<td>${myOrderList.paymentAmount }</td>
 						<td>${myOrderList.orderCount }</td>
 						 <td>${myOrderList.orderDate }</td> 
-
-						
 					</tr>
 					</c:forEach>
-				
+					</c:when>
+					<c:otherwise>
+							<tr>
+								<td colspan="4">조회된 결과가 없습니다.</td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
 				</table>
 		<br>
 				</section>
@@ -111,7 +122,32 @@
 			
 				
 			</c:if>
+ <!--paginate -->
+         <div class="paginate">
+            <div class="paging" style="margin-left: 50%;">
+               <a class="direction prev" href="javascript:void(0);"
+                  onclick="movePage(1,${pagination3.cntPerPage},${pagination3.pageSize});">
+                  &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"
+                  onclick="movePage(${pagination3.currentPage}<c:if test="${pagination3.hasPreviousPage == true}">-1</c:if>,${pagination3.cntPerPage},${pagination3.pageSize});">
+                  &lt; </a>
 
+               <c:forEach begin="${pagination3.firstPage}"
+                  end="${pagination3.lastPage}" var="idx">
+                  <a
+                     style="color:<c:out value="${pagination3.currentPage == idx ? '#gray; font-weight:700; margin-bottom: 2px;' : ''}"/> "
+                     href="javascript:void(0);"
+                     onclick="movePage(${idx},${pagination3.cntPerPage},${pagination3.pageSize});"><c:out
+                        value="${idx}" /></a>
+               </c:forEach>
+               <a class="direction next" href="javascript:void(0);"
+                  onclick="movePage(${pagination3.currentPage}<c:if test="${pagination3.hasNextPage == true}">+1</c:if>,${pagination3.cntPerPage},${pagination3.pageSize});">
+                  &gt; </a> <a class="direction next" href="javascript:void(0);"
+                  onclick="movePage(${pagination3.totalRecordCount},${pagination3.cntPerPage},${pagination3.pageSize});">
+                  &gt;&gt; </a>
+            </div>
+         </div>
+         <!-- /paginate -->	
+				
 	
 	
 
@@ -126,4 +162,17 @@
 		<jsp:include page="/WEB-INF/view/include/footer.jsp"/>
 	</footer>
 </body>
+<script> 
+//페이지 이동
+function movePage(currentPage, cntPerPage, pageSize){
+    
+    var url = "${pageContext.request.contextPath}/myPage/myOrder/${member.memberId}";
+    url = url + "?currentPage="+currentPage;
+    url = url + "&cntPerPage="+cntPerPage;
+    url = url + "&pageSize="+pageSize;
+    
+    location.href=url;
+}
+ 
+</script>
 </html>

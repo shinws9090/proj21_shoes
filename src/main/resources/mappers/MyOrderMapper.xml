@@ -83,7 +83,40 @@
 	 	
 	 
 	 </select>
+	 <!-- 페이징 적용 최근주문목록 -->
+	 	 <select id="selectMyOrderListById" resultMap="resMyOrder" >
+	 	 select R1.* FROM( select  
+	 	 order_code, 
+	 	 member_code, 
+	 	 member_id, 
+	 	 order_date, 
+	 	 payment_amount, 
+	 	 payment_state, 
+	 	 delivery_code, 
+	 	 buy_confirm_state, 
+	 	 recipient, 
+	 	 zipCode, 
+	 	 address, 
+	 	 detail_address, 
+	 	 tel, 
+	 	 product_code, 
+	 	 product_name, 
+	 	 style_code, 
+	 	 `size`,
+	 	 color, 
+	 	 order_count, 
+	 	 product_main_image 
+	 	 from vw_myOrderData where member_id=#{memberId}
+	 	 order by order_date desc
+	 	 )R1
+	 	   LIMIT #{pageSearch}, #{cntPerPage };
+	 	
 	 
+	 </select>
+	  <select id="MyOrderCount" resultType="int">
+        select count(*) 
+	from vw_myOrderData where member_id=#{memberId};
+    </select>
 	
 </mapper>
 
