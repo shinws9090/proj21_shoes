@@ -74,6 +74,50 @@
 	</update>
 	 
 	 
+	 <!-- 나의 상품문의 내역 페이징  -->
+	 
+	 <select id="SelectMyPdQnAList" resultMap="resQna">
+       select R1.* FROM(
+         select board_code, member_code, member_id, product_code, product_name,product_main_image, title, content,reply, regist_date 		
+	from vw_myqna where member_id=#{memberId} and product_code is not null
+         order by regist_date desc
+      ) R1
+      LIMIT #{pageSearch}, #{cntPerPage };
+      
+    </select>
+    
+    <select id="MyPdQnACount" resultType="int">
+        select count(*) 
+	from vw_myqna  where 
+	member_id =#{memberId} and product_code is not null;
+    </select>
+	 
+	 	 <!-- 나의 일반문의 내역 페이징  -->
+	 
+	 <select id="SelectMyNmQnAList" resultMap="resQna">
+       select R1.* FROM(
+         select board_code, member_code, member_id, product_code, product_name,product_main_image, title, content,reply, regist_date 		
+	from vw_myqna where member_id=#{memberId} and product_code is  null
+         order by regist_date desc
+      ) R1
+      LIMIT #{pageSearch}, #{cntPerPage };
+      
+    </select>
+    
+    <select id="MyNmQnACount" resultType="int">
+        select count(*) 
+	from vw_myqna  where 
+	member_id =#{memberId} and product_code is  null;
+    </select>
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 	 
 	 <!-- select만으로 하려했던것 ㅠ -->
 <!-- 	<select id="selectbyId" resultMap="resQna">

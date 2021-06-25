@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import proj21_shoes.dto.ReView;
+import proj21_shoes.dto.ReviewImage;
 import proj21_shoes.mapper.ProductReviewMapper;
 import proj21_shoes.service.ProductReviewService;
 
@@ -51,8 +52,17 @@ public class ProductReviewServiceImpl implements ProductReviewService {
 
 	@Override
 	public List<Integer> selectOrderCode(int memberCode, int productCode) {
-		// TODO Auto-generated method stub
 		return mapper.selectOrderCode(memberCode,productCode);
+	}
+
+	@Override
+	public int imageInsert(ReviewImage image) {
+		return mapper.imageInsert(image);
+	}
+
+	@Override
+	public int imageDelete(int boardCode) {
+		return mapper.imageDelete(boardCode);
 	}
 
 }

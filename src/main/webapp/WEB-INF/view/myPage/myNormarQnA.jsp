@@ -7,6 +7,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <c:set var="contextPath" value="<%=request.getContextPath() %>" />
 
 <!DOCTYPE html>
@@ -32,18 +34,15 @@
 	<!-- header -->
 	<header>
 		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
+		<c:if test="${empty authInfo}"> 
+			<jsp:include page="/WEB-INF/view/myPage/include/loginplz.jsp"/>
+		</c:if>
 	</header>
 	<!-- end header -->
 		<div id="myPage">
 	<section id = "maPage">
+		<%-- ${myNmQna } --%>
 	
-	<c:if test="${empty authInfo}"> 
-				<p style="text-align: center;">로그인해주세요.</p> 
-				<p></p>
-				<li style="text-align: center;"><a href="${contextPath}/register/step1">회원가입</a></li>
-				<li style="text-align: center;"><a href="${contextPath}/login/loginForm">로그인</a></li>
-				
-			</c:if>
 			<c:if test="${!empty authInfo}">
 				
 					<!-- 상단 등급 바 -->
@@ -75,26 +74,39 @@
 				<h4>${authInfo.memberName }님의 최근 일반문의내역</h4>
 				<br>
 				<table class="tbl_type" border="1">
-				<tr>
-					<td>제목</td>						
-					<td>작성일</td>
-					<td>답변유무</td>
-
-				</tr>
-				<c:forEach var="myQnAList" items="${myQnAList }">
+				<thead>
+					<tr>
+						<td>제목</td>						
+						<td>작성일</td>
+						<td>답변유무</td>
+	
+					</tr>
+				</thead>
+				<tbody>
+				<c:choose>
+					<c:when test="${fn:length(myNmQna) > 0}">
+				<c:forEach var="myNmQna" items="${myNmQna }">
 				<tr>
 			<%-- 	<td><a href="${contextPath}/myPage/myQnADetail/${authInfo.memberId}/${myQna.boardCode}">${myQna.boardCode }</a></td> <!-- 문의코드 --> --%>
 			
 			
-				<td><a href="${contextPath}/myPage/myNormalQnADetail/${myQnAList.memberId}/${myQnAList.boardCode}">${myQnAList.title }</a></td>	<!-- 작성일 -->
-				<td>${myQnAList.registDate }</td>	<!-- 작성일 -->
-				<td>${myQnAList.resOX }</td>
+				<td><a href="${contextPath}/myPage/myNormalQnADetail/${myNmQna.memberId}/${myNmQna.boardCode}">${myNmQna.title }</a></td>	<!-- 작성일 -->
+				<td>${myNmQna.registDate }</td>	<!-- 작성일 -->
+				<td>${myNmQna.resOX }</td>
 				
 				</tr>
 				</c:forEach>
+				</c:when>
+				<c:otherwise>
+							<tr>
+								<td colspan="4">조회된 결과가 없습니다.</td>
+							</tr>
+						</c:otherwise>
+				</c:choose>
+				</tbody>
 	</table> 	
 	<br>
-	<br>
+
 	<article id="myData_btn" >
 	
 			<a href="${contextPath}/myPage/normalQnARegist/1/${authInfo.memberId}">일반문의하러가기</a>
@@ -102,8 +114,32 @@
 	</article>
 			
 				
-			</c:if>
+ <!--paginate -->
+         <div class="paginate">
+            <div class="paging" style="margin-left: 50%;">
+               <a class="direction prev" href="javascript:void(0);"
+                  onclick="movePage(1,${pagination2.cntPerPage},${pagination2.pageSize});">
+                  &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"
+                  onclick="movePage(${pagination2.currentPage}<c:if test="${pagination2.hasPreviousPage == true}">-1</c:if>,${pagination2.cntPerPage},${pagination2.pageSize});">
+                  &lt; </a>
 
+               <c:forEach begin="${pagination2.firstPage}"
+                  end="${pagination2.lastPage}" var="idx">
+                  <a
+                     style="color:<c:out value="${pagination2.currentPage == idx ? '#gray; font-weight:700; margin-bottom: 2px;' : ''}"/> "
+                     href="javascript:void(0);"
+                     onclick="movePage(${idx},${pagination2.cntPerPage},${pagination2.pageSize});"><c:out
+                        value="${idx}" /></a>
+               </c:forEach>
+               <a class="direction next" href="javascript:void(0);"
+                  onclick="movePage(${pagination2.currentPage}<c:if test="${pagination2.hasNextPage == true}">+1</c:if>,${pagination2.cntPerPage},${pagination2.pageSize});">
+                  &gt; </a> <a class="direction next" href="javascript:void(0);"
+                  onclick="movePage(${pagination2.totalRecordCount},${pagination2.cntPerPage},${pagination2.pageSize});">
+                  &gt;&gt; </a>
+            </div>
+         </div>
+         <!-- /paginate -->	
+			</c:if>
 	
 	
 	</section>
@@ -118,4 +154,17 @@
 		<jsp:include page="/WEB-INF/view/include/footer.jsp"/>
 	</footer>
 </body>
+<script> 
+//페이지 이동
+function movePage(currentPage, cntPerPage, pageSize){
+    
+    var url = "${pageContext.request.contextPath}/myPage/myNormalQnA/${member.memberId}";
+    url = url + "?currentPage="+currentPage;
+    url = url + "&cntPerPage="+cntPerPage;
+    url = url + "&pageSize="+pageSize;
+    
+    location.href=url;
+}
+ 
+</script>
 </html>

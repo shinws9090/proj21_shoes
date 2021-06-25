@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import proj21_shoes.commend.MyQnaViewCommand;
 import proj21_shoes.dto.Qna;
 import proj21_shoes.dto.ReView;
+import proj21_shoes.dto.ReviewImage;
 @Service
 public interface ProductReviewService {
 	
@@ -24,6 +25,10 @@ public interface ProductReviewService {
 	int selectProductReviewCount(int code);
 
 	List<Integer> selectOrderCode(int memberCode, int productCode);
+
+	int imageInsert(ReviewImage image);
+
+	int imageDelete(int boardCode);
 
 
 
