@@ -34,18 +34,15 @@
 	<!-- header -->
 	<header>
 		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
+		<c:if test="${empty authInfo}"> 
+			<jsp:include page="/WEB-INF/view/myPage/include/loginplz.jsp"/>
+		</c:if>
 	</header>
 	<!-- end header -->
 		<div id="myPage">
 	<section id = "maPage">
 		<%-- ${myNmQna } --%>
-	<c:if test="${empty authInfo}"> 
-				<p style="text-align: center;">로그인해주세요.</p> 
-				<p></p>
-				<li style="text-align: center;"><a href="${contextPath}/register/step1">회원가입</a></li>
-				<li style="text-align: center;"><a href="${contextPath}/login/loginForm">로그인</a></li>
-				
-			</c:if>
+	
 			<c:if test="${!empty authInfo}">
 				
 					<!-- 상단 등급 바 -->
@@ -109,7 +106,7 @@
 				</tbody>
 	</table> 	
 	<br>
-	<br>
+
 	<article id="myData_btn" >
 	
 			<a href="${contextPath}/myPage/normalQnARegist/1/${authInfo.memberId}">일반문의하러가기</a>
@@ -117,7 +114,6 @@
 	</article>
 			
 				
-			</c:if>
  <!--paginate -->
          <div class="paginate">
             <div class="paging" style="margin-left: 50%;">
@@ -143,6 +139,7 @@
             </div>
          </div>
          <!-- /paginate -->	
+			</c:if>
 	
 	
 	</section>
