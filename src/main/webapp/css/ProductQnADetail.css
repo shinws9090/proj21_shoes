@@ -6,6 +6,17 @@
 /* Google Web Fonts CDN */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
+
+h4{
+  
+   text-align: center;
+}
+
+.tbl_type, .tbl_type th, .tbl_type td {
+   border: 0;
+
+}
+
 #maPage {
 	margin-left: auto;
 	margin-right: auto;
@@ -13,15 +24,25 @@
 	border-top: 1px solid #c0c0c0;
 	border-bottom: 1px solid #c0c0c0;
 	text-align: center;
+	font-family:  sans-serif;
+	width: auto;
 }
 
 
 .tbl_type {
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom : 50px;
-	width: 600px;
-	border: 1px solid #808040;
-	border-collapse: collapse;
-	padding-bottom : 10px;
-	}
+   background-color : #efefef;
+   width: 90%;
+   margin: 0 auto;
+   max-width:800px;
+   width: 90%;
+   border-top: 2px solid #dcdcdc;
+   border-bottom: 2px solid #dcdcdc;
+   font-family:  sans-serif;
+   font-size: 12px;
+   text-align: center;
+   border-collapse: collapse;
+   
+   }
+   
+   
+   
