@@ -1,21 +1,27 @@
 @charset "UTF-8";
 
+/* Fontawesome 4.7 */
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+/* Google Web Fonts CDN */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
 #maPage {
 	margin-left: auto;
 	margin-right: auto;
-	width: 100%;
-	border-collapse: separate;
-	border-spacing: 1px;
+	border-collapse: collapse;
 	border-top: 1px solid #c0c0c0;
 	border-bottom: 1px solid #c0c0c0;
 	text-align: center;
 }
 
+
 .tbl_type {
 	margin-left: auto;
 	margin-right: auto;
-	margin-bottom : 10px;
-	width: 620px;
-	border: 1px solid #808000;
+	margin-bottom : 50px;
+	width: 600px;
+	border: 1px solid #808040;
 	border-collapse: collapse;
-}
+	padding-bottom : 10px;
+	}

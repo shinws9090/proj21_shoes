@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+section {
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	border-collapse: separate;
+	border-spacing: 10px;
+	border-top: 1px solid #c0c0c0;
+	border-bottom: 1px solid #c0c0c0;
+	text-align: center;
+	
+}
+
+
+.tbl_type{
+    border-collapse: separate;
+    border-spacing: 1px;
+    text-align: center;
+    line-height: 1.5;
+    margin: 20px 10px;
+    
+}
+

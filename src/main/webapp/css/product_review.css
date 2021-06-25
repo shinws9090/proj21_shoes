@@ -1,2 +1,25 @@
 @charset "UTF-8";
 
+.tbl_type {
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	border-collapse: separate;
+	border-spacing: 10px;
+	border-top: 1px solid #c0c0c0;
+	border-bottom: 1px solid #c0c0c0;
+	text-align: center;
+	}
+	
+
+#reviewList {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 10px;
+	border-top: 1px solid #c0c0c0;
+	border-bottom: 1px solid #c0c0c0;
+	text-align: center;
+	
+}	
