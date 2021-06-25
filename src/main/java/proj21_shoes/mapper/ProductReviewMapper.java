@@ -3,6 +3,7 @@ package proj21_shoes.mapper;
 import java.util.List;
 
 import proj21_shoes.dto.ReView;
+import proj21_shoes.dto.ReviewImage;
 
 public interface ProductReviewMapper {
 
@@ -19,6 +20,10 @@ public interface ProductReviewMapper {
 	int selectProductReviewCount(int code);
 
 	List<Integer> selectOrderCode(int memberCode, int productCode);
+
+	int imageInsert(ReviewImage image);
+
+	int imageDelete(int boardCode);
 
 
 }

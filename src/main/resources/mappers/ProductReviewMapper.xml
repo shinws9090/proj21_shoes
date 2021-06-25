@@ -49,13 +49,24 @@
 	
 	
 	
-	<insert id="productReviewInsert" parameterType="Qna">
+	<insert id="productReviewInsert" parameterType="ReView">
 		insert into review(order_code, title, content, regist_date) 
 			values (#{orderCode.orderCode},#{title},#{content},now())
+		<selectKey keyProperty="boardCode" resultType="int">
+			select last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<insert id="imageInsert" parameterType="ReviewImage">
+		INSERT INTO reviewimage(board_code, image)
+		VALUES(#{boardCode},#{image});
 	</insert>
 	
 	<delete id="productReviewDelete">
-		delete from qna where board_code=#{boardCode}
+		delete from review where board_code=#{boardCode}
+	</delete>
+	<delete id="imageDelete">
+		delete from reviewimage where board_code=#{boardCode}
 	</delete>
 	
 	<update id="productReviewUpdate">

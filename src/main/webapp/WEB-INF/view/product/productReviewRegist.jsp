@@ -44,7 +44,7 @@
 		<c:if test="${!empty authInfo}">
 			
 			
-			<form action="${contextPath}/productReviewRegist" method="post"> 
+			<form action="${contextPath}/productReviewRegist" method="post" autocomplete="off" enctype="multipart/form-data"> 
 		<!-- 문의하기  입력  -->
 				<c:if test="${commend=='insert'}">
 					<h4>리뷰등록</h4>
@@ -81,19 +81,20 @@
 						<a>제목:</a></td> 
 						<td>
 						<br> 
-						<input name="title" type="text" id="title" placeholder="문의제목을 작성해주세요" size="100"/> 
+						<input name="title" type="text" id="title" value="${reView.title }" size="100"/> 
 						</td>
 					</tr>
 					<tr>
 						<td><a>내용:</a></td> 
 						<td>
-						<textarea name="content" rows="10" cols="50"  id="content" style="width:98%; height:98%;" maxlength="1000" ></textarea>
+						<textarea name="content" rows="10" cols="50"  id="content" 
+							style="width:98%; height:98%;" maxlength="1000" >${reView.content }</textarea>
 						</td>
 					</tr>
 					<tr>
 						<td><a>사진첨부:</a></td> 
 						<td>
-						<input type="file" >
+						 <input multiple="multiple" type="file" name="filename[]" />
 						</td>
 					</tr>
 		
@@ -101,7 +102,8 @@
 					
 				</div>
 				
-				<input type="hidden" name="commend"value="${commend}" /><!--다음단계  -->
+				<input type="hidden" name="commend" value="${commend}" /><!--다음단계  -->
+				<input type="hidden" name="productCode" value="${productCode}" /><!--다음단계  -->
 				<input type="submit" value="작성하기" /><!--다음단계  -->
 					
 			</form> 
