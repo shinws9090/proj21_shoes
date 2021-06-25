@@ -35,15 +35,20 @@
 	<!-- header -->
 	<header>
 		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
-		<c:if test="${empty authInfo}"> 
-			<jsp:include page="/WEB-INF/view/myPage/include/loginplz.jsp"/>
-		</c:if>
+		
 	</header>
 	<!-- end header -->
 		<div id="myPage">
 	<section id = "maPage">
 <%-- 	${myOrderList} --%>
-	
+	<c:if test="${empty authInfo}"> 
+				<p style="text-align: center;">로그인해주세요.</p> 
+				<br>
+				<div style="text-align: center;">
+				<a href="${contextPath}/register/step1">회원가입</a><a> | </a>
+				<a href="${contextPath}/login/loginForm">로그인</a>
+				</div>
+			</c:if>
 			<c:if test="${!empty authInfo}">
 				
 					<!-- 상단 등급 바 -->

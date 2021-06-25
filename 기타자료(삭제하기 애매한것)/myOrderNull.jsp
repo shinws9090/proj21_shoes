@@ -2,13 +2,13 @@
 <%@page import="com.sun.xml.internal.bind.CycleRecoverable.Context"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="tf" tagdir="/WEB-INF/tags" %>
+<%-- <%@ taglib prefix="tf" tagdir="/WEB-INF/tags" --%> %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="<%=request.getContextPath() %>" />
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +19,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>마이페이지</title>
+
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/table.css">
@@ -31,7 +32,7 @@
 <body class="main-layout">
 	<!-- header -->
 	<header>
-		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
+<%-- 		<jsp:include page="/WEB-INF/view/include/header.jsp"/> --%>
 	</header>
 	<!-- end header -->
 		<div id="myPage">
@@ -39,9 +40,11 @@
 	
 	<c:if test="${empty authInfo}"> 
 				<p style="text-align: center;">로그인해주세요.</p> 
-				<p></p>
-				<li style="text-align: center;"><a href="${contextPath}/register/step1">회원가입</a></li>
-				<li style="text-align: center;"><a href="${contextPath}/login/loginForm">로그인</a></li>
+				<br>
+				<div style="text-align: center;">
+				<a href="${contextPath}/register/step1">회원가입</a><a> | </a>
+				<a href="${contextPath}/login/loginForm">로그인</a>
+				</div>
 				
 			</c:if>
 			<c:if test="${!empty authInfo}">
@@ -57,37 +60,39 @@
 						</td>
 					</tr>
 				</table>
+				
 				<!-- 좌측메뉴 -->
 			
 				<article id="my_menu">
 				<h3>회원정보</h3>
 				<a href="${contextPath}/myPage/myPageSel/${member.memberId}">-회원정보 조회 / 변경</a><br>
 				<a href="${contextPath}/myPage/quitMember/${member.memberId}">-회원탈퇴</a>
-				<br>
-				<h3>나의 쇼핑정보</h3>
+
+				<h3>나의 쇼핑정보</h3>			
 				<a href="${contextPath}/myPage/myOrder/${member.memberId}">-주문내역</a><br>
 				<a href="${contextPath}/myPage/myProductQnA/${member.memberId}">-상품문의내역</a><br>
 				<a href="${contextPath}/myPage/myNormalQnA/${member.memberId}">-일반문의내역</a><br>
 				<a href="${contextPath}/cartList">-장바구니</a>
 			
 				</article>
-	
-				<h4>${authInfo.memberName }님의 최근 상품문의내역은 없습니다.</h4>
-				<br>
-					<br>
-				<br>
-				<br>
-				<h1></h1>
-	
-			
 				
+		
+				<!-- 최근 주문내역 테이블  -->
+				<h4>${authInfo.memberName }님은  주문하신 내역이 없습니다.</h4>
+				<br>
+				
+			
+	
+				</section>
+				
+					
 			
 				
 			</c:if>
 
 	
 	
-	</section>
+
 </div>
 	
 	<section>
@@ -96,7 +101,7 @@
 
 	<!-- end our product -->
 	<footer>
-		<jsp:include page="/WEB-INF/view/include/footer.jsp"/>
+<%-- 		<jsp:include page="/WEB-INF/view/include/footer.jsp"/> --%>
 	</footer>
 </body>
 </html>
