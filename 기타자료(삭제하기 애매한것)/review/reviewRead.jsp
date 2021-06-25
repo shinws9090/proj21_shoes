@@ -14,7 +14,7 @@
 <body>
 	<!-- header -->
 	<header>
-		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
+		<%-- <jsp:include page="/WEB-INF/view/include/header.jsp"/> --%>
 	</header>
 	<!-- end header -->
 		<div id="productDetail">
@@ -53,7 +53,7 @@
 
 	<!-- end our product -->
 	<footer>
-		<jsp:include page="/WEB-INF/view/include/footer.jsp"/>
+		<%-- <jsp:include page="/WEB-INF/view/include/footer.jsp"/> --%>
 	</footer>
 </body>
 </html>

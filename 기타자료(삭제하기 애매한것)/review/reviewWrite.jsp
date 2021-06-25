@@ -2,7 +2,7 @@
 <%@page import="com.sun.xml.internal.bind.CycleRecoverable.Context"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="tf" tagdir="/WEB-INF/tags" %>
+<%-- <%@ taglib prefix="tf" tagdir="/WEB-INF/tags" %> --%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -30,7 +30,7 @@
 <body class="main-layout">
 	<!-- header -->
 	<header>
-		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
+		<%-- <jsp:include page="/WEB-INF/view/include/header.jsp"/> --%>
 	</header>
 	<!-- end header -->
 	<section>
@@ -99,7 +99,7 @@
 	
 	<!-- end our product -->
 	<footer>
-		<jsp:include page="/WEB-INF/view/include/footer.jsp"/>
+	<%-- 	<jsp:include page="/WEB-INF/view/include/footer.jsp"/> --%>
 	</footer>
 </body>
 </html>
