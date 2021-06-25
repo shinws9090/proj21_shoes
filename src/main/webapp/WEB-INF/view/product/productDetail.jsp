@@ -32,7 +32,6 @@
 		$(".tab-btn li").click(function() {
 			$(this).addClass("active");
 			$(this).siblings().removeClass("active");
-
 			var tab = $(this).attr("data-alt");
 			$(".tabs div").removeClass("active");
 			$(".tabs div").eq($(this).index()).addClass("active");
@@ -116,7 +115,7 @@
 		<jsp:include page="/WEB-INF/view/include/header.jsp" />
 	</header>
 	<section>
-		<p>${product}</p>
+		<%-- <p>${product}</p> --%>
 
 		<div class='main'>
 			<div class='main-image'>

@@ -48,8 +48,8 @@
 	<div class="logo">
 	</div>
 	<nav class="main-menu">
-		<ul>
-			<li><a href="${contextPath}/index">Home</a></li>
+		<ul class="main-menu-sub">
+			<li class="main-menu-sub"><a href="${contextPath}/index">Home</a></li>
 			<li><a href="${contextPath}/productList?menu=brand">BRAND</a></li>
 			<li><a href="${contextPath}/productList?menu=women">WOMEN</a></li>
 			<li><a href="${contextPath}/productList?menu=men">MEN</a></li>

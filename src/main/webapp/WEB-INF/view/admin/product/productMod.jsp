@@ -7,22 +7,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<c:set var="contextPath" value="<%=request.getContextPath() %>" />
+<c:set var="contextPath" value="<%=request.getContextPath()%>" />
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<!-- basic -->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-<!-- mobile metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>lighten</title>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/style.css">
-<link rel="stylesheet"
-	href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/admin/css/styles.css"/>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -39,6 +31,26 @@ $(function(){
 		var productCode = getParameterByName("productCode");
 		location.href="${contextPath}/admin/productDetailMgt?productCode=" + productCode;
 	});
+	
+	var productCode = getParameterByName("productCode");
+	$.get(contextPath + "/api/productMgt/"+productCode,
+		function(json) {
+			var sCont = "";
+				sCont += "<tr>";
+				sCont += "<td productCode='productCode'>" + json.productCode + "</td>";
+				sCont += "<td>" + json.productName + "</td>";
+				sCont += "<td>" + json.brand.brandName + "</td>";
+				sCont += "<td>" + json.gender + "</td>";
+				sCont += "<td>" + json.category.category + "</td>";
+				sCont += "<td>" + json.productPost.productMainImage + "</td>";					
+				sCont += "<td>" + json.costPrice + "</td>";
+				sCont += "<td>" + json.sellPrice + "</td>";
+				sCont += "<td>" + json.registDate + "</td>";
+				sCont += "<td>" + json.cumulativeRegistCount + "</td>";
+				sCont += "<td>" + json.cumulativeSellCount + "</td>";
+				sCont += "</tr>";
+			$("#load:last-child").append(sCont);
+	});
 });
 </script>
 
@@ -49,180 +61,215 @@ $(function(){
 		<jsp:include page="/WEB-INF/view/include/header.jsp" />
 	</header>
 	<!-- end header -->
-
+	
 	<section>
-		<jsp:include page="/WEB-INF/view/admin/include/adminMenu.jsp" />
-		<jsp:include page="/WEB-INF/view/admin/include/productMenu.jsp" />
-		<div><a href="${contextPath}/admin/product/productMod?productCode=${products.productCode}"><h2>[상품 수정]</h2></a></div>
-		<div><a href="${contextPath}/admin/product/productImageMod?productCode=${products.productCode}"><h2>[이미지 수정]</h2></a></div>
-		<div class="admin_content_wrap">
-			<div class="admin_content_main">
-				
-				<form id="productModForm" method="post" autocomplete="off">
-				
-					<div class="form_section">
-						<div class="form_section_title">
-						</div>
-						<div class="form_section_content">
-							<input type="hidden" name="productCode" value="${products.productCode}">
-						</div>
+		<div class="d-flex" id="wrapper">
+			<jsp:include page="/WEB-INF/view/admin/include/sidebar.jsp" />
+		    
+		    <!-- Page content wrapper-->
+		    <div id="page-content-wrapper">
+			<jsp:include page="/WEB-INF/view/admin/include/productMenu.jsp" />
+						        
+		        <!-- Page content-->
+		        <div class="container-fluid">
+					<div>
+						<table style="width:100%">
+							<tr>
+								<td colspan="7" class="td_title"><h1 class="mt-4">상품 정보</h1></td>
+							</tr>
+	
+							<tr style="background-color: lightgrey; text-align: center">
+								<td>번호</td>
+								<td>상품명</td>
+								<td>브랜드</td>
+								<td>성별</td>
+								<td>카테고리</td>
+								<td>대표이미지</td>
+								<td>원가</td>
+								<td>판매가격</td>
+								<td>등록일</td>
+								<td>등록수량</td>
+								<td>판매량</td>
+							</tr>
+							
+							<tr>
+								<tbody id="load"/>
+							</tr>
+						</table>
 					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>상품명</label>
-						</div>
-						<div class="form_section_content">
-							<input name="productName" value="${products.productName}">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>브랜드</label>
-						</div>
-						<div class="form_section_content">
-							<select name="brand" class="brand">
-								<option selected="selected" value="${products.brand.brandCode}">${products.brand.brandName}</option>
-							</select>
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>성별</label>
-						</div>
-						
-						<div class="form_section_content">
-							<select name="gender" class="gender">
-								<option selected="selected" value="${products.gender}">${products.gender}</option>
-							</select>
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>카테고리</label>
-						</div>
-						<div class="form_section_content">
-							<select name="category" class="category">
-								<option selected="selected" value="${products.category.productCategoryCode}">${products.category.category}</option>
-							</select>
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>소재</label>
-						</div>
-						<div class="form_section_content">
-							<input name="material" value="${products.material}">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>계절</label>
-						</div>
-						<div class="form_section_content">
-							<input name="season" value="${products.season}">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>제조일</label>
-						</div>
-						<div class="form_section_content">
-							<input type="date" name="madeDate" value="${products.madeDate}">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>공급가격</label>
-						</div>
-						<div class="form_section_content">
-							<input name="costPrice" value="${products.costPrice}">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>판매가격</label>
-						</div>
-						<div class="form_section_content">
-							<input name="sellPrice" value="${products.sellPrice}">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>수정일</label>
-						</div>
-						<div class="form_section_content">
-							<c:set var="now" value="<%=LocalDateTime.now()%>" />
-							<input type="date" name="registDate"
-								value='<tf:formatDateTime value="${now}" pattern = "yyyy-MM-dd" />'
-								readonly="readonly">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>누적등록수량</label>
-						</div>
-						<div class="form_section_content">
-							<input name="cumulativeRegistCount" value="${products.cumulativeRegistCount}">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>누적판매수량</label>
-						</div>
-						<div class="form_section_content">
-							<input name="cumulativeSellCount" value="${products.cumulativeSellCount}">
-						</div>
-					</div>
+									
+		        	<div><a href="${contextPath}/admin/product/productMod?productCode=${products.productCode}"><h1 class="mt-4">[상품 수정]</h1></a></div>
+					<div><a href="${contextPath}/admin/product/productImageMod?productCode=${products.productCode}"><h1 class="mt-4">[이미지 수정]</h1></a></div>
 										
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>내용</label>
-						</div>
-						<div class="form_section_content">
-							<textarea rows="5" cols="50"  name="content">${products.productPost.content}</textarea>
+					<h1 class="mt-4">상품 정보 수정</h1>
+					<div class="admin_content_wrap">
+						<div class="admin_content_main">
+							<form id="productModForm" method="post" autocomplete="off">
+								
+								<div class="form_section">
+									<div class="form_section_title">
+									</div>
+									<div class="form_section_content">
+										<input type="hidden" name="productCode" value="${products.productCode}">
+									</div>
+								</div>
+			
+								<div class="form_section">
+									<div class="form_section_title">
+										<label>상품명</label>
+									</div>
+									<div class="form_section_content">
+										<input name="productName" value="${products.productName}">
+									</div>
+								</div>
+			
+								<div class="form_section">
+									<div class="form_section_title">
+										<label>브랜드</label>
+									</div>
+									<div class="form_section_content">
+										<select name="brand" class="brand">
+											<option selected="selected" value="${products.brand.brandCode}">${products.brand.brandName}</option>
+										</select>
+									</div>
+								</div>
+			
+								<div class="form_section">
+									<div class="form_section_title">
+										<label>성별</label>
+									</div>
+									
+									<div class="form_section_content">
+										<select name="gender" class="gender">
+											<option selected="selected" value="${products.gender}">${products.gender}</option>
+										</select>
+									</div>
+								</div>
+			
+								<div class="form_section">
+									<div class="form_section_title">
+										<label>카테고리</label>
+									</div>
+									<div class="form_section_content">
+										<select name="category" class="category">
+											<option selected="selected" value="${products.category.productCategoryCode}">${products.category.category}</option>
+										</select>
+									</div>
+								</div>
+			
+								<div class="form_section">
+									<div class="form_section_title">
+										<label>소재</label>
+									</div>
+									<div class="form_section_content">
+										<input name="material" value="${products.material}">
+									</div>
+								</div>
+			
+								<div class="form_section">
+									<div class="form_section_title">
+										<label>계절</label>
+									</div>
+									<div class="form_section_content">
+										<input name="season" value="${products.season}">
+									</div>
+								</div>
+			
+								<div class="form_section">
+									<div class="form_section_title">
+										<label>제조일</label>
+									</div>
+									<div class="form_section_content">
+										<input type="date" name="madeDate" value="${products.madeDate}">
+									</div>
+								</div>
+			
+								<div class="form_section">
+									<div class="form_section_title">
+										<label>공급가격</label>
+									</div>
+									<div class="form_section_content">
+										<input name="costPrice" value="${products.costPrice}">
+									</div>
+								</div>
+			
+								<div class="form_section">
+									<div class="form_section_title">
+										<label>판매가격</label>
+									</div>
+									<div class="form_section_content">
+										<input name="sellPrice" value="${products.sellPrice}">
+									</div>
+								</div>
+			
+								<div class="form_section">
+									<div class="form_section_title">
+										<label>수정일</label>
+									</div>
+									<div class="form_section_content">
+										<c:set var="now" value="<%=LocalDateTime.now()%>" />
+										<input type="date" name="registDate"
+											value='<tf:formatDateTime value="${now}" pattern = "yyyy-MM-dd" />'
+											readonly="readonly">
+									</div>
+								</div>
+			
+								<div class="form_section">
+									<div class="form_section_title">
+										<label>누적등록수량</label>
+									</div>
+									<div class="form_section_content">
+										<input name="cumulativeRegistCount" value="${products.cumulativeRegistCount}">
+									</div>
+								</div>
+			
+								<div class="form_section">
+									<div class="form_section_title">
+										<label>누적판매수량</label>
+									</div>
+									<div class="form_section_content">
+										<input name="cumulativeSellCount" value="${products.cumulativeSellCount}">
+									</div>
+								</div>
+													
+								<div class="form_section">
+									<div class="form_section_title">
+										<label>내용</label>
+									</div>
+									<div class="form_section_content">
+										<textarea rows="5" cols="50"  name="content">${products.productPost.content}</textarea>
+									</div>
+								</div>
+			
+								<div class="form_section">
+									<div class="form_section_title">
+										<label>수정사원정보</label>
+									</div>
+									<div class="form_section_content">
+										<select name="employee" class="employee">
+											<option selected="selected" value="${products.employee.empNumber}">${products.employee.empNumber} : ${products.employee.empName}</option>
+										</select>
+									</div>
+								</div>
+								
+								<div class="btn_section">
+									<button type="submit" id="new">수정</button>
+									<button type="button" id="cancel">취소</button>
+								</div>
+			
+							</form>
 						</div>
 					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>수정사원정보</label>
-						</div>
-						<div class="form_section_content">
-							<select name="employee" class="employee">
-								<option selected="selected" value="${products.employee.empNumber}">${products.employee.empNumber} : ${products.employee.empName}</option>
-							</select>
-						</div>
-					</div>
-					
-					<div class="btn_section">
-						<button type="submit" id="new">수정</button>
-						<button type="button" id="cancel">취소</button>
-					</div>
-
-				</form>
-
-
+				</div>
 			</div>
 		</div>
-
 	</section>
 
-	<!-- end our product -->
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp" />
 	</footer>
+	
+	<jsp:include page="/WEB-INF/view/admin/include/script.jsp" />
 
 <script>
 	//컨트롤러에서 브랜드 데이터 받기

@@ -18,21 +18,46 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 $(function(){
-	$('#cancel').on("click", function(e) {
-		history.back();
-	});
+	var contextPath = "<%=request.getContextPath()%>";	
 	
+	function getParameterByName(name) {
+	    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+	        results = regex.exec(location.search);
+	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	}	
+	
+	$('#cancel').on("click", function(e) {
+		location.href="${contextPath}/admin/product/categoryReg";
+	});
+
+	
+	$('#delete_btn').on("click", function(e) {
+		if(!confirm("정말 삭제하시겠습니까?")) {
+		} else {			
+			var categoryCode = getParameterByName("categoryCode")
+			location.href="${contextPath}/admin/product/categoryDel?categoryCode=" + categoryCode;
+		}
+	});
+		
 	var jsonData = JSON.parse('${categoryList}');
 	for(var i = 0; i < jsonData.length; i++) {		
-		var sCont = "";
-			sCont += "<tr>";
-			sCont += "<td>" + jsonData[i].productCategoryCode + "</td>";
-			sCont += "<td>" + jsonData[i].category + "</td>";
-			sCont += "<td><button type='button'><a href='${contextPath}/admin/product/categoryMod?categoryCode=" + jsonData[i].productCategoryCode + "'>관리</a></button>";
-			sCont += "</tr>";		
-		$("#load:last-child").append(sCont);	
-	}
+		if (getParameterByName("categoryCode") == jsonData[i].productCategoryCode){
+			var sCont = "";
+				sCont += "<tr>";
+				sCont += "<td>" + jsonData[i].productCategoryCode + "</td>";
+				sCont += "<td>" + jsonData[i].category + "</td>";
+				sCont += "</tr>";
+			$("#load:last-child").append(sCont);
+		}
+	}	
 	
+	for(var i = 0; i < jsonData.length; i++) {		
+		if (getParameterByName("categoryCode") == jsonData[i].productCategoryCode){
+			document.getElementById("productCategoryCode").value = jsonData[i].productCategoryCode;
+			document.getElementById("category").value = jsonData[i].category;
+		}
+	}	
 });
 </script>
 </head>
@@ -62,7 +87,6 @@ $(function(){
 						<tr style="background-color: lightgrey; text-align: center">
 							<td>카테고리코드</td>
 							<td>카테고리명</td>
-							<td>관리</td>
 						</tr>
 						
 						<tr>
@@ -70,7 +94,7 @@ $(function(){
 						</tr>
 					</table>
 		
-					<h1 class="mt-4">카테고리 추가</h1>
+					<h1 class="mt-4">카테고리 수정</h1>
 					<div class="admin_content_wrap">
 						<div class="admin_content_main">
 							<form id="productRegForm" method="post" autocomplete="off">
@@ -80,7 +104,7 @@ $(function(){
 										<label>카테고리 코드</label>
 									</div>
 									<div class="form_section_content">
-										<input name="productCategoryCode" value="">
+										<input name="productCategoryCode" id="productCategoryCode" value="" readonly>
 									</div>
 								</div>
 			
@@ -89,13 +113,14 @@ $(function(){
 										<label>카테고리명</label>
 									</div>
 									<div class="form_section_content">
-										<input name="category" value="">
+										<input name="category" id="category" value="">
 									</div>
 								</div>
 													
 								<div class="btn_section">
-									<button type="submit" id="new">추가</button>
-									<button type="button" id="cancel">취소</button>
+									<button type="submit" id="new">수정</button>
+									<button type="button" id="cancel">돌아가기</button>
+									<button type="button" id="delete_btn">삭제</button>
 								</div>
 			
 							</form>

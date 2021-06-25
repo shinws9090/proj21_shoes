@@ -50,13 +50,18 @@ public class ReView {					// 상품후기게시판
 	public void setRegistDate(LocalDateTime registDate) {
 		this.registDate = registDate;
 	}
+	
+	public void setMember(Member member) {
+		this.setMember(member);
+		
+	}
+	
 	@Override
 	public String toString() {
 		return String.format(
 				"ReView [boardCode=%s, orderCode=%s, title=%s, content=%s, registDate=%s, reviewImages=%s]", boardCode,
 				orderCode, title, content, registDate, reviewImages);
 	}
-	
 	
 
 }
