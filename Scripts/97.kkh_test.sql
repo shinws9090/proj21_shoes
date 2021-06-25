@@ -72,6 +72,7 @@ update orderOption set stock = stock + 900 where product_code = 11111 and style_
 
 insert into orderoption values(11111, 1, 260, 999, "brown");
 
+
 select product_code, style_code, `size`, stock, color
   from orderOption
  where product_code = 11111;
