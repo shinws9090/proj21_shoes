@@ -26,20 +26,45 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 $(function(){
+	var contextPath = "<%=request.getContextPath()%>";	
+	
+	function getParameterByName(name) {
+	    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+	        results = regex.exec(location.search);
+	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	}	
+	
 	$('#cancel').on("click", function(e) {
-		location.href="${contextPath}/admin/product/brandReg";
+		location.href="${contextPath}/admin/product/categoryReg";
+	});
+
+	
+	$('#delete_btn').on("click", function(e) {
+		if(!confirm("정말 삭제하시겠습니까?")) {
+		} else {			
+			var categoryCode = getParameterByName("categoryCode")
+			location.href="${contextPath}/admin/product/categoryDel?categoryCode=" + categoryCode;
+		}
 	});
 		
-	var jsonData = JSON.parse('${brandList}');
+	var jsonData = JSON.parse('${categoryList}');
 	for(var i = 0; i < jsonData.length; i++) {		
-		var sCont = "";
-			sCont += "<tr>";
-			sCont += "<td>" + jsonData[i].brandCode + "</td>";
-			sCont += "<td>" + jsonData[i].brandName + "</td>";
-			sCont += "<td>" + jsonData[i].brandEngName + "</td>";
-			sCont += "<td><button type='button'><a href='${contextPath}/admin/product/brandMod?brandCode=" + jsonData[i].brandCode + "'>관리</a></button>";
-			sCont += "</tr>";		
-		$("#load:last-child").append(sCont);	
+		if (getParameterByName("categoryCode") == jsonData[i].productCategoryCode){
+			var sCont = "";
+				sCont += "<tr>";
+				sCont += "<td>" + jsonData[i].productCategoryCode + "</td>";
+				sCont += "<td>" + jsonData[i].category + "</td>";
+				sCont += "</tr>";
+			$("#load:last-child").append(sCont);
+		}
+	}	
+	
+	for(var i = 0; i < jsonData.length; i++) {		
+		if (getParameterByName("categoryCode") == jsonData[i].productCategoryCode){
+			document.getElementById("productCategoryCode").value = jsonData[i].productCategoryCode;
+			document.getElementById("category").value = jsonData[i].category;
+		}
 	}	
 });
 </script>
@@ -58,55 +83,45 @@ $(function(){
 				
 		<table style="width: 80%">
 			<tr>
-				<td colspan="7" class="td_title"><h2>브랜드 목록</h2></td>
+				<td colspan="7" class="td_title"><h2>카테고리 목록</h2></td>
 			</tr>
 
 			<tr style="background-color: lightgrey; text-align: center">
-				<td>브랜드코드</td>
-				<td>브랜드명</td>
-				<td>브랜드영어명</td>
-				<td>관리</td>
+				<td>카테고리코드</td>
+				<td>카테고리명</td>
 			</tr>
 			<tr>
 				<tbody id="load"/>
 			</tr>
 		</table>
 		
-		<h2>브랜드 추가</h2>
+		<h2>카테고리 수정</h2>
 		<div class="admin_content_wrap">
 			<div class="admin_content_main">
 				<form id="productRegForm" method="post" autocomplete="off">
 
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>브랜드 코드</label>
+							<label>카테고리 코드</label>
 						</div>
 						<div class="form_section_content">
-							<input name="brandCode" value="">
+							<input name="productCategoryCode" id="productCategoryCode" value="" readonly>
 						</div>
 					</div>
 
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>브랜드명</label>
+							<label>카테고리명</label>
 						</div>
 						<div class="form_section_content">
-							<input name="brandName" value="">
+							<input name="category" id="category" value="">
 						</div>
 					</div>
-					
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>브랜드영어명</label>
-						</div>
-						<div class="form_section_content">
-							<input name="brandEngName" value="">
-						</div>
-					</div>
-					
+										
 					<div class="btn_section">
-						<button type="submit" id="new">추가</button>
-						<button type="button" id="cancel">취소</button>
+						<button type="submit" id="new">수정</button>
+						<button type="button" id="cancel">돌아가기</button>
+						<button type="button" id="delete_btn">삭제</button>
 					</div>
 
 				</form>

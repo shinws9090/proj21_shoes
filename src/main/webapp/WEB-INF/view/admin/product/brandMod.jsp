@@ -41,12 +41,14 @@ $(function(){
 
 	
 	$('#delete_btn').on("click", function(e) {
-		var brandCode = getParameterByName("brandCode")
-		location.href="${contextPath}/admin/product/brandDel?brandCode=" + brandCode;
+		if(!confirm("정말 삭제하시겠습니까?")) {
+		} else {			
+			var brandCode = getParameterByName("brandCode")
+			location.href="${contextPath}/admin/product/brandDel?brandCode=" + brandCode;
+		}
 	});
 		
 	var jsonData = JSON.parse('${brandList}');
-	var productCode = jsonData[0].productCode
 	for(var i = 0; i < jsonData.length; i++) {		
 		if (getParameterByName("brandCode") == jsonData[i].brandCode){
 			var sCont = "";
@@ -66,6 +68,7 @@ $(function(){
 			document.getElementById("brandEngName").value = jsonData[i].brandEngName;
 		}
 	}	
+	
 });
 </script>
 </head>
@@ -146,76 +149,6 @@ $(function(){
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp" />
 	</footer>
-<script>
-	//컨트롤러에서 브랜드 데이터 받기
-	var jsonData = JSON.parse('${brandList}');
-	console.log(jsonData);
-	
-	var brandArr = new Array();
-	var brandObj = new Object();
-	
-	// 브랜드 셀렉트 박스에 삽입할 데이터 준비
-	for(var i = 0; i < jsonData.length; i++) {
-		brandObj = new Object();  //초기화
-		brandObj.brandCode = jsonData[i].brandCode;
-		brandObj.brandName = jsonData[i].brandName;
-		brandArr.push(brandObj);	 
-	}
-	
-	// 브랜드 셀렉트 박스에 데이터 삽입
-	var brandSelect = $("select.brand")
-
-	for(var i = 0; i < brandArr.length; i++) {
-		brandSelect.append("<option value='" + brandArr[i].brandCode + "'>"
-	      + brandArr[i].brandName + "</option>"); 
-	}
-
-	// 컨트롤러에서 카테고리 데이터 받기
-	var jsonData = JSON.parse('${categoryList}');
-	console.log(jsonData);
-	
-	var categoryArr = new Array();
-	var categoryObj = new Object();
-	
-	// 카테고리 셀렉트 박스에 삽입할 데이터 준비
-	for(var i = 0; i < jsonData.length; i++) {
-		categoryObj = new Object();  //초기화
-		categoryObj.productCategoryCode = jsonData[i].productCategoryCode;
-		categoryObj.category = jsonData[i].category;
-		categoryArr.push(categoryObj);	 
-	}
-	
-	// 카테고리 셀렉트 박스에 데이터 삽입
-	var categorySelect = $("select.category")
-
-	for(var i = 0; i < categoryArr.length; i++) {
-		categorySelect.append("<option value='" + categoryArr[i].productCategoryCode + "'>"
-	      + categoryArr[i].category + "</option>"); 
-	}
-	
-	// 컨트롤러에서 직원 데이터 받기
-	var jsonData = JSON.parse('${employeeList}');
-	console.log(jsonData);
-	
-	var employeeArr = new Array();
-	var employeeObj = new Object();
-	
-	// 직원 셀렉트 박스에 삽입할 데이터 준비
-	for(var i = 0; i < jsonData.length; i++) {
-		employeeObj = new Object();  //초기화
-		employeeObj.empNumber = jsonData[i].empNumber;
-		employeeObj.empName = jsonData[i].empName;
-		employeeArr.push(employeeObj);	 
-	}
-	
-	// 직원 셀렉트 박스에 데이터 삽입
-	var employeeSelect = $("select.employee")
-
-	for(var i = 0; i < employeeArr.length; i++) {
-		employeeSelect.append("<option value='" + employeeArr[i].empNumber + "'>" + employeeArr[i].empNumber + " : "
-	      + employeeArr[i].empName + "</option>"); 
-	}
-</script>
 
 </body>
 </html>

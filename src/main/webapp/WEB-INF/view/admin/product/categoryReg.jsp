@@ -26,10 +26,21 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 $(function(){
-	var contextPath = "<%=request.getContextPath()%>";
-		$('#cancel').on("click", function(e) {
-			history.back();
-		});			
+	$('#cancel').on("click", function(e) {
+		history.back();
+	});
+	
+	var jsonData = JSON.parse('${categoryList}');
+	for(var i = 0; i < jsonData.length; i++) {		
+		var sCont = "";
+			sCont += "<tr>";
+			sCont += "<td>" + jsonData[i].productCategoryCode + "</td>";
+			sCont += "<td>" + jsonData[i].category + "</td>";
+			sCont += "<td><button type='button'><a href='${contextPath}/admin/product/categoryMod?categoryCode=" + jsonData[i].productCategoryCode + "'>관리</a></button>";
+			sCont += "</tr>";		
+		$("#load:last-child").append(sCont);	
+	}
+	
 });
 </script>
 </head>
@@ -44,216 +55,51 @@ $(function(){
 	<section>
 		<jsp:include page="/WEB-INF/view/admin/include/adminMenu.jsp" />
 		<jsp:include page="/WEB-INF/view/admin/include/productMenu.jsp" />
+				
+		<table style="width: 80%">
+			<tr>
+				<td colspan="7" class="td_title"><h2>카테고리 목록</h2></td>
+			</tr>
 
+			<tr style="background-color: lightgrey; text-align: center">
+				<td>카테고리코드</td>
+				<td>카테고리명</td>
+				<td>관리</td>
+			</tr>
+			<tr>
+				<tbody id="load"/>
+			</tr>
+		</table>
+		
+		<h2>카테고리 추가</h2>
 		<div class="admin_content_wrap">
 			<div class="admin_content_main">
-				<form id="productRegForm" method="post" autocomplete="off" enctype="multipart/form-data">
+				<form id="productRegForm" method="post" autocomplete="off">
 
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>상품코드</label>
+							<label>카테고리 코드</label>
 						</div>
 						<div class="form_section_content">
-							<input name="productCode" value="">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>상품명</label>
-						</div>
-						<div class="form_section_content">
-							<input name="productName" value="신발">
+							<input name="productCategoryCode" value="">
 						</div>
 					</div>
 
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>브랜드</label>
+							<label>카테고리명</label>
 						</div>
 						<div class="form_section_content">
-							<select name="brand" class="brand">
-								<option selected="selected" value="">브랜드를 선택해주세요</option>
-							</select>
+							<input name="category" value="">
 						</div>
 					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>성별</label>
-						</div>
-						<div class="form_section_content">
-							<select name="gender" class="form_select_option">
-								<option selected="selected" value="">옵션을 선택해주세요</option>
-								<option value="WOMEN">WOMEN</option>						
-								<option value="MEN">MEN</option>						
-								<option value="ALL">ALL</option>
-								<option value="KIDS">KIDS</option>
-							</select>
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>카테고리</label>
-						</div>
-						<div class="form_section_content">
-							<select name="category" class="category">
-								<option selected="selected" value="">카테고리를 선택해주세요</option>
-							</select>
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>소재</label>
-						</div>
-						<div class="form_section_content">
-							<input name="material" value="소재">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>계절</label>
-						</div>
-						<div class="form_section_content">
-							<input name="season" value="계절">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>제조일</label>
-						</div>
-						<div class="form_section_content">
-							<input type="date" name="madeDate">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>공급가격</label>
-						</div>
-						<div class="form_section_content">
-							<input name="costPrice" value="50000">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>판매가격</label>
-						</div>
-						<div class="form_section_content">
-							<input name="sellPrice" value="60000">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>등록일</label>
-						</div>
-						<div class="form_section_content">
-							<c:set var="now" value="<%=LocalDateTime.now()%>" />
-							<input type="date" name="registDate"
-								value='<tf:formatDateTime value="${now}" pattern = "yyyy-MM-dd" />'
-								readonly="readonly">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>누적등록수량</label>
-						</div>
-						<div class="form_section_content">
-							<input name="cumulativeRegistCount" value="1">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>누적판매수량</label>
-						</div>
-						<div class="form_section_content">
-							<input name="cumulativeSellCount" value="1">
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>상품대표이미지</label>
-						</div>
-						<div class="form_section_content">
-							<input type="file" id="productMainImage" name="productMainImage" />
-							<div class="select_img"><img src="" /></div>
-						</div>
-					</div>
-					
-					<script>
-						$("#productMainImage").change(function(){
-							if(this.files && this.files[0]) {
-								var reader = new FileReader;
-								reader.onload = function(data) {
-									$(".select_img img").attr("src", data.target.result).width(500);        
-								}
-								reader.readAsDataURL(this.files[0]);
-							}
-						});
-					</script>
-					
-					<%=request.getRealPath("/") %>
-					
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>내용</label>
-						</div>
-						<div class="form_section_content">
-							<textarea rows="5" cols="50"  name="content"></textarea>
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>상품이미지들</label>
-						</div>
-						<div class="form_section_content">
-							<input type="file" id="images" name="images" />
-							<div class="select_imgs"><img src="" /></div>					
-						</div>
-					</div>
-					
-					
-					<script>
-						$("#images").change(function(){
-							if(this.files && this.files[0]) {
-								var reader = new FileReader;
-								reader.onload = function(data) {
-									$(".select_imgs img").attr("src", data.target.result).width(500);        
-								}
-								reader.readAsDataURL(this.files[0]);
-							}
-						});
-					</script>					
-					
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>등록사원정보</label>
-						</div>
-						<div class="form_section_content">
-							<select name="employee" class="employee">
-								<option selected="selected" value="">등록사원을 선택해주세요</option>
-							</select>
-						</div>
-					</div>
-					
+										
 					<div class="btn_section">
 						<button type="submit" id="new">추가</button>
 						<button type="button" id="cancel">취소</button>
 					</div>
 
 				</form>
-
-
 			</div>
 		</div>
 
@@ -263,76 +109,6 @@ $(function(){
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp" />
 	</footer>
-<script>
-	//컨트롤러에서 브랜드 데이터 받기
-	var jsonData = JSON.parse('${brandList}');
-	console.log(jsonData);
-	
-	var brandArr = new Array();
-	var brandObj = new Object();
-	
-	// 브랜드 셀렉트 박스에 삽입할 데이터 준비
-	for(var i = 0; i < jsonData.length; i++) {
-		brandObj = new Object();  //초기화
-		brandObj.brandCode = jsonData[i].brandCode;
-		brandObj.brandName = jsonData[i].brandName;
-		brandArr.push(brandObj);	 
-	}
-	
-	// 브랜드 셀렉트 박스에 데이터 삽입
-	var brandSelect = $("select.brand")
-
-	for(var i = 0; i < brandArr.length; i++) {
-		brandSelect.append("<option value='" + brandArr[i].brandCode + "'>"
-	      + brandArr[i].brandName + "</option>"); 
-	}
-
-	// 컨트롤러에서 카테고리 데이터 받기
-	var jsonData = JSON.parse('${categoryList}');
-	console.log(jsonData);
-	
-	var categoryArr = new Array();
-	var categoryObj = new Object();
-	
-	// 카테고리 셀렉트 박스에 삽입할 데이터 준비
-	for(var i = 0; i < jsonData.length; i++) {
-		categoryObj = new Object();  //초기화
-		categoryObj.productCategoryCode = jsonData[i].productCategoryCode;
-		categoryObj.category = jsonData[i].category;
-		categoryArr.push(categoryObj);	 
-	}
-	
-	// 카테고리 셀렉트 박스에 데이터 삽입
-	var categorySelect = $("select.category")
-
-	for(var i = 0; i < categoryArr.length; i++) {
-		categorySelect.append("<option value='" + categoryArr[i].productCategoryCode + "'>"
-	      + categoryArr[i].category + "</option>"); 
-	}
-	
-	// 컨트롤러에서 직원 데이터 받기
-	var jsonData = JSON.parse('${employeeList}');
-	console.log(jsonData);
-	
-	var employeeArr = new Array();
-	var employeeObj = new Object();
-	
-	// 직원 셀렉트 박스에 삽입할 데이터 준비
-	for(var i = 0; i < jsonData.length; i++) {
-		employeeObj = new Object();  //초기화
-		employeeObj.empNumber = jsonData[i].empNumber;
-		employeeObj.empName = jsonData[i].empName;
-		employeeArr.push(employeeObj);	 
-	}
-	
-	// 직원 셀렉트 박스에 데이터 삽입
-	var employeeSelect = $("select.employee")
-
-	for(var i = 0; i < employeeArr.length; i++) {
-		employeeSelect.append("<option value='" + employeeArr[i].empNumber + "'>" + employeeArr[i].empNumber + " : "
-	      + employeeArr[i].empName + "</option>"); 
-	}
-</script>
 
 </body>
 </html>

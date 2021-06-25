@@ -44,8 +44,10 @@
 		});
 		
 		$('#delete_btn').on("click", function(e) {
-			
-			location.href="${contextPath}/admin/product/productDel?productCode=" + productCode;
+			if(!confirm("정말 삭제하시겠습니까?")) {
+			} else {
+				location.href="${contextPath}/admin/product/productDel?productCode=" + productCode;
+			}
 		});
 		
 		$('#cancel').on("click", function(e) {

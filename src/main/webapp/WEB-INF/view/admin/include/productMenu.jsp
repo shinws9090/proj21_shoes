@@ -9,12 +9,12 @@
 <!DOCTYPE html>
 <html>
 <body>
-		<table style="width: 50%">
-			<tr style="background-color: e9e9e9; text-align: center;">
-				<td><a href="${contextPath}/admin/productMgt">惑前 包府</a></td>				
-				<td><a href="${contextPath}/admin/product/brandReg">宏罚靛 包府</a></td>
-				<td><a href="${contextPath}/admin/product/categoryReg">墨抛绊府 包府</a></td>
-			</tr>
-		</table>
+		<div class="leftMenuProduct">
+			<ul>
+				<li><a href="${contextPath}/admin/productMgt">惑前 包府</a></li>				
+				<li><a href="${contextPath}/admin/product/brandReg">宏罚靛 包府</a></li>
+				<li><a href="${contextPath}/admin/product/categoryReg">墨抛绊府 包府</a></li>
+			</ul>
+		</div>
 </body>
 </html>

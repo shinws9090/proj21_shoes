@@ -8,15 +8,22 @@
 <c:set var="contextPath" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
 <html>
+
+
+
+<style>
+	#leftMenu {
+	}
+</style>
 <body>
-		<table style="width: 100%">
-			<tr style="background-color: #e9e9e9; text-align: center;">
-				<td><a href="${contextPath}/admin/adminMain">包府磊权</a></td>
-				<td><a href="${contextPath}/admin/memberMgt">雀盔包府</a></td>
-				<td><a href="${contextPath}/admin/productMgt">惑前包府</a></td>
-				<td><a href="${contextPath}/admin/orderMgt">林巩包府</a></td>
-				<td><a href="${contextPath}/admin/adminMain">霸矫魄包府</a></td>
-			</tr>
-		</table>
+		<div id="leftMenu">
+			<ul>
+				<li><a href="${contextPath}/admin/adminMain">包府磊权</a></li>
+				<li><a href="${contextPath}/admin/memberMgt">雀盔包府</a></li>
+				<li><a href="${contextPath}/admin/productMgt">惑前包府</a></li>
+				<li><a href="${contextPath}/admin/orderMgt">林巩包府</a></li>
+				<li><a href="${contextPath}/admin/adminMain">霸矫魄包府</a></li>
+			</ul>
+		</div>
 </body>
 </html>
