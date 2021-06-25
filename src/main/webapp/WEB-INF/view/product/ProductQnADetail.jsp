@@ -25,7 +25,7 @@
 				<h4> 상품문의내역 상세보기</h4>
 				<br>
 				<table  class="tbl_type" border="1"> 
-				<tr><td>${myQnADetail.productName } </td></tr>
+				<tr><td bgcolor = "#e7e7e7">${myQnADetail.productName } </td></tr>
 				<tr><td>	<img style="max-width:20%; max-height: 20%; "  alt="" src="${contextPath}/images/${myQnADetail.productMainImage }"></td></tr>
 
 				
@@ -33,13 +33,13 @@
 					<br>
 				<table class="tbl_type" border="1">
 				<tr>	
-					<td>문의제목 : ${myQnADetail.title }   (${myQnADetail.registDate })</td>	
+					<td bgcolor = "#e7e7e7">문의제목 : ${myQnADetail.title }   (${myQnADetail.registDate })</td>	
 				</tr>
 				<tr>
- 				<td>문의내용 : ${myQnADetail.content }</td>		<!-- 내용 -->
+ 				<td align = left>문의내용 : ${myQnADetail.content }</td>		<!-- 내용 -->
 				</tr>
 				<tr>
-				<td>답변 : ${myQnADetail.reply }</td>
+				<td align = left>└ 답변 : ${myQnADetail.reply }</td>
 				</tr>
 				</table>
 				${myQnADetail.boardCode}

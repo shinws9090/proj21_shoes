@@ -27,7 +27,7 @@
 				<h4> 상품후기 상세보기</h4>
 				<br>
 				<table  class="tbl_type" border="1"> 
-				<tr><td>상품코드 : ${productCode } </td></tr>
+				<tr><td bgcolor = "#e7e7e7">상품코드 : ${productCode } </td></tr>
 				<tr>
 				<c:forEach var="image" items="${reView.reviewImages}">
 					<td>
@@ -46,10 +46,10 @@
 					<br>
 				<table class="tbl_type" border="1">
 				<tr>	
-					<td>후기제목 : ${reView.title }   (${reView.registDate })</td>	
+					<td bgcolor = "#e7e7e7" align=left>후기제목 : ${reView.title }   (${reView.registDate })</td>	
 				</tr>
 				<tr>
- 				<td>후기내용 : ${reView.content }</td>		<!-- 내용 -->
+ 				<td align=left>후기내용 : ${reView.content }</td>		<!-- 내용 -->
 				</tr>
 				</table>
 				${reView.boardCode}

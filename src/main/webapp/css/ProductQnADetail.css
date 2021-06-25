@@ -44,11 +44,11 @@ h4{
    border-top: 2px solid #dcdcdc;
    border-right: 1px solid #dcdcdc;
    border-left: 1px solid #dcdcdc;
-   background-color: #f5f7f9;
+   background-color: #e7e7e7;
    color: #c0c0c0;
    font-family: sans-serif;
    font-size: 20px;
-   font-weight: bold
+   font-weight: bold;
 }
 
 .tbl_type td {
