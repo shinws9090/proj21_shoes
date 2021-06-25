@@ -23,14 +23,14 @@
 	<select id="selectProductReviewbyCode" resultMap="resReView">
 		select *
 		<include refid="listJoin"/>
-		where o2.product_code = #{param1}
+		where r.product_code = #{param1}
 		limit #{param2},#{param3}
 	</select>
 	
 	<select id="selectProductReviewCount" resultType="int">
 		select count(*) 
 		<include refid="listJoin"/>	
-		where product_code=#{param1}
+		where r.product_code=#{param1}
 	</select>
 	
 	<select id="selectReviewbyBoardCode" resultMap="resReView">

@@ -2,6 +2,7 @@ package proj21_shoes.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import proj21_shoes.dto.Image;
 import proj21_shoes.dto.Member;
 import proj21_shoes.dto.Order;
 import proj21_shoes.dto.ReView;
@@ -53,13 +53,23 @@ public class ProductDetailReviewController {
 			@PathVariable int productCode, 
 			@PathVariable int boardCode,
 			@PathVariable String commend, 
-			HttpSession session) {
+			HttpSession session,
+			HttpServletResponse response) throws IOException {
 		Member member = (Member) session.getAttribute("sessionMember");
 		if (member == null) {
 			return new ModelAndView("redirect:/login/loginForm");
 		}
 		List<Integer> orderCode = rService.selectOrderCode(member.getMemberCode(), productCode);
-		ModelAndView mav = new ModelAndView("/product/productReviewRegist", "orderCode", orderCode);
+		if(orderCode.size()==0) {
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('주문정보가 없습니다.')");
+			out.println("history.back()");
+			out.println("</script>");
+			return null;
+		}
+		ModelAndView mav = new ModelAndView("/product/productReviewRegist", "orderCode", orderCode.get(0));
 		mav.addObject("commend", commend);
 		mav.addObject("boardCode", boardCode);
 		mav.addObject("productCode", productCode);

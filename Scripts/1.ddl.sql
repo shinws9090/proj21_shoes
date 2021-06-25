@@ -142,6 +142,7 @@ ALTER TABLE sinabro.orderOption
 CREATE TABLE sinabro.review (
 	board_code  INT           NOT NULL COMMENT '게시판코드', -- 게시판코드
 	order_code  INT           NOT NULL COMMENT '주문코드', -- 주문코드
+	product_code INT          NOT NULL COMMENT '상품코드', -- 상품코드
 	title       VARCHAR(500)  NOT NULL COMMENT '제목', -- 제목
 	content     VARCHAR(2000) NULL     COMMENT '내용', -- 내용
 	regist_date DATETIME      NULL     COMMENT '등록일' -- 등록일

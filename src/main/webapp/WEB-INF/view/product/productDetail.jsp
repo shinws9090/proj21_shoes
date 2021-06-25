@@ -27,6 +27,11 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 	$(function() {
+		var responseMessage = "${message}";
+        if(responseMessage != ""){
+            alert(responseMessage)
+        }
+
 		var contextPath = "${contextPath}"
 		/* tab기능 */
 		$(".tab-btn li").click(function() {
@@ -116,7 +121,7 @@
 	</header>
 	<section>
 		<%-- <p>${product}</p> --%>
-
+${message}
 		<div class='main'>
 			<div class='main-image'>
 				<img src="${contextPath}/images/${product.productPost.productMainImage} ">

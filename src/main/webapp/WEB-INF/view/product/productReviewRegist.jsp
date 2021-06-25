@@ -74,7 +74,7 @@
 					<tr>
 						<td><a>주문 코드:</a></td> 
 						<td>
-						<input name="orderNum" value="${orderCode[0]}" readonly size="100"/>  
+						<input name="orderNum" value="${orderCode}" readonly size="100"/>  
 						</td>
 					<tr>
 						<td>
