@@ -7,22 +7,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<c:set var="contextPath" value="<%=request.getContextPath() %>" />
+<c:set var="contextPath" value="<%=request.getContextPath()%>" />
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<!-- basic -->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-<!-- mobile metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>lighten</title>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/style.css">
-<link rel="stylesheet"
-	href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/admin/css/styles.css"/>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -73,7 +65,6 @@ $(function(){
 </script>
 </head>
 <body class="main-layout">
-
 	<!-- header -->
 	<header>
 		<jsp:include page="/WEB-INF/view/include/header.jsp" />
@@ -81,74 +72,81 @@ $(function(){
 	<!-- end header -->
 
 	<section>
-		<jsp:include page="/WEB-INF/view/admin/include/adminMenu.jsp" />
-		<jsp:include page="/WEB-INF/view/admin/include/productMenu.jsp" />
+		<div class="d-flex" id="wrapper">
+			<jsp:include page="/WEB-INF/view/admin/include/sidebar.jsp" />
+		    
+		    <!-- Page content wrapper-->
+		    <div id="page-content-wrapper">
+			<jsp:include page="/WEB-INF/view/admin/include/productMenu.jsp" />
+		        
+		        <!-- Page content-->
+		        <div class="container-fluid">
+		            <table style="width:100%">
+						<tr>
+							<td colspan="7" class="td_title"><h1 class="mt-4">브랜드 목록</h1></td>
+						</tr>
+
+						<tr style="background-color: lightgrey; text-align: center">
+							<td>브랜드코드</td>
+							<td>브랜드명</td>
+							<td>브랜드영어명</td>
+						</tr>
+						
+						<tr>
+							<tbody id="load"/>
+						</tr>
+					</table>
 		
-		<table style="width: 80%">
-			<tr>
-				<td colspan="7" class="td_title"><h2>브랜드 목록</h2></td>
-			</tr>
-
-			<tr style="background-color: lightgrey; text-align: center">
-				<td>브랜드코드</td>
-				<td>브랜드명</td>
-				<td>브랜드영어명</td>
-			</tr>
-			<tr>
-				<tbody id="load"/>
-			</tr>
-		</table>
-		
-		<h2>브랜드 수정</h2>
-		<div class="admin_content_wrap">
-			<div class="admin_content_main">
-				<form id="productRegForm" method="post" autocomplete="off" enctype="multipart/form-data">
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>브랜드 코드</label>
-						</div>
-						<div class="form_section_content">
-							<input name="brandCode" id="brandCode" value="" readonly>
-						</div>
-					</div>
-
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>브랜드명</label>
-						</div>
-						<div class="form_section_content">
-							<input name="brandName" id="brandName" value="">
-						</div>
-					</div>
-					
-					<div class="form_section">
-						<div class="form_section_title">
-							<label>브랜드영어명</label>
-						</div>
-						<div class="form_section_content">
-							<input name="brandEngName" id="brandEngName" value="">
+					<h1 class="mt-4">브랜드 수정</h1>
+					<div class="admin_content_wrap">
+						<div class="admin_content_main">
+							<form id="productRegForm" method="post" autocomplete="off" enctype="multipart/form-data">
+			
+								<div class="form_section">
+									<div class="form_section_title">
+										<label>브랜드 코드</label>
+									</div>
+									<div class="form_section_content">
+										<input name="brandCode" id="brandCode" value="" readonly>
+									</div>
+								</div>
+			
+								<div class="form_section">
+									<div class="form_section_title">
+										<label>브랜드명</label>
+									</div>
+									<div class="form_section_content">
+										<input name="brandName" id="brandName" value="">
+									</div>
+								</div>
+								
+								<div class="form_section">
+									<div class="form_section_title">
+										<label>브랜드영어명</label>
+									</div>
+									<div class="form_section_content">
+										<input name="brandEngName" id="brandEngName" value="">
+									</div>
+								</div>
+								
+								<div class="btn_section">
+									<button type="submit" id="new">수정</button>
+									<button type="button" id="cancel">돌아가기</button>
+									<button type="button" id="delete_btn">삭제</button>
+								</div>
+			
+							</form>
 						</div>
 					</div>
-					
-					<div class="btn_section">
-						<button type="submit" id="new">수정</button>
-						<button type="button" id="cancel">돌아가기</button>
-						<button type="button" id="delete_btn">삭제</button>
-					</div>
-
-				</form>
-
-
+				</div>
 			</div>
 		</div>
-
 	</section>
 
-	<!-- end our product -->
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp" />
 	</footer>
 
+	<jsp:include page="/WEB-INF/view/admin/include/script.jsp" />
 </body>
 </html>

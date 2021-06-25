@@ -4,19 +4,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="<%=request.getContextPath()%>" />
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<!-- basic -->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<!-- mobile metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>lighten</title>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/style.css">
-<link rel="stylesheet"
-	href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/admin/css/styles.css"/>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 	$(function() {
@@ -39,11 +32,7 @@
 		});
 	});
 </script>
-
-
 </head>
-
-
 <body class="main-layout">
 	<!-- header -->
 	<header>
@@ -52,32 +41,41 @@
 	<!-- end header -->
 
 	<section>
-		<jsp:include page="/WEB-INF/view/admin/include/adminMenu.jsp" />
-		<%-- ${members} --%>
-
-		<table style="width: 80%">
-			<tr>
-				<td colspan="7" class="td_title"><h2>회원 목록</h2></td>
-			</tr>
-
-			<tr style="background-color: lightgrey; text-align: center">
-				<td>아이디</td>
-				<td>이름</td>
-				<td>이메일</td>
-				<td>연락처</td>
-				<td>상세보기</td>
-				<td>기타</td>
-
-			</tr>
-			<tr>
-				<tbody id="load"/>
-			</tr>
-		</table>
-
+		<div class="d-flex" id="wrapper">
+			<jsp:include page="/WEB-INF/view/admin/include/sidebar.jsp" />		    
+		    
+		    <!-- Page content wrapper-->
+		    <div id="page-content-wrapper">
+		        
+		        <!-- Page content-->
+		        <div class="container-fluid">
+		            <table style="width:100%">
+						<tr>
+							<td colspan="7" class="td_title"><h1 class="mt-4">회원 목록</h1></td>
+						</tr>
+									
+						<tr style="background-color: lightgrey; text-align: center">
+							<td>아이디</td>
+							<td>이름</td>
+							<td>이메일</td>
+							<td>연락처</td>
+							<td>상세보기</td>
+							<td>기타</td>			
+						</tr>
+						
+						<tr>
+							<tbody id="load"/>
+						</tr>
+					</table>
+		        </div>		        
+		    </div>
+		</div>
 	</section>
-	<!-- end our product -->
+	
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp" />
 	</footer>
+	
+	<jsp:include page="/WEB-INF/view/admin/include/script.jsp" />
 </body>
 </html>

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="tf" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -9,20 +9,14 @@
 <!DOCTYPE html>
 <html>
 
-
-
-<style>
-	#leftMenu {
-	}
-</style>
 <body>
 		<div id="leftMenu">
 			<ul>
-				<li><a href="${contextPath}/admin/adminMain">°ü¸®ÀÚÈ¨</a></li>
-				<li><a href="${contextPath}/admin/memberMgt">È¸¿ø°ü¸®</a></li>
-				<li><a href="${contextPath}/admin/productMgt">»óÇ°°ü¸®</a></li>
-				<li><a href="${contextPath}/admin/orderMgt">ÁÖ¹®°ü¸®</a></li>
-				<li><a href="${contextPath}/admin/adminMain">°Ô½ÃÆÇ°ü¸®</a></li>
+				<li><a href="${contextPath}/admin/adminMain">ê´€ë¦¬ìží™ˆ</a></li>
+				<li><a href="${contextPath}/admin/memberMgt">íšŒì›ê´€ë¦¬</a></li>
+				<li><a href="${contextPath}/admin/productMgt">ìƒí’ˆê´€ë¦¬</a></li>
+				<li><a href="${contextPath}/admin/orderMgt">ì£¼ë¬¸ê´€ë¦¬</a></li>
+				<li><a href="${contextPath}/admin/adminMain">ê²Œì‹œíŒê´€ë¦¬</a></li>
 			</ul>
 		</div>
 </body>
