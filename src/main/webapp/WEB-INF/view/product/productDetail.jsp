@@ -116,7 +116,7 @@
 		<jsp:include page="/WEB-INF/view/include/header.jsp" />
 	</header>
 	<section>
-		<p>${product}</p>
+		<%-- <p>${product}</p> --%>
 
 		<div class='main'>
 			<div class='main-image'>

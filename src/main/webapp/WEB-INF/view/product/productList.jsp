@@ -129,7 +129,7 @@ $(function() {
 				<form:hidden path="page" value="${productSelectCommend.page+1}"/>
 				<input type="hidden" name="scrollHeight" id="scrollHeight">
 				<c:if test="${fn:length(products)>=productSelectCommend.limit}">
-					<input type="submit" value="더보기">
+					<input type="submit" value="더보기" id="DUButton">
 				</c:if>
 			</form:form>
 		</div>
