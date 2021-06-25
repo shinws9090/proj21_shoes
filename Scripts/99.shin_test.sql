@@ -164,4 +164,13 @@ from `order` o
 select *
 	from review r ;
 insert into review(order_code, title, content, regist_date) 
-	values ()
+	values (10014,'123','123',now())
+	
+select last_insert_id();
+
+
+select * from reviewimage;
+-- 후기이미지
+INSERT INTO reviewimage 
+(board_code, image)
+VALUES(0, '');
