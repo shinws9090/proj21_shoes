@@ -141,7 +141,7 @@ var contextPath = "<%=request.getContextPath()%>";
 					</div>
 		
 		
-					<h1 class="mt-4">재고 수정</h1>
+					<h1 class="mt-4">재고 수정</h1>					
 					<div class="admin_content_wrap">
 						<div class="admin_content_main">
 							<form id="productOrderOptionForm" method="post" autocomplete="off">
