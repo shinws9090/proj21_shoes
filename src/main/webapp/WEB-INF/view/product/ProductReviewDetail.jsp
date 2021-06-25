@@ -2,6 +2,8 @@
     pageEncoding="EUC-KR"%>
        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
    <c:set var="contextPath" value="<%=request.getContextPath()%>" />
+   <c:set var="sessionMemberCode" value="${sessionMember.memberCode}" />
+   <c:set var="reviewMemberCode" value="${reView.orderCode.memberCode.memberCode}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +25,8 @@
 	<!-- end header -->
 		<c:set var="productCode" value="${reView.orderCode.orderProduct[0].orderOption.productCode}"/>
 	<section>
-			${reView}
+			<%-- ${sessionMember}
+			${reView} --%>
 				<h4> 상품후기 상세보기</h4>
 				<br>
 				<table  class="tbl_type" border="1"> 
@@ -52,9 +55,10 @@
  				<td align=left>후기내용 : ${reView.content }</td>		<!-- 내용 -->
 				</tr>
 				</table>
-				${reView.boardCode}
-				<a href="${contextPath}/ProductReviewInsertAndUpdateForm/${productCode },update,${reView.boardCode}">문의글 수정</a>
-				<a href="${contextPath}/ProductReviewDelete/${reView.boardCode},${productCode }">삭제</a>
+				<c:if test="${sessionMemberCode ==reviewMemberCode}">
+					<a href="${contextPath}/ProductReviewInsertAndUpdateForm/${productCode },update,${reView.boardCode}">문의글 수정</a>
+					<a href="${contextPath}/ProductReviewDelete/${reView.boardCode},${productCode }">삭제</a>
+				</c:if>
 				
 	
 	</section>
