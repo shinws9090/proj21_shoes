@@ -8,11 +8,8 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/ProductQnADetail.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
-	
 </head>
 <body>
 	<!-- header -->
@@ -20,34 +17,35 @@
 		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
 	</header>
 	<!-- end header -->
-	<section id = "maPage">
+		<div id="productDetail">
+	<section id = "productDetail">
 			
-				<h4> 상품문의내역 상세보기</h4>
+				<h4> 상품후기</h4>
 				<br>
 				<table  class="tbl_type" border="1"> 
-				<tr><td bgcolor = "#e7e7e7">${myQnADetail.productName } </td></tr>
-				<tr><td>	<img style="max-width:20%; max-height: 20%; "  alt="" src="${contextPath}/images/${myQnADetail.productMainImage }"></td></tr>
+				<tr><td>${reviewRead.productName } </td></tr>
+				<tr><td>	<img style="max-width:20%; max-height: 20%; "  alt="" src="${contextPath}/images/${reviewRead.productMainImage }"></td></tr>
 
 				
 				</table>
 					<br>
 				<table class="tbl_type" border="1">
 				<tr>	
-					<td bgcolor = "#e7e7e7">문의제목 : ${myQnADetail.title }   (${myQnADetail.registDate })</td>	
+					<td>리뷰 제목 : ${reviewRead.title }   (${reviewRead.registDate })</td>	
+								
 				</tr>
+			
 				<tr>
- 				<td align = left>문의내용 : ${myQnADetail.content }</td>		<!-- 내용 -->
-				</tr>
-				<tr>
-				<td align = left>└ 답변 : ${myQnADetail.reply }</td>
-				</tr>
-				</table>
-				${myQnADetail.boardCode}
-				<a href="${contextPath}/ProductQnAInsertAndUpdateForm/${myQnADetail.productCode},update,${myQnADetail.boardCode}">문의글 수정</a>
-				<a href="${contextPath}/ProductQnADelete/${myQnADetail.boardCode},${myQnADetail.productCode}">삭제</a>
+			
+ 			<td>리뷰내용 : ${reviewRead.content }</td>		<!-- 내용 -->
 				
+				</tr>
+				
+			</table>
+		
 	
 	</section>
+</div>
 	
 	<section>
 

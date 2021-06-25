@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 		,"proj21_shoes.commend"
 		,"proj21_shoes.mapper"
 		,"proj21_shoes.common"
+		,"proj21_shoes.review"
 		})
 public class ContextRoot {
 

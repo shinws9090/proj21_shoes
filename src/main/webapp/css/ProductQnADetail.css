@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+h4{
+  
+   text-align: center;
+   text-decoration: underline;
+}
+
+.tbl_type, .tbl_type th, .tbl_type td {
+   border: 1px solid #c0c0c0 ;
+
+}
+
+#maPage {
+	margin-left: auto;
+	margin-right: auto;
+	border-collapse: collapse;
+	border-top: 1px solid #c0c0c0;
+	border-bottom: 1px solid #c0c0c0;
+	text-align: center;
+	font-family:  sans-serif;
+	width: auto;
+}
+
+
+.tbl_type {
+  
+   width: 90%;
+   margin: 0 auto;
+   max-width:800px;
+   width: 90%;
+   border-top: 2px solid #dcdcdc;
+   border-bottom: 2px solid #dcdcdc;
+   font-family:  sans-serif;
+   font-size: 15px;
+   text-align: center;
+   border-collapse: collapse;
+   padding: inherit;
+      
+   }
+   
+.tbl_type th {
+   padding: 7px 0 4px;
+   border-top: 2px solid #dcdcdc;
+   border-right: 1px solid #dcdcdc;
+   border-left: 1px solid #dcdcdc;
+   background-color: #e7e7e7;
+   color: #c0c0c0;
+   font-family: sans-serif;
+   font-size: 20px;
+   font-weight: bold;
+}
+
+.tbl_type td {
+   padding: 6px 0 4px;
+   border: 1px solid #e5e5e5;
+   color: #4c4c4c;
+   width: 2000px;
+}
+
+   
+   
+   
+   
