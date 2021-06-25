@@ -8,6 +8,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <c:set var="contextPath" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +20,7 @@
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<title>마이페이지</title>
+<title>로그인</title>
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
@@ -26,28 +28,47 @@
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<style type="text/css">
+#tbl_maGrade{/* 나의 등급 table 설정*/
+border-collapse: collapse;   /* td간 선 없애기 */
+width: 100%;
+height: 100px;
+margin-bottom: 20px;
+padding-bottom: 30px;
 
 	
+}
+#tr_myGrade{ /* 나의 등급 table안의 tr 설정 */
+background-color:#4545460f;
+/* #e5e5e5 ;  */
+text-align: center; 
+width: 500px; 
+margin-bottom: 20px;
+	
+}
+
+#tr_myGrade h2{
+	padding-left: 10%;	
+	color: #423838;
+}
+
+
+#myPoint{
+	color: red;
+}
+#myGrade_detail{
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left: 10%;
+}
+</style>
 </head>
 <body class="main-layout">
-	<!-- header -->
-	<header>
-		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
-	</header>
-	<!-- end header -->
-		<div id="myPage">
+		<div id="myPage" style="margin-left:50%;">
 	<section id = "maPage">
-	
-	<c:if test="${empty authInfo}"> 
-				<p style="text-align: center;">로그인해주세요.</p> 
-				<p></p>
-				<li style="text-align: center;"><a href="${contextPath}/register/step1">회원가입</a></li>
-				<li style="text-align: center;"><a href="${contextPath}/login/loginForm">로그인</a></li>
-				
-			</c:if>
-			<c:if test="${!empty authInfo}">
-				
-					<!-- 상단 등급 바 -->
+	<c:if test="${!empty authInfo}"> 
+			<!-- 상단 등급 바 -->
+			<div>
 				<table id="tbl_maGrade"> 
 					<tr id="tr_myGrade">
 						<td><h2>${member.memberName }[${member.memberId}]님의 멤버십 등급은 ${member.grade}입니다.	</h2>
@@ -58,48 +79,26 @@
 						</td>
 					</tr>
 				</table>
-				
+			</div>
+			<div>
 				<!-- 좌측메뉴 -->
-			
-				<article id="my_menu">
-				<h3>회원정보</h3>
-				<a href="${contextPath}/myPage/myPageSel/${member.memberId}">-회원정보 조회 / 변경</a><br>
-				<a href="${contextPath}/myPage/quitMember/${member.memberId}">-회원탈퇴</a>
-
-				<h3>나의 쇼핑정보</h3>			
-				<a href="${contextPath}/myPage/myOrder/${member.memberId}">-주문내역</a><br>
-				<a href="${contextPath}/myPage/myProductQnA/${member.memberId}">-상품문의내역</a><br>
-				<a href="${contextPath}/myPage/myNormalQnA/${member.memberId}">-일반문의내역</a><br>
-				<a href="${contextPath}/cartList">-장바구니</a>
-			
-				</article>
-				
+				<div>
+					<article id="my_menu">
+						<h3>회원정보</h3>
+						<a href="${contextPath}/myPage/myPageSel/${member.memberId}">-회원정보 조회 / 변경</a><br>
+						<a href="${contextPath}/myPage/quitMember/${member.memberId}">-회원탈퇴</a>
 		
-				<!-- 최근 주문내역 테이블  -->
-				<h4>${authInfo.memberName }님은  주문하신 내역이 없습니다.</h4>
-				<br>
-				
-			
-	
-				</section>
-				
-					
-			
-				
+						<h3>나의 쇼핑정보</h3>			
+						<a href="${contextPath}/myPage/myOrder/${member.memberId}">-주문내역</a><br>
+						<a href="${contextPath}/myPage/myProductQnA/${member.memberId}">-상품문의내역</a><br>
+						<a href="${contextPath}/myPage/myNormalQnA/${member.memberId}">-일반문의내역</a><br>
+						<a href="${contextPath}/cartList">-장바구니</a>
+					</article>
+				</div>
+			</div>
 			</c:if>
-
-	
-	
-
+		</section>	
 </div>
-	
-	<section>
-
-	</section>
-
-	<!-- end our product -->
-	<footer>
-		<jsp:include page="/WEB-INF/view/include/footer.jsp"/>
-	</footer>
 </body>
+
 </html>

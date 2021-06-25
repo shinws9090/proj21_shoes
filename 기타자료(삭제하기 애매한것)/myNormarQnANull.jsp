@@ -2,7 +2,7 @@
 <%@page import="com.sun.xml.internal.bind.CycleRecoverable.Context"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="tf" tagdir="/WEB-INF/tags" %>
+<%-- <%@ taglib prefix="tf" tagdir="/WEB-INF/tags" %> --%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -31,7 +31,7 @@
 <body class="main-layout">
 	<!-- header -->
 	<header>
-		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
+	<%-- 	<jsp:include page="/WEB-INF/view/include/header.jsp"/> --%>
 	</header>
 	<!-- end header -->
 		<div id="myPage">
@@ -39,10 +39,11 @@
 	
 	<c:if test="${empty authInfo}"> 
 				<p style="text-align: center;">로그인해주세요.</p> 
-				<p></p>
-				<li style="text-align: center;"><a href="${contextPath}/register/step1">회원가입</a></li>
-				<li style="text-align: center;"><a href="${contextPath}/login/loginForm">로그인</a></li>
-				
+				<br>
+				<div style="text-align: center;">
+				<a href="${contextPath}/register/step1">회원가입</a><a> | </a>
+				<a href="${contextPath}/login/loginForm">로그인</a>
+				</div>
 			</c:if>
 			<c:if test="${!empty authInfo}">
 				
@@ -97,7 +98,7 @@
 
 	<!-- end our product -->
 	<footer>
-		<jsp:include page="/WEB-INF/view/include/footer.jsp"/>
+<%-- 		<jsp:include page="/WEB-INF/view/include/footer.jsp"/> --%>
 	</footer>
 </body>
 </html>
