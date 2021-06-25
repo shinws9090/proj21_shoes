@@ -5,6 +5,7 @@ and member_pwd =password('111111');
 select * from qna
  where member_code =(select member_code from member where member_id ='1234') ;
 
+select * from vw_myReview; where member_id ='1234';
 
 select * from qna;
 
@@ -18,9 +19,58 @@ SET  title='업데이트테스트제목', content='업데이트테스트내용'
 WHERE board_code=1;
 -- --------------------------------------------
 
+-- 5.-------예진_ 마이페이지 나의 상품후기리스트 뷰--------------------------------------------------------------------------------------------------------------------------
+create or replace view  vw_myReview as
+	select 
+		rv.board_code, 			-- 게시판코드
+		rv.order_code,			-- 주문코드
+		rv.title, 				-- 제목
+		rv.content,				-- 내용
+		rv.regist_date,			-- 등록일
+		od.member_code ,		-- 회원코드
+		m.member_id,			-- 회원아이디
+		od.order_date ,			-- 주문일
+		od.payment_amount ,		-- 결제금액
+		od.payment_state ,  	-- 결제여부
+		od.delivery_code , 		-- 배송코드
+		od.buy_confirm_state, 	-- 구매확정여부
+		op.product_code ,  		-- 상품코드
+		op.style_code , 		-- 스타일코드
+		op.`size` , 			-- 사이즈
+		op.order_count ,		-- 주문수량
+		odop.color , 			-- 색상
+		pd.product_name , 		-- 상품명
+		pd.brand_code , 		-- 브랜드코드
+		pd.gender , 			-- 성별
+		pd.product_category_code, -- 상품종류코드
+		pd.material, 			-- 소재
+		pd.season, 				-- 계절
+		pd.made_date, 			-- 제조일
+		pd.sell_Price, 			-- 원가
+		b.brand_name, 			-- 판매가
+		p.product_main_image,	-- 상품대표이미지
+		rvi.image_code, 		-- 이미지코드
+		rvi.image 				-- 이미지		
+		from product as pd 
+		left join productpost as p on pd.product_code =p.product_code
+		left join orderoption as odop on pd.product_code =odop.product_code 
+		left join orderproduct as op on odop.product_code =op.product_code 
+		left join `order` as od on od.order_code =op.order_code 
+		left join review as rv	on rv.order_code =od.order_code 
+		left join reviewimage as rvi on rv.board_code =rvi.board_code 
+		left join brand as b on pd.brand_code =b.brand_code
+		left join category c on pd.product_category_code =c.product_category_code 
+		left join member m on od.member_code =m.member_code;
+	
+-- 	--------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
+
+
+-- 상품후기게시판
+select board_code, order_code, title, content, regist_date 
+	from review 
 
 delete qna where board_code=21;
 
@@ -213,7 +263,51 @@ q.regist_date
 from qna as q 
 left join product as pd on q.product_code =pd. product_code 
 left join member as m on q.member_code =m.member_code ;
+-- -------예진 나의 상품후기리스트 뷰----------------------
+create or replace view  vw_myReview as
+select 
+rv.board_code,
+rv.order_code,
+rv.title, 
+rv.content,
+rv.regist_date,
+od.member_code ,
+m.member_id,
+od.order_date ,
+od.payment_amount ,
+od.payment_state ,
+od.delivery_code ,
+od.buy_confirm_state,
+op.product_code ,
+op.style_code ,
+op.`size` ,
+odop.color ,
+pd.product_name ,
+pd.brand_code ,
+pd.gender ,
+pd.product_category_code,
+pd.material,
+pd.season,
+pd.made_date,
+pd.sell_Price,
+b.brand_name,
+p.product_main_image,
+rvi.image_code,
+rvi.image
+	from review as rv 
+	left join `order` as od on rv.order_code =od.order_code 
+	left join orderproduct as op on od.order_code =op.order_code 
+	left join orderoption as odop on op.product_code =odop.product_code 
+	left join product as pd on odop.product_code =pd.product_category_code 
+	left join brand as b on pd.brand_code =b.brand_code
+	left join category c on pd.product_category_code =c.product_category_code 
+	left join productpost as p on pd.product_code =p.product_code
+	left join reviewimage as rvi on rv.board_code =rvi.board_code 
+	left join member m on od.member_code =m.member_code; where member_id ='aaa';
+	
+-- 	--------------------------------------------------------------------------------------
 
+select * from product;
 -- ---예진_ 마이페이지  나의주문내역 확인용  뷰   최종-------------------------------------------------------------------------------------------------------------------------------------------------------
 create or replace view  vw_myOrderData as
 select 
