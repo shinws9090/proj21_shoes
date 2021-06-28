@@ -27,7 +27,7 @@
 		<result column="brand_code" property="brandCode" />							<!-- 브랜드코드 -->
 		<result column="gender" property="gender" />								<!-- 성별	 -->
 		<result column="product_category_code" property="productCategoryCode" />	<!-- 상품종류코드	 -->
-		<result column="catecory" property="catecory" />							<!-- 종류	 -->
+		<result column="category" property="catecory" />							<!-- 종류	 -->
 		<result column="material" property="material" />							<!-- 상품 소재-->
 		<result column="season" property="season" />								<!-- 계절 -->
 		<result column="made_date" property="madeDate" />							<!-- 제조일 -->
