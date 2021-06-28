@@ -5,11 +5,319 @@ and member_pwd =password('111111');
 select * from qna
  where member_code =(select member_code from member where member_id ='1234') ;
 
-select * from vw_myReview; where member_id ='1234';
+select board_code, order_code, title, content, regist_date, member_code, member_id, order_date, payment_amount, payment_state, delivery_code, buy_confirm_state, product_code, style_code, `size`, order_count, color, product_name, brand_code, gender, product_category_code, material, season, made_date, sell_Price, brand_name, product_main_image, image_code, image 
+from vw_myReview  where member_id ='1234';
+
+select * from vw_myreview where member_id ='1234' and board_code is null;
+
+select count(*)
+from vw_myreview vm  where member_id ='1234' and board_code is null;
+from vw_myreview vm  where member_id ='1234' and board_code is not null;
+
+
+select board_code, order_code, title, content, regist_date, member_code, member_id,
+order_date, payment_amount, payment_state, delivery_code, buy_confirm_state, 
+product_code, style_code, `size`, order_count, color, product_name, brand_code,
+gender, product_category_code, category, material, season, made_date,
+sell_Price, brand_name, brand_eng_name, product_main_image, image_code, image 	 
+from vw_myReview  where member_id ='1234' and board_code is null
+ order by regist_date desc
+
+select board_code, order_code, title, content, regist_date, 
+member_code, member_id, order_date, payment_amount, payment_state,
+delivery_code, buy_confirm_state, product_code, style_code, `size`,
+order_count, color, product_name, brand_code, gender, product_category_code,
+category, material, season, made_date, costPrice, sell_Price, brand_name,
+brand_eng_name, product_main_image, image_code, image 
+from vw_myReview where order_code =10006;
+
+select * from review;
+select * from vw_myReview;
+-- 상품후기게시판
+INSERT INTO sinabro.review
+(order_code,product_code ,title, content, regist_date)
+VALUES(10007, 11111, 'aaa', 'aaa', now());
+
+select * from `order`;
+select * from vw_myorderdata;
+
+select 
+rv.board_code ,
+od.order_code,
+rv.product_code ,
+rv.title ,
+rv.content ,
+rv.regist_date ,
+riv.image,
+riv.image_code ,
+od.member_code,
+od.order_date ,
+od.payment_amount ,
+od.payment_state ,
+od.delivery_code ,
+od.buy_confirm_state,
+o.product_code ,
+o.style_code ,
+o.`size` ,
+o.order_count 
+from review as rv 
+left join reviewimage as riv on riv.board_code =rv .board_code 
+left join `order` as od on rv.order_code = od.order_code
+left join orderproduct as o on rv.order_code =o.order_code ;
+left join 
+;
+-- -- 
+create or replace view  vw_myReview as
+select 
+rv.board_code ,
+od.order_code,
+o.product_code ,
+rv.title ,
+rv.content ,
+rv.regist_date ,
+riv.image,
+riv.image_code ,
+od.member_code,
+od.order_date ,
+od.payment_amount ,
+od.payment_state ,
+od.delivery_code ,
+od.buy_confirm_state,
+o.style_code ,
+o.`size` ,
+o.order_count ,
+op.color ,
+p.product_name,
+p.brand_code ,
+p.gender ,
+p.product_category_code ,
+p.material ,
+p.season ,
+p.made_date ,
+p.sell_Price,
+p2.product_main_image,
+b.brand_name ,
+b.brand_eng_name, 
+c.category ,
+m.member_id 
+from `order` as od 
+left join review as rv on od.order_code =rv.order_code
+left join reviewimage as riv on riv.board_code =rv .board_code 
+left join orderproduct as o on od.order_code =o.order_code
+left join orderoption as op on o.product_code =op.product_code and o.style_code =op.style_code and o.`size`=op.`size`
+left join product as p on p.product_code =op.product_code 
+left join productpost as p2 on p.product_code =p2.product_code
+left join brand as b on p.brand_code =b.brand_code 
+left join category c on p.product_category_code =c.product_category_code
+left join member m on od.member_code = m.member_code;
+
+--
+
+
+
+left join product as pd on od
+
+left join  orderoption as op on op.product_code =
+;
+
+
+
+select board_code, order_code, title, content, regist_date, member_code, member_id, 
+	order_date, payment_amount, payment_state, delivery_code, buy_confirm_state, product_code, 
+	style_code, `size`, order_count, color, product_name, brand_code, gender, product_category_code,
+	 material, season, made_date, sell_Price, brand_name, product_main_image, image_code, image 
+from vw_myReview  where member_id = '1234'
+ order by regist_date DESC;
+
+select * from member where member_id ='1234'
+
+UPDATE `order`
+SET buy_confirm_state=1
+WHERE order_code=10001;
+
+
+
+
+-- 5.-------예진_ 마이페이지 나의 상품후기리스트 뷰--------------------------------------------------------------------------------------------------------------------------
+create or replace view  vw_myReview as;
+	select 
+		rv.board_code, 			-- 게시판코드
+		od.order_code,			-- 주문코드
+		rv.title, 				-- 제목
+		rv.content,				-- 내용
+		rv.regist_date,			-- 등록일
+		od.member_code ,		-- 회원코드
+		m.member_id,			-- 회원아이디
+		od.order_date ,			-- 주문일
+		od.payment_amount ,		-- 결제금액
+		od.payment_state ,  	-- 결제여부
+		od.delivery_code , 		-- 배송코드
+		od.buy_confirm_state, 	-- 구매확정여부
+		odop.product_code ,  		-- 상품코드
+		op.style_code , 		-- 스타일코드
+		op.`size` , 			-- 사이즈
+		op.order_count ,		-- 주문수량
+		odop.color , 			-- 색상
+		pd.product_name , 		-- 상품명
+		pd.brand_code , 		-- 브랜드코드
+		pd.gender , 			-- 성별
+		pd.product_category_code, -- 상품종류코드
+		c.category,				-- 종류
+		pd.material, 			-- 소재
+		pd.season, 				-- 계절
+		pd.made_date, 			-- 제조일
+		pd.costPrice, 			-- 원가
+		pd.sell_Price, 			-- 판매가
+		b.brand_name, 			-- 브랜드명
+		b.brand_eng_name,		-- 브랜드 영어명
+		p.product_main_image,	-- 상품대표이미지
+		rvi.image_code, 		-- 이미지코드
+		rvi.image 				-- 이미지		
+		from review as rv
+		left join reviewimage as rvi on rv.board_code =rvi.board_code 
+		left join `order` as od on od.order_code =rv.order_code 
+		left join orderproduct as op on op.product_code = odop.product_code
+		left join orderoption as odop on op.product_code = odop.product_code 
+		left join product as pd on odop.product_code =pd.product_code 
+		left join productpost as p on pd.product_code =p.product_code
+		left join brand as b on pd.brand_code =b.brand_code
+		left join category as c on pd.product_category_code =c.product_category_code 
+		left join member m on od.member_code =m.member_code;
+	
+-- 	--------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+select * from review;
+select * from vw_myreview ;
+select * from `order`;
+select * from `order`  where member_code = 111116; and payment_state=true;
+
+select 
+rv.board_code,
+od.order_code, 
+od.member_code, 
+od.order_date, 
+od.payment_amount, 
+od.payment_state,
+od.delivery_code, 
+od.buy_confirm_state,
+rv.product_code,
+rv.title,
+rv.content,
+rv.regist_date
+from `order` as od
+join review as rv on od.order_code = rv.order_code ;
+where od.member_code =(select member_code from member where member_id ='1234')
+
+
+
+
 
 select * from qna;
 
-select  * from  member where member_id ='1234';
+select  * from vw_myReview where member_id ='1234' and board_code is null;
+
+select 
+		rv.board_code, 			-- 게시판코드
+		od.order_code,			-- 주문코드
+		rv.title, 				-- 제목
+		rv.content,				-- 내용
+		rv.regist_date,			-- 등록일
+		od.member_code ,		-- 회원코드
+		m.member_id,			-- 회원아이디
+		od.order_date ,			-- 주문일
+		od.payment_amount ,		-- 결제금액
+		od.payment_state ,  	-- 결제여부
+		od.delivery_code , 		-- 배송코드
+		od.buy_confirm_state, 	-- 구매확정여부
+		op.product_code ,  		-- 상품코드
+		op.style_code , 		-- 스타일코드
+		op.`size` , 			-- 사이즈
+		op.order_count ,		-- 주문수량
+		odop.color , 			-- 색상
+		pd.product_name , 		-- 상품명
+		pd.brand_code , 		-- 브랜드코드
+		pd.gender , 			-- 성별
+		pd.product_category_code, -- 상품종류코드
+		c.category,				-- 종류
+		pd.material, 			-- 소재
+		pd.season, 				-- 계절
+		pd.made_date, 			-- 제조일
+		pd.costPrice, 			-- 원가
+		pd.sell_Price, 			-- 판매가
+		b.brand_name, 			-- 브랜드명
+		b.brand_eng_name,		-- 브랜드 영어명
+		p.product_main_image,	-- 상품대표이미지
+		rvi.image_code, 		-- 이미지코드
+		rvi.image 				-- 이미지		
+		from product as pd 
+		left join productpost as p on pd.product_code =p.product_code
+		join orderoption as odop on pd.product_code =odop.product_code 
+		join orderproduct as op on odop.product_code =op.product_code 
+		left join `order` as od on od.order_code =op.order_code 
+		join review as rv	on rv.order_code =od.order_code 
+		left join reviewimage as rvi on rv.board_code =rvi.board_code 
+		left join brand as b on pd.brand_code =b.brand_code
+		left join category c on pd.product_category_code =c.product_category_code 
+		left join member m on od.member_code =m.member_code where member_id = '1234';
+
+	-- 5.-------예진_ 마이페이지 나의 상품후기리스트 뷰--------------------------------------------------------------------------------------------------------------------------
+create or replace view  vw_myReview as
+	select 
+		rv.board_code, 			-- 게시판코드
+		rv.order_code,			-- 주문코드
+		rv.title, 				-- 제목
+		rv.content,				-- 내용
+		rv.regist_date,			-- 등록일
+		od.member_code ,		-- 회원코드
+		m.member_id,			-- 회원아이디
+		od.order_date ,			-- 주문일
+		od.payment_amount ,		-- 결제금액
+		od.payment_state ,  	-- 결제여부
+		od.delivery_code , 		-- 배송코드
+		od.buy_confirm_state, 	-- 구매확정여부
+		op.product_code ,  		-- 상품코드
+		op.style_code , 		-- 스타일코드
+		op.`size` , 			-- 사이즈
+		op.order_count ,		-- 주문수량
+		odop.color , 			-- 색상
+		pd.product_name , 		-- 상품명
+		pd.brand_code , 		-- 브랜드코드
+		pd.gender , 			-- 성별
+		pd.product_category_code, -- 상품종류코드
+		c.category,				-- 종류
+		pd.material, 			-- 소재
+		pd.season, 				-- 계절
+		pd.made_date, 			-- 제조일
+		pd.costPrice, 			-- 원가
+		pd.sell_Price, 			-- 판매가
+		b.brand_name, 			-- 브랜드명
+		b.brand_eng_name,		-- 브랜드 영어명
+		p.product_main_image,	-- 상품대표이미지
+		rvi.image_code, 		-- 이미지코드
+		rvi.image 				-- 이미지		
+		from product as pd 
+		left join productpost as p on pd.product_code =p.product_code /*상품 게시글 테이블과 상품정보 테이블 조인*/		
+		left join orderoption as odop on pd.product_code =odop.product_code 
+		left join orderproduct as op on odop.product_code =op.product_code 
+		left join `order` as od on od.order_code =op.order_code 
+		left join review as rv	on rv.order_code =od.order_code 
+		left join reviewimage as rvi on rv.board_code =rvi.board_code 
+		left join brand as b on pd.brand_code =b.brand_code
+		left join category c on pd.product_category_code =c.product_category_code 
+		left join member m on od.member_code =m.member_code;
+	
+-- 	--------------------------------------------------------------------------------------------------------------------------------------------------
+
+	
+	
+insert into review values
+	(1,10001,11111,'이 가격에 이 퀄리티 리얼?','가성비 좋아요~',now()),
+	(2,10002,22222,'신발이 편해요','쿠션감 짱짱!!',now()),
+	(3,10003,33333,'배송이 너무 늦었어요','한참 기다렸어요ㅠㅠ',now()),
+	(4,10004,44444,'맘에 들어요','재구매각이에요...!',now()),
+	(5,10005,55555,'고민하다가 샀어요','사길 잘한 것 같아요',now());
 
 select board_code, member_code, member_id, product_code, product_name, title, content, regist_date from vw_myqna 
 where member_id='1234';
@@ -20,6 +328,57 @@ WHERE board_code=1;
 -- --------------------------------------------
 
 -- 5.-------예진_ 마이페이지 나의 상품후기리스트 뷰--------------------------------------------------------------------------------------------------------------------------
+create or replace view  vw_myReview as
+	select 
+		rv.board_code, 			-- 게시판코드
+		rv.order_code,			-- 주문코드
+		rv.title, 				-- 제목
+		rv.content,				-- 내용
+		rv.regist_date,			-- 등록일
+		od.member_code ,		-- 회원코드
+		m.member_id,			-- 회원아이디
+		od.order_date ,			-- 주문일
+		od.payment_amount ,		-- 결제금액
+		od.payment_state ,  	-- 결제여부
+		od.delivery_code , 		-- 배송코드
+		od.buy_confirm_state, 	-- 구매확정여부
+		op.product_code ,  		-- 상품코드
+		op.style_code , 		-- 스타일코드
+		op.`size` , 			-- 사이즈
+		op.order_count ,		-- 주문수량
+		odop.color , 			-- 색상
+		pd.product_name , 		-- 상품명
+		pd.brand_code , 		-- 브랜드코드
+		pd.gender , 			-- 성별
+		pd.product_category_code, -- 상품종류코드
+		c.category,				-- 종류
+		pd.material, 			-- 소재
+		pd.season, 				-- 계절
+		pd.made_date, 			-- 제조일
+		pd.costPrice, 			-- 원가
+		pd.sell_Price, 			-- 판매가
+		b.brand_name, 			-- 브랜드명
+		b.brand_eng_name,		-- 브랜드 영어명
+		p.product_main_image,	-- 상품대표이미지
+		rvi.image_code, 		-- 이미지코드
+		rvi.image 				-- 이미지		
+		from product as pd 
+		left join productpost as p on pd.product_code =p.product_code
+		left join orderoption as odop on pd.product_code =odop.product_code 
+		left join orderproduct as op on odop.product_code =op.product_code 
+		left join `order` as od on od.order_code =op.order_code 
+		left join review as rv	on rv.order_code =od.order_code 
+		left join reviewimage as rvi on rv.board_code =rvi.board_code 
+		left join brand as b on pd.brand_code =b.brand_code
+		left join category c on pd.product_category_code =c.product_category_code 
+		left join member m on od.member_code =m.member_code;
+	
+-- 	--------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+-- 5.-------예진_ 마이페이지 나의 상품후기리스트 뷰(db수정전)--------------------------------------------------------------------------------------------------------------------------
 create or replace view  vw_myReview as
 	select 
 		rv.board_code, 			-- 게시판코드

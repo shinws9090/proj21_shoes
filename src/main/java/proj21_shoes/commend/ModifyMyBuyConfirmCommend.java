@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import proj21_shoes.service.MyReviewService;
 
-public class MyOrderCommend {
+public class ModifyMyBuyConfirmCommend {
 
 	
 	private int orderCode;  		//주문코드
@@ -44,9 +44,15 @@ public class MyOrderCommend {
 //	
 
 	
-	public MyOrderCommend() {
+	public ModifyMyBuyConfirmCommend() {
 		// TODO Auto-generated constructor stub
 	}
+
+
+
+
+
+
 
 
 
@@ -66,7 +72,7 @@ public class MyOrderCommend {
 
 
 
-	public MyOrderCommend(int orderCode) {
+	public ModifyMyBuyConfirmCommend(int orderCode) {
 		super();
 		this.orderCode = orderCode;
 	}
@@ -109,7 +115,7 @@ public class MyOrderCommend {
 	}
 
 
-	public MyOrderCommend(String memberId) {
+	public ModifyMyBuyConfirmCommend(String memberId) {
 		super();
 		this.memberId = memberId;
 	}
@@ -260,7 +266,7 @@ public class MyOrderCommend {
 
 
 
-	public MyOrderCommend(int orderCode, int membeCode, String memberId, LocalDate orderDate, int paymentAmount,
+	public ModifyMyBuyConfirmCommend(int orderCode, int membeCode, String memberId, LocalDate orderDate, int paymentAmount,
 			boolean paymentState, String deliveryCode, boolean buyConfirmState, String recipient, String zipCode,
 			String address, String detailAddress, String tel, int productCode, String productName, int styleCode,
 			int size, int orderCount, String productMainImage, String color, String payOX, String buyConfirmOX,

@@ -18,7 +18,7 @@ public class MyQnaViewCommand { 				// 상품문의게시판
 	@DateTimeFormat(pattern = "yyyyMMdd")	
 	private LocalDate registDate; // 등록일
 	private String resOX;//답변유무
-	
+
 	//private int board_num;
 	
 
@@ -109,6 +109,8 @@ public class MyQnaViewCommand { 				// 상품문의게시판
 	
 	
 	
+	
+
 	
 
 	public String getResOX() {

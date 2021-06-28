@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
+import proj21_shoes.commend.ModifyMyBuyConfirmCommend;
 import proj21_shoes.commend.MyOrderCommend;
 
 @Component
@@ -22,8 +23,8 @@ public interface MyOrderMapper {
 	
 	
 	
-	
-	
+	////////////
+	int updateMyBuyConfirm(int orderCode);
 	MyOrderCommend selectMyOrderByOrderCode(int orderCode);					//주문코드로 검색
 
 	

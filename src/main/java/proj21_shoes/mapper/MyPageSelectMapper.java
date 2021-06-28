@@ -9,4 +9,5 @@ public interface MyPageSelectMapper {
 
 	MyPageSelectCommend selectMyPageById(String memberid);					//회원id로 검색
 
+		
 }

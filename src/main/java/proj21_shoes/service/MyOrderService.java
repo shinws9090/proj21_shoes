@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import proj21_shoes.commend.ModifyMyBuyConfirmCommend;
 import proj21_shoes.commend.MyOrderCommend;
 import proj21_shoes.commend.Pagination;
 
@@ -23,7 +24,7 @@ public interface MyOrderService {
 	
 	
 	
-	
+	int updateMyBuyConfirm(int orderCode);
 	MyOrderCommend selectMyOrderByOrderCode(int orderCode);					//주문코드로 검색
 
 }

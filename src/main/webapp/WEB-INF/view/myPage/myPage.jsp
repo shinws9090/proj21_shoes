@@ -37,9 +37,7 @@
 		<jsp:include page="/WEB-INF/view/include/header.jsp"/>
 		<c:if test="${empty authInfo}"> 
 			<jsp:include page="/WEB-INF/view/myPage/include/loginplz.jsp"/>
-			
 		</c:if>
-		
 	</header>
 	<!-- end header -->
 		<div id="myPage">
@@ -60,8 +58,7 @@
 					</tr>
 				</table>
 				
-				<!-- 좌측메뉴 -->
-			
+				<!-- 좌측 메뉴 -->
 				<article id="my_menu">
 				<h3>회원정보</h3>
 				<a href="${contextPath}/myPage/myPageSel/${member.memberId}">-회원정보 조회 / 변경</a><br>
@@ -69,10 +66,17 @@
 
 				<h3>나의 쇼핑정보</h3>			
 				<a href="${contextPath}/myPage/myOrder/${member.memberId}">-주문내역</a><br>
-				<a href="${contextPath}/myPage/myProductQnA/${member.memberId}">-상품문의내역</a><br>
-				<a href="${contextPath}/myPage/myNormalQnA/${member.memberId}">-일반문의내역</a><br>
 				<a href="${contextPath}/cartList">-장바구니</a>
 			
+				<h3>나의 후기</h3>			
+				<a href="${contextPath}/myPage/myReview/${member.memberId}">-작성완료 후기 내역</a><br>
+				<a href="${contextPath}/myPage/myReviewPlz/${member.memberId}">-미작성 후기 내역</a><br>
+			
+				<h3>나의 문의</h3>
+				<a href="${contextPath}/myPage/myProductQnA/${member.memberId}">-상품문의내역</a><br>
+				<a href="${contextPath}/myPage/myNormalQnA/${member.memberId}">-일반문의내역</a><br>
+				
+				
 				</article>
 				
 		
@@ -88,7 +92,11 @@
 						<td>상품명</td>
 						<td>결제금액</td>
 						<td>주문수량</td>
-					 	<td>주문일</td> 
+					 	<td>주문일</td>
+					 	<td>결제여부</td> 
+					 	<td>구매확정여부</td>
+					 
+			
 					</tr>
 				</thead>
 				<tbody>
@@ -101,7 +109,32 @@
 						<td><a href="${contextPath}/productDetail/${myOrderList.productCode}">${myOrderList.productName }<br>[상품 주문페이지]</a></td>
 						<td>${myOrderList.paymentAmount }</td>
 						<td>${myOrderList.orderCount }</td>
-						 <td>${myOrderList.orderDate }</td> 
+						 <td>${myOrderList.orderDate }</td> 	
+						 <c:if test="${empty myOrderList.payOX}">
+						  <td>입금전</td>
+						 </c:if>				
+						 <c:if test="${!empty myOrderList.payOX}">
+						  <td>입금완료</td>
+						 </c:if>				
+						 
+						 <c:if test="${empty myOrderList.payOX}"><!-- 입금전일시 결제확정 비활성화 -->
+						 <td> - </td>
+						 </c:if>
+						 <!-- 입금완료시 구매확정버튼 활성화 -->
+						<c:if test="${!empty myOrderList.payOX && empty myOrderList.buyConfirmOX}"><!-- 결제완료했고 확정안했으면 -->		
+								 <td><a href="${contextPath}/myPage/myOrder/buyConfirm/${myOrderList.orderCode}/${member.memberId }">확정하기</a></td>
+						 </c:if>
+						 <c:if test="${!empty myOrderList.payOX && !empty myOrderList.buyConfirmOX}"><!-- 결제완료했고 확정했으면 -->		
+								 <td><a>확정완료</a></td>
+						 </c:if>
+						
+						
+						
+					
+					
+					
+					
+					
 					</tr>
 					</c:forEach>
 					</c:when>

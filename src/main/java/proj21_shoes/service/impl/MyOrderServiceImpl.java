@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import proj21_shoes.commend.ModifyMyBuyConfirmCommend;
 import proj21_shoes.commend.MyOrderCommend;
 import proj21_shoes.commend.Pagination;
 import proj21_shoes.mapper.MyOrderMapper;
@@ -38,6 +39,12 @@ public class MyOrderServiceImpl implements MyOrderService {
 	@Override
 	public int MyOrderCount(String memberId) throws Exception {
 		 return mapper.MyOrderCount(memberId);
+	}
+
+
+	@Override
+	public int updateMyBuyConfirm(int orderCode) {
+		return mapper.updateMyBuyConfirm(orderCode);
 	}
 
 }

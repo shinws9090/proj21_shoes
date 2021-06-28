@@ -5,7 +5,16 @@
 	<!-- resultMap type : dto 클래스명 , id : 외부에서 지정할이름? -->
 	<!-- result column : db속 컬럼명, property : dto속 변수명 -->
 
-
+<resultMap type="ModifyMyBuyConfirmCommend" id="resMyBuyConfirm">				
+		<id column="member_id" property="memberId" />							<!-- 회원id -->
+		<result column="order_code" property="orderCode" />						<!-- 주문코드 -->
+		<result column="member_code" property="membeCode" />					<!-- 회원코드 -->
+		<result column="order_date" property="orderDate" />						<!-- 주문일 -->
+		<result column="payment_amount" property="paymentAmount" />				<!-- 결제금액 -->
+		<result column="payment_state" property="paymentState" />				<!-- 결제여부 -->
+		<result column="buy_confirm_state" property="buyConfirmState" />		<!-- 구매확정여부 -->
+	
+	</resultMap> 
 	
 	
  	 <resultMap type="MyOrderCommend" id="resMyOrder">				
@@ -117,6 +126,12 @@
         select count(*) 
 	from vw_myOrderData where member_id=#{memberId};
     </select>
+	
+	<update id="updateMyBuyConfirm">
+	UPDATE `order`
+SET buy_confirm_state=true
+WHERE order_code=#{orderCode};
+	</update>
 	
 </mapper>
 

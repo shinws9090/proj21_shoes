@@ -20,7 +20,7 @@
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<title>마이페이지</title>
+<title>마이페이지 - 구매후기</title>
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
@@ -75,61 +75,34 @@
 				
 		
 				<!-- 최근 주문내역 테이블  -->
-				<h4>${authInfo.memberName }님의  최근 주문내역</h4>
+				<h4>${authInfo.memberName }님의  최근 미작성 후기 내역 </h4>
 				<br>
 				
 				<table  class="tbl_type" border="1"> 
 				<thead>
 					<tr>
-						<td>주문번호</td>
-						<td>상품사진</td>
-						<td>상품명</td>
-						<td>결제금액</td>
-						<td>주문수량</td>
-					 	<td>주문일</td>
-					 	<td>결제여부</td> 
-					 	<td>구매확정여부</td>
-					 
-			
+						 <td>주문번호</td> 
+						<!-- <td>상품사진</td> -->
+						<td>상품명(상품이미지)</td>
+						<td>주문일</td>
+						<td>비고</td>
+
 					</tr>
 				</thead>
 				<tbody>
 				<c:choose>
-					<c:when test="${fn:length(myOrderList) > 0}">
-					<c:forEach var="myOrderList" items="${myOrderList}">
+					<c:when test="${fn:length(myReviewPlzList) > 0}">
+					<c:forEach var="myReviewPlzList" items="${myReviewPlzList}">
 					<tr>
-						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myOrderList.orderCode}">${myOrderList.orderCode }<br>[상세보기]</a></td>
-						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myOrderList.orderCode}"><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myOrderList.productMainImage }"></a></td>
-						<td><a href="${contextPath}/productDetail/${myOrderList.productCode}">${myOrderList.productName }<br>[상품 주문페이지]</a></td>
-						<td>${myOrderList.paymentAmount }</td>
-						<td>${myOrderList.orderCount }</td>
-						 <td>${myOrderList.orderDate }</td> 	
-						 <c:if test="${empty myOrderList.payOX}">
-						  <td>입금전</td>
-						 </c:if>				
-						 <c:if test="${!empty myOrderList.payOX}">
-						  <td>입금완료</td>
-						 </c:if>				
-						 
-						 <c:if test="${empty myOrderList.payOX}"><!-- 입금전일시 결제확정 비활성화 -->
-						 <td> - </td>
-						 </c:if>
-						 <!-- 입금완료시 구매확정버튼 활성화 -->
-						<c:if test="${!empty myOrderList.payOX && empty myOrderList.buyConfirmOX}"><!-- 결제완료했고 확정안했으면 -->		
-								 <td><a href="${contextPath}/myPage/myOrder/buyConfirm/${myOrderList.orderCode}/${member.memberId }">확정하기</a></td>
-						 </c:if>
-						 <c:if test="${!empty myOrderList.payOX && !empty myOrderList.buyConfirmOX}"><!-- 결제완료했고 확정했으면 -->		
-								 <td><a>확정완료</a></td>
-						 </c:if>
+						 <td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myReviewPlzList.orderCode}">${myReviewPlzList.orderCode} <br>[주문상세]</a> </td>
+						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myReviewPlzList.orderCode}"><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myReviewPlzList.productMainImage }"></a>
+						<br>${myReviewPlzList.productName} 
+						</td>			
 						
-						
-						
-					
-					
-					
-					
-					
-					</tr>
+						<td>${myReviewPlzList.orderDate }</td>
+						<td>작성하러가기</td>
+		
+						</tr>
 					</c:forEach>
 					</c:when>
 					<c:otherwise>
@@ -151,23 +124,23 @@
          <div class="paginate">
             <div class="paging" style="margin-left: 50%;">
                <a class="direction prev" href="javascript:void(0);"
-                  onclick="movePage(1,${pagination3.cntPerPage},${pagination3.pageSize});">
+                  onclick="movePage(1,${pagination5.cntPerPage},${pagination5.pageSize});">
                   &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"
-                  onclick="movePage(${pagination3.currentPage}<c:if test="${pagination3.hasPreviousPage == true}">-1</c:if>,${pagination3.cntPerPage},${pagination3.pageSize});">
+                  onclick="movePage(${pagination5.currentPage}<c:if test="${pagination5.hasPreviousPage == true}">-1</c:if>,${pagination5.cntPerPage},${pagination5.pageSize});">
                   &lt; </a>
 
-               <c:forEach begin="${pagination3.firstPage}"
-                  end="${pagination3.lastPage}" var="idx">
+               <c:forEach begin="${pagination5.firstPage}"
+                  end="${pagination5.lastPage}" var="idx">
                   <a
-                     style="color:<c:out value="${pagination3.currentPage == idx ? '#gray; font-weight:700; margin-bottom: 2px;' : ''}"/> "
+                     style="color:<c:out value="${pagination5.currentPage == idx ? '#gray; font-weight:700; margin-bottom: 2px;' : ''}"/> "
                      href="javascript:void(0);"
-                     onclick="movePage(${idx},${pagination3.cntPerPage},${pagination3.pageSize});"><c:out
+                     onclick="movePage(${idx},${pagination5.cntPerPage},${pagination5.pageSize});"><c:out
                         value="${idx}" /></a>
                </c:forEach>
                <a class="direction next" href="javascript:void(0);"
-                  onclick="movePage(${pagination3.currentPage}<c:if test="${pagination3.hasNextPage == true}">+1</c:if>,${pagination3.cntPerPage},${pagination3.pageSize});">
+                  onclick="movePage(${pagination5.currentPage}<c:if test="${pagination5.hasNextPage == true}">+1</c:if>,${pagination5.cntPerPage},${pagination5.pageSize});">
                   &gt; </a> <a class="direction next" href="javascript:void(0);"
-                  onclick="movePage(${pagination3.totalRecordCount},${pagination3.cntPerPage},${pagination3.pageSize});">
+                  onclick="movePage(${pagination5.totalRecordCount},${pagination5.cntPerPage},${pagination5.pageSize});">
                   &gt;&gt; </a>
             </div>
          </div>
@@ -192,7 +165,7 @@
 //페이지 이동
 function movePage(currentPage, cntPerPage, pageSize){
     
-    var url = "${pageContext.request.contextPath}/myPage/myOrder/${member.memberId}";
+    var url = "${pageContext.request.contextPath}/myPage/myReviewPlz/${member.memberId}";
     url = url + "?currentPage="+currentPage;
     url = url + "&cntPerPage="+cntPerPage;
     url = url + "&pageSize="+pageSize;
