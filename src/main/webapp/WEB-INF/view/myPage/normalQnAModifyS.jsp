@@ -56,8 +56,7 @@
 					</tr>
 				</table>
 				
-				<!-- 좌측메뉴 -->
-			
+				<!-- 좌측 메뉴 -->
 				<article id="my_menu">
 				<h3>회원정보</h3>
 				<a href="${contextPath}/myPage/myPageSel/${member.memberId}">-회원정보 조회 / 변경</a><br>
@@ -65,12 +64,18 @@
 
 				<h3>나의 쇼핑정보</h3>			
 				<a href="${contextPath}/myPage/myOrder/${member.memberId}">-주문내역</a><br>
-				<a href="${contextPath}/myPage/myProductQnA/${member.memberId}">-상품문의내역</a><br>
-				<a href="${contextPath}/myPage/myNormalQnA/${member.memberId}">-일반문의내역</a><br>
 				<a href="${contextPath}/cartList">-장바구니</a>
 			
-				</article>
+				<h3>나의 후기</h3>			
+				<a href="${contextPath}/myPage/myReview/${member.memberId}">-작성완료 후기 내역</a><br>
+				<a href="${contextPath}/myPage/myReviewPlz/${member.memberId}">-미작성 후기 내역</a><br>
+			
+				<h3>나의 문의</h3>
+				<a href="${contextPath}/myPage/myProductQnA/${member.memberId}">-상품문의내역</a><br>
+				<a href="${contextPath}/myPage/myNormalQnA/${member.memberId}">-일반문의내역</a><br>
 				
+				
+				</article>
 		
 			
 				<h4>문의글 수정이 완료되었습니다.</h4>
