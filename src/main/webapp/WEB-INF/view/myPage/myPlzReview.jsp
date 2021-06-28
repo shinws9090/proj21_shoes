@@ -106,7 +106,7 @@
 						</td>			
 						
 						<td>${myReviewPlzList.orderDate }</td>
-						<td>작성하러가기</td>
+						<td><a href="${contextPath}/ProductReviewInsertAndUpdateForm/${myReviewPlzList.memberId}/${myReviewPlzList.productCode},insert,0">작성하러가기</a></td>
 		
 						</tr>
 					</c:forEach>
