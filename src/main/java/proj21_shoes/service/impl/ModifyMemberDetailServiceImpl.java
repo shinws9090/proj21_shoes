@@ -26,4 +26,10 @@ public class ModifyMemberDetailServiceImpl implements ModifyMemberDetailService 
 		return mapper.selectConfirmPw(memberId, memberPw);
 	}
 
+	@Override
+	public int updateMemberPW(String memberId, String memberPW) {
+		
+		return mapper.updateMemberPW(memberId, memberPW);
+	}
+
 }

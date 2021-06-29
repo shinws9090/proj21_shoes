@@ -23,6 +23,7 @@ public interface MemberDetailMapper {//우선 회원가입용!! 회원가입시�
 	
 	int insertMemberDetail(MemberDetail req); 		 //회원상세정보 추가
 	int updateMemberDetail(MemberDetail memberDetail);  	//회원상세정보 수정
+	int updateMemberPW(String memberId, String memberPW);  	//회원비밀번호 수정
 	int deleteMemberDetail(long id);  						//회원상세정보 삭제
 	
 	

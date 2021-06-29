@@ -81,18 +81,40 @@
 				
 			
 				<table class="tbl_type" border="1">
+				
+		
+			<tr>
+			<td><a>회원 아이디:</a></td>
+			<td><input  type="text"   value="${member.memberId }" readonly="true" size="100"/>  
+			</td>
+		
+		</tr>
+
+		<tr>
+			<td><a>회원 이름:</a></td> 
+			<td><input value="${member.memberName }" readonly="true" size="100"/>  
+		</td>
+		
+		</tr>
 				<tr>	
-					<td>문의제목 : ${myQnADetail.title }   (${myQnADetail.registDate })</td>	
+				<td><a>문의제목 : </a></td>
+				<input hidden="hidden"/>
+				<td><input type="text" size="100" readonly="true" value=" ${myQnADetail.title }    (${myQnADetail.registDate })"/>  </td>	
 								
 				</tr>
 			
 				<tr>
-			
- 			<td>문의내용 : ${myQnADetail.content }</td>		<!-- 내용 -->
-				
-				</tr>
+			<td><a>문의내용 : </a></td>
+ 			<td style="height: 200px">
+ 			<input hidden="hidden"/>
+ 			<textarea rows="" cols=""size="100" style=" resize: none; width:98%; height:98%;" maxlength="1000"; " readonly="true">${myQnADetail.content }</textarea>
+ 		</td>
 				<tr>
-				<td>답변 : ${myQnADetail.reply }</td>
+				<td><a>답변 : </a></td>
+ 			<td style="height: 200px">
+ 			<input hidden="hidden"/>
+ 			<textarea rows="" cols=""size="100" style=" resize: none; width:98%; height:98%;" maxlength="1000"; " readonly="true">${myQnADetail.reply }</textarea>
+ 		</td>
 				</tr>
 				
 			</table>

@@ -93,6 +93,14 @@ where member_id=#{param1} and member_name=#{param2} and email =#{param3}
 		birthday=#{birthday}, email=#{email}, tel=#{tel}, zipCode=#{zipCode}, address=#{address}, detail_address=#{detailAddress}
 	WHERE member_id=#{memberId}
 	</update>
+	
+	<update id="updateMemberPW" parameterType="MemberDetail">
+	update memberDetail
+	set member_pwd=password(#{param2})
+	WHERE member_id=#{param1};
+	</update>
+	
+	
 </mapper>
 
 

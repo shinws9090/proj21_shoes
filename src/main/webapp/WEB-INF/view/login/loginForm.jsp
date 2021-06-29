@@ -41,20 +41,52 @@
 		<form:form action="loginSuccess" modelAttribute="loginCommand">
 		<form:errors/>
 	 	<fieldset id="loginCommand"> 
-		<p>
-			<label >회원   ID :  <form:input
-					path="memberId" /> <form:errors path="memberId" /></label>
-		</p>
-		<p>
-			<label >회원 비밀번호: :  <form:password path="memberPwd" /> <form:errors path="memberPwd" /></label>
-		</p>
-		<p>
-			<label >ID기억하기: <form:checkbox path="rememberId" /> </label>
-		</p>
-		<input type="submit" value="로그인하기" />
-		<p><a href="<c:url value='${contextPath}/find/findIdPw'/>">아이디/비밀번호 찾기</a>
-		<%-- <p><a href="<c:url value='/account/searchPw'/>">비밀번호 찾기</a> --%>
+	 	<table>
+		<tr>
+			<td><p>회원 ID : </p></td>
+			<td id="td_right">
+				<label >
+					<form:input path="memberId" /> <form:errors path="memberId" />
+				</label>
+			</td>
+		</tr>
+		<tr>
+			<td><p>회원 PW:</p></td>
+			<td id="td_right">
+				<label> 
+					<form:password path="memberPwd" /> <form:errors path="memberPwd" />
+				</label>
+			</td>
+			</tr>
+		<tr>
+		<td><p>ID 저장:
+				<label >
+					<form:checkbox path="rememberId" /> 
+				</label>
+			 </p></td>
+			 <td id="td_right">
+			 <input type="submit" value="로그인하기"  size="100"/></td>
+		</tr>
+<!-- 		<article class="btn2">
+		<tr>
+		<td>
+		<input type="submit" value="로그인하기"  size="100"/>
+		</td>
+		</tr>
+		</article> -->
 		
+		
+		<%-- <p><a href="<c:url value='${contextPath}/find/findIdPw'/>">아이디/비밀번호 찾기</a> --%>
+
+		</table>
+		<table>
+		<article id = "findForm">
+		
+			<a href="<c:url value='${contextPath}/find/findId'/>">아이디 찾기</a> <a> | </a>		
+			<a href="<c:url value='${contextPath}/find/findPw'/>">비밀번호 찾기</a>
+		
+		</article>
+		</table>
 		
  	</fieldset> 
 	</form:form> 
@@ -62,9 +94,6 @@
 	</section>
 </div>
 
-	<section>
-
-	</section>
 
 	<!-- end our product -->
 	<footer>
