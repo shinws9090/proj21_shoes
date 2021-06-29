@@ -9,7 +9,7 @@ public class MemberNotFoundException extends RuntimeException {
 	}
 
 	public MemberNotFoundException() {
-		System.out.println("이거뭐지");
+	
 	}
 	
 

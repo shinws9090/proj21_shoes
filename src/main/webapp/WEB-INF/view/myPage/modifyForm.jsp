@@ -83,15 +83,7 @@
 	}
 	
 	</script>
-	
 
-	<script type="text/javascript">
-	/* function genderview() {
-		작동되게해야하는디 만약 기존값이 true면  여자에 true 두게 하고, false면 남자에 true 값으로 입력하게 하기!! 
-		
-	}*/
-	</script>
-	
 </head>
 <body class="main-layout">
 	<!-- header -->
@@ -128,17 +120,26 @@
 				</article>
 			
 	
-	<div class="step2">
-	<div id="signUpForm"></div>
-	<section id ="signUpForm">
-
-		<h3 style="text-align: center;">회원정보 변경</h3> 
 	
-	<div id="insertForm">
+	<div id="modify_form">
+	<section id ="modifyForm">
+
+		<h3>회원정보 변경</h3> 
 			<form:form action="/myPage/modify/${member.memberId }" modelAttribute="memberDetailUpdateCommend"><!-- 보내는거? -->
-				<table id ="insertTable">
+				<table>
 			<tr>
-			
+			<article style="color: red; ">
+							<form:errors  path="confirmPassword"  />
+							<form:errors  path="memberId"  />
+							<form:errors  path="memberName"  />
+							<form:errors  path="birthday"  />
+							<form:errors  path="email"  />
+							<form:errors  path="tel"  />
+							<form:errors  path="zipCode"  />
+							<form:errors  path="tel"  />
+							<form:errors  path="detailAddress"  />
+							<form:errors  path="address"  />
+							</article>
 				<td><p>회원 아이디 :</p></td>
 				<td id="td_right">
 				<label for="memberId">
@@ -153,7 +154,7 @@
 					<td id="td_right">
 					<label for="confirmPassword">	
 					<form:password id="confirmPassword" path="confirmPassword" placeholder="기존 비밀번호 입력" />
-					<form:errors path="confirmPassword" />
+					<%-- <form:errors path="confirmPassword" /> --%>
 					</label>
 					</td>	
 			</tr>
@@ -210,7 +211,7 @@
 				<td><a>이메일</a></td>
 				<td id="td_right">
 				<label for="email">	
-				<form:input type="email" path="email"  id="email" value="${member.email }"/><form:errors path="email" />
+				<form:input type="email" path="email"  id="email" value="${member.email }"/>
 				</label>
 				</td>
 			</tr>
@@ -256,9 +257,12 @@
 			
 					<article id="save_btn">
 					<tr>
+					<td></td>
 					<td>
 				 	<form action="/myPage/modify/${member.memberId }" method="post">
-							<input type="submit" value="저장" /><form:errors path="confirmPassword" />
+							<input type="submit" value="저장" /><%-- <form:errors path="confirmPassword" /> --%>
+							
+							
 						</form>
 						</td>
 						</tr>
@@ -266,14 +270,14 @@
 					</table>
 
 			</form:form>
-			</div>
-			
-		</div>	
-
-
 	</section>
-</div>
+</div>			
+			
+			
 	
+
+
+
 	<section>
 
 	</section>

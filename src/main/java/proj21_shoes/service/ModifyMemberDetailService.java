@@ -8,6 +8,7 @@ import proj21_shoes.dto.MemberDetail;
 @Service
 public interface ModifyMemberDetailService {
 	int modifyMemberDetail(MemberDetail memberDetail);
+	int updateMemberPW(String memberId, String memberPW);  	//회원비밀번호 수정
 	MyPWConfirmCommand selectConfirmPw(String memberId, String memberPw);
 
 
