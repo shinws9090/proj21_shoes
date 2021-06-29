@@ -119,10 +119,9 @@
 					</c:choose>
 				</tbody>
 				</table>
-		<br>
+		
 				</section>
-				<br>
-				<br>
+		
 					
 			
 				

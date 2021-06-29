@@ -145,13 +145,13 @@
             </div>
          </div>
          <!-- /paginate -->	
-     <br><br><br><br><br><br>
 			</c:if>
 
 	
 	</section>
-	<br><br><br><br><br><br><br><br><br><br><br><br>
+
 </div>
+
 	
 	
 

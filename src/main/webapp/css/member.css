@@ -128,6 +128,10 @@ margin-bottom: 20px;
 
 
 
+#myPage{
+	margin-bottom: 250px;
+}
+
 #my_menu{ 								/* 좌측 메뉴 */
 	text-align: left;
 	margin-left: 10px;
@@ -137,6 +141,7 @@ margin-bottom: 20px;
     margin-bottom: 30px;
     padding-bottom: 30px;
     line-height: 2;
+    
 	
 }
 #my_menu a{
@@ -235,6 +240,7 @@ margin-bottom: 20px;
    font-size: 12px;
    text-align: center;
    border-collapse: collapse;
+   margin-bottom: 100px;
 
 }
 .tbl_type h4{

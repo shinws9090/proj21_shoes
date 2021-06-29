@@ -98,11 +98,9 @@
 						<c:forEach var="myPdQna" items="${myPdQna }">
 							<tr>
 						<%-- 	<td><a href="${contextPath}/myPage/myQnADetail/${authInfo.memberId}/${myQna.boardCode}">${myQna.boardCode }</a></td> <!-- 문의코드 --> --%>
-						
 								<td><a href="${contextPath}/myPage/myProductQnADetail/${myPdQna.memberId}/${myPdQna.boardCode}">${myPdQna.productName }</a></td>	<!-- 상품명 -->
 								<td><a href="${contextPath}/myPage/myProductQnADetail/${myPdQna.memberId}/${myPdQna.boardCode}"><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myPdQna.productMainImage }"></a></td>				
 								<td><a href="${contextPath}/myPage/myProductQnADetail/${myPdQna.memberId}/${myPdQna.boardCode}">${myPdQna.title }</a></td>	<!-- 제목 -->
-					<%-- 			<td>${myQna.content }</td>		<!-- 내용 --> --%>
 								<td>${myPdQna.registDate }</td>	<!-- 작성일 -->
 								<td>${myPdQna.resOX }</td>
 							</tr>
@@ -152,7 +150,7 @@
 	
 	
 	</section>
-	<br><br><br><br><br><br><br><br><br>
+
 </div>
 	
 	<section>

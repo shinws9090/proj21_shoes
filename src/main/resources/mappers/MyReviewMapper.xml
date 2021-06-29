@@ -81,7 +81,7 @@ brand_eng_name, product_main_image, image_code, image
 from vw_myReview where order_code =#{orderCode};
 	 </select>
 
- <!-- 나의 미작성한 후기내역 페이징  -->	 
+ <!-- 예진_나의 미작성한 후기내역 페이징   :구매확정한거만 후기작성가능 -->	 
 	<select id="SelectReviewPlzList" resultMap="resReview">
 	select R1.* FROM(
 	select board_code, order_code, title, content, regist_date, member_code, member_id,
@@ -89,7 +89,7 @@ from vw_myReview where order_code =#{orderCode};
 	product_code, style_code, `size`, order_count, color, product_name, brand_code,
 	gender, product_category_code, category, material, season, made_date,
 	sell_Price, brand_name, brand_eng_name, product_main_image, image_code, image
-	from vw_myReview  where member_id =#{memberId} and board_code is null
+	from vw_myReview  where member_id =#{memberId} and buy_confirm_state is true and board_code is null
  order by regist_date desc
       ) R1
       LIMIT #{pageSearch}, #{cntPerPage };

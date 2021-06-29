@@ -120,10 +120,9 @@
 					</c:choose>
 				</tbody>
 				</table>
-		<br>
+
 				</section>
-				<br>
-				<br>
+	
 					
 			
 				
@@ -162,7 +161,6 @@
 	<section>
 <br>
 	</section>
-<br><br><br><br><br><br>
 	<!-- end our product -->
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp"/>
