@@ -111,28 +111,15 @@
 		
 				
 			</c:if>
-<br>
+
 	
 	
 	</section>
 
-	<br>
+	
 	<section>
-<br>
-	</section>
-<br><br>
-<br>
-<br>
-<br>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+	</section>
 
 
 	<!-- end our product -->
