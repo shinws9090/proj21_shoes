@@ -9,10 +9,13 @@ import org.springframework.stereotype.Component;
 import proj21_shoes.commend.ModifyMyNormalQnACommend;
 import proj21_shoes.commend.MyQnaViewCommand;
 import proj21_shoes.commend.NormalQnARegistCommand;
+import proj21_shoes.dto.Category;
 
 @Component
 public interface MyQnaMapper {
-										
+					
+	public List<MyQnaViewCommand> selectQnAbyAllList();
+	
 	MyQnaViewCommand selectProductQnAbyBoardCode(int boardCode);				
 	MyQnaViewCommand selectNormalQnAbyBoardCode(int boardCode);					
 	

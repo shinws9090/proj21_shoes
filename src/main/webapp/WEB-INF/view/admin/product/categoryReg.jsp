@@ -19,11 +19,11 @@
 <script type="text/javascript">
 $(function(){
 	$('#cancel').on("click", function(e) {
-		history.back();
+		location.href="${contextPath}/admin/product/categoryReg";
 	});
 	
 	var jsonData = JSON.parse('${categoryList}');
-	for(var i = 0; i < jsonData.length; i++) {		
+	for(var i = jsonData.length -1; i >= 0; i--) {
 		var sCont = "";
 			sCont += "<tr>";
 			sCont += "<td>" + jsonData[i].productCategoryCode + "</td>";

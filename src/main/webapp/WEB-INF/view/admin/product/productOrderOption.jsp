@@ -21,7 +21,7 @@ $(function(){
 	var contextPath = "<%=request.getContextPath()%>";
 	
 	$('#cancel').on("click", function(e) {
-		history.back();
+		location.href="${contextPath}/admin/productMgt";
 	});
 		
 	function getParameterByName(name) {
@@ -33,43 +33,43 @@ $(function(){
 	
 	var productCode = getParameterByName("productCode");
 	$.get(contextPath + "/api/productMgt/"+productCode,
-		function(json) {
+		function(jsonP) {
 			var sCont = "";
 				sCont += "<tr>";
-				sCont += "<td productCode='productCode'>" + json.productCode + "</td>";
-				sCont += "<td>" + json.productName + "</td>";
-				sCont += "<td>" + json.brand.brandName + "</td>";
-				sCont += "<td>" + json.gender + "</td>";
-				sCont += "<td>" + json.category.category + "</td>";
-				sCont += "<td>" + json.productPost.productMainImage + "</td>";					
-				sCont += "<td>" + json.costPrice + "</td>";
-				sCont += "<td>" + json.sellPrice + "</td>";
-				sCont += "<td>" + json.registDate + "</td>";
-				sCont += "<td>" + json.cumulativeRegistCount + "</td>";
-				sCont += "<td>" + json.cumulativeSellCount + "</td>";
+				sCont += "<td productCode='productCode'>" + jsonP.productCode + "</td>";
+				sCont += "<td>" + jsonP.productName + "</td>";
+				sCont += "<td>" + jsonP.brand.brandName + "</td>";
+				sCont += "<td>" + jsonP.gender + "</td>";
+				sCont += "<td>" + jsonP.category.category + "</td>";
+				sCont += "<td>" + jsonP.productPost.productMainImage + "</td>";					
+				sCont += "<td>" + jsonP.costPrice + "</td>";
+				sCont += "<td>" + jsonP.sellPrice + "</td>";
+				sCont += "<td>" + jsonP.registDate + "</td>";
+				sCont += "<td>" + jsonP.cumulativeRegistCount + "</td>";
+				sCont += "<td>" + jsonP.cumulativeSellCount + "</td>";
 				sCont += "</tr>";
 			$("#load1:last-child").append(sCont);
 		});
 	
-	var jsonData = JSON.parse('${orderOptionListByProductCode}');
-	for(var i = 0; i < jsonData.length; i++) {		
-		var sCont = "";
-			sCont += "<tr>";
-			sCont += "<td>" + jsonData[i].productCode + "</td>";
-			sCont += "<td>" + jsonData[i].styleCode + "</td>";
-			sCont += "<td>" + jsonData[i].color + "</td>";										
-			sCont += "<td>" + jsonData[i].size + "</td>";
-			sCont += "<td>" + jsonData[i].stock + "</td>";
-			sCont += "<td>" + "<button type=><a href='${contextPath}/admin/product/productOrderOptionMod?productCode=" + jsonData[i].productCode + '&styleCode=' + jsonData[i].styleCode + '&color=' + jsonData[i].color + '&size='+ jsonData[i].size +  '&stock='+ jsonData[i].stock + "'>재고수정</a></button>"+ "</td>";
-			/* sCont += "<td>" + "<button type='button'><a href='${contextPath}/admin/product/productOrderOptionMod?productCode=" + jsonData[i].productCode + "'>재고삭제</a></button>"+ "</td>"; */
-			sCont += "</tr>";
-						
-		$("#load2:last-child").append(sCont); 
-	}	
-	
-	var lastData = jsonData.length - 1;
-	document.getElementById("styleCode").value = jsonData[lastData].styleCode;
-	document.getElementById("color").value = jsonData[lastData].color;
+	$.get(contextPath + "/api/orderOption/"+productCode,
+		function(jsonO) {
+			for(var i = 0; i < jsonO.length; i++){
+				var sCont = "";
+					sCont += "<tr>";
+					sCont += "<td productCode='productCode'>" + jsonO[i].productCode + "</td>";
+					sCont += "<td>" + jsonO[i].styleCode + "</td>";
+					sCont += "<td>" + jsonO[i].color + "</td>";										
+					sCont += "<td>" + jsonO[i].size + "</td>";
+					sCont += "<td>" + jsonO[i].stock + "</td>";
+					sCont += "<td>" + "<button type='button'><a href='${contextPath}/admin/product/productOrderOptionMod?productCode=" + jsonO[i].productCode + '&styleCode=' + jsonO[i].styleCode + '&color=' + jsonO[i].color + '&size='+ jsonO[i].size + '&nowStock='+ jsonO[i].stock + "'>재고관리</a></button>" + "</td>";
+					sCont += "</tr>";
+				$("#load2:last-child").append(sCont);
+			}
+			
+			var lastData = jsonO.length - 1;
+			document.getElementById("styleCode").value = jsonO[lastData].styleCode;
+			document.getElementById("color").value = jsonO[lastData].color;
+		});	
 });
 </script>
 </head>

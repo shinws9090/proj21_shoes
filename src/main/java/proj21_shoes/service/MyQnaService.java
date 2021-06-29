@@ -11,7 +11,9 @@ import proj21_shoes.commend.NormalQnARegistCommand;
 import proj21_shoes.commend.Pagination;
 @Service
 public interface MyQnaService {
-
+	
+	public List<MyQnaViewCommand> selectQnAbyAll();
+	
 	MyQnaViewCommand selectProductQnAbyBoardCode(int boardCode);				
 	MyQnaViewCommand selectNormalQnAbyBoardCode(int boardCode);				
 

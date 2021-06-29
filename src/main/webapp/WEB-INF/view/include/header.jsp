@@ -36,7 +36,7 @@
 			
 
 			
-			<li><a href="#">공지사항</a></li>
+			<li><a href="${contextPath}/admin/board/mainNotice">공지사항</a></li>
 
 			<!-- 직원 아이디로 로그인 하고 권한 있을때 관리자 화면 표시 -->
 			<%-- <c:if test="${employee.authority == 1}"> --%>

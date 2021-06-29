@@ -6,12 +6,13 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
-import proj21_shoes.commend.MyOrderCommend;
 import proj21_shoes.commend.MyReviewCommend;
+import proj21_shoes.dto.ReView;
 
 @Component
 public interface MyReviewMapper {
-										
+	public List<ReView> selectReviewbyAllList();
+	
 	MyReviewCommend selectMyReviewByBoardCode(int boardCode);				
 	
 	//페이징(작성한 후기내역만)

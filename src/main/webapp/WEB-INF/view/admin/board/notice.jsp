@@ -12,26 +12,26 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/admin/css/styles.css"/>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
-	$(function() {
-		var contextPath = "${contextPath}";
-		$.get(contextPath + "/api/memberMgt", function(json) {
-			var dataLength = json.length;
-			if (dataLength >= 1) {
-				var sCont = "";
-				var i = dataLength -1
-				for (i; i >= 0; i--) {
-					sCont += "<tr>";
-					sCont += "<td>" + json[i].memberId + "</td>";
-					sCont += "<td><a href='read?memberId=" + json[i].memberId
-							+ "'>" + json[i].memberName + "</a></td>";
-					sCont += "<td>" + json[i].email + "</td>";
-					sCont += "<td>" + json[i].tel + "</td>";
-					sCont += "</tr>";
-				}
-				$("#load:last-child").append(sCont);
+$(function() {
+	
+	var contextPath = "${contextPath}";
+	$.get(contextPath + "/api/noticeBoard", function(json) {
+		var dataLength = json.length;
+		if (dataLength >= 1) {
+			var sCont = "";
+			var i = dataLength -1
+			for (i; i >= 0; i--) {
+				sCont += "<tr>";
+				sCont += "<td>" + json[i].boardCode + "</td>";
+				sCont += "<td>" + json[i].title + "</td>";
+				sCont += "<td>" + "관리자" + "</td>";
+				sCont += "<td>" + json[i].registDate + "</td>";
+				sCont += "</tr>";
 			}
-		});
-	});
+			$("#load:last-child").append(sCont);
+		}
+	});	
+});
 </script>
 </head>
 <body class="main-layout">
@@ -44,32 +44,29 @@
 	<section>
 		<div class="d-flex" id="wrapper">
 			<jsp:include page="/WEB-INF/view/admin/include/sidebar.jsp" />		    
-		    
 		    <!-- Page content wrapper-->
 		    <div id="page-content-wrapper">
+		    <jsp:include page="/WEB-INF/view/admin/include/boardMenu.jsp" />
 		        
 		        <!-- Page content-->
 		        <div class="container-fluid">
-		            <table style="width:100%">
+					<table style="width:100%">
 						<tr>
-							<td colspan="7" class="td_title"><h1 class="mt-4">회원 목록</h1></td>
-						</tr>
-									
+							<td colspan="7" class="td_title"><h1 class="mt-4">공지사항</h1></td>
+						</tr>			
 						<tr style="background-color: lightgrey; text-align: center">
-							<td>아이디</td>
-							<td>이름</td>
-							<td>이메일</td>
-							<td>연락처</td>
-							<td>상세보기</td>
-							<td>기타</td>			
+							<td>번호</td>
+							<td>제목</td>						
+							<td>작성자</td>		
+							<td>작성일</td>
 						</tr>
-						
 						<tr>
 							<tbody id="load"/>
 						</tr>
 					</table>
-		        </div>		        
-		    </div>
+		        </div>
+		        
+		    </div>		    
 		</div>
 	</section>
 	

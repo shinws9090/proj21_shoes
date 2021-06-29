@@ -13,9 +13,23 @@
 		where product_code = #{productCode}
 	</select>
 	
+	<select id="orderOptionByAllList" resultType="OrderOption">
+		select * from orderOption
+	</select>
+	
 	<insert id="insertOrderOption" parameterType="OrderOption">
 		insert into orderOption (product_code, style_code, `size`, stock, color)
-			 values (#{productCode}, #{styleCode}, #{size}, #{stock}, #{color});
+			 values (#{productCode}, #{styleCode}, #{size}, #{stock}, #{color})
 	</insert>
+	
+	<update id="updateOrderOption" parameterType="OrderOption">
+		update orderOption
+		   set stock = #{stock}
+		 where product_code = #{productCode} and style_code = #{styleCode} and `size` = #{size} and color= #{color}
+	</update>
+	
+	<delete id="deleteOrderOption" parameterType="OrderOption">
+		delete from orderOption where product_code = #{productCode} and style_code = #{styleCode} and `size` = #{size} and color= #{color}
+	</delete>
 
 </mapper>

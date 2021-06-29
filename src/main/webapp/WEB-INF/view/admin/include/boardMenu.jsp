@@ -9,11 +9,11 @@
 <!DOCTYPE html>
 <html>
 <body>
-		<div class="MenuBoard">
+		<div class="leftMenuProduct">
 			<ul>
-				<li><a href="${contextPath}/admin/productMgt">상품 관리</a></li>				
-				<li><a href="${contextPath}/admin/product/brandReg">브랜드 관리</a></li>
-				<li><a href="${contextPath}/admin/product/categoryReg">카테고리 관리</a></li>
+				<li><a href="${contextPath}/admin/board/notice">공지사항 관리</a></li>				
+				<li><a href="${contextPath}/admin/board/qna">문의게시판 관리</a></li>
+				<li><a href="${contextPath}/admin/board/review">후기게시판 관리</a></li>				
 			</ul>
 		</div>
 </body>

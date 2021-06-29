@@ -12,11 +12,20 @@ select * from `order`;
 
 select * from `member`;
 
+select * from notice n join employee e on n.emp_number = e.emp_number;
+
+select * from vw_myqna;
+
+select * from vw_myReview;
+
+select * from review;
+
 select emp_number, emp_name, authority_code, emp_id, email, tel_number from employee;
 
 select * from product;
 select * from productpost;
 select * from image;
+select * from employee;
 
 insert into image (product_code, image)
 	values (11112, "11112.jpg")
@@ -106,3 +115,17 @@ insert into brand (brand_code, brand_name, brand_eng_name) values (7, "뉴발란
 update brand set brand_name = "뉴발", brand_eng_name ="newBal" where brand_code = 7;
 
 delete from brand where brand_code = 7;
+
+select * from orderoption;
+
+select * from orderoption where product_code = 77777 and style_code = 1 and `size` = 270 and color= "111";
+
+update orderOption set stock = stock + -5000, color= "111" where product_code = 77777 and style_code = 1 and `size` = 270;
+
+update orderOption set style_code = 1, `size` = 270, stock = stock + 500, color= "111" where product_code = 77777;
+
+update orderOption
+		   set stock = 100
+		 where product_code = 77777 and style_code = 1 and `size` = 270 and color= "111";
+			
+delete from orderoption where product_code = 77777 and style_code = 1 and `size` = 270 and color= "111";

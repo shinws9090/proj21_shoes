@@ -21,6 +21,11 @@ public class OrderOptionServiceImpl implements OrderOptionService {
 	}
 
 	@Override
+	public List<OrderOption> orderOptionByAllList() {
+		return mapper.orderOptionByAllList();
+	}
+
+	@Override
 	public int insertOrderOption(OrderOption orderOption) {
 		return mapper.insertOrderOption(orderOption);
 	}
@@ -28,6 +33,11 @@ public class OrderOptionServiceImpl implements OrderOptionService {
 	@Override
 	public int updateOrderOption(OrderOption orderOption) {
 		return mapper.updateOrderOption(orderOption);
+	}
+
+	@Override
+	public int deleteOrderOption(OrderOption orderOption) {
+		return mapper.deleteOrderOption(orderOption);
 	}
 
 }

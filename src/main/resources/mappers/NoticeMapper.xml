@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="proj21_shoes.mapper.NoticeMapper">
+	<resultMap type="Notice" id="noticeList">			
+		<id column="board_code" property="boardCode" />
+		<association property="employee" resultMap="ResEmployee" />
+	</resultMap>
+	
+	<resultMap type="Employee" id="ResEmployee">
+		<association property="authority" javaType="Authority"/>
+	</resultMap>
+	
+	
+	<select id="selectNoticebyAllList" resultMap="noticeList">
+		select * from notice n join employee e on n.emp_number = e.emp_number
+	</select>
+	
+</mapper>

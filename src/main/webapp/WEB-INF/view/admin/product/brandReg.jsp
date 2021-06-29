@@ -21,9 +21,9 @@ $(function(){
 	$('#cancel').on("click", function(e) {
 		location.href="${contextPath}/admin/product/brandReg";
 	});
-		
+	
 	var jsonData = JSON.parse('${brandList}');
-	for(var i = 0; i < jsonData.length; i++) {		
+	for(var i = jsonData.length -1; i >= 0; i--) {
 		var sCont = "";
 			sCont += "<tr>";
 			sCont += "<td>" + jsonData[i].brandCode + "</td>";

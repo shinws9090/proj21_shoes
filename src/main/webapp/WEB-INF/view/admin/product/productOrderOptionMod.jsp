@@ -19,11 +19,7 @@
 <script type="text/javascript">
 $(function(){
 var contextPath = "<%=request.getContextPath()%>";
-	
-	$('#cancel').on("click", function(e) {
-		history.back();
-	});
-		
+				
 	function getParameterByName(name) {
 	    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 	    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -51,20 +47,32 @@ var contextPath = "<%=request.getContextPath()%>";
 			$("#load:last-child").append(sCont);
 		});
 	
-	var styleCode = getParameterByName("productCode");
+ 	var styleCode = getParameterByName("styleCode");
 	var color = getParameterByName("color");
 	var size = getParameterByName("size");
-	var stock = getParameterByName("stock");
+	var nowStock = getParameterByName("nowStock");
+	
 	document.getElementById("styleCode").value = styleCode;
 	document.getElementById("color").value = color;
 	document.getElementById("size").value = size;
-	document.getElementById("stock").value = stock;
+	document.getElementById("nowStock").value = nowStock;
 	
 	$("#sel_productCode").text(productCode);
 	$("#sel_styleCode").text(styleCode);
 	$("#sel_color").text(color);
 	$("#sel_size").text(size);
-	$("#sel_stock").text(stock);
+	$("#sel_stock").text(nowStock);
+	
+	$('#cancel').on("click", function(e) {
+		location.href="${contextPath}/admin/product/productOrderOption?productCode=" + productCode
+	});
+	
+	$('#delete_btn').on("click", function(e) {
+		if(!confirm("정말 삭제하시겠습니까?")) {
+		} else {			
+			location.href="${contextPath}/admin/product/productOrderOptionDel?productCode=" + productCode + "&styleCode=" + styleCode + "&color=" + color + "&size=" + size;
+		}
+	});
 	
 });
 </script>
@@ -123,7 +131,6 @@ var contextPath = "<%=request.getContextPath()%>";
 								<td>색상</td>
 								<td>사이즈</td>
 								<td>현재재고</td>
-								<td>재고삭제</td>
 							</tr>
 														
 							<tbody>
@@ -133,7 +140,6 @@ var contextPath = "<%=request.getContextPath()%>";
 									<td id="sel_color"></td>
 									<td id="sel_size"></td>
 									<td id="sel_stock"></td>
-									<td><button id="delete_btn" type="button">삭제</button></td>
 								</tr>
 							</tbody>
 											
@@ -187,13 +193,13 @@ var contextPath = "<%=request.getContextPath()%>";
 										<label>현재재고</label>
 									</div>
 									<div class="form_section_content">
-										<input name="stock" id="stock" value="" readonly>
+										<input name="nowStock" id="nowStock" value="" readonly>
 									</div>
 								</div>
 								
 								<div class="form_section">
 									<div class="form_section_title">
-										<label>재고증감량</label>
+										<label>변경재고</label>
 									</div>
 									<div class="form_section_content">
 										<input name="stock" id="stock" value="">
@@ -203,6 +209,7 @@ var contextPath = "<%=request.getContextPath()%>";
 								<div class="btn_section">
 									<button type="submit" id= "new">수정</button>
 									<button type="button" id="cancel">취소</button>
+									<button type="button" id= "delete_btn">재고삭제</button>
 								</div>
 			
 							</form>

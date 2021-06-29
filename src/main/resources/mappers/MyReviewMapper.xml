@@ -103,6 +103,9 @@ from vw_myReview where order_code =#{orderCode};
 	member_id =#{memberId} and board_code is null;
     </select>
 
+	<select id="selectReviewbyAllList" resultMap="resReview">
+		select * from vw_myReview
+	</select>
 	
 </mapper>
 

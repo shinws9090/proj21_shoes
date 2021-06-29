@@ -12,8 +12,10 @@ import proj21_shoes.commend.MyQnaViewCommand;
 import proj21_shoes.commend.MyReviewCommend;
 import proj21_shoes.commend.NormalQnARegistCommand;
 import proj21_shoes.commend.Pagination;
+import proj21_shoes.dto.ReView;
 @Service
 public interface MyReviewService {
+	public List<ReView> selectReviewbyAllList();
 			
 	MyReviewCommend selectMyReviewByBoardCode(int boardCode);				
 

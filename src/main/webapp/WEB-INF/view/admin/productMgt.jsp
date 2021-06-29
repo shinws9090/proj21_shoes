@@ -28,7 +28,8 @@
 			var dataLength = json.length;
 			if (dataLength >= 1) {
 				var sCont = "";
-				for (i = 0; i < dataLength; i++) {
+				var i = dataLength -1
+				for (i; i >= 0; i--) {
 					sCont += "<tr>";
 					sCont += "<td>" + json[i].productCode + "</td>";
 					sCont += "<td>" + json[i].productName + "</a></td>";

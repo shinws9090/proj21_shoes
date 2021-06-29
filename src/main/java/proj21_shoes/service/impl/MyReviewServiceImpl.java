@@ -9,17 +9,22 @@ import org.springframework.stereotype.Service;
 import proj21_shoes.commend.MyOrderCommend;
 import proj21_shoes.commend.MyReviewCommend;
 import proj21_shoes.commend.Pagination;
+import proj21_shoes.dto.ReView;
 import proj21_shoes.mapper.MyReviewMapper;
 import proj21_shoes.service.MyReviewService;
+
 @Service
 public class MyReviewServiceImpl implements MyReviewService {
-	
+
 	@Autowired
 	private MyReviewMapper mapper;
-
-
 	
-
+	@Override
+	public List<ReView> selectReviewbyAllList() {
+		// TODO Auto-generated method stub
+		return mapper.selectReviewbyAllList();
+	}
+	
 	@Override
 	public List<Map<String, Object>> SelectMyReviewList(String memberId, Pagination pagination) throws Exception {
 		return mapper.SelectMyReviewList(memberId, pagination.getPageSearch(), pagination.getCntPerPage());
@@ -27,7 +32,7 @@ public class MyReviewServiceImpl implements MyReviewService {
 
 	@Override
 	public int MyReviewCount(String memberId) throws Exception {
-		 return mapper.MyReviewCount(memberId);
+		return mapper.MyReviewCount(memberId);
 
 	}
 
@@ -41,10 +46,6 @@ public class MyReviewServiceImpl implements MyReviewService {
 		return mapper.selectMyReviewByOrderCode(orderCode);
 	}
 
-	
-
-
-
 	@Override
 	public List<Map<String, Object>> SelectReviewPlzList(String memberId, Pagination pagination) throws Exception {
 		return mapper.SelectReviewPlzList(memberId, pagination.getPageSearch(), pagination.getCntPerPage());
@@ -54,7 +55,5 @@ public class MyReviewServiceImpl implements MyReviewService {
 	public int MyReviewPlzListCount(String memberId) throws Exception {
 		return mapper.MyReviewPlzListCount(memberId);
 	}
-
-	
 
 }

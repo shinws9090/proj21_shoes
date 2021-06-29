@@ -49,8 +49,6 @@ $(function() {
 					
 					sCont +='<tr>';
 					sCont +='<td><a href="${contextPath}/ProductQnADetail/'+json[i].boardCode+'">'+json[i].productName+'</a></td>';	<!-- 惑前疙 -->
-					/* sCont +='<td><a href="${contextPath}/ProductQnADetail/'+json[i].boardCode+'">'; */
-					/* sCont +='<img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/'+json[i].productMainImage+'"></a></td>'; */		
 					sCont +='<td><a href="${contextPath}/ProductQnADetail/'+json[i].boardCode+'">'+json[i].title+'</a></td>';	<!-- 力格 -->
 					sCont +='<td>'+json[i].registDate +'</td>';	<!-- 累己老 -->
 					sCont +='<td>'+json[i].resOX +'</td>';

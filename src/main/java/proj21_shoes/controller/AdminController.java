@@ -25,18 +25,24 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.sf.json.JSONArray;
+import proj21_shoes.commend.MyQnaViewCommand;
 import proj21_shoes.dto.Brand;
 import proj21_shoes.dto.Category;
 import proj21_shoes.dto.Employee;
 import proj21_shoes.dto.Image;
+import proj21_shoes.dto.Notice;
 import proj21_shoes.dto.OrderOption;
 import proj21_shoes.dto.Product;
 import proj21_shoes.dto.ProductPost;
+import proj21_shoes.dto.ReView;
 import proj21_shoes.service.BrandService;
 import proj21_shoes.service.CategoryService;
 import proj21_shoes.service.EmployeeService;
 import proj21_shoes.service.GetMemberDetailListService;
 import proj21_shoes.service.ImageService;
+import proj21_shoes.service.MyQnaService;
+import proj21_shoes.service.MyReviewService;
+import proj21_shoes.service.NoticeService;
 import proj21_shoes.service.OrderOptionService;
 import proj21_shoes.service.ProductPostService;
 import proj21_shoes.service.ProductService;
@@ -69,6 +75,15 @@ public class AdminController {
 	@Autowired
 	private GetMemberDetailListService memListService;
 
+	@Autowired
+	private MyQnaService myQnaService;
+
+	@Autowired
+	private NoticeService noticeService;
+
+	@Autowired
+	private MyReviewService myReviewService;
+
 	@RequestMapping("/admin/adminMain") // 관리자메인 화면
 	public String Admin() {
 		logger.info("관리자 페이지 이동");
@@ -89,19 +104,6 @@ public class AdminController {
 		return mav;
 	}
 
-	@RequestMapping("/admin/productPostMgt") // 제품등록관리 화면
-	public ModelAndView productPostList() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("admin/productPostMgt");
-		return mav;
-	}
-
-	/*
-	 * @RequestMapping("/viewProductReg") // 제품등록 화면 public ModelAndView
-	 * productReg() { ModelAndView mav = new ModelAndView();
-	 * mav.setViewName("/admin/product/productReg"); return mav; }
-	 */
-
 	@RequestMapping("/admin/productDetailMgt") // 제품상세 화면
 	public ModelAndView productDetail(@RequestParam(value = "productCode") long productCode) {
 		ModelAndView mav = new ModelAndView();
@@ -115,6 +117,15 @@ public class AdminController {
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("admin/orderMgt");
+
+		return mav;
+	}
+
+	@RequestMapping("/admin/boardMgt") // 주문관리 화면
+	public ModelAndView boardList() {
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("admin/boardMgt");
 
 		return mav;
 	}
@@ -205,50 +216,6 @@ public class AdminController {
 		model.addAttribute("productList", JSONArray.fromObject(productList));
 
 	}
-
-//	@PostMapping("/admin/product/productPostReg")
-//	@Transactional
-//	public String postProductPostRegister(MultipartHttpServletRequest request, MultipartFile file, Model model)
-//			throws IOException, Exception {
-//		System.out.println("상품판매글등록실행");
-//
-//		ProductPost productpost = new ProductPost();
-//		productpost.setProductCode(Integer.parseInt(request.getParameter("productCode")));
-//		productpost.setContent("content");
-//
-//		String pathMainImage = request.getSession().getServletContext().getRealPath("/") + "images/";
-//		MultipartFile mf = request.getFile("productMainImage");
-//		UUID uuid = UUID.randomUUID();
-//		String savedName = uuid.toString() + "_" + mf.getOriginalFilename();
-//		File savedFile = new File(pathMainImage + savedName);
-//		mf.transferTo(savedFile);
-//		productpost.setProductMainImage(savedName);
-//
-//		System.out.println(productpost);
-//		productPostService.insertProductPost(productpost);
-//
-//		System.out.println("메인이미지 등록");
-//
-//		Image image = new Image();
-//		image.setProductCode(Integer.parseInt(request.getParameter("productCode")));
-//
-//		String imageFolder = request.getParameter("productCode");
-//		System.out.println("imageFolder : " + imageFolder);
-//
-//		String pathImages = request.getSession().getServletContext().getRealPath("/") + "images/" + imageFolder + "/";
-//		System.out.println("pathImages : " + pathImages);
-//
-//		MultipartFile mfs = request.getFile("images");
-//		String savedNames = uuid.toString() + "_" + mfs.getOriginalFilename();
-//		File savedFiles = new File(pathImages + savedNames);
-//		mfs.transferTo(savedFiles);
-//		image.setImage(savedNames);
-//
-//		System.out.println(image);
-//		imageService.insertImage(image);
-//
-//		return "redirect:/admin/productPostMgt";
-//	}
 
 	@GetMapping("/admin/product/productMod")
 	public void productModify(@RequestParam(value = "productCode") int productCode, Model model) {
@@ -385,15 +352,6 @@ public class AdminController {
 		List<OrderOption> orderOptionListByProductCode = orderOptionService.orderOptionByProductCode(productCode);
 		model.addAttribute("orderOptionListByProductCode", JSONArray.fromObject(orderOptionListByProductCode));
 
-		List<Brand> brandList = brandService.brandList();
-		model.addAttribute("brandList", JSONArray.fromObject(brandList));
-
-		List<Category> categoryList = categoryService.categoryList();
-		model.addAttribute("categoryList", JSONArray.fromObject(categoryList));
-
-		List<Employee> employeeList = employeeService.employeeList();
-		model.addAttribute("employeeList", JSONArray.fromObject(employeeList));
-
 	}
 
 	@PostMapping("/admin/product/productOrderOption")
@@ -411,7 +369,7 @@ public class AdminController {
 		return "redirect:/admin/product/productOrderOption?productCode="
 				+ Integer.parseInt(request.getParameter("productCode"));
 	}
-	
+
 	@GetMapping("/admin/product/productOrderOptionMod")
 	public void productOrderOptionModify(@RequestParam(value = "productCode") int productCode, Model model) {
 		Product products = productService.productByCode(productCode);
@@ -419,31 +377,35 @@ public class AdminController {
 
 		List<OrderOption> orderOptionListByProductCode = orderOptionService.orderOptionByProductCode(productCode);
 		model.addAttribute("orderOptionListByProductCode", JSONArray.fromObject(orderOptionListByProductCode));
-
-		List<Brand> brandList = brandService.brandList();
-		model.addAttribute("brandList", JSONArray.fromObject(brandList));
-
-		List<Category> categoryList = categoryService.categoryList();
-		model.addAttribute("categoryList", JSONArray.fromObject(categoryList));
-
-		List<Employee> employeeList = employeeService.employeeList();
-		model.addAttribute("employeeList", JSONArray.fromObject(employeeList));
-
 	}
 
 	@PostMapping("/admin/product/productOrderOptionMod")
 	public String postProductOrderOptionModify(HttpServletRequest request) {
 
 		OrderOption orderOption = new OrderOption();
-
 		orderOption.setProductCode(Integer.parseInt(request.getParameter("productCode")));
 		orderOption.setStyleCode(Integer.parseInt(request.getParameter("styleCode")));
 		orderOption.setSize(Integer.parseInt(request.getParameter("size")));
 		orderOption.setStock(Integer.parseInt(request.getParameter("stock")));
 		orderOption.setColor(request.getParameter("color"));
-		orderOptionService.insertOrderOption(orderOption);
+		orderOptionService.updateOrderOption(orderOption);
 
-		return "redirect:/admin/product/productOrderOptionMod?productCode="
+		return "redirect:/admin/product/productOrderOption?productCode="
+				+ Integer.parseInt(request.getParameter("productCode"));
+	}
+
+	@GetMapping("/admin/product/productOrderOptionDel")
+	public String productOrderOptionDelete(HttpServletRequest request) {
+		
+		OrderOption orderOption = new OrderOption();
+		orderOption.setProductCode(Integer.parseInt(request.getParameter("productCode")));
+		orderOption.setStyleCode(Integer.parseInt(request.getParameter("styleCode")));
+		orderOption.setSize(Integer.parseInt(request.getParameter("size")));
+		orderOption.setColor(request.getParameter("color"));
+
+		orderOptionService.deleteOrderOption(orderOption);
+		
+		return "redirect:/admin/product/productOrderOption?productCode="
 				+ Integer.parseInt(request.getParameter("productCode"));
 	}
 
@@ -497,7 +459,7 @@ public class AdminController {
 		}
 		return "redirect:/admin/product/brandReg";
 	}
-	
+
 	@GetMapping("/admin/product/categoryReg")
 	public void getCategoryRegister(Model model) {
 		List<Category> categoryList = categoryService.categoryList();
@@ -547,4 +509,31 @@ public class AdminController {
 		return "redirect:/admin/product/categoryReg";
 	}
 
+	// 게시판 관리
+	@GetMapping("/admin/board/qna")
+	public void myQnaBoardList(Model model) {
+
+		List<MyQnaViewCommand> qnaList = myQnaService.selectQnAbyAll();
+		model.addAttribute("qnaList", JSONArray.fromObject(qnaList));
+	}
+
+	@GetMapping("/admin/board/notice")
+	public void noticeBoardList(Model model) {
+
+		List<Notice> noticeList = noticeService.selectNoticebyAllList();
+		model.addAttribute("noticeList", JSONArray.fromObject(noticeList));
+	}
+
+	@GetMapping("/admin/board/mainNotice")
+	public void noticeBoardMain(Model model) {
+		List<Notice> noticeList = noticeService.selectNoticebyAllList();
+		model.addAttribute("noticeList", JSONArray.fromObject(noticeList));
+	}
+
+	@GetMapping("/admin/board/review")
+	public void reviewBoardList(Model model) {
+
+		List<ReView> reviewList = myReviewService.selectReviewbyAllList();
+		model.addAttribute("reviewList", JSONArray.fromObject(reviewList));
+	}
 }
