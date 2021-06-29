@@ -102,9 +102,7 @@
 		</c:if>
 	</header>
 	<!-- end header -->
-	<div id="myPage">
-	<section id ="maPage">
-	
+
 	
 			<c:if test="${!empty authInfo}">
 			
@@ -130,92 +128,159 @@
 				</article>
 			
 	
-			<div id="myData_modify">
-			
-			<h4>회원정보 변경</h4>
+	<div class="step2">
+	<div id="signUpForm"></div>
+	<section id ="signUpForm">
+
+		<h3 style="text-align: center;">회원정보 변경</h3> 
+	
+	<div id="insertForm">
 			<form:form action="/myPage/modify/${member.memberId }" modelAttribute="memberDetailUpdateCommend"><!-- 보내는거? -->
-				<table class="tbl_myData" border="1">
+				<table id ="insertTable">
 			<tr>
-				<td id="myData_left_td"><label for="memberId">회원아이디</label></td>
-				<td><form:input path="memberId"  id="memberId" readonly="true" value="${member.memberId }" /></td>				
+			
+				<td><p>회원 아이디 :</p></td>
+				<td id="td_right">
+				<label for="memberId">
+				<form:input path="memberId"  id="memberId" readonly="true" value="${member.memberId }" />
+				</label>
+				</td>				
 			</tr>
 			
 		
 			<tr>
-					<td id="myData_left_td"><label for="confirmPassword"></label>기존비밀번호 확인</td>		
-					<td><form:password id="confirmPassword" path="confirmPassword" placeholder="기존 비밀번호 입력" /><form:errors path="confirmPassword" /></td>
+					<td><p>기존비밀번호 확인 :</p></td>
+					<td id="td_right">
+					<label for="confirmPassword">	
+					<form:password id="confirmPassword" path="confirmPassword" placeholder="기존 비밀번호 입력" />
+					<form:errors path="confirmPassword" />
+					</label>
+					</td>	
 			</tr>
 			
 		 	<tr>
-				<td id="myData_left_td"><label for="memberPwd"></label>변경할비밀번호</td>		
-				<td><form:password id="memberPwd" path="memberPwd" placeholder="변경할 비밀번호 입력" /></td>
+				<td><p>변경할비밀번호 :</p></td>
+			
+				<td id="td_right">
+				<label for="memberPwd">
+				<form:password id="memberPwd" path="memberPwd" placeholder="변경할 비밀번호 입력" />
+				</label>
+				</td>
+				
 			</tr>
 			
 			 <tr>
-					<td id="myData_left_td"><label for="memberName"></label> 회원이름</td>		
-				<td><form:input path="memberName" id="memberName" value="${member.memberName }"/></td>
+					<td><a>회원 이름 :</a></td>
+					<td id="td_right">
+					<label for="memberName">		
+				<form:input path="memberName" id="memberName" value="${member.memberName }"/>
+				</label>
+				</td>
 			</tr>
 			
 		
 			<%-- 	${member.gender }	 --%>
 	
 			<tr >
-					<td id="myData_left_td"><label for="gender"></label>성별</td>
-					<td><input type="radio" name="gender" value="false" checked>남
-					<input type="radio" name="gender" value="true" checked>여</td>
 			
+					<td><a>성별 :</a></td>
+					<td id="td_right">
+					<label for="gender">
+					<input type="radio" name="gender" value="false" checked>남
+					<input type="radio" name="gender" value="true" checked>여
+					</label>
+					</td>
+					
 				
 				
 			</tr>
 			
 			<tr>
-				<td id="myData_left_td"><label for="birthday"></label>생년월일</td>		
-				<td><form:input type="date" path="birthday" id="birthday" value="${member.birthday }"/></td>
-			</tr>
-			<tr>
-					<td id="myData_left_td"><label for="email"></label>이메일</td>		
-				<td><form:input type="email" path="email"  id="email" value="${member.email }"/><form:errors path="email" /></td>
-			</tr>
-			<tr>
-				<td id="myData_left_td"><label for="tel"></label>연락처</td>		
-				<td><form:input path="tel" id="tel" value="${member.tel }"/></td>
-			</tr>
-			<tr>
-				<td id="myData_left_td"><label for="zipCode"></label>우편번호</td>		
-				<td><form:input type="test" path="zipCode" id="zipCode" onclick="testDaumPostcode()" value="${member.zipCode }" /><form:errors path="zipCode" /></td>
 				
+				<td><a>생년월일</a></td> 
+				<td id="td_right">
+				<label for="birthday">		
+				<form:input type="date" path="birthday" id="birthday" value="${member.birthday }"/>
+				</label>
+				</td>
+			
 			</tr>
+			<tr>
+			
+				<td><a>이메일</a></td>
+				<td id="td_right">
+				<label for="email">	
+				<form:input type="email" path="email"  id="email" value="${member.email }"/><form:errors path="email" />
+				</label>
+				</td>
+			</tr>
+			<tr>
+			<td><a>연락처</a></td>
+				<td id="td_right">
+				<label for="tel">	
+				<form:input path="tel" id="tel" value="${member.tel }"/>
+				</label>
+				</td>
+			</tr>
+			
+			<tr>
+				
+				<td><a>우편번호</a></td>
+				
+				<td id="td_right">
+				<label for="zipCode">	
+				<form:input type="test" path="zipCode" id="zipCode" onclick="testDaumPostcode()" value="${member.zipCode }" /><form:errors path="zipCode" />
+				</label>
+				</td>
+			</tr>
+			
 			<tr >
-					<td id="myData_left_td"><label for="address"></label>주소</td>		
-				<td><form:input type="text" id="address" path="address" readonly="true" value="${member.address }"/><form:errors path="address"/></td>
+			<td><a>주소</a></td>
+			
+				<td id="td_right">
+				<label for="address">	
+				<form:input type="text" id="address" path="address" readonly="true" value="${member.address }"/><form:errors path="address"/>
+				</label>
+				</td>
 			</tr>
 			<tr>
-				<td id="myData_left_td"><label for="detailAddress"></label>상세주소</td>		
-				<td><form:input path="detailAddress" id="detail_address" value="${member.detailAddress }" /></td>
+			<td><a>상세주소</a></td>
+				<td id="td_right">
+				<label for="detailAddress">		
+				<form:input path="detailAddress" id="detail_address" value="${member.detailAddress }" />
+				</label>
+				</td>
 			
 			</tr> 
-			</table>
+		
 			
 					<article id="save_btn">
+					<tr>
+					<td>
 				 	<form action="/myPage/modify/${member.memberId }" method="post">
 							<input type="submit" value="저장" /><form:errors path="confirmPassword" />
 						</form>
+						</td>
+						</tr>
 					</article>
+					</table>
 
 			</form:form>
+			</div>
+			
 		</div>	
 
 
-			</c:if>
-
-	
-	
 	</section>
 </div>
 	
 	<section>
 
 	</section>
+			</c:if>
+
+	
+	
 
 	<!-- end our product -->
 	<footer>
