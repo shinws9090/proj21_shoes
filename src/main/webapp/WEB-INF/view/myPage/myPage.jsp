@@ -78,7 +78,6 @@
 				
 				
 				</article>
-				
 		
 				<!-- 최근 주문내역 테이블  -->
 				<h4>${authInfo.memberName }님의  최근 주문내역</h4>
@@ -146,10 +145,9 @@
 					</c:choose>
 				</tbody>
 				</table>
-		<br>
+		
 				</section>
-				<br>
-				<br>
+			
 					
 			
 				

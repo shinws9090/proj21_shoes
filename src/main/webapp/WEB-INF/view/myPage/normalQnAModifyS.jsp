@@ -83,11 +83,13 @@
 				
 			
 	
-				</section>
 		
 				
 			</c:if>
+				</section>
 
+	<br>
+	<br>
 	<br>
 	
 
