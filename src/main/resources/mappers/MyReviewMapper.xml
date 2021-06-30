@@ -41,20 +41,20 @@
 	
 	<!-- 나의후기 상세보기 -->
 	<select id="selectMyReviewByBoardCode" resultMap="resReview">
-	select board_code, order_code, title, content, regist_date, member_code, member_id, 
+	select distinct board_code, order_code, title, content, regist_date, member_code, member_id, 
 	order_date, payment_amount, payment_state, delivery_code, buy_confirm_state, product_code, 
 	style_code, `size`, order_count, color, product_name, brand_code, gender, product_category_code,
-	 material, season, made_date, sell_Price, brand_name, product_main_image, image_code, image 
+	 material, season, made_date, sell_Price, brand_name, product_main_image,<!--  image_code, --> image 
 from vw_myReview  where board_code=#{boardCode};
 	</select>
 	
 	 <!-- 나의 작성한 후기내역 페이징  -->	 
 	<select id="SelectMyReviewList" resultMap="resReview">
 	select R1.* FROM(
-	select board_code, order_code, title, content, regist_date, member_code, member_id, 
+	select distinct  board_code, order_code, title, content, regist_date, member_code, member_id, 
 	order_date, payment_amount, payment_state, delivery_code, buy_confirm_state, product_code, 
 	style_code, `size`, order_count, color, product_name, brand_code, gender, product_category_code,
-	 material, season, made_date, sell_Price, brand_name, product_main_image, image_code, image 
+	 material, season, made_date, sell_Price, brand_name, product_main_image, <!-- image_code, --> image 
 from vw_myReview  where member_id =#{memberId} and board_code is not null
  order by regist_date desc
       ) R1
@@ -72,23 +72,23 @@ from vw_myReview  where member_id =#{memberId} and board_code is not null
     
 	 <!-- 리뷰확인. 주문코드로  -->
 	 <select id="selectMyReviewByOrderCode" resultMap="resReview">
-	 select board_code, order_code, title, content, regist_date, 
+	 select distinct  board_code, order_code, title, content, regist_date, 
 member_code, member_id, order_date, payment_amount, payment_state,
 delivery_code, buy_confirm_state, product_code, style_code, `size`,
 order_count, color, product_name, brand_code, gender, product_category_code,
 category, material, season, made_date, <!-- costPrice, --> sell_Price, brand_name,
-brand_eng_name, product_main_image, image_code, image 
+brand_eng_name, product_main_image, <!-- image_code, --> image 
 from vw_myReview where order_code =#{orderCode};
 	 </select>
 
  <!-- 예진_나의 미작성한 후기내역 페이징   :구매확정한거만 후기작성가능 -->	 
 	<select id="SelectReviewPlzList" resultMap="resReview">
 	select R1.* FROM(
-	select board_code, order_code, title, content, regist_date, member_code, member_id,
+	select distinct board_code, order_code, title, content, regist_date, member_code, member_id,
 	order_date, payment_amount, payment_state, delivery_code, buy_confirm_state, 
 	product_code, style_code, `size`, order_count, color, product_name, brand_code,
 	gender, product_category_code, category, material, season, made_date,
-	sell_Price, brand_name, brand_eng_name, product_main_image, image_code, image
+	sell_Price, brand_name, brand_eng_name, product_main_image,<!--  image_code, --> image
 	from vw_myReview  where member_id =#{memberId} and buy_confirm_state is true and board_code is null
  order by regist_date desc
       ) R1
@@ -100,7 +100,7 @@ from vw_myReview where order_code =#{orderCode};
     <select id="MyReviewPlzListCount" resultType="int">
         select count(*) 
 	from vw_myReview   where 
-	member_id =#{memberId} and board_code is null;
+	member_id =#{memberId} and buy_confirm_state is true and board_code is null;
     </select>
 
 

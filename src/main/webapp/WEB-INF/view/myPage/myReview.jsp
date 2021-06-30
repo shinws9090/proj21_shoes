@@ -88,6 +88,7 @@
 				<thead>
 					<tr>
 						 <td>후기글번호</td> 
+						 <td>주문번호</td> 
 						<!-- <td>상품사진</td> -->
 						<td>상품명(상품이미지)</td>
 						<td>후기제목</td>
@@ -101,6 +102,7 @@
 					<c:forEach var="myReviewList" items="${myReviewList}">
 					<tr>
 						 <td><a href="${contextPath}/myPage/myReview/${member.memberId }/${myReviewList.boardCode}">${myReviewList.boardCode}</a> 
+						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myReviewList.orderCode}">${myReviewList.orderCode }<br>[상세보기]</a></td>
 						<td><a href="${contextPath}/myPage/myReview/myReviewDetail/${member.memberId }/${myReviewList.boardCode}"><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myReviewList.productMainImage }"></a>			
 						<br>
 						<a href="${contextPath}/productDetail/${myReviewList.productCode}">${myReviewList.productName }<br>[상품 주문페이지 가기]</a>

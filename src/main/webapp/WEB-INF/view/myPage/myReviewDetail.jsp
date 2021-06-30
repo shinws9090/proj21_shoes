@@ -87,28 +87,58 @@
 				</table> --%>
 					<br>
 				<table class="tbl_type" border="1">
-				<tr><td>첨부사진</td></tr>
-				<tr><td><img style="max-width:20%; max-height: 20%; "  alt="" src="${contextPath}/images/${myReviewDetail.image }"></td></tr>
-				<tr>	
-				<td>제목 </td>
+				<tr>
+					<td><a>상품명 : </a></td>
+					<td>
+						<input  type="text"   value="${myReviewDetail.productName }" readonly="true" size="100"/>  
+					</td>
+			
 				</tr>
 				<tr>
-					<td> ${myReviewDetail.title }   (${myReviewDetail.registDate })</td>	
-								
+					<td><a>회원 아이디 : </a></td>
+					<td>
+						<input  type="text"   value="${member.memberId }" readonly="true" size="100"/>  
+					</td>
+			
+				</tr>
+				<tr>
+					<td><a>회원 이름:</a></td> 
+					<td>
+						<input value="${member.memberName }" readonly="true" size="100"/>  
+					</td>
+			
+				</tr>
+				<tr>
+					<td>첨부사진 : </td>
+						<td>
+							<img style="max-width:20%; max-height: 20%; "  alt="" src="${contextPath}/images/${myReviewDetail.image }">
+						</td>
+				</tr>
+				
+				
+				<tr>	
+				<td>후기제목 :  </td>
+				
+				<td>
+					<input type="text" size="100" readonly="true" value=" ${myReviewDetail.title }    (${myReviewDetail.registDate })"/>  
+					</td>
 				</tr>
 			<tr>
-			<td>내용</td>
-			</tr>
-				<tr>
- 			<td> ${myReviewDetail.content }</td>		<!-- 내용 -->
-				
-				</tr>
+			<td>후기내용</td>
+			<td style="height: 200px">
+ 			<input hidden="hidden"/>
+ 			<textarea rows="" cols=""size="100" style=" resize: none; width:98%; height:98%;" maxlength="1000"; " readonly="true">${myReviewDetail.content }</textarea>
+ 		</td>
+ 		</tr>
+			
 				
 				
 			</table>
-			<article id="myData_btn" >
-			<%--  <a href="${contextPath}/myPage/${myQnADetail.boardCode}/${member.memberId}/modify">수정하러가기(${myQnADetail.boardCode})</a>
-			  --%>
+			<article id="myData_btn" >	
+					<a href="${contextPath}/ProductReviewInsertAndUpdateForm/${member.memberId}/${myReviewDetail.productCode},update,${myReviewDetail.boardCode}">수정하러가기</a>
+					
+					<a href="${contextPath}/myProductReviewDelete/${myReviewDetail.boardCode},${productCode }/${member.memberId}">삭제</a>
+		
 			 </article>
 			
 				
