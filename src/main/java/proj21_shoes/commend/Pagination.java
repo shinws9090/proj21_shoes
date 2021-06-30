@@ -1,30 +1,41 @@
 package proj21_shoes.commend;
 
 public class Pagination {
-	private Criteria criteria;
+	private PageCriteria criteria;
 	// 현재페이지
 	private int currentPage;
+	
 	// 페이지당 출력할 페이지 갯수
 	private int cntPerPage;
+	
 	// 화면 하단 페이지 사이즈 1~10, 10~20 20~30 ...
 	private int pageSize;
+	
 	// 전체 데이터 개수
 	private int totalRecordCount;
+	
 	// 전체 페이지 개수
 	private int totalPageCount;
+	
 	// 페이지 리스트의 첫 페이지 번호
 	private int firstPage;
+	
 	// 페이지 리스트의 마지막 페이지 번호
 	private int lastPage;
+	
 	// SQL의 조건절에 사용되는 첫 RNUM
 	private int firstRecordIndex;
+	
 	// SQL의 조건절에 사용되는 마지막 RNUM
 	private int lastRecordIndex;
+	
 	// 이전 페이지 존재 여부
 	private boolean hasPreviousPage;
+	
 	// 다음 페이지 존재 여부
 	private boolean hasNextPage;
-	//출력하고자 하는 페이지 양
+	
+	// 출력하고자 하는 페이지 양
 	private int pageSearch;
 
 	public Pagination() {
@@ -103,16 +114,16 @@ public class Pagination {
 		}
 	}
 
-	public Criteria getCriteria() {
+	public PageCriteria getCriteria() {
 		return criteria;
 	}
 
-	public void setCriteria(Criteria criteria) {
+	public void setCriteria(PageCriteria criteria) {
 		this.criteria = criteria;
 	}
 
 	public int getPageSearch() {
-		pageSearch=(currentPage-1)*cntPerPage;
+		pageSearch = (currentPage - 1) * cntPerPage;
 		return pageSearch;
 	}
 
@@ -206,7 +217,10 @@ public class Pagination {
 
 	@Override
 	public String toString() {
-		return "Pagination [currentPage=" + currentPage + ", cntPerPage=" + cntPerPage + ", pageSize=" + pageSize + "]";
+		return String.format(
+				"Pagination [criteria=%s, currentPage=%s, cntPerPage=%s, pageSize=%s, totalRecordCount=%s, totalPageCount=%s, firstPage=%s, lastPage=%s, firstRecordIndex=%s, lastRecordIndex=%s, hasPreviousPage=%s, hasNextPage=%s, pageSearch=%s]",
+				criteria, currentPage, cntPerPage, pageSize, totalRecordCount, totalPageCount, firstPage, lastPage,
+				firstRecordIndex, lastRecordIndex, hasPreviousPage, hasNextPage, pageSearch);
 	}
-	
+
 }

@@ -75,6 +75,7 @@ select * from  product;
 select * from  productPost;
 select * from  image;
 select * from  orderOption;
+select * from notice;
 
 
 update orderOption set stock = stock + 900 where product_code = 11111 and style_code = 1 and `size` = 260;
@@ -129,3 +130,19 @@ update orderOption
 		 where product_code = 77777 and style_code = 1 and `size` = 270 and color= "111";
 			
 delete from orderoption where product_code = 77777 and style_code = 1 and `size` = 270 and color= "111";
+
+
+select * from notice n join employee e on n.emp_number = e.emp_number
+		where n.board_code = 1;
+
+select count(board_code) from notice;
+select * from notice n join employee e on n.emp_number = e.emp_number limit 10 offset 0;
+select count(board_code) from notice n
+		where n.board_code > 0;
+
+select * from notice WHERE title LIKE concat('%', "적립금", '%');
+
+insert into notice (emp_number, title, content, regist_date) values (101, "제목", "내용", now());
+
+select * from notice n join employee e on n.emp_number = e.emp_number where n.board_code = 1;
+select * from notice n join employee e on n.emp_number = e.emp_number where n.board_code = 1;
