@@ -195,7 +195,7 @@
 		<p>우편번호:</p></td>
 		<td id="td_right">
 			<label for="zipCode"> 
-			<form:input type="text" path="zipCode"  id="zipCode" placeholder="클릭해주세요 "   onclick="testDaumPostcode()"/>  
+			<form:input type="text" path="zipCode"  id="zipCode" readonly="true" placeholder="클릭해주세요 "   onclick="testDaumPostcode()"/>  
 			<form:errors path="zipCode" />
 			</label>
 		</td>
