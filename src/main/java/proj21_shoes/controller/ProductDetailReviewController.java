@@ -81,7 +81,7 @@ public class ProductDetailReviewController {
 
 	@PostMapping("/productReviewRegist")
 	public ModelAndView ProductReviewInsertAndUpdate(ReView reView, @RequestParam(value = "commend") String commend,
-			@RequestParam(value = "orderNum") int orderNum, @RequestParam(value = "productCode") int productCode,
+			@RequestParam(value = "orderNum") int orderNum,
 			HttpSession session, MultipartHttpServletRequest request) {
 		Member member = (Member) session.getAttribute("sessionMember");
 		if (member == null) {
@@ -137,7 +137,7 @@ public class ProductDetailReviewController {
 		}
 		// 파일 end
 
-		return new ModelAndView("redirect:/productDetail/" + productCode);
+		return new ModelAndView("redirect:/productDetail/" + reView.getProductCode());
 	}
 
 	@GetMapping("ProductReviewDelete/{boardCode},{productCode}")

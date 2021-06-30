@@ -7,6 +7,7 @@ public class ReView {					// 상품후기게시판
 
 	private int boardCode; 				// 	게시판코드
 	private Order orderCode; 			// 	주문코드
+	private int productCode;
 	private String title;				// 	제목
 	private String content;				// 	내용
 	private LocalDateTime registDate;	// 	등록일
@@ -14,6 +15,12 @@ public class ReView {					// 상품후기게시판
 	
 	
 	
+	public int getProductCode() {
+		return productCode;
+	}
+	public void setProductCode(int productCode) {
+		this.productCode = productCode;
+	}
 	public List<ReviewImage> getReviewImages() {
 		return reviewImages;
 	}

@@ -50,8 +50,8 @@
 	
 	
 	<insert id="productReviewInsert" parameterType="ReView">
-		insert into review(order_code, title, content, regist_date) 
-			values (#{orderCode.orderCode},#{title},#{content},now())
+		insert into review(order_code, product_code,title, content, regist_date) 
+			values (#{orderCode.orderCode},#{productCode},#{title},#{content},now())
 		<selectKey keyProperty="boardCode" resultType="int">
 			select last_insert_id()
 		</selectKey>
