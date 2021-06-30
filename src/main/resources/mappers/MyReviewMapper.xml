@@ -76,7 +76,7 @@ from vw_myReview  where member_id =#{memberId} and board_code is not null
 member_code, member_id, order_date, payment_amount, payment_state,
 delivery_code, buy_confirm_state, product_code, style_code, `size`,
 order_count, color, product_name, brand_code, gender, product_category_code,
-category, material, season, made_date, costPrice, sell_Price, brand_name,
+category, material, season, made_date, <!-- costPrice, --> sell_Price, brand_name,
 brand_eng_name, product_main_image, image_code, image 
 from vw_myReview where order_code =#{orderCode};
 	 </select>

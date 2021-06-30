@@ -4,7 +4,7 @@ and member_pwd =password('111111');
 
 
 SELECT * from memberDetail WHERE member_id = '1234';
-select * from qna
+select * from  `order` where member_code=111116;
  where member_code =(select member_code from member where member_id ='1234') ;
 
 select board_code, order_code, title, content, regist_date, member_code, member_id, order_date, payment_amount, payment_state, delivery_code, buy_confirm_state, product_code, style_code, `size`, order_count, color, product_name, brand_code, gender, product_category_code, material, season, made_date, sell_Price, brand_name, product_main_image, image_code, image 
