@@ -94,8 +94,9 @@ $(function() {
 </script>
 </head>
 <body>
-	<p> <a href="${contextPath}/ProductReviewInsertAndUpdateForm/${product.productCode},insert,0">리뷰 등록</a> </p>
-	<table>
+	<p align="right"> <a href="${contextPath}/ProductReviewInsertAndUpdateForm/${product.productCode},insert,0"
+			class="badge bg-light">리뷰 등록</a> </p>
+	<table class="table table-hover table-striped text-center">
 		<thead> 
 		<tr>
 			<td>상품코드</td>

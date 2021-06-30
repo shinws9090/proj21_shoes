@@ -92,9 +92,10 @@ $(function() {
 </script>
 </head>
 <body>
-	<p> <a href="${contextPath}/ProductQnAInsertAndUpdateForm/${product.productCode},insert,0">문의글 등록</a> </p>
-	<table>
-		<thead> 
+	<p align="right"> <a href="${contextPath}/ProductQnAInsertAndUpdateForm/${product.productCode},insert,0"
+	class="badge bg-light">문의글 등록</a> </p>
+	<table class="table table-hover table-striped text-center">
+		<thead > 
 		<tr>
 			<td>문의상품</td>
 			<!-- <td>상품사진</td> -->

@@ -20,17 +20,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import proj21_shoes.dto.Member;
 import proj21_shoes.dto.Order;
+import proj21_shoes.dto.Product;
 import proj21_shoes.dto.ReView;
 import proj21_shoes.dto.ReviewImage;
 import proj21_shoes.service.ProductReviewService;
+import proj21_shoes.service.ProductService;
 
 @RestController
 public class ProductDetailReviewController {
 
 	@Autowired
 	private ProductReviewService rService;
+	@Autowired
+	private ProductService service;
 
-	// 상품문의상세내역 페이지
 	@GetMapping("/ProductReviewDetail/{boardCode}")
 	public ModelAndView myProductReviewDetail(@PathVariable("boardCode") int boardCode, HttpSession session,
 			HttpServletResponse response) {
@@ -41,8 +44,11 @@ public class ProductDetailReviewController {
 			System.out.println("리스트 없");
 
 		}
+		Product product = service.productByCode(reView.getProductCode());
+		
 		ModelAndView mav = new ModelAndView("/product/ProductReviewDetail");
 		mav.addObject("reView", reView);
+		mav.addObject("product", product);
 		System.out.println(reView);
 
 		return mav;

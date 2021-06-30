@@ -14,7 +14,9 @@
 
 <!-- bootstrap -->
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-<link href="${contextPath}/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
+		integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
+		crossorigin="anonymous">
 <link href="${contextPath}/css/buttons.css" rel="stylesheet">
 <link rel="stylesheet" href="${contextPath}/css/reset.css">
 <!-- bootstrap end -->
@@ -23,7 +25,6 @@
 	href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/productDetail.css">
-<link >
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 	$(function() {
@@ -35,8 +36,10 @@
 		var contextPath = "${contextPath}"
 		/* tab기능 */
 		$(".tab-btn li").click(function() {
-			$(this).addClass("active");
 			$(this).siblings().removeClass("active");
+			$(".nav-link").removeClass("active");
+			$(this).addClass("active");
+			$(this).children().addClass("active");
 			var tab = $(this).attr("data-alt");
 			$(".tabs div").removeClass("active");
 			$(".tabs div").eq($(this).index()).addClass("active");
@@ -128,23 +131,23 @@ ${message}
 			</div>
 
 
-			<ul class="tab-btn">
-				<li class="active">상세정보</li>
-				<li>상품후기</li>
-				<li>상품문의</li>
+			<ul class="nav-tabs tab-btn">
+				<li class="nav-item active"><a class="nav-link active">상세정보</a></li>
+				<li class="nav-item "><a class="nav-link">상품후기</a></li>
+				<li class="nav-item "><a class="nav-link">상품문의</a></li>
 			</ul>
 
-			<div class="tabs">
-				<div class='product-content active'>
+			<div class="tab-content tabs">
+				<div class='tab-pane product-content active'>
 					<c:forEach var="image" items="${product.productPost.images}">
 					<img src="${contextPath}/images/${image.productCode}/${image.image}">
 					</c:forEach>
 					<p>상품설명 : ${product.productPost.content}</p>
 				</div>
-				<div class='product-review'>
+				<div class='tab-pane product-review'>
 					<jsp:include page="/WEB-INF/view/include/product_review.jsp" />
 				</div>
-				<div class='product-QnA'>
+				<div class='tab-pane product-QnA'>
 					<jsp:include page="/WEB-INF/view/include/product_QnA.jsp" />
 				</div>
 			</div>
