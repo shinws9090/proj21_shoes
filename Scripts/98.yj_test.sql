@@ -1,10 +1,21 @@
 desc memberdetail ;
 select  member_id,member_pwd from memberdetail where member_id ='1234'
 and member_pwd =password('111111');
+  select count(*) 
+	from vw_myReview   where 
+	member_id ='1234' and buy_confirm_state is true and board_code is null;
 
+select distinct
+board_code, order_code, title, content, regist_date, member_code, member_id,
+	order_date, payment_amount, payment_state, delivery_code, buy_confirm_state, 
+	product_code, style_code, `size`, order_count, color, product_name, brand_code,
+	gender, product_category_code, category, material, season, made_date,
+	sell_Price, brand_name, brand_eng_name, product_main_image, /*image_code,*/ image
+	from vw_myReview  where member_id ='1235'and board_code is not null and buy_confirm_state is true 
+ order by regist_date desc;
 
-SELECT * from memberDetail WHERE member_id = '1234';
-select * from  `order` where member_code=111116;
+SELECT * from member WHERE member_id = '1235';
+select * from  `order` where member_code=111117;
  where member_code =(select member_code from member where member_id ='1234') ;
 
 select board_code, order_code, title, content, regist_date, member_code, member_id, order_date, payment_amount, payment_state, delivery_code, buy_confirm_state, product_code, style_code, `size`, order_count, color, product_name, brand_code, gender, product_category_code, material, season, made_date, sell_Price, brand_name, product_main_image, image_code, image 
