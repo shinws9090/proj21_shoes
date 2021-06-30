@@ -10,6 +10,7 @@ import proj21_shoes.commend.ModifyMyNormalQnACommend;
 import proj21_shoes.commend.MyQnaViewCommand;
 import proj21_shoes.commend.NormalQnARegistCommand;
 import proj21_shoes.commend.Pagination;
+import proj21_shoes.commend.SearchCriteria;
 import proj21_shoes.mapper.MyQnaMapper;
 import proj21_shoes.service.MyQnaService;
 
@@ -65,6 +66,16 @@ public class MyQnaServiceImpl implements MyQnaService {
 	public int MyNmQnACount(String memberId) throws Exception {
 		return mapper.MyNmQnACount(memberId);
 
+	}
+
+	@Override
+	public List<MyQnaViewCommand> findAll(SearchCriteria scri) throws Exception {
+		return mapper.findAll(scri);
+	}
+
+	@Override
+	public int countInfoList(SearchCriteria scri) throws Exception {
+		return mapper.countInfoList(scri);
 	}
 
 }

@@ -28,7 +28,7 @@
 		    <div id="page-content-wrapper">
 			<jsp:include page="/WEB-INF/view/admin/include/boardMenu.jsp" />
 				<div class="container-fluid">
-					<table style="width: 80%; text-align: center">
+					<table style="width: 90%; text-align: center">
 						<thead>
 						<tr>
 							<td colspan="7" class="td_title"><h1 class="mt-4">공지사항</h1></td>
@@ -44,31 +44,30 @@
 							<c:forEach items="${noticeList}" var="noticeList">
 							<tr>
 								<td>${noticeList.boardCode}</td>
-								<td><a href="detail?boardCode=${noticeList.boardCode}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}"><c:out value="${noticeList.title}" /></a></td>
+								<td><a href="mainNoticeDetail?boardCode=${noticeList.boardCode}"><c:out value="${noticeList.title}" /></a></td>
 								<td>${noticeList.employee.empName}</td>
 								<td>${noticeList.registDate}</td>
 							</tr>
 							</c:forEach>
 						</tbody>
 					</table>
-					
 					<div>
-						<ul>
+						<ul class="pageNum">
 						    <c:if test="${pageMaker.prev}">
-						      <li id="page"><a href="notice${pageMaker.makeSearch(pageMaker.startPage - 1)}">[이전]</a></li>
+						      <li id="page"><a href="mainNotice${pageMaker.makeSearch(pageMaker.startPage - 1)}">[이전]</a></li>
 						    </c:if> 
 						
 						    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-						      <li id="page"><a href="notice${pageMaker.makeSearch(idx)}">[${idx}]</a></li>
+						      <li id="page"><a href="mainNotice${pageMaker.makeSearch(idx)}">[${idx}]</a></li>
 						    </c:forEach>
 						
 						    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-						      <li id="page"><a href="notice${pageMaker.makeSearch(pageMaker.endPage + 1)}">[다음]</a></li>
+						      <li id="page"><a href="mainNotice${pageMaker.makeSearch(pageMaker.endPage + 1)}">[다음]</a></li>
 						    </c:if> 
-						</ul>						
+						</ul>
+						
 						<div class="search">
 						    <select name="searchType">
-						      <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
 						      <option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
 						      <option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
 						      <option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
@@ -81,11 +80,11 @@
 						    <script  type="text/javascript">
 						      $(function(){
 						        $('#searchBtn').click(function() {
-						          self.location = "notice" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+						          self.location = "mainNotice" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
 						        });
 						      });   
 						    </script>
-						</div>
+						</div>						
 					</div>
 		        </div>
 		    </div>		    

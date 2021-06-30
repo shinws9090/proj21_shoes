@@ -93,9 +93,7 @@ from vw_myReview where order_code =#{orderCode};
  order by regist_date desc
       ) R1
       LIMIT #{pageSearch}, #{cntPerPage };
-	</select>
-	 
-    
+	</select>    
     
     <select id="MyReviewPlzListCount" resultType="int">
         select count(*) 
@@ -103,12 +101,32 @@ from vw_myReview where order_code =#{orderCode};
 	member_id =#{memberId} and buy_confirm_state is true and board_code is null;
     </select>
 
-
 	<select id="selectReviewbyAllList" resultMap="resReview">
 		select * from vw_myReview
 	</select>
 	
+	<select id="findAll" resultMap="resReview" resultType="SearchCriteria">
+		select * from vw_myReview
+		where board_code > 0
+		<include refid="search"></include>
+		order by board_code desc
+		limit #{pageStart}, #{perPageNum}
+	</select>
+	
+	<select id="countInfoList" parameterType="SearchCriteria" resultType="int" >
+		select count(board_code) from vw_myReview
+		where board_code > 0
+		<include refid="search"></include>
+	</select>
+	
+	<!-- 검색기능을 위한 동적SQL -->
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">AND title LIKE CONCAT('%',#{keyword},'%')</if>
+			<if test="searchType == 'c'.toString()">AND content LIKE CONCAT('%',#{keyword},'%')</if>
+			<if test="searchType == 'w'.toString()">AND member_id LIKE CONCAT('%',#{keyword},'%')</if>
+			<if test="searchType == 'tc'.toString()">AND (title LIKE CONCAT('%',#{keyword},'%')) or (content LIKE CONCAT('%',#{keyword},'%'))</if>
+		</if>
+	</sql>
+	
 </mapper>
-
-
-

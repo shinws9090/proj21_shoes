@@ -14,47 +14,62 @@
 		<result column="signUp_date" property="signUpDate" />								<!-- 가입일 -->
 		<association property="memberId" javaType="MemberDetail"/>							<!-- 회원Id  -->
 		<association property="gradeCode" javaType="Grade"/>								<!-- 회원 등급 -->
-	</resultMap> 
+	</resultMap>
 	
 	 
 	 
 	<select id="selectMemberAll"  resultMap="resMember">
-	select member_code, member_id, point, cumulative_buy_amount, grade_code, quit_state, signUp_date from member
+		select member_code, member_id, point, cumulative_buy_amount, grade_code, quit_state, signUp_date from member
 	</select>
 
 
 	<insert id="insertMember">
-	INSERT INTO member
-	(member_id, point, cumulative_buy_amount, grade_code, quit_state, signUp_date)
-	VALUES(#{memberId.memberId}, 1000, 0, 1, false, now());
+		INSERT INTO member
+		(member_id, point, cumulative_buy_amount, grade_code, quit_state, signUp_date)
+		VALUES(#{memberId.memberId}, 1000, 0, 1, false, now());
 	</insert>
 	
 	<select id="selectMemberByMCode" parameterType="int" resultMap="resMember">
 		select member_code, member_id, point, cumulative_buy_amount, grade_code, quit_state, signUp_date 
 		from member
-		where member_code = #{memberCode}
-
-	
-	
+		where member_code = #{memberCode}	
 	</select>
+	
 	<select id="selectMemberById" resultMap="resMember">
 		select member_code, member_id, point, cumulative_buy_amount, grade_code, quit_state, signUp_date 
 		from member
-		where member_id = #{memberId}
-
-	
-	
-	</select>
-
-	
+		where member_id = #{memberId}	
+	</select>	
 	
 	<update id="updateMember">
-	UPDATE member  SET quit_state=1
-    WHERE member_id=#{memberId};
-	
-	
+		UPDATE member  SET quit_state=1
+	    WHERE member_id=#{memberId};
 	</update>
 	
+	<select id="findAll" resultMap="resMember" resultType="SearchCriteria">
+		select m.member_code, m.member_id, m.`point`, m.cumulative_buy_amount, m.grade_code, m.quit_state, m.signUp_date, 
+		m2.member_id as m2_member_id, m2.member_pwd, m2.member_name, m2.gender, m2.birthday, m2.email, m2.tel, m2.zipCode, m2.address, m2.detail_address, 
+		g.grade_code as g_grade_code, g.grade from `member` m join memberdetail m2 on m.member_id = m2.member_id join grade g on m.grade_code = g.grade_code
+		where member_code > 0
+		<include refid="search"></include>
+		order by member_code desc
+		limit #{pageStart}, #{perPageNum}
+	</select>
+	
+	<select id="countInfoList" parameterType="SearchCriteria" resultType="int" >
+		select count(member_code) from `member`
+		where member_code > 0
+		<include refid="search"></include>
+	</select>
+	
+	<!-- 검색기능을 위한 동적SQL -->
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">AND m.member_id LIKE CONCAT('%',#{keyword},'%')</if>
+			<if test="searchType == 'c'.toString()">AND member_name LIKE CONCAT('%',#{keyword},'%')</if>
+			<if test="searchType == 'tc'.toString()">AND (m.member_id LIKE CONCAT('%',#{keyword},'%')) or (member_name LIKE CONCAT('%',#{keyword},'%'))</if>
+		</if>
+	</sql>
 </mapper>
 
 

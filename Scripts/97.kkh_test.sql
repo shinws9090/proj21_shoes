@@ -76,6 +76,21 @@ select * from  productPost;
 select * from  image;
 select * from  orderOption;
 select * from notice;
+select * from qna;
+select * from vw_myqna;
+
+select * from vw_myqna
+		where board_code > 0;
+
+select * from vw_myReview
+		where board_code > 0;
+
+select count(board_code) from vw_myReview
+		where board_code > 0;
+	
+select count(board_code) from vw_myqna q
+		where q.board_code > 0;
+
 
 
 update orderOption set stock = stock + 900 where product_code = 11111 and style_code = 1 and `size` = 260;
@@ -146,3 +161,27 @@ insert into notice (emp_number, title, content, regist_date) values (101, "ì œëª
 
 select * from notice n join employee e on n.emp_number = e.emp_number where n.board_code = 1;
 select * from notice n join employee e on n.emp_number = e.emp_number where n.board_code = 1;
+
+select * from memberdetail;
+select * from `member`;
+select * from qna q join `member` m on q.member_code = m.member_code join memberdetail m2 on m.member_id = m2.member_id
+		where q.board_code > 0;
+
+select * from grade;
+
+select m.member_code, m.member_id, m.`point`, m.cumulative_buy_amount, m.grade_code, m.quit_state, m.signUp_date, 
+		m2.member_id as m2_member_id, m2.member_pwd, m2.member_name, m2.gender, m2.birthday, m2.email, m2.tel, m2.zipCode, m2.address, m2.detail_address, 
+		g.grade_code as g_grade_code, g.grade from `member` m join memberdetail m2 on m.member_id = m2.member_id join grade g on m.grade_code = g.grade_code
+		where member_code > 0;
+	
+m.member_code, m.member_id as m_member_id, m.`point`, m.cumulative_buy_amount, m.grade_code as m_grade_code, m.quit_state, m.signUp_date, 
+		m2.member_id as m2_member_id, m2.member_pwd, m2.member_name, m2.gender, m2.birthday, m2.email, m2.tel, m2.zipCode, m2.address, m2.detail_address, 
+		g.grade_code, g.grade as g_grade_code from `member` m join memberdetail m2 on m.member_id = m2.member_id join grade g on m.grade_code = g.grade_code
+		where member_code > 0;
+	
+select * from `member` m join memberdetail m2 on m.member_id = m2.member_id
+		where member_code > 0
+		order by member_code desc;
+
+select count(member_code) from `member`
+		where member_code > 0;

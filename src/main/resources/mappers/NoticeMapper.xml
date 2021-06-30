@@ -39,7 +39,7 @@
 		</if>
 	</sql>
 	
-	<select id="detailView" parameterType="int" resultType="Notice">
+	<select id="detailView" parameterType="int" resultMap="noticeList">
 		select * from notice n join employee e on n.emp_number = e.emp_number where n.board_code = #{boardCode}
 	</select>
 		

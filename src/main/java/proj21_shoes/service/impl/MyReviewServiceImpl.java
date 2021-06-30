@@ -6,9 +6,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import proj21_shoes.commend.MyOrderCommend;
 import proj21_shoes.commend.MyReviewCommend;
 import proj21_shoes.commend.Pagination;
+import proj21_shoes.commend.SearchCriteria;
 import proj21_shoes.dto.ReView;
 import proj21_shoes.mapper.MyReviewMapper;
 import proj21_shoes.service.MyReviewService;
@@ -54,6 +54,16 @@ public class MyReviewServiceImpl implements MyReviewService {
 	@Override
 	public int MyReviewPlzListCount(String memberId) throws Exception {
 		return mapper.MyReviewPlzListCount(memberId);
+	}
+
+	@Override
+	public List<MyReviewCommend> findAll(SearchCriteria scri) throws Exception {
+		return mapper.findAll(scri);
+	}
+
+	@Override
+	public int countInfoList(SearchCriteria scri) throws Exception {
+		return mapper.countInfoList(scri);
 	}
 
 }

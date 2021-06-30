@@ -27,22 +27,24 @@ import org.springframework.web.servlet.ModelAndView;
 
 import net.sf.json.JSONArray;
 import proj21_shoes.commend.MyQnaViewCommand;
+import proj21_shoes.commend.MyReviewCommend;
 import proj21_shoes.commend.PageMaker;
 import proj21_shoes.commend.SearchCriteria;
 import proj21_shoes.dto.Brand;
 import proj21_shoes.dto.Category;
 import proj21_shoes.dto.Employee;
 import proj21_shoes.dto.Image;
+import proj21_shoes.dto.Member;
 import proj21_shoes.dto.Notice;
 import proj21_shoes.dto.OrderOption;
 import proj21_shoes.dto.Product;
 import proj21_shoes.dto.ProductPost;
-import proj21_shoes.dto.ReView;
 import proj21_shoes.service.BrandService;
 import proj21_shoes.service.CategoryService;
 import proj21_shoes.service.EmployeeService;
 import proj21_shoes.service.GetMemberDetailListService;
 import proj21_shoes.service.ImageService;
+import proj21_shoes.service.MemberService;
 import proj21_shoes.service.MyQnaService;
 import proj21_shoes.service.MyReviewService;
 import proj21_shoes.service.NoticeService;
@@ -53,6 +55,9 @@ import proj21_shoes.service.ProductService;
 @Controller
 public class AdminController {
 	protected static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+
+	@Autowired
+	private MemberService memberService;
 
 	@Autowired
 	private BrandService brandService;
@@ -94,10 +99,14 @@ public class AdminController {
 	}
 
 	@RequestMapping("/admin/memberMgt") // 멤버관리 화면
-	public ModelAndView memberDetailList() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("admin/memberMgt");
-		return mav;
+	public void memberDetailList(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
+		List<Member> memberList = memberService.findAll(scri);
+		model.addAttribute("memberList", memberList);
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(noticeService.countInfoList(scri));
+		model.addAttribute("pageMaker", pageMaker);
 	}
 
 	@RequestMapping("/admin/productMgt") // 제품관리 화면
@@ -513,13 +522,6 @@ public class AdminController {
 	}
 
 	// 게시판 관리
-	@GetMapping("/admin/board/qna")
-	public void myQnaBoardList(Model model) {
-
-		List<MyQnaViewCommand> qnaList = myQnaService.selectQnAbyAll();
-		model.addAttribute("qnaList", JSONArray.fromObject(qnaList));
-	}
-
 	@GetMapping("/admin/board/notice")
 	public void noticeBoardAdminMain(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
 		List<Notice> noticeList = noticeService.findAll(scri);
@@ -541,17 +543,34 @@ public class AdminController {
 		pageMaker.setTotalCount(noticeService.countInfoList(scri));
 		model.addAttribute("pageMaker", pageMaker);
 	}
-	
+
 	@GetMapping("/admin/board/mainNoticeDetail")
 	public void noticeBoardMainDetail(Model model, @RequestParam(value = "boardCode") int boardCode) throws Exception {
 		Notice noticeView = noticeService.detailView(boardCode);
 		model.addAttribute("noticeView", noticeView);
 	}
 
-	@GetMapping("/admin/board/review")
-	public void reviewBoardList(Model model) {
+	@GetMapping("/admin/board/qna")
+	public void myQnaBoardList(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
 
-		List<ReView> reviewList = myReviewService.selectReviewbyAllList();
-		model.addAttribute("reviewList", JSONArray.fromObject(reviewList));
+		List<MyQnaViewCommand> qnaList = myQnaService.findAll(scri);
+		model.addAttribute("qnaList", qnaList);
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(myQnaService.countInfoList(scri));
+		model.addAttribute("pageMaker", pageMaker);
+	}
+
+	@GetMapping("/admin/board/review")
+	public void reviewBoardList(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
+
+		List<MyReviewCommend> reviewList = myReviewService.findAll(scri);
+		model.addAttribute("reviewList", reviewList);
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(myQnaService.countInfoList(scri));
+		model.addAttribute("pageMaker", pageMaker);
 	}
 }
