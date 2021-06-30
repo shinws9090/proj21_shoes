@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="proj21_shoes.mapper.NoticeMapper">
+	
 	<resultMap type="Notice" id="noticeList">			
 		<id column="board_code" property="boardCode" />
 		<association property="employee" resultMap="ResEmployee" />
@@ -10,9 +11,36 @@
 		<association property="authority" javaType="Authority"/>
 	</resultMap>
 	
-	
 	<select id="selectNoticebyAllList" resultMap="noticeList">
 		select * from notice n join employee e on n.emp_number = e.emp_number
 	</select>
 	
+	<select id="findAll" resultMap="noticeList" resultType="SearchCriteria">
+		select * from notice n join employee e on n.emp_number = e.emp_number
+		where n.board_code > 0
+		<include refid="search"></include>
+		order by n.board_code desc
+		limit #{pageStart}, #{perPageNum}
+	</select>
+	
+	<select id="countInfoList" parameterType="SearchCriteria" resultType="int" >
+		select count(board_code) from notice n
+		where n.board_code > 0
+		<include refid="search"></include>
+	</select>
+	
+	<!-- 검색기능을 위한 동적SQL -->
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">AND n.title LIKE CONCAT('%',#{keyword},'%')</if>
+			<if test="searchType == 'c'.toString()">AND n.content LIKE CONCAT('%',#{keyword},'%')</if>
+			<if test="searchType == 'w'.toString()">AND e.emp_name LIKE CONCAT('%',#{keyword},'%')</if>
+			<if test="searchType == 'tc'.toString()">AND (n.title LIKE CONCAT('%',#{keyword},'%')) or (n.content LIKE CONCAT('%',#{keyword},'%'))</if>
+		</if>
+	</sql>
+	
+	<select id="detailView" parameterType="int" resultType="Notice">
+		select * from notice n join employee e on n.emp_number = e.emp_number where n.board_code = #{boardCode}
+	</select>
+		
 </mapper>

@@ -82,7 +82,7 @@
 					<h4 style="margin-left: 50%;">리뷰등록</h4>
 				</c:if>
 				<c:if test="${commend=='update'}">
-					<h4>리뷰 수정</h4>
+					<h4 style="margin-left: 50%;">리뷰 수정</h4>
 					<input type="hidden" name="boardCode"value="${boardCode}" />
 				</c:if>
 

@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +27,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import net.sf.json.JSONArray;
 import proj21_shoes.commend.MyQnaViewCommand;
+import proj21_shoes.commend.PageMaker;
+import proj21_shoes.commend.SearchCriteria;
 import proj21_shoes.dto.Brand;
 import proj21_shoes.dto.Category;
 import proj21_shoes.dto.Employee;
@@ -396,7 +399,7 @@ public class AdminController {
 
 	@GetMapping("/admin/product/productOrderOptionDel")
 	public String productOrderOptionDelete(HttpServletRequest request) {
-		
+
 		OrderOption orderOption = new OrderOption();
 		orderOption.setProductCode(Integer.parseInt(request.getParameter("productCode")));
 		orderOption.setStyleCode(Integer.parseInt(request.getParameter("styleCode")));
@@ -404,7 +407,7 @@ public class AdminController {
 		orderOption.setColor(request.getParameter("color"));
 
 		orderOptionService.deleteOrderOption(orderOption);
-		
+
 		return "redirect:/admin/product/productOrderOption?productCode="
 				+ Integer.parseInt(request.getParameter("productCode"));
 	}
@@ -518,16 +521,31 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/board/notice")
-	public void noticeBoardList(Model model) {
+	public void noticeBoardAdminMain(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
+		List<Notice> noticeList = noticeService.findAll(scri);
+		model.addAttribute("noticeList", noticeList);
 
-		List<Notice> noticeList = noticeService.selectNoticebyAllList();
-		model.addAttribute("noticeList", JSONArray.fromObject(noticeList));
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(noticeService.countInfoList(scri));
+		model.addAttribute("pageMaker", pageMaker);
 	}
 
 	@GetMapping("/admin/board/mainNotice")
-	public void noticeBoardMain(Model model) {
-		List<Notice> noticeList = noticeService.selectNoticebyAllList();
-		model.addAttribute("noticeList", JSONArray.fromObject(noticeList));
+	public void noticeBoardMain(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
+		List<Notice> noticeList = noticeService.findAll(scri);
+		model.addAttribute("noticeList", noticeList);
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(noticeService.countInfoList(scri));
+		model.addAttribute("pageMaker", pageMaker);
+	}
+	
+	@GetMapping("/admin/board/mainNoticeDetail")
+	public void noticeBoardMainDetail(Model model, @RequestParam(value = "boardCode") int boardCode) throws Exception {
+		Notice noticeView = noticeService.detailView(boardCode);
+		model.addAttribute("noticeView", noticeView);
 	}
 
 	@GetMapping("/admin/board/review")

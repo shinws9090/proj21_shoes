@@ -163,7 +163,7 @@ public class MyReviewController {
 		   }
 		
 		
-		///////////////////////리뷰작성하러가기 버튼 누르면
+		////////////마이페이지 -> 미작성 후기내역 -> 작성하러가기 누르면
 		@GetMapping("/ProductReviewInsertAndUpdateForm/{memberId}/{productCode},{commend},{boardCode}")
 		public ModelAndView ProductReviewInsertAndUpdateForm(
 				@PathVariable int productCode, 
@@ -200,8 +200,8 @@ public class MyReviewController {
 			}
 			return mav;
 		}
-		//작성하러가기 누르면
-		@PostMapping("/myProductReviewRegist")
+		// 후기작성 및 업데이트 처리
+		@PostMapping("/myProductReviewRegist") 
 		public ModelAndView ProductReviewInsertAndUpdate(ReView reView, @RequestParam(value = "commend") String commend,
 				@RequestParam(value = "orderNum") int orderNum, @RequestParam(value = "productCode") int productCode,
 				HttpSession session, MultipartHttpServletRequest request) {
@@ -258,16 +258,19 @@ public class MyReviewController {
 				e.printStackTrace();
 			}
 			// 파일 end
-
-			return new ModelAndView("redirect:/productDetail/" + productCode);
+			System.out.println("member.getMemberId()>>> "+ member.getMemberId().getMemberId());
+			return new ModelAndView("redirect:/myPage/myReview/" + member.getMemberId().getMemberId());
 		}
 
-		@GetMapping("ProductReviewDelete/{boardCode},{productCode}/{memberId}")
+		////마이페이지->리뷰상세보기->리뷰삭제시
+		@GetMapping("myProductReviewDelete/{boardCode},{productCode}/{memberId}")
 		public ModelAndView ProductReviewdelet(@PathVariable String memberId, @PathVariable int boardCode, @PathVariable int productCode) {
 			rService.productReviewDelete(boardCode);
 			rService.imageDelete(boardCode);
-			return new ModelAndView("redirect:/productDetail/" + productCode);
+			return new ModelAndView("redirect:/myPage/myReview/" + memberId);
 		}
+		
+		////
 	
 	
 	
