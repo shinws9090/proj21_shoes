@@ -556,9 +556,32 @@ public class AdminController {
 		model.addAttribute("pageMaker", pageMaker);
 	}
 	
+	@GetMapping("/admin/board/noticeDetail")
+	public void noticeBoardAdminDetail(Model model, @RequestParam(value = "boardCode") int boardCode) throws Exception {
+		Notice noticeView = noticeService.detailView(boardCode);
+		model.addAttribute("noticeView", noticeView);
+	}
+	
 	@GetMapping("/admin/board/noticeReg")
-	public void noticeBoardReg(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
-		
+	public void getNoticeBoardReg(Model model) {
+		List<Employee> employeeList = employeeService.employeeList();
+		model.addAttribute("employeeList", employeeList);
+	}
+	
+	@PostMapping("/admin/board/noticeReg")
+	public String postNoticeBoardReg(HttpServletRequest request) {
+		System.out.println(new Employee(Integer.parseInt(request.getParameter("employee"))));
+		System.out.println(request.getParameter("title"));
+		System.out.println(request.getParameter("content"));
+		Notice notice = new Notice();
+		notice.setEmployee(new Employee(Integer.parseInt(request.getParameter("employee"))));
+		notice.setTitle(request.getParameter("title"));;
+		notice.setContent(request.getParameter("content"));;
+
+		System.out.println(notice);
+		noticeService.insertNotice(notice);
+
+		return "redirect:/admin/board/notice";
 	}
 
 	@GetMapping("/admin/board/qna")

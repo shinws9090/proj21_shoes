@@ -42,5 +42,10 @@
 	<select id="detailView" parameterType="int" resultMap="noticeList">
 		select * from notice n join employee e on n.emp_number = e.emp_number where n.board_code = #{boardCode}
 	</select>
+	
+	<insert id="insertNotice" parameterType="Notice">
+		insert into notice(emp_number, title, content, regist_date) 
+		values (#{employee.empNumber}, #{title}, #{content}, now())
+	</insert>
 		
 </mapper>

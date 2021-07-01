@@ -67,12 +67,11 @@ section.pageNumSearch {
 						
 					<h1 class="mt-4">공지사항</h1>
 								
-					<table class="noticeTable" border="1">
+					<table class="noticeTable">
 						<thead>
 							<tr style="background-color: lightgrey; text-align: center">
 								<td class="noticetd1">번호</td>
 								<td class="noticetd2">제목</td>						
-								<td class="noticetd3">작성자</td>		
 								<td class="noticetd4">작성일</td>
 							</tr>
 						</thead>
@@ -81,7 +80,6 @@ section.pageNumSearch {
 							<tr>
 								<td class="noticetd5">${noticeList.boardCode}</td>
 								<td><a href="mainNoticeDetail?boardCode=${noticeList.boardCode}"><c:out value="${noticeList.title}" /></a></td>
-								<td>${noticeList.employee.empName}</td>
 								<td>${noticeList.registDate}</td>
 							</tr>
 							</c:forEach>

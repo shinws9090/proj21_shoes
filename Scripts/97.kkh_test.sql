@@ -201,11 +201,16 @@ select * from `member` m join memberdetail m2 on m.member_id = m2.member_id
 select count(member_code) from `member`
 		where member_code > 0;
 
-select * from productpost;	
-	
+select * from productpost;
 select *
 		from product p
 		join brand b on p.brand_code = b.brand_code
 		join category c on c.product_category_code = p.product_category_code
 		join productpost p2 on p.product_code = p2.product_code
 		where p.product_code > 0;
+
+select * from employee;
+select * from `member`;
+select * from notice;
+
+insert into notice(emp_number, title, content, regist_date) values (303, "공지사항 제목", "공지사항 내용", now());

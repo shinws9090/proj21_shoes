@@ -42,11 +42,14 @@ h1.mt-4 {
 		<jsp:include page="/WEB-INF/view/include/header.jsp" />
 	</header>
 	<!-- end header -->
-
 	<section>
 		<div class="d-flex" id="wrapper">
-		        
-		        <!-- Page content-->
+			<jsp:include page="/WEB-INF/view/admin/include/sidebar.jsp" />		    
+		    
+		    <!-- Page content wrapper-->
+		    <div id="page-content-wrapper">
+			<jsp:include page="/WEB-INF/view/admin/include/boardMenu.jsp" />
+				<!-- Page content-->
 		        <div class="container-fluid">
 		        	<h1 class="mt-4">공지사항</h1>
 		        		<div class="noticeDetailView">
@@ -62,9 +65,10 @@ h1.mt-4 {
 			        			${noticeView.content }
 			        		</div>
 		        		</div>
-		        </div>  		        
-		    </div>		    
-	</section>
+		        </div>				
+	        </div>
+	    </div>		    
+	</section>	
 		
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp" />

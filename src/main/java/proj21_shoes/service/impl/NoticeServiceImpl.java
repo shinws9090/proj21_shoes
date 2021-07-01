@@ -36,4 +36,19 @@ public class NoticeServiceImpl implements NoticeService {
 		return mapper.detailView(boardCode);
 	}
 
+	@Override
+	public int insertNotice(Notice notice) {
+		return mapper.insertNotice(notice);
+	}
+
+	@Override
+	public int updateNotice(Notice notice) {
+		return mapper.updateNotice(notice);
+	}
+
+	@Override
+	public int deleteNotice(Notice notice) {
+		return mapper.deleteNotice(notice);
+	}
+
 }

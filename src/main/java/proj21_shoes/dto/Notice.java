@@ -1,5 +1,6 @@
 package proj21_shoes.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Notice { // 공지사항
@@ -8,7 +9,7 @@ public class Notice { // 공지사항
 	private Employee employee; // 사원정보
 	private String title; // 제목
 	private String content; // 내용
-	private LocalDateTime registDate; // 등록일
+	private LocalDate registDate; // 등록일
 
 	public int getBoardCode() {
 		return boardCode;
@@ -42,11 +43,11 @@ public class Notice { // 공지사항
 		this.content = content;
 	}
 
-	public LocalDateTime getRegistDate() {
+	public LocalDate getRegistDate() {
 		return registDate;
 	}
 
-	public void setRegistDate(LocalDateTime registDate) {
+	public void setRegistDate(LocalDate registDate) {
 		this.registDate = registDate;
 	}
 

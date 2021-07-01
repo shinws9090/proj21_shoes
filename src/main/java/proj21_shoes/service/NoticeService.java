@@ -18,5 +18,11 @@ public interface NoticeService {
 	public int countInfoList(SearchCriteria scri) throws Exception;
 	
 	public Notice detailView(int boardCode) throws Exception;
+	
+	public int insertNotice(Notice notice);
+
+	public int updateNotice(Notice notice);
+
+	public int deleteNotice(Notice notice);
 
 }
