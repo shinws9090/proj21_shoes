@@ -85,7 +85,7 @@
 		<tr>
 		<td></td>
 		<td>
-		<a href="<c:url value='${contextPath}/find/findId'/>">아이디 찾기</a>
+		<a href="${contextPath}/find/findId">아이디 찾기</a>
 		</td>
 		</tr>
 		</article>

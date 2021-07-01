@@ -52,7 +52,7 @@
 			</div>
 			<article id = "findForm">
 		
-			<a href="<c:url value='${contextPath}/login/loginForm'/>">로그인</a> 		
+			<a href="${contextPath}/login/loginForm">로그인</a> 		
 
 		
 		</article>
