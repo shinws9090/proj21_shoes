@@ -23,6 +23,6 @@ public interface NoticeService {
 
 	public int updateNotice(Notice notice);
 
-	public int deleteNotice(Notice notice);
+	public int deleteNotice(int boardCode);
 
 }

@@ -560,6 +560,14 @@ public class AdminController {
 	public void noticeBoardAdminDetail(Model model, @RequestParam(value = "boardCode") int boardCode) throws Exception {
 		Notice noticeView = noticeService.detailView(boardCode);
 		model.addAttribute("noticeView", noticeView);
+		
+		/*
+		 * Notice noticeViewPrev = noticeService.detailView(boardCode-1);
+		 * model.addAttribute("noticeViewPrev", noticeViewPrev);
+		 * 
+		 * Notice noticeViewNext = noticeService.detailView(boardCode+1);
+		 * model.addAttribute("noticeViewNext", noticeViewNext);
+		 */
 	}
 	
 	@GetMapping("/admin/board/noticeReg")
@@ -570,16 +578,36 @@ public class AdminController {
 	
 	@PostMapping("/admin/board/noticeReg")
 	public String postNoticeBoardReg(HttpServletRequest request) {
-		System.out.println(new Employee(Integer.parseInt(request.getParameter("employee"))));
-		System.out.println(request.getParameter("title"));
-		System.out.println(request.getParameter("content"));
 		Notice notice = new Notice();
 		notice.setEmployee(new Employee(Integer.parseInt(request.getParameter("employee"))));
-		notice.setTitle(request.getParameter("title"));;
-		notice.setContent(request.getParameter("content"));;
+		notice.setTitle(request.getParameter("title"));
+		notice.setContent(request.getParameter("content"));
 
 		System.out.println(notice);
 		noticeService.insertNotice(notice);
+
+		return "redirect:/admin/board/notice";
+	}
+	
+	@GetMapping("/admin/board/noticeMod")
+	public void getNoticeBoardMod(Model model, @RequestParam(value = "boardCode") int boardCode) throws Exception {
+		Notice noticeView = noticeService.detailView(boardCode);
+		model.addAttribute("noticeView", noticeView);
+		
+		List<Employee> employeeList = employeeService.employeeList();
+		model.addAttribute("employeeList", employeeList);
+	}
+	
+	@PostMapping("/admin/board/noticeMod")
+	public String postNoticeBoardMod(HttpServletRequest request, @RequestParam(value = "boardCode") int boardCode) {		
+		Notice notice = new Notice();
+		notice.setEmployee(new Employee(Integer.parseInt(request.getParameter("employee"))));
+		notice.setTitle(request.getParameter("title"));
+		notice.setContent(request.getParameter("content"));
+		notice.setBoardCode(boardCode);		
+
+		System.out.println(notice);
+		noticeService.updateNotice(notice);
 
 		return "redirect:/admin/board/notice";
 	}

@@ -47,5 +47,14 @@
 		insert into notice(emp_number, title, content, regist_date) 
 		values (#{employee.empNumber}, #{title}, #{content}, now())
 	</insert>
+	
+	<update id="updateNotice" parameterType="Notice">
+		update notice set emp_number = #{employee.empNumber}, title = #{title}, content = #{content}, regist_date = now() 
+		where board_code = #{boardCode}; 
+	</update>
+	
+	<delete id="deleteNotice">
+		delete from notice where board_code = #{boardCode};
+	</delete>
 		
 </mapper>

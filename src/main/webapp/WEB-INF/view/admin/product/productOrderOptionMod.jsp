@@ -33,11 +33,11 @@ var contextPath = "<%=request.getContextPath()%>";
 			var sCont = "";
 				sCont += "<tr>";
 				sCont += "<td productCode='productCode'>" + json.productCode + "</td>";
-				sCont += "<td>" + json.productName + "</td>";
+				sCont += "<td>" + "<a href='${contextPath}/productDetail/" + json.productCode + "'/a>" + json.productName + "</td>";
 				sCont += "<td>" + json.brand.brandName + "</td>";
 				sCont += "<td>" + json.gender + "</td>";
 				sCont += "<td>" + json.category.category + "</td>";
-				sCont += "<td>" + json.productPost.productMainImage + "</td>";					
+				sCont += "<td>" + "<a href='${contextPath}/productDetail/" + json.productCode + "'/a>" + "<img src='${contextPath}/images/" + json.productPost.productMainImage + "' width='200'/>" + "</td>";
 				sCont += "<td>" + json.costPrice + "</td>";
 				sCont += "<td>" + json.sellPrice + "</td>";
 				sCont += "<td>" + json.registDate + "</td>";
@@ -95,11 +95,9 @@ var contextPath = "<%=request.getContextPath()%>";
 		        
 		        <!-- Page content-->
 		        <div class="container-fluid">
+		        	<h1 class="mt-4">상품 정보</h1>
 		            <div>
 						<table style="width: 90%; text-align: center">
-							<tr>
-								<td colspan="7" class="td_title"><h1 class="mt-4">상품 정보</h1></td>
-							</tr>
 	
 							<tr style="background-color: lightgrey; text-align: center">
 								<td>번호</td>
@@ -119,11 +117,10 @@ var contextPath = "<%=request.getContextPath()%>";
 						
 						</table>
 					</div>
+					
+					<h1 class="mt-4">재고 목록</h1>
 					<div>
-						<table style="width:100%">
-							<tr>
-								<td colspan="7" class="td_title"><h1 class="mt-4">재고 목록</h1></td>
-							</tr>
+						<table style="width: 90%; text-align: center">
 	
 							<tr style="background-color: lightgrey; text-align: center">
 								<td>번호</td>

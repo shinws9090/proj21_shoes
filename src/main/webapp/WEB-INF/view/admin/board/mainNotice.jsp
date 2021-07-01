@@ -14,13 +14,22 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 </head>
 <style>
+
+h1.mt-4 {
+    margin-left: 550px;
+}
+
+.noticeView {
+    margin: 0 auto;
+    width: 1300px;
+}
+
 .noticeViewSub {
     text-align: center;
 }
 
 table.noticeTable {
 	width: 1300px;
-    margin: 0 auto;
     margin-top: 20px;
     border-collapse: collapse;
 }
@@ -63,10 +72,8 @@ section.pageNumSearch {
 	<section>
 		<div class="noticeView">		 
 		        <!-- Page content-->
+				<h1 class="mt-4">공지사항</h1>
 		        <div class="noticeViewSub">
-						
-					<h1 class="mt-4">공지사항</h1>
-								
 					<table class="noticeTable">
 						<thead>
 							<tr style="background-color: lightgrey; text-align: center">

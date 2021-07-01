@@ -37,11 +37,11 @@ $(function(){
 			var sCont = "";
 				sCont += "<tr>";
 				sCont += "<td productCode='productCode'>" + jsonP.productCode + "</td>";
-				sCont += "<td>" + jsonP.productName + "</td>";
+				sCont += "<td>" + "<a href='${contextPath}/productDetail/" + jsonP.productCode + "'/a>" + jsonP.productName + "</td>";
 				sCont += "<td>" + jsonP.brand.brandName + "</td>";
 				sCont += "<td>" + jsonP.gender + "</td>";
 				sCont += "<td>" + jsonP.category.category + "</td>";
-				sCont += "<td>" + jsonP.productPost.productMainImage + "</td>";					
+				sCont += "<td>" + "<a href='${contextPath}/productDetail/" + jsonP.productCode + "'/a>" + "<img src='${contextPath}/images/" + jsonP.productPost.productMainImage + "' width='200'/>" + "</td>";
 				sCont += "<td>" + jsonP.costPrice + "</td>";
 				sCont += "<td>" + jsonP.sellPrice + "</td>";
 				sCont += "<td>" + jsonP.registDate + "</td>";
@@ -61,7 +61,7 @@ $(function(){
 					sCont += "<td>" + jsonO[i].color + "</td>";										
 					sCont += "<td>" + jsonO[i].size + "</td>";
 					sCont += "<td>" + jsonO[i].stock + "</td>";
-					sCont += "<td>" + "<button type='button'><a href='${contextPath}/admin/product/productOrderOptionMod?productCode=" + jsonO[i].productCode + '&styleCode=' + jsonO[i].styleCode + '&color=' + jsonO[i].color + '&size='+ jsonO[i].size + '&nowStock='+ jsonO[i].stock + "'>재고관리</a></button>" + "</td>";
+					sCont += "<td>" + "<button type='button'><a href='${contextPath}/admin/product/productOrderOptionMod?productCode=" + jsonO[i].productCode + '&styleCode=' + jsonO[i].styleCode + '&color=' + jsonO[i].color + '&size='+ jsonO[i].size + '&nowStock='+ jsonO[i].stock + "'>재고수정</a></button>" + "</td>";
 					sCont += "</tr>";
 				$("#load2:last-child").append(sCont);
 			}
@@ -91,11 +91,9 @@ $(function(){
 		        
 		        <!-- Page content-->
 		        <div class="container-fluid">
+					<h1 class="mt-4">상품 정보</h1>
 					<div>
 						<table style="width: 90%; text-align: center">
-							<tr>
-								<td colspan="7" class="td_title"><h1 class="mt-4">상품 정보</h1></td>
-							</tr>
 	
 							<tr style="background-color: lightgrey; text-align: center">
 								<td>번호</td>
@@ -116,11 +114,10 @@ $(function(){
 							</tr>
 						</table>
 					</div>
+					
+					<h1 class="mt-4">재고 목록</h1>
 					<div>
-						<table style="width:100%">
-							<tr>
-								<td colspan="7" class="td_title"><h1 class="mt-4">재고 목록</h1></td>
-							</tr>
+						<table style="width: 90%; text-align: center">
 	
 							<tr style="background-color: lightgrey; text-align: center">
 								<td>번호</td>
@@ -128,7 +125,7 @@ $(function(){
 								<td>색상</td>
 								<td>사이즈</td>
 								<td>현재재고</td>
-								<td>재고관리</td>
+								<td>재고수정</td>
 							</tr>
 							
 							<tr>

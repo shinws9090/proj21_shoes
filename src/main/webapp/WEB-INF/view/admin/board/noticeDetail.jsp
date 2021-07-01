@@ -11,25 +11,57 @@
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/admin/css/styles.css"/>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	$('#mod_btn').on("click", function(e) {
+		location.href="${contextPath}/admin/board/noticeMod?boardCode=" + ${noticeView.boardCode };
+	});
+	
+	$('#del_btn').on("click", function(e) {
+		location.href="${contextPath}/admin/product/brandReg";
+	});
+	
+});
+</script>
 </head>
 <style>
 h1.mt-4 {
-    text-align: center;
+	text-align: center;
+    margin-right: 200px;
+    margin-bottom: 20px;
 }
 .noticeDetailView {
-    margin: 0 auto;
-    width: 800px;
-    padding-top: 30px;
-    padding-bottom: 100px;
+	margin-left: 230px;
+    width: 1000px;
+    padding-top: 10px;
+    border-top: 1px solid;
 }
+
 .noticeTitle {
     display: inline-block;
-    padding-bottom: 50px;
+    padding: 10px;
 }
+
 .noticeDate {
     display: inline-block;
     float: right;
+    margin-right: 30px;
+    padding: 10px;
 }
+
+.noticeContet {
+    min-height: 400px;
+    border-bottom: 1px solid;
+    border-top: 1px solid lightgray;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.notice_btn {
+	magrin-bottom: 100px;
+}
+
 </style>
 <body class="main-layout">
 	<!-- header -->
@@ -60,6 +92,19 @@ h1.mt-4 {
 			        			${noticeView.content }
 			        		</div>
 		        		</div>
+		        		<div class="notice_btn">
+		        			<button type="button" id="mod_btn">수정</button>
+		        			<button type="button" id="del_btn">삭제</button>
+			        	</div>		        		
+		        		
+		        	<%-- <div class="noticeMove">
+		        			<div class="noticeAfter">
+			        			다음글 ${noticeViewNext.title }
+			        		</div>
+			        		<div class="noticeBefore">
+			        			이전글 ${noticeViewPrev.title }
+			        		</div>
+		        		</div> --%>
 		        </div>				
 	        </div>
 	    </div>		    

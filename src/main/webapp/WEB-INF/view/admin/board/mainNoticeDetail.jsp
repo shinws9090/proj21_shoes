@@ -15,24 +15,40 @@
 <style>
 
 h1.mt-4 {
-    text-align: center;
+    margin-left: 550px;
+}
+
+.container-notice {
+    margin: 0 auto;
 }
 
 .noticeDetailView {
-    margin: 0 auto;
-    width: 800px;
-    padding-top: 30px;
+	margin: 0 auto;
+    width: 1300px;
+    padding-top: 10px;
     padding-bottom: 100px;
+    border-top: 1px solid;
+    margin-top: 20px;
 }
 
 .noticeTitle {
     display: inline-block;
-    padding-bottom: 50px;
+    padding: 10px;
 }
 
 .noticeDate {
     display: inline-block;
     float: right;
+    margin-right: 30px;
+    padding: 10px;
+}
+
+.noticeContet {
+    min-height: 400px;
+    border-bottom: 1px solid;
+    border-top: 1px solid lightgray;
+    padding: 20px;
+    margin-top: 10px;
 }
 
 </style>
@@ -46,24 +62,24 @@ h1.mt-4 {
 	<section>
 		<div class="d-flex" id="wrapper">
 		        
-		        <!-- Page content-->
-		        <div class="container-fluid">
-		        	<h1 class="mt-4">공지사항</h1>
-		        		<div class="noticeDetailView">
-			        		<div class="noticeTitle">
-			        			<h3>${noticeView.title } </h3>
-			        		</div>
-			        		
-			        		<div class="noticeDate">
-			        			${noticeView.registDate }
-			        		</div>
-			        		
-			        		<div class="noticeContet">
-			        			${noticeView.content }
-			        		</div>
-		        		</div>
-		        </div>  		        
-		    </div>		    
+	        <!-- Page content-->
+	        <div class="container-notice">
+	        	<h1 class="mt-4">공지사항</h1>
+        		<div class="noticeDetailView">
+	        		<div class="noticeTitle">
+	        			<h3>${noticeView.title } </h3>
+	        		</div>
+	        		
+	        		<div class="noticeDate">
+	        			${noticeView.registDate }
+	        		</div>
+	        		
+	        		<div class="noticeContet">
+	        			${noticeView.content }
+	        		</div>	        		
+        		</div>
+	        </div>
+		</div>
 	</section>
 		
 	<footer>

@@ -122,10 +122,10 @@ ul.pageNum2 {
 							<c:forEach items="${productList}" var="productList">
 							<tr>
 								<td>${productList.productCode}</td>
-								<td><a href="productDetailMgt?productCode=${productList.productCode}"><c:out value="${productList.productName}" /></a></td>
+								<td><a href="${contextPath}/productDetail/${productList.productCode}"><c:out value="${productList.productName}" /></a></td>
 								<td>${productList.brand.brandName}</td>								
 								<td>${productList.category.category}</td>
-								<td><img src="${contextPath}/images/${productList.productPost.productMainImage}" width="200"></td>
+								<td><a href="${contextPath}/productDetail/${productList.productCode}"><img src="${contextPath}/images/${productList.productPost.productMainImage}" width="200"></a></td>
 								<td>${productList.costPrice}</td>
 								<td>${productList.sellPrice}</td>
 								<td><button type="button"><a href="productDetailMgt?productCode=${productList.productCode}">상세관리</a></button></td>

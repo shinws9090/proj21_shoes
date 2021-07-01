@@ -43,7 +43,6 @@
 							<td>이름</td>
 							<td>연락처</td>
 							<td>회원등급</td>
-							<td>가입일</td>			
 						</tr>						
 						<tr>
 							<c:forEach items="${memberList}" var="memberList">
@@ -53,7 +52,6 @@
 								<td>${memberList.memberId.memberName}</td>
 								<td>${memberList.memberId.tel}</td>
 								<td>${memberList.gradeCode.grade}</td>
-								<td>${memberList.signUpDate}</td>
 							</tr>
 							</c:forEach>
 						</tr>

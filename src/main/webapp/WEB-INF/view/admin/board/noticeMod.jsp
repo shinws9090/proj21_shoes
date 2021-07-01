@@ -19,14 +19,21 @@
 <!-- include summernote-ko-KR -->
 <script src="/resources/admin/js/summernote-ko-KR.js"></script>
 <script>
-$(document).ready(function() {
-	$('#summernote').summernote({
-		placeholder: 'content',
-		minHeight: 370,
-		maxHeight: null,
-		focus: true, 
-		lang : 'ko-KR'
+$(function(){
+	
+	$(document).ready(function() {
+		$('#summernote').summernote({
+			minHeight: 370,
+			maxHeight: null,
+			focus: true, 
+			lang : 'ko-KR'
+		});
 	});
+	
+	$('#cancel').on("click", function(e) {
+		location.href="${contextPath}/admin/board/noticeDetail?boardCode=" + ${noticeView.boardCode };
+	});
+
 });
 </script>
 
@@ -64,21 +71,22 @@ td.notice_subject {
 						<table style="width: 70%;">
 							<tr>
 								<td class="notice_subject"><a>직원 번호</a></td>
-								<td class="notice_content"><input type="text" name="employee" id="employee" placeholder="직원번호" /></td>
+								<td class="notice_content"><input type="text" name="employee" id="employee" value="${noticeView.employee.empNumber }" /></td>
 							</tr>
 										
 							<tr>	
 								<td class="notice_subject"><a>제목</a></td>
-								<td class="notice_content"><input type="text" name="title" id="title" placeholder="제목" style="width:90%;" /></td>
+								<td class="notice_content"><input type="text" name="title" id="title" value="${noticeView.title }" style="width:90%;" /></td>
 							</tr>
 							
 							<tr>
 								<td class="notice_subject"><a>내용</a></td>
-					 			<td class="notice_content"><textarea name="content" id="summernote" ></textarea></td>		
-					 		</tr>						
+					 			<td class="notice_content"><textarea name="content" id="summernote" >${noticeView.content}</textarea></td>	
+					 		</tr>							
 						</table>
 						<div class="notice_btn">
-						<button type="submit" id="new">작성</button>
+						<button type="submit" id="new">수정</button>
+						<button type="button" id="cancel">취소</button>
 						</div>
 					</form>
 				</div>				

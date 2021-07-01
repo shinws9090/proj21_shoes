@@ -38,11 +38,11 @@ $(function(){
 			var sCont = "";
 				sCont += "<tr>";
 				sCont += "<td productCode='productCode'>" + json.productCode + "</td>";
-				sCont += "<td>" + json.productName + "</td>";
+				sCont += "<td>" + "<a href='${contextPath}/productDetail/" + json.productCode + "'/a>" + json.productName + "</td>";
 				sCont += "<td>" + json.brand.brandName + "</td>";
 				sCont += "<td>" + json.gender + "</td>";
 				sCont += "<td>" + json.category.category + "</td>";
-				sCont += "<td>" + "<img src='${contextPath}/images/"+ json.productPost.productMainImage + "' width='200'/>" + "</td>";
+				sCont += "<td>" + "<a href='${contextPath}/productDetail/" + json.productCode + "'/a>" + "<img src='${contextPath}/images/" + json.productPost.productMainImage + "' width='200'/>" + "</td>";
 				sCont += "<td>" + json.costPrice + "</td>";
 				sCont += "<td>" + json.sellPrice + "</td>";
 				sCont += "<td>" + json.registDate + "</td>";
@@ -53,7 +53,23 @@ $(function(){
 	});
 });
 </script>
+<style>
 
+.productMod {
+    display: inline-block;
+    padding-right: 5px;
+}
+
+.productImageMod {
+    display: inline-block;
+    padding-right: 5px;
+}
+
+.productModCancel {
+    display: inline-block;
+}
+
+</style>
 </head>
 <body class="main-layout">
 	<!-- header -->
@@ -72,11 +88,9 @@ $(function(){
 						        
 		        <!-- Page content-->
 		        <div class="container-fluid">
+		        	<h1 class="mt-4">상품 정보</h1>
 					<div>
 						<table style="width: 90%; text-align: center">
-							<tr>
-								<td colspan="7" class="td_title"><h1 class="mt-4">상품 정보</h1></td>
-							</tr>
 	
 							<tr style="background-color: lightgrey; text-align: center">
 								<td>번호</td>
@@ -98,9 +112,10 @@ $(function(){
 						</table>
 					</div>
 									
-		        	<div><a href="${contextPath}/admin/product/productMod?productCode=${products.productCode}"><h1 class="mt-4">[상품 수정]</h1></a></div>
-					<div><a href="${contextPath}/admin/product/productImageMod?productCode=${products.productCode}"><h1 class="mt-4">[이미지 수정]</h1></a></div>
-										
+		        	<div class="productMod"><button><a href="${contextPath}/admin/product/productMod?productCode=${products.productCode}">상품 수정</a></button></div>
+					<div class="productImageMod"><button><a href="${contextPath}/admin/product/productImageMod?productCode=${products.productCode}">이미지 수정</a></button></div>
+					<div class="productModCancel"><button type="button" id="cancel">취소</button></div>
+					
 					<h1 class="mt-4">상품 정보 수정</h1>
 					<div class="admin_content_wrap">
 						<div class="admin_content_main">
@@ -254,7 +269,6 @@ $(function(){
 								
 								<div class="btn_section">
 									<button type="submit" id="new">수정</button>
-									<button type="button" id="cancel">취소</button>
 								</div>
 			
 							</form>

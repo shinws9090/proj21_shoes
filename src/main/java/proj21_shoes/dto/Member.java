@@ -12,7 +12,7 @@ public class Member {					//	회원정보
 	private int cumulativeBuyAmount;	// 	누적구매금액
 	private Grade gradeCode;			// 	등급코드
 	private boolean quitState;			// 	탈퇴여부
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")	
 	private LocalDateTime signUpDate;	//	 가입일
 
 	

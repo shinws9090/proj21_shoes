@@ -50,11 +50,11 @@
 				var sCont = "";
 					sCont += "<tr>";
 					sCont += "<td productCode='productCode'>" + json.productCode + "</td>";
-					sCont += "<td>" + json.productName + "</td>";
+					sCont += "<td>" + "<a href='${contextPath}/productDetail/" + json.productCode + "'/a>" + json.productName + "</td>";
 					sCont += "<td>" + json.brand.brandName + "</td>";
 					sCont += "<td>" + json.gender + "</td>";
 					sCont += "<td>" + json.category.category + "</td>";
-					sCont += "<td>" + "<img src='${contextPath}/images/"+ json.productPost.productMainImage + "' width='200'/>" + "</td>";
+					sCont += "<td>" + "<a href='${contextPath}/productDetail/" + json.productCode + "'/a>" + "<img src='${contextPath}/images/" + json.productPost.productMainImage + "' width='200'/>" + "</td>";
 					sCont += "<td>" + json.costPrice + "</td>";
 					sCont += "<td>" + json.sellPrice + "</td>";
 					sCont += "<td>" + json.registDate + "</td>";

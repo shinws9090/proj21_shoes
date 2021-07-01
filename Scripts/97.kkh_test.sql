@@ -209,9 +209,15 @@ select *
 		join productpost p2 on p.product_code = p2.product_code
 		where p.product_code > 0;
 
+select * from review;
+select * from qna;
 select * from employee;
 select emp_number, emp_name, authority_code, emp_id, password(emp_pwd), email, tel_number from employee;
 select * from `member`;
 select * from notice;
 
 insert into notice(emp_number, title, content, regist_date) values (303, "공지사항 제목", "공지사항 내용", now());
+
+update notice set emp_number = 202, title = "제목", content = "내용", regist_date = now() where board_code = 5;
+
+delete from notice where board_code = 5;

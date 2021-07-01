@@ -47,8 +47,8 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public int deleteNotice(Notice notice) {
-		return mapper.deleteNotice(notice);
+	public int deleteNotice(int boardCode) {
+		return mapper.deleteNotice(boardCode);
 	}
 
 }
