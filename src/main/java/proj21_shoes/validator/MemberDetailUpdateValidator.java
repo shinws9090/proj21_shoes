@@ -26,13 +26,53 @@ public class MemberDetailUpdateValidator implements Validator { // dto에 있는
 
 	@Override
 	public void validate(Object target, Errors errors) {
+		//기존비번
 		MemberDetailUpdateCommend regReq = (MemberDetailUpdateCommend) target;
 		if (regReq.getConfirmPassword() == null || regReq.getConfirmPassword().trim().isEmpty()) {
 			errors.rejectValue("confirmPassword", "required");
 		}
+		//변경할비번
 		if (regReq.getMemberPwd() == null || regReq.getMemberPwd().trim().isEmpty()) {
 			errors.rejectValue("memberPwd", "required");
 		}
+//		//회원이름
+		if (regReq.getMemberName() == null || regReq.getMemberName().trim().isEmpty()) {
+			errors.rejectValue("memberName", "required");
+		}
+//		//생년월일
+//		//연락처
+//		//우편번호
+//		//주소
+//		//상세주소
+//		
+//		if(memberUpdate.getBirthday() == null ) {
+//		errors.rejectValue("birthday", "required");
+//	}
+//	
+//	if(memberUpdate.getMemberName() ==null || memberUpdate.getMemberName().trim().isEmpty()) {
+//		errors.rejectValue("memberName", "required");
+//	}
+//	if(memberUpdate.getTel()==null || memberUpdate.getTel().trim().isEmpty()) {
+//		errors.rejectValue("tel", "required");
+//	}
+//	if(memberUpdate.getZipCode()==null || memberUpdate.getZipCode().trim().isEmpty()) {
+//		errors.rejectValue("zipCode", "required");
+//	}
+//	if(memberUpdate.getEmail()==null || memberUpdate.getEmail().trim().isEmpty()) {
+//		errors.rejectValue("email", "required");
+//	}
+//	if(memberUpdate.getAddress()==null || memberUpdate.getAddress().trim().isEmpty()) {
+//		errors.rejectValue("address", "required");
+//	}
+//	if(memberUpdate.getDetailAddress()==null || memberUpdate.getDetailAddress().trim().isEmpty()) {
+//		errors.rejectValue("detailAddress", "required");
+//	}
+	
+		
+		
+		
+		
+		
 		
 		if (regReq.getEmail() == null || regReq.getEmail().trim().isEmpty()) {
 			errors.rejectValue("email", "required");
