@@ -82,10 +82,10 @@
 		<table>
 		<article id = "findForm">
 		
-			<a href="<c:url value='${contextPath}/find/findId'/>">아이디 찾기</a> <a> | </a>		
-			<a href="<c:url value='${contextPath}/find/findPw'/>">비밀번호 찾기</a>
+			<a href="${contextPath}/find/findId">아이디 찾기</a> <a> | </a>		
+			<a href="${contextPath}/find/findPw">비밀번호 찾기</a>
 			<a> | </a>		
-			<a href="<c:url value='${contextPath}/adminLogin'/>">관리자 로그인</a>
+			<a href="${contextPath}/adminLogin">관리자 로그인</a>
 		
 		</article>
 		</table>

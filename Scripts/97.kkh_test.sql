@@ -210,6 +210,7 @@ select *
 		where p.product_code > 0;
 
 select * from employee;
+select emp_number, emp_name, authority_code, emp_id, password(emp_pwd), email, tel_number from employee;
 select * from `member`;
 select * from notice;
 
