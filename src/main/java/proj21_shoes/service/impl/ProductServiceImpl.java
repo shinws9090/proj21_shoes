@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import proj21_shoes.commend.ProductSelectCommend;
+import proj21_shoes.commend.SearchCriteria;
 import proj21_shoes.dto.Brand;
 import proj21_shoes.dto.OrderOption;
 import proj21_shoes.dto.Product;
@@ -22,11 +23,6 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> productByAll() {
 		return mapper.productByAll();
-	}
-
-	@Override
-	public List<Product> productByOnlyProuct() {
-		return mapper.productByOnlyProuct();
 	}
 
 	@Override
@@ -104,6 +100,16 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Brand> brandBySel(String code) {
 		return mapper.brandBySel(code);
+	}
+
+	@Override
+	public List<Product> findAll(SearchCriteria scri) throws Exception {
+		return mapper.findAll(scri);
+	}
+
+	@Override
+	public int countInfoList(SearchCriteria scri) throws Exception {
+		return mapper.countInfoList(scri);
 	}
 
 }

@@ -70,6 +70,21 @@ select *
 		join category c on c.product_category_code =p.product_category_code
 		join productpost p2 on p2.product_code = p.product_code;		
 		
+select *
+		from product p
+		join brand b on p.brand_code = b.brand_code
+		join category c on c.product_category_code =p.product_category_code
+		where p.product_code > 0
+		order by p.product_code desc;
+
+select count(product_code) from product p join brand b on p.brand_code = b.brand_code
+		join category c on c.product_category_code =p.product_category_code
+		where product_code > 0;
+	
+select m.member_code, m.member_id, m.`point`, m.cumulative_buy_amount, m.grade_code, m.quit_state, m.signUp_date, 
+		m2.member_id as m2_member_id, m2.member_pwd, m2.member_name, m2.gender, m2.birthday, m2.email, m2.tel, m2.zipCode, m2.address, m2.detail_address, 
+		g.grade_code as g_grade_code, g.grade from `member` m join memberdetail m2 on m.member_id = m2.member_id join grade g on m.grade_code = g.grade_code
+		where member_code > 0
 	
 select * from  product;
 select * from  productPost;
@@ -185,3 +200,12 @@ select * from `member` m join memberdetail m2 on m.member_id = m2.member_id
 
 select count(member_code) from `member`
 		where member_code > 0;
+
+select * from productpost;	
+	
+select *
+		from product p
+		join brand b on p.brand_code = b.brand_code
+		join category c on c.product_category_code = p.product_category_code
+		join productpost p2 on p.product_code = p2.product_code
+		where p.product_code > 0;

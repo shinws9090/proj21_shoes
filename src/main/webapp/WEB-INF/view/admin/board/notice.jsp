@@ -30,9 +30,9 @@
 				<div class="container-fluid">
 					<table style="width: 90%; text-align: center">
 						<thead>
-						<tr>
-							<td colspan="7" class="td_title"><h1 class="mt-4">공지사항</h1></td>
-						</tr>			
+							<tr>
+								<td colspan="7" class="td_title"><h1 class="mt-4">공지사항</h1></td>
+							</tr>			
 							<tr style="background-color: lightgrey; text-align: center">
 								<td>번호</td>
 								<td>제목</td>						
@@ -44,7 +44,7 @@
 							<c:forEach items="${noticeList}" var="noticeList">
 							<tr>
 								<td>${noticeList.boardCode}</td>
-								<td><a href="mainNoticeDetail?boardCode=${noticeList.boardCode}"><c:out value="${noticeList.title}" /></a></td>
+								<td><a href="noticeDetail?boardCode=${noticeList.boardCode}"><c:out value="${noticeList.title}" /></a></td>
 								<td>${noticeList.employee.empName}</td>
 								<td>${noticeList.registDate}</td>
 							</tr>
@@ -54,15 +54,15 @@
 					<div>
 						<ul class="pageNum">
 						    <c:if test="${pageMaker.prev}">
-						      <li id="page"><a href="mainNotice${pageMaker.makeSearch(pageMaker.startPage - 1)}">[이전]</a></li>
+						      <li id="page"><a href="notice${pageMaker.makeSearch(pageMaker.startPage - 1)}">[이전]</a></li>
 						    </c:if> 
 						
 						    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-						      <li id="page"><a href="mainNotice${pageMaker.makeSearch(idx)}">[${idx}]</a></li>
+						      <li id="page"><a href="notice${pageMaker.makeSearch(idx)}">[${idx}]</a></li>
 						    </c:forEach>
 						
 						    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-						      <li id="page"><a href="mainNotice${pageMaker.makeSearch(pageMaker.endPage + 1)}">[다음]</a></li>
+						      <li id="page"><a href="notice${pageMaker.makeSearch(pageMaker.endPage + 1)}">[다음]</a></li>
 						    </c:if> 
 						</ul>
 						
@@ -80,7 +80,7 @@
 						    <script  type="text/javascript">
 						      $(function(){
 						        $('#searchBtn').click(function() {
-						          self.location = "mainNotice" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+						          self.location = "notice" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
 						        });
 						      });   
 						    </script>

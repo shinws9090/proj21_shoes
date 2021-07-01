@@ -54,7 +54,7 @@ $(function(){
 		        
 		        <!-- Page content-->
 		        <div class="container-fluid">
-		            <table style="width:100%">
+		            <table style="width: 90%; text-align: center">
 						<tr>
 							<td colspan="7" class="td_title"><h1 class="mt-4">카테고리 목록</h1></td>
 						</tr>

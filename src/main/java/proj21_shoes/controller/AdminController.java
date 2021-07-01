@@ -99,27 +99,33 @@ public class AdminController {
 	}
 
 	@RequestMapping("/admin/memberMgt") // 멤버관리 화면
-	public void memberDetailList(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
+	public void memberList(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
 		List<Member> memberList = memberService.findAll(scri);
 		model.addAttribute("memberList", memberList);
 
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(scri);
-		pageMaker.setTotalCount(noticeService.countInfoList(scri));
+		pageMaker.setTotalCount(memberService.countInfoList(scri));
 		model.addAttribute("pageMaker", pageMaker);
 	}
 
-	@RequestMapping("/admin/productMgt") // 제품관리 화면
-	public ModelAndView productList() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("admin/productMgt");
-		return mav;
+	@GetMapping("/admin/productMgt") // 제품관리 화면
+	public void productList(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
+		List<Product> productList = productService.findAll(scri);
+		model.addAttribute("productList", productList);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(productService.countInfoList(scri));
+		model.addAttribute("pageMaker", pageMaker);
 	}
 
 	@RequestMapping("/admin/productDetailMgt") // 제품상세 화면
-	public ModelAndView productDetail(@RequestParam(value = "productCode") long productCode) {
+	public ModelAndView productDetail(@RequestParam(value = "productCode") int productCode) {
+		Product product = productService.productByCode(productCode);
+		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("productCode", productCode);
+		mav.addObject("product", product);
 		mav.setViewName("admin/product/productDetailMgt");
 		return mav;
 	}
@@ -224,8 +230,8 @@ public class AdminController {
 	public void getProductPostRegister(Model model) {
 		System.out.println("상품판매글등록페이지");
 
-		List<Product> productList = productService.productByOnlyProuct();
-		model.addAttribute("productList", JSONArray.fromObject(productList));
+//		List<Product> productList = productService.productByOnlyProuct();
+//		model.addAttribute("productList", JSONArray.fromObject(productList));
 
 	}
 

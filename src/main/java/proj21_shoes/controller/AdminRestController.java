@@ -82,14 +82,7 @@ public class AdminRestController {
 		return ResponseEntity.ok(member);
 	}
 
-	@GetMapping("/productMgt")
-	public ResponseEntity<Object> PorductList() {
-		System.out.println("제품 리스트");
 
-		List<Product> products = productService.productByOnlyProuct();
-
-		return ResponseEntity.ok(products);
-	}
 
 	@GetMapping("/productMgt/{no}")
 	public ResponseEntity<Object> ProductDetail(@PathVariable int no, HttpServletResponse response) {

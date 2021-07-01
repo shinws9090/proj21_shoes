@@ -42,7 +42,7 @@ $(function(){
 				sCont += "<td>" + json.brand.brandName + "</td>";
 				sCont += "<td>" + json.gender + "</td>";
 				sCont += "<td>" + json.category.category + "</td>";
-				sCont += "<td>" + json.productPost.productMainImage + "</td>";					
+				sCont += "<td>" + "<img src='${contextPath}/images/"+ json.productPost.productMainImage + "' width='200'/>" + "</td>";
 				sCont += "<td>" + json.costPrice + "</td>";
 				sCont += "<td>" + json.sellPrice + "</td>";
 				sCont += "<td>" + json.registDate + "</td>";
@@ -73,7 +73,7 @@ $(function(){
 		        <!-- Page content-->
 		        <div class="container-fluid">
 					<div>
-						<table style="width:100%">
+						<table style="width: 90%; text-align: center">
 							<tr>
 								<td colspan="7" class="td_title"><h1 class="mt-4">상품 정보</h1></td>
 							</tr>

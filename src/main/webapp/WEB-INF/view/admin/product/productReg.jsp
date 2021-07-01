@@ -29,6 +29,28 @@ $(function(){
 });
 </script>
 </head>
+<style>
+
+.mt-4 {
+    padding-left: 600px;
+    padding-bottom: 30px;
+}
+
+.from_RegSection1 {
+    display: inline-block;
+    padding-left: 400px;
+    padding-bottom: 100px;
+    position: absolute;
+}
+
+.from_RegSection2 {
+    display: table;
+    padding-left: 180px;
+    padding-bottom: 100px;
+    margin: 0 auto;
+}
+
+</style>
 <body class="main-layout">
 
 	<!-- header -->
@@ -51,207 +73,210 @@ $(function(){
 					<div class="admin_content_wrap">
 						<div class="admin_content_main">
 							<form id="productRegForm" method="post" autocomplete="off" enctype="multipart/form-data">
-			
-								<div class="form_section">
-									<div class="form_section_title">
-										<label>상품코드</label>
+								<div class="from_RegSection1">
+									<div class="form_section">
+										<div class="form_section_title">
+											<label>상품코드</label>
+										</div>
+										<div class="form_section_content">
+											<input name="productCode" value="">
+										</div>
 									</div>
-									<div class="form_section_content">
-										<input name="productCode" value="">
+				
+									<div class="form_section">
+										<div class="form_section_title">
+											<label>상품명</label>
+										</div>
+										<div class="form_section_content">
+											<input name="productName" value="">
+										</div>
 									</div>
-								</div>
-			
-								<div class="form_section">
-									<div class="form_section_title">
-										<label>상품명</label>
+				
+									<div class="form_section">
+										<div class="form_section_title">
+											<label>브랜드</label>
+										</div>
+										<div class="form_section_content">
+											<select name="brand" class="brand">
+												<option selected="selected" value="">브랜드를 선택해주세요</option>
+											</select>
+										</div>
 									</div>
-									<div class="form_section_content">
-										<input name="productName" value="신발">
+				
+									<div class="form_section">
+										<div class="form_section_title">
+											<label>성별</label>
+										</div>
+										<div class="form_section_content">
+											<select name="gender" class="form_select_option">
+												<option selected="selected" value="">옵션을 선택해주세요</option>
+												<option value="WOMEN">WOMEN</option>						
+												<option value="MEN">MEN</option>						
+												<option value="ALL">ALL</option>
+												<option value="KIDS">KIDS</option>
+											</select>
+										</div>
 									</div>
-								</div>
-			
-								<div class="form_section">
-									<div class="form_section_title">
-										<label>브랜드</label>
+				
+									<div class="form_section">
+										<div class="form_section_title">
+											<label>카테고리</label>
+										</div>
+										<div class="form_section_content">
+											<select name="category" class="category">
+												<option selected="selected" value="">카테고리를 선택해주세요</option>
+											</select>
+										</div>
 									</div>
-									<div class="form_section_content">
-										<select name="brand" class="brand">
-											<option selected="selected" value="">브랜드를 선택해주세요</option>
-										</select>
+				
+									<div class="form_section">
+										<div class="form_section_title">
+											<label>소재</label>
+										</div>
+										<div class="form_section_content">
+											<input name="material" value="">
+										</div>
 									</div>
-								</div>
-			
-								<div class="form_section">
-									<div class="form_section_title">
-										<label>성별</label>
+				
+									<div class="form_section">
+										<div class="form_section_title">
+											<label>계절</label>
+										</div>
+										<div class="form_section_content">
+											<input name="season" value="">
+										</div>
 									</div>
-									<div class="form_section_content">
-										<select name="gender" class="form_select_option">
-											<option selected="selected" value="">옵션을 선택해주세요</option>
-											<option value="WOMEN">WOMEN</option>						
-											<option value="MEN">MEN</option>						
-											<option value="ALL">ALL</option>
-											<option value="KIDS">KIDS</option>
-										</select>
+				
+									<div class="form_section">
+										<div class="form_section_title">
+											<label>제조일</label>
+										</div>
+										<div class="form_section_content">
+											<input type="date" name="madeDate">
+										</div>
 									</div>
-								</div>
-			
-								<div class="form_section">
-									<div class="form_section_title">
-										<label>카테고리</label>
+				
+									<div class="form_section">
+										<div class="form_section_title">
+											<label>공급가격</label>
+										</div>
+										<div class="form_section_content">
+											<input name="costPrice" value="">
+										</div>
 									</div>
-									<div class="form_section_content">
-										<select name="category" class="category">
-											<option selected="selected" value="">카테고리를 선택해주세요</option>
-										</select>
+				
+									<div class="form_section">
+										<div class="form_section_title">
+											<label>판매가격</label>
+										</div>
+										<div class="form_section_content">
+											<input name="sellPrice" value="">
+										</div>
 									</div>
-								</div>
-			
-								<div class="form_section">
-									<div class="form_section_title">
-										<label>소재</label>
+				
+									<div class="form_section">
+										<div class="form_section_title">
+											<label>등록일</label>
+										</div>
+										<div class="form_section_content">
+											<c:set var="now" value="<%=LocalDateTime.now()%>" />
+											<input type="date" name="registDate"
+												value='<tf:formatDateTime value="${now}" pattern = "yyyy-MM-dd" />'
+												readonly="readonly">
+										</div>
 									</div>
-									<div class="form_section_content">
-										<input name="material" value="소재">
+				
+									<div class="form_section">
+										<div class="form_section_title">
+											<label>누적등록수량</label>
+										</div>
+										<div class="form_section_content">
+											<input name="cumulativeRegistCount" value="0">
+										</div>
 									</div>
-								</div>
-			
-								<div class="form_section">
-									<div class="form_section_title">
-										<label>계절</label>
+				
+									<div class="form_section">
+										<div class="form_section_title">
+											<label>누적판매수량</label>
+										</div>
+										<div class="form_section_content">
+											<input name="cumulativeSellCount" value="0">
+										</div>
+									</div>																				
+									
+									<div class="form_section">
+										<div class="form_section_title">
+											<label>등록사원정보</label>
+										</div>
+										<div class="form_section_content">
+											<select name="employee" class="employee">
+												<option selected="selected" value="">등록사원을 선택해주세요</option>
+											</select>
+										</div>
 									</div>
-									<div class="form_section_content">
-										<input name="season" value="계절">
+									
+								</div>	
+																
+								<div class="from_RegSection2">
+									<div class="form_section">
+										<div class="form_section_title">
+											<label>내용</label>
+										</div>
+										<div class="form_section_content">
+											<textarea rows="5" cols="50"  name="content"></textarea>
+										</div>
 									</div>
-								</div>
-			
-								<div class="form_section">
-									<div class="form_section_title">
-										<label>제조일</label>
+									
+									<div class="form_section">
+										<div class="form_section_title">
+											<label>상품대표이미지</label>
+										</div>
+										<div class="form_section_content">
+											<input type="file" id="productMainImage" name="productMainImage" />
+											<div class="select_img"><img src="" /></div>
+										</div>
 									</div>
-									<div class="form_section_content">
-										<input type="date" name="madeDate">
-									</div>
-								</div>
-			
-								<div class="form_section">
-									<div class="form_section_title">
-										<label>공급가격</label>
-									</div>
-									<div class="form_section_content">
-										<input name="costPrice" value="50000">
-									</div>
-								</div>
-			
-								<div class="form_section">
-									<div class="form_section_title">
-										<label>판매가격</label>
-									</div>
-									<div class="form_section_content">
-										<input name="sellPrice" value="60000">
-									</div>
-								</div>
-			
-								<div class="form_section">
-									<div class="form_section_title">
-										<label>등록일</label>
-									</div>
-									<div class="form_section_content">
-										<c:set var="now" value="<%=LocalDateTime.now()%>" />
-										<input type="date" name="registDate"
-											value='<tf:formatDateTime value="${now}" pattern = "yyyy-MM-dd" />'
-											readonly="readonly">
-									</div>
-								</div>
-			
-								<div class="form_section">
-									<div class="form_section_title">
-										<label>누적등록수량</label>
-									</div>
-									<div class="form_section_content">
-										<input name="cumulativeRegistCount" value="1">
-									</div>
-								</div>
-			
-								<div class="form_section">
-									<div class="form_section_title">
-										<label>누적판매수량</label>
-									</div>
-									<div class="form_section_content">
-										<input name="cumulativeSellCount" value="1">
-									</div>
-								</div>
-			
-								<div class="form_section">
-									<div class="form_section_title">
-										<label>상품대표이미지</label>
-									</div>
-									<div class="form_section_content">
-										<input type="file" id="productMainImage" name="productMainImage" />
-										<div class="select_img"><img src="" /></div>
-									</div>
-								</div>
-								
-								<script>
-									$("#productMainImage").change(function(){
-										if(this.files && this.files[0]) {
-											var reader = new FileReader;
-											reader.onload = function(data) {
-												$(".select_img img").attr("src", data.target.result).width(500);        
+									
+									<script>
+										$("#productMainImage").change(function(){
+											if(this.files && this.files[0]) {
+												var reader = new FileReader;
+												reader.onload = function(data) {
+													$(".select_img img").attr("src", data.target.result).width(200);        
+												}
+												reader.readAsDataURL(this.files[0]);
 											}
-											reader.readAsDataURL(this.files[0]);
-										}
-									});
-								</script>
-								
-								<%=request.getRealPath("/") %>
-								
-								<div class="form_section">
-									<div class="form_section_title">
-										<label>내용</label>
-									</div>
-									<div class="form_section_content">
-										<textarea rows="5" cols="50"  name="content"></textarea>
-									</div>
-								</div>
-			
-								<div class="form_section">
-									<div class="form_section_title">
-										<label>상품이미지들</label>
-									</div>
-									<div class="form_section_content">
-										<input type="file" id="images" name="images" />
-										<div class="select_imgs"><img src="" /></div>					
-									</div>
-								</div>
-								
-								
-								<script>
-									$("#images").change(function(){
-										if(this.files && this.files[0]) {
-											var reader = new FileReader;
-											reader.onload = function(data) {
-												$(".select_imgs img").attr("src", data.target.result).width(500);        
+										});
+									</script>
+									
+									<%-- <%=request.getRealPath("/") %> --%>
+												
+									<div class="form_section">
+										<div class="form_section_title">
+											<label>상품이미지들</label>
+										</div>
+										<div class="form_section_content">
+											<input type="file" id="images" name="images" />
+											<div class="select_imgs"><img src="" /></div>					
+										</div>
+									</div>								
+									
+									<script>
+										$("#images").change(function(){
+											if(this.files && this.files[0]) {
+												var reader = new FileReader;
+												reader.onload = function(data) {
+													$(".select_imgs img").attr("src", data.target.result).width(200);        
+												}
+												reader.readAsDataURL(this.files[0]);
 											}
-											reader.readAsDataURL(this.files[0]);
-										}
-									});
-								</script>					
-								
-								<div class="form_section">
-									<div class="form_section_title">
-										<label>등록사원정보</label>
+										});
+									</script>
+									
+									<div class="btn_section">
+										<button type="submit" id="new">추가</button>
+										<button type="button" id="cancel">취소</button>
 									</div>
-									<div class="form_section_content">
-										<select name="employee" class="employee">
-											<option selected="selected" value="">등록사원을 선택해주세요</option>
-										</select>
-									</div>
-								</div>
-								
-								<div class="btn_section">
-									<button type="submit" id="new">추가</button>
-									<button type="button" id="cancel">취소</button>
 								</div>
 							</form>
 						</div>

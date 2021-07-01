@@ -54,7 +54,7 @@
 					sCont += "<td>" + json.brand.brandName + "</td>";
 					sCont += "<td>" + json.gender + "</td>";
 					sCont += "<td>" + json.category.category + "</td>";
-					sCont += "<td>" + json.productPost.productMainImage + "</td>";					
+					sCont += "<td>" + "<img src='${contextPath}/images/"+ json.productPost.productMainImage + "' width='200'/>" + "</td>";
 					sCont += "<td>" + json.costPrice + "</td>";
 					sCont += "<td>" + json.sellPrice + "</td>";
 					sCont += "<td>" + json.registDate + "</td>";
@@ -73,7 +73,6 @@
 		<jsp:include page="/WEB-INF/view/include/header.jsp" />
 	</header>
 	<!-- end header -->
-	
 	<section>
 		<div class="d-flex" id="wrapper">
 			<jsp:include page="/WEB-INF/view/admin/include/sidebar.jsp" />
@@ -81,14 +80,12 @@
 		    <!-- Page content wrapper-->
 		    <div id="page-content-wrapper">
 			<jsp:include page="/WEB-INF/view/admin/include/productMenu.jsp" />
-		        
 		        <!-- Page content-->
+		        
 		        <div class="container-fluid">
-		            <table style="width:100%">
-						<tr>
-							<td colspan="7" class="td_title"><h1 class="mt-4">상품 정보</h1></td>
-						</tr>
-
+		            <h1 class="mt-4">상품 정보</h1>
+		            <table style="width: 90%; text-align: center">
+						
 						<tr style="background-color: lightgrey; text-align: center">
 							<td>번호</td>
 							<td>상품명</td>
@@ -108,7 +105,7 @@
 						</tr>
 					</table>
 					
-					<h1 class="mt-4">수정 삭제</h1>
+					<h1 class="mt-4">상품 관리</h1>
 					<div class="btn_section">
 						<button type="button" id="modify_btn">수정</button>
 						<button type="button" id="delete_btn">삭제</button>

@@ -96,7 +96,7 @@ var contextPath = "<%=request.getContextPath()%>";
 		        <!-- Page content-->
 		        <div class="container-fluid">
 		            <div>
-						<table style="width:100%">
+						<table style="width: 90%; text-align: center">
 							<tr>
 								<td colspan="7" class="td_title"><h1 class="mt-4">상품 정보</h1></td>
 							</tr>

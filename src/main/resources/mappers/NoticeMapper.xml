@@ -24,7 +24,7 @@
 	</select>
 	
 	<select id="countInfoList" parameterType="SearchCriteria" resultType="int" >
-		select count(board_code) from notice n
+		select count(n.board_code) from notice n join employee e on n.emp_number = e.emp_number 
 		where n.board_code > 0
 		<include refid="search"></include>
 	</select>
