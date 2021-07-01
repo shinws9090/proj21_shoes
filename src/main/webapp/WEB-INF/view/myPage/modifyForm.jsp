@@ -128,7 +128,7 @@
 	<section id ="modifyForm">
 
 		<h3>회원정보 변경</h3> 
-			<form:form action="/myPage/modify/${member.memberId }" modelAttribute="memberDetailUpdateCommend"><!-- 보내는거? -->
+			<form:form action="${contextPath}/myPage/modify/${member.memberId }" modelAttribute="memberDetailUpdateCommend"><!-- 보내는거? -->
 				<table>
 			<tr>
 			<article style="color: red; ">
@@ -269,7 +269,7 @@
 					<tr>
 					<td></td>
 					<td>
-				 	<form action="/myPage/modify/${member.memberId }" method="post">
+				 	<form action="${contextPath}/myPage/modify/${member.memberId }" method="post">
 							<input type="submit" value="저장" /><%-- <form:errors path="confirmPassword" /> --%>
 							
 							
