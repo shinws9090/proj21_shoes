@@ -37,13 +37,13 @@
 	
 	<div id="loginForm">
 	<section id = "loginForm">
-		<h2>로그인</h2><!-- 회원가입 -->
+		<h2>관리자 로그인</h2><!-- 회원가입 -->
 		<form:form action="adminLoginSuccess"  modelAttribute="adminLoginCommend">
 		<form:errors/>
 	 	<fieldset id="loginCommand"> 
 	 	<table>
 		<tr>
-			<td><p>회원 ID : </p></td>
+			<td><p>관리자 ID : </p></td>
 			<td id="td_right">
 				<label >
 					<form:input path="empId" /> <form:errors path="empId" />
@@ -51,7 +51,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td><p>회원 PW:</p></td>
+			<td><p>관리자 PW:</p></td>
 			<td id="td_right">
 				<label> 
 					<form:password path="empPwd" /> <form:errors path="empPwd" />
@@ -65,7 +65,7 @@
 				</label>
 			 </p></td>
 			 <td id="td_right">
-			 <input type="submit" value="로그인하기"  size="100"/></td>
+			 <input type="submit" value="관리자 로그인하기"  size="100"/></td>
 		</tr>
 <!-- 		<article class="btn2">
 		<tr>
@@ -82,10 +82,10 @@
 		<table>
 		<article id = "findForm">
 		
-			<a href="${contextPath}/find/findId">아이디 찾기</a> <a> | </a>		
+	<%-- 		<a href="${contextPath}/find/findId">아이디 찾기</a> <a> | </a>		
 			<a href="${contextPath}/find/findPw">비밀번호 찾기</a>
-			<a> | </a>		
-			<a href="${contextPath}/adminLogin">관리자 로그인</a>
+			<a> | </a>	 --%>	
+			<%-- <a href="${contextPath}/adminLogin">관리자 로그인</a> --%>
 		
 		</article>
 		</table>
