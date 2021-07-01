@@ -31,7 +31,7 @@
 				</p>	
 				<li><a href="${contextPath}/cartList">장바구니</a></li>		
 				<li><a href="${contextPath}/myPageHome/${authInfo.memberId}">마이페이지</a></li>
-				<li><a href="${contextPath}/logout"">로그아웃</a></li>
+				<li><a href="${contextPath}/logout">로그아웃</a></li>
 			</c:if>
 				<!-- 관리자 로그인 했을 때 보여지는 메뉴 -->
 			<c:if test="${!empty authInfo2}">
@@ -42,7 +42,7 @@
 			<%-- 	
 				<li><a href="${contextPath}/cartList">장바구니</a></li>		
 				<li><a href="${contextPath}/myPageHome/${authInfo.memberId}">마이페이지</a></li> --%>
-				<li><a href="${contextPath}/logout"">로그아웃</a></li>
+				<li><a href="${contextPath}/logout">로그아웃</a></li>
 			</c:if>
 			
 
