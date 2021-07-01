@@ -1,5 +1,6 @@
 package proj21_shoes.controller;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +10,7 @@ import javax.validation.Valid;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,6 +25,7 @@ import proj21_shoes.commend.MyPWConfirmCommand;
 import proj21_shoes.commend.MyPageSelectCommend;
 import proj21_shoes.dto.Member;
 import proj21_shoes.dto.MemberDetail;
+import proj21_shoes.exeption.DuplicateMemberException;
 import proj21_shoes.exeption.MemberNotFoundException;
 import proj21_shoes.service.GetMemberDetailService;
 import proj21_shoes.service.ModifyMemberDetailService;
@@ -96,7 +99,7 @@ public class MyPageController {
 	//처음 보여지는 회원정보수정 화면!! 수정된 데이터 받는것도 다시 여기로 되돌아온다!!
 	@GetMapping("/myPage/{memberId}")  // <마이페이지에서 '회원정보 변경'을  누르면 --> myPage2로 이동 
 	public String myPage (@PathVariable("memberId") String memberId,
-			@ModelAttribute("memberDetailUpdateCommend")  MemberDetailUpdateCommend memberUpdate, 
+			 @ModelAttribute("memberDetailUpdateCommend")  MemberDetailUpdateCommend memberUpdate, 
 			MemberDetail  memberDetail, HttpSession session,HttpServletResponse response, Errors errors) {  
 		//같은 페이지로 보내주기때문에 모델어트리뷰트 있어야한다!!!!!!!
 		
@@ -121,7 +124,7 @@ public class MyPageController {
 	//회원정보수정 입력페이지에서 저장 누를시 
 	@PostMapping("/myPage/modify/{memberId}")
 	public String modify(@PathVariable("memberId") String memberId2,
-			 @ModelAttribute("memberDetailUpdateCommend")  MemberDetailUpdateCommend memberUpdate,
+			@Valid@ModelAttribute("memberDetailUpdateCommend")  MemberDetailUpdateCommend memberUpdate,BindingResult bindingResult,
 			 @Param("memberId") String memberId, @Param("confirmPassword") String confirmPassword, HttpSession session, HttpServletResponse response, Errors errors) {
 	
 		System.out.println("여기냐1");
@@ -133,16 +136,21 @@ public class MyPageController {
 			System.out.println(errors);
 			return "/myPage/modifyForm";  //일로 돌려보내고
 		}
-			//기존 비밀번호.equls(새로입력받은 번호) 
-		
+
 		try {
+			
+			
+			//기존 비밀번호.equls(새로입력받은 번호) 
 		if(!memberDetail.getMemberPwd().equals(myPWConfirmCommand.getMemberPwd())) {  //기존 비밀번호 불일치시
 			System.out.println("기존비밀번호>>> "+ memberDetail.getMemberPwd());
 			System.out.println("입력받은 기존비번>>> "+ memberUpdate.getConfirmPassword());
 			errors.rejectValue("confirmPassword", "nomatch");
 			return  "/myPage/modifyForm";
 		}
-		}catch (NullPointerException e) {
+		
+		}
+		
+		catch (NullPointerException e) {
 			errors.rejectValue("confirmPassword", "nomatch");
 			return  "/myPage/modifyForm";
 		}
@@ -153,17 +161,27 @@ public class MyPageController {
 		//위에서 담은 아이디 가져와서 담기
 		try {
 		
-			MemberDetail updateMember =new MemberDetail(memberUpdate.getMemberId(),memberUpdate.getMemberPwd(),memberUpdate.getMemberName(),memberUpdate.isGender(),memberUpdate.getBirthday(),memberUpdate.getEmail(),memberUpdate.getTel(),memberUpdate.getZipCode(),memberUpdate.getAddress(),memberUpdate.getDetailAddress()); 
+			MemberDetailUpdateCommend updateMember =new MemberDetailUpdateCommend(memberUpdate.getMemberId(),memberUpdate.getMemberPwd(),memberUpdate.getMemberName(),memberUpdate.isGender(),memberUpdate.getBirthday(),memberUpdate.getEmail(),memberUpdate.getTel(),memberUpdate.getZipCode(),memberUpdate.getAddress(),memberUpdate.getDetailAddress()); 
 		modifyService.modifyMemberDetail(updateMember);  //여기서 수정완료!
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("updateMember",updateMember);
 		MemberDetail memberDetail2 = getMemberService.getMemberDetail(memberId);
 
 		System.out.println("변경된 비밀번호>>> "+ memberDetail2.getMemberPwd());
-
+		
+		
+//		PrintWriter out = response.getWriter();
+//		out.println("<script>");
+//		out.println("alert('수정완료')");
+//		out.println("</script>");
 		System.out.println("수정완료");
-		return"/myPage/modifyForm";
-		}catch(Exception e) {
+		return"redirect:/myPage/myPageSel/" + memberId;
+		
+		}catch (DuplicateMemberException e) {
+			errors.rejectValue("email", "duplicate");
+			return  "/myPage/modifyForm";
+		}
+		catch(Exception e) {
 			errors.reject("error");
 			return"/myPage/modifyForm";
 		}
@@ -174,7 +192,7 @@ public class MyPageController {
 	
 	@GetMapping("/myPage/quitMember/{memberId}")  // <마이페이지에서 '회원정보 변경'을  누르면 --> myPage2로 이동 
 	public String quitMemberFome (@PathVariable("memberId") String memberId,
-			@ModelAttribute("memberDetailUpdateCommend")  MemberDetailUpdateCommend memberUpdate, 
+			 @ModelAttribute("memberDetailUpdateCommend")  MemberDetailUpdateCommend memberUpdate, 
 			MemberDetail  memberDetail, HttpSession session,HttpServletResponse response, Errors errors) {  
 		//같은 페이지로 보내주기때문에 모델어트리뷰트 있어야한다!!!!!!!
 		

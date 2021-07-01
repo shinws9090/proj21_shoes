@@ -19,7 +19,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>마이페이지</title>
+ <style type="text/css">
+ 
 
+ </style>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
@@ -129,16 +132,16 @@
 				<table>
 			<tr>
 			<article style="color: red; ">
-							<form:errors  path="confirmPassword"  />
-							<form:errors  path="memberId"  />
-							<form:errors  path="memberName"  />
-							<form:errors  path="birthday"  />
-							<form:errors  path="email"  />
-							<form:errors  path="tel"  />
-							<form:errors  path="zipCode"  />
-							<form:errors  path="tel"  />
-							<form:errors  path="detailAddress"  />
-							<form:errors  path="address"  />
+							<form:errors  path="confirmPassword"  /><br>
+							<%-- <form:errors  path="memberId"  /><br>
+							<form:errors  path="memberName"  /><br>
+							<form:errors  path="birthday"  /><br>
+							<form:errors  path="email"  /><br>
+							<form:errors  path="tel"  /><br>
+							<form:errors  path="zipCode"  /><br>
+							<form:errors  path="tel"  /><br>
+							<form:errors  path="detailAddress"  /><br>
+							<form:errors  path="address"  /><br> --%>
 							</article>
 				<td><p>회원 아이디 :</p></td>
 				<td id="td_right">
@@ -147,6 +150,7 @@
 				</label>
 				</td>				
 			</tr>
+			<form:errors  path="memberId"  />
 			
 		
 			<tr>
@@ -176,9 +180,9 @@
 					<label for="memberName">		
 				<form:input path="memberName" id="memberName" value="${member.memberName }"/>
 				</label>
+				<form:errors  path="memberName"  />
 				</td>
 			</tr>
-			
 		
 			<%-- 	${member.gender }	 --%>
 	
@@ -203,6 +207,7 @@
 				<label for="birthday">		
 				<form:input type="date" path="birthday" id="birthday" value="${member.birthday }"/>
 				</label>
+			<form:errors  path="birthday"  />
 				</td>
 			
 			</tr>
@@ -213,6 +218,7 @@
 				<label for="email">	
 				<form:input type="email" path="email"  id="email" value="${member.email }"/>
 				</label>
+			<form:errors  path="email"  />
 				</td>
 			</tr>
 			<tr>
@@ -221,6 +227,7 @@
 				<label for="tel">	
 				<form:input path="tel" id="tel" value="${member.tel }"/>
 				</label>
+			<form:errors  path="tel"  />
 				</td>
 			</tr>
 			
@@ -230,11 +237,12 @@
 				
 				<td id="td_right">
 				<label for="zipCode">	
-				<form:input type="test" path="zipCode" id="zipCode" onclick="testDaumPostcode()" value="${member.zipCode }" /><form:errors path="zipCode" />
+				<form:input type="test" path="zipCode" id="zipCode" onclick="testDaumPostcode()" value="${member.zipCode }" />
+			
 				</label>
+			<form:errors  path="zipCode"  />
 				</td>
 			</tr>
-			
 			<tr >
 			<td><a>주소</a></td>
 			
@@ -242,6 +250,7 @@
 				<label for="address">	
 				<form:input type="text" id="address" path="address" readonly="true" value="${member.address }"/><form:errors path="address"/>
 				</label>
+			<form:errors  path="address"  />
 				</td>
 			</tr>
 			<tr>
@@ -250,6 +259,7 @@
 				<label for="detailAddress">		
 				<form:input path="detailAddress" id="detail_address" value="${member.detailAddress }" />
 				</label>
+			<form:errors  path="detailAddress"  />
 				</td>
 			
 			</tr> 

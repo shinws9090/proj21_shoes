@@ -5,8 +5,8 @@ import org.apache.ibatis.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import proj21_shoes.commend.MemberDetailUpdateCommend;
 import proj21_shoes.commend.MyPWConfirmCommand;
-import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.mapper.MemberDetailMapper;
 import proj21_shoes.service.ModifyMemberDetailService;
 @Service
@@ -16,7 +16,7 @@ public class ModifyMemberDetailServiceImpl implements ModifyMemberDetailService 
 	private MemberDetailMapper mapper;
 	
 	@Override
-	public int modifyMemberDetail(MemberDetail memberDetail) {
+	public int modifyMemberDetail(MemberDetailUpdateCommend memberDetail) {
 		log.debug("service - modifyMemberDetail() > " + memberDetail);
 		return mapper.updateMemberDetail(memberDetail);
 	}
