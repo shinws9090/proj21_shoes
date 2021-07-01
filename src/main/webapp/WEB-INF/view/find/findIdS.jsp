@@ -57,8 +57,8 @@
 		
 			<article id = "findForm">
 		
-			<a href="<c:url value='${contextPath}/login/loginForm'/>">로그인</a> <a> | </a>		
-			<a href="<c:url value='${contextPath}/find/findPw'/>">비밀번호 찾기</a>
+			<a href="${contextPath}/login/loginForm">로그인</a> <a> | </a>		
+			<a href="${contextPath}/find/findPw">비밀번호 찾기</a>
 		
 		</article>
 </fieldset>

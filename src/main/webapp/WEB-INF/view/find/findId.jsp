@@ -74,7 +74,7 @@
 		<tr>
 		<td></td>
 		<td>
-		<a href="<c:url value='${contextPath}/find/findPw'/>">비밀번호 찾기</a>
+		<a href="${contextPath}/find/findPw">비밀번호 찾기</a>
 		</td>
 		</tr>
 		</article>
