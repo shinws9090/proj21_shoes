@@ -38,7 +38,7 @@
 	<div id="loginForm">
 	<section id = "loginForm">
 		<h2>로그인</h2><!-- 회원가입 -->
-		<form:form action="/adminLoginSuccess"  modelAttribute="adminLoginCommend">
+		<form:form action="adminLoginSuccess"  modelAttribute="adminLoginCommend">
 		<form:errors/>
 	 	<fieldset id="loginCommand"> 
 	 	<table>
