@@ -130,7 +130,7 @@
 		</div>
 
 			<article style="margin-left:50%;">	
-				<form action="/myPage/${myQnADetail.boardCode}/${myQnADetail.memberId}/modify/2" method="post"> <!-- 일로 보내조 -->
+				<form action="${contextPath}/myPage/${myQnADetail.boardCode}/${myQnADetail.memberId}/modify/2" method="post"> <!-- 일로 보내조 -->
 				<input type="submit" value="작성하기" /><!--다음단계  -->
 
 				</form> 
@@ -185,7 +185,7 @@
 				
 				</table>
 					<br>
-		<form:form action="/myPage/${myQnADetail.boardCode}/${myQnADetail.memberId}/modify/2" modelAttribute="modifyMyNormalQnA"   >
+		<form:form action="${contextPath}/myPage/${myQnADetail.boardCode}/${myQnADetail.memberId}/modify/2" modelAttribute="modifyMyNormalQnA"   >
 		<form:errors/>
 		<div>
 		<table class="tbl_type" >
@@ -228,7 +228,7 @@
 		</div>
 
 			<article style="margin-left:50%;">	
-				<form action="/myPage/${myQnADetail.boardCode}/${myQnADetail.memberId}/modify/2" method="post"> <!-- 일로 보내조 -->
+				<form action="${contextPath}/myPage/${myQnADetail.boardCode}/${myQnADetail.memberId}/modify/2" method="post"> <!-- 일로 보내조 -->
 				<input type="submit" value="작성하기" /><!--다음단계  -->
 
 				</form> 
