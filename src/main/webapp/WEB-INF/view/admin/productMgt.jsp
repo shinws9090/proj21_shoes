@@ -17,7 +17,7 @@
 $(function(){
 	$('#new').on("click", function(e) {
 		location.href="${contextPath}/admin/product/productReg";
-	});	
+	});
 	
 	$('#searchBtn').click(function() {
 		self.location = "productMgt" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());

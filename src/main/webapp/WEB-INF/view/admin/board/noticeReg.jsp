@@ -12,19 +12,6 @@
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/admin/css/styles.css"/>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script  type="text/javascript">
-
-$(function(){
-	$('#new').on("click", function(e) {
-		location.href="${contextPath}/admin/board/noticeReg";
-	});
-	
-	$('#searchBtn').click(function() {
-		self.location = "notice" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
-	});  
-});
-
-</script>
 </head>
 <body class="main-layout">
 	<!-- header -->
@@ -41,12 +28,11 @@ $(function(){
 		    <div id="page-content-wrapper">
 			<jsp:include page="/WEB-INF/view/admin/include/boardMenu.jsp" />
 				<div class="container-fluid">
-					<h1 class="mt-4">공지사항</h1>
-					<div class="btn_new">
-						<button type="button" id="new">글 작성</button>
-					</div>
 					<table style="width: 90%; text-align: center">
 						<thead>
+							<tr>
+								<td colspan="7" class="td_title"><h1 class="mt-4">공지사항</h1></td>
+							</tr>			
 							<tr style="background-color: lightgrey; text-align: center">
 								<td>번호</td>
 								<td>제목</td>						
@@ -90,6 +76,14 @@ $(function(){
 						    <input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>
 						
 						    <button id="searchBtn" type="button">검색</button>
+						    
+						    <script  type="text/javascript">
+						      $(function(){
+						        $('#searchBtn').click(function() {
+						          self.location = "notice" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+						        });
+						      });   
+						    </script>
 						</div>						
 					</div>
 		        </div>

@@ -528,17 +528,6 @@ public class AdminController {
 	}
 
 	// 게시판 관리
-	@GetMapping("/admin/board/notice")
-	public void noticeBoardAdminMain(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
-		List<Notice> noticeList = noticeService.findAll(scri);
-		model.addAttribute("noticeList", noticeList);
-
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(scri);
-		pageMaker.setTotalCount(noticeService.countInfoList(scri));
-		model.addAttribute("pageMaker", pageMaker);
-	}
-
 	@GetMapping("/admin/board/mainNotice")
 	public void noticeBoardMain(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
 		List<Notice> noticeList = noticeService.findAll(scri);
@@ -554,6 +543,22 @@ public class AdminController {
 	public void noticeBoardMainDetail(Model model, @RequestParam(value = "boardCode") int boardCode) throws Exception {
 		Notice noticeView = noticeService.detailView(boardCode);
 		model.addAttribute("noticeView", noticeView);
+	}
+	
+	@GetMapping("/admin/board/notice")
+	public void noticeBoardAdminMain(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
+		List<Notice> noticeList = noticeService.findAll(scri);
+		model.addAttribute("noticeList", noticeList);
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(noticeService.countInfoList(scri));
+		model.addAttribute("pageMaker", pageMaker);
+	}
+	
+	@GetMapping("/admin/board/noticeReg")
+	public void noticeBoardReg(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
+		
 	}
 
 	@GetMapping("/admin/board/qna")
