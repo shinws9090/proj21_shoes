@@ -94,7 +94,7 @@
 				    </div>
 					<div class="form-group">
 				      <label class="form-label mt-4">사진첨부</label>
-				      <input class="form-control file" multiple="multiple" type="file" name="filename[]">
+				      <input class="form-control file" multiple="multiple" type="file" name="filename[]" accept=".gif, .jpg, .png" >
 				    </div>
 					
 				
