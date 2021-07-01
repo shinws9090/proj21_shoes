@@ -34,6 +34,11 @@
 		<result column="address" property="address" />			주소
 		<result column="detail_address" property="detailAddress" />	상세주소 -->
 	</resultMap> 
+		 <resultMap type="AdminLoginCommend" id="resAdm">
+		<id column="emp_id" property="empId" />			<!--  관리자id-->
+		<result column="emp_pwd" property="empPwd" />		<!-- 관리자password -->
+		<result column="emp_name" property="empName" />	<!-- 관리자이름 -->
+	</resultMap>
 	 
 	 
 	
@@ -42,6 +47,13 @@
 		<select id="loginIdPw" resultMap="resLogin">
 select  member_id, password(member_pwd),member_name
 from memberDetail where member_id =#{param1} and member_pwd =password(#{param2})
+	
+	</select>
+	
+		<select id="adminLoginIdPw" resultMap="resAdm">
+select  emp_id, password(emp_pwd),emp_name
+from employee where emp_id =#{param1} and emp_pwd =password(#{param2});
+
 	
 	</select>
 	
