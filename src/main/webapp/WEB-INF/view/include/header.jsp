@@ -37,6 +37,7 @@
 			<c:if test="${!empty authInfo2}">
 				<p>${authInfo2.empName } 관리자님. 환영합니다</p>
 				<p>
+			<li><a href="${contextPath}/admin/adminMain">관리자 메인</a></li>
 			
 			<%-- 	
 				<li><a href="${contextPath}/cartList">장바구니</a></li>		
@@ -50,7 +51,6 @@
 
 			<!-- 직원 아이디로 로그인 하고 권한 있을때 관리자 화면 표시 -->
 			<%-- <c:if test="${employee.authority == 1}"> --%>
-			<li><a href="${contextPath}/admin/adminMain">관리자 화면</a></li>
 			<%-- </c:if> --%>
 
 		</ul>
