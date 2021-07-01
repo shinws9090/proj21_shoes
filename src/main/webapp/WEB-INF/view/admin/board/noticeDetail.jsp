@@ -1,79 +1,71 @@
-<%@ page import="com.sun.xml.internal.bind.CycleRecoverable.Context"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="contextPath" value="<%=request.getContextPath()%>" />
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<c:set var="contextPath" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
 <html>
-<head>
-<title>lighten</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
-<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/admin/css/styles.css"/>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-</head>
-<style>
+<body>
+	<div class="sns-menu">
+		<ul>
+			<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+			<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+			<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+		</ul>
+	</div>
+	<nav class="top-menu">
+		<ul>
+			<!-- È¸¿ø ¶Ç´Â °ü¸®ÀÚ ·Î±×ÀÎ ÇÏÁö ¾Ê¾ÒÀ» ¶§ º¸¿©Áö´Â ¸Þ´º  -->
+			<c:if test="${empty authInfo &&empty authInfo2}"> 
+				<p>·Î±×ÀÎÇØÁÖ¼¼¿ä.</p> 
+				<p>
+				<li><a href="${contextPath}/register/step1">È¸¿ø°¡ÀÔ</a></li>
+				<li><a href="${contextPath}/login/loginForm">·Î±×ÀÎ</a></li>			
+			</c:if>
+			
+			<!-- È¸¿ø ·Î±×ÀÎ ÇßÀ» ¶§ º¸¿©Áö´Â ¸Þ´º -->
+			<c:if test="${!empty authInfo}">
+				<p>${authInfo.memberName }´Ô. È¯¿µÇÕ´Ï´Ù</p>
+				<p>
+			
+					<%-- <a href="<c:url value="/edit/changePassword"/>">[ºñ¹Ð¹øÈ£ º¯°æ]</a> --%>
+				</p>	
+				<li><a href="${contextPath}/cartList">Àå¹Ù±¸´Ï</a></li>		
+				<li><a href="${contextPath}/myPageHome/${authInfo.memberId}">¸¶ÀÌÆäÀÌÁö</a></li>
+				<li><a href="${contextPath}/logout">·Î±×¾Æ¿ô</a></li>
+			</c:if>
+				<!-- °ü¸®ÀÚ ·Î±×ÀÎ ÇßÀ» ¶§ º¸¿©Áö´Â ¸Þ´º -->
+			<c:if test="${!empty authInfo2}">
+				<p>${authInfo2.empName } °ü¸®ÀÚ´Ô. È¯¿µÇÕ´Ï´Ù</p>
+				<p>
+			<li><a href="${contextPath}/admin/adminMain">°ü¸®ÀÚ ¸ÞÀÎ</a></li>
+			
+			<%-- 	
+				<li><a href="${contextPath}/cartList">Àå¹Ù±¸´Ï</a></li>		
+				<li><a href="${contextPath}/myPageHome/${authInfo.memberId}">¸¶ÀÌÆäÀÌÁö</a></li> --%>
+				<li><a href="${contextPath}/logout">·Î±×¾Æ¿ô</a></li>
+			</c:if>
+			
 
-h1.mt-4 {
-    text-align: center;
-}
+			
+			<li><a href="${contextPath}/admin/board/mainNotice">°øÁö»çÇ×</a></li>
 
-.noticeDetailView {
-    margin: 0 auto;
-    width: 800px;
-    padding-top: 30px;
-    padding-bottom: 100px;
-}
+			<!-- Á÷¿ø ¾ÆÀÌµð·Î ·Î±×ÀÎ ÇÏ°í ±ÇÇÑ ÀÖÀ»¶§ °ü¸®ÀÚ È­¸é Ç¥½Ã -->
+			<%-- <c:if test="${employee.authority == 1}"> --%>
+			<%-- </c:if> --%>
 
-.noticeTitle {
-    display: inline-block;
-    padding-bottom: 50px;
-}
-
-.noticeDate {
-    display: inline-block;
-    float: right;
-}
-
-</style>
-<body class="main-layout">
-	<!-- header -->
-	<header>
-		<jsp:include page="/WEB-INF/view/include/header.jsp" />
-	</header>
-	<!-- end header -->
-	<section>
-		<div class="d-flex" id="wrapper">
-			<jsp:include page="/WEB-INF/view/admin/include/sidebar.jsp" />		    
-		    
-		    <!-- Page content wrapper-->
-		    <div id="page-content-wrapper">
-			<jsp:include page="/WEB-INF/view/admin/include/boardMenu.jsp" />
-				<!-- Page content-->
-		        <div class="container-fluid">
-		        	<h1 class="mt-4">ê³µì§€ì‚¬í•­</h1>
-		        		<div class="noticeDetailView">
-			        		<div class="noticeTitle">
-			        			<h3>${noticeView.title } </h3>
-			        		</div>
-			        		
-			        		<div class="noticeDate">
-			        			${noticeView.registDate }
-			        		</div>
-			        		
-			        		<div class="noticeContet">
-			        			${noticeView.content }
-			        		</div>
-		        		</div>
-		        </div>				
-	        </div>
-	    </div>		    
-	</section>	
-		
-	<footer>
-		<jsp:include page="/WEB-INF/view/include/footer.jsp" />
-	</footer>
-	
-	<jsp:include page="/WEB-INF/view/admin/include/script.jsp" />
+		</ul>
+	</nav>
+	<div class="logo">
+	</div>
+	<nav class="main-menu">
+		<ul class="main-menu-sub">
+			<li class="main-menu-sub"><a href="${contextPath}/index">Home</a></li>
+			<li><a href="${contextPath}/productList?menu=brand">BRAND</a></li>
+			<li><a href="${contextPath}/productList?menu=women">WOMEN</a></li>
+			<li><a href="${contextPath}/productList?menu=men">MEN</a></li>
+			<li><a href="${contextPath}/productList?menu=kids">KIDS</a></li>
+			<li><a href="${contextPath}/productList?menu=free">FREE</a></li>
+		</ul>
+	</nav>
 </body>
 </html>
