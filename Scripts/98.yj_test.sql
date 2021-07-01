@@ -1,6 +1,16 @@
 desc memberdetail ;
 
 
+
+select  emp_id, password(emp_pwd),emp_name
+from employee where emp_id ='chamdodari' and emp_pwd =password('rootroot');
+
+password('rootroot');
+
+
+
+
+select * from employee;
 select * from memberdetail;
 select  member_id,member_pwd from memberdetail where member_id ='1234'
 and member_pwd =password('111111');

@@ -38,7 +38,7 @@
 	<div id="loginForm">
 	<section id = "loginForm">
 		<h2>로그인</h2><!-- 회원가입 -->
-		<form:form action="loginSuccess" modelAttribute="loginCommand">
+		<form:form action="/adminLoginSuccess"  modelAttribute="adminLoginCommend">
 		<form:errors/>
 	 	<fieldset id="loginCommand"> 
 	 	<table>
@@ -46,7 +46,7 @@
 			<td><p>회원 ID : </p></td>
 			<td id="td_right">
 				<label >
-					<form:input path="memberId" /> <form:errors path="memberId" />
+					<form:input path="empId" /> <form:errors path="empId" />
 				</label>
 			</td>
 		</tr>
@@ -54,7 +54,7 @@
 			<td><p>회원 PW:</p></td>
 			<td id="td_right">
 				<label> 
-					<form:password path="memberPwd" /> <form:errors path="memberPwd" />
+					<form:password path="empPwd" /> <form:errors path="empPwd" />
 				</label>
 			</td>
 			</tr>

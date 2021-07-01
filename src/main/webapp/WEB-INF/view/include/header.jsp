@@ -14,15 +14,15 @@
 	</div>
 	<nav class="top-menu">
 		<ul>
-			<!--로그인 하지 않았을 때 보여지는 메뉴  -->
-			<c:if test="${empty authInfo}"> 
+			<!-- 회원 또는 관리자 로그인 하지 않았을 때 보여지는 메뉴  -->
+			<c:if test="${empty authInfo &&empty authInfo2}"> 
 				<p>로그인해주세요.</p> 
 				<p>
 				<li><a href="${contextPath}/register/step1">회원가입</a></li>
 				<li><a href="${contextPath}/login/loginForm">로그인</a></li>			
 			</c:if>
 			
-			<!-- 로그인 했을 때 보여지는 메뉴 -->
+			<!-- 회원 로그인 했을 때 보여지는 메뉴 -->
 			<c:if test="${!empty authInfo}">
 				<p>${authInfo.memberName }님. 환영합니다</p>
 				<p>
@@ -31,6 +31,16 @@
 				</p>	
 				<li><a href="${contextPath}/cartList">장바구니</a></li>		
 				<li><a href="${contextPath}/myPageHome/${authInfo.memberId}">마이페이지</a></li>
+				<li><a href="<c:url value="/logout"/>">로그아웃</a></li>
+			</c:if>
+				<!-- 관리자 로그인 했을 때 보여지는 메뉴 -->
+			<c:if test="${!empty authInfo2}">
+				<p>${authInfo2.empName } 관리자님. 환영합니다</p>
+				<p>
+			
+			<%-- 	
+				<li><a href="${contextPath}/cartList">장바구니</a></li>		
+				<li><a href="${contextPath}/myPageHome/${authInfo.memberId}">마이페이지</a></li> --%>
 				<li><a href="<c:url value="/logout"/>">로그아웃</a></li>
 			</c:if>
 			

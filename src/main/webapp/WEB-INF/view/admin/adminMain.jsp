@@ -13,9 +13,12 @@
 	<!-- header -->
 	<header>
 		<jsp:include page="/WEB-INF/view/include/header.jsp" />
+		<c:if test="${empty authInfo2}"> 
+			<jsp:include page="/WEB-INF/view/myPage/include/loginplz.jsp"/>
+		</c:if>
 	</header>
 	<!-- end header -->
-
+<c:if test="${!empty authInfo2}">
 	<section>
 		<div class="d-flex" id="wrapper">
 			<jsp:include page="/WEB-INF/view/admin/include/sidebar.jsp" />		    
@@ -32,7 +35,7 @@
 		    </div>		    
 		</div>
 	</section>
-
+</c:if>
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp" />
 	</footer>
