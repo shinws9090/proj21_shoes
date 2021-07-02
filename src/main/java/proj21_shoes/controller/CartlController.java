@@ -48,10 +48,13 @@ public class CartlController {
 		}
 		
 		List<Cart> cartList = service.cartListByMember(member);
-		List<Product> productList = new ArrayList<Product>();
-		for(Cart c : cartList) {
-			productList.add(pService.productByCode(c.getProductCode()));
-		}
+//		List<Product> productList = new ArrayList<Product>();
+//		for(Cart c : cartList) {
+//			productList.add(pService.productByCode(c.getProductCode()));
+//		}
+		
+		List<Product> productList = pService.productListByCode(cartList);
+		System.out.println(productList);
 		ModelAndView mav = new ModelAndView("product/cartList");
 		mav.addObject("cartList",cartList);
 		mav.addObject("productList",productList);
