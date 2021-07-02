@@ -11,6 +11,7 @@ import proj21_shoes.commend.MyQnaViewCommand;
 import proj21_shoes.commend.NormalQnARegistCommand;
 import proj21_shoes.commend.Pagination;
 import proj21_shoes.commend.SearchCriteria;
+import proj21_shoes.dto.Qna;
 import proj21_shoes.mapper.MyQnaMapper;
 import proj21_shoes.service.MyQnaService;
 
@@ -76,6 +77,21 @@ public class MyQnaServiceImpl implements MyQnaService {
 	@Override
 	public int countInfoList(SearchCriteria scri) throws Exception {
 		return mapper.countInfoList(scri);
+	}
+
+	@Override
+	public MyQnaViewCommand detailView(int boardCode) throws Exception {
+		return mapper.detailView(boardCode);
+	}
+
+	@Override
+	public int updateQna(Qna qna) {
+		return mapper.updateQna(qna);
+	}
+
+	@Override
+	public int deleteQna(int boardCode) {
+		return mapper.deleteQna(boardCode);
 	}
 
 }

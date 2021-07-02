@@ -39,6 +39,7 @@ import proj21_shoes.dto.Notice;
 import proj21_shoes.dto.OrderOption;
 import proj21_shoes.dto.Product;
 import proj21_shoes.dto.ProductPost;
+import proj21_shoes.dto.Qna;
 import proj21_shoes.service.BrandService;
 import proj21_shoes.service.CategoryService;
 import proj21_shoes.service.EmployeeService;
@@ -611,9 +612,20 @@ public class AdminController {
 
 		return "redirect:/admin/board/notice";
 	}
+	
+	@GetMapping("/admin/product/noticeDel")
+	public String getNoticeBoardDel(@RequestParam(value = "boardCode") int boardCode) {
+		try {
+			noticeService.deleteNotice(boardCode);
+			System.out.println("카테고리 삭제");
+		} catch (DataIntegrityViolationException e) {
+			System.out.println("외래키 에러");
+		}
+		return "redirect:/admin/board/notice";
+	}
 
 	@GetMapping("/admin/board/qna")
-	public void myQnaBoardList(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
+	public void qnaBoardList(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
 
 		List<MyQnaViewCommand> qnaList = myQnaService.findAll(scri);
 		model.addAttribute("qnaList", qnaList);
@@ -622,6 +634,30 @@ public class AdminController {
 		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(myQnaService.countInfoList(scri));
 		model.addAttribute("pageMaker", pageMaker);
+	}
+	
+	@GetMapping("/admin/board/qnaDetail")
+	public void qnaBoardDetail(Model model, @RequestParam(value = "boardCode") int boardCode) throws Exception {
+		MyQnaViewCommand qnaView = myQnaService.detailView(boardCode);
+		model.addAttribute("qnaView", qnaView);
+	}
+	
+	@GetMapping("/admin/board/qnaMod")
+	public void getQnaBoardMod(Model model, @RequestParam(value = "boardCode") int boardCode) throws Exception {
+		MyQnaViewCommand qnaView = myQnaService.detailView(boardCode);
+		model.addAttribute("qnaView", qnaView);
+	}
+	
+	@PostMapping("/admin/board/qnaMod")
+	public String postqnaBoardMod(HttpServletRequest request, @RequestParam(value = "boardCode") int boardCode) {		
+		Qna qna = new Qna();
+		qna.setReply(request.getParameter("reply"));
+		qna.setBoardCode(boardCode);		
+
+		System.out.println(qna);
+		myQnaService.updateQna(qna);
+
+		return "redirect:/admin/board/qna";
 	}
 
 	@GetMapping("/admin/board/review")

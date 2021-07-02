@@ -12,14 +12,14 @@ insert into employee values
 	(202,'이민정',1,'minruki','rootroot','minruki51@gmail.com','010-7777-7777'),
 	(303,'김길현',1,'tizona','rootroot',' tizona@naver.com','010-2345-6789'),
 	(404,'김예진',1,'chamdodari','rootroot','chamdodari@naver.com','010-1010-2020'),
-	(505,'신입',2,'test','rootroot','test@test.co.kr','010-0000-0000');
+	(505,'신입',2,'test',password('123456'),'test@test.co.kr','010-0000-0000');
 
 insert into notice values
 	(1,101,'교환 및 반품 안내사항','★꼭 읽어주세요★',now()),
 	(2,101,'적립금 소멸 안내','유효기간 만료 미사용 적립금 소멸 안내',now()),
 	(3,101,'카드사별 무이자 할인 혜택','카드사 무이자 할부, 부분 무이자 할부',now()),
 	(4,101,'일주일동안, 위클리 세일!','BEST 상품만 최대 90% SALE',now()),
-	(5,101,'카카오 알림톡 & 실시간 서비스','실시간 1:1 고객 채팅 상담 서비스 제공',now());
+	(5,101,'카카오 알림톡 & 실시간 서비스','<p><span style="font-size: 15px; letter-spacing: -0.75px;">안녕하세요.</span><br style="font-size: 15px; letter-spacing: -0.75px;"><span style="font-size: 15px; letter-spacing: -0.75px;">포인트 정책이&nbsp;</span><span style="border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 15px; line-height: inherit; letter-spacing: -0.75px; color: rgb(255, 0, 0);"><span style="border: 0px; font-variant: inherit; font-weight: 700; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit;">2020년 2월 20일</span></span><span style="font-size: 15px; letter-spacing: -0.75px;">부터 아래와 같이 변경됨에 따라 사전 안내드립니다.</span><br style="font-size: 15px; letter-spacing: -0.75px;"><br style="font-size: 15px; letter-spacing: -0.75px;"><span style="border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-weight: 700; font-stretch: inherit; font-size: 15px; line-height: inherit; letter-spacing: -0.75px;">&nbsp;&nbsp;- 구매 금액에 대한 포인트 적립율 1%로 변경<br>&nbsp; - 첫 구매 시 5,000포인트 추가 적립 혜택 삭제<br>&nbsp; - 기념일 해당 월 첫 구매 시 포인트 두 배 적립 혜택 삭제</span><br style="font-size: 15px; letter-spacing: -0.75px;"><br style="font-size: 15px; letter-spacing: -0.75px;"><span style="font-size: 15px; letter-spacing: -0.75px;">변경되는 내용을 꼭 확인해 주시기 바랍니다.</span><br style="font-size: 15px; letter-spacing: -0.75px;"><br style="font-size: 15px; letter-spacing: -0.75px;"><span style="font-size: 15px; letter-spacing: -0.75px;">※ 멤버십 회원 대상 특별 할인 및 이벤트 포인트 등 다양한 혜택이 제공될 예정입니다</span><br style="font-size: 15px; letter-spacing: -0.75px;"><br style="font-size: 15px; letter-spacing: -0.75px;"><span style="font-size: 15px; letter-spacing: -0.75px;">감사합니다.</span><br></p>',now());
 
 -- 브렌드, 카테고리, 상품정보, 상품게시글, 상품이미지, 상품주문정보
 insert into brand values
@@ -105,8 +105,8 @@ insert into qna values
 	(1,111111,11111,'질문 있습니다.','추천 해주세요','이 상품은 어떠신가요?',now()),
 	(2,111112,22222,'재고 있나요?','사이즈 240인데, 품절이길래 질문 남깁니다.','입고 예정입니다',now()),
 	(3,111113,33333,'발볼 때문에 사이즈가 고민 됩니다','발볼이 넓어서요','반 사이즈 크게 추천드려요',now()),
-	(4,111114,55555,'수선 가능할까요?','뒷꿈치가 좀 헐렁해서요','가능합니다',now()),
-	(5,111115,66666,'쿠션감이 충분한가요?','쿠션이 어느정도인지 모르겠어요','충분히 있어서 불편하지 않아요',now());
+	(4,111114,55555,'수선 가능할까요?','뒷꿈치가 좀 헐렁해서요','',now()),
+	(5,111115,66666,'쿠션감이 충분한가요?','쿠션이 어느정도인지 모르겠어요','',now());
 
 -- 장바구니
 insert into cart values 

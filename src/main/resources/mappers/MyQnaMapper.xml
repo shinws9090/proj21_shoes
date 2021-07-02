@@ -117,6 +117,8 @@
 	<!-- 검색기능을 위한 동적SQL -->
 	<sql id="search">
 		<if test="searchType != null">
+			<if test="searchType == 'n'.toString()">and reply is null</if>
+			<if test="searchType == 'nn'.toString()">and reply is not null</if>
 			<if test="searchType == 't'.toString()">AND title LIKE CONCAT('%',#{keyword},'%')</if>
 			<if test="searchType == 'c'.toString()">AND content LIKE CONCAT('%',#{keyword},'%')</if>
 			<if test="searchType == 'w'.toString()">AND member_id LIKE CONCAT('%',#{keyword},'%')</if>
@@ -124,7 +126,16 @@
 		</if>
 	</sql>
 	
+	<select id="detailView" parameterType="int" resultMap="resQna">
+		select * from vw_myqna where board_code = #{boardCode}
+	</select>
+	
+	<update id="updateQna" parameterType="Qna">
+		update qna set reply = #{reply} where board_code = #{boardCode}
+	</update>
+	
+	<delete id="deleteQna">
+		delete from qna where board_code = #{boardCode}
+	</delete>
+	
 </mapper>
-
-
-

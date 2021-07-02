@@ -104,7 +104,7 @@ color: #2c2c2c ;
 	
 }
 #loginForm #loginForm #loginCommand{     /* 동명 div 안의 section 안의   fieldset id 설정*/
-	width:  300px;
+	width:  400px;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	padding-left: 20px;
@@ -112,6 +112,8 @@ color: #2c2c2c ;
 	margin-left: 20%;
 	margin-right: 20%;
 	margin: auto;
+	margin-top: 10px;
+/* 	border: 2px solid #dcdcdc; */
 	
 }
 

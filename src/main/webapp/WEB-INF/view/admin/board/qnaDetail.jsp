@@ -15,13 +15,13 @@
 $(function(){
 
 	$('#mod_btn').on("click", function(e) {
-		location.href="${contextPath}/admin/board/noticeMod?boardCode=" + ${noticeView.boardCode};
+		location.href="${contextPath}/admin/board/qnaMod?boardCode=" + ${qnaView.boardCode};
 	});
 	
 	$('#del_btn').on("click", function(e) {
 		if(!confirm("정말 삭제하시겠습니까?")) {
 		} else {			
-			location.href="${contextPath}/admin/board/noticeDel?boardCode=" + ${noticeView.boardCode}
+			location.href="${contextPath}/admin/board/qnaDel?boardCode=" + ${qnaView.boardCode}
 		}		
 	});
 	
@@ -34,26 +34,31 @@ h1.mt-4 {
     margin-right: 200px;
     margin-bottom: 20px;
 }
-.noticeDetailView {
+.qnaDetailView {
 	margin-left: 230px;
     width: 1000px;
     padding-top: 10px;
     border-top: 1px solid;
 }
 
-.noticeTitle {
+.qnaReply {
+    float: right;
+    margin-right: 30px;
+}
+
+.qnaTitle {
     display: inline-block;
     padding: 10px;
 }
 
-.noticeDate {
+.qnaDate {
     display: inline-block;
     float: right;
     margin-right: 30px;
     padding: 10px;
 }
 
-.noticeContet {
+.qnaContet {
     min-height: 400px;
     border-bottom: 1px solid;
     border-top: 1px solid lightgray;
@@ -61,7 +66,7 @@ h1.mt-4 {
     margin-top: 10px;
 }
 
-.notice_btn {
+.qna_btn {
 	magrin-bottom: 100px;
 }
 
@@ -81,33 +86,41 @@ h1.mt-4 {
 			<jsp:include page="/WEB-INF/view/admin/include/boardMenu.jsp" />
 				<!-- Page content-->
 		        <div class="container-fluid">
-		        	<h1 class="mt-4">공지사항</h1>
-		        		<div class="noticeDetailView">
-			        		<div class="noticeTitle">
-			        			<h3>${noticeView.title } </h3>
-			        		</div>
-			        		
-			        		<div class="noticeDate">
-			        			${noticeView.registDate }
-			        		</div>
-			        		
-			        		<div class="noticeContet">
-			        			${noticeView.content }
-			        		</div>
-		        		</div>
-		        		<div class="notice_btn">
-		        			<button type="button" id="mod_btn">수정</button>
-		        			<button type="button" id="del_btn">삭제</button>
-			        	</div>		        		
+		        	<h1 class="mt-4">문의게시판</h1>
+	        		
+	        		<div class="qnaDetailView">
 		        		
-		        	<%-- <div class="noticeMove">
-		        			<div class="noticeAfter">
-			        			다음글 ${noticeViewNext.title }
-			        		</div>
-			        		<div class="noticeBefore">
-			        			이전글 ${noticeViewPrev.title }
-			        		</div>
-		        		</div> --%>
+		        		<div class="qnaTitle">
+		        			<h3>${qnaView.title } </h3>
+		        			<a href="${contextPath}//admin/productMgt?page=1&perPageNum=10&searchType=t&keyword=${qnaView.productCode}">상품명 : ${qnaView.productName } </a>
+		        		</div>
+		        		
+		        		<div class="qnaDate">
+		        			${qnaView.registDate }
+		        			<br>
+		        			회원정보 : ${qnaView.memberId }
+		        		</div>
+		        
+		        		<div class="qnaContet">
+		        			<a href="${contextPath}//admin/productMgt?page=1&perPageNum=10&searchType=t&keyword=${qnaView.productCode}"><img src="${contextPath}/images/${qnaView.productMainImage}" width="200"></a>
+		        			<br>
+		        			${qnaView.content }
+		        			<br>
+		        			<br>
+		        			답변 : ${qnaView.reply }
+		        		</div>
+		        		
+		        		<div class="qnaReply">
+		        			${qnaView.resOX }
+		        		</div>
+		        		
+	        		</div>
+	        		
+	        		<div class="qna_btn">
+	        			<button type="button" id="mod_btn">답변작성</button>
+	        			<button type="button" id="del_btn">삭제</button>
+		        	</div>
+		        		
 		        </div>				
 	        </div>
 	    </div>		    

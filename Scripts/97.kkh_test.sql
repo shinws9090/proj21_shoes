@@ -221,3 +221,11 @@ insert into notice(emp_number, title, content, regist_date) values (303, "공지
 update notice set emp_number = 202, title = "제목", content = "내용", regist_date = now() where board_code = 5;
 
 delete from notice where board_code = 5;
+
+select * from vw_myqna where board_code = 1;
+
+update qna set reply = "가능합니다"
+		where board_code = 4;
+		
+select * from vw_myqna
+		where board_code > 0 and reply is not null;
