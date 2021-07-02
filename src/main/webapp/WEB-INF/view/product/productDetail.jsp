@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="from" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="contextPath" value="<%=request.getContextPath()%>" />
 <c:set var="session" value="<%=request.getSession()%>" />
 <!DOCTYPE html>
@@ -192,8 +193,7 @@ ${message}
 					</optgroup>
 				</select>
 			</div>
-			
-			<p>${product.sellPrice}원</p>
+			<p><fmt:formatNumber value="${product.sellPrice}"/>원</p>
 			<span>수량: </span>  <input type="number" name="count" id="count" min="0" required>
 			<div class='submitBtns'>
 				<button class='btn btn-secondary btn-sm' id="cart"> 장바구니 </button>

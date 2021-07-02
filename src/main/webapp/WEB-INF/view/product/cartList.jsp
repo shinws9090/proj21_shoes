@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 	<c:set var="contextPath" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +30,7 @@ $(function() {
 	function priceAll() {
 		var priceAll = 0;
 		$(".check:checked").parent().parent().children(".price").each(function() {
-			priceAll += Number($(this).text());
+			priceAll += Number($(this).text().trim().replace(",","").replace(",",""));
 		});
 		$("#priceAll").text("전체가격:" + priceAll);
 	}
@@ -159,7 +160,7 @@ $(function() {
 	</header>
 
 	<section>
-		<%-- ${cartList} --%>
+		${cartList}
 		<%-- ${productList} --%>
 			<table>
 				<thead>
@@ -178,20 +179,24 @@ $(function() {
 				</thead>
 				<tbody>
 					<c:forEach var="cart" items="${cartList}">
+					${cart } <br>
 					<tr>
 						<td>
         					<input type="checkbox" class="check" value="${cart.cartCode}"/>
         				</td>
 						<c:forEach var="p" items="${productList}">
+							${p.productCode} <br>
 							<c:if test="${cart.productCode == p.productCode}">
+							
+							${p} <br>
 								<td>${p.productCode} </td>
 								<td>${p.productName} </td>
 								<td><img src="${contextPath}/images/${p.productPost.productMainImage}"> </td>
 								<td class="price" data-sellprice="${p.sellPrice}">
-									${p.sellPrice*cart.count}</td>
+								<fmt:formatNumber value="${p.sellPrice*cart.count}"/></td>
 								
 								<c:forEach var="o" items="${p.orderOptions}">
-									<c:if test="${cart.styleCode==o.styleCode}">
+									<c:if test="${cart.styleCode==o.styleCode && cart.size==o.size}">
 										<td>${o.color}</td>
 									</c:if>
 									<c:if test="${cart.size==o.size}">

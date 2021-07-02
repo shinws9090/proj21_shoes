@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import proj21_shoes.commend.ProductSelectCommend;
 import proj21_shoes.commend.SearchCriteria;
 import proj21_shoes.dto.Brand;
+import proj21_shoes.dto.Cart;
 import proj21_shoes.dto.OrderOption;
 import proj21_shoes.dto.Product;
 import proj21_shoes.exeption.DuplicateProductException;
@@ -110,6 +111,15 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public int countInfoList(SearchCriteria scri) throws Exception {
 		return mapper.countInfoList(scri);
+	}
+
+	@Override
+	public List<Product> productListByCode(List<Cart> cartList) {
+		List<Product> product = mapper.productListByCode(cartList);
+		for(Product item : product) {
+			item.setOrderOptions(OrderOptionBy1(item.getProductCode()));
+		}
+		return product;
 	}
 
 }

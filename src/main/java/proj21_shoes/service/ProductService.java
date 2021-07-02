@@ -5,6 +5,7 @@ import java.util.List;
 import proj21_shoes.commend.ProductSelectCommend;
 import proj21_shoes.commend.SearchCriteria;
 import proj21_shoes.dto.Brand;
+import proj21_shoes.dto.Cart;
 import proj21_shoes.dto.OrderOption;
 import proj21_shoes.dto.Product;
 
@@ -42,4 +43,6 @@ public interface ProductService {
 
 	// 리스트 + 검색 + 페이징 (게시물 총 개수 구하기)
 	public int countInfoList(SearchCriteria scri) throws Exception;
+
+	List<Product> productListByCode(List<Cart> cartList);
 }

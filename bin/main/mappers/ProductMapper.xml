@@ -47,8 +47,14 @@
 	</sql>
 	
 	
-	
-	
+	<select id="productListByCode" resultMap="ProductDetail">
+		<include refid="selProductDetail" />
+			where p.product_code in 
+			<foreach collection="collection" item="c" index="i" open="(" separator="," close=")">
+			#{c.productCode}
+		</foreach>
+		
+	</select>
 	
 	
 	<select id="BrandByAll" resultType="Brand">

@@ -4,6 +4,7 @@
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 	<c:set var="contextPath" value="<%=request.getContextPath() %>" />
 	<c:set var="order" value="<%=request.getSession().getAttribute(\"order\")%>" />
 <!DOCTYPE html>
@@ -32,13 +33,13 @@ $(function() {
 	var priceEnd = 0;
 	function priceAllmethod() {
 		$(".price").each(function() {
-			priceAll += Number($(this).text());
+			priceAll += Number($(this).text().trim().replace(",","").replace(",",""));
 		});
-		$("#priceAll").text(priceAll);
+		$("#priceAll").text(String(priceAll).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 		priceHal = priceAll*0.1;
-		$("#priceHal").text(priceHal);
+		$("#priceHal").text(String(priceHal).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 		priceEnd = priceAll-priceHal;
-		$("#priceEnd").text(priceEnd);
+		$("#priceEnd").text(String(priceEnd).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 		$("#priceSel").val(priceEnd);
 	}
 	priceAllmethod();
@@ -57,8 +58,9 @@ $(function() {
 		var a = priceHal + Number($("#point").val());
 		var b = priceAll - a;
 		
-		$("#priceHal").text(priceHal+"+"+$("#point").val()+"="+a);
-		$("#priceEnd").text(b);
+		$("#priceHal").text(String(priceHal).replace(/\B(?=(\d{3})+(?!\d))/g, ",")+
+				"+"+$("#point").val()+"="+String(a).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+		$("#priceEnd").text(String(b).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 		$("#priceSel").val(b);
 	});
 
@@ -142,7 +144,7 @@ function newAddress() {
 								<td> <img src="${contextPath}/images/${p.productPost.productMainImage}"></td>
 								<td>${p.productName} </td>
 								<td class="price" data-sellprice="${p.sellPrice}">
-									${p.sellPrice*orderProduct.orderCount}</td>
+									<fmt:formatNumber value="${p.sellPrice*orderProduct.orderCount}"/></td>
 							</c:if>
 						</c:forEach>
 						<td>
