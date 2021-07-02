@@ -16,7 +16,7 @@
 
 $(function(){
 	$('#new').on("click", function(e) {
-		location.href="${contextPath}/admin/product/productReg";
+		window.open("${contextPath}/admin/product/productReg", "PopupWin", "width=1210, height=640");
 	});
 	
 	$('#searchBtn').click(function() {

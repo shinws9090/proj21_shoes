@@ -38,12 +38,6 @@ $(function(){
 </head>
 <body class="main-layout">
 
-	<!-- header -->
-	<header>
-		<jsp:include page="/WEB-INF/view/include/header.jsp" />
-	</header>
-	<!-- end header -->
-
 	<section>
 		<div class="d-flex" id="wrapper">
 			<jsp:include page="/WEB-INF/view/admin/include/sidebar.jsp" />
@@ -115,10 +109,6 @@ $(function(){
 			</div>
 		</div>
 	</section>
-
-	<footer>
-		<jsp:include page="/WEB-INF/view/include/footer.jsp" />
-	</footer>
 
 	<jsp:include page="/WEB-INF/view/admin/include/script.jsp" />
 </body>
