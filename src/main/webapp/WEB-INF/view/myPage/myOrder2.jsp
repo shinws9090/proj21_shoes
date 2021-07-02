@@ -7,9 +7,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<c:set var="contextPath" value="<%=request.getContextPath() %>" />
 
+<c:set var="contextPath" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,17 +21,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>마이페이지</title>
-<!-- bootstrap -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
-		integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
-		crossorigin="anonymous">
-<link href="${contextPath}/css/buttons.css" rel="stylesheet">
-<link rel="stylesheet" href="${contextPath}/css/reset.css">
-<!-- bootstrap end -->	
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberBootstrap.css">
-<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
+<%-- <link rel="stylesheet" href="<%=request.getContextPath() %>/css/table.css"> --%>
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
@@ -47,7 +42,7 @@
 	<!-- end header -->
 		<div id="myPage">
 	<section id = "maPage">
-	<%-- ${myPdQna } --%>
+<%-- 	${myOrderList} --%>
 	
 			<c:if test="${!empty authInfo}">
 				
@@ -62,6 +57,7 @@
 						</td>
 					</tr>
 				</table>
+				
 				<!-- 좌측 메뉴 -->
 				<article id="my_menu">
 				<h3>회원정보</h3>
@@ -82,83 +78,108 @@
 				
 				
 				</article>
-		<!-- ------------------------------상품문의 테이블   -------------------------------------------------- -->
-				<h4 style="text-align: center;">최근 상품문의내역</h4>
+		
+				<!-- 최근 주문내역 테이블  -->
+				<h4>${authInfo.memberName }님의  최근 주문내역</h4>
 				<br>
-				<div class="container my-3">
-				<table class="table" >
-				<thead  class="thead-dark">
-				<tr>
 				
-					<td>문의상품</td>
-					<td>상품사진</td>
-					<td>제목</td>						
-					<td>작성일</td>
-					<td>답변유무</td>
-					
-
-				</tr>
+				<table  class="tbl_type" border="1"> 
+				<thead>
+					<tr>
+						<td>주문번호</td>
+						<td>상품사진</td>
+						<td>상품명</td>
+						<td>결제금액</td>
+						<td>주문수량</td>
+					 	<td>주문일</td>
+					 	<td>결제여부</td> 
+					 	<td>구매확정여부</td>
+					 
+			
+					</tr>
 				</thead>
 				<tbody>
 				<c:choose>
-					<c:when test="${fn:length(myPdQna) > 0}">
-						<c:forEach var="myPdQna" items="${myPdQna }">
-							<tr>
-						<%-- 	<td><a href="${contextPath}/myPage/myQnADetail/${authInfo.memberId}/${myQna.boardCode}">${myQna.boardCode }</a></td> <!-- 문의코드 --> --%>
-								<td><a href="${contextPath}/myPage/myProductQnADetail/${myPdQna.memberId}/${myPdQna.boardCode}">${myPdQna.productName }</a></td>	<!-- 상품명 -->
-								<td><a href="${contextPath}/myPage/myProductQnADetail/${myPdQna.memberId}/${myPdQna.boardCode}"><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myPdQna.productMainImage }"></a></td>				
-								<td><a href="${contextPath}/myPage/myProductQnADetail/${myPdQna.memberId}/${myPdQna.boardCode}">${myPdQna.title }</a></td>	<!-- 제목 -->
-								<td>${myPdQna.registDate }</td>	<!-- 작성일 -->
-								<td>${myPdQna.resOX }</td>
-							</tr>
-						</c:forEach>
+					<c:when test="${fn:length(myOrderList) > 0}">
+					<c:forEach var="myOrderList" items="${myOrderList}">
+					<tr>
+						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myOrderList.orderCode}">${myOrderList.orderCode }<br>[상세보기]</a></td>
+						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myOrderList.orderCode}"><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myOrderList.productMainImage }"></a></td>
+						<td><a href="${contextPath}/productDetail/${myOrderList.productCode}">${myOrderList.productName }<br>[상품 주문페이지]</a></td>
+						<td>${myOrderList.paymentAmount }</td>
+						<td>${myOrderList.orderCount }</td>
+						 <td>${myOrderList.orderDate }</td> 	
+						 <c:if test="${empty myOrderList.payOX}">
+						  <td>입금전</td>
+						 </c:if>				
+						 <c:if test="${!empty myOrderList.payOX}">
+						  <td>입금완료</td>
+						 </c:if>				
+						 
+						 <c:if test="${empty myOrderList.payOX}"><!-- 입금전일시 결제확정 비활성화 -->
+						 <td> - </td>
+						 </c:if>
+						 <!-- 입금완료시 구매확정버튼 활성화 -->
+						<c:if test="${!empty myOrderList.payOX && empty myOrderList.buyConfirmOX}"><!-- 결제완료했고 확정안했으면 -->		
+								 <td><a href="${contextPath}/myPage/myOrder/buyConfirm/${myOrderList.orderCode}/${member.memberId }">확정하기</a></td>
+						 </c:if>
+						 <c:if test="${!empty myOrderList.payOX && !empty myOrderList.buyConfirmOX}"><!-- 결제완료했고 확정했으면 -->		
+								 <td><a>확정완료</a></td>
+						 </c:if>
+						
+						
+						
+					
+					
+					
+					
+					
+					</tr>
+					</c:forEach>
 					</c:when>
-				 	<c:otherwise>
+					<c:otherwise>
 							<tr>
 								<td colspan="4">조회된 결과가 없습니다.</td>
 							</tr>
-						</c:otherwise> 
-				</c:choose>
+						</c:otherwise>
+					</c:choose>
 				</tbody>
-	</table>
-	</div>
-	<br>
-		         <!--paginate -->
+				</table>
+		
+				</section>
+			
+					
+			
+				
+ <!--paginate -->
          <div class="paginate">
             <div class="paging" style="margin-left: 50%;">
                <a class="direction prev" href="javascript:void(0);"
-                  onclick="movePage(1,${pagination1.cntPerPage},${pagination1.pageSize});">
+                  onclick="movePage(1,${pagination3.cntPerPage},${pagination3.pageSize});">
                   &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"
-                  onclick="movePage(${pagination1.currentPage}<c:if test="${pagination1.hasPreviousPage == true}">-1</c:if>,${pagination1.cntPerPage},${pagination1.pageSize});">
+                  onclick="movePage(${pagination3.currentPage}<c:if test="${pagination3.hasPreviousPage == true}">-1</c:if>,${pagination3.cntPerPage},${pagination3.pageSize});">
                   &lt; </a>
 
-               <c:forEach begin="${pagination1.firstPage}"
-                  end="${pagination1.lastPage}" var="idx">
+               <c:forEach begin="${pagination3.firstPage}"
+                  end="${pagination3.lastPage}" var="idx">
                   <a
-                     style="color:<c:out value="${pagination1.currentPage == idx ? '#gray; font-weight:700; margin-bottom: 2px;' : ''}"/> "
+                     style="color:<c:out value="${pagination3.currentPage == idx ? '#gray; font-weight:700; margin-bottom: 2px;' : ''}"/> "
                      href="javascript:void(0);"
-                     onclick="movePage(${idx},${pagination1.cntPerPage},${pagination1.pageSize});"><c:out
+                     onclick="movePage(${idx},${pagination3.cntPerPage},${pagination3.pageSize});"><c:out
                         value="${idx}" /></a>
                </c:forEach>
                <a class="direction next" href="javascript:void(0);"
-                  onclick="movePage(${pagination1.currentPage}<c:if test="${pagination1.hasNextPage == true}">+1</c:if>,${pagination1.cntPerPage},${pagination1.pageSize});">
+                  onclick="movePage(${pagination3.currentPage}<c:if test="${pagination3.hasNextPage == true}">+1</c:if>,${pagination3.cntPerPage},${pagination3.pageSize});">
                   &gt; </a> <a class="direction next" href="javascript:void(0);"
-                  onclick="movePage(${pagination1.totalRecordCount},${pagination1.cntPerPage},${pagination1.pageSize});">
+                  onclick="movePage(${pagination3.totalRecordCount},${pagination3.cntPerPage},${pagination3.pageSize});">
                   &gt;&gt; </a>
             </div>
          </div>
          <!-- /paginate -->	
-	</c:if>
-	
-	
-				
-			
+			</c:if>
 				
 	
-
 	
-	
-	</section>
 
 </div>
 	
@@ -175,7 +196,7 @@
 //페이지 이동
 function movePage(currentPage, cntPerPage, pageSize){
     
-    var url = "${pageContext.request.contextPath}/myPage/myProductQnA/${member.memberId}";
+    var url = "${pageContext.request.contextPath}/myPage/myOrder/${member.memberId}";
     url = url + "?currentPage="+currentPage;
     url = url + "&cntPerPage="+cntPerPage;
     url = url + "&pageSize="+pageSize;
