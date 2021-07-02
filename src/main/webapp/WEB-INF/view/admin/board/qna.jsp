@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/admin/css/styles.css"/>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	
 </head>
 <body class="main-layout">
 	<!-- header -->
@@ -28,10 +29,9 @@
 		        
 		        <!-- Page content-->
 		        <div class="container-fluid">
-					<table style="width: 90%; text-align: center">
-						<tr>
-							<td colspan="7" class="td_title"><h1 class="mt-4">문의게시판</h1></td>
-						</tr>			
+					<h1 class="mt-4">문의게시판</h1>
+					
+					<table style="width: 90%; text-align: center">						
 						<tr style="background-color: lightgrey; text-align: center">
 							<td>문의번호</td>
 							<td>문의상품코드</td>
@@ -71,7 +71,25 @@
 						</ul>
 						
 						<div class="search">
-						    <select name="searchType">
+						    <select name="searchTypeN">
+						      <option value="s"<c:out value="${scri.searchType eq 'n' ? 'selected' : ''}"/>>전체</option>
+						      <option value="n"<c:out value="${scri.searchType eq 'n' ? 'selected' : ''}"/>>답변준비중</option>
+						      <option value="nn"<c:out value="${scri.searchType eq 'nn' ? 'selected' : ''}"/>>답변완료</option>
+						    </select>
+						
+						    <input type="hidden" name="keywordN" id="keywordInputN" value="${scri.keyword}"/>
+						
+						    <button id="searchBtnN" type="button">검색</button>
+						    
+						    <script  type="text/javascript">
+						      $(function(){
+						        $('#searchBtnN').click(function() {
+						          self.location = "qna" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+						        });
+						      });   
+						    </script>
+						    
+						    <%-- <select name="searchType">
 						      <option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
 						      <option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
 						      <option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
@@ -88,7 +106,7 @@
 						          self.location = "qna" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
 						        });
 						      });   
-						    </script>
+						    </script> --%>
 						</div>						
 					</div>
 		        </div>		        
