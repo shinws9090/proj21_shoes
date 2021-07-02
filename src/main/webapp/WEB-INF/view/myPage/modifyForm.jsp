@@ -202,7 +202,7 @@
 			
 			<tr>
 				
-				<td><a>생년월일</a></td> 
+				<td><a>생년월일 : </a></td> 
 				<td id="td_right">
 				<label for="birthday">		
 				<form:input type="date" path="birthday" id="birthday" value="${member.birthday }"/>
@@ -213,7 +213,7 @@
 			</tr>
 			<tr>
 			
-				<td><a>이메일</a></td>
+				<td><a>이메일 : </a></td>
 				<td id="td_right">
 				<label for="email">	
 				<form:input type="email" path="email"  id="email" value="${member.email }"/>
@@ -222,7 +222,7 @@
 				</td>
 			</tr>
 			<tr>
-			<td><a>연락처</a></td>
+			<td><a>연락처 : </a></td>
 				<td id="td_right">
 				<label for="tel">	
 				<form:input path="tel" id="tel" value="${member.tel }"/>
@@ -233,7 +233,7 @@
 			
 			<tr>
 				
-				<td><a>우편번호</a></td>
+				<td><a>우편번호 : </a></td>
 				
 				<td id="td_right">
 				<label for="zipCode">	
@@ -244,7 +244,7 @@
 				</td>
 			</tr>
 			<tr >
-			<td><a>주소</a></td>
+			<td><a>주소 : </a></td>
 			
 				<td id="td_right">
 				<label for="address">	
@@ -254,7 +254,7 @@
 				</td>
 			</tr>
 			<tr>
-			<td><a>상세주소</a></td>
+			<td><a>상세주소 : </a></td>
 				<td id="td_right">
 				<label for="detailAddress">		
 				<form:input path="detailAddress" id="detail_address" value="${member.detailAddress }" />

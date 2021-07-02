@@ -21,9 +21,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>마이페이지</title>
-
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
+		integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
+		crossorigin="anonymous">
+<link href="${contextPath}/css/buttons.css" rel="stylesheet">
+<link rel="stylesheet" href="${contextPath}/css/reset.css">
+<!-- bootstrap end -->	
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberBootstrap.css">
 <%-- <link rel="stylesheet" href="<%=request.getContextPath() %>/css/table.css"> --%>
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -40,8 +46,8 @@
 		</c:if>
 	</header>
 	<!-- end header -->
-		<div id="myPage">
-	<section id = "maPage">
+ 		<div id="myPage">
+	<section id = "maPage"> 
 <%-- 	${myOrderList} --%>
 	
 			<c:if test="${!empty authInfo}">
@@ -79,16 +85,19 @@
 				
 				</article>
 		
+		
+		
 				<!-- 최근 주문내역 테이블  -->
-				<h4>${authInfo.memberName }님의  최근 주문내역</h4>
+				<h4 style="text-align: center;">최근 주문내역</h4>
 				<br>
-				
-				<table  class="tbl_type" border="1"> 
-				<thead>
+			
+			<div class="container my-3">
+				<table  class="table" > 
+				<thead class="thead-dark">
 					<tr>
 						<td>주문번호</td>
 						<td>상품사진</td>
-						<td>상품명</td>
+						<td  id="max">상품명</td>
 						<td>결제금액</td>
 						<td>주문수량</td>
 					 	<td>주문일</td>
@@ -145,8 +154,8 @@
 					</c:choose>
 				</tbody>
 				</table>
-		
-				</section>
+		</div>	
+			</section> 
 			
 					
 			

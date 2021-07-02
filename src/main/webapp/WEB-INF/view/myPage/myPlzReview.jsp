@@ -20,11 +20,16 @@
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<title>마이페이지 - 구매후기</title>
-
+<title>마이페이지 - 미작성 구매후기</title>
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
+		integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
+		crossorigin="anonymous">
+<link href="${contextPath}/css/buttons.css" rel="stylesheet">
+<link rel="stylesheet" href="${contextPath}/css/reset.css">
+<!-- bootstrap end -->	
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/table.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberBootstrap.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -80,18 +85,18 @@
 				</article>
 				
 		
-				<!-- 최근 주문내역 테이블  -->
-				<h4>${authInfo.memberName }님의  최근 미작성 후기 내역 </h4>
+	<!-- ------------------------------미작성 후기목록  테이블   -------------------------------------------------- -->
+				<h4 style="text-align: center;">최근 미작성 후기 내역 </h4>
 				<br>
-				
-				<table  class="tbl_type" border="1"> 
-				<thead>
+				<div class="container my-3">
+				<table  class="table" > 
+				<thead class="thead-dark">
 					<tr>
 						 <td>주문번호</td> 
 						<!-- <td>상품사진</td> -->
 						<td>상품명(상품이미지)</td>
-						<td>주문일</td>
-						<td>비고</td>
+						<td  id="short" >주문일</td>
+						<td  id="short">비고</td>
 
 					</tr>
 				</thead>
@@ -119,7 +124,7 @@
 					</c:choose>
 				</tbody>
 				</table>
-		
+		</div>
 				</section>
 		
 					

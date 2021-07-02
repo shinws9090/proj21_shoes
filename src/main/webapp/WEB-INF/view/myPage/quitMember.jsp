@@ -36,7 +36,9 @@
 		</c:if>
 	</header>
 	<!-- end header -->
-
+	<div id="myPage">
+	<section id ="maPage">
+	
 	<section id = "quitMember">
 	
 	
@@ -72,6 +74,7 @@
 			<!-- 어느 컨트롤러로? -->
 			<form:form action="/myPage/quitMember/${member.memberId }" modelAttribute="memberDetailUpdateCommend"><!-- 보내는거? -->
 			<tr>
+			
 				<th scope="row"><label for="memberId">회원아이디</label></th>
 				<td><form:input path="memberId" id="memberId" readonly="true" value="${member.memberId }" /></td>				
 			</tr>
@@ -87,7 +90,7 @@
 		
 			<tr>
 				<th scope="row"><label for="confirmPassword"></label>기존비밀번호 확인</th>		
-				<td><form:password id="confirmPassword" path="confirmPassword" placeholder="기존 비밀번호 입력" /><form:errors path="confirmPassword" /></td>
+				<td><form:password id="confirmPassword" path="confirmPassword" placeholder="기존 비밀번호 입력" /></td>
 			</tr>
 			
 		
@@ -95,11 +98,13 @@
 		
 			
 
+					<div style="margin-left: 50%;">
 				 	<form action="/myPage/quitMember/${member.memberId }" method="post">
 					<input type="submit" value="탈퇴" />
+					<form:errors path="confirmPassword" />
 					</form>
-		
-
+					</div>
+				
 		</form:form>
 		<br>
 		</table>
@@ -113,9 +118,10 @@
 			</c:if>
 
 	
+</section>
 	
 	</section>
-
+</div>
 	
 	<section>
 
