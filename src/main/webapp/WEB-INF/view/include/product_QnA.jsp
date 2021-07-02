@@ -97,11 +97,10 @@ $(function() {
 	<table class="table table-hover table-striped text-center">
 		<thead > 
 		<tr>
-			<td>문의상품</td>
-			<!-- <td>상품사진</td> -->
-			<td>제목</td>						
-			<td>작성일</td>
-			<td>답변유무</td>
+			<td style="width: 20%">문의상품</td>
+			<td style="width: 40%">제목</td>						
+			<td style="width: 20%">작성일</td>
+			<td style="width: 20%">답변유무</td>
 		</tr>
 		</thead>
 		<tbody id="QnAList">

@@ -49,9 +49,9 @@ $(function() {
 					
 					sCont +='<tr>';
 					sCont +='<td><a href="${contextPath}/ProductReviewDetail/'+json[i].boardCode+'">'+json[i].orderCode.orderProduct[0].orderOption.productCode+'</a></td>';	<!-- 惑前疙 -->
-					/* sCont +='<td><a href="${contextPath}/ProductReviewDetail/'+json[i].boardCode+'">'; */
-					/* sCont +='<img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/'+json[i].reviewImages[0].image+'"></a></td>'; */	
-					sCont +='<td>'+json[i].reviewImages[0].image+'</td>';	<!-- 力格 -->
+					sCont +='<td><a href="${contextPath}/ProductReviewDetail/'+json[i].boardCode+'">';
+					sCont +='<img style="max-width:100%; max-height: 100%" alt="" src="${contextPath}/images/reView/'+json[i].boardCode+'/'+json[i].reviewImages[0].image+'"></a></td>';
+					/* sCont +='<td>'+json[i].reviewImages[0].image+'</td>'; */	<!-- 力格 -->
 					sCont +='<td><a href="${contextPath}/ProductReviewDetail/'+json[i].boardCode+'">'+json[i].title+'</a></td>';	<!-- 力格 -->
 					sCont +='<td>'+json[i].registDate +'</td>';	<!-- 累己老 -->
 					sCont +='</tr>';
@@ -99,10 +99,10 @@ $(function() {
 	<table class="table table-hover table-striped text-center">
 		<thead> 
 		<tr>
-			<td>惑前内靛</td>
-			<td>饶扁荤柳</td>
-			<td>力格</td>						
-			<td>累己老</td>
+			<td style="width: 10%">惑前内靛</td>
+			<td style="width: 10%">饶扁荤柳</td>
+			<td style="width: 50%">力格</td>						
+			<td style="width: 30%">累己老</td>
 		</tr>
 		</thead>
 		<tbody id="reviewList"></tbody>
