@@ -19,6 +19,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>로그인</title>
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
+		integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
+		crossorigin="anonymous">
+<link href="${contextPath}/css/buttons.css" rel="stylesheet">
+<link rel="stylesheet" href="${contextPath}/css/reset.css">
+<!-- bootstrap end -->	
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
@@ -35,38 +42,51 @@
 	</header>
 	<!-- end header -->
 	
-	<div id="loginForm">
-	<section id = "loginForm">
+	<div id="loginForm" style="margin-bottom: 10px;">
+	<section id = "loginForm" style="margin-top: 20px; margin-bottom: 20px;">
 		<h2>로그인</h2><!-- 회원가입 -->
 		<form:form action="loginSuccess" modelAttribute="loginCommand">
 		<form:errors/>
-	 	<fieldset id="loginCommand"> 
-	 	<table>
-		<tr>
-			<td><p>회원 ID : </p></td>
-			<td id="td_right">
-				<label >
-					<form:input path="memberId" /> <form:errors path="memberId" />
-				</label>
-			</td>
-		</tr>
-		<tr>
-			<td><p>회원 PW:</p></td>
-			<td id="td_right">
-				<label> 
-					<form:password path="memberPwd" /> <form:errors path="memberPwd" />
-				</label>
-			</td>
+	 	<fieldset id="loginCommand" style="border: 2px solid #dcdcdc;"> 
+	 	<table style=" font-size: 1em;">
+			<tr style="margin-bottom: 10px;">
+				<td style="margin-left: 10px;"  ><p>회원 ID : </p></td>
+				<td id="td_right">
+					<label style=" margin-top:5px;  margin-bottom: 10px;">
+						<form:input path="memberId" /> 
+						
+						<form:errors path="memberId" />
+					</label>
+				</td>
 			</tr>
+		
+			<tr>
+				<td><p>회원 PW:</p></td>
+				<td id="td_right">
+					<label> 
+						<form:password path="memberPwd" /> <form:errors path="memberPwd" />
+					</label>
+				</td>
+				</tr>
+			<tr>
+				<td><p>ID 저장:<p></td>
+				<td>
+					<label style="margin-right:90%;" >
+						<form:checkbox path="rememberId"  /> 
+					</label>
+				</td>
+			</tr>
+			
+			
 		<tr>
-		<td><p>ID 저장:
-				<label >
-					<form:checkbox path="rememberId" /> 
-				</label>
-			 </p></td>
-			 <td id="td_right">
-			 <input type="submit" value="로그인하기"  size="100"/></td>
+		<td></td>
+		<td>
+		
+			<button type="button,submit"  class="btn btn-secondary btn-lg"  style="width: 100%">로그인</button>
+		
+		</td>
 		</tr>
+		
 <!-- 		<article class="btn2">
 		<tr>
 		<td>
@@ -91,6 +111,7 @@
 		</table>
 		
  	</fieldset> 
+ 	<br>
 	</form:form> 
 
 	</section>
