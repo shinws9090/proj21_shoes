@@ -21,10 +21,8 @@
 <link rel="stylesheet" href="${contextPath}/css/reset.css">
 <!-- bootstrap end -->
 <title>lighten</title>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/style.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/productDetail.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/productDetail.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 	$(function() {

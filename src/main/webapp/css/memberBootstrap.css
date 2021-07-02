@@ -1,0 +1,146 @@
+@charset "UTF-8";
+/*  예진 담당기능 css  작성중!  (회원가입 입력폼 / 로그인입력폼,/ 마이페이지 -회원정보조회 / 나의 문의내역/ 나의주문내역 등!!!!   */
+
+/* 
+ css 줄곳 지정하는법!
+ .클래스명{}
+ #아이디명{}
+ .클래스명#아이디명{}
+ .클래스명,#클래스명{}
+*/
+
+
+
+/*--------------------------------------------마이페이지 공통----------------------------------------------  */
+
+
+
+#tbl_maGrade{/* 나의 등급 table 설정*/
+border-collapse: collapse;   /* td간 선 없애기 */
+width: 100%;
+height: 100px;
+margin-bottom: 20px;
+padding-bottom: 30px;
+
+	
+}
+#tr_myGrade{ /* 나의 등급 table안의 tr 설정 */
+background-color:#4545460f;
+/* #e5e5e5 ;  */
+text-align: center; 
+width: 500px; 
+margin-bottom: 20px;
+	
+}
+
+#tr_myGrade h2{
+	padding-left: 10%;	
+	color: #423838;
+}
+
+
+#myPoint{
+	color: red;
+}
+#myGrade_detail{
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left: 10%;
+}
+
+
+
+#myPage{
+	margin-bottom: 250px;
+}
+
+#my_menu{ 								/* 좌측 메뉴 */
+	text-align: left;
+	margin-left: 10px;
+	float: left;
+    width: auto;
+    padding: 10px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    line-height: 2;
+    
+	
+}
+#my_menu a{
+	padding:10px;
+	padding-bottom:10px;
+	margin-bottom:10px;
+	color: #423838;
+	
+}
+
+#my_menu h3{
+	text-align: left;
+	padding-bottom: 5px;
+	padding-top: 10px;
+	color: #423838;
+	
+}
+/* #center_view{
+	display:inline;
+}
+ */
+/*--------------------------------------------테이블 -------------------------------------------------------  */
+
+.table{
+ 	width: 120%;
+   margin-left:1%;
+   max-width:1400px;
+   border-radius: 10px;
+    border-top: 2px solid #dcdcdc; 
+   border-bottom: 2px solid #dcdcdc;
+/*    font-family: '돋움', dotum; */
+   font-size: 12px;
+   text-align: center;
+   border-collapse: collapse; 
+       
+       
+/*     
+		장바구니와 동일 디자인
+   border-collapse: separate;  
+    margin: auto;
+    color: #666;
+       text-align: center;
+    
+    font-size: 12px;
+    text-shadow: 1px 1px 0px #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px #d1d1d1; */
+   
+	
+	
+}
+.table td, .table th{
+ 	max-height:100%;
+   max-width:40px;
+  vertical-align: middle;
+ 
+    /*   border: 1px solid #dcdcdc; */
+  
+   
+	
+	
+}
+#max{
+	max-width: 50px;"
+	
+	
+	
+}
+#short{
+	width: 20%;
+}
+
+#myData_btn{
+	margin-left: 80%;
+	
+}
+.thead-dark{
+background-color:#4545460f;
+	
+}

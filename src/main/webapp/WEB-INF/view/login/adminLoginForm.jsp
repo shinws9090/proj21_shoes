@@ -19,7 +19,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>로그인</title>
-
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
+		integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
+		crossorigin="anonymous">
+<link href="${contextPath}/css/buttons.css" rel="stylesheet">
+<link rel="stylesheet" href="${contextPath}/css/reset.css">
+<!-- bootstrap end -->	
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
@@ -35,17 +41,17 @@
 	</header>
 	<!-- end header -->
 	
-	<div id="loginForm">
+	<div id="loginForm" style="">
 	<section id = "loginForm">
 		<h2>관리자 로그인</h2><!-- 회원가입 -->
 		<form:form action="adminLoginSuccess"  modelAttribute="adminLoginCommend">
 		<form:errors/>
-	 	<fieldset id="loginCommand"> 
-	 	<table>
-		<tr>
-			<td><p>관리자 ID : </p></td>
+	 <fieldset id="loginCommand" style="border: 2px solid #dcdcdc;"> 
+	 	<table style=" font-size: 1em;">
+		<tr  style="margin-bottom: 10px;">
+			<td style="margin-left: 10px;"  ><p>관리자 ID : </p></td>
 			<td id="td_right">
-				<label >
+				<label  style=" margin-top:5px;  margin-bottom: 10px;" >
 					<form:input path="empId" /> <form:errors path="empId" />
 				</label>
 			</td>
@@ -59,13 +65,23 @@
 			</td>
 			</tr>
 		<tr>
-		<td><p>ID 저장:
-				<label >
-					<form:checkbox path="rememberId" /> 
-				</label>
-			 </p></td>
-			 <td id="td_right">
-			 <input type="submit" value="관리자 로그인하기"  size="100"/></td>
+		
+		<td><p>ID 저장:<p></td>
+				<td>
+					<label style="margin-right:90%;" >
+						<form:checkbox path="rememberId"  /> 
+					</label>
+				</td>
+			</tr>
+			
+			
+		<tr>
+		<td></td>
+		<td>
+		
+			<button type="button,submit"  class="btn btn-secondary btn-lg"  style="width: 100%">관리자 로그인하기</button>
+		
+		</td>
 		</tr>
 <!-- 		<article class="btn2">
 		<tr>

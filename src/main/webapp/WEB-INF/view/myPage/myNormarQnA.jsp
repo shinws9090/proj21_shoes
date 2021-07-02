@@ -21,9 +21,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>마이페이지</title>
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
+		integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
+		crossorigin="anonymous">
+<link href="${contextPath}/css/buttons.css" rel="stylesheet">
+<link rel="stylesheet" href="${contextPath}/css/reset.css">
+<!-- bootstrap end -->	
+
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/table.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberBootstrap.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -76,15 +83,20 @@
 				
 				
 				</article>
-	
-				<h4>${authInfo.memberName }님의 최근 일반문의내역</h4>
+	<!-- ------------------------------일반문의 테이블   -------------------------------------------------- -->
+				<h4 style="text-align: center;">최근 일반문의내역</h4>
+				<article id="myData_btn" >
+				<a href="${contextPath}/myPage/normalQnARegist/1/${authInfo.memberId}">일반문의 작성하러가기</a>
+				</article>
 				<br>
-				<table class="tbl_type" border="1">
-				<thead>
+				
+				<div class="container my-3">
+				<table class="table">
+				<thead  class="thead-dark">
 					<tr>
-						<td>제목</td>						
-						<td>작성일</td>
-						<td>답변유무</td>
+						<td  id="max">제목</td>						
+						<td id="short">작성일</td>
+						<td id="short">답변유무</td>
 	
 					</tr>
 				</thead>
@@ -111,13 +123,10 @@
 				</c:choose>
 				</tbody>
 	</table> 	
+	</div>
 	<br>
 
-	<article id="myData_btn" >
-	
-			<a href="${contextPath}/myPage/normalQnARegist/1/${authInfo.memberId}">일반문의하러가기</a>
-			
-	</article>
+
 			
 				
  <!--paginate -->
