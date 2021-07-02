@@ -89,7 +89,7 @@ $(function() {
 	$(".countUp").click(function(){
 		var cartCode = $(this).val();
 		var count = $(this).prev().text();
-		if(count >= $(this).next().val()){
+		if(count >= Number($(this).next().val())){
 			return
 		}
 		var res = countDB("countUp" ,cartCode);
@@ -160,7 +160,7 @@ $(function() {
 	</header>
 
 	<section>
-		${cartList}
+		<%-- ${cartList} --%>
 		<%-- ${productList} --%>
 			<table>
 				<thead>
@@ -179,16 +179,16 @@ $(function() {
 				</thead>
 				<tbody>
 					<c:forEach var="cart" items="${cartList}">
-					${cart } <br>
+					<%-- ${cart } <br> --%>
 					<tr>
 						<td>
         					<input type="checkbox" class="check" value="${cart.cartCode}"/>
         				</td>
 						<c:forEach var="p" items="${productList}">
-							${p.productCode} <br>
+							<%-- ${p.productCode} <br> --%>
 							<c:if test="${cart.productCode == p.productCode}">
 							
-							${p} <br>
+							<%-- ${p} <br> --%>
 								<td>${p.productCode} </td>
 								<td>${p.productName} </td>
 								<td><img src="${contextPath}/images/${p.productPost.productMainImage}"> </td>

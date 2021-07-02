@@ -194,7 +194,7 @@ ${message}
 				</select>
 			</div>
 			<p><fmt:formatNumber value="${product.sellPrice}"/>원</p>
-			<span>수량: </span>  <input type="number" name="count" id="count" min="0" required>
+			<span>수량: </span>  <input type="number" name="count" id="count" min="0" required value="1">
 			<div class='submitBtns'>
 				<button class='btn btn-secondary btn-sm' id="cart"> 장바구니 </button>
 				<input type="hidden" name="productCode" value="${product.productCode }">
