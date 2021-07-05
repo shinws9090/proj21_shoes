@@ -44,26 +44,42 @@ $(function() {
 	}
 	priceAllmethod();
 	
-	$("#point").on("focusout",function(){
+	
+	 /* 포인트 계산 */
+	function pointSel(){
 		var point = Number("${order.memberCode.point}");
-		var inputPoint = Number($(this).val());
+		var inputPoint = Number($("#point").val());
 		if(inputPoint > point){
 			$("#point").val(point);
-		}
-		alert(priceEnd)
-		if(inputPoint > priceEnd){
+		}else if(inputPoint > priceEnd){
 			$("#point").val(priceEnd);
 		}
-		
 		var a = priceHal + Number($("#point").val());
 		var b = priceAll - a;
 		
-		$("#priceHal").text(String(priceHal).replace(/\B(?=(\d{3})+(?!\d))/g, ",")+
-				"+"+$("#point").val()+"="+String(a).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+		$("#priceHal").text(String(priceHal).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+		$("#pricePoint").text(String($("#point").val()).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 		$("#priceEnd").text(String(b).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 		$("#priceSel").val(b);
+	}
+	
+	$("#point").on("change",function(){
+		pointSel()
 	});
-
+	
+	
+	
+	
+	$("#pointAll").on("click",function(){
+		var isChecked = $(this).is(":checked") ;
+		if(isChecked){
+			$("#point").val(Number("${order.memberCode.point}"));
+			pointSel()
+		}else{
+			$("#point").val(0);
+			pointSel()
+		}
+	});
 	
 	
 });
@@ -159,27 +175,32 @@ function newAddress() {
 		<form action="addOrder" method="post">
 		<div>
 			<table>
+			<thead>
 				<tr> 
 					<th>총 주문 금액</th>
 					<th>할인 금액</th>
+					<th>포인트 적용 금액</th>
 					<th>결재예정 금액</th>
 				</tr>
+			</thead>
 				<tr> 
 					<td id="priceAll"> </td>
 					<td id="priceHal"> </td>
+					<td id="pricePoint">0</td>
 					<td id="priceEnd"> </td>
 				</tr>
 				<tr>
 					<td> 포인트  : </td>
-					<td colspan="2" style="text-align: left"> 
-					<input id="point" name="point" type="number" min="0" max="${order.memberCode.point}" />
+					<td colspan="3" style="text-align: left"> 
+					<input id="point" name="point" type="number" min="0" max="${order.memberCode.point}" step="100"/>
 					<span>사용가능 : <em>${order.memberCode.point}</em>P </span>
+					<label><input type="checkbox" id="pointAll"> 전체사용  <em>(100Point 단위로 사용가능)</em></label>
 					</td>
 				</tr>
 			</table>
 		</div>
 			<input type="hidden" id="priceSel" name="priceSel">
-			<table>
+			<table id="address-table">
 				<tr> 
 					<th>배송지선택</th>
 					<td> 
