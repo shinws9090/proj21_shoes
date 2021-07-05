@@ -49,11 +49,13 @@
 	<select id="findAll" resultMap="resMember" resultType="SearchCriteria">
 		select m.member_code, m.member_id, m.`point`, m.cumulative_buy_amount, m.grade_code, m.quit_state, m.signUp_date, 
 		m2.member_id as m2_member_id, m2.member_pwd, m2.member_name, m2.gender, m2.birthday, m2.email, m2.tel, m2.zipCode, m2.address, m2.detail_address, 
-		g.grade_code as g_grade_code, g.grade from `member` m join memberdetail m2 on m.member_id = m2.member_id join grade g on m.grade_code = g.grade_code
-		where member_code > 0
-		<include refid="search"></include>
-		order by m.member_code desc
-		limit #{pageStart}, #{perPageNum}
+		g.grade_code as g_grade_code, g.grade 
+			from `member` m join memberdetail m2 on m.member_id = m2.member_id 
+			join grade g on m.grade_code = g.grade_code
+			where member_code > 0
+			<include refid="search"></include>
+			order by m.member_code desc
+			limit #{pageStart}, #{perPageNum}
 	</select>
 	
 	<select id="countInfoList" parameterType="SearchCriteria" resultType="int" >
