@@ -110,10 +110,13 @@
 				}
 			});
 		});
-		
-		
-		
 	});
+	/* 뒤로가기로 돌아왔을경우 새로고침 */
+	window.onpageshow = function(event) {
+	    if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+	    	window.location.reload()
+	    }
+	}
 </script>
 
 </head>
@@ -160,8 +163,8 @@ ${message}
 			<br>
 			<div>
 				<p>색상(색상코드{스타일코드})</p>
-			<select name="styleCode" class="styleCode" >
-				<option>--색상 선택--</option>
+			<select name="styleCode" class="styleCode" required>
+				<option value="">--색상 선택--</option>
 				<optgroup label="color">
 				<c:forEach var="option" items="${product.orderOptions}" varStatus="status">
 					<c:if test="${option.stock >0}">
@@ -187,8 +190,8 @@ ${message}
 			
 			<div>
 				<p>size</p>
-				<select name='size' id="size">
-					<option>--사이즈 선택--</option>
+				<select name='size' id="size" required>
+					<option value="">--사이즈 선택--</option>
 					<optgroup label="size" id="sizeList">
 					</optgroup>
 				</select>
