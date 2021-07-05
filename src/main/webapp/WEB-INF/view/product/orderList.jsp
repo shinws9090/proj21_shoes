@@ -127,6 +127,7 @@ function newAddress() {
 	</header>
 
 	<section>
+	${sessionMember}
 		<%-- 주문코드 = ${order.orderCode } <br>
 		회원코드 = ${order.memberCode }<br>
 		주문일 = ${order.orderDate }<br>
@@ -229,7 +230,7 @@ function newAddress() {
 					</td>
 				</tr>
 			</table>
-			<input type="submit" class="btn btn-outline-secondary btn-xs" value="결재하기">
+			<input type="submit" class="btn btn-outline-secondary" value="결재하기">
 		</form>
 	</section>
 		
