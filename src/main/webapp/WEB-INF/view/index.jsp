@@ -97,10 +97,10 @@
 		</div>
 		
 		<div id="best-product">
-			<p>베스틍!</p>
+			<p>Best</p>
 		</div> 
 		<div id="new-product">
-			<p>신상!</p>
+			<p>New</p>
 		</div> 
 		
 	</section>

@@ -29,6 +29,8 @@ section{
 	border-bottom: 1px dotted #898989; 
 	width: 80%; 
 	margin: auto;
+	text-align: left;
+	font-size: 2em;
 }
 
 

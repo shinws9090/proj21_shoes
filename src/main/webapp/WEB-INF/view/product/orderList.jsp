@@ -127,7 +127,7 @@ function newAddress() {
 	</header>
 
 	<section>
-	${sessionMember}
+	<%-- ${sessionMember} --%>
 		<%-- 주문코드 = ${order.orderCode } <br>
 		회원코드 = ${order.memberCode }<br>
 		주문일 = ${order.orderDate }<br>
