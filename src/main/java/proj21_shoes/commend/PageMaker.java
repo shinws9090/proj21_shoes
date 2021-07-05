@@ -119,6 +119,14 @@ public class PageMaker {
 				.queryParam("keyword", encoding(((SearchCriteria) cri).getKeyword())).build();
 		return uriComponents.toUriString();
 	}
+	
+	public String makeSearch2(int page) {
+		UriComponents uriComponents = UriComponentsBuilder.newInstance().queryParam("page", page)
+				.queryParam("perPageNum", cri.getPerPageNum())
+				.queryParam("searchType", ((SearchCriteria) cri).getSearchType())
+				.queryParam("keyword", encoding(((SearchCriteria) cri).getKeyword())).build();
+		return "page=" + page + "&perPageNum=" + cri.getPerPageNum() + "&searchType=" + ((SearchCriteria) cri).getSearchType() +"&keyword=" + encoding(((SearchCriteria) cri).getKeyword());
+	}
 
 	private String encoding(String keyword) {
 		if (keyword == null || keyword.trim().length() == 0) {

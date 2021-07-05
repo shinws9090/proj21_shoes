@@ -22,6 +22,7 @@
 <script src="/resources/admin/js/summernote-ko-KR.js"></script>
 
 <script type="text/javascript">
+
 $(function(){
 	$("#prev").hide();
 	$("#new").hide();
@@ -54,10 +55,9 @@ $(function(){
 
 function summit(){
 	var summitForm = document.productRegForm;
-	
 	summitForm.submit();
 	alert("상품추가 완료");
-	self.close();
+	
 }
 
 
@@ -70,6 +70,8 @@ $(document).ready(function() {
 		lang : 'ko-KR'
 	});
 });
+
+opener.location.reload();
 
 </script>
 </head>

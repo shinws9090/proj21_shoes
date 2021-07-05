@@ -229,3 +229,18 @@ update qna set reply = "가능합니다"
 		
 select * from vw_myqna
 		where board_code > 0 and reply is not null;
+		
+select count(product_code) from orderOption
+		where (product_code = 11111) > 0;
+select * from orderOption;
+
+select product_code, style_code, `size`, stock, color from orderOption
+		where product_code = 33333 order by style_code;
+		
+select product_code, style_code, `size`, stock, color from orderOption
+		where product_code > 0 order by style_code limit 0, 10;
+
+select * from orderOption
+		where (product_code = 33333) > 0;
+select count(product_code) from orderOption
+		where (product_code = 33333) > 0;

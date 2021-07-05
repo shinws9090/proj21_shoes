@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import proj21_shoes.commend.SearchCriteria;
 import proj21_shoes.dto.OrderOption;
 import proj21_shoes.mapper.OrderOptionMapper;
 import proj21_shoes.service.OrderOptionService;
@@ -38,6 +39,16 @@ public class OrderOptionServiceImpl implements OrderOptionService {
 	@Override
 	public int deleteOrderOption(OrderOption orderOption) {
 		return mapper.deleteOrderOption(orderOption);
+	}
+
+	@Override
+	public List<OrderOption> findAll(SearchCriteria scri) throws Exception {
+		return mapper.findAll(scri);
+	}
+
+	@Override
+	public int countInfoList(SearchCriteria scri) throws Exception {
+		return mapper.countInfoList(scri);
 	}
 
 }

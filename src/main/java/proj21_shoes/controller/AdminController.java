@@ -2,12 +2,14 @@ package proj21_shoes.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -121,16 +123,17 @@ public class AdminController {
 		model.addAttribute("pageMaker", pageMaker);
 	}
 
-	@RequestMapping("/admin/productDetailMgt") // 제품상세 화면
-	public ModelAndView productDetail(@RequestParam(value = "productCode") int productCode) {
-		Product product = productService.productByCode(productCode);
+	@GetMapping("/admin/product/productDetailMgt") // 제품상세 화면
+	public void productDetail(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
+		List<OrderOption> orderOtionList = orderOptionService.findAll(scri);
+		model.addAttribute("orderOtionList", orderOtionList);
 		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("product", product);
-		mav.setViewName("admin/product/productDetailMgt");
-		return mav;
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(orderOptionService.countInfoList(scri));
+		model.addAttribute("pageMaker", pageMaker);
 	}
-
+	
 	@RequestMapping("/admin/orderMgt") // 주문관리 화면
 	public ModelAndView orderList() {
 
@@ -224,7 +227,7 @@ public class AdminController {
 		System.out.println(image);
 		imageService.insertImage(image);
 
-		return "redirect:/admin/productMgt";
+		return "redirect:/admin/product/productReg";
 	}
 
 	@GetMapping("/admin/product/productPostReg")
@@ -409,12 +412,20 @@ public class AdminController {
 		orderOption.setColor(request.getParameter("color"));
 		orderOptionService.updateOrderOption(orderOption);
 
-		return "redirect:/admin/product/productOrderOption?productCode="
-				+ Integer.parseInt(request.getParameter("productCode"));
+		return "redirect:/admin/product/productOrderOptionMod?productCode="
+				+ Integer.parseInt(request.getParameter("productCode"))
+				+ "&styleCode="
+				+ Integer.parseInt(request.getParameter("styleCode"))
+				+ "&color="
+				+ request.getParameter("color")
+				+ "&size="
+				+ Integer.parseInt(request.getParameter("size"))
+				+ "&nowStock="
+				+ Integer.parseInt(request.getParameter("stock"));
 	}
 
 	@GetMapping("/admin/product/productOrderOptionDel")
-	public String productOrderOptionDelete(HttpServletRequest request) {
+	public void productOrderOptionDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		OrderOption orderOption = new OrderOption();
 		orderOption.setProductCode(Integer.parseInt(request.getParameter("productCode")));
@@ -422,10 +433,20 @@ public class AdminController {
 		orderOption.setSize(Integer.parseInt(request.getParameter("size")));
 		orderOption.setColor(request.getParameter("color"));
 
+		
 		orderOptionService.deleteOrderOption(orderOption);
-
-		return "redirect:/admin/product/productOrderOption?productCode="
-				+ Integer.parseInt(request.getParameter("productCode"));
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		out.println("alert('이미 존재하는 이메일입니다.')");
+		out.println("history.back()");
+		out.println("</script>");
+		
+		
+		/*
+		 * return "redirect:/admin/product/productDetailMgt?productCode=" +
+		 * Integer.parseInt(request.getParameter("productCode"));
+		 */
 	}
 
 	@GetMapping("/admin/product/brandReg")
