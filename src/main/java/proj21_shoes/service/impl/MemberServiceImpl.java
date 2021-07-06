@@ -26,4 +26,9 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.countInfoList(scri);
 	}
 
+	@Override
+	public int updateMyPoint(String memberId, int newPoint) {
+		return mapper.updateMyPoint(memberId, newPoint);
+	}
+
 }

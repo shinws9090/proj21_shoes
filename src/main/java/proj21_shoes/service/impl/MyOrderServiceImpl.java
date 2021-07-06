@@ -47,4 +47,23 @@ public class MyOrderServiceImpl implements MyOrderService {
 		return mapper.updateMyBuyConfirm(orderCode);
 	}
 
+
+	@Override
+	public int updateMyCancel(int orderCode) {
+		return mapper.updateMyCancel(orderCode);
+	}
+
+
+	@Override
+	public List<Map<String, Object>> selectMyCancelOrderListById(String memberId, Pagination pagination)
+			throws Exception {
+		return mapper.selectMyCancelOrderListById(memberId, pagination.getPageSearch(), pagination.getCntPerPage());
+	}
+
+
+	@Override
+	public int MyCancelOrderCount(String memberId) throws Exception {
+		return mapper.MyCancelOrderCount(memberId);
+	}
+
 }

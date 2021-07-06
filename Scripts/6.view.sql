@@ -29,8 +29,10 @@ od.order_code  , 			-- 주문코드
 od.member_code,   			-- 회원코드
 m.member_id,				-- 회원 아이디
 od.order_date,    		 	-- 주문일
+od.cancel_date,    		 	-- 주문취소일
 od.payment_amount,  		-- 결제금액
 od.payment_state,	 		-- 결제여부
+od.cancel_state,	 		-- 주문취소여부
 od.delivery_code, 	 		-- 배송코드
 od.buy_confirm_state  ,		-- 구매확정여부
 adr.recipient, 				-- 받는사람
