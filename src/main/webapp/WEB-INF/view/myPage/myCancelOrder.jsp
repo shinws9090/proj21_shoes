@@ -7,10 +7,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <c:set var="contextPath" value="<%=request.getContextPath() %>" />
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,9 +28,9 @@
 <link href="${contextPath}/css/buttons.css" rel="stylesheet">
 <link rel="stylesheet" href="${contextPath}/css/reset.css">
 <!-- bootstrap end -->	
-
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberBootstrap.css">
+<%-- <link rel="stylesheet" href="<%=request.getContextPath() %>/css/table.css"> --%>
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -46,9 +46,9 @@
 		</c:if>
 	</header>
 	<!-- end header -->
-		<div id="myPage">
-	<section id = "maPage">
-		<%-- ${myNmQna } --%>
+ 		<div id="myPage">
+	<section id = "maPage"> 
+<%-- 	${myOrderList} --%>
 	
 			<c:if test="${!empty authInfo}">
 				
@@ -63,6 +63,7 @@
 						</td>
 					</tr>
 				</table>
+				
 				<!-- 좌측 메뉴 -->
 				<article id="my_menu">
 				<h3>회원정보</h3>
@@ -84,86 +85,125 @@
 				
 				
 				</article>
-	<!-- ------------------------------일반문의 테이블   -------------------------------------------------- -->
-				<h4 style="text-align: center;">최근 일반문의내역</h4>
-				<article id="myData_btn" >
-				<a href="${contextPath}/myPage/normalQnARegist/1/${authInfo.memberId}">일반문의 작성하러가기</a>
-				</article>
+		
+		
+		
+				<!-- 최근 주문내역 테이블  -->
+				<h4 style="text-align: center;">최근 취소주문 내역</h4>
 				<br>
-				
-				<div class="container my-3">
-				<table class="table">
-				<thead  class="thead-dark">
+			
+			<div class="container my-3">
+				<table  class="table" > 
+				<thead class="thead-dark">
 					<tr>
-						<td  id="max">제목</td>						
-						<td id="short">작성일</td>
-						<td id="short">답변유무</td>
-	
+						<td>주문번호</td>
+						<td>상품사진</td>
+						<td  id="max">상품명</td>
+						<td>결제금액</td>
+						<td>주문수량</td>
+					 	<td>주문일</td>
+					 	<td>결제/취소상태</td> 
+					 	<td>환불여부</td> <!-- 추가 -->
+					 	<td>취소일</td>  <!-- 추가  -->
+					 
+			
 					</tr>
 				</thead>
 				<tbody>
 				<c:choose>
-					<c:when test="${fn:length(myNmQna) > 0}">
-				<c:forEach var="myNmQna" items="${myNmQna }">
-				<tr>
-			<%-- 	<td><a href="${contextPath}/myPage/myQnADetail/${authInfo.memberId}/${myQna.boardCode}">${myQna.boardCode }</a></td> <!-- 문의코드 --> --%>
-			
-			
-				<td><a href="${contextPath}/myPage/myNormalQnADetail/${myNmQna.memberId}/${myNmQna.boardCode}">${myNmQna.title }</a></td>	<!-- 작성일 -->
-				<td>${myNmQna.registDate }</td>	<!-- 작성일 -->
-				<td>${myNmQna.resOX }</td>
-				
-				</tr>
-				</c:forEach>
-				</c:when>
-				<c:otherwise>
+					<c:when test="${fn:length(myCancelOrderList) > 0}">
+					<c:forEach var="myCancelOrderList" items="${myCancelOrderList}">
+					<tr>
+						<!-- 주문번호 -->
+						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myCancelOrderList.orderCode}">${myCancelOrderList.orderCode }<br>[상세보기]</a></td>
+						<!-- 상품사진 -->
+						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myCancelOrderList.orderCode}"><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myCancelOrderList.productMainImage }"></a></td>
+						<!-- 상품명 -->
+						<td><a href="${contextPath}/productDetail/${myCancelOrderList.productCode}">${myCancelOrderList.productName }<br>[상품 주문페이지]</a></td>
+						<!-- 결제금액 -->
+						<td>${myCancelOrderList.paymentAmount }</td>
+						<!-- 주문수량 -->
+						<td>${myCancelOrderList.orderCount }</td>
+						<!-- 주문일 -->
+						 <td>${myCancelOrderList.orderDate }</td> 	
+						 <!-- 결제여부 -->
+						 <c:if test="${empty myCancelOrderList.payOX && myCancelOrderList.cancelState == true}"><!--결제안했고 취소했으면  -->
+						  <td>입금전 취소<br></td>			 
+						 </c:if>				
+						 <c:if test="${!empty myCancelOrderList.payOX && myCancelOrderList.cancelState == true}"><!--결제했고 취소헀으면  -->
+						  <td>입금후 취소<br><!-- <a>[환불완료]</a> --></td>
+						 </c:if>
+						 <!--  -->								 
+						 <c:if test="${empty myCancelOrderList.payOX}"><!-- 입금전일시 환불여부 비활성화 -->
+						 <td> - </td>
+						 </c:if>
+						 <c:if test="${!empty myCancelOrderList.payOX}"><!-- 입금전일시 환불여부 비활성화 -->
+						 <td> 환불완료 </td>
+						 </c:if>
+						
+						<!-- 주문취소일 -->
+						<td>${myCancelOrderList.cancelDate }</td>
+					
+						
+						
+						
+					
+					
+					
+					
+					
+					</tr>
+					</c:forEach>
+					</c:when>
+					<c:otherwise>
 							<tr>
 								<td colspan="4">조회된 결과가 없습니다.</td>
 							</tr>
 						</c:otherwise>
-				</c:choose>
+					</c:choose>
 				</tbody>
-	</table> 	
-	</div>
-	<br>
-
-
+				</table>
+		</div>	
+			</section> 
+			
+					
 			
 				
  <!--paginate -->
          <div class="paginate">
             <div class="paging" style="margin-left: 50%;">
                <a class="direction prev" href="javascript:void(0);"
-                  onclick="movePage(1,${pagination2.cntPerPage},${pagination2.pageSize});">
+                  onclick="movePage(1,${pagination3.cntPerPage},${pagination3.pageSize});">
                   &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"
-                  onclick="movePage(${pagination2.currentPage}<c:if test="${pagination2.hasPreviousPage == true}">-1</c:if>,${pagination2.cntPerPage},${pagination2.pageSize});">
+                  onclick="movePage(${pagination3.currentPage}<c:if test="${pagination3.hasPreviousPage == true}">-1</c:if>,${pagination3.cntPerPage},${pagination3.pageSize});">
                   &lt; </a>
 
-               <c:forEach begin="${pagination2.firstPage}"
-                  end="${pagination2.lastPage}" var="idx">
+               <c:forEach begin="${pagination3.firstPage}"
+                  end="${pagination3.lastPage}" var="idx">
                   <a
-                     style="color:<c:out value="${pagination2.currentPage == idx ? '#gray; font-weight:700; margin-bottom: 2px;' : ''}"/> "
+                     style="color:<c:out value="${pagination3.currentPage == idx ? '#gray; font-weight:700; margin-bottom: 2px;' : ''}"/> "
                      href="javascript:void(0);"
-                     onclick="movePage(${idx},${pagination2.cntPerPage},${pagination2.pageSize});"><c:out
+                     onclick="movePage(${idx},${pagination3.cntPerPage},${pagination3.pageSize});"><c:out
                         value="${idx}" /></a>
                </c:forEach>
                <a class="direction next" href="javascript:void(0);"
-                  onclick="movePage(${pagination2.currentPage}<c:if test="${pagination2.hasNextPage == true}">+1</c:if>,${pagination2.cntPerPage},${pagination2.pageSize});">
+                  onclick="movePage(${pagination3.currentPage}<c:if test="${pagination3.hasNextPage == true}">+1</c:if>,${pagination3.cntPerPage},${pagination3.pageSize});">
                   &gt; </a> <a class="direction next" href="javascript:void(0);"
-                  onclick="movePage(${pagination2.totalRecordCount},${pagination2.cntPerPage},${pagination2.pageSize});">
+                  onclick="movePage(${pagination3.totalRecordCount},${pagination3.cntPerPage},${pagination3.pageSize});">
                   &gt;&gt; </a>
             </div>
          </div>
          <!-- /paginate -->	
 			</c:if>
-
+				
 	
-	</section>
-<br><br><br><br><br><br><br>
+	
+
 </div>
+	
+	<section>
 
-	
-	
+	</section>
 
 	<!-- end our product -->
 	<footer>
@@ -174,7 +214,7 @@
 //페이지 이동
 function movePage(currentPage, cntPerPage, pageSize){
     
-    var url = "${pageContext.request.contextPath}/myPage/myNormalQnA/${member.memberId}";
+    var url = "${pageContext.request.contextPath}/myPage/myCancelOrder/${member.memberId}";
     url = url + "?currentPage="+currentPage;
     url = url + "&cntPerPage="+cntPerPage;
     url = url + "&pageSize="+pageSize;

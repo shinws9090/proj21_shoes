@@ -80,11 +80,12 @@ insert into orderoption values
 
 -- 등급, 회원상세정보, 회원정보
 insert into grade values
-	(1,'VVIP'),
-	(2,'VIP'),
+	(1,'FAMILY'),
+	(2,'SILVER'),
 	(3,'GOLD'),
-	(4,'SILVER'),
-	(5,'FAMILY');
+	(4,'VIP'),
+	(5,'VVIP');
+
 
 insert into memberdetail values
 	('aaa',password('rootroot'),'테스트1',true,now(),'test1@test.co.kr','010-111-8888','12345','국채보상로 438','서구 치과의원'),
@@ -119,11 +120,11 @@ insert into cart values
 
 -- 주문정보, 배송지정보, 주문상품
 insert into `order` values
-	(10001,111111,now(),1000,false,'배송코드',false),
-	(10002,111112,now(),1000,false,'배송코드',false),
-	(10003,111113,now(),1000,false,'배송코드',false),
-	(10004,111114,now(),1000,false,'배송코드',false),
-	(10005,111115,now(),1000,false,'배송코드',false);
+	(10001,111111,now(),null,1000,false,false,'배송코드',false),
+	(10002,111112,now(),null,1000,false,false,'배송코드',false),
+	(10003,111113,now(),null,1000,false,false,'배송코드',false),
+	(10004,111114,now(),null,1000,false,false,'배송코드',false),
+	(10005,111115,now(),null,1000,false,false,'배송코드',false);
 
 insert into address values
 	(10001,'테스트1','41806','국채보상로 438','서구 치과의원','010-111-8888'),

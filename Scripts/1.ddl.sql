@@ -82,8 +82,10 @@ CREATE TABLE sinabro.order (
 	order_code        INT         NOT NULL COMMENT '주문코드', -- 주문코드
 	member_code       INT         NULL     COMMENT '회원코드', -- 회원코드
 	order_date        DATETIME    NOT NULL COMMENT '주문일', -- 주문일
-	payment_amount    INT         NOT NULL COMMENT '결제금액', -- 결제금액
+	cancel_date       DATETIME    NULL COMMENT '주문취소일', -- 주문취소일 /* 예진 07.04 추가*/
+	payment_amount    INT         NOT NULL COMMENT '결제금액', -- 결제금액 
 	payment_state     BOOL    	  NOT NULL DEFAULT false COMMENT '결제여부', -- 결제여부
+	cancel_state     BOOL    	  NOT NULL DEFAULT false COMMENT '주문취소여부', -- 주문취소여부 /*예진 07.04 추가*/
 	delivery_code     VARCHAR(50) NULL     COMMENT '배송코드', -- 배송코드
 	buy_confirm_state BOOL        NOT NULL DEFAULT false COMMENT '구매확정여부' -- 구매확정여부
 )

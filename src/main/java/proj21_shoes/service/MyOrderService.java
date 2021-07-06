@@ -3,6 +3,7 @@ package proj21_shoes.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import proj21_shoes.commend.ModifyMyBuyConfirmCommend;
@@ -26,5 +27,16 @@ public interface MyOrderService {
 	
 	int updateMyBuyConfirm(int orderCode);
 	MyOrderCommend selectMyOrderByOrderCode(int orderCode);					//주문코드로 검색
+	
+	
+	///주문취소
+		int updateMyCancel(int orderCode);  //주문취소버튼 클릭시 작동시킬거
 
+		
+	//주문취소내역
+		List<Map<String, Object>> selectMyCancelOrderListById (String memberId, Pagination pagination) throws Exception;
+		
+		int MyCancelOrderCount(String memberId) throws Exception;
+		
+		
 }

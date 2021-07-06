@@ -14,4 +14,8 @@ public interface MemberService {
 
 	// 리스트 + 검색 + 페이징 (게시물 총 개수 구하기)
 	public int countInfoList(SearchCriteria scri) throws Exception;
+	
+	
+	int updateMyPoint(String memberId, int updatePoint); //포인트 업데이트
+
 }

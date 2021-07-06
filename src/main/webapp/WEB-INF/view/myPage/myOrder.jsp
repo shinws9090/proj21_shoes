@@ -72,6 +72,7 @@
 
 				<h3>나의 쇼핑정보</h3>			
 				<a href="${contextPath}/myPage/myOrder/${member.memberId}">-주문내역</a><br>
+				<a href="${contextPath}/myPage/myCancelOrder/${member.memberId}">-취소내역</a><br>
 				<a href="${contextPath}/cartList">-장바구니</a>
 			
 				<h3>나의 후기</h3>			
@@ -118,12 +119,16 @@
 						<td>${myOrderList.paymentAmount }</td>
 						<td>${myOrderList.orderCount }</td>
 						 <td>${myOrderList.orderDate }</td> 	
-						 <c:if test="${empty myOrderList.payOX}">
-						  <td>입금전</td>
+						 <c:if test="${empty myOrderList.payOX && myOrderList.cancelState == false}">
+						  <td>입금전<br><a href="${contextPath}/myOrderCancel/${myOrderList.orderCode}/${member.memberId}">[주문취소하기]</a></td>
+						 
 						 </c:if>				
-						 <c:if test="${!empty myOrderList.payOX}">
+						 <c:if test="${!empty myOrderList.payOX && myOrderList.buyConfirmState == false}">
+						  <td>입금완료<br><a href="${contextPath}/myOrderCancel/${myOrderList.orderCode}/${member.memberId}">[주문취소하기]</a></td>
+						 </c:if>
+						  <c:if test="${!empty myOrderList.payOX && myOrderList.buyConfirmState == true}">
 						  <td>입금완료</td>
-						 </c:if>				
+						 </c:if>					
 						 
 						 <c:if test="${empty myOrderList.payOX}"><!-- 입금전일시 결제확정 비활성화 -->
 						 <td> - </td>

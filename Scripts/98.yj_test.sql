@@ -1,15 +1,29 @@
 desc memberdetail ;
 
-
+select * from `order`;
 
 select  emp_id, password(emp_pwd),emp_name
 from employee where emp_id ='chamdodari' and emp_pwd =password('rootroot');
 
 password('rootroot');
 
+select * from memberDetail;
+select * from member where member_id ='1235';
+
+select * from  `order` where member_code =111116;
+
+update
+
+select m.member_code, m.member_id, m.point, m.cumulative_buy_amount, m.grade_code, m.quit_state, m.signUp_date,g.grade
+		from member as m left join grade as g on m.grade_code = g.grade_code 
+		where member_id = '1235'
 
 
+UPDATE member
+SET point=1000
+WHERE member_id='1235';
 
+desc `order`;
 select * from employee;
 select * from memberdetail;
 select  member_id,member_pwd from memberdetail where member_id ='1234'
