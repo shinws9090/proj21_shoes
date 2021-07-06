@@ -64,6 +64,7 @@
 
 				<h3>나의 쇼핑정보</h3>			
 				<a href="${contextPath}/myPage/myOrder/${member.memberId}">-주문내역</a><br>
+				<a href="${contextPath}/myPage/myCancelOrder/${member.memberId}">-취소내역</a><br>
 				<a href="${contextPath}/cartList">-장바구니</a>
 			
 				<h3>나의 후기</h3>			
