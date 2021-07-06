@@ -22,8 +22,10 @@
 		<result column="order_code" property="orderCode" />						<!-- 주문코드 -->
 		<result column="member_code" property="membeCode" />					<!-- 회원코드 -->
 		<result column="order_date" property="orderDate" />						<!-- 주문일 -->
+		<result column="cancel_date" property="cancelDate" />						<!-- 주문취소일 -->
 		<result column="payment_amount" property="paymentAmount" />				<!-- 결제금액 -->
 		<result column="payment_state" property="paymentState" />				<!-- 결제여부 -->
+		<result column="cancel_state" property="cancelState" />					<!-- 주문취소여부 -->
 		<result column="delivery_code" property="deliveryCode" />				<!-- 배송코드(송장번호) -->
 		<result column="buy_confirm_state" property="buyConfirmState" />		<!-- 구매확정여부 -->
 		<result column="recipient" property="recipient" />						<!-- 받는사람 -->
@@ -46,8 +48,10 @@
 	 	 member_code, 
 	 	 member_id, 
 	 	 order_date, 
+	 	 cancel_date, 
 	 	 payment_amount, 
 	 	 payment_state, 
+	 	 cancel_state, 
 	 	 delivery_code, 
 	 	 buy_confirm_state, 
 	 	 recipient, 
@@ -72,8 +76,10 @@
 	 	 member_code, 
 	 	 member_id, 
 	 	 order_date, 
+	 	 cancel_date, 
 	 	 payment_amount, 
 	 	 payment_state, 
+	 	 cancel_state, 
 	 	 delivery_code, 
 	 	 buy_confirm_state, 
 	 	 recipient, 
@@ -99,8 +105,10 @@
 	 	 member_code, 
 	 	 member_id, 
 	 	 order_date, 
+	 	 cancel_date, 
 	 	 payment_amount, 
 	 	 payment_state, 
+	 	 cancel_state, 
 	 	 delivery_code, 
 	 	 buy_confirm_state, 
 	 	 recipient, 
@@ -115,7 +123,7 @@
 	 	 color, 
 	 	 order_count, 
 	 	 product_main_image 
-	 	 from vw_myOrderData where member_id=#{memberId}
+	 	 from vw_myOrderData where member_id=#{memberId} and cancel_state is false
 	 	 order by order_date desc
 	 	 )R1
 	 	   LIMIT #{pageSearch}, #{cntPerPage };
@@ -124,7 +132,7 @@
 	 </select>
 	  <select id="MyOrderCount" resultType="int">
         select count(*) 
-	from vw_myOrderData where member_id=#{memberId};
+	from vw_myOrderData where member_id=#{memberId}   and cancel_state is false ;
     </select>
 	
 	<update id="updateMyBuyConfirm">
@@ -132,6 +140,50 @@
 SET buy_confirm_state=true
 WHERE order_code=#{orderCode};
 	</update>
+	
+	<update id="updateMyCancel">
+	UPDATE `order`
+SET cancel_state=true, cancel_date=now()
+WHERE order_code=#{orderCode};
+	</update>
+	
+	
+	<!-- 페이징 적용 취소한 주문목록 -->
+	 	 <select id="selectMyCancelOrderListById" resultMap="resMyOrder" >
+	 	 select R1.* FROM( select  
+	 	 order_code, 
+	 	 member_code, 
+	 	 member_id, 
+	 	 order_date, 
+	 	 cancel_date, 
+	 	 payment_amount, 
+	 	 payment_state, 
+	 	 cancel_state, 
+	 	 delivery_code, 
+	 	 buy_confirm_state, 
+	 	 recipient, 
+	 	 zipCode, 
+	 	 address, 
+	 	 detail_address, 
+	 	 tel, 
+	 	 product_code, 
+	 	 product_name, 
+	 	 style_code, 
+	 	 `size`,
+	 	 color, 
+	 	 order_count, 
+	 	 product_main_image 
+	 	 from vw_myOrderData where member_id=#{memberId} and cancel_state is true
+	 	 order by order_date desc
+	 	 )R1
+	 	   LIMIT #{pageSearch}, #{cntPerPage };
+	 	
+	 
+	 </select>
+	  <select id="MyCancelOrderCount" resultType="int">
+        select count(*) 
+	from vw_myOrderData where member_id=#{memberId}   and cancel_state is true ;
+    </select>
 	
 </mapper>
 

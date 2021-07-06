@@ -120,6 +120,11 @@ public class MyPageSelectCommend {
 		String point2 = java.text.NumberFormat.getInstance().format(point);
 		return point2;
 	}
+	
+
+	public int getPointInt() {
+		return point;
+	}
 
 	public void setPoint(int point) {
 		this.point = point;

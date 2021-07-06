@@ -96,10 +96,11 @@
 					 	<td>주문일</td> 
 					<!-- 	<td>상품사진</td> -->
 						<td>상품명</td>
+						<td>상품가격</td>
 						<td>옵션1(색상)</td>
 						<td>옵션2(사이즈)</td>
 						<td>주문수량</td>
-						<td>결제금액</td>
+						
 					</tr>
 					
 					<tr>
@@ -107,20 +108,47 @@
 						<td>${myOrderDetail.orderDate }</td> 
 				<%-- 		<td><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myOrderDetail.productMainImage }"></td> --%>
 						<td><a href="${contextPath}/productDetail/${myOrderDetail.productCode}">${myOrderDetail.productName }<br>[상품 주문페이지]</a></td>
+						<td>${myOrderDetail.selPrice } 원</td>
 						<td>${myOrderDetail.color }</td>
 						<td>${myOrderDetail.size }</td>
 						<td>${myOrderDetail.orderCount }</td>
-						<td>${myOrderDetail.paymentAmount }</td>
 		
 						
 					</tr>
 				
 				
 				</table>
+				<br>
+					<br>
+					<h4>결제정보</h4>
+				<table  class="tbl_type" border="1"> 
+			
+					<tr>
+						<td>구매금액</td>
+					 	<td>등급할인금액</td> 
+						<td>포인트 사용금액</td>
+						<td>최종결제금액</td>
+						<td>적립금액</td>
+					</tr>
+					
+					<tr>
+						<td>${myOrderDetail.allSelPrice } 원</td>
+						<td>${myOrderDetail.gradeHal } 원</td> 
+						<td>${myOrderDetail.point } 원</td>
+						<td>${myOrderDetail.lastPrice } 원</td>
+						<td>${pointDel } 포인트</td>
+						
+						
+					</tr>
+				
+				
+				</table>
+				
+				
+				
 					<br>
 					<br>
 					<h4>배송지 입력정보</h4>
-					<br>
 				<table  class="tbl_type" border="1"> 
 			
 					<tr>

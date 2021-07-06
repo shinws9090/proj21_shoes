@@ -19,6 +19,7 @@ public interface MemberMapper {
 	
 	int insertMember(Member req); 		 					//회원정보 추가
 	int updateMember(String member);  				//회원정보 수정
+	int updateMyPoint(String memberId, int newPoint); //포인트 업데이트
 	int deleteMember(long id);  							//회원정보 삭제
 	
 	// 리스트 + 검색 + 페이징

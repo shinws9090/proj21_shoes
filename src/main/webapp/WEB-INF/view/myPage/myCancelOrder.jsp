@@ -89,7 +89,7 @@
 		
 		
 				<!-- 최근 주문내역 테이블  -->
-				<h4 style="text-align: center;">최근 주문내역</h4>
+				<h4 style="text-align: center;">최근 취소주문 내역</h4>
 				<br>
 			
 			<div class="container my-3">
@@ -102,44 +102,48 @@
 						<td>결제금액</td>
 						<td>주문수량</td>
 					 	<td>주문일</td>
-					 	<td>결제여부</td> 
-					 	<td>구매확정여부</td>
+					 	<td>결제/취소상태</td> 
+					 	<td>환불여부</td> <!-- 추가 -->
+					 	<td>취소일</td>  <!-- 추가  -->
 					 
 			
 					</tr>
 				</thead>
 				<tbody>
 				<c:choose>
-					<c:when test="${fn:length(myOrderList) > 0}">
-					<c:forEach var="myOrderList" items="${myOrderList}">
+					<c:when test="${fn:length(myCancelOrderList) > 0}">
+					<c:forEach var="myCancelOrderList" items="${myCancelOrderList}">
 					<tr>
-						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myOrderList.orderCode}">${myOrderList.orderCode }<br>[상세보기]</a></td>
-						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myOrderList.orderCode}"><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myOrderList.productMainImage }"></a></td>
-						<td><a href="${contextPath}/productDetail/${myOrderList.productCode}">${myOrderList.productName }<br>[상품 주문페이지]</a></td>
-						<td>${myOrderList.paymentAmount }</td>
-						<td>${myOrderList.orderCount }</td>
-						 <td>${myOrderList.orderDate }</td> 	
-						 <c:if test="${empty myOrderList.payOX && myOrderList.cancelState == false}">
-						  <td>입금전<br><a href="${contextPath}/myOrderCancel/${myOrderList.orderCode}/${member.memberId}">[주문취소하기]</a></td>
-						 
+						<!-- 주문번호 -->
+						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myCancelOrderList.orderCode}">${myCancelOrderList.orderCode }<br>[상세보기]</a></td>
+						<!-- 상품사진 -->
+						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myCancelOrderList.orderCode}"><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myCancelOrderList.productMainImage }"></a></td>
+						<!-- 상품명 -->
+						<td><a href="${contextPath}/productDetail/${myCancelOrderList.productCode}">${myCancelOrderList.productName }<br>[상품 주문페이지]</a></td>
+						<!-- 결제금액 -->
+						<td>${myCancelOrderList.paymentAmount }</td>
+						<!-- 주문수량 -->
+						<td>${myCancelOrderList.orderCount }</td>
+						<!-- 주문일 -->
+						 <td>${myCancelOrderList.orderDate }</td> 	
+						 <!-- 결제여부 -->
+						 <c:if test="${empty myCancelOrderList.payOX && myCancelOrderList.cancelState == true}"><!--결제안했고 취소했으면  -->
+						  <td>입금전 취소<br></td>			 
 						 </c:if>				
-						 <c:if test="${!empty myOrderList.payOX && myOrderList.buyConfirmState == false}">
-						  <td>입금완료<br><a href="${contextPath}/myOrderCancel/${myOrderList.orderCode}/${member.memberId}">[주문취소하기]</a></td>
+						 <c:if test="${!empty myCancelOrderList.payOX && myCancelOrderList.cancelState == true}"><!--결제했고 취소헀으면  -->
+						  <td>입금후 취소<br><!-- <a>[환불완료]</a> --></td>
 						 </c:if>
-						  <c:if test="${!empty myOrderList.payOX && myOrderList.buyConfirmState == true}">
-						  <td>입금완료</td>
-						 </c:if>					
-						 
-						 <c:if test="${empty myOrderList.payOX}"><!-- 입금전일시 결제확정 비활성화 -->
+						 <!--  -->								 
+						 <c:if test="${empty myCancelOrderList.payOX}"><!-- 입금전일시 환불여부 비활성화 -->
 						 <td> - </td>
 						 </c:if>
-						 <!-- 입금완료시 구매확정버튼 활성화 -->
-						<c:if test="${!empty myOrderList.payOX && empty myOrderList.buyConfirmOX}"><!-- 결제완료했고 확정안했으면 -->		
-								 <td><a href="${contextPath}/myPage/myOrder/buyConfirm/${myOrderList.orderCode}/${member.memberId }">확정하기</a></td>
+						 <c:if test="${!empty myCancelOrderList.payOX}"><!-- 입금전일시 환불여부 비활성화 -->
+						 <td> 환불완료 </td>
 						 </c:if>
-						 <c:if test="${!empty myOrderList.payOX && !empty myOrderList.buyConfirmOX}"><!-- 결제완료했고 확정했으면 -->		
-								 <td><a>확정완료</a></td>
-						 </c:if>
+						
+						<!-- 주문취소일 -->
+						<td>${myCancelOrderList.cancelDate }</td>
+					
 						
 						
 						
@@ -210,7 +214,7 @@
 //페이지 이동
 function movePage(currentPage, cntPerPage, pageSize){
     
-    var url = "${pageContext.request.contextPath}/myPage/myOrder/${member.memberId}";
+    var url = "${pageContext.request.contextPath}/myPage/myCancelOrder/${member.memberId}";
     url = url + "?currentPage="+currentPage;
     url = url + "&cntPerPage="+cntPerPage;
     url = url + "&pageSize="+pageSize;

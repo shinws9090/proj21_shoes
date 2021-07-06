@@ -15,9 +15,12 @@ public class MyOrderCommend {
 	private String memberId;		//회원아이디
 	@DateTimeFormat(pattern = "yyyyMMdd")	
 	private LocalDate orderDate; 	//주문일
+	@DateTimeFormat(pattern = "yyyyMMdd")	
+	private LocalDate cancelDate; 	//주문취소일
 	
 	private int paymentAmount;		//결제금액
 	private boolean paymentState; 	//결제여부
+	private boolean cancelState; 	//주문취소여부
 	private String deliveryCode;		//배송코드(송장번호)
 	private boolean buyConfirmState; //구매확정여부
 	private String recipient;		//받는사람
@@ -36,6 +39,15 @@ public class MyOrderCommend {
 	private String buyConfirmOX;//구매확정여부 리턴
 	private String orderReview; //주문한거 리뷰했냐
 	
+	
+	int selPrice; //1개당 판매금액
+	int allSelPrice; //주문수량*판매가
+	double gradeHal; //등급할인금액
+	double point; //포인트 사용금액
+	double lastPrice;//최종결제금액
+	
+	
+	
 	//private String buyConfirmView;// 미입금시 구매확정 못하게 
 //	private String reViewOX;
 
@@ -52,9 +64,14 @@ public class MyOrderCommend {
 
 
 
+	public LocalDate getCancelDate() {
+		return cancelDate;
+	}
 
 
-
+	public void setCancelDate(LocalDate cancelDate) {
+		this.cancelDate = cancelDate;
+	}
 
 
 	public void setOrderReview(String orderReview) {
@@ -99,6 +116,32 @@ public class MyOrderCommend {
 	}
 
 
+	public boolean isCancelState() {
+		return cancelState;
+	}
+
+
+
+
+
+
+
+
+
+
+	public void setCancelState(boolean cancelState) {
+		this.cancelState = cancelState;
+	}
+
+
+
+
+
+
+
+
+
+
 	public void setColor(String color) {
 		this.color = color;
 	}
@@ -107,7 +150,69 @@ public class MyOrderCommend {
 	public void setByConfirmState(boolean buyConfirmState) {
 		this.buyConfirmState = buyConfirmState;
 	}
+	
+	
+	
+	public String getAllSelPrice() {
+		String allSelPrice2 =java.text.NumberFormat.getInstance().format(allSelPrice);
+		return allSelPrice2;
+	}
 
+
+
+
+
+	public void setAllSelPrice(int allSelPrice) {
+		this.allSelPrice = allSelPrice;
+	}
+
+
+
+
+
+	public String getSelPrice() {
+		String selPrice2 =java.text.NumberFormat.getInstance().format(selPrice);
+		return selPrice2;
+	}
+	public int getLastPriceInt() {
+	
+		return (int) lastPrice;
+	}
+	
+	public void setSelPrice(int selPrice) {
+		this.selPrice = selPrice;
+	}
+
+	public String getGradeHal() {
+		String gradeHal2 =java.text.NumberFormat.getInstance().format(gradeHal);
+		return gradeHal2;
+	}
+	public void setGardeHal(double gardeHal) {
+		this.gradeHal = gardeHal;
+	}
+	public String getLastPrice() {
+		String lastPrice2 =java.text.NumberFormat.getInstance().format(lastPrice);
+		return lastPrice2;
+	}
+	public void setLastPrice(double lastPrice) {
+		this.lastPrice = lastPrice;
+	}
+	public String getPoint() {
+		String point2 =java.text.NumberFormat.getInstance().format(point);
+		return point2;
+	}
+	public double getPointInt() {
+		
+		return point;
+	}
+	
+	public void setPoint(double point) {
+		this.point = point;
+	}
+	
+	
+	
+	
 
 	public MyOrderCommend(String memberId) {
 		super();
@@ -154,6 +259,12 @@ public class MyOrderCommend {
 		String paymentAmount2 =java.text.NumberFormat.getInstance().format(paymentAmount);
 		return paymentAmount2;
 	}
+	public int getPaymentAmountInt() {
+		int paymentAmount3 =paymentAmount;
+		return paymentAmount3;
+	}
+	
+	
 	public void setPaymentAmount(int paymentAmount) {
 		this.paymentAmount = paymentAmount;
 	}
@@ -260,18 +371,25 @@ public class MyOrderCommend {
 
 
 
-	public MyOrderCommend(int orderCode, int membeCode, String memberId, LocalDate orderDate, int paymentAmount,
-			boolean paymentState, String deliveryCode, boolean buyConfirmState, String recipient, String zipCode,
-			String address, String detailAddress, String tel, int productCode, String productName, int styleCode,
-			int size, int orderCount, String productMainImage, String color, String payOX, String buyConfirmOX,
-			String orderReview) {
+
+
+
+
+	public MyOrderCommend(int orderCode, int membeCode, String memberId, LocalDate orderDate, LocalDate cancelDate,
+			int paymentAmount, boolean paymentState, boolean cancelState, String deliveryCode, boolean buyConfirmState,
+			String recipient, String zipCode, String address, String detailAddress, String tel, int productCode,
+			String productName, int styleCode, int size, int orderCount, String productMainImage, String color,
+			String payOX, String buyConfirmOX, String orderReview, int selPrice, double gradeHal, double point,
+			double lastPrice) {
 		super();
 		this.orderCode = orderCode;
 		this.membeCode = membeCode;
 		this.memberId = memberId;
 		this.orderDate = orderDate;
+		this.cancelDate = cancelDate;
 		this.paymentAmount = paymentAmount;
 		this.paymentState = paymentState;
+		this.cancelState = cancelState;
 		this.deliveryCode = deliveryCode;
 		this.buyConfirmState = buyConfirmState;
 		this.recipient = recipient;
@@ -289,12 +407,11 @@ public class MyOrderCommend {
 		this.payOX = payOX;
 		this.buyConfirmOX = buyConfirmOX;
 		this.orderReview = orderReview;
+		this.selPrice = selPrice;
+		this.gradeHal = gradeHal;
+		this.point = point;
+		this.lastPrice = lastPrice;
 	}
-
-
-
-
-
 
 
 
@@ -303,13 +420,35 @@ public class MyOrderCommend {
 	@Override
 	public String toString() {
 		return String.format(
-				"MyOrderCommend [orderCode=%s, membeCode=%s, memberId=%s, orderDate=%s, paymentAmount=%s, paymentState=%s, deliveryCode=%s, buyConfirmState=%s, recipient=%s, zipCode=%s, address=%s, detailAddress=%s, tel=%s, productCode=%s, productName=%s, styleCode=%s, size=%s, orderCount=%s, productMainImage=%s, color=%s, payOX=%s, buyConfirmOX=%s, orderReview=%s]",
-				orderCode, membeCode, memberId, orderDate, paymentAmount, paymentState, deliveryCode, buyConfirmState,
-				recipient, zipCode, address, detailAddress, tel, productCode, productName, styleCode, size, orderCount,
-				productMainImage, color, payOX, buyConfirmOX, orderReview);
+				"MyOrderCommend [orderCode=%s, membeCode=%s, memberId=%s, orderDate=%s, cancelDate=%s, paymentAmount=%s, paymentState=%s, cancelState=%s, deliveryCode=%s, buyConfirmState=%s, recipient=%s, zipCode=%s, address=%s, detailAddress=%s, tel=%s, productCode=%s, productName=%s, styleCode=%s, size=%s, orderCount=%s, productMainImage=%s, color=%s, payOX=%s, buyConfirmOX=%s, orderReview=%s, selPrice=%s, gradeHal=%s, point=%s, lastPrice=%s]",
+				orderCode, membeCode, memberId, orderDate, cancelDate, paymentAmount, paymentState, cancelState,
+				deliveryCode, buyConfirmState, recipient, zipCode, address, detailAddress, tel, productCode,
+				productName, styleCode, size, orderCount, productMainImage, color, payOX, buyConfirmOX, orderReview,
+				selPrice, gradeHal, point, lastPrice);
 	}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 
 
 

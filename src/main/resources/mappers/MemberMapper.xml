@@ -36,14 +36,20 @@
 	</select>
 	
 	<select id="selectMemberById" resultMap="resMember">
-		select member_code, member_id, point, cumulative_buy_amount, grade_code, quit_state, signUp_date 
-		from member
+	select m.member_code, m.member_id, m.point, m.cumulative_buy_amount, m.grade_code, m.quit_state, m.signUp_date,g.grade
+		from member as m left join grade as g on m.grade_code = g.grade_code 
 		where member_id = #{memberId}	
 	</select>	
 	
 	<update id="updateMember">
 		UPDATE member  SET quit_state=1
 	    WHERE member_id=#{memberId};
+	</update>
+	
+	
+	<update id="updateMyPoint"><!-- 포인트 환불시  사용 -->
+		UPDATE member  SET point=#{param2}
+	    WHERE member_id=#{param1};
 	</update>
 	
 	<select id="findAll" resultMap="resMember" resultType="SearchCriteria">

@@ -8,8 +8,10 @@ public class Order { 						// 	주문정보
 	private int orderCode; 					// 	주문코드
 	private Member memberCode;				// 	회원코드
 	private LocalDateTime orderDate; 		//  주문일
+	private LocalDateTime cancelDate; 		//  주문취소일
 	private int paymentAmount; 				// 	결제금액
 	private boolean paymentState; 			// 	결제여부
+	private boolean cancelState; 			// 	주문취소여부
 	private String deliveryCode; 			// 	배송코드
 	private boolean buyConfirmState; 		// 	구매확정여부
 	private List<OrderProduct> orderProduct;
@@ -103,13 +105,35 @@ public class Order { 						// 	주문정보
 		this.buyConfirmState = buyConfirmState;
 	}
 
+	
+	public boolean isCancelState() {
+		return cancelState;
+	}
+
+	public void setCancelState(boolean cancelState) {
+		this.cancelState = cancelState;
+	}
+	
+	
+
+	public LocalDateTime getCancelDate() {
+		return cancelDate;
+	}
+
+	public void setCancelDate(LocalDateTime cancelDate) {
+		this.cancelDate = cancelDate;
+	}
+
 	@Override
 	public String toString() {
 		return String.format(
-				"Order [orderCode=%s, memberCode=%s, orderDate=%s, paymentAmount=%s, paymentState=%s, deliveryCode=%s, buyConfirmState=%s, orderProduct=%s, address=%s]",
-				orderCode, memberCode, orderDate, paymentAmount, paymentState, deliveryCode, buyConfirmState,
-				orderProduct, address);
+				"Order [orderCode=%s, memberCode=%s, orderDate=%s, cancelDate=%s, paymentAmount=%s, paymentState=%s, cancelState=%s, deliveryCode=%s, buyConfirmState=%s, orderProduct=%s, address=%s]",
+				orderCode, memberCode, orderDate, cancelDate, paymentAmount, paymentState, cancelState, deliveryCode,
+				buyConfirmState, orderProduct, address);
 	}
 
+	
+
+	
 	
 }
