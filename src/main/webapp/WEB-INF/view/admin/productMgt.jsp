@@ -109,8 +109,8 @@ ul.pageNum2 {
 							<tr style="background-color: lightgrey; text-align: center">
 								<td>번호</td>
 								<td>상품명</td>
-								<td>성별</td>
 								<td>브랜드</td>
+								<td>성별</td>
 								<td>카테고리</td>
 								<td>대표이미지</td>
 								<td>원가</td>
@@ -118,7 +118,8 @@ ul.pageNum2 {
 								<td>등록일</td>
 								<td>등록수량</td>
 								<td>판매수량</td>
-								<td>상세관리</td>
+								<td>재고관리</td>
+								<td>수정삭제</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -127,8 +128,8 @@ ul.pageNum2 {
 								<input type="hidden" id="productCode${productList.productCode}" value="${productList.productCode}">
 								<td>${productList.productCode}</td>
 								<td><a href="${contextPath}/productDetail/${productList.productCode}"><c:out value="${productList.productName}" /></a></td>
-								<td>${productList.gender}</td>								
-								<td>${productList.brand.brandName}</td>								
+								<td>${productList.brand.brandName}</td>			
+								<td>${productList.gender}</td>		
 								<td>${productList.category.category}</td>
 								<td><a href="${contextPath}/productDetail/${productList.productCode}"><img src="${contextPath}/images/${productList.productPost.productMainImage}" width="200"></a></td>
 								<td>${productList.costPrice}</td>
@@ -136,7 +137,11 @@ ul.pageNum2 {
 								<td>${productList.registDate}</td>
 								<td>${productList.cumulativeRegistCount}</td>
 								<td>${productList.cumulativeSellCount}</td>
-								<td><button type="button"><a href="${contextPath}/admin/product/productDetailMgt?productCode=${productList.productCode}" onClick="window.open(this.href, '', 'width=1210, height=760'); return false;">상세관리</a></button></td>
+								<td><button type="button"><a href="${contextPath}/admin/product/productDetailMgt?productCode=${productList.productCode}" onClick="window.open(this.href, '', 'width=1210, height=760'); return false;">재고관리</a></button></td>
+								<td>
+									<button type="button"><a href="${contextPath}/admin/product/productMod?productCode=${productList.productCode}" onClick="window.open(this.href, '', 'width=1210, height=640'); return false;">상품수정</a></button>
+									<button type="button"><a href="${contextPath}/admin/product/productDel?productCode=${productList.productCode}">상품삭제</a></button>
+								</td>
 							</tr>
 							</c:forEach>
 						</tbody>

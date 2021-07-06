@@ -171,12 +171,8 @@ h1.mt-4 {
 								<label>성별</label>
 							</div>
 							<div class="form_section_content">
-								<select name="gender" class="form_select_option" style="width:175px;">
+								<select name="gender" class="gender" style="width:175px;">
 									<option selected="selected" value="" style="width:310px;">옵션을 선택해주세요</option>
-									<option value="WOMEN">WOMEN</option>						
-									<option value="MEN">MEN</option>						
-									<option value="KIDS">KIDS</option>
-									<option value="FREE">FREE</option>
 								</select>
 							</div>
 						</div>
@@ -395,6 +391,20 @@ h1.mt-4 {
 	for(var i = 0; i < employeeArr.length; i++) {
 		employeeSelect.append("<option value='" + employeeArr[i].empNumber + "'>" + employeeArr[i].empNumber + " : "
 	      + employeeArr[i].empName + "</option>"); 
+	}
+	
+	// 성별 데이터 준비
+	var genderSelect = $("select.gender")
+	
+	genderArr = new Array();
+	genderArr[0] = "WOMEN";
+	genderArr[1] = "MEN";
+	genderArr[2] = "KIDS";
+	genderArr[3] = "FREE";
+	
+	// 성별 데이터 박스에 삽입
+	for(var i = 0; i < genderArr.length; i++) {
+		genderSelect.append("<option value='" + genderArr[i] + "'>" + genderArr[i] + "</option>");	
 	}
 </script>
 

@@ -104,7 +104,7 @@ $(function(){
 										<label>카테고리 코드</label>
 									</div>
 									<div class="form_section_content">
-										<input name="productCategoryCode" id="productCategoryCode" value="" readonly>
+										<input name="productCategoryCode" id="productCategoryCode" value="${categorys.productCategoryCode}" readonly>
 									</div>
 								</div>
 			
@@ -113,7 +113,7 @@ $(function(){
 										<label>카테고리명</label>
 									</div>
 									<div class="form_section_content">
-										<input name="category" id="category" value="">
+										<input name="category" id="category" value="${categorys.category}">
 									</div>
 								</div>
 													

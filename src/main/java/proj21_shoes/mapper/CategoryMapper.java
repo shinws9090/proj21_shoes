@@ -6,6 +6,8 @@ import proj21_shoes.dto.Category;
 
 public interface CategoryMapper {
 	public List<Category> categoryList();
+	
+	public Category CategoryByCode(int code);
 
 	int insertCategory(Category category);
 

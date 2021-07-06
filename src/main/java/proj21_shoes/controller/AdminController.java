@@ -124,7 +124,10 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/product/productDetailMgt") // 제품상세 화면
-	public void productDetail(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
+	public void productDetail(Model model, @ModelAttribute("scri") SearchCriteria scri, @RequestParam(value = "productCode") int productCode) throws Exception {
+		Product products = productService.productByCode(productCode);
+		model.addAttribute("products", products);
+		
 		List<OrderOption> orderOtionList = orderOptionService.findAll(scri);
 		model.addAttribute("orderOtionList", orderOtionList);
 		
@@ -183,8 +186,8 @@ public class AdminController {
 				LocalDate.parse(request.getParameter("madeDate"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 		product.setCostPrice(Integer.parseInt(request.getParameter("costPrice")));
 		product.setSellPrice(Integer.parseInt(request.getParameter("sellPrice")));
-		product.setRegistDate(
-				LocalDate.parse(request.getParameter("registDate"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+//		product.setRegistDate(
+//				LocalDate.parse(request.getParameter("registDate"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 		product.setCumulativeRegistCount(Integer.parseInt(request.getParameter("cumulativeRegistCount")));
 		product.setCumulativeSellCount(Integer.parseInt(request.getParameter("cumulativeSellCount")));
 		product.setEmployee(new Employee(Integer.parseInt(request.getParameter("employee"))));
@@ -257,7 +260,7 @@ public class AdminController {
 
 	@PostMapping("/admin/product/productMod")
 	@Transactional
-	public String postProductModify(HttpServletRequest request) throws Exception, IOException {
+	public void postProductModify(HttpServletRequest request, HttpServletResponse response) throws Exception, IOException {
 		System.out.println("상품수정실행");
 
 		Product product = new Product();
@@ -272,10 +275,8 @@ public class AdminController {
 				LocalDate.parse(request.getParameter("madeDate"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 		product.setCostPrice(Integer.parseInt(request.getParameter("costPrice")));
 		product.setSellPrice(Integer.parseInt(request.getParameter("sellPrice")));
-		product.setRegistDate(
-				LocalDate.parse(request.getParameter("registDate"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-		product.setCumulativeRegistCount(Integer.parseInt(request.getParameter("cumulativeRegistCount")));
-		product.setCumulativeSellCount(Integer.parseInt(request.getParameter("cumulativeSellCount")));
+//		product.setRegistDate(
+//				LocalDate.parse(request.getParameter("registDate"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 		product.setEmployee(new Employee(Integer.parseInt(request.getParameter("employee"))));
 
 		productService.updateProduct(product);
@@ -287,9 +288,14 @@ public class AdminController {
 
 		productPostService.updateProductPostContent(productPost);
 		System.out.println(productPost);
-		;
-
-		return "redirect:/admin/productMgt";
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		out.println("alert('상품정보 수정완료')");
+		out.println("opener.location.reload()");
+		out.println(" window.close()");
+		out.println("</script>");
 	}
 
 	@GetMapping("/admin/product/productImageMod")
@@ -310,20 +316,9 @@ public class AdminController {
 
 	@PostMapping("/admin/product/productImageMod")
 	@Transactional
-	public String postProductImageModify(MultipartHttpServletRequest request, MultipartFile file)
+	public void postProductImageModify(MultipartHttpServletRequest request, HttpServletResponse response, MultipartFile file)
 			throws Exception, IOException {
 		System.out.println("상품수정실행");
-
-		Product product = new Product();
-		product.setProductCode(Integer.parseInt(request.getParameter("productCode")));
-
-		product.setRegistDate(
-				LocalDate.parse(request.getParameter("registDate"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-
-		product.setEmployee(new Employee(Integer.parseInt(request.getParameter("employee"))));
-
-		productService.updateProductRegDateEmp(product);
-		System.out.println(product);
 
 		ProductPost productpost = new ProductPost();
 		productpost.setProductCode(Integer.parseInt(request.getParameter("productCode")));
@@ -356,14 +351,26 @@ public class AdminController {
 
 		System.out.println(image);
 		imageService.updateImage(image);
-
-		return "redirect:/admin/productMgt";
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		out.println("alert('상품이미지 수정완료')");
+		out.println("opener.location.reload()");
+		out.println(" window.close()");
+		out.println("</script>");
 	}
 
 	@GetMapping("/admin/product/productDel")
-	public String productDelete(@RequestParam(value = "productCode") int productCode) {
+	public void productDelete(@RequestParam(value = "productCode") int productCode, HttpServletResponse response) throws IOException {
 		productService.deleteProduct(productCode);
-		return "redirect:/admin/productMgt";
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		out.println("alert('삭제 완료')");
+		out.println("location.href='" + "../productMgt'");
+		out.println("</script>");
 	}
 
 	@GetMapping("/admin/product/productOrderOption")
@@ -432,23 +439,23 @@ public class AdminController {
 		orderOption.setStyleCode(Integer.parseInt(request.getParameter("styleCode")));
 		orderOption.setSize(Integer.parseInt(request.getParameter("size")));
 		orderOption.setColor(request.getParameter("color"));
-
 		
 		orderOptionService.deleteOrderOption(orderOption);
+		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
-		out.println("alert('이미 존재하는 이메일입니다.')");
-		out.println("history.back()");
+		out.println("alert('삭제 완료')");
+		out.println("location.href='" + "productDetailMgt?productCode=" + Integer.parseInt(request.getParameter("productCode")) + "'");
 		out.println("</script>");
-		
-		
-		/*
-		 * return "redirect:/admin/product/productDetailMgt?productCode=" +
-		 * Integer.parseInt(request.getParameter("productCode"));
-		 */
 	}
-
+	
+	@GetMapping("/admin/product/brandMgt")
+	public void getBrandMgt(Model model) {
+		List<Brand> brandList = brandService.brandList();
+		model.addAttribute("brandList", brandList);
+	}
+	
 	@GetMapping("/admin/product/brandReg")
 	public void getBrandRegister(Model model) {
 		List<Brand> brandList = brandService.brandList();
@@ -470,7 +477,10 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/product/brandMod")
-	public void getBrandModify(Model model) {
+	public void getBrandModify(@RequestParam(value = "brandCode") int brandCode, Model model) {
+		Brand brands = brandService.brandByCode(brandCode);
+		model.addAttribute("brands", brands);
+		
 		List<Brand> brandList = brandService.brandList();
 		model.addAttribute("brandList", JSONArray.fromObject(brandList));
 	}
@@ -490,16 +500,23 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/product/brandDel")
-	public String getBrandDelete(@RequestParam(value = "brandCode") int brandCode) {
-		try {
-			brandService.deleteBrand(brandCode);
-			System.out.println("브랜드 삭제");
-		} catch (DataIntegrityViolationException e) {
-			System.out.println("외래키 에러");
-		}
-		return "redirect:/admin/product/brandReg";
+	public void getBrandDelete(@RequestParam(value = "brandCode") int brandCode, HttpServletResponse response) throws IOException {
+		brandService.deleteBrand(brandCode);
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		out.println("alert('삭제 완료')");
+		out.println("location.href='" + "brandMgt'");
+		out.println("</script>");
 	}
 
+	@GetMapping("/admin/product/categoryMgt")
+	public void getCategoryMgt(Model model) {
+		List<Category> categoryList = categoryService.categoryList();
+		model.addAttribute("categoryList", categoryList);
+	}
+	
 	@GetMapping("/admin/product/categoryReg")
 	public void getCategoryRegister(Model model) {
 		List<Category> categoryList = categoryService.categoryList();
@@ -520,7 +537,10 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/product/categoryMod")
-	public void getCategoryModify(Model model) {
+	public void getCategoryModify(@RequestParam(value = "categoryCode") int categoryCode, Model model) {
+		Category categorys = categoryService.CategoryByCode(categoryCode);
+		model.addAttribute("categorys", categorys);
+
 		List<Category> categoryList = categoryService.categoryList();
 		model.addAttribute("categoryList", JSONArray.fromObject(categoryList));
 	}
@@ -539,14 +559,15 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/product/categoryDel")
-	public String getCategoryDelete(@RequestParam(value = "categoryCode") int categoryCode) {
-		try {
-			categoryService.deleteCategory(categoryCode);
-			System.out.println("카테고리 삭제");
-		} catch (DataIntegrityViolationException e) {
-			System.out.println("외래키 에러");
-		}
-		return "redirect:/admin/product/categoryReg";
+	public void getCategoryDelete(@RequestParam(value = "categoryCode") int categoryCode, HttpServletResponse response) throws IOException {
+		categoryService.deleteCategory(categoryCode);
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		out.println("alert('삭제 완료')");
+		out.println("location.href='" + "categoryMgt'");
+		out.println("</script>");
 	}
 
 	// 게시판 관리

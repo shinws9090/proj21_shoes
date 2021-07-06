@@ -22,4 +22,9 @@
 		 where brand_code = #{brandCode}
 	</delete>
 	
+	<select id="brandByCode" resultType="Brand">
+		select * from brand
+		where brand_code = #{brandCode}
+	</select>
+	
 </mapper>

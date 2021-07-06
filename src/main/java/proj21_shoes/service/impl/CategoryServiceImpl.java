@@ -37,5 +37,10 @@ public class CategoryServiceImpl implements CategoryService{
 		// TODO Auto-generated method stub
 		return mapper.deleteCategory(code);
 	}
+
+	@Override
+	public Category CategoryByCode(int code) {
+		return mapper.CategoryByCode(code);
+	}
 	
 }

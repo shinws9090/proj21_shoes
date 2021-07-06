@@ -6,6 +6,8 @@ import proj21_shoes.dto.Brand;
 
 public interface BrandMapper {
 	public List<Brand> brandList();
+	
+	public Brand brandByCode(int code);
 
 	int insertBrand(Brand brand);
 

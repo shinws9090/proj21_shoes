@@ -9,6 +9,8 @@ import proj21_shoes.dto.Category;
 @Service
 public interface CategoryService {
 	public List<Category> categoryList();
+	
+	public Category CategoryByCode(int code);
 
 	int insertCategory(Category category);
 

@@ -21,5 +21,10 @@
 		delete from category
 		 where product_category_code = #{productCategoryCode}
 	</delete>
+	
+	<select id="CategoryByCode" resultType="Category">
+		select * from category
+		where product_category_code = #{productCategoryCode}
+	</select>
 
 </mapper>

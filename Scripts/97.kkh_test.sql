@@ -244,3 +244,5 @@ select * from orderOption
 		where (product_code = 33333) > 0;
 select count(product_code) from orderOption
 		where (product_code = 33333) > 0;
+		
+select * from category;

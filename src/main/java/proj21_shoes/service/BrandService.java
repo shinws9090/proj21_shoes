@@ -9,6 +9,8 @@ import proj21_shoes.dto.Brand;
 @Service
 public interface BrandService {
 	public List<Brand> brandList();
+	
+	public Brand brandByCode(int code);
 
 	int insertBrand(Brand brand);
 

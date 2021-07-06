@@ -12,8 +12,8 @@
 		<div class="MenuBoard">
 			<ul>
 				<li><a href="${contextPath}/admin/productMgt">상품 관리</a></li>				
-				<li><a href="${contextPath}/admin/product/brandReg">브랜드 관리</a></li>
-				<li><a href="${contextPath}/admin/product/categoryReg">카테고리 관리</a></li>
+				<li><a href="${contextPath}/admin/product/brandMgt">브랜드 관리</a></li>
+				<li><a href="${contextPath}/admin/product/categoryMgt">카테고리 관리</a></li>
 			</ul>
 		</div>
 </body>

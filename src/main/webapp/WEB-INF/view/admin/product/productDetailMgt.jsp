@@ -36,26 +36,7 @@ $(function(){
 	$('#new_btn').on("click", function(e) {
 		window.open("${contextPath}/admin/product/productOrderOption?productCode=" + productCode, "PopupWin2", "width=500, height=350");
 	});
-	
-	$.get(contextPath + "/api/productMgt/"+productCode,
-		function(jsonP) {
-			var sCont = "";
-				sCont += "<tr>";
-				sCont += "<td productCode='productCode'>" + jsonP.productCode + "</td>";
-				sCont += "<td>" + "<a href='${contextPath}/productDetail/" + jsonP.productCode + "'/a>" + jsonP.productName + "</td>";
-				sCont += "<td>" + jsonP.brand.brandName + "</td>";
-				sCont += "<td>" + jsonP.gender + "</td>";
-				sCont += "<td>" + jsonP.category.category + "</td>";
-				sCont += "<td>" + "<a href='${contextPath}/productDetail/" + jsonP.productCode + "'/a>" + "<img src='${contextPath}/images/" + jsonP.productPost.productMainImage + "' width='200'/>" + "</td>";
-				sCont += "<td>" + jsonP.costPrice + "</td>";
-				sCont += "<td>" + jsonP.sellPrice + "</td>";
-				sCont += "<td>" + jsonP.registDate + "</td>";
-				sCont += "<td>" + jsonP.cumulativeRegistCount + "</td>";
-				sCont += "<td>" + jsonP.cumulativeSellCount + "</td>";
-				sCont += "</tr>";
-			$("#load1:last-child").append(sCont);
-		});
-	
+		
 	$.get(contextPath + "/api/orderOption/"+productCode,
 		function(jsonO) {			
 			var lastData = jsonO.length - 1;
@@ -85,13 +66,9 @@ $(function(){
 				<div class="title_div">
 					<h1 class="mt-4">상품 정보</h1>
 				</div>
-				<div class="btn_section">
-					<button type="button" id="modify_btn">수정</button>
-					<button type="button" id="delete_btn">삭제</button>
-				</div>
-				
 				<div>
 					<table style="width: 90%; text-align: center">
+						<thead>
 							<tr style="background-color: lightgrey; text-align: center">
 								<td>번호</td>
 								<td>상품명</td>
@@ -105,9 +82,22 @@ $(function(){
 								<td>등록수량</td>
 								<td>판매량</td>
 							</tr>
-						<tr>
-							<tbody id="load1"/>
-						</tr>
+						<thead>
+						<tbody>
+							<tr>
+								<td>${products.productCode}</td>
+								<td>${products.productName}</td>								
+								<td>${products.brand.brandName}</td>								
+								<td>${products.gender}</td>
+								<td>${products.category.category}</td>
+								<td><a href="${contextPath}/productDetail/${products.productCode}"><img src="${contextPath}/images/${products.productPost.productMainImage}" width="200"></a></td>
+								<td>${products.costPrice}</td>
+								<td>${products.sellPrice}</td>
+								<td>${products.registDate}</td>
+								<td>${products.cumulativeRegistCount}</td>
+								<td>${products.cumulativeSellCount}</td>
+							</tr>
+						</tbody>
 					</table>
 				</div>
 				
@@ -143,7 +133,7 @@ $(function(){
 								</td>
 							</tr>
 							</c:forEach>
-						</tbody>					
+						</tbody>		
 					</table>
 					<div class="search">
 						<select name="searchType">
