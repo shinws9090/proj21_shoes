@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import proj21_shoes.commend.OrderCommend;
 import proj21_shoes.dto.Member;
 import proj21_shoes.dto.Order;
 import proj21_shoes.dto.OrderProduct;
@@ -50,6 +51,11 @@ public class OrderServiceImpl implements OrderService {
 		mapper.updateMemberPoint(member);
 		
 		return res;
+	}
+
+	@Override
+	public List<OrderCommend> orderListByMonthPay() {
+		return mapper.orderListByMonthPay();
 	}
 
 }

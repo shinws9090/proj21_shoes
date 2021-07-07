@@ -30,6 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
 import net.sf.json.JSONArray;
 import proj21_shoes.commend.MyQnaViewCommand;
 import proj21_shoes.commend.MyReviewCommend;
+import proj21_shoes.commend.OrderCommend;
 import proj21_shoes.commend.PageMaker;
 import proj21_shoes.commend.SearchCriteria;
 import proj21_shoes.dto.Brand;
@@ -52,6 +53,7 @@ import proj21_shoes.service.MyQnaService;
 import proj21_shoes.service.MyReviewService;
 import proj21_shoes.service.NoticeService;
 import proj21_shoes.service.OrderOptionService;
+import proj21_shoes.service.OrderService;
 import proj21_shoes.service.ProductPostService;
 import proj21_shoes.service.ProductService;
 
@@ -94,11 +96,16 @@ public class AdminController {
 
 	@Autowired
 	private MyReviewService myReviewService;
+	
+	@Autowired
+	private OrderService orderService;
 
-	@RequestMapping("/admin/adminMain") // 관리자메인 화면
-	public String Admin() {
+	@GetMapping("/admin/adminMain") // 관리자메인 화면
+	public void AdminMain(Model model) {
 		logger.info("관리자 페이지 이동");
-		return "admin/adminMain";
+		
+		List<OrderCommend> orderListByMontyPay = orderService.orderListByMonthPay();
+		model.addAttribute("orderListByMontyPay", orderListByMontyPay);
 	}
 
 	@RequestMapping("/admin/memberMgt") // 멤버관리 화면

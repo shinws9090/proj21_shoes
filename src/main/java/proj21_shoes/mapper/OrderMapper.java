@@ -2,6 +2,7 @@ package proj21_shoes.mapper;
 
 import java.util.List;
 
+import proj21_shoes.commend.OrderCommend;
 import proj21_shoes.dto.Member;
 import proj21_shoes.dto.Order;
 
@@ -14,5 +15,6 @@ public interface OrderMapper {
 	int insertAddress(Order order);
 	void updateMemberPoint(Member member);
 	
+	public List<OrderCommend> orderListByMonthPay();
 	
 }

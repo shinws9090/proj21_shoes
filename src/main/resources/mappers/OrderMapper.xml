@@ -36,13 +36,26 @@
 			#{o.orderOption.styleCode},#{o.orderOption.size},#{o.orderCount})
 		</foreach>
 	</insert>
+	
 	<insert id="insertAddress" parameterType="Order">
 		insert into address(order_code, recipient, zipCode, address, detail_address, tel) values
 			(#{orderCode},#{address.recipient},#{address.zipCode},#{address.address}
 			,#{address.detailAddress},#{address.tel})
 	</insert>
+	
 	<update id="updateMemberPoint" parameterType="Member">
 		update member set point = #{point} , cumulative_buy_amount = #{cumulativeBuyAmount}
 		where member_code = #{memberCode}
 	</update>
+	
+	
+	<resultMap type="OrderCommend" id="resOrderList">
+			<id property="orderDate" column="order_date_month"/>
+			<id property="paymentAmount" column="payment_amount_month"/>
+		</resultMap>
+	
+	<select id="orderListByMonthPay" resultMap="resOrderList">
+		select (select left(order_date, 7)) as order_date_month , sum(payment_amount) as payment_amount_month from `order` where buy_confirm_state = 0 group by (select left(order_date, 7))
+	</select>
+	
 </mapper>

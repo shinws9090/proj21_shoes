@@ -246,3 +246,14 @@ select count(product_code) from orderOption
 		where (product_code = 33333) > 0;
 		
 select * from category;
+select * from `order`;
+
+insert into `order`(member_code, order_date, payment_amount, payment_state, delivery_code, buy_confirm_state)
+	values (111111, 20210301, 4000000, 0, '배송코드', 0);
+
+select  sum(payment_amount) from `order`;
+select (select left(order_date, 7)) as order_date_month , sum(payment_amount) as payment_amount_month from `order` where buy_confirm_state = 0 group by (select left(order_date, 7)) order by order_date desc;
+
+SELECT SUBSTRING(order_date,0,6);
+
+
