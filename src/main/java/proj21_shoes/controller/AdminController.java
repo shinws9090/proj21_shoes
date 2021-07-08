@@ -28,6 +28,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.sf.json.JSONArray;
+import proj21_shoes.commend.MemberDetailAgesCommend;
 import proj21_shoes.commend.MyQnaViewCommand;
 import proj21_shoes.commend.MyReviewCommend;
 import proj21_shoes.commend.OrderCommend;
@@ -86,7 +87,7 @@ public class AdminController {
 	private OrderOptionService orderOptionService;
 
 	@Autowired
-	private GetMemberDetailListService memListService;
+	private GetMemberDetailListService memDetailListService;
 
 	@Autowired
 	private MyQnaService myQnaService;
@@ -106,6 +107,12 @@ public class AdminController {
 		
 		List<OrderCommend> orderListByMontyPay = orderService.orderListByMonthPay();
 		model.addAttribute("orderListByMontyPay", orderListByMontyPay);
+		
+		List<MemberDetailAgesCommend> memberListByAges = memDetailListService.memberListByAges();
+		model.addAttribute("memberListByAges", memberListByAges);
+		
+		List<MemberDetailAgesCommend> memberListByGender = memDetailListService.memberListByGender();
+		model.addAttribute("memberListByGender", memberListByGender);
 	}
 
 	@RequestMapping("/admin/memberMgt") // 멤버관리 화면

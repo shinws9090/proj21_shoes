@@ -50,12 +50,12 @@
 	
 	
 	<resultMap type="OrderCommend" id="resOrderList">
-			<id property="orderDate" column="order_date_month"/>
-			<id property="paymentAmount" column="payment_amount_month"/>
-		</resultMap>
+		<id property="orderDate" column="order_date_month"/>
+		<id property="paymentAmount" column="payment_amount_month"/>
+	</resultMap>
 	
 	<select id="orderListByMonthPay" resultMap="resOrderList">
-		select (select left(order_date, 7)) as order_date_month , sum(payment_amount) as payment_amount_month from `order` where buy_confirm_state = 0 group by (select left(order_date, 7))
+		select (select left(order_date, 7)) as order_date_month , sum(payment_amount) as payment_amount_month from `order` where buy_confirm_state = 1 group by (select left(order_date, 7))
 	</select>
 	
 </mapper>

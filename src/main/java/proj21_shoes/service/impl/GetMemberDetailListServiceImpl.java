@@ -7,6 +7,7 @@ import org.apache.ibatis.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import proj21_shoes.commend.MemberDetailAgesCommend;
 import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.mapper.MemberDetailMapper;
 import proj21_shoes.service.GetMemberDetailListService;
@@ -22,6 +23,16 @@ public class GetMemberDetailListServiceImpl implements GetMemberDetailListServic
 		List<MemberDetail> list = mapper.selectMemberDetailAll();
 		log.debug("service - getMemberDetailLists( >) " +list.size());
 		return list;
+	}
+
+	@Override
+	public List<MemberDetailAgesCommend> memberListByAges() {
+		return mapper.memberListByAges();
+	}
+
+	@Override
+	public List<MemberDetailAgesCommend> memberListByGender() {
+		return mapper.memberListByGender();
 	}
 
 }

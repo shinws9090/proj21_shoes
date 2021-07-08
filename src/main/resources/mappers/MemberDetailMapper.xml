@@ -101,6 +101,23 @@ where member_id=#{param1} and member_name=#{param2} and email =#{param3}
 	</update>
 	
 	
+	<resultMap type="MemberDetailAgesCommend" id="resMemAgesList">
+		<id property="gender" column="gender"/>
+		<id property="birthday" column="birthday"/>
+		<id property="ages" column="ages"/>
+		<id property="total" column="total"/>
+	</resultMap>
+	
+	<select id="memberListByAges" resultMap="resMemAgesList">
+		select floor((date_format(now(),'%Y') - substring(birthday,1,4))/10) * 10 as ages,
+			count(*) as total
+			from memberDetail group by ages
+	</select>
+	
+	<select id="memberListByGender" resultMap="resMemAgesList">
+		select gender, count(*) as total from memberDetail group by gender
+	</select>
+	
 </mapper>
 
 

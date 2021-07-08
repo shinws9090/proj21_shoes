@@ -2,6 +2,8 @@ package proj21_shoes.controller;
 
 
 
+import java.util.List;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,12 +21,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import proj21_shoes.commend.AdminLoginCommend;
 import proj21_shoes.commend.LoginCommand;
 import proj21_shoes.commend.LoginCommand2;
+import proj21_shoes.commend.OrderCommend;
 import proj21_shoes.dto.Member;
 import proj21_shoes.exeption.QuitMemberException;
 import proj21_shoes.exeption.WrongIdPasswordException;
 import proj21_shoes.mapper.MemberMapper;
 import proj21_shoes.service.AuthService;
 import proj21_shoes.service.LoginService;
+import proj21_shoes.service.OrderService;
 
 @Controller
 public class LoginController {
@@ -33,6 +38,10 @@ public class LoginController {
 	
 	@Autowired
 	private LoginService service;
+	
+	@Autowired
+	private OrderService orderService;
+	
 	@Autowired
 	private MemberMapper mapper;  //서비스로 곧 바까줄꺼에여!!!
 	
@@ -115,8 +124,11 @@ public class LoginController {
 	
 		// 관리자 로그인완료 화면
 		@PostMapping("/adminLoginSuccess")
-		public String adminSubmit(@Param("empId") String empId, @Param("empPwd") String empPwd,  @ModelAttribute AdminLoginCommend adminLoginCommend, Errors errors, HttpSession session, HttpServletResponse response) {
+		public String adminSubmit(@Param("empId") String empId, @Param("empPwd") String empPwd, Model model,  @ModelAttribute AdminLoginCommend adminLoginCommend, Errors errors, HttpSession session, HttpServletResponse response) {
 		//	new LoginCommandValidator().validate(loginCommand, errors);
+			List<OrderCommend> orderListByMontyPay = orderService.orderListByMonthPay();
+			model.addAttribute("orderListByMontyPay", orderListByMontyPay);
+			
 			if (errors.hasErrors())
 				return "/login/adminLoginForm";
 			try {

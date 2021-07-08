@@ -126,7 +126,7 @@ ul.pageNum2 {
 							<c:forEach items="${productList}" var="productList">
 							<tr>
 								<input type="hidden" id="productCode${productList.productCode}" value="${productList.productCode}">
-								<td>${productList.productCode}</td> b
+								<td>${productList.productCode}</td>
 								<td><a href="${contextPath}/productDetail/${productList.productCode}"><c:out value="${productList.productName}" /></a></td>
 								<td>${productList.brand.brandName}</td>			
 								<td>${productList.gender}</td>		

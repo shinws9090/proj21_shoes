@@ -247,13 +247,27 @@ select count(product_code) from orderOption
 		
 select * from category;
 select * from `order`;
+select * from orderproduct;
 
 insert into `order`(member_code, order_date, payment_amount, payment_state, delivery_code, buy_confirm_state)
-	values (111111, 20210301, 4000000, 0, '배송코드', 0);
+	values (111111, 20200401, 4000000, 0, '배송코드', 0);
 
 select  sum(payment_amount) from `order`;
 select (select left(order_date, 7)) as order_date_month , sum(payment_amount) as payment_amount_month from `order` where buy_confirm_state = 0 group by (select left(order_date, 7)) order by order_date desc;
 
 SELECT SUBSTRING(order_date,0,6);
 
+insert into `order`(member_code, order_date, payment_amount, payment_state, delivery_code, buy_confirm_state)
+	values (111111, 20200401, 4000000, 0, '배송코드', 0);
 
+select * from `order`;
+select * from orderproduct;
+select * from memberdetail;
+
+select floor((date_format(now(),'%Y') - substring(birthday,1,4))/10) * 10 as ages,
+	count(*) as total
+	from memberdetail group by ages;
+
+select birthday from memberdetail;
+
+select gender, count(*) as total from memberdetail group by gender;
