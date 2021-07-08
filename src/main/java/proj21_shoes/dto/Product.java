@@ -1,7 +1,6 @@
 package proj21_shoes.dto;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class Product { // 상품정보
@@ -28,6 +27,11 @@ public class Product { // 상품정보
 
 	public Product(int productCode) {
 		this.productCode = productCode;
+	}
+
+	public Product(int productCode, int cumulativeRegistCount) {
+		this.productCode = productCode;
+		this.cumulativeRegistCount = cumulativeRegistCount;
 	}
 
 	public Product(int productCode, String productName, Brand brand, String gender, Category category, String material,

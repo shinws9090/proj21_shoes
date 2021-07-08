@@ -22,6 +22,7 @@ h1.mt-4 {
 .noticeView {
     margin: 0 auto;
     width: 1300px;
+    height: 600px;
 }
 
 .noticeViewSub {
@@ -55,9 +56,18 @@ td.noticetd4 {
     width: 20%;
 }
 
+td.noticetd5 {
+    width: 20%;
+}
+
+td.noticetd6 {
+    text-align: left;
+}
+
 section.pageNumSearch {
-	padding: 10px;
+	padding: 0px;
     text-align: center;
+    margin-right: 100px;
     height: 300px;
 }
 
@@ -86,7 +96,7 @@ section.pageNumSearch {
 							<c:forEach items="${noticeList}" var="noticeList">
 							<tr>
 								<td class="noticetd5">${noticeList.boardCode}</td>
-								<td><a href="mainNoticeDetail?boardCode=${noticeList.boardCode}"><c:out value="${noticeList.title}" /></a></td>
+								<td class="noticetd6"><a href="mainNoticeDetail?boardCode=${noticeList.boardCode}"><c:out value="${noticeList.title}" /></a></td>
 								<td>${noticeList.registDate}</td>
 							</tr>
 							</c:forEach>

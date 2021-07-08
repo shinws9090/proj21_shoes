@@ -164,6 +164,24 @@
 		set regist_date = #{registDate}, emp_number = #{employee.empNumber}
 		where product_code = #{productCode}
 	</update>
+	
+	<update id="updateProductStock" parameterType="Product">
+		update product 
+		set cumulative_regist_count = cumulative_regist_count + #{cumulativeRegistCount}
+		where product_code = #{productCode};
+	</update>
+	
+	<update id="updateDelProductStock" parameterType="Product">
+		update product 
+		set cumulative_regist_count = cumulative_regist_count - #{cumulativeRegistCount}
+		where product_code = #{productCode};
+	</update>
+	
+	<update id="updateModProductStock" parameterType="Product">
+		update product 
+		set cumulative_regist_count = #{cumulativeRegistCount}
+		where product_code = #{productCode};
+	</update>
 
 	<delete id="deleteProduct">
 		delete from product

@@ -27,7 +27,7 @@
 	
 	<update id="updateOrderOption" parameterType="OrderOption">
 		update orderOption
-		   set stock = #{stock}
+		   set stock = stock + #{stock}
 		 where product_code = #{productCode} and style_code = #{styleCode} and `size` = #{size} and color= #{color}
 	</update>
 	

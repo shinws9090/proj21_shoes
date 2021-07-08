@@ -122,4 +122,19 @@ public class ProductServiceImpl implements ProductService {
 		return product;
 	}
 
+	@Override
+	public int updateProductStock(Product product) {
+		return mapper.updateProductStock(product);
+	}
+
+	@Override
+	public int updateDelProductStock(Product product) {
+		return mapper.updateDelProductStock(product);
+	}
+
+	@Override
+	public int updateModProductStock(Product product) {
+		return mapper.updateModProductStock(product);
+	}
+
 }

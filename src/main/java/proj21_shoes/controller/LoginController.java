@@ -21,12 +21,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import proj21_shoes.commend.AdminLoginCommend;
 import proj21_shoes.commend.LoginCommand;
 import proj21_shoes.commend.LoginCommand2;
+import proj21_shoes.commend.MemberDetailAgesCommend;
 import proj21_shoes.commend.OrderCommend;
 import proj21_shoes.dto.Member;
 import proj21_shoes.exeption.QuitMemberException;
 import proj21_shoes.exeption.WrongIdPasswordException;
 import proj21_shoes.mapper.MemberMapper;
 import proj21_shoes.service.AuthService;
+import proj21_shoes.service.GetMemberDetailListService;
 import proj21_shoes.service.LoginService;
 import proj21_shoes.service.OrderService;
 
@@ -41,6 +43,9 @@ public class LoginController {
 	
 	@Autowired
 	private OrderService orderService;
+	
+	@Autowired
+	private GetMemberDetailListService memDetailListService;
 	
 	@Autowired
 	private MemberMapper mapper;  //서비스로 곧 바까줄꺼에여!!!
@@ -128,6 +133,12 @@ public class LoginController {
 		//	new LoginCommandValidator().validate(loginCommand, errors);
 			List<OrderCommend> orderListByMontyPay = orderService.orderListByMonthPay();
 			model.addAttribute("orderListByMontyPay", orderListByMontyPay);
+			
+			List<MemberDetailAgesCommend> memberListByAges = memDetailListService.memberListByAges();
+			model.addAttribute("memberListByAges", memberListByAges);
+			
+			List<MemberDetailAgesCommend> memberListByGender = memDetailListService.memberListByGender();
+			model.addAttribute("memberListByGender", memberListByGender);
 			
 			if (errors.hasErrors())
 				return "/login/adminLoginForm";

@@ -116,10 +116,10 @@ ul.pageNum2 {
 								<td>원가</td>
 								<td>판매가격</td>
 								<td>등록일</td>
-								<td>등록수량</td>
-								<td>판매수량</td>
+								<td>누적등록수량</td>
+								<td>누적판매수량</td>
 								<td>재고관리</td>
-								<td>수정삭제</td>
+								<td>상품관리</td>
 							</tr>
 						</thead>
 						<tbody>

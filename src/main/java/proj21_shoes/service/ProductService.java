@@ -45,4 +45,10 @@ public interface ProductService {
 	public int countInfoList(SearchCriteria scri) throws Exception;
 
 	List<Product> productListByCode(List<Cart> cartList);
+	
+	public int updateProductStock(Product product);
+	
+	public int updateDelProductStock(Product product);
+	
+	public int updateModProductStock(Product product);
 }

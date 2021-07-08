@@ -22,7 +22,7 @@ function submit(){
 	var submitForm = document.categoryRegForm;
 	
 	submitForm.submit();
-	alert("브랜드 추가완료");
+	alert("카테고리 추가완료");
 }
 
 opener.location.reload();

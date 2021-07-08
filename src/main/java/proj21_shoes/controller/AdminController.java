@@ -398,6 +398,7 @@ public class AdminController {
 	}
 
 	@PostMapping("/admin/product/productOrderOption")
+	@Transactional
 	public String postProductOrderOptionRegister(HttpServletRequest request) {
 
 		OrderOption orderOption = new OrderOption();
@@ -408,6 +409,14 @@ public class AdminController {
 		orderOption.setStock(Integer.parseInt(request.getParameter("stock")));
 		orderOption.setColor(request.getParameter("color"));
 		orderOptionService.insertOrderOption(orderOption);
+		System.out.println(orderOption);
+		
+		
+		Product product = new Product();
+		product.setProductCode(Integer.parseInt(request.getParameter("productCode")));
+		product.setCumulativeRegistCount(Integer.parseInt(request.getParameter("stock")));
+		productService.updateProductStock(product);
+		System.out.println(product);
 
 		return "redirect:/admin/product/productOrderOption?productCode="
 				+ Integer.parseInt(request.getParameter("productCode"));
@@ -423,7 +432,7 @@ public class AdminController {
 	}
 
 	@PostMapping("/admin/product/productOrderOptionMod")
-	public String postProductOrderOptionModify(HttpServletRequest request) {
+	public void postProductOrderOptionModify(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		OrderOption orderOption = new OrderOption();
 		orderOption.setProductCode(Integer.parseInt(request.getParameter("productCode")));
@@ -432,17 +441,20 @@ public class AdminController {
 		orderOption.setStock(Integer.parseInt(request.getParameter("stock")));
 		orderOption.setColor(request.getParameter("color"));
 		orderOptionService.updateOrderOption(orderOption);
+		
+		Product product = new Product();
+		product.setProductCode(Integer.parseInt(request.getParameter("productCode")));
+		product.setCumulativeRegistCount(Integer.parseInt(request.getParameter("totalStock")) + Integer.parseInt(request.getParameter("stock")));
+		productService.updateModProductStock(product);
+		System.out.println(product);
 
-		return "redirect:/admin/product/productOrderOptionMod?productCode="
-				+ Integer.parseInt(request.getParameter("productCode"))
-				+ "&styleCode="
-				+ Integer.parseInt(request.getParameter("styleCode"))
-				+ "&color="
-				+ request.getParameter("color")
-				+ "&size="
-				+ Integer.parseInt(request.getParameter("size"))
-				+ "&nowStock="
-				+ Integer.parseInt(request.getParameter("stock"));
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		out.println("alert('재고 증감량 변경완료')");
+		out.println("opener.location.reload()");
+		out.println(" window.close()");
+		out.println("</script>");
 	}
 
 	@GetMapping("/admin/product/productOrderOptionDel")
@@ -455,6 +467,12 @@ public class AdminController {
 		orderOption.setColor(request.getParameter("color"));
 		
 		orderOptionService.deleteOrderOption(orderOption);
+		
+		Product product = new Product();
+		product.setProductCode(Integer.parseInt(request.getParameter("productCode")));
+		product.setCumulativeRegistCount(Integer.parseInt(request.getParameter("stock")));
+		productService.updateDelProductStock(product);
+		System.out.println(product);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
@@ -669,11 +687,11 @@ public class AdminController {
 		return "redirect:/admin/board/notice";
 	}
 	
-	@GetMapping("/admin/product/noticeDel")
+	@GetMapping("/admin/board/noticeDel")
 	public String getNoticeBoardDel(@RequestParam(value = "boardCode") int boardCode) {
 		try {
 			noticeService.deleteNotice(boardCode);
-			System.out.println("카테고리 삭제");
+			System.out.println("공지사항 삭제");
 		} catch (DataIntegrityViolationException e) {
 			System.out.println("외래키 에러");
 		}

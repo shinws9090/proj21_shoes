@@ -42,13 +42,6 @@ $(function(){
 	$("#sel_color").text(color);
 	$("#sel_size").text(size);
 	$("#sel_stock").text(nowStock);
-
-	$('#delete_btn').on("click", function(e) {
-		if(!confirm("정말 삭제하시겠습니까?")) {
-		} else {			
-			location.href="${contextPath}/admin/product/productOrderOptionDel?productCode=" + productCode + "&styleCode=" + styleCode + "&color=" + color + "&size=" + size;
-		}
-	});
 	
 });
 
@@ -56,7 +49,6 @@ function submit(){
 	var submitForm = document.productOrderOptionForm;
 	
 	submitForm.submit();
-	alert("재고변경 완료");
 }
 
 opener.location.reload();
@@ -117,7 +109,7 @@ opener.location.reload();
 					
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>변경재고</label>
+							<label>재고증감량(마이너스면 음수 입력)</label>
 						</div>
 						<div class="form_section_content">
 							<input name="stock" id="stock" value="">
@@ -127,7 +119,6 @@ opener.location.reload();
 				</form>
 				<div class="btn_section">
 					<input type="button" id= "new_btn" onclick="submit()" value="재고변경">
-					<button type="button" id= "delete_btn">재고삭제</button>
 				</div>
 			</div>
 	</section>

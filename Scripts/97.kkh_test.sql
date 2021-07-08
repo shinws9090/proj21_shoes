@@ -271,3 +271,10 @@ select floor((date_format(now(),'%Y') - substring(birthday,1,4))/10) * 10 as age
 select birthday from memberdetail;
 
 select gender, count(*) as total from memberdetail group by gender;
+
+select * from product;
+select * from productpost;
+select * from orderoption;
+
+
+update product set cumulative_regist_count = cumulative_regist_count + 100 where product_code = 11111;

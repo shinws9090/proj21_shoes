@@ -21,19 +21,6 @@ $(function(){
 	$('#new_btn').on("click", function(e) {
 		window.open("${contextPath}/admin/product/categoryReg", "PopupWin2", "width=500, height=350");
 	});
-	
-	var jsonData = JSON.parse('${categoryList}');
-	for(var i = jsonData.length -1; i >= 0; i--) {
-		var sCont = "";
-			sCont += "<tr>";
-			sCont += "<td>" + jsonData[i].productCategoryCode + "</td>";
-			sCont += "<td>" + jsonData[i].category + "</td>";
-			sCont += "<td><button type='button'><a href='${contextPath}/admin/product/categoryMod?categoryCode=" + jsonData[i].productCategoryCode + "'>수정</a></button>" 
-					+ "&nbsp" + "<button type='button'><a href='${contextPath}/admin/product/categoryDel?categoryCode=" + jsonData[i].productCategoryCode + "'>삭제</a></button></td>";
-			sCont += "</tr>";		
-		$("#load:last-child").append(sCont);	
-	}
-	
 });
 </script>
 </head>
@@ -62,16 +49,25 @@ $(function(){
 					</div>
 		            
 		            <table style="width: 90%; text-align: center">
-		            
-						<tr style="background-color: lightgrey; text-align: center">
-							<td>카테고리코드</td>
-							<td>카테고리명</td>
-							<td>관리</td>
-						</tr>
-						
-						<tr>
-							<tbody id="load"/>
-						</tr>
+		            	<thead>
+							<tr style="background-color: lightgrey; text-align: center">
+								<td>카테고리코드</td>
+								<td>카테고리명</td>
+								<td>관리</td>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${categoryList}" var="categoryList">
+							<tr>
+								<td>${categoryList.productCategoryCode}</td>
+								<td>${categoryList.category}</td>
+								<td>
+									<button type="button"><a href="${contextPath}/admin/product/categoryMod?categoryCode=${categoryList.productCategoryCode}" onClick="window.open(this.href, '', 'width=500, height=350'); return false;">수정</a></button>
+									<button type="button"><a href="${contextPath}/admin/product/categoryDel?categoryCode=${categoryList.productCategoryCode}">삭제</a></button>
+								</td>
+							</tr>
+							</c:forEach>
+						</tbody>
 					</table>
 				</div>
 			</div>

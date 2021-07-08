@@ -19,6 +19,10 @@ public class OrderOption { // 상품주문정보(상세정보)
 		this.size = size;
 	}
 
+	public OrderOption(int stock) {
+		this.stock = stock;
+	}
+
 	public int getProductCode() {
 		return productCode;
 	}
