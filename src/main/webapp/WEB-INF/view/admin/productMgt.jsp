@@ -22,6 +22,13 @@ $(function(){
 	$('#searchBtn').click(function() {
 		self.location = "productMgt" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
 	});
+	
+	$('#delLink').click(function() {
+		var con = confirm("삭제하시겠습니까?");
+		if(con == true){
+		} else {
+		}
+	});
 });
 
 </script>
@@ -140,7 +147,8 @@ ul.pageNum2 {
 								<td><button type="button"><a href="${contextPath}/admin/product/productDetailMgt?productCode=${productList.productCode}" onClick="window.open(this.href, '', 'width=1210, height=760'); return false;">재고관리</a></button></td>
 								<td>
 									<button type="button"><a href="${contextPath}/admin/product/productMod?productCode=${productList.productCode}" onClick="window.open(this.href, '', 'width=1210, height=640'); return false;">상품수정</a></button>
-									<button type="button"><a href="${contextPath}/admin/product/productDel?productCode=${productList.productCode}">상품삭제</a></button>
+									<button type="button"><a href="${contextPath}/admin/product/productDel?productCode=${productList.productCode}" onClick="if(!confirm('삭제 하시겠습니까?')){return false;}">상품삭제</a></button>
+									
 								</td>
 							</tr>
 							</c:forEach>

@@ -129,7 +129,7 @@ $(function(){
 								<td>${orderOtionList.stock}</td>
 								<td>
 									<button type="button"><a href="${contextPath}/admin/product/productOrderOptionMod?productCode=${orderOtionList.productCode}&styleCode=${orderOtionList.styleCode}&color=${orderOtionList.color}&size=${orderOtionList.size}&nowStock=${orderOtionList.stock}&totalStock=${products.cumulativeRegistCount}" onClick="window.open(this.href, '', 'width=500, height=350'); return false;">재고수정</a></button>
-									<button type="button"><a href="${contextPath}/admin/product/productOrderOptionDel?productCode=${orderOtionList.productCode}&styleCode=${orderOtionList.styleCode}&color=${orderOtionList.color}&size=${orderOtionList.size}&stock=${orderOtionList.stock}">재고삭제</a></button>
+									<button type="button"><a href="${contextPath}/admin/product/productOrderOptionDel?productCode=${orderOtionList.productCode}&styleCode=${orderOtionList.styleCode}&color=${orderOtionList.color}&size=${orderOtionList.size}&stock=${orderOtionList.stock}" onClick="if(!confirm('삭제 하시겠습니까?')){return false;}">재고삭제</a></button>
 								</td>
 							</tr>
 							</c:forEach>

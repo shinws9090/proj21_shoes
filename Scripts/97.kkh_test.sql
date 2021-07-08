@@ -270,7 +270,7 @@ select floor((date_format(now(),'%Y') - substring(birthday,1,4))/10) * 10 as age
 
 select birthday from memberdetail;
 
-select gender, count(*) as total from memberdetail group by gender;
+select gender, count(*) as total from memberdetail group by gender order by gender desc;
 
 select * from product;
 select * from productpost;

@@ -376,15 +376,10 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/product/productDel")
-	public void productDelete(@RequestParam(value = "productCode") int productCode, HttpServletResponse response) throws IOException {
+	public String productDelete(@RequestParam(value = "productCode") int productCode) throws IOException {
 		productService.deleteProduct(productCode);
 		
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		out.println("<script>");
-		out.println("alert('삭제 완료')");
-		out.println("location.href='" + "../productMgt'");
-		out.println("</script>");
+		return "redirect:/admin/productMgt";
 	}
 
 	@GetMapping("/admin/product/productOrderOption")
@@ -458,7 +453,7 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/product/productOrderOptionDel")
-	public void productOrderOptionDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public String productOrderOptionDelete(HttpServletRequest request) throws IOException {
 
 		OrderOption orderOption = new OrderOption();
 		orderOption.setProductCode(Integer.parseInt(request.getParameter("productCode")));
@@ -474,12 +469,8 @@ public class AdminController {
 		productService.updateDelProductStock(product);
 		System.out.println(product);
 		
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		out.println("<script>");
-		out.println("alert('삭제 완료')");
-		out.println("location.href='" + "productDetailMgt?productCode=" + Integer.parseInt(request.getParameter("productCode")) + "'");
-		out.println("</script>");
+		return "redirect:/admin/product/productDetailMgt?productCode=" + Integer.parseInt(request.getParameter("productCode"));
+		
 	}
 	
 	@GetMapping("/admin/product/brandMgt")
