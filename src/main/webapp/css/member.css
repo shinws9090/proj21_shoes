@@ -1,4 +1,6 @@
 @charset "UTF-8";
+
+
 /*  예진 담당기능 css  작성중!  (회원가입 입력폼 / 로그인입력폼,/ 마이페이지 -회원정보조회 / 나의 문의내역/ 나의주문내역 등!!!!   */
 
 /* 
@@ -21,7 +23,7 @@
 }
 #agree_content p {/* 이용약관 */
 	text-align:left;
-	margin-left:10px;
+/* 	margin-left:10px; */
 	overflow: scroll;  /* 스크롤  */
 	max-height: 200px;
 	max-width: 900px;
@@ -31,18 +33,38 @@
 .box1{
 	text-align: center;   /* 글자 위치 */
 	width: 900px;		  /* 상자 넓이 */
-	height: 350px;		  /* 상자 높이 */
-	border: 3px solid #c0c0c0 ;  /* 상자테두리 굵이,선,색상 */
+	height: 500px;		  /* 상자 높이 */
+/* 	border: 3px solid #c0c0c0 ;  상자테두리 굵이,선,색상 */
 	padding: 20px;			/* 상자 내부 4면 공통 여백 */
 	margin-left: 20%; 			 /* 상자 외부여백 */
 	/* margin-right: 40%; 			 상자 외부 여백 */
 	margin-top: 150px; 			 /* 상자 외부여백 */
 	margin-bottom: 50px; 			 /* 상자 외부여백 */
+	box-shadow: 2px 5px 20px #c0c0c0;
+    border-radius: 15px;
+    background-color:#e2e2e2a3;
+	
+	
 	
 }
+#cancel{
+	background-color: #fff;
+}
+
+.box1 h2{
+	font-size: 15px;
+}
+.box1 h1{
+	font-size: 25px;
+}
+
+
 /* 이용약관 */
 #agree_content{
 	padding: 20px; 		/* 이용약관 내용 위아래 여백 */
+}
+#agree_content p{/* 텍스트 상자만 */
+	background-color:#fff;
 }
 
 
@@ -63,6 +85,20 @@
 	margin-bottom: 100px;
 	margin-left: 5%;
 	
+}
+.btn-lg {
+   padding: 10px; 
+}
+
+.btn {
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 2px;
+     padding:10px; 
+    text-shadow: 1px 1px 1px rgb(0 0 0 / 14%);
+    text-transform: uppercase;
+    box-shadow: 0 4px 9px 0 rgb(0 0 0 / 20%);
 }
 .btn2{
 	margin-left: 30%;
@@ -99,22 +135,24 @@ color: #2c2c2c ;
 }
 /*--------------------------------------------로그인 입력 페이지----------------------------------------------  */
 
-#loginForm{					/*  */
-	text-align: center;
-	
-}
-#loginForm #loginForm #loginCommand{     /* 동명 div 안의 section 안의   fieldset id 설정*/
+
+#login_input{     /* 동명 div 안의 section 안의   fieldset id 설정*/
 	width:  400px;
-	padding-top: 20px;
+	 padding-top: 10px; 
 	padding-bottom: 20px;
-	padding-left: 20px;
+	 padding-left: 20px; 
 	padding-right: 20px;
 	margin-left: 20%;
 	margin-right: 20%;
 	margin: auto;
-	margin-top: 10px;
+ 	margin-top: 10px;
 /* 	border: 2px solid #dcdcdc; */
-	
+box-shadow: 2px 5px 20px #c0c0c0;
+    border-radius: 15px;
+    background-color:#e2e2e2a3;
+     margin-top:5px;  
+     margin-bottom: 10px;
+   
 }
 
 /*--------------------------------------------로그인 완료페이지----------------------------------------------  */
@@ -357,6 +395,8 @@ section#pageList{
 /* 	 margin-left:30%;  */
  	text-align: center; 
  	padding-top: 10px;
+ 	font-size: 15px;
+ 	
 
 }
 #findForm h2{
@@ -411,6 +451,30 @@ section#pageList{
 }
 
 
+/* 테스트 */
 
+#loginForm{
+    font-family: "돋움",Dotum;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
 
+     text-align: center;
+     margin-top:150px;
+	margin-bottom: 200px;
+    
+}
+h1{
+	text-align: center;
+	 display: block;
+  font-size: 1em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  color: #343a40;
+}
 
+form:errors{
+	text-align: center;
+}

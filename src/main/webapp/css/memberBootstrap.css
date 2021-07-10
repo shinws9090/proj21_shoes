@@ -144,3 +144,36 @@ margin-bottom: 20px;
 background-color:#4545460f;
 	
 }
+
+
+  /*   -------------------------아이디찾기  ------------------------------ */
+  button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+        font-size: 1.1em;
+            width: 350px;
+    line-height: inherit;
+}
+
+#rememberId1{
+
+	 display:inline-block; width:20px; line-height:20px;
+
+}
+
+.bottomBtn{
+	width:49%;
+}
+
+.btnSearch{
+	text-align: center;
+}
+#btns{
+	width: 100%;
+	
+}
+#cancel{
+	background: #fff;
+	color: black;
+
+}

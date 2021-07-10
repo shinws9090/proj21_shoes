@@ -15,8 +15,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>회원가입</title>
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
+		integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
+		crossorigin="anonymous">
+<link href="${contextPath}/css/buttons.css" rel="stylesheet">
+<link rel="stylesheet" href="${contextPath}/css/reset.css">
+<!-- bootstrap end -->	
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/member.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberBootstrap.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 <body class="main-layout">
@@ -28,13 +36,16 @@
   <!-- 동의 -->
 
   <div id="signUpForm_agree">
- 
+
 	<section class="box1">
-		<h2> 회원가입 (이용약관 동의)</h2>
+	<h1>회원가입</h1>
+
 			<article id="agree_content">
-			<fieldset>
+			<fieldset style="border:  2px solid ;">
 			<p >
-			<br>	'이런신발' 서비스 이용과 관련하여 몇 가지 주의사항이 있습니다.<br>
+			<br>	<b><a style="margin-left: 45%"><이용약관></a></b>
+			<br><br>
+			'이런신발' 서비스 이용과 관련하여 몇 가지 주의사항이 있습니다.<br>
 <br> '이런신발'는 여러분이 '이런신발' 서비스를 자유롭고 편리하게 이용할 수 있도록 최선을 다하고 있습니다. <br>
 다만, 여러분이 '이런신발' 서비스를 보다 안전하게 이용하고 '이런신발' 서비스에서 여러분과 타인의 권리가 서로 존중되고 보호받으려면 여러분의 도움과 협조가 필요합니다. <br>
 <br>여러분의 안전한 서비스 이용과 권리 보호를 위해 부득이 아래와 같은 경우 여러분의 게시물 게재나 '이런신발' 서비스 이용이 제한될 수 있으므로, 이에 대한 확인 및 준수를 요청 드립니다.<br>
@@ -59,16 +70,30 @@
 			</article>
 			
 			
+		<div id="btns">
 			<form action="step2" method="post">
-				<label> <input type="checkbox" name="agree" value="true"><!-- 동의 -->
-				<spring:message code="term.agree" /></label> <input type="submit" value="<spring:message code="next.btn"/>" /><!--다음단계  -->
+			<div id="remember" style="font-size: 13px; margin-right: 75%; margin-top: 5px; margin-bottom: 5px;" >
+				<label> 
+					<input type="checkbox" name="agree" value="true"><!-- 동의 -->
+				
+					 <spring:message code="term.agree" /> 
+				</label>
+			</div>
+				
+			
+			
+			<button type="button,submit"  class="btn btn-secondary btn-lg "  style="width: 49%; font-size: 15px; float:right">다음단계</button>
+				<%--  <input type="submit" value="<spring:message code="next.btn"/>" /><!--다음단계  --> --%>
+			</form>
+			<form action="${contextPath}/index" method="get">
+			<button type="button,submit"  class="btn btn-secondary btn-lg bottomBtn" id="cancel" style="width: 49%; font-size: 15px;">취소(메인으로)</button>
 			</form>
 			
-			<form action="${contextPath}/index" method="get">
-			<label><input type="submit" value="가입취소(메인으로)"/> </label>
-			</form>
-	</section>
-	</div>
+			</div>
+			</section>
+		</div>
+			
+	
 
 	<!-- end our product -->
 	<footer>
