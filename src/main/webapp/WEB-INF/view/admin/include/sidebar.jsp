@@ -9,6 +9,6 @@
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="${contextPath}/admin/memberMgt">회원관리</a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="${contextPath}/admin/productMgt">상품관리</a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="${contextPath}/admin/orderMgt">주문관리</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="${contextPath}/admin/board/notice">게시판관리</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="${contextPath}/admin/board/notice/?page=1&perPageNum=10">게시판관리</a>
     </div>
 </div>

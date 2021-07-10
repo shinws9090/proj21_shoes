@@ -148,7 +148,7 @@ section.pageNumSearch {
 			    <script  type="text/javascript">
 			      $(function(){
 			        $('#searchBtn').click(function() {
-			          self.location = "mainNotice" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+			          self.location = '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
 			        });
 			      });   
 			    </script>

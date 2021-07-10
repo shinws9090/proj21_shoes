@@ -62,7 +62,30 @@ h1.mt-4 {
 }
 
 .notice_btn {
-	magrin-bottom: 100px;
+    width: 75%;
+    text-align: right;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.noticeMove {
+    width: 300px;
+    text-align: center;
+    margin-left: 560px;
+}
+
+.noticePrev {
+    display: inline-block;
+    float: left;
+}
+
+.noticeList {
+    display: inline-block;
+}
+
+.noticeNext {
+    display: inline-block;
+    float: right;
 }
 
 </style>
@@ -82,35 +105,45 @@ h1.mt-4 {
 				<!-- Page content-->
 		        <div class="container-fluid">
 		        	<h1 class="mt-4">공지사항</h1>
-		        		<div class="noticeDetailView">
-			        		<div class="noticeTitle">
-			        			<h3>${noticeView.title } </h3>
-			        		</div>
-			        		
-			        		<div class="noticeDate">
-			        			${noticeView.registDate }
-			        		</div>
-			        		
-			        		<div class="noticeContet">
-			        			${noticeView.content }
-			        		</div>
+	        		<div class="noticeDetailView">
+		        		<div class="noticeTitle">
+		        			<h3>${noticeView.title } </h3>
 		        		</div>
-		        		<div class="notice_btn">
-		        			<button type="button" id="mod_btn">수정</button>
-		        			<button type="button" id="del_btn">삭제</button>
-			        	</div>		        		
 		        		
-		        		<div class="noticeMove">
-		        			<div class="noticePrev">
-			        			<a href="${contextPath}/admin/board/noticeDetail?boardCode=${noticeView.prevCode}">[이전글]</a>
-			        		</div>
-			        		<div class="noticeList">
-			        			<a href="${contextPath}/admin/board/notice">[목록]</a>
-			        		</div>			        		
-			        		<div class="noticeNext">
-			        			<a href="${contextPath}/admin/board/noticeDetail?boardCode=${noticeView.nextCode}">[다음글]</a>
-			        		</div>
+		        		<div class="noticeDate">
+		        			${noticeView.registDate }
 		        		</div>
+		        		
+		        		<div class="noticeContet">
+		        			${noticeView.content }
+		        		</div>
+	        		</div>
+	        		<div class="notice_btn">
+	        			<button type="button" id="mod_btn">수정</button>
+	        			<button type="button" id="del_btn">삭제</button>
+		        	</div>		        		
+	        		
+	        		<div class="noticeMove">
+	        			<div class="noticePrev">
+	        				<c:choose>
+								<c:when test="${noticeView.prevCode != 0}">
+									<a href="${contextPath}/admin/board/noticeDetail?boardCode=${noticeView.prevCode}">[이전글]</a>
+								</c:when>
+								<c:otherwise><a style="color: #808080;">[이전글]</a></c:otherwise>
+							</c:choose>
+		        		</div>
+		        		<div class="noticeList">
+		        			<a href="${contextPath}/admin/board/notice/?page=1&perPageNum=10">[목록]</a>
+		        		</div>			        		
+		        		<div class="noticeNext">
+		        			<c:choose>
+								<c:when test="${noticeView.nextCode != 0}">
+									<a href="${contextPath}/admin/board/noticeDetail?boardCode=${noticeView.nextCode}">[다음글]</a>
+								</c:when>
+								<c:otherwise><a style="color: #808080;">[다음글]</a></c:otherwise>
+							</c:choose>
+		        		</div>
+        			</div>
 		        </div>				
 	        </div>
 	    </div>		    

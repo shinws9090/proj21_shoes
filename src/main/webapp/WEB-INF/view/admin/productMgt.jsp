@@ -58,6 +58,14 @@ $(function(){
     margin-bottom: 100px;
 }
 
+tbody tr:nth-child(2n) {
+    background-color: #eaeaea;
+}
+
+tbody tr:nth-child(2n+1) {
+    background-color: #f9f9f9;
+}
+
 </style>
 </head>
 <body class="main-layout">

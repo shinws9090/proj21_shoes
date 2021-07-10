@@ -42,8 +42,10 @@ h1.mt-4 {
 }
 
 .qnaReply {
-    float: right;
-    margin-right: 30px;
+	display: inline-block;
+    width: 50%;
+    text-align: right;
+    padding-top: 15px;
 }
 
 .qnaTitle {
@@ -67,7 +69,9 @@ h1.mt-4 {
 }
 
 .qna_btn {
-	magrin-bottom: 100px;
+	display: inline-block;
+    width: 45%;
+    text-align: right;
 }
 
 </style>
@@ -96,9 +100,9 @@ h1.mt-4 {
 		        		</div>
 		        		
 		        		<div class="qnaDate">
-		        			${qnaView.registDate }
+		        			등록일자 : ${qnaView.registDate }
 		        			<br>
-		        			회원정보 : ${qnaView.memberId }
+		        			회원아이디 : ${qnaView.memberId }
 		        		</div>
 		        
 		        		<div class="qnaContet">
@@ -107,20 +111,22 @@ h1.mt-4 {
 		        			${qnaView.content }
 		        			<br>
 		        			<br>
-		        			답변 : ${qnaView.reply }
+		        			<h4>답변 : ${qnaView.reply }</h4>
 		        		</div>
 		        		
 		        		<div class="qnaReply">
-		        			${qnaView.resOX }
-		        		</div>
 		        		
+		        		<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+							<a href="${contextPath}/admin/board/qna/?page=1&perPageNum=10">[목록]</a>
+					    </c:forEach>
+			        	</div>
+		        		
+		        		<div class="qna_btn">
+		        			<h4>${qnaView.resOX }</h4>
+		        			<button type="button" id="mod_btn">답변작성</button>
+		        			<button type="button" id="del_btn">삭제</button>
+			        	</div>
 	        		</div>
-	        		
-	        		<div class="qna_btn">
-	        			<button type="button" id="mod_btn">답변작성</button>
-	        			<button type="button" id="del_btn">삭제</button>
-		        	</div>
-		        		
 		        </div>				
 	        </div>
 	    </div>		    
