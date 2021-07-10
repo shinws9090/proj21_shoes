@@ -42,10 +42,10 @@
 	</header>
 	<!-- end header -->
 	
-	<div id="loginForm" style="margin-bottom: 10px;">
-	<section id = "loginForm" style="margin-top: 20px; margin-bottom: 20px;">
+	<div id="loginForm" style="">
+	<section id = "loginForm">
 		<h2>로그인</h2><!-- 회원가입 -->
-		<form:form action="loginSuccess" modelAttribute="loginCommand">
+		<form:form action="loginSuccess" modelAttribute="loginCommand" style="padding-top: 0px;">
 		<form:errors/>
 	 	<fieldset id="loginCommand" style="border: 2px solid #dcdcdc;"> 
 	 	<table style=" font-size: 1em;">

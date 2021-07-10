@@ -4,6 +4,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
 
 
+section {
+		/* 내용들어갈때 패딩탑 줘야 헤더랑 영역 구분됨 */
+		padding-top: 8.5em;
+		min-height: 200px;
+	}
+	
+section#loginForm {
+    margin-top: 200px;
+    margin-bottom: 200px;
+}
+
 @media ( max-width : 767px) {
 	button {
 		cursor: pointer;
@@ -110,7 +121,7 @@
 	header {
 		position: fixed;
 		z-index: 10000;
-		height: 8em;
+		height: 8.5em;
 		/* min-width: 1000px; */
 		top: 0;
 		left: 0;

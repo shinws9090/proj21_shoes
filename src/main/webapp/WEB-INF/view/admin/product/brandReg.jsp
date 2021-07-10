@@ -19,20 +19,39 @@
 <script type="text/javascript">
 
 function submit(){
-	var submitForm = document.brandRegForm;
+	let targetObject = $(".brandReg");
 	
-	submitForm.submit();
-	alert("브랜드 추가완료");
-}
+	if (targetObject.find("[name='brandCode']").val() == "" ){
+		alert("브랜드코드 미입력");
+	
+	} else if(targetObject.find("[name='brandName']").val() == "" ) {
+		alert("브랜드명 미입력");
+		
+	} else if(targetObject.find("[name='brandEngName']").val() == "" ) {
+		alert("브랜드영어명 미입력");
+		
+	} else {
+		var submitForm = document.brandRegForm;
+		submitForm.submit();
+		alert("브랜드 추가완료");
+	};
+};
 
 opener.location.reload();
 
 </script>
+<style>
+
+.btn_section {
+    margin-top: 15px;
+}
+
+</style>
 </head>
 <body>
 	<section>
 		<h1 class="mt-4">브랜드 추가</h1>
-			<div>
+			<div class="brandReg">
 			<form id="brandRegForm" name="brandRegForm" method="post" autocomplete="off">
 
 				<div class="form_section">

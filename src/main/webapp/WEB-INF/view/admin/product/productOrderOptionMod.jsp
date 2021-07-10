@@ -46,10 +46,17 @@ $(function(){
 });
 
 function submit(){
-	var submitForm = document.productOrderOptionForm;
+let targetObject = $(".productOrderOption");
 	
-	submitForm.submit();
-}
+	if (targetObject.find("[name='stock']").val() == "" ) {
+		alert("재고 증감량 미입력");
+		
+	} else {	
+		var submitForm = document.productOrderOptionForm;
+		submitForm.submit();
+		alert("재고 증감량 변경완료");
+	};
+};
 
 opener.location.reload();
 
@@ -59,7 +66,7 @@ opener.location.reload();
 	<section>	
        	<h1 class="mt-4">재고 수정</h1>
 
-			<div>
+			<div class="productOrderOption">
 				<form id="productOrderOptionForm" name="productOrderOptionForm" method="post" autocomplete="off">
 
 					<div class="form_section" hidden="true">

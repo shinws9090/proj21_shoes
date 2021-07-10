@@ -48,7 +48,7 @@ $(function(){
 					<table style="width: 90%; text-align: center">
 						<thead>
 							<tr style="background-color: lightgrey; text-align: center">
-								<td>번호</td>
+								<td>게시판번호</td>
 								<td>제목</td>						
 								<td>작성자</td>		
 								<td>작성일</td>
@@ -96,8 +96,6 @@ $(function(){
 		    </div>		    
 		</div>
 	</section>
-	
-	
 	
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp" />

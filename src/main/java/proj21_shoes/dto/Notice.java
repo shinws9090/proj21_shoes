@@ -1,7 +1,6 @@
 package proj21_shoes.dto;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class Notice { // 공지사항
 
@@ -10,6 +9,8 @@ public class Notice { // 공지사항
 	private String title; // 제목
 	private String content; // 내용
 	private LocalDate registDate; // 등록일
+	private int nextCode;
+	private int prevCode;
 
 	public int getBoardCode() {
 		return boardCode;
@@ -51,10 +52,27 @@ public class Notice { // 공지사항
 		this.registDate = registDate;
 	}
 
+	public int getNextCode() {
+		return nextCode;
+	}
+
+	public void setNextCode(int nextCode) {
+		this.nextCode = nextCode;
+	}
+
+	public int getPrevCode() {
+		return prevCode;
+	}
+
+	public void setPrevCode(int prevCode) {
+		this.prevCode = prevCode;
+	}
+
 	@Override
 	public String toString() {
-		return String.format("Notice [boardCode=%s, employee=%s, title=%s, content=%s, registDate=%s]", boardCode,
-				employee, title, content.length(), registDate);
+		return String.format(
+				"Notice [boardCode=%s, employee=%s, title=%s, content=%s, registDate=%s, nextCode=%s, prevCode=%s]",
+				boardCode, employee, title, content, registDate, nextCode, prevCode);
 	}
 
 }

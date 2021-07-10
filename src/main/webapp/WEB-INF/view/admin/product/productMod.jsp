@@ -24,11 +24,48 @@
 <script type="text/javascript">
 
 function summit(){
-	var summitForm = document.productInfoForm;
-	summitForm.submit();
-	opener.location.reload();
+	let targetObject = $(".pageContent-wrapper");
 	
-}
+	if (targetObject.find("[name='employee']").val() == "" ){
+		alert("사원 미입력");
+	
+	} else if(targetObject.find("[name='productCode']").val() == "" ) {
+		alert("제품코드 미입력");
+		
+	} else if(targetObject.find("[name='productName']").val() == "" ) {
+		alert("제품명 미입력");
+		
+	} else if(targetObject.find("[name='brand']").val() == "" ) {
+		alert("브랜드 미입력");
+		
+	} else if(targetObject.find("[name='gender']").val() == "" ) {
+		alert("성별 미입력");
+		
+	} else if(targetObject.find("[name='category']").val() == "" ) {
+		alert("카테고리 미입력");
+		
+	} else if(targetObject.find("[name='season']").val() == "" ) {
+		alert("계절 미입력");
+		
+	} else if(targetObject.find("[name='madeDate']").val() == "" ) {
+		alert("제조일 미입력");
+		
+	} else if(targetObject.find("[name='costPrice']").val() == "" ) {
+		alert("공급가격 미입력");
+
+	} else if(targetObject.find("[name='sellPrice']").val() == "" ) {
+		alert("판매가격 미입력");
+		
+	} else if(targetObject.find("[name='content']").val() == "" ) {
+		alert("내용 미입력");
+		
+	} else {	
+		var summitForm = document.productInfoForm;
+		summitForm.submit();
+		alert('상품정보 수정완료')
+		
+	};
+};
 
 $(document).ready(function() {
 	$('#summernote').summernote({

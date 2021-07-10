@@ -468,9 +468,8 @@
 					formatter: (value, ctx) => {
 						let datasets = ctx.chart.data.datasets;
 						if (datasets.indexOf(ctx.dataset) === datasets.length - 1) {
-							let c = datasets[0].data.reduce((a, b) => a + b, 0);					
-							let a = Number(c.substring(1,2));
-							let b = Number(c.substring(2,3));
+							let a = ${memberListByGender[0].total};
+							let b = ${memberListByGender[1].total};
 							let sum = a + b ;							
 							let percentage = Math.round((value / sum) * 100) + '%';
 							return percentage;

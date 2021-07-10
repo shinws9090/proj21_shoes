@@ -306,9 +306,8 @@ public class AdminController {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
-		out.println("alert('상품정보 수정완료')");
 		out.println("opener.location.reload()");
-		out.println(" window.close()");
+		out.println("window.close()");
 		out.println("</script>");
 	}
 
@@ -369,9 +368,8 @@ public class AdminController {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
-		out.println("alert('상품이미지 수정완료')");
 		out.println("opener.location.reload()");
-		out.println(" window.close()");
+		out.println("window.close()");
 		out.println("</script>");
 	}
 
@@ -446,10 +444,10 @@ public class AdminController {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
-		out.println("alert('재고 증감량 변경완료')");
 		out.println("opener.location.reload()");
-		out.println(" window.close()");
+		out.println("window.close()");
 		out.println("</script>");
+		
 	}
 
 	@GetMapping("/admin/product/productOrderOptionDel")
@@ -509,7 +507,7 @@ public class AdminController {
 	}
 
 	@PostMapping("/admin/product/brandMod")
-	public String postBrandModify(HttpServletRequest request) {
+	public void postBrandModify(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		Brand brand = new Brand();
 		brand.setBrandCode(Integer.parseInt(request.getParameter("brandCode")));
@@ -519,19 +517,19 @@ public class AdminController {
 		brandService.updateBrand(brand);
 		System.out.println(brand);
 
-		return "redirect:/admin/product/brandReg";
-	}
-
-	@GetMapping("/admin/product/brandDel")
-	public void getBrandDelete(@RequestParam(value = "brandCode") int brandCode, HttpServletResponse response) throws IOException {
-		brandService.deleteBrand(brandCode);
-		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
-		out.println("alert('삭제 완료')");
-		out.println("location.href='" + "brandMgt'");
+		out.println("opener.location.reload()");
+		out.println("window.close()");
 		out.println("</script>");
+	}
+
+	@GetMapping("/admin/product/brandDel")
+	public String getBrandDelete(@RequestParam(value = "brandCode") int brandCode) throws IOException {
+		brandService.deleteBrand(brandCode);
+		
+		return "redirect:/admin/product/brandMgt";
 	}
 
 	@GetMapping("/admin/product/categoryMgt")
@@ -569,7 +567,7 @@ public class AdminController {
 	}
 
 	@PostMapping("/admin/product/categoryMod")
-	public String postCategoryModify(HttpServletRequest request) {
+	public void postCategoryModify(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		Category category = new Category();
 		category.setProductCategoryCode(Integer.parseInt(request.getParameter("productCategoryCode")));
@@ -578,19 +576,19 @@ public class AdminController {
 		categoryService.updateCategory(category);
 		System.out.println(category);
 
-		return "redirect:/admin/product/categoryReg";
-	}
-
-	@GetMapping("/admin/product/categoryDel")
-	public void getCategoryDelete(@RequestParam(value = "categoryCode") int categoryCode, HttpServletResponse response) throws IOException {
-		categoryService.deleteCategory(categoryCode);
-		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
-		out.println("alert('삭제 완료')");
-		out.println("location.href='" + "categoryMgt'");
+		out.println("opener.location.reload()");
+		out.println("window.close()");
 		out.println("</script>");
+	}
+
+	@GetMapping("/admin/product/categoryDel")
+	public String getCategoryDelete(@RequestParam(value = "categoryCode") int categoryCode) throws IOException {
+		categoryService.deleteCategory(categoryCode);
+		
+		return "redirect:/admin/product/categoryMgt";
 	}
 
 	// 게시판 관리
@@ -639,7 +637,7 @@ public class AdminController {
 	@GetMapping("/admin/board/noticeReg")
 	public void getNoticeBoardReg(Model model) {
 		List<Employee> employeeList = employeeService.employeeList();
-		model.addAttribute("employeeList", employeeList);
+		model.addAttribute("employeeList", JSONArray.fromObject(employeeList));
 	}
 	
 	@PostMapping("/admin/board/noticeReg")

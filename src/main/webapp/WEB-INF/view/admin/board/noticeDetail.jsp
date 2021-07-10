@@ -100,14 +100,17 @@ h1.mt-4 {
 		        			<button type="button" id="del_btn">삭제</button>
 			        	</div>		        		
 		        		
-		        	<%-- <div class="noticeMove">
-		        			<div class="noticeAfter">
-			        			다음글 ${noticeViewNext.title }
+		        		<div class="noticeMove">
+		        			<div class="noticePrev">
+			        			<a href="${contextPath}/admin/board/noticeDetail?boardCode=${noticeView.prevCode}">[이전글]</a>
 			        		</div>
-			        		<div class="noticeBefore">
-			        			이전글 ${noticeViewPrev.title }
+			        		<div class="noticeList">
+			        			<a href="${contextPath}/admin/board/notice">[목록]</a>
+			        		</div>			        		
+			        		<div class="noticeNext">
+			        			<a href="${contextPath}/admin/board/noticeDetail?boardCode=${noticeView.nextCode}">[다음글]</a>
 			        		</div>
-		        		</div> --%>
+		        		</div>
 		        </div>				
 	        </div>
 	    </div>		    

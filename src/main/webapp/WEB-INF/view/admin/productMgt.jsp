@@ -34,24 +34,28 @@ $(function(){
 </script>
 <style>
 
-ul.pageNum {
-    display: inline-block;
-    margin-left: 350px;
-}
-
-ul.pageNum2 {
-    display: inline-block;
-    margin-left: 643px;
-    margin-bottom: 100px;
-}
-
 .search {
     display: inline-block;
+    width: 20%;
+}
+
+.pageNumer {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
 }
 
 .btn_new {
     display: inline-block;
-    margin-left: 650px;
+    width: 20%;
+    text-align: right;
+}
+
+.pageNumber2 {
+    display: inline-block;
+    width: 90%;
+    text-align: center;
+    margin-bottom: 100px;
 }
 
 </style>
@@ -77,7 +81,7 @@ ul.pageNum2 {
 		        <!-- Page content-->		        
 		        
 		        <div class="container-fluid">
-					<h1 class="mt-4">상품 목록</h1>
+					<div><h1 class="mt-4">상품 목록</h1></div>
 					
 					<div class="search">
 						<select name="searchType">
@@ -93,25 +97,35 @@ ul.pageNum2 {
 
 					</div>
 					
-					<ul class="pageNum">
-					    <c:if test="${pageMaker.prev}">
-					      <li id="page"><a href="productMgt${pageMaker.makeSearch(pageMaker.startPage - 1)}">[이전]</a></li>
-					    </c:if> 
-					
-					    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-					      <li id="page"><a href="productMgt${pageMaker.makeSearch(idx)}">[${idx}]</a></li>
-					    </c:forEach>
-					
-					    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-					      <li id="page"><a href="productMgt${pageMaker.makeSearch(pageMaker.endPage + 1)}">[다음]</a></li>
-					    </c:if>
-					</ul>
+					<div class="pageNumer">
+						<ul class="pageNum">
+							<c:if test="${pageMaker.prev}">
+						      <li id="page"><a href="productMgt${pageMaker.makeSearch(pageMaker.startPage - 1)}">[이전]</a></li>
+						    </c:if>
+						    
+						    <c:if test="${!pageMaker.prev}">
+						      <li id="page"><a style="color: #808080;">[이전]</a></li>
+						    </c:if>
+						
+						    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+						      <li id="page"><a href="productMgt${pageMaker.makeSearch(idx)}" ${idx == param.page ? 'style="color: #DC143C;"' : ''}>[${idx}]</a></li>
+						    </c:forEach>
+						
+						    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+						      <li id="page"><a href="productMgt${pageMaker.makeSearch(pageMaker.endPage + 1)}">[다음]</a></li>
+						    </c:if>
+						    
+						    <c:if test="${!pageMaker.next}">
+						      <li id="page"><a style="color: #808080;">[다음]</a></li>
+						    </c:if>
+						</ul>
+					</div>
 					
 					<div class="btn_new">
 						<button type="button" id="new">상품등록</button>
 					</div>
 					
-					<table style="width: 90%; text-align: center">
+					<table style="width: 95%; text-align: center">
 						<thead>
 							<tr style="background-color: lightgrey; text-align: center">
 								<td>번호</td>
@@ -132,7 +146,6 @@ ul.pageNum2 {
 						<tbody>
 							<c:forEach items="${productList}" var="productList">
 							<tr>
-								<input type="hidden" id="productCode${productList.productCode}" value="${productList.productCode}">
 								<td>${productList.productCode}</td>
 								<td><a href="${contextPath}/productDetail/${productList.productCode}"><c:out value="${productList.productName}" /></a></td>
 								<td>${productList.brand.brandName}</td>			
@@ -155,19 +168,27 @@ ul.pageNum2 {
 						</tbody>
 					</table>
 					
-					<div>
+					<div class="pageNumber2">
 						<ul class="pageNum2">
 						    <c:if test="${pageMaker.prev}">
 						      <li id="page"><a href="productMgt${pageMaker.makeSearch(pageMaker.startPage - 1)}">[이전]</a></li>
-						    </c:if> 
+						    </c:if>
+						    
+						    <c:if test="${!pageMaker.prev}">
+						      <li id="page"><a style="color: #808080;">[이전]</a></li>
+						    </c:if>
 						
 						    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-						      <li id="page"><a href="productMgt${pageMaker.makeSearch(idx)}">[${idx}]</a></li>
+						      <li id="page"><a href="productMgt${pageMaker.makeSearch(idx)}" ${idx == param.page ? 'style="color: #DC143C;"' : ''}>[${idx}]</a></li>
 						    </c:forEach>
 						
 						    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 						      <li id="page"><a href="productMgt${pageMaker.makeSearch(pageMaker.endPage + 1)}">[다음]</a></li>
-						    </c:if> 
+						    </c:if>
+						    
+						    <c:if test="${!pageMaker.next}">
+						      <li id="page"><a style="color: #808080;">[다음]</a></li>
+						    </c:if>
 						</ul>											
 					</div>					
 				</div>

@@ -15,7 +15,7 @@
 <style>
 
 h1.mt-4 {
-    margin-left: 550px;
+    margin-left: 50px;
 }
 
 .container-notice {
@@ -24,11 +24,11 @@ h1.mt-4 {
 
 .noticeDetailView {
 	margin: 0 auto;
-    width: 1300px;
+    width: 1100px;
     padding-top: 10px;
-    padding-bottom: 100px;
     border-top: 1px solid;
     margin-top: 20px;
+    margin-bottom: 100px;
 }
 
 .noticeTitle {
@@ -49,6 +49,26 @@ h1.mt-4 {
     border-top: 1px solid lightgray;
     padding: 20px;
     margin-top: 10px;
+}   
+
+.noticeMove {
+    width: 300px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.noticePrev {
+    display: inline-block;
+    float: left;
+}
+
+.noticeList {
+    display: inline-block;
+}
+
+.noticeNext {
+    display: inline-block;
+    float: right;
 }
 
 </style>
@@ -76,7 +96,29 @@ h1.mt-4 {
 	        		
 	        		<div class="noticeContet">
 	        			${noticeView.content }
-	        		</div>	        		
+	        		</div>
+	  
+	        		<div class="noticeMove">
+	        			<div class="noticePrev">
+	        				<c:choose>
+								<c:when test="${noticeView.prevCode != 0}">
+									<a href="${contextPath}/admin/board/mainNoticeDetail?boardCode=${noticeView.prevCode}">[이전글]</a>
+								</c:when>
+								<c:otherwise><a style="color: #808080;">[이전글]</a></c:otherwise>
+							</c:choose>
+		        		</div>
+		        		<div class="noticeList">
+		        			<a href="${contextPath}/admin/board/mainNotice/?page=1&perPageNum=10">[목록]</a>
+		        		</div>			        		
+		        		<div class="noticeNext">
+		        			<c:choose>
+								<c:when test="${noticeView.nextCode != 0}">
+									<a href="${contextPath}/admin/board/mainNoticeDetail?boardCode=${noticeView.nextCode}">[다음글]</a>
+								</c:when>
+								<c:otherwise><a style="color: #808080;">[다음글]</a></c:otherwise>
+							</c:choose>
+		        		</div>
+	        		</div>
         		</div>
 	        </div>
 		</div>

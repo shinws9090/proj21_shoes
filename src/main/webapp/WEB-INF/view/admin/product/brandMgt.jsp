@@ -23,6 +23,16 @@ $(function(){
 	});
 });
 </script>
+<style>
+
+.btn_new {
+    display: inline-block;
+    width: 88%;
+    text-align: right;
+    margin: 10px;
+}
+
+</style>
 </head>
 <body class="main-layout">
 	
@@ -65,7 +75,7 @@ $(function(){
 								<td>${brandList.brandEngName}</td>
 								<td>
 									<button type="button"><a href="${contextPath}/admin/product/brandMod?brandCode=${brandList.brandCode}" onClick="window.open(this.href, '', 'width=500, height=350'); return false;">수정</a></button>
-									<button type="button"><a href="${contextPath}/admin/product/brandDel?brandCode=${brandList.brandCode}">삭제</a></button>
+									<button type="button"><a href="${contextPath}/admin/product/brandDel?brandCode=${brandList.brandCode}" onClick="if(!confirm('삭제 하시겠습니까?')){return false;}">삭제</a></button>
 								</td>
 							</tr>
 							</c:forEach>
@@ -75,6 +85,10 @@ $(function(){
 			</div>
 		</div>
 	</section>
+	
+	<footer>
+		<jsp:include page="/WEB-INF/view/include/footer.jsp" />
+	</footer>
 
 	<jsp:include page="/WEB-INF/view/admin/include/script.jsp" />
 </body>

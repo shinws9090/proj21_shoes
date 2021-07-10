@@ -12,7 +12,7 @@ insert into employee values
 	(202,'이민정',1,'minruki','rootroot','minruki51@gmail.com','010-7777-7777'),
 	(303,'김길현',1,'tizona','rootroot',' tizona@naver.com','010-2345-6789'),
 	(404,'김예진',1,'chamdodari','rootroot','chamdodari@naver.com','010-1010-2020'),
-	(505,'신입',2,'test',password('123456'),'test@test.co.kr','010-0000-0000');
+	(505,'신입',2,'test',password('123'),'test@test.co.kr','010-0000-0000');
 
 insert into notice values
 	(1,101,'교환 및 반품 안내사항','★꼭 읽어주세요★',now()),
@@ -86,20 +86,60 @@ insert into grade values
 	(4,'VIP'),
 	(5,'VVIP');
 
-
+select * from memberdetail m2 ;
 insert into memberdetail values
-	('aaa',password('rootroot'),'테스트1',true,now(),'test1@test.co.kr','010-111-8888','12345','국채보상로 438','서구 치과의원'),
-	('bbb',password('rootroot'),'테스트2',true,now(),'test2@test.co.kr','010-222-7777','12345','동대구로 386','킹덤 오피스텔 지하 1층'),
-	('ccc',password('rootroot'),'테스트3',true,now(),'test3@test.co.kr','010-333-6666','12345','상화로 373','비둘기 아파트 2단지'),
-	('ddd',password('rootroot'),'테스트4',true,now(),'test4@test.co.kr','010-666-5555','12345','서대구로 30','맨투맨 빌딩 4층'),
-	('eee',password('rootroot'),'테스트5',true,now(),'test5@test.co.kr','010-999-3333','12345','안심로90길 22','해피키즈 유치원');
+	('aaa',password('rootroot'),'테스트1',true,19850101,'test1@test.co.kr','010-111-8888','12345','국채보상로 438','서구 치과의원'),
+	('aaa1',password('rootroot'),'테스트1',true,19880101,'test2@test.co.kr','010-111-8888','12345','국채보상로 438','서구 치과의원'),
+	('aaa2',password('rootroot'),'테스트1',true,19750101,'test3@test.co.kr','010-111-8888','12345','국채보상로 438','서구 치과의원'),
+	('aaa3',password('rootroot'),'테스트1',false,19790101,'test4@test.co.kr','010-111-8888','12345','국채보상로 438','서구 치과의원'),
+	('aaa4',password('rootroot'),'테스트1',true,19730101,'test5@test.co.kr','010-111-8888','12345','국채보상로 438','서구 치과의원'),
+	('bbb',password('rootroot'),'테스트2',true,19980101,'test6@test.co.kr','010-222-7777','12345','동대구로 386','킹덤 오피스텔 지하 1층'),
+	('bbb1',password('rootroot'),'테스트2',true,19920101,'test7@test.co.kr','010-222-7777','12345','동대구로 386','킹덤 오피스텔 지하 1층'),
+	('bbb2',password('rootroot'),'테스트2',false,19900101,'test8@test.co.kr','010-222-7777','12345','동대구로 386','킹덤 오피스텔 지하 1층'),
+	('bbb3',password('rootroot'),'테스트2',true,19850101,'test9@test.co.kr','010-222-7777','12345','동대구로 386','킹덤 오피스텔 지하 1층'),
+	('bbb4',password('rootroot'),'테스트2',false,19880101,'test10@test.co.kr','010-222-7777','12345','동대구로 386','킹덤 오피스텔 지하 1층'),
+	('ccc',password('rootroot'),'테스트3',true,19800101,'test11@test.co.kr','010-333-6666','12345','상화로 373','비둘기 아파트 2단지'),
+	('ccc1',password('rootroot'),'테스트3',false,19990101,'test12@test.co.kr','010-333-6666','12345','상화로 373','비둘기 아파트 2단지'),
+	('ccc2',password('rootroot'),'테스트3',true,19990101,'test13@test.co.kr','010-333-6666','12345','상화로 373','비둘기 아파트 2단지'),
+	('ccc3',password('rootroot'),'테스트3',false,20040101,'test14@test.co.kr','010-333-6666','12345','상화로 373','비둘기 아파트 2단지'),
+	('ccc4',password('rootroot'),'테스트3',true,20040101,'test15@test.co.kr','010-333-6666','12345','상화로 373','비둘기 아파트 2단지'),
+	('ddd',password('rootroot'),'테스트4',false,20040101,'test16@test.co.kr','010-666-5555','12345','서대구로 30','맨투맨 빌딩 4층'),
+	('ddd1',password('rootroot'),'테스트4',true,20040101,'test17@test.co.kr','010-666-5555','12345','서대구로 30','맨투맨 빌딩 4층'),
+	('ddd2',password('rootroot'),'테스트4',false,19990101,'test18@test.co.kr','010-666-5555','12345','서대구로 30','맨투맨 빌딩 4층'),
+	('ddd3',password('rootroot'),'테스트4',false,19990101,'test19@test.co.kr','010-666-5555','12345','서대구로 30','맨투맨 빌딩 4층'),
+	('ddd4',password('rootroot'),'테스트4',true,19990101,'test20@test.co.kr','010-666-5555','12345','서대구로 30','맨투맨 빌딩 4층'),
+	('eee',password('rootroot'),'테스트5',true,19990101,'test21@test.co.kr','010-999-3333','12345','안심로90길 22','해피키즈 유치원'),
+	('eee1',password('rootroot'),'테스트5',false,19990101,'test22@test.co.kr','010-999-3333','12345','안심로90길 22','해피키즈 유치원'),
+	('eee2',password('rootroot'),'테스트5',true,19990101,'test23@test.co.kr','010-999-3333','12345','안심로90길 22','해피키즈 유치원'),
+	('eee3',password('rootroot'),'테스트5',true,19990101,'test24@test.co.kr','010-999-3333','12345','안심로90길 22','해피키즈 유치원'),
+	('eee4',password('rootroot'),'테스트5',true,19990101,'test25@test.co.kr','010-999-3333','12345','안심로90길 22','해피키즈 유치원');
 
 insert into `member` values
 	(111111,'aaa',1000,0,5,false,now()),
-	(111112,'bbb',1000,0,5,false,now()),
-	(111113,'ccc',1000,0,5,false,now()),
-	(111114,'ddd',1000,0,5,false,now()),
-	(111115,'eee',1000,0,5,false,now());
+	(111112,'aaa1',1000,0,5,false,now()),
+	(111113,'aaa2',1000,0,5,false,now()),
+	(111114,'aaa3',1000,0,5,false,now()),
+	(111115,'aaa4',1000,0,5,false,now()),
+	(111116,'bbb',1000,0,5,false,now()),
+	(111117,'bbb1',1000,0,5,false,now()),
+	(111118,'bbb2',1000,0,5,false,now()),
+	(111119,'bbb3',1000,0,5,false,now()),
+	(111120,'bbb4',1000,0,5,false,now()),
+	(111121,'ccc',1000,0,5,false,now()),
+	(111122,'ccc1',1000,0,5,false,now()),
+	(111123,'ccc2',1000,0,5,false,now()),
+	(111124,'ccc3',1000,0,5,false,now()),
+	(111125,'ccc4',1000,0,5,false,now()),
+	(111126,'ddd',1000,0,5,false,now()),
+	(111127,'ddd1',1000,0,5,false,now()),
+	(111128,'ddd2',1000,0,5,false,now()),
+	(111129,'ddd3',1000,0,5,false,now()),
+	(111130,'ddd4',1000,0,5,false,now()),
+	(111131,'eee',1000,0,5,false,now()),
+	(111132,'eee1',1000,0,5,false,now()),
+	(111133,'eee2',1000,0,5,false,now()),
+	(111134,'eee3',1000,0,5,false,now()),
+	(111135,'eee4',1000,0,5,false,now());
 
 -- 상품문의게시판
 insert into qna values

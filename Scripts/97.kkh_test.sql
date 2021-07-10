@@ -278,3 +278,25 @@ select * from orderoption;
 
 
 update product set cumulative_regist_count = cumulative_regist_count + 100 where product_code = 11111;
+
+select * from notice;
+
+insert into notice(emp_number, title, content, regist_date) values(101, '제목', '내용', now());
+
+
+select * from notice n join employee e on n.emp_number = e.emp_number
+		where n.board_code > 0;
+		
+select n.*, e.*, 
+		(select min(m.board_code) from notice m where m.board_code > n.board_code) as next_code,
+		(select max(m.board_code) from notice m where m.board_code < n.board_code) as prev_code
+		from notice n join employee e on n.emp_number = e.emp_number where n.board_code = 3;
+		
+select n.*, e.*, 
+		(select min(m.board_code) from notice m where m.board_code > n.board_code) as next_code,
+		(select max(m.board_code) from notice m where n.board_code > m.board_code) as prev_code
+		from notice n join employee e on n.emp_number = e.emp_number where n.board_code = 3;
+		
+select (select min(m.board_code) from notice m where m.board_code > n.board_code) as next_code,
+		(select max(m.board_code) from notice m where n.board_code > m.board_code) as prev_code
+		from notice n where n.board_code = 2;

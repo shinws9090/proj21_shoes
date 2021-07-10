@@ -24,11 +24,21 @@
 <script type="text/javascript">
 
 function summit(){
-	var summitForm = document.productImageForm;
-	summitForm.submit();
-	opener.location.reload();
+let targetObject = $(".pageContent-wrapper");
 	
-}
+	if (targetObject.find("[name='productMainImage']").val() == "" ) {
+		alert("대표이미지 미입력");
+		
+	} else if(targetObject.find("[name='images']").val() == "" ) {
+		alert("이미지 미입력");
+		
+	} else {	
+		var summitForm = document.productImageForm;
+		summitForm.submit();
+		alert('상품이미지 수정완료')
+		
+	};
+};
 
 $(document).ready(function() {
 	$('#summernote').summernote({

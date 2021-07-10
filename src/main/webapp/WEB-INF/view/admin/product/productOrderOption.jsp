@@ -80,11 +80,29 @@ $(function(){
 });
 
 function submit(){
-	var submitForm = document.productOrderOptionForm;
+	let targetObject = $(".productOrderOption");
 	
-	submitForm.submit();
-	alert("재고등록 완료");
-}
+	if (targetObject.find("[name='productCode']").val() == "" ) {
+		alert("제품코드 미입력");
+		
+	} else if(targetObject.find("[name='styleCode']").val() == "" ) {
+		alert("스타일코드 미입력");
+		
+	} else if(targetObject.find("[name='color']").val() == "" ) {
+		alert("색상 미입력");
+		
+	} else if(targetObject.find("[name='size']").val() == "" ) {
+		alert("사이즈 미입력");
+		
+	} else if(targetObject.find("[name='stock']").val() == "" ) {
+		alert("재고수량 미입력");
+		
+	} else {
+		var submitForm = document.productOrderOptionForm;
+		submitForm.submit();
+		alert("재고등록 완료");
+	};
+};
 
 opener.location.reload();
 
@@ -97,7 +115,7 @@ opener.location.reload();
 	<section>		
 		<h1 class="mt-4">재고 등록</h1>
 
-		<div>
+		<div class="productOrderOption">
 			<form id="productOrderOptionForm" name="productOrderOptionForm" method="post" autocomplete="off">
 
 				<div class="form_section" hidden="true">

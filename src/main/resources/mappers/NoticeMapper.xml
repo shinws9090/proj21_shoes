@@ -4,6 +4,8 @@
 	
 	<resultMap type="Notice" id="noticeList">			
 		<id column="board_code" property="boardCode" />
+		<id column="next_code" property="nextCode" />
+		<id column="prev_code" property="prevCode" />
 		<association property="employee" resultMap="ResEmployee" />
 	</resultMap>
 	
@@ -16,7 +18,10 @@
 	</select>
 	
 	<select id="findAll" resultMap="noticeList" resultType="SearchCriteria">
-		select * from notice n join employee e on n.emp_number = e.emp_number
+		select *,
+		(select min(m.board_code) from notice m where m.board_code > n.board_code) as next_code,
+		(select max(m.board_code) from notice m where <![CDATA[m.board_code < n.board_code]]>) as prev_code 
+		from notice n join employee e on n.emp_number = e.emp_number
 		where n.board_code > 0
 		<include refid="search"></include>
 		order by n.board_code desc
@@ -39,8 +44,11 @@
 		</if>
 	</sql>
 	
-	<select id="detailView" parameterType="int" resultMap="noticeList">
-		select * from notice n join employee e on n.emp_number = e.emp_number where n.board_code = #{boardCode}
+	<select id="detailView" parameterType="int" resultMap="noticeList">		
+		select n.*, e.*, 
+		(select min(m.board_code) from notice m where m.board_code > n.board_code) as next_code,
+		(select max(m.board_code) from notice m where <![CDATA[m.board_code < n.board_code]]>) as prev_code
+		from notice n join employee e on n.emp_number = e.emp_number where n.board_code = #{boardCode}
 	</select>
 	
 	<insert id="insertNotice" parameterType="Notice">

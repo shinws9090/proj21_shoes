@@ -19,21 +19,37 @@
 <script type="text/javascript">
 
 function submit(){
-	var submitForm = document.categoryRegForm;
+	let targetObject = $(".categoryReg");
 	
-	submitForm.submit();
-	alert("카테고리 추가완료");
-}
+	if (targetObject.find("[name='productCategoryCode']").val() == "" ){
+		alert("카테고리코드 미입력");
+	
+	} else if(targetObject.find("[name='category']").val() == "" ) {
+		alert("카테고리명 미입력");
+		
+	} else {	
+		var submitForm = document.categoryRegForm;	
+		submitForm.submit();
+		alert("카테고리 추가완료");
+	};
+};
 
 opener.location.reload();
 
 </script>
+<style>
+
+.btn_section {
+    margin-top: 15px;
+}
+
+</style>
 </head>
 <body>
 	<section>
 	
 		<h1 class="mt-4">카테고리 추가</h1>
-		<div>
+		<div class="categoryReg">
 			<form id="categoryRegForm" name="categoryRegForm" method="post" autocomplete="off">
 
 				<div class="form_section">

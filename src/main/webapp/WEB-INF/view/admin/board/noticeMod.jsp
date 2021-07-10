@@ -70,13 +70,12 @@ td.notice_subject {
 					<form id="noticeRegForm" method="post" autocomplete="off" >
 						<table style="width: 70%;">
 							<tr>
-								<td class="notice_subject"><a>직원 번호</a></td>
-								<td class="notice_content"><input type="text" name="employee" id="employee" value="${noticeView.employee.empNumber }" /></td>
+								<td class="notice_content"><input type="hidden" name="employee" id="employee" value="${noticeView.employee.empNumber}" /></td>
 							</tr>
 										
 							<tr>	
 								<td class="notice_subject"><a>제목</a></td>
-								<td class="notice_content"><input type="text" name="title" id="title" value="${noticeView.title }" style="width:90%;" /></td>
+								<td class="notice_content"><input type="text" name="title" id="title" value="${noticeView.title}" style="width:90%;" /></td>
 							</tr>
 							
 							<tr>

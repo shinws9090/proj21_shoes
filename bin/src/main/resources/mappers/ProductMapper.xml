@@ -33,7 +33,7 @@
 		from product p
 		join brand b on p.brand_code = b.brand_code
 		join category c on c.product_category_code =p.product_category_code
-		join productpost p2 on p2.product_code = p.product_code
+		left join productpost p2 on p2.product_code = p.product_code
 	</sql>
 	<sql id="selProductDetail">
 		select *
@@ -47,8 +47,14 @@
 	</sql>
 	
 	
-	
-	
+	<select id="productListByCode" resultMap="ProductDetail">
+		<include refid="selProductDetail" />
+			where p.product_code in 
+			<foreach collection="collection" item="c" index="i" open="(" separator="," close=")">
+			#{c.productCode}
+		</foreach>
+		
+	</select>
 	
 	
 	<select id="BrandByAll" resultType="Brand">
@@ -117,45 +123,64 @@
 					and p.brand_code = #{brandCode}
 				</if>
 			</where>
+			limit #{limit}
 		</if>
-			<if test="main !=null">
-				<if test="main=='new'">
-					order by cumulative_sell_count desc
-					limit 4
-				</if>
-				<if test="main=='best'">
-					order by regist_date desc
-					limit 4
-				</if>
+		<if test="main !=null">
+			<if test="main=='new'">
+				order by cumulative_sell_count desc
+				limit 4
 			</if>
+			<if test="main=='best'">
+				order by regist_date desc
+				limit 4
+			</if>
+		</if>
 	</select>
 	
-	<resultMap type="Product" id="OnlyProductList">
+	<resultMap type="Product" id="resProductList">
 		<id column="product_code" property="productCode" />
 		<association property="brand" javaType="Brand" />
 		<association property="category" javaType="Category" />
+		<association property="productPost" javaType="ProductPost" />
 	</resultMap>	
-	
-	<select id="productByOnlyProuct" resultMap="OnlyProductList">
-		select *
-		  from product p
-		  join brand b on p.brand_code = b.brand_code
-		  join category c on c.product_category_code =p.product_category_code
-	</select>
 	
 	<insert id="insertProduct" parameterType="Product">
 		insert into product (product_code, product_name, brand_code, gender, product_category_code, material, season, 
 							made_date, costPrice, sell_Price, regist_date, cumulative_regist_count, cumulative_sell_count, emp_number)
 		values (#{productCode}, #{productName}, #{brand.brandCode}, #{gender}, #{category.productCategoryCode}, #{material}, #{season}, 
-				now(), #{costPrice}, #{sellPrice}, now(), #{cumulativeRegistCount}, #{cumulativeSellCount}, #{employee.empNumber})
+				#{madeDate}, #{costPrice}, #{sellPrice}, now(), #{cumulativeRegistCount}, #{cumulativeSellCount}, #{employee.empNumber})
 	</insert>
 	
-	<update id="updateProduct">
+	<update id="updateProduct" parameterType="Product">
 		update product 
 		set product_name = #{productName}, brand_code = #{brand.brandCode}, gender = #{gender}, 
-							product_category_code = #{category.productCategoryCode}, material = #{material}, season = #{season}, made_date = #{madeDate}, costPrice = #{costPrice}, sell_Price = #{sellPrice}, regist_date = #{registDate}, 
-							cumulative_regist_count = #{cumulativeRegistCount}, cumulative_sell_count = #{cumulativeSellCount}, emp_number = #{employee.empNumber}
+							product_category_code = #{category.productCategoryCode}, material = #{material}, season = #{season}, made_date = #{madeDate}, costPrice = #{costPrice}, sell_Price = #{sellPrice}, regist_date = now(), 
+							emp_number = #{employee.empNumber}
 		where product_code = #{productCode}
+	</update>
+	
+	<update id="updateProductRegDateEmp" parameterType="Product">
+		update product 
+		set regist_date = #{registDate}, emp_number = #{employee.empNumber}
+		where product_code = #{productCode}
+	</update>
+	
+	<update id="updateProductStock" parameterType="Product">
+		update product 
+		set cumulative_regist_count = cumulative_regist_count + #{cumulativeRegistCount}
+		where product_code = #{productCode};
+	</update>
+	
+	<update id="updateDelProductStock" parameterType="Product">
+		update product 
+		set cumulative_regist_count = cumulative_regist_count - #{cumulativeRegistCount}
+		where product_code = #{productCode};
+	</update>
+	
+	<update id="updateModProductStock" parameterType="Product">
+		update product 
+		set cumulative_regist_count = #{cumulativeRegistCount}
+		where product_code = #{productCode};
 	</update>
 
 	<delete id="deleteProduct">
@@ -163,7 +188,34 @@
 		 where product_code = #{productCode}
 	</delete>
 	
+	<select id="findAll" resultMap="resProductList" resultType="SearchCriteria">
+		select *
+		from product p
+		join brand b on p.brand_code = b.brand_code
+		join category c on c.product_category_code = p.product_category_code
+		join productpost p2 on p.product_code = p2.product_code
+		where p.product_code > 0
+		<include refid="search"></include>
+		order by p.product_code desc
+		limit #{pageStart}, #{perPageNum}
+	</select>
 	
-
+	<select id="countInfoList" parameterType="SearchCriteria" resultType="int" >
+		select count(product_code) from product p
+		join brand b on p.brand_code = b.brand_code
+		join category c on c.product_category_code =p.product_category_code
+		where product_code > 0
+		<include refid="search"></include>
+	</select>
+	
+	<!-- 검색기능을 위한 동적SQL -->
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">AND p.product_code LIKE CONCAT('%',#{keyword},'%')</if>
+			<if test="searchType == 'c'.toString()">AND p.product_name LIKE CONCAT('%',#{keyword},'%')</if>
+			<if test="searchType == 'w'.toString()">AND b.brand_name LIKE CONCAT('%',#{keyword},'%')</if>
+			<if test="searchType == 'q'.toString()">AND c.category LIKE CONCAT('%',#{keyword},'%')</if>
+		</if>
+	</sql>
 
 </mapper>
