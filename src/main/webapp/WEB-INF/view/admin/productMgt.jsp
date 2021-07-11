@@ -95,8 +95,8 @@ tbody tr:nth-child(2n+1) {
 						<select name="searchType">
 							<option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제품번호</option>
 							<option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>제품명</option>
-							<option value="w"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>브랜드</option>
-							<option value="q"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>카테고리</option>
+							<option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>브랜드</option>
+							<option value="q"<c:out value="${scri.searchType eq 'q' ? 'selected' : ''}"/>>카테고리</option>
 					    </select>
 					
 					    <input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>

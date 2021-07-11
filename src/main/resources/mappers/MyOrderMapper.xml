@@ -184,6 +184,31 @@ WHERE order_code=#{orderCode};
         select count(*) 
 	from vw_myOrderData where member_id=#{memberId}   and cancel_state is true ;
     </select>
+    
+    
+    <select id="findAll" resultMap="resMyOrder" resultType="SearchCriteria">
+    	select * from vw_myOrderData 
+    	where order_code > 0
+    	<include refid="search"></include>
+    	order by order_code desc
+		limit #{pageStart}, #{perPageNum}
+    </select>
+    
+    <select id="countInfoList" parameterType="SearchCriteria" resultType="int" >
+		select count(order_code) from vw_myOrderData
+		where order_code > 0
+		<include refid="search"></include>
+	</select>
+    
+    <!-- 검색기능을 위한 동적SQL -->
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">AND buy_confirm_state LIKE CONCAT('%',#{keyword},'%')</if>
+			<if test="searchType == 'c'.toString()">AND cancel_state LIKE CONCAT('%',#{keyword},'%')</if>
+			<if test="searchType == 'w'.toString()">AND member_id LIKE CONCAT('%',#{keyword},'%')</if>
+			<if test="searchType == 'q'.toString()">AND product_name LIKE CONCAT('%',#{keyword},'%')</if>
+		</if>
+	</sql>
 	
 </mapper>
 

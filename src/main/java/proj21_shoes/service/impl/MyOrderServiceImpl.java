@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import proj21_shoes.commend.ModifyMyBuyConfirmCommend;
 import proj21_shoes.commend.MyOrderCommend;
 import proj21_shoes.commend.Pagination;
+import proj21_shoes.commend.SearchCriteria;
 import proj21_shoes.mapper.MyOrderMapper;
 import proj21_shoes.service.MyOrderService;
 @Service
@@ -64,6 +65,18 @@ public class MyOrderServiceImpl implements MyOrderService {
 	@Override
 	public int MyCancelOrderCount(String memberId) throws Exception {
 		return mapper.MyCancelOrderCount(memberId);
+	}
+
+
+	@Override
+	public List<MyOrderCommend> findAll(SearchCriteria scri) throws Exception {
+		return mapper.findAll(scri);
+	}
+
+
+	@Override
+	public int countInfoList(SearchCriteria scri) throws Exception {
+		return mapper.countInfoList(scri);
 	}
 
 }

@@ -29,6 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import net.sf.json.JSONArray;
 import proj21_shoes.commend.MemberDetailAgesCommend;
+import proj21_shoes.commend.MyOrderCommend;
 import proj21_shoes.commend.MyQnaViewCommand;
 import proj21_shoes.commend.MyReviewCommend;
 import proj21_shoes.commend.OrderCommend;
@@ -50,6 +51,7 @@ import proj21_shoes.service.EmployeeService;
 import proj21_shoes.service.GetMemberDetailListService;
 import proj21_shoes.service.ImageService;
 import proj21_shoes.service.MemberService;
+import proj21_shoes.service.MyOrderService;
 import proj21_shoes.service.MyQnaService;
 import proj21_shoes.service.MyReviewService;
 import proj21_shoes.service.NoticeService;
@@ -100,6 +102,9 @@ public class AdminController {
 	
 	@Autowired
 	private OrderService orderService;
+	
+	@Autowired
+	private MyOrderService myOrderService;
 
 	@GetMapping("/admin/adminMain") // 관리자메인 화면
 	public void AdminMain(Model model) {
@@ -152,12 +157,14 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/admin/orderMgt") // 주문관리 화면
-	public ModelAndView orderList() {
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("admin/orderMgt");
-
-		return mav;
+	public void orderList(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
+		List<MyOrderCommend> orderList = myOrderService.findAll(scri);
+		model.addAttribute("orderList", orderList);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(productService.countInfoList(scri));
+		model.addAttribute("pageMaker", pageMaker);
 	}
 
 	@RequestMapping("/admin/boardMgt") // 주문관리 화면

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import proj21_shoes.commend.ModifyMyBuyConfirmCommend;
 import proj21_shoes.commend.MyOrderCommend;
 import proj21_shoes.commend.Pagination;
+import proj21_shoes.commend.SearchCriteria;
 
 @Service
 public interface MyOrderService {
@@ -38,5 +39,10 @@ public interface MyOrderService {
 		
 		int MyCancelOrderCount(String memberId) throws Exception;
 		
-		
+	
+	// 리스트 + 검색 + 페이징
+	public List<MyOrderCommend> findAll(SearchCriteria scri) throws Exception;
+
+	// 리스트 + 검색 + 페이징 (게시물 총 개수 구하기)
+	public int countInfoList(SearchCriteria scri) throws Exception;
 }
