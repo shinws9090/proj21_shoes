@@ -126,7 +126,6 @@
 	</header>
 	<section>
 		<%-- <p>${product}</p> --%>
-${message}
 		<div class='main'>
 			<div class='main-image'>
 				<img src="${contextPath}/images/${product.productPost.productMainImage} ">
@@ -162,7 +161,7 @@ ${message}
 			<form action="${contextPath}/addOrderOne" method="post">
 			<br>
 			<div>
-				<p>색상(색상코드{스타일코드})</p>
+				<p>색상</p>
 			<select name="styleCode" class="styleCode" required>
 				<option value="">--색상 선택--</option>
 				<optgroup label="color">
@@ -171,7 +170,7 @@ ${message}
 					<c:choose>
 						<c:when test="${status.first}">
 							 <option value="${option.styleCode}" >
-								${option.color}(${option.styleCode})
+								${option.color}
 							</option>
 						</c:when>
 						<c:when test="${option.styleCode == product.orderOptions[status.index-1].styleCode}">

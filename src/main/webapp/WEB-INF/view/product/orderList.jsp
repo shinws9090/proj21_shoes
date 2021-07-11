@@ -36,7 +36,7 @@ $(function() {
 			priceAll += Number($(this).text().trim().replace(",","").replace(",",""));
 		});
 		$("#priceAll").text(String(priceAll).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-		priceHal = priceAll*0.1;
+		priceHal = priceAll*Number("${order.memberCode.gradeCode.salePrice }");
 		$("#priceHal").text(String(priceHal).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 		priceEnd = priceAll-priceHal;
 		$("#priceEnd").text(String(priceEnd).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
@@ -127,8 +127,8 @@ function newAddress() {
 	</header>
 
 	<section>
-	<%-- ${sessionMember} --%>
-		<%-- 주문코드 = ${order.orderCode } <br>
+	<%-- ${sessionMember}
+		주문코드 = ${order.orderCode } <br>
 		회원코드 = ${order.memberCode }<br>
 		주문일 = ${order.orderDate }<br>
 		결제금액 = ${order.paymentAmount }<br>

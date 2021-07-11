@@ -20,4 +20,6 @@ public interface OrderMapper {
 
 	public List<OrderCommend> orderListByMonthPay(); // 월 판매금액 차트용
 
+	void updatePaymentState(int orderCode);
+	
 }

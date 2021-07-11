@@ -331,7 +331,8 @@ ALTER TABLE sinabro.authority
 -- 등급
 CREATE TABLE sinabro.grade (
 	grade_code INT         NOT NULL COMMENT '등급코드', -- 등급코드
-	grade      VARCHAR(50) NOT NULL COMMENT '등급' -- 등급
+	grade      VARCHAR(50) NOT NULL COMMENT '등급', -- 등급
+	sale_price float	   NOT NULL COMMENT '할인율' -- 할인율
 )
 COMMENT '등급';
 

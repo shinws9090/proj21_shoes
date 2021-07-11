@@ -4,9 +4,20 @@ public class Grade {			//	등급
 	
 	private int gradeCode; 		// 	등급코드
 	private String grade; 		// 	등급
+	private float salePrice;
 	
 	
 	
+
+	
+
+	public float getSalePrice() {
+		return salePrice;
+	}
+
+	public void setSalePrice(float salePrice) {
+		this.salePrice = salePrice;
+	}
 
 	public Grade() {
 		// TODO Auto-generated constructor stub
@@ -35,7 +46,7 @@ public class Grade {			//	등급
 
 	@Override
 	public String toString() {
-		return String.format("Grade [gradeCode=%s, grade=%s]", gradeCode, grade);
+		return String.format("Grade [gradeCode=%s, grade=%s, salePrice=%s]", gradeCode, grade, salePrice);
 	}
 
 }

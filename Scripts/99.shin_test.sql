@@ -174,3 +174,13 @@ select * from reviewimage;
 INSERT INTO reviewimage 
 (board_code, image)
 VALUES(0, '');
+
+
+select m.member_code, m.member_id, m.point, m.cumulative_buy_amount, m.grade_code, m.quit_state, m.signUp_date,g.grade, g.sale_price 
+		from member as m left join grade as g on m.grade_code = g.grade_code ;
+
+select * from `order` o ;
+
+update `order` 
+set payment_state = true
+where order_code = 10001;
