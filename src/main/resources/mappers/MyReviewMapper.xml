@@ -129,4 +129,12 @@ from vw_myReview where order_code =#{orderCode};
 		</if>
 	</sql>
 	
+	<select id="detailView" parameterType="int" resultMap="resReview">
+		select * from vw_myReview where board_code = #{boardCode}
+	</select>
+	
+	<delete id="deleteReview">
+		delete from review where board_code = #{boardCode}
+	</delete>
+	
 </mapper>

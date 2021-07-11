@@ -300,3 +300,9 @@ select n.*, e.*,
 select (select min(m.board_code) from notice m where m.board_code > n.board_code) as next_code,
 		(select max(m.board_code) from notice m where n.board_code > m.board_code) as prev_code
 		from notice n where n.board_code = 2;
+		
+select * from vw_myqna vm;
+
+select * from qna q;
+
+insert into qna values (3, 111113, 33333, "문의사항입니다.", "추천해주세요.", "", now());

@@ -722,6 +722,14 @@ public class AdminController {
 
 		return "redirect:/admin/board/qna";
 	}
+	
+	@GetMapping("/admin/board/qnaDel")
+	public String getQnaeBoardDel(@RequestParam(value = "boardCode") int boardCode) {
+		myQnaService.deleteQna(boardCode);
+		System.out.println("문의사항 삭제");
+		
+		return "redirect:/admin/board/qna/?page=1&perPageNum=10";
+	}
 
 	@GetMapping("/admin/board/review")
 	public void reviewBoardList(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
@@ -733,5 +741,19 @@ public class AdminController {
 		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(myQnaService.countInfoList(scri));
 		model.addAttribute("pageMaker", pageMaker);
+	}
+	
+	@GetMapping("/admin/board/reviewDetail")
+	public void reviewDetail(Model model, @RequestParam(value = "boardCode") int boardCode) throws Exception {
+		MyReviewCommend reviewView = myReviewService.detailView(boardCode);
+		model.addAttribute("reviewView", reviewView);
+	}
+	
+	@GetMapping("/admin/board/reviewDel")
+	public String getReviewBoardDel(@RequestParam(value = "boardCode") int boardCode) {
+		myReviewService.deleteReview(boardCode);
+		System.out.println("리뷰 삭제");
+		
+		return "redirect:/admin/board/review/?page=1&perPageNum=10";
 	}
 }

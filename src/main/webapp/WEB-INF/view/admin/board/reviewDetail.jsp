@@ -13,15 +13,10 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 $(function(){
-
-	$('#mod_btn').on("click", function(e) {
-		location.href="${contextPath}/admin/board/qnaMod?boardCode=" + ${qnaView.boardCode};
-	});
-	
 	$('#del_btn').on("click", function(e) {
 		if(!confirm("정말 삭제하시겠습니까?")) {
 		} else {			
-			location.href="${contextPath}/admin/board/qnaDel?boardCode=" + ${qnaView.boardCode}
+			location.href="${contextPath}/admin/board/reviewDel?boardCode=" + ${reviewView.boardCode}
 		}		
 	});
 	
@@ -34,33 +29,33 @@ h1.mt-4 {
     margin-right: 200px;
     margin-bottom: 20px;
 }
-.qnaDetailView {
+.reviewDetailView {
 	margin-left: 230px;
     width: 1000px;
     padding-top: 10px;
     border-top: 1px solid;
 }
 
-.qnaReply {
+.reviewReply {
 	display: inline-block;
     width: 50%;
     text-align: right;
     padding-top: 15px;
 }
 
-.qnaTitle {
+.reviewTitle {
     display: inline-block;
     padding: 10px;
 }
 
-.qnaDate {
+.reviewDate {
     display: inline-block;
     float: right;
     margin-right: 30px;
     padding: 10px;
 }
 
-.qnaContet {
+.reviewContet {
     min-height: 400px;
     border-bottom: 1px solid;
     border-top: 1px solid lightgray;
@@ -68,7 +63,7 @@ h1.mt-4 {
     margin-top: 10px;
 }
 
-.qna_btn {
+.review_btn {
 	display: inline-block;
     width: 45%;
     text-align: right;
@@ -90,44 +85,35 @@ h1.mt-4 {
 			<jsp:include page="/WEB-INF/view/admin/include/boardMenu.jsp" />
 				<!-- Page content-->
 		        <div class="container-fluid">
-		        	<h1 class="mt-4">문의게시판</h1>
+		        	<h1 class="mt-4">후기게시판</h1>
 	        		
-	        		<div class="qnaDetailView">
+	        		<div class="reviewDetailView">
 		        		
-		        		<div class="qnaTitle">
-		        			<h3>${qnaView.title } </h3>
-		        			
-		        			<a href="${contextPath}//admin/productMgt?page=1&perPageNum=10&searchType=t&keyword=${qnaView.productCode}">상품명 : ${qnaView.productName } </a>
-		        			
+		        		<div class="reviewTitle">
+		        			<h3>${reviewView.title } </h3>
+		        			<a href="${contextPath}//admin/productMgt?page=1&perPageNum=10&searchType=t&keyword=${reviewView.productCode}">상품명 : ${reviewView.productName } </a>
 		        		</div>
 		        		
-		        		<div class="qnaDate">
-		        			등록일자 : ${qnaView.registDate }
+		        		<div class="reviewDate">
+		        			등록일자 : ${reviewView.registDate }
 		        			<br>
-		        			회원아이디 : ${qnaView.memberId }
+		        			회원아이디 : ${reviewView.memberId }
 		        		</div>
 		        
-		        		<div class="qnaContet">
-		        			<c:if test="${qnaView.productCode != 0}">
-		        			<a href="${contextPath}//admin/productMgt?page=1&perPageNum=10&searchType=t&keyword=${qnaView.productCode}"><img src="${contextPath}/images/${qnaView.productMainImage}" width="200"></a>
-		        			</c:if>
+		        		<div class="reviewContet">
+		        			<a href="${contextPath}//admin/productMgt?page=1&perPageNum=10&searchType=t&keyword=${reviewView.productCode}"><img src="${contextPath}/images/${reviewView.productMainImage}" width="200"></a>
 		        			<br>
-		        			${qnaView.content }
-		        			<br>
-		        			<br>
-		        			<h4>답변 : ${qnaView.reply }</h4>
+		        			${reviewView.content }
 		        		</div>
 		        		
-		        		<div class="qnaReply">
+		        		<div class="reviewReply">
 		        		
 		        		<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-							<a href="${contextPath}/admin/board/qna/?page=1&perPageNum=10">[목록]</a>
+							<a href="${contextPath}/admin/board/review/?page=1&perPageNum=10">[목록]</a>
 					    </c:forEach>
 			        	</div>
 		        		
-		        		<div class="qna_btn">
-		        			<h4>${qnaView.resOX }</h4>
-		        			<button type="button" id="mod_btn">답변작성</button>
+		        		<div class="review_btn">
 		        			<button type="button" id="del_btn">삭제</button>
 			        	</div>
 	        		</div>

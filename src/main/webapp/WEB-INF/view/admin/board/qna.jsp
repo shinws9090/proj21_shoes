@@ -13,16 +13,49 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <style>
 
+h1.mt-4 {
+    display: inline-block;
+     padding: 0 15px 15px 15px;
+}
+
+.search {
+    display: inline-block;
+}
+
 td {
     padding: 5px 5px;
 }
 
-ul.pageNum {
-    width: 80%;
-    text-align: center;
+td.td1 {
+    width: 8%;
 }
 
-.search {
+td.td2 {
+    width: 8%;
+}
+
+td.td3 {
+    width: 15%;
+}
+
+td.td4 {
+    width: 40%;
+}
+
+td.td5 {
+    width: 8%;
+}
+
+td.td6 {
+    width: 8%;
+}
+
+td.td7 {
+    width: 8%;
+}
+
+
+ul.pageNum {
     width: 80%;
     text-align: center;
 }
@@ -46,22 +79,50 @@ ul.pageNum {
 		        <!-- Page content-->
 		        <div class="container-fluid">
 					<h1 class="mt-4">문의게시판</h1>
+					
+					<div class="search">
+					    <select name="searchTypeN">
+					      <option value="s"<c:out value="${scri.searchType eq 'n' ? 'selected' : ''}"/>>전체</option>
+					      <option value="n"<c:out value="${scri.searchType eq 'n' ? 'selected' : ''}"/>>답변준비중</option>
+					      <option value="nn"<c:out value="${scri.searchType eq 'nn' ? 'selected' : ''}"/>>답변완료</option>
+					    </select>
+					
+					    <input type="hidden" name="keywordN" id="keywordInputN" value="${scri.keyword}"/>
+ 						<button id="searchBtnN" type="button">검색</button>
+ 						
+					    <script type="text/javascript">
+					      $(function(){
+					        $('#searchBtnN').click(function() {
+					          self.location = '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+					        });
+					      });   
+					    </script>
+					</div>
 					<div style="height: 400px">
 						<table style="width: 90%; text-align: center;">				
 							<tr style="background-color: lightgrey; text-align: center">
-								<td>문의번호</td>
-								<td>문의상품코드</td>
-								<td>문의상품명</td>
-								<td>제목</td>						
-								<td>아이디</td>
-								<td>작성일</td>
-								<td>답변유무</td>		
+								<td class="td1">문의번호</td>
+								<td class="td2">문의상품코드</td>
+								<td class="td3">문의상품명</td>
+								<td class="td4">제목</td>						
+								<td class="td5">아이디</td>
+								<td class="td6">작성일</td>
+								<td class="td7">답변유무</td>		
 							</tr>
 							<tr>
 								<c:forEach items="${qnaList}" var="qnaList">
 								<tr>
 									<td>${qnaList.boardCode}</td>
-									<td>${qnaList.productCode}</td>
+									
+									<c:choose>
+										<c:when test="${qnaList.productCode != 0}">
+											<td>${qnaList.productCode}</td>
+										</c:when>
+										<c:otherwise>
+											<td>일반문의</td>
+										</c:otherwise>
+									</c:choose>										
+									
 									<td>${qnaList.productName}</td>
 									<td><a href="${contextPath}/admin/board/qnaDetail?boardCode=${qnaList.boardCode}"><c:out value="${qnaList.title}" /></a></td>
 									<td>${qnaList.memberId}</td>
@@ -95,25 +156,7 @@ ul.pageNum {
 						    </c:if>
 						</ul>
 						
-						<div class="search">
-						    <select name="searchTypeN">
-						      <option value="s"<c:out value="${scri.searchType eq 'n' ? 'selected' : ''}"/>>전체</option>
-						      <option value="n"<c:out value="${scri.searchType eq 'n' ? 'selected' : ''}"/>>답변준비중</option>
-						      <option value="nn"<c:out value="${scri.searchType eq 'nn' ? 'selected' : ''}"/>>답변완료</option>
-						    </select>
 						
-						    <input type="hidden" name="keywordN" id="keywordInputN" value="${scri.keyword}"/>
-						
-						    <button id="searchBtnN" type="button">검색</button>
-						    
-						    <script  type="text/javascript">
-						      $(function(){
-						        $('#searchBtnN').click(function() {
-						          self.location = '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
-						        });
-						      });   
-						    </script>
-						</div>						
 					</div>
 		        </div>		        
 		    </div>		    

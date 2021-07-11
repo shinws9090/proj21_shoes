@@ -66,4 +66,14 @@ public class MyReviewServiceImpl implements MyReviewService {
 		return mapper.countInfoList(scri);
 	}
 
+	@Override
+	public MyReviewCommend detailView(int boardCode) throws Exception {
+		return mapper.detailView(boardCode);
+	}
+
+	@Override
+	public int deleteReview(int boardCode) {
+		return mapper.deleteReview(boardCode);
+	}
+
 }
