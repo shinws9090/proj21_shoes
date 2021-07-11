@@ -14,6 +14,19 @@
 <script type="text/javascript">
 	
 </script>
+
+<style>
+
+form#paymentStateForm {
+    display: inline-block;
+}
+
+form#deliveryCodeForm {
+    display: inline-block;
+}
+
+
+</style>
 </head>
 <body class="main-layout">
 	<!-- header -->
@@ -33,7 +46,7 @@
 		        <!-- Page content-->
 		        <div class="container-fluid">
 		        	<div><h1 class="mt-4">주문 목록</h1></div>
-		        	${orderList}		        	
+		        	${orderList}
 					<div class="search">
 						<select name="searchType">
 							<option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>구매확정여부</option>
@@ -82,7 +95,7 @@
 								<td>주문수량</td>
 							 	<td>주문일</td>
 							 	<td>결제여부</td>
-							 	<td>배송상태</td>
+							 	<td>송장번호</td>
 							 	<td>구매확정여부</td>
 							</tr>
 						<thead>
@@ -95,27 +108,76 @@
 								<td>${orderList.paymentAmount}</td>			
 								<td>${orderList.orderCount}</td>
 								<td>${orderList.orderDate}</td>
-								<c:choose>
-									<c:when test="${empty orderList.payOX && orderList.cancelState == false}">
-										<td>입금확인중<br><a href="${contextPath}/myOrderCancel/${myOrderList.orderCode}/${member.memberId}">[주문취소하기]</a></td>
-									</c:when>
-									<c:when test="${!empty orderList.payOX && orderList.buyConfirmState == false}">
-										<td>입금완료<br><a href="${contextPath}/myOrderCancel/${myOrderList.orderCode}/${member.memberId}">[주문취소하기]</a></td>
-									</c:when>
-									<c:otherwise>
-										<td>입금완료</td>
-									</c:otherwise>
-								</c:choose>								
-								<td>
-									<select name="deliveryCode" class="deliveryCode">
-										<option selected="selected" value="1">배송준비</option>
-										<option value="2">배송중</option>
-										<option value="3">배송완료</option>
-									</select>
-									<input type="text" value="송장번호 입력">
-									<input type="button" id="delivery_btn" onclick="summit1()" value="변경">
+									<c:choose>
+											<c:when test="${empty orderList.payOX && orderList.buyConfirmState == false}">
+												<td>
+													<div>입금확인중</div>
+													<form id="paymentStateForm" name="paymentStateForm" method="post" autocomplete="off">
+														<select name="paymentState" class="paymentState">
+															<option selected="selected" value="1">입금완료</option>
+															<option value="2">배송준비</option>
+															<option value="3">배송중</option>
+															<option value="4">배송완료</option>
+														</select>
+													</form>
+													<input type="button" name="paymentState" onclick="summit()" value="변경">
+													<br><br>
+													<input type="button" name="paymentState" onclick="cancel()" value="주문취소">
+												</td>
+												<%-- <a href="${contextPath}/myOrderCancel/${myOrderList.orderCode}/${member.memberId}">[주문취소하기]</a> --%>
+											</c:when>
+											<c:when test="${!empty orderList.payOX && orderList.buyConfirmState == false}">
+												<td>
+													<div>입금완료</div>
+													<select name="paymentState" class="paymentState">
+														<option selected="selected" value="2">배송준비</option>
+														<option value="3">배송중</option>
+														<option value="4">배송완료</option>
+													</select>
+													
+													<input type="button" name="paymentState" onclick="summit()" value="변경">
+													<br><br>
+													<input type="button" name="paymentState" onclick="cancel()" value="주문취소">
+												</td>
+											</c:when>
+											<c:otherwise>
+												<td>
+													<div>입금완료</div>
+													<select name="paymentState" class="paymentState">
+															<option selected="selected" value="1">배송준비</option>
+															<option value="2">배송중</option>
+															<option value="3">배송완료</option>
+													</select>
+												</td>
+											</c:otherwise>
+										</c:choose>	
+								<td>									
+									<c:choose>
+										<c:when test="${orderList.paymentState == true && (orderList.deliveryCode eq '' || orderList.deliveryCode eq null)}">
+											<form id="deliveryCodeForm" name="deliveryCodeForm" method="post" autocomplete="off">
+												<input type="text" placeholder="송장번호 입력" value="">
+											</form>
+											<input type="button" id="delivery_btn" onclick="summit1()" value="등록">
+										</c:when>
+										<c:when test="${  orderList.paymentState == true && (orderList.deliveryCode ne '' || orderList.deliveryCode ne null)}">
+											<div>${orderList.deliveryCode}</div>
+										</c:when>										
+										<c:otherwise>
+											<input type="text" value="" disabled='disabled'>
+											<input type="button" id="disPaymentState_btn" value="등록" disabled='disabled'>
+										</c:otherwise>
+									</c:choose>
 								</td>
-								<td>${orderList.buyConfirmState}</td>
+								<td>
+									<c:choose>
+										<c:when test="${orderList.buyConfirmState == false && orderList.paymentState == true}">
+											<input type="button" id="paymentState_btn" onclick="summit2()" value="구매확정">
+										</c:when>
+										<c:otherwise>
+											<input type="button" id="disPaymentState_btn" value="구매확정" disabled='disabled'>
+										</c:otherwise>
+									</c:choose>
+								</td>
 							</tr>
 							</c:forEach>
 						</tbody>
