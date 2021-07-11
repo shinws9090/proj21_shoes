@@ -80,11 +80,11 @@ insert into orderoption values
 
 -- 등급, 회원상세정보, 회원정보
 insert into grade values
-	(1,'FAMILY'),
-	(2,'SILVER'),
-	(3,'GOLD'),
-	(4,'VIP'),
-	(5,'VVIP');
+	(1,'FAMILY',0.01),
+	(2,'SILVER',0.02),
+	(3,'GOLD',0.03),
+	(4,'VIP',0.05),
+	(5,'VVIP',0.1);
 
 
 insert into memberdetail values

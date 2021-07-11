@@ -89,6 +89,7 @@ public class OrderController {
 		for(Cart c : cartList) {
 			productList.add(pService.productByCode(c.getProductCode()));
 		}
+		System.out.println("?????"+order);
 		ModelAndView mav = new ModelAndView("product/orderList","productList",productList);
 		session.setAttribute("order",order);
 		return mav;
