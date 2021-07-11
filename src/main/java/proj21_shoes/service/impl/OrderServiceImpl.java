@@ -49,6 +49,7 @@ public class OrderServiceImpl implements OrderService {
 		member.setCumulativeBuyAmount(member.getCumulativeBuyAmount()+order.getPaymentAmount());
 		
 		mapper.updateMemberPoint(member);
+		mapper.updatePaymentState(order.getOrderCode());
 		
 		return res;
 	}
@@ -57,5 +58,6 @@ public class OrderServiceImpl implements OrderService {
 	public List<OrderCommend> orderListByMonthPay() {
 		return mapper.orderListByMonthPay();
 	}
+
 
 }

@@ -48,6 +48,10 @@
 		where member_code = #{memberCode}
 	</update>
 	
+	<update id="updatePaymentState">
+		update `order` set payment_state = true
+		where order_code = #{orderCode}
+	</update>
 	
 	<resultMap type="OrderCommend" id="resOrderList">
 		<id property="orderDate" column="order_date_month"/>

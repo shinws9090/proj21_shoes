@@ -16,5 +16,7 @@ public interface OrderMapper {
 	void updateMemberPoint(Member member);
 	
 	public List<OrderCommend> orderListByMonthPay();
+
+	void updatePaymentState(int orderCode);
 	
 }

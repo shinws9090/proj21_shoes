@@ -1,8 +1,11 @@
 package proj21_shoes.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +41,7 @@ public class CartlController {
 	AuthService aService;
 
 	@GetMapping("/cartList")
-	public ModelAndView cartList(HttpSession session) {
+	public ModelAndView cartList(HttpSession session,HttpServletResponse response) throws IOException {
 		//테스트용
 //		Member member = new Member();
 //		member.setMemberCode(111111);
@@ -52,7 +55,15 @@ public class CartlController {
 //		for(Cart c : cartList) {
 //			productList.add(pService.productByCode(c.getProductCode()));
 //		}
-		
+		if(cartList.size()==0) {
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('장바구니에 물품이 없습니다.')");
+			out.println("history.back()");
+			out.println("</script>");
+			return null;
+		}
 		List<Product> productList = pService.productListByCode(cartList);
 		System.out.println(productList);
 		ModelAndView mav = new ModelAndView("product/cartList");
