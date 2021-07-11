@@ -121,13 +121,26 @@ h1.mt-4 {
 		        		<div class="qnaReply">
 		        		
 		        		<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-							<a href="${contextPath}/admin/board/qna/?page=1&perPageNum=10">[목록]</a>
+							<c:choose>
+								<c:when test="${param.resOX eq '답변준비중'}">
+									<a href="${contextPath}/admin/board/qna/?page=1&perPageNum=10&searchType=n">[목록]</a>
+								</c:when>
+								<c:otherwise>
+									<a href="${contextPath}/admin/board/qna/?page=1&perPageNum=10">[목록]</a>
+								</c:otherwise>								
+							</c:choose>
 					    </c:forEach>
 			        	</div>
-		        		
 		        		<div class="qna_btn">
 		        			<h4>${qnaView.resOX }</h4>
-		        			<button type="button" id="mod_btn">답변작성</button>
+		        			<c:choose>
+		        				<c:when test="${qnaView.resOX eq '답변준비중'}">
+		        					<button type="button" id="mod_btn">답변작성</button>
+		        				</c:when>
+		        				<c:otherwise>
+		        					<button type="button" id="mod_btn">답변수정</button>
+		        				</c:otherwise>
+		        			</c:choose>
 		        			<button type="button" id="del_btn">삭제</button>
 			        	</div>
 	        		</div>

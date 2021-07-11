@@ -86,7 +86,7 @@ td.qna_subject {
 					 		</tr>							
 						</table>
 						<div class="qna_btn">
-						<button type="submit" id="new">수정</button>
+						<button type="submit" id="new">완료</button>
 						<button type="button" id="cancel">취소</button>
 						</div>
 					</form>

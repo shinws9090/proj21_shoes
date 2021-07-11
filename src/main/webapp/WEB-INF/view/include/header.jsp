@@ -19,7 +19,7 @@
 				<p>로그인해주세요.</p> 
 				<p>
 				<li><a href="${contextPath}/register/step1">회원가입</a></li>
-				<li><a href="${contextPath}/login/loginForm">로그인</a></li>			
+				<li><a href="${contextPath}/login/loginForm">로그인</a></li>
 			</c:if>
 			
 			<!-- 회원 로그인 했을 때 보여지는 메뉴 -->

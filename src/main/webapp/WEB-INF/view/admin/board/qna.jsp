@@ -124,7 +124,7 @@ ul.pageNum {
 									</c:choose>										
 									
 									<td>${qnaList.productName}</td>
-									<td><a href="${contextPath}/admin/board/qnaDetail?boardCode=${qnaList.boardCode}"><c:out value="${qnaList.title}" /></a></td>
+									<td><a href="${contextPath}/admin/board/qnaDetail?resOX=${qnaList.resOX}&boardCode=${qnaList.boardCode}"><c:out value="${qnaList.title}" /></a></td>
 									<td>${qnaList.memberId}</td>
 									<td>${qnaList.registDate}</td>
 									<td>${qnaList.resOX}</td>

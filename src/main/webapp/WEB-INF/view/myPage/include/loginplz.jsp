@@ -28,10 +28,18 @@
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<style>
+footer {
+    margin-top: 750px;
+}
 
+section#maPage {
+    margin-top: 200px;
+}
+</style>
 </head>
 <body class="main-layout">
-		<div id="myPage" style="margin-left:50%;">
+		<div id="myPage" style="margin-left:47%; ">
 	<section id = "maPage">
 	<c:if test="${empty authInfo}"> 
 				<div>
