@@ -41,7 +41,7 @@
 	<h1>회원가입</h1>
 
 			<article id="agree_content">
-			<fieldset style="border:  2px solid ;">
+			<fieldset style="border:  1px solid ;">
 			<p >
 			<br>	<b><a style="margin-left: 45%"><이용약관></a></b>
 			<br><br>
@@ -74,19 +74,19 @@
 			<form action="step2" method="post">
 			<div id="remember" style="font-size: 13px; margin-right: 75%; margin-top: 5px; margin-bottom: 5px;" >
 				<label> 
-					<input type="checkbox" name="agree" value="true"><!-- 동의 -->
+					<input type="checkbox" name="agree" value="true"  checked style="width:12px;height:12px;border:1px;  margin-bottom: 10px;"><!-- 동의 -->
 				
-					 <spring:message code="term.agree" /> 
+				이용약관에 동의합니다.
 				</label>
 			</div>
 				
 			
 			
-			<button type="button,submit"  class="btn btn-secondary btn-lg "  style="width: 49%; font-size: 15px; float:right">다음단계</button>
+			<button type="button,submit"  class="btn btn-secondary btn-lg "  style="width: 49%; font-size: 15px; float:right;">다음단계 〉</button>
 				<%--  <input type="submit" value="<spring:message code="next.btn"/>" /><!--다음단계  --> --%>
 			</form>
 			<form action="${contextPath}/index" method="get">
-			<button type="button,submit"  class="btn btn-secondary btn-lg bottomBtn" id="cancel" style="width: 49%; font-size: 15px;">취소(메인으로)</button>
+			<button type="button,submit"  class="btn btn-secondary btn-lg bottomBtn" id="cancel" style="width: 49%; font-size: 15px;">〈 취소</button>
 			</form>
 			
 			</div>

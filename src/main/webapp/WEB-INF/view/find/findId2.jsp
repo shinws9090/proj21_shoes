@@ -7,8 +7,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="<%=request.getContextPath() %>" />
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +18,7 @@
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<title>로그인</title>
+<title>아이디 찾기</title>
 <!-- bootstrap -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
 		integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
@@ -26,13 +26,16 @@
 <link href="${contextPath}/css/buttons.css" rel="stylesheet">
 <link rel="stylesheet" href="${contextPath}/css/reset.css">
 <!-- bootstrap end -->	
+
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberBootstrap.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+</style>
 
 </head>
 <body class="main-layout">
@@ -42,51 +45,52 @@
 	</header>
 	<!-- end header -->
 	
-	<div id="loginForm" style="
-	margin-bottom: 10px; 
-	margin-top: 20px;
-	
-	
-	">
+		<div id="loginForm" style="
+		margin-bottom: 10px;
+		margin-top: 20px;
+		">
+		
+		
 	<section id = "loginForm" >
-		<form:form action="adminLoginSuccess" modelAttribute="adminLoginCommend" >
-		<form:errors style="color:red; "/>
-	 
-	 	<section id="login_input" >
-	<b><h1>관리자로그인</h1></b><!-- 회원가입 -->
-					<label style=" margin-top:5px;  margin-bottom: 10px;">
-						<form:input path="empId" placeholder="관리자아이디" size="34px;"/> 
-						
-						<form:errors path="empId"  style="color:red; "/>
+		<form:form action="/findId" modelAttribute="memberDetail">
+		<form:errors style="color:red; text-align: center;"/>
+		
+<section id="login_input" >
+		<b><h1>아이디 찾기</h1></b><!-- 회원가입 -->
+		
+				
+					<label for = "memberName" style=" margin-top:5px;  margin-bottom: 10px;  " >
+						<form:input path="memberName" placeholder="회원명" /> 
+						<form:errors path="memberName" />
 					</label>
-
-					<label style=""> 
-						<form:password path="empPwd" placeholder="비밀번호" size="34px;" /> 
-						<form:errors path="empPwd" style="color:red;" />
-					</label>
-					<div id="remember" style="font-size: 13px; margin-right: 75%; margin-top: 5px; margin-bottom: 5px;" >
-					<label>
-						<a>ID저장</a><form:checkbox path="rememberId"   /> 
-					 
-					 </label>
-		</div>
-			<button type="button,submit"  class="btn btn-secondary btn-lg"  style="width: 100%; font-size: 15px;">로그인</button>
+		
+			
+			
+			<label for="email" style="margin-bottom: 10px; ">
+			<form:input type="email" path="email" id="email" placeholder="이메일" />  
+			<form:errors path="email" />
+			</label>
+			
+		
+		
+		<article class="btnSearch">
 	
-		<table>
-		<article id = "findForm" >
 		
-			<%-- <a href="${contextPath}/find/findId">아이디 찾기</a> <a> | </a>		
-			<a href="${contextPath}/find/findPw">비밀번호 찾기</a>
-			<a> | </a>		
-			<a href="${contextPath}/adminLogin">관리자 로그인</a> --%>
+		<button type="button,submit" value="조회하기" class="btn btn-secondary btn-lg"  style="width: 100%; font-size: 15px; margin-bottom: 10px;">조회하기</button>
 		
+		<a href="${contextPath}/login/loginForm">로그인</a><a> | </a>
+		<a href="${contextPath}/find/findPw">비밀번호 찾기</a>
+	
 		</article>
-		</table>
-</section>
+		
+		</section>
+		
+		
 	</form:form> 
 
 	</section>
 </div>
+
 
 
 	<!-- end our product -->

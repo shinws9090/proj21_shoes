@@ -102,6 +102,7 @@
 }
 .btn2{
 	margin-left: 30%;
+
 }
 /* #insertForm td_right{
 	 margin-left: 100px; 
@@ -109,15 +110,66 @@
 } */
 #insertForm{
 	padding-top:30px;
-	margin-left: 10%;
+	margin-left: 15%;
 	margin-right: 10%;
+	font: 0.75em Verdana,Dotum,AppleGothic,sans-serif;
+	
 }
+#myPageForm{
+	padding-top:0px;
+	margin-left: 20%;
+	margin-right: 20%;
+	 font: 0.75em Verdana,Dotum,AppleGothic,sans-serif;
+	 padding-bottom:20px;
+	 margin-bottom: 20px;
+	 border-bottom: 1px solid #c0c0c0; 
+	 width:65%; 
+}
+
+#myPageForm td{
+		width:  100px;
+	padding-bottom: 5px; 
+	 /* padding-left: 20px;  */
+/* 	padding-right: 20px; */
+	margin-left: 20%;
+	margin-right: 20%;
+	margin: auto;
+ 	margin-top: 10px;
+/* 	border: 2px solid #dcdcdc; */
+/* box-shadow: 2px 5px 20px #c0c0c0; */
+/*     border-radius: 15px; */
+/*     background-color:#e2e2e2a3; */
+     margin-top:5px;  
+     margin-bottom: 10px;
+	
+}
+th {
+ border: 0;
+ /* padding-right: 1px; */
+ text-align: left;
+}
+td{
+	
+}
+
+
+
+#gender{
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+
+}
+
 .step2 h2{
-	margin-left: 5px;
-	margin-right:5px;
-	border-bottom: 3px solid #c0c0c0 ;
-	padding-bottom: 10px;
+	margin-left: 15%;
+	margin-right:15px;
+ 	border-bottom: 1px solid #c0c0c0; width:80%;
+	padding-bottom: 20px;
+	width: 75%;
 }
+
 .step2 p {
 	margin: 10px;
 
@@ -291,16 +343,18 @@ margin-bottom: 20px;
 #modifyForm #modifyForm {     /* 동명 div 안의 section 안의   fieldset id 설정*/
 	margin-top:100px;
 	width:  300px;
-	padding-top: 20px;
+/* 	padding-top: 20px; */
 	padding-bottom: 20px;
 	padding-left: 20px;
 	padding-right: 20px;
 	margin-left: 30%;
 	margin-right: 20%;
-	margin: auto;
+/* 	margin: auto; */
 	
 }
-
+#td_right input{
+	size: 100;
+}
 
 
 
@@ -429,14 +483,15 @@ section#pageList{
 
 #modify_form{
 	
- 	 margin-left:40%; 
+ 	 margin-left:30%; 
 /*  	text-align: center;  */
- 	padding-top: 10px;
- 	margin-top: 150px;
+ 	padding-top: 5px;
+/*  	margin-top: 150px; */
 	margin-bottom: 50px;
-		padding-top:30px;
+/* 		padding-top:30px; */
+		
 
-	margin-right: 10%;
+	margin-right: 30%;
 }
 #modify_form #modifyForm {     /* 동명 div 안의 section 안의   fieldset id 설정*/
 
@@ -444,7 +499,7 @@ section#pageList{
 	padding-bottom: 20px;
 	padding-left: 20px;
 	padding-right: 20px;
-	margin-left: 20%;
+	margin-left: 30%;
 	margin-right: 20%;
 	margin: auto;
 	
@@ -454,10 +509,10 @@ section#pageList{
 /* 테스트 */
 
 #loginForm{
-    font-family: "돋움",Dotum;
+/*     font-family: "돋움",Dotum; */
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 500;
-
+	font-size:0.9em;
      text-align: center;
      margin-top:150px;
 	margin-bottom: 200px;
@@ -466,7 +521,7 @@ section#pageList{
 h1{
 	text-align: center;
 	 display: block;
-  font-size: 1em;
+  font-size: 1.5em; /* h1글자크기 이상할떄 */
   margin-top: 0.67em;
   margin-bottom: 0.67em;
   margin-left: 0;
@@ -478,3 +533,54 @@ h1{
 form:errors{
 	text-align: center;
 }
+
+/* 로그인창 간격 */
+/* section {
+    padding-top: 0; 
+}
+#loginForm section {
+    padding-top: 0; 
+} */
+
+
+#modifyForm td,th{
+
+	padding-bottom: 5px; 
+	 /* padding-left: 20px;  */
+/* 	padding-right: 20px; */
+/* 	margin-left: 20%;
+	margin-right: 20%; */
+	margin: auto;
+ 	margin-top: 10px;
+/* 	border: 2px solid #dcdcdc; */
+/* box-shadow: 2px 5px 20px #c0c0c0; */
+/*     border-radius: 15px; */
+/*     background-color:#e2e2e2a3; */
+     margin-top:5px;  
+     margin-bottom: 10px;
+	width:250px;
+	    max-height: 100%;
+    max-width: 60%; 
+    vertical-align: middle;
+    border-bottom: 1px solid #dcdcdc;
+    border-top: 1px solid #dcdcdc;
+	padding:5px;
+}
+#modifyForm {
+     box-sizing: inherit; 
+}
+
+#modifyForm label{
+	width:100%;
+}
+
+#modifyForm input{
+		width:100%;
+}
+
+/* .modify_table td, .modify_table th {
+    max-height: 100%;
+    max-width: 150px;
+    vertical-align: middle;
+    border: 1px solid #dcdcdc;
+} */

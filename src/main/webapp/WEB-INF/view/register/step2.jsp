@@ -19,8 +19,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>회원가입</title>
+<!-- mobile metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<title>마이페이지</title>
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
+		integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
+		crossorigin="anonymous">
+<link href="${contextPath}/css/buttons.css" rel="stylesheet">
+<link rel="stylesheet" href="${contextPath}/css/reset.css">
+<!-- bootstrap end -->	
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberBootstrap.css">
+
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -99,13 +112,13 @@
 	<article id="title_h2">
 		<h2>회원가입</h2> 
 	</article>
-		<div id="insertForm">
+		<div id="insertForm" style="font: 0.75em Verdana,Dotum,AppleGothic,sans-serif;">
 		<form:form action="step3" modelAttribute="registerRequest">
 		<form:errors/>
-		<table id ="insertTable">
+		<table id ="insertTable"  >
 		<tr>
-			<td><p>회원 아이디: </p></td>
-			<td id="td_right">
+			<td><p>아이디 * </p></td>
+			<td>
 				<label> 
 				<form:input  type="text" path="memberId" placeholder="아이디" id="member_id" />  
 				<form:errors path="memberId" />		
@@ -114,8 +127,8 @@
 			</td>
 		
 		<tr>
-		<td><p>회원 비밀번호:</p></td>
-			<td id="td_right">
+		<td><p>비밀번호 *</p></td>
+			<td >
 				<label for="memberPwd"> 
 				<form:password  path="memberPwd" placeholder="비밀번호" id="member_pwd" />  
 				<form:errors path="memberPwd" />
@@ -124,8 +137,8 @@
 		</tr>
 		<tr>
 		<td>
-		<p>비밀번호 확인: </p></td>
-		<td id="td_right">
+		<p>비밀번호 확인 * </p></td>
+		<td >
 			<label>
 			<form:password id="confirmPassword" path="confirmPassword" placeholder="비밀번호 확인" />  
 			<form:errors path="confirmPassword" />
@@ -133,46 +146,37 @@
 			</td>
 		
 		<tr>
-		<td><p>회원 이름:</p> </td>
-		<td id="td_right">
+		<td><p>이름 *</p> </td>
+		<td >
 			<label for="memberName">
 			<form:input path="memberName" placeholder="이름" id="member_name" />  
 			<form:errors path="memberName" />
 			</label>
 		</td>
-		
-	<%-- 	 <p>
-	
-			<label for="gender">성별
-			<form:input type="radio" path="gender"  name="gender" value="true" />남
-			<form:input type="radio" path="gender"  name="gender" value="false"/>여
-			<form:errors path="gender"/>
-			</label>
-		</p> 
- --%>
- 		<tr>
+
+ 	<tr>
  		<td>
- 		<p>성별:</p></td>
-	<td id="td_right">
-	<label for="gender">	  
-		 <input type="radio"  id="gender" name="gender" value="false" checked>남 
-		 <input type="radio" id="gender" name="gender" value="true" checked>여
-	</label>
-	</td>
+ 		<p>성별 *</p></td>
+		<td  style="padding-right: 500px;">
+			<label for="gender" >			  
+				<input type="radio"  id="gender" name="gender" value="false" checked style="width:12px;height:12px;border:1px;">남 			 
+				<input type="radio" id="gender" name="gender" value="true" checked  style="width:12px;height:12px;border:1px;" >여
+			</label>
+		</td>
 	</tr>
 		<tr>
 		<td>
-		<p>회원 생일: </p></td>
-		<td id="td_right">
+		<p>생년월일 * </p></td>
+		<td >
 			<label for="birthday">
-			<form:input path="birthday" type="date" id="birthday" placeholder="하이폰(-) 없이 입력해주세요" />  
+			<form:input path="birthday" type="date" id="birthday" placeholder="" />  
 			<form:errors path="birthday" />
 			</label>
 		</td>
 		</tr>
 		<tr>
-		<td><p>이메일: </p></td>
-		<td id="td_right">
+		<td><p>이메일 * </p></td>
+		<td>
 			<label for="email">
 			<form:input type="email" path="email" id="email" placeholder="이메일주소" />  
 			<form:errors path="email" />
@@ -182,18 +186,18 @@
 		<tr>
 		<tr>
 		<td>
-			<p>연락처:</p></td>
-			<td id="td_right"> 
+			<p>연락처 *</p></td>
+			<td > 
 			<label for="tel">
-			<form:input type="tel" path="tel" id="tel" placeholder="하이폰(-) 없이 입력해주세요 " />  
+			<form:input type="tel" path="tel" id="tel" placeholder="연락처를 입력해주세요" />  
 			<form:errors path="tel" />
 			</label>
 		</td>
 		</tr>
 		<tr>
 		<td>
-		<p>우편번호:</p></td>
-		<td id="td_right">
+		<p>우편번호 *</p></td>
+		<td >
 			<label for="zipCode"> 
 			<form:input type="text" path="zipCode"  id="zipCode" readonly="true" placeholder="클릭해주세요 "   onclick="testDaumPostcode()"/>  
 			<form:errors path="zipCode" />
@@ -202,41 +206,37 @@
 		</tr>
 		<tr>
 		<td>
-		<p>주소:</p>
-		<td id="td_right">
+		<p>주소 *</p>
+		<td>
 			<label for="address">
-			<form:input  path="address" type="text"  id="address"  readonly="true"   />  
+			<form:input  path="address" type="text"  id="address"  readonly="true" placeholder="우편번호 입력시 자동입력 "    />  
 			<form:errors path="address" />
 			</label>
 		</td>
 		</tr>
 		<tr>
 		<td>
-			<p>상세주소:</p>
-			<td id="td_right">
+			<p>상세주소 *</p>
+			<td>
 			<label for="detailAddress">
-			<form:input path="detailAddress"  id="detail_address"  />  
+			<form:input path="detailAddress"  id="detail_address" placeholder="상세주소 "  />  
 			<form:errors path="detailAddress" />
 			</label>
 		</td>
 		</tr>
 		
-		<article class="btn2">
-		<tr>
-		<td>
-				 <form action="step3" method="post"> <!-- 일로 보내조 -->
-				<input type="submit" value="다음단계" /><!--다음단계  -->
-				
-				</form> </td>
-				<td>
-				<form action="../index" method="get">
-				<input type="submit" value="가입취소" />
-				</form>
-				</td>
-		</tr>	
-		</article>
 		
 		</table>
+		
+			<div id="btns" >
+		<h2 style="margin-left: 0; margin-right: 0; width: 100%">  </h2>
+			<button type="button,submit"  class="btn btn-secondary btn-lg "  style=" margin-top:20px; width: 49%; font-size: 15px; float:right;">가입하기 〉</button>
+				<%--  <input type="submit" value="<spring:message code="next.btn"/>" /><!--다음단계  --> --%>
+			</form>
+			<form action="${contextPath}/index" method="get">
+			<button type="button,submit"  class="btn btn-secondary btn-lg bottomBtn" id="cancel" style=" margin-left:20px; margin-top:20px; width: 49%; font-size: 15px;">〈 취소</button>
+			</form>
+			</div>
 			
 		</form:form>
 		</div>
@@ -252,50 +252,3 @@
 	</footer>
 </body>
 </html>
-<%-- <table>
-		<tr>
-		
-		<th scope="row"><label for="memberId"> 회원아이디</label></th><td><form:input path="memberId"/><form:errors path="memberId" /></td>
-		
-		<td class="td_left"><label >회원아이디 <form:input path="memberId" /> <form:errors path="memberId" /> </label></td>
-		</tr>
-		<tr>
-		<td class="td_left"><label >회원비밀번호 <form:input path="memberPwd" /> <form:errors path="memberPwd" /></label></td>
-		</tr>
-		<tr>
-		<td class="td_left"><label >비밀번호확인 <form:input path="confirmPassword" /> <form:errors path="confirmPassword" /></label></td>
-		</tr>
-		<tr>
-		<td class="td_left"><label >회원이름 <form:input path="memberName" /> <form:errors path="memberName" /></label></td>
-		</tr>
-		<tr>
-		
-		<td class="td_left"><label >성별</label>
-		<td class="td_left"><label >남 <form:input path="gender"  name="gender" type="radio"  value="true"/></label></td>
-		<td class="td_left"><label >여 <form:input path="gender" name="gender" type="radio"  value="false"/></label></td>
-		</tr>
-		
-		<tr>
-		<td class="td_left"><label >생년월일 <form:input path="birthday" /> <form:errors path="birthday" /></label></td>
-		</tr>
-		<tr>
-		<td class="td_left"><label >이메일 <form:input path="email" /> <form:errors path="email" /></label></td>
-		</tr>
-		<tr>
-		<td class="td_left"><label >연락처 <form:input path="tel" /> <form:errors path="tel" /></label></td>
-		</tr>
-		<tr>
-		<td class="td_left"><label >우편번호 <form:input path="zipCode" /> <form:errors path="zipCode" /></label></td>
-		</tr>
-		<tr>
-		<td class="td_left"><label >주소 <form:input path="address" /> <form:errors path="address" /></label></td>
-		</tr>
-		<tr>
-		<td class="td_left"><label >상세주소 <form:input path="detailAddress" /> <form:errors path="detailAddress" /></label></td>
-		</tr>
-		
-		
-			
-		
-	
-		</table> --%>
