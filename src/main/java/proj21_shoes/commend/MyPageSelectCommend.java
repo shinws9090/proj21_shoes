@@ -27,6 +27,7 @@ public class MyPageSelectCommend {
 	private int point; 					//	 포인트
 	private int cumulativeBuyAmount;	// 	누적구매금액
 	private String grade;				// 	등급
+	private float salePrice; 			//할인률
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDateTime signUpDate;	//	 가입일
@@ -161,9 +162,17 @@ public class MyPageSelectCommend {
 	
 	
 
+	public float getSalePrice() {
+		return salePrice;
+	}
+
+	public void setSalePrice(float salePrice) {
+		this.salePrice = salePrice;
+	}
+
 	public MyPageSelectCommend(String memberId, String memberPwd, String memberName, String gender, LocalDate birthday,
 			String email, String tel, String zipCode, String address, String detailAddress, int point,
-			int cumulativeBuyAmount, String grade, LocalDateTime signUpDate) {
+			int cumulativeBuyAmount, String grade, float salePrice, LocalDateTime signUpDate) {
 		super();
 		this.memberId = memberId;
 		this.memberPwd = memberPwd;
@@ -178,16 +187,18 @@ public class MyPageSelectCommend {
 		this.point = point;
 		this.cumulativeBuyAmount = cumulativeBuyAmount;
 		this.grade = grade;
+		this.salePrice = salePrice;
 		this.signUpDate = signUpDate;
 	}
 
 	@Override
 	public String toString() {
 		return String.format(
-				"MyPageSelectCommend [memberId=%s, memberPwd=%s, memberName=%s, gender=%s, birthday=%s, email=%s, tel=%s, zipCode=%s, address=%s, detailAddress=%s, point=%s, cumulativeBuyAmount=%s, grade=%s, signUpDate=%s]",
+				"MyPageSelectCommend [memberId=%s, memberPwd=%s, memberName=%s, gender=%s, birthday=%s, email=%s, tel=%s, zipCode=%s, address=%s, detailAddress=%s, point=%s, cumulativeBuyAmount=%s, grade=%s, salePrice=%s, signUpDate=%s]",
 				memberId, memberPwd, memberName, gender, birthday, email, tel, zipCode, address, detailAddress, point,
-				cumulativeBuyAmount, grade, signUpDate);
+				cumulativeBuyAmount, grade, salePrice, signUpDate);
 	}
+
 	
 	
 

@@ -8,7 +8,7 @@ from employee where emp_id ='chamdodari' and emp_pwd =password('rootroot');
 password('rootroot');
 
 select * from memberDetail;
-select * from member where member_id ='1235';
+select * from member where member_id ='1234';
 
 select * from  `order` where member_code =111116;
 
@@ -21,7 +21,7 @@ select m.member_code, m.member_id, m.point, m.cumulative_buy_amount, m.grade_cod
 
 UPDATE member
 SET point=1000
-WHERE member_id='1235';
+WHERE member_id='1234';
 
 desc `order`;
 select * from employee;

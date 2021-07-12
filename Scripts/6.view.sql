@@ -15,6 +15,7 @@ create or replace view  vw_mypageData as
 	m.point,									-- 포인트
 	m.cumulative_buy_amount,					-- 누적구매금액
 	g.grade, 									-- 등급
+	g.sale_price,
 	m.signUp_date 								-- 가입일자					
 from memberdetail  md 							
 left join member m  on md.member_id =m.member_id  

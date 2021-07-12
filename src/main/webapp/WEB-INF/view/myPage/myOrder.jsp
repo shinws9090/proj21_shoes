@@ -120,20 +120,20 @@
 						<td>${myOrderList.orderCount }</td>
 						 <td>${myOrderList.orderDate }</td> 	
 						 <c:if test="${empty myOrderList.payOX && myOrderList.cancelState == false}">
-						  <td>입금전<br><a href="${contextPath}/myOrderCancel/${myOrderList.orderCode}/${member.memberId}">[주문취소하기]</a></td>
+						  <td>결제전<br><a href="${contextPath}/myOrderCancel/${myOrderList.orderCode}/${member.memberId}">[주문취소하기]</a></td>
 						 
 						 </c:if>				
-						 <c:if test="${!empty myOrderList.payOX && myOrderList.buyConfirmState == false}">
-						  <td>입금완료<br><a href="${contextPath}/myOrderCancel/${myOrderList.orderCode}/${member.memberId}">[주문취소하기]</a></td>
+						 <c:if test="${!empty myOrderList.payOX && myOrderList.buyConfirmState ==false}">
+						  <td>결제완료<br><a href="${contextPath}/myOrderCancel/${myOrderList.orderCode}/${member.memberId}">[주문취소하기]</a></td>
 						 </c:if>
 						  <c:if test="${!empty myOrderList.payOX && myOrderList.buyConfirmState == true}">
-						  <td>입금완료</td>
+						  <td>결제완료</td>
 						 </c:if>					
 						 
 						 <c:if test="${empty myOrderList.payOX}"><!-- 입금전일시 결제확정 비활성화 -->
 						 <td> - </td>
 						 </c:if>
-						 <!-- 입금완료시 구매확정버튼 활성화 -->
+						 <!-- 결제완료시 구매확정버튼 활성화 -->
 						<c:if test="${!empty myOrderList.payOX && empty myOrderList.buyConfirmOX}"><!-- 결제완료했고 확정안했으면 -->		
 								 <td><a href="${contextPath}/myPage/myOrder/buyConfirm/${myOrderList.orderCode}/${member.memberId }">확정하기</a></td>
 						 </c:if>

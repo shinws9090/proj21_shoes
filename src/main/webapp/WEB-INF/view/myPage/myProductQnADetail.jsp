@@ -90,33 +90,33 @@
 					<br>
 				<table class="tbl_type" border="1">
 				<tr>
-			<td><a>회원 아이디:</a></td>
-			<td><input  type="text"   value="${member.memberId }" readonly="true" size="100"/>  
+			<td><a>회원 ID</a></td>
+			<td><a> ${member.memberId } </a> 
 			</td>
 		
 		</tr>
 
 		<tr>
-			<td><a>회원 이름:</a></td> 
-			<td><input value="${member.memberName }" readonly="true" size="100"/>  
+			<td><a>회원명</a></td> 
+			<td><a>${member.memberName }</a>  
 		</td>
 		
 		</tr>
 				<tr>	
-				<td><a>문의제목 : </a></td>
+				<td style=" width:10%;" ><a>제목 </a></td>
 				<input hidden="hidden"/>
-				<td><input type="text" size="100" readonly="true" value=" ${myQnADetail.title }    (${myQnADetail.registDate })"/>  </td>	
+				<td><a>${myQnADetail.title }    (${myQnADetail.registDate })</a></td>	
 								
 				</tr>
 			
 				<tr>
-			<td><a>문의내용 : </a></td>
+			<td><a>내용 </a></td>
  			<td style="height: 200px">
  			<input hidden="hidden"/>
  			<textarea rows="" cols=""size="100" style=" resize: none; width:98%; height:98%;" maxlength="1000"; " readonly="true">${myQnADetail.content }</textarea>
  		</td>
 				<tr>
-				<td><a>답변 : </a></td>
+				<td><a>답변 </a></td>
  			<td style="height: 200px">
  			<input hidden="hidden"/>
  			<textarea rows="" cols=""size="100" style=" resize: none; width:98%; height:98%;" maxlength="1000"; " readonly="true">${myQnADetail.reply }</textarea>
@@ -125,7 +125,7 @@
 				
 			</table>
 			<article id="myData_btn" >
-			 <a href="${contextPath}/myPage/${myQnADetail.boardCode}/${member.memberId}/modify">수정하러가기(${myQnADetail.boardCode})</a>
+			 <a href="${contextPath}/myPage/${myQnADetail.boardCode}/${member.memberId}/modify" style="text-align: center; ">수정하러가기</a>
 			 
 			 </article>
 			
