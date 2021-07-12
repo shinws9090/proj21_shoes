@@ -104,7 +104,7 @@ public class MyPageController {
 		//같은 페이지로 보내주기때문에 모델어트리뷰트 있어야한다!!!!!!!
 		
 		MemberDetail member = getMemberService.getMemberDetail(memberId); //주소에 찍힌 id로  멤버검색후 데이터 담아서
-		
+		MyPageSelectCommend memberGrade = getMyPageService.showMyPageById(memberId);
 	//	System.out.println("dfjslfjslfjsfjl"+memberUpdate.getMemberId());
 		
 		if(member ==null) {
@@ -113,9 +113,11 @@ public class MyPageController {
 
 		
 		session.setAttribute("member", member);  // jsp에 보내주기! 요고 해줘야 jsp 에서 받을수 있당
+		session.setAttribute("memberGrade", memberGrade);  // jsp에 보내주기! 요고 해줘야 jsp 에서 받을수 있당
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("member",member);
+		mav.addObject("memberGrade",memberGrade);
 		mav.setViewName("myPage/modifyForm");
 		System.out.println(member);
 

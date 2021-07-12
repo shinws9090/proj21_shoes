@@ -39,8 +39,8 @@
 			<section id = "signSuccess">
 				<fieldset id="signSuccess">
 					<a>${authInfo.memberName }(${authInfo.memberId })님으로 로그인하셨습니다.</a>
-					<br>
-					<a href="${contextPath}/myPageHome/${authInfo.memberId}">마이페이지</a>
+			<%-- 		<br>
+					<a href="${contextPath}/myPageHome/${authInfo.memberId}">마이페이지</a> --%>
 				</fieldset>			
 			</section>
 </div>
