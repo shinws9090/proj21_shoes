@@ -76,7 +76,7 @@ h1.mt-4 {
 		<jsp:include page="/WEB-INF/view/include/header.jsp" />
 	</header>
 	<!-- end header -->
-	<section>
+	<section class="adminSection">
 		<div class="d-flex" id="wrapper">
 			<jsp:include page="/WEB-INF/view/admin/include/sidebar.jsp" />		    
 		    

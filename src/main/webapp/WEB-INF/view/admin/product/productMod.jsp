@@ -121,7 +121,7 @@ h3.mt-4 {
 
 </style>
 <body>
-	<section>
+	<section class="adminSection">
 	    <div class="pageContent-wrapper">		        
 			<!-- Page content-->
 			<h3 class="mt-4" id="productInfo" style="cursor:pointer"><a href="${contextPath}/admin/product/productMod?productCode=${products.productCode}">[상품정보]</a></h3>

@@ -49,7 +49,7 @@ opener.location.reload();
 </style>
 </head>
 <body>
-	<section>
+	<section class="adminSection">
 		<h1 class="mt-4">브랜드 추가</h1>
 			<div class="brandReg">
 			<form id="brandRegForm" name="brandRegForm" method="post" autocomplete="off">

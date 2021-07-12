@@ -111,7 +111,7 @@
 					<c:when test="${fn:length(myOrderList) > 0}">
 					<c:forEach var="myOrderList" items="${myOrderList}">
 					<tr>
-						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myOrderList.orderCode}">${myOrderList.orderCode }<br>[상세보기]</a></td>
+						<td>${myOrderList.orderCode }</td>
 						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myOrderList.orderCode}"><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myOrderList.productMainImage }"></a></td>
 						<td><a href="${contextPath}/productDetail/${myOrderList.productCode}">${myOrderList.productName }<br>[상품 주문페이지]</a></td>
 						<td>${myOrderList.paymentAmount }</td>

@@ -79,7 +79,7 @@ h1.mt-4 {
 	</header>
 	<!-- end header -->
 
-	<section>
+	<section class="adminSection">
 		<div class="d-flex" id="wrapper">
 		        
 	        <!-- Page content-->

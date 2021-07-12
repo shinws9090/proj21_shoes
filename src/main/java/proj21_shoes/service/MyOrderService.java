@@ -47,4 +47,8 @@ public interface MyOrderService {
 	public int countInfoList(SearchCriteria scri) throws Exception;
 	
 	public int countPaymentState(int paymentState);
+	
+	public int updatePaymentState(MyOrderCommend order);
+	
+	public int countCancelState(int cancelState);
 }

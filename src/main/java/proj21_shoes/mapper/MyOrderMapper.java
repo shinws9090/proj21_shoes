@@ -47,4 +47,8 @@ public interface MyOrderMapper {
 	
 	public int countPaymentState(int paymentState);
 	
+	public int updatePaymentState(MyOrderCommend order);
+	
+	public int countCancelState(int cancelState);
+	
 }

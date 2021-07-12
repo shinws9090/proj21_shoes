@@ -156,8 +156,8 @@ public class AdminController {
 		model.addAttribute("pageMaker", pageMaker);
 	}
 	
-	@RequestMapping("/admin/orderMgt") // 주문관리 화면
-	public void orderList(HttpServletRequest request, Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
+	@GetMapping("/admin/orderMgt") // 주문관리 화면
+	public void getOrderMgt(HttpServletRequest request, Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
 		List<MyOrderCommend> orderList = myOrderService.findAll(scri);
 		model.addAttribute("orderList", orderList);
 		
@@ -177,15 +177,33 @@ public class AdminController {
 		
 		int orderCount4 = myOrderService.countPaymentState(4);
 		model.addAttribute("orderCount4", orderCount4);
+		
+		int cancelCount = myOrderService.countCancelState(1);
+		model.addAttribute("cancelCount", cancelCount);
 	}
 
-	@RequestMapping("/admin/boardMgt") // 주문관리 화면
-	public ModelAndView boardList() {
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("admin/boardMgt");
-
-		return mav;
+	@PostMapping("/admin/orderMgt") // 주문관리 화면
+	public String postOrderMgt(HttpServletRequest request, @RequestParam(value = "page") int page,
+			@RequestParam(value = "perPageNum") int perPageNum, @RequestParam(value = "searchType") String searchType) {
+		
+		MyOrderCommend order = new MyOrderCommend();
+		order.setPaymentState(Integer.parseInt(request.getParameter("paymentState")));
+		order.setOrderCode(Integer.parseInt(request.getParameter("orderCode")));
+		myOrderService.updatePaymentState(order);
+		
+		System.out.println(order);
+		
+		return "redirect:/admin/orderMgt?page=" + page + "&perPageNum=" + perPageNum + "&searchType=" + searchType;
+	}
+	
+	@GetMapping("/admin/orderCancel") // 주문관리 화면
+	public String getOrderCancel(HttpServletRequest request, @RequestParam(value = "page") int page,
+			@RequestParam(value = "perPageNum") int perPageNum, @RequestParam(value = "searchType") String searchType,
+			@RequestParam(value = "orderCode") int orderCode) {
+		
+		myOrderService.updateMyCancel(orderCode);
+		
+		return "redirect:/admin/orderMgt?page=" + page + "&perPageNum=" + perPageNum + "&searchType=" + searchType;
 	}
 
 	@GetMapping("/admin/product/productReg")

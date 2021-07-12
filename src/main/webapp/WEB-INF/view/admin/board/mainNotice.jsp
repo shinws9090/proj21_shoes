@@ -84,7 +84,7 @@ section.pageNumSearch {
 	</header>
 	<!-- end header -->
 
-	<section>
+	<section class="adminSection">
 		<div class="noticeView">		 
 		        <!-- Page content-->
 				<h1 class="mt-4">공지사항</h1>
