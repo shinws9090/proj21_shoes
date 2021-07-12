@@ -87,25 +87,27 @@ public class MyOrderController {
 		int orderCount = myOrderDetail.getOrderCount();
 		//판매가*주문수량 = 판매가(정가)
 		int allSelPrice = productSelPrice.getSellPrice() * myOrderDetail.getOrderCount();
-	
-		//할인금액     ---> 수정해야한다
-		double gardeHal = allSelPrice * 0.01; //할인금액 기본 1%
-		if (member.getGrade().equals("FAMILY")) {
-	//		gardeHal=allSelPrice * 0.01;       
-				gardeHal=allSelPrice * 0.1;
-		}
-		if (member.getGrade().equals("SILVER")) {
-			gardeHal=allSelPrice * 0.1;
-		}
-		if (member.getGrade().equals("GOLD")) {
-			gardeHal=allSelPrice * 0.1;
-		}
-		if (member.getGrade().equals("VIP")) {
-			gardeHal=allSelPrice * 0.1;
-		}
-		if (member.getGrade().equals("VVIP")) {
-			gardeHal=allSelPrice * 0.1;
-		}
+	System.out.println("할인률은?? >>>"+ member.getSalePrice() );
+		//할인금액     ---> 총 주문금액 & 할인률
+		double gardeHal = allSelPrice * member.getSalePrice();  
+//		if (member.getGrade().equals("FAMILY")) {
+//	//		gardeHal=allSelPrice * 0.01;       
+//				gardeHal=allSelPrice *  member.getSalePrice();   // 0.1;
+//		}
+//		if (member.getGrade().equals("SILVER")) {
+//			gardeHal=allSelPrice * 0.1;
+//		}
+//		if (member.getGrade().equals("GOLD")) {
+//			gardeHal=allSelPrice * 0.1;
+//		}
+//		if (member.getGrade().equals("VIP")) {
+//			gardeHal=allSelPrice * 0.1;
+//		}
+//		if (member.getGrade().equals("VVIP")) {
+//			gardeHal=allSelPrice * 0.1;
+//		}
+		
+		System.out.println("할인금액 >>> "+ gardeHal);
 		//실제결제금액 (정가 - 등급별 할인 - 포인트적용금액)
 		double lastPrice = allSelPrice - gardeHal; //판매가 -등급별 할인
 		//포인트 사용금액(판매가 - 등급할인금액 -실제결제금액 )
@@ -216,23 +218,23 @@ public class MyOrderController {
 				int allSelPrice = productSelPrice.getSellPrice() * pointCancel.getOrderCount();
 			
 				//할인금액     ---> 수정해야한다
-				double gardeHal = allSelPrice * 0.01; //할인금액 기본 1%
-				if (member.getGrade().equals("FAMILY")) {
-			//		gardeHal=allSelPrice * 0.01;       
-						gardeHal=allSelPrice * 0.1;
-				}
-				if (member.getGrade().equals("SILVER")) {
-					gardeHal=allSelPrice * 0.1;
-				}
-				if (member.getGrade().equals("GOLD")) {
-					gardeHal=allSelPrice * 0.1;
-				}
-				if (member.getGrade().equals("VIP")) {
-					gardeHal=allSelPrice * 0.1;
-				}
-				if (member.getGrade().equals("VVIP")) {
-					gardeHal=allSelPrice * 0.1;
-				}
+				double gardeHal = allSelPrice * member.getSalePrice();  
+//				if (member.getGrade().equals("FAMILY")) {
+//			//		gardeHal=allSelPrice * 0.01;       
+//						gardeHal=allSelPrice * 0.1;
+//				}
+//				if (member.getGrade().equals("SILVER")) {
+//					gardeHal=allSelPrice * 0.1;
+//				}
+//				if (member.getGrade().equals("GOLD")) {
+//					gardeHal=allSelPrice * 0.1;
+//				}
+//				if (member.getGrade().equals("VIP")) {
+//					gardeHal=allSelPrice * 0.1;
+//				}
+//				if (member.getGrade().equals("VVIP")) {
+//					gardeHal=allSelPrice * 0.1;
+//				}
 				//실제결제금액 (정가 - 등급별 할인 - 포인트적용금액)
 				double lastPrice = allSelPrice - gardeHal; //판매가 -등급별 할인
 				//포인트 사용금액(판매가 - 등급할인금액 -실제결제금액 )
@@ -272,7 +274,7 @@ public class MyOrderController {
 				System.out.println("기존포인트>> " +member.getPointInt());
 				//수정할 포인트
 				int updatePoint = (int) ((int)member.getPointInt() +point-pointDel);
-				System.out.println("기존포인트 ( " + member.getPointInt()+") +"+"사용한포인트 ("+ point+"-"+"적립된포인트 ( "+pointDel+")"+"= "+((int) ((int)member.getPointInt() +point-pointDel)));
+				System.out.println("기존포인트 ( " + member.getPointInt()+") +"+"사용한포인트 ("+ point+")-"+"적립된포인트 ( "+pointDel+")"+"= "+((int) ((int)member.getPointInt() +point-pointDel)));
 			  
 				ModelAndView mav = new ModelAndView();
 		     

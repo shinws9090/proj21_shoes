@@ -23,11 +23,12 @@
 		<result column="cumulative_buy_amount" property="cumulativeBuyAmount" />			<!-- 누적구매금액	 -->
 		<result column="signUp_date" property="signUpDate" />								<!-- 가입일 -->
 		<result column="grade" property="grade" />											<!-- 회원 등급 -->							
+		<result column="sale_price" property="salePrice" />									<!-- 할인률 -->							
 	</resultMap> 
 	 
 	
 	<select id="selectMyPageById"  resultMap="resMp">
-	select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address, point, cumulative_buy_amount, grade, signUp_date
+	select member_id, member_pwd, member_name, gender, birthday, email, tel, zipCode, address, detail_address, point, cumulative_buy_amount, grade,sale_price, signUp_date
 from vw_mypagedata where member_id=#{memberId}; 
 	
 	

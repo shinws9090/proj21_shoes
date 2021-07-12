@@ -102,7 +102,7 @@
 						<td>결제금액</td>
 						<td>주문수량</td>
 					 	<td>주문일</td>
-					 	<td>결제/배송</td> 
+					 	<td>결제여부</td> 
 					 	<td>구매확정여부</td>
 					 
 			
@@ -143,12 +143,11 @@
 						<c:if test="${myOrderList.paymentState == 4}">
 							<td>배송완료</td>
 						</c:if>
-						 
+						
 						<c:if test="${myOrderList.paymentState != 4}"><!-- 입금전일시 결제확정 비활성화 -->
 							<td> - </td>
 						</c:if>
 						
-						<!-- 입금완료시 구매확정버튼 활성화 -->
 						<c:if test="${myOrderList.paymentState == 4 && myOrderList.buyConfirmState == false}"><!-- 결제완료했고 확정안했으면 -->		
 							<td><a href="${contextPath}/myPage/myOrder/buyConfirm/${myOrderList.orderCode}/${member.memberId }">확정하기</a></td>
 						</c:if>
@@ -156,7 +155,9 @@
 						<c:if test="${myOrderList.paymentState == 4 && myOrderList.buyConfirmState == true}"><!-- 결제완료했고 확정했으면 -->		
 							<td><a>확정완료</a></td>
 						</c:if>
-											
+					
+					
+					
 					</tr>
 					</c:forEach>
 					</c:when>
@@ -225,7 +226,7 @@ function movePage(currentPage, cntPerPage, pageSize){
     url = url + "&pageSize="+pageSize;
     
     location.href=url;
-};
+}
  
 </script>
 </html>

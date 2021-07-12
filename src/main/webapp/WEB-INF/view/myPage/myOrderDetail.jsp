@@ -105,13 +105,20 @@
 					</tr>
 					
 					<tr>
+						<!-- 주문번호 -->
 						<td>${myOrderDetail.orderCode }</td>
+						<!-- 주문일 -->
 						<td>${myOrderDetail.orderDate }</td> 
 				<%-- 		<td><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myOrderDetail.productMainImage }"></td> --%>
+						<!-- 상품명 -->
 						<td><a href="${contextPath}/productDetail/${myOrderDetail.productCode}">${myOrderDetail.productName }<br>[상품 주문페이지]</a></td>
+						<!-- 1개당 판매금액 -->
 						<td>${myOrderDetail.selPrice } 원</td>
+						<!--  색상 -->
 						<td>${myOrderDetail.color }</td>
+						<!-- 사이즈 -->
 						<td>${myOrderDetail.size }</td>
+						<!-- 구매수량 -->
 						<td>${myOrderDetail.orderCount }</td>
 		
 						
@@ -133,10 +140,15 @@
 					</tr>
 					
 					<tr>
+						<!-- 총 구매금액 -->
 						<td>${myOrderDetail.allSelPrice } 원</td>
+						<!-- 등급할인금액 -->
 						<td>${myOrderDetail.gradeHal } 원</td> 
+						<!-- 포인트 사용금액 -->
 						<td>${myOrderDetail.point } 원</td>
+						<!-- 최종결제금액 -->
 						<td>${myOrderDetail.lastPrice } 원</td>
+						<!-- 적립금액  -->
 						<td>${pointDel } 포인트</td>
 						
 						
