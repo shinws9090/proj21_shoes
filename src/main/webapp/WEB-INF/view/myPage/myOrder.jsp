@@ -153,8 +153,7 @@
 						<c:if test="${myOrderList.paymentState == 4 && myOrderList.buyConfirmState == true}"><!-- 결제완료했고 확정했으면 -->		
 							<td><a>확정완료</a></td>
 						</c:if>
-					
-					
+				
 					
 					</tr>
 					</c:forEach>

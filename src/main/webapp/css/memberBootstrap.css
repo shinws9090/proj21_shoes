@@ -126,6 +126,19 @@ margin-bottom: 20px;
 	
 	
 }
+
+
+#modofyForm td, #modofyForm th{
+ 	max-height:100%;
+   max-width:40px;
+  vertical-align: middle;
+ 
+    /*   border: 1px solid #dcdcdc; */
+  
+   
+	
+	
+}
 #max{
 	max-width: 50px;"
 	
@@ -147,7 +160,7 @@ background-color:#4545460f;
 
 
   /*   -------------------------아이디찾기  ------------------------------ */
-  button, input, optgroup, select, textarea {
+ button, input, optgroup, select, textarea {
     margin: 0;
     font-family: inherit;
         font-size: 1.1em;
@@ -177,3 +190,21 @@ background-color:#4545460f;
 	color: black;
 
 }
+
+
+ #insertForm button,#insertForm input, #insertForm optgroup,#insertForm  select,#insertForm  textarea {
+    margin: 0;
+    font-family: inherit;
+    font: 0.75em Verdana,Dotum,AppleGothic,sans-serif;
+    font-size: 1.1em; 
+    /* width: 150px; */
+    line-height: inherit;
+} 
+
+/*  #modifyForm button,  #modifyForm input, #modifyForm optgroup,  #modifyForm select,  #modifyForm textarea {
+    margin: 0;
+    font-family: inherit;
+        font-size: 1.1em;
+            width: 0px;
+    line-height: inherit;
+} */

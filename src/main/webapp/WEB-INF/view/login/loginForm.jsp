@@ -59,7 +59,7 @@
 						<form:input path="memberId" placeholder="아이디" size="34px;"/> 
 						
 						<form:errors path="memberId"  style="color:red; "/>
-					
+					</label>
 
 					<label style=""> 
 						<form:password path="memberPwd" placeholder="비밀번호" size="34px;" /> 

@@ -29,7 +29,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberBootstrap.css">
-
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -146,16 +145,14 @@
 	<div id="modify_form">
 	<section id ="modifyForm">
 
-		<h3 style="margin-left: 22%;">회원정보 변경</h3> 
+		<h3>회원정보 변경</h3> 
 		
-		<div class="container my-3" style="font: 0.8em Verdana,Dotum,AppleGothic,sans-serif; margin-left: 20%">
+		<div class="container my-3">
 			<form:form action="${contextPath}/myPage/modify/${member.memberId }" modelAttribute="memberDetailUpdateCommend"><!-- 보내는거? -->
-				<form:errors/>
-				<table  class="modify_table">
+				<table  class="table">
 			<tr>
 				<article style="color: red; ">
 								<form:errors  path="confirmPassword"  /><br>
-								<form:errors path="memberPwd" />
 				</article>
 				
 				<th>회원 아이디</th>
@@ -185,8 +182,8 @@
 				<label for="memberPwd">
 				<form:password id="memberPwd" path="memberPwd" placeholder="변경할 비밀번호 입력" />
 				</label>
-				
 				</td>
+				
 			</tr>
 			
 			 <tr>
@@ -205,10 +202,10 @@
 			
 					<th><a>성별 </a></th>
 					<td id="td_right">
-						<label for="gender">
-							<input type="radio"  id="gender" name="gender" value="false" checked style="width:12px;height:12px;border:1px;">남 			 
-							<input type="radio" id="gender" name="gender" value="true" checked  style="width:12px;height:12px;border:1px;" >여
-						</label>
+					<label for="gender">
+					<input type="radio" name="gender" value="false" checked>남
+					<input type="radio" name="gender" value="true" checked>여
+					</label>
 					</td>
 					
 				
@@ -280,26 +277,20 @@
 			</tr> 
 		
 			
-			<%-- 		<article id="save_btn">
+					<article id="save_btn">
 					<tr>
 					<td></td>
 					<td>
 				 	<form action="${contextPath}/myPage/modify/${member.memberId }" method="post">
-					<input type="submit" value="저장" /><form:errors path="confirmPassword" />
+							<input type="submit" value="저장" /><%-- <form:errors path="confirmPassword" /> --%>
 							
 							
 						</form>
 						</td>
 						</tr>
-					</article> --%>
+					</article>
 					</table>
-<div id="btns" >
-		<h2 style="margin-left: 0; margin-right: 0; width: 100%">  </h2>
-			<button type="button,submit"  class="btn btn-secondary btn-lg "  style=" margin-top:20px; width: 72%; font-size: 15px; float:left;">수정하기</button>
-				<%--  <input type="submit" value="<spring:message code="next.btn"/>" /><!--다음단계  --> --%>
-			</form>
-			
-			</div>
+
 			</form:form>
 			</div>
 	</section>

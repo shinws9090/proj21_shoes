@@ -19,9 +19,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>회원탈퇴</title>
-
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
+		integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
+		crossorigin="anonymous">
+<link href="${contextPath}/css/buttons.css" rel="stylesheet">
+<link rel="stylesheet" href="${contextPath}/css/reset.css">
+<!-- bootstrap end -->
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberBootstrap.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -39,11 +46,23 @@
 	<div id="myPage">
 	<section id ="maPage">
 	
-	<section id = "quitMember">
+	
 	
 	
 			<c:if test="${!empty authInfo}">
-							<h1>회원 탈퇴</h1>
+			
+			<!-- 상단 등급 바 -->
+				<table id="tbl_maGrade"> 
+					<tr id="tr_myGrade">
+						<td><h2>${memberGrade.memberName }[${memberGrade.memberId}]님의 멤버십 등급은 ${memberGrade.grade}입니다.	</h2>
+							<article id="myGrade_detail">
+								<a href="${contextPath}/admin/board/mainNoticeDetail?boardCode=6">등급별 혜택 보기 〉</a>
+								포인트 〉 <a id="myPoint"> ${memberGrade.point }점 </a>
+							</article>
+						</td>
+					</tr>
+				</table>
+							
 				
 				
 				<!-- 좌측메뉴 -->
@@ -69,46 +88,80 @@
 				
 				</article>
 				
-			
-				<table style="width: 80%">
-			
-			<!-- 어느 컨트롤러로? -->
+			<div id="modify_form">
+	<section id ="modifyForm">
+
+		<h3 style="margin-left: 22%;"> 회원탈퇴 </h3> 
+		
+		
+			<div class="container my-3" style="font: 0.8em Verdana,Dotum,AppleGothic,sans-serif; margin-left: 20%">
 			<form:form action="/myPage/quitMember/${member.memberId }" modelAttribute="memberDetailUpdateCommend"><!-- 보내는거? -->
-			<tr>
+			<form:errors />
+			<table  class="modify_table">
 			
-				<th scope="row"><label for="memberId">회원아이디</label></th>
-				<td><form:input path="memberId" id="memberId" readonly="true" value="${member.memberId }" /></td>				
+			<tr>
+				<article style="color: red; ">
+								<form:errors  path="confirmPassword"  /><br>
+								<form:errors path="memberPwd" /> 
+				</article>
+				
+				<th>회원 아이디</th>
+				<td id="td_right">
+				<label for="memberId">
+				<form:input path="memberId"  id="memberId" readonly="true" value="${member.memberId }" />
+				</label>
+				</td>				
 			</tr>
+			<form:errors  path="memberId"  />
+			
+		
 			
 			 <tr>
-				<th scope="row"><label for="memberName"></label> 회원이름</th>		
-				<td><form:input path="memberName" id="memberName" value="${member.memberName }" readonly="true"/></td>
+			<%-- 	<article style="color: red; ">
+								<form:errors  path="confirmPassword"  /><br>
+								<form:errors path="memberPwd" />
+				</article> --%>
+				
+				<th>회원명</th>
+				<td id="td_right">
+				<label for="memberName">
+				<form:input path="memberName"  id="memberName" readonly="true" value="${member.memberId }" />
+				</label>
+				</td>				
 			</tr>
+			<%-- <form:errors  path="memberName"  /> --%>
 			
+		
 		
 		
 		
 		
 			<tr>
-				<th scope="row"><label for="confirmPassword"></label>기존비밀번호 확인</th>		
-				<td><form:password id="confirmPassword" path="confirmPassword" placeholder="기존 비밀번호 입력" /></td>
+					<th>기존비밀번호 확인 </th>
+					<td id="td_right">
+					<label for="confirmPassword">	
+					<form:password id="confirmPassword" path="confirmPassword" placeholder="기존 비밀번호 입력" />
+					<%-- <form:errors path="confirmPassword" /> --%>
+					</label>
+					</td>	
 			</tr>
-			
 		
 
 		
 			
-
-					<div style="margin-left: 50%;">
-				 	<form action="/myPage/quitMember/${member.memberId }" method="post">
-					<input type="submit" value="탈퇴" />
-					<form:errors path="confirmPassword" />
-					</form>
-					</div>
-				
-		</form:form>
-		<br>
 		</table>
+
+				<div id="btns" >
+		<h2 style="margin-left: 0; margin-right: 0; width: 100%">  </h2>
+			<button type="button,submit"  class="btn btn-secondary btn-lg "  style=" margin-top:20px; width: 72%; font-size: 15px; float:left;">탈퇴하기</button>
+				<%--  <input type="submit" value="<spring:message code="next.btn"/>" /><!--다음단계  --> --%>
+			</form>
+			
+			</div>
+			</form:form>
+			</div>
+	</section>
+</div>			
 
 
 				<%-- <p>회원정보</p>

@@ -17,11 +17,11 @@ public class MemberDetailUpdateCommend {  					//회원정보 입력란 컨펌
 	@NotBlank(message="아이디를 입력해주세요!")
 	private String memberId; 						// 	회원아이디(회원코드랑은 다름)
 	
-	@NotEmpty(message="비밀번호를 입력해주세요!")
-	@Size(min=6,message="6자리수 이상 입력해주세요!")
+	@NotEmpty(message="변경할 비밀번호를 입력해주세요!")
+	@Size(min=6,message="변경할 비밀번호를 6자리수 이상 입력해주세요!")
 	private String memberPwd;						// 	회원비밀번호
 	
-	@NotEmpty(message="비밀번호 확인을 입력해주세요!")
+	@NotEmpty(message="기존 비밀번호를 입력해주세요!")
 	private String confirmPassword;					//	 비밀번호 확인
 	@NotEmpty(message="이름을 입력해주세요!")
 	private String memberName;						//	 회원이름
@@ -57,7 +57,7 @@ public class MemberDetailUpdateCommend {  					//회원정보 입력란 컨펌
 	
 	
 	public MemberDetailUpdateCommend(@NotBlank(message = "아이디를 입력해주세요!") String memberId,
-			@NotEmpty(message = "비밀번호를 입력해주세요!") @Size(min = 6, message = "6자리수 이상 입력해주세요!") String memberPwd) {
+			@NotEmpty(message = "변경할 비밀번호를 입력해주세요! 비밀번호를 입력해주세요!") @Size(min = 6, message = "변경할 비밀번호를 6자리수 이상 입력해주세요!") String memberPwd) {
 		super();
 		this.memberId = memberId;
 		this.memberPwd = memberPwd;
@@ -66,8 +66,8 @@ public class MemberDetailUpdateCommend {  					//회원정보 입력란 컨펌
 
 
 	public MemberDetailUpdateCommend(@NotBlank(message = "아이디를 입력해주세요!") String memberId,
-			@NotEmpty(message = "비밀번호를 입력해주세요!") @Size(min = 6, message = "6자리수 이상 입력해주세요!") String memberPwd,
-			@NotEmpty(message = "비밀번호 확인을 입력해주세요!") String confirmPassword,
+			@NotEmpty(message = "변경할 비밀번호를 입력해주세요!") @Size(min = 6, message = " 변경할 비밀번호를 6자리수 이상 입력해주세요!") String memberPwd,
+			@NotEmpty(message = "기존 비밀번호를 입력해주세요!") String confirmPassword,
 			@NotEmpty(message = "이름을 입력해주세요!") String memberName, boolean gender,
 			@Past(message = "과거시간만 입력할 수 있어요!!!") LocalDate birthday,
 			@NotEmpty(message = "email을 입력해주세요!") @Email String email, @NotEmpty(message = "연락처를 입력해주세요!") String tel,
@@ -168,7 +168,7 @@ public class MemberDetailUpdateCommend {  					//회원정보 입력란 컨펌
 	
 	
 	public MemberDetailUpdateCommend(@NotBlank(message = "아이디를 입력해주세요!") String memberId,
-			@NotEmpty(message = "비밀번호를 입력해주세요!") @Size(min = 6, message = "6자리수 이상 입력해주세요!") String memberPwd,
+			@NotEmpty(message = "변경할 비밀번호를 입력해주세요!") @Size(min = 6, message = "변경할 비밀번호를 6자리수 이상 입력해주세요!") String memberPwd,
 			@NotEmpty(message = "이름을 입력해주세요!") String memberName, boolean gender,
 			@Past(message = "과거시간만 입력할 수 있어요!!!") LocalDate birthday,
 			@NotEmpty(message = "email을 입력해주세요!") @Email String email, @NotEmpty(message = "연락처를 입력해주세요!") String tel,

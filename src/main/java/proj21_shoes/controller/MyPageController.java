@@ -126,7 +126,7 @@ public class MyPageController {
 	//회원정보수정 입력페이지에서 저장 누를시 
 	@PostMapping("/myPage/modify/{memberId}")
 	public String modify(@PathVariable("memberId") String memberId2,
-			@Valid@ModelAttribute("memberDetailUpdateCommend")  MemberDetailUpdateCommend memberUpdate,BindingResult bindingResult,
+			@Valid @ModelAttribute("memberDetailUpdateCommend")  MemberDetailUpdateCommend memberUpdate,BindingResult bindingResult,
 			 @Param("memberId") String memberId, @Param("confirmPassword") String confirmPassword, HttpSession session, HttpServletResponse response, Errors errors) {
 	
 		System.out.println("여기냐1");
@@ -136,7 +136,9 @@ public class MyPageController {
 		if (errors.hasErrors()) { //에러 있으면
 			System.out.println(1);
 			System.out.println(errors);
+			
 			return "/myPage/modifyForm";  //일로 돌려보내고
+			
 		}
 
 		try {
@@ -149,10 +151,15 @@ public class MyPageController {
 			errors.rejectValue("confirmPassword", "nomatch");
 			return  "/myPage/modifyForm";
 		}
-		
+		if(memberDetail.getMemberPwd()==null) {  //기존 비밀번호 불일치시
+			System.out.println("기존비밀번호>>> "+ memberDetail.getMemberPwd());
+			System.out.println("입력받은 기존비번>>> "+ memberUpdate.getConfirmPassword());
+			errors.rejectValue("confirmPassword", "nomatch");
+			return  "/myPage/modifyForm";
 		}
 		
-		catch (NullPointerException e) {
+		
+		}catch (NullPointerException e) {
 			errors.rejectValue("confirmPassword", "nomatch");
 			return  "/myPage/modifyForm";
 		}
