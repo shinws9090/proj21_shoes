@@ -23,6 +23,7 @@ table {
 table > thead th {
 	padding: 10px;
 	border-bottom: #ccc 1px solid;
+	font-size: 1.4em;
 }
 table > tbody > tr {
 	text-align: center;

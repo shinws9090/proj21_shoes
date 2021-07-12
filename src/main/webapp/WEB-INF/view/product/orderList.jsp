@@ -73,7 +73,7 @@ $(function() {
 	$("#pointAll").on("click",function(){
 		var isChecked = $(this).is(":checked") ;
 		if(isChecked){
-			$("#point").val(Number("${order.memberCode.point}"));
+			$("#point").val(Math.floor(Number("${order.memberCode.point}")/100)*100);
 			pointSel()
 		}else{
 			$("#point").val(0);

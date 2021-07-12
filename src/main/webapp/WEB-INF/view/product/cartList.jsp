@@ -9,7 +9,6 @@
 <html lang="en">
 <head>
 <!-- basic -->
-<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <link href="${contextPath}/css/bootstrap.min.css" rel="stylesheet">
 <link href="${contextPath}/css/buttons.css" rel="stylesheet">
 <meta charset="utf-8">
@@ -21,7 +20,7 @@
 <link rel="stylesheet" href="${contextPath}/css/reset.css">
 <link rel="stylesheet" href="${contextPath}/css/style.css">
 <link rel="stylesheet" href="${contextPath}/css/cartList.css">
-<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<script src="https://use.fontawesome.com/5aa04f9336.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 $(function() {
@@ -216,7 +215,7 @@ $(function() {
 							<input type="hidden" value="${stock}">
 						</td>
 						<td>
-							<button class="delete" value="${cart.cartCode}"><i class="fa fa-times" aria-hidden="true"></i></button>
+							<button class="delete" value="${cart.cartCode}"><i class="fa fa-times"></i></button>
 						</td>
 					</tr>
 					</c:forEach>

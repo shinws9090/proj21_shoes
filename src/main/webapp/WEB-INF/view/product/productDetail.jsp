@@ -177,7 +177,7 @@
 						</c:when>
 						<c:otherwise>
 							<option value="${option.styleCode}" >
-								${option.color}(${option.styleCode})
+								${option.color}
 							</option>
 						</c:otherwise>
 					</c:choose>
