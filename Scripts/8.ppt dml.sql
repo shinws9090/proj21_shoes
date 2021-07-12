@@ -22,19 +22,19 @@ insert into orderproduct values(7, 11111, 1, 270, 200);
 insert into `order` values(8, 111111, now(), null, 1800000, 4, false, '배송코드', false);
 insert into orderproduct values(8, 11111, 1, 270, 100);
 
-insert into `order` values(9, 111111, now(), null, 1600000, 0, false, '배송코드', false);
+insert into `order` values(9, 111111, now(), null, 1600000, 1, false, '배송코드', false);
 insert into orderproduct values(9, 11111, 1, 270, 80);
 
-insert into `order` values(10, 111111, now(), null, 2050000, 0, false, '배송코드', false);
+insert into `order` values(10, 111111, now(), null, 2050000, 1, false, '배송코드', false);
 insert into orderproduct values(10, 11111, 1, 270, 180);
 
-insert into `order` values(11, 111111, now(), null, 1900000, 0, false, '배송코드', false);
+insert into `order` values(11, 111111, now(), null, 1900000, 1, false, '배송코드', false);
 insert into orderproduct values(11, 11111, 1, 270, 100);
 
-insert into `order` values(12, 111111, now(), null, 1600000, 0, false, '배송코드', false);
+insert into `order` values(12, 111111, now(), null, 1600000, 1, false, '배송코드', false);
 insert into orderproduct values(12, 11111, 1, 270, 105);
 
-insert into `order` values(13, 111111, now(), null, 1750000, 0, false, '배송코드', false);
+insert into `order` values(13, 111111, now(), null, 1750000, 1, false, '배송코드', false);
 insert into orderproduct values(13, 11111, 1, 270, 100);
 
 
