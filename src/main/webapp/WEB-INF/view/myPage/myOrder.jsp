@@ -103,9 +103,7 @@
 						<td>주문수량</td>
 					 	<td>주문일</td>
 					 	<td>결제여부</td> 
-					 	<td>구매확정여부</td>
-					 
-			
+					 	<td>구매확정여부</td>			
 					</tr>
 				</thead>
 				<tbody>
@@ -125,11 +123,11 @@
 						</c:if>				
 						
 						<c:if test="${myOrderList.paymentState == 1 && myOrderList.buyConfirmState == false}">
-							<td>입금완료 <br><a href="${contextPath}/myOrderCancel/${myOrderList.orderCode}/${member.memberId}">[주문취소하기]</a></td>
+							<td>결제완료 <br><a href="${contextPath}/myOrderCancel/${myOrderList.orderCode}/${member.memberId}">[주문취소하기]</a></td>
 						</c:if>
 						
 						<c:if test="${myOrderList.paymentState == 1 && myOrderList.buyConfirmState == true}">
-							<td>입금완료</td>
+							<td>결제완료</td>
 						</c:if>
 						
 						<c:if test="${myOrderList.paymentState == 2}">
