@@ -55,7 +55,7 @@
 
 		</ul>
 	</nav>
-	<div class="logo">
+	<div class="logo"  onclick="location.href='${contextPath}/index'" style="cursor:pointer;">
 	</div>
 	<nav class="main-menu">
 		<ul class="main-menu-sub">
