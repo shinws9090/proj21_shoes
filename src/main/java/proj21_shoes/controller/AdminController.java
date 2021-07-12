@@ -157,14 +157,26 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/admin/orderMgt") // 주문관리 화면
-	public void orderList(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
+	public void orderList(HttpServletRequest request, Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
 		List<MyOrderCommend> orderList = myOrderService.findAll(scri);
 		model.addAttribute("orderList", orderList);
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(scri);
-		pageMaker.setTotalCount(productService.countInfoList(scri));
+		pageMaker.setTotalCount(myOrderService.countInfoList(scri));
 		model.addAttribute("pageMaker", pageMaker);
+		
+		int orderCount1 = myOrderService.countPaymentState(1);
+		model.addAttribute("orderCount1", orderCount1);
+		
+		int orderCount2 = myOrderService.countPaymentState(2);
+		model.addAttribute("orderCount2", orderCount2);
+		
+		int orderCount3 = myOrderService.countPaymentState(3);
+		model.addAttribute("orderCount3", orderCount3);
+		
+		int orderCount4 = myOrderService.countPaymentState(4);
+		model.addAttribute("orderCount4", orderCount4);
 	}
 
 	@RequestMapping("/admin/boardMgt") // 주문관리 화면

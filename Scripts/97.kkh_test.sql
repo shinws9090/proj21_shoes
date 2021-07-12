@@ -312,3 +312,13 @@ select * from orderproduct;
 select * from `member`;
 
 select * from vw_myOrderData;
+
+select * from vw_myOrderData 
+    	where order_code > 0 and payment_state = 1;
+  
+select * from vw_myOrderData;
+select count(order_code) from vw_myOrderData where payment_state= 1;
+select count(order_code) from vw_myOrderData where payment_state= 2;
+select count(order_code) from vw_myOrderData where payment_state= 3;
+select count(order_code) from vw_myOrderData where payment_state= 4;
+

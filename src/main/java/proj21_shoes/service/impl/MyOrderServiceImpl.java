@@ -79,4 +79,10 @@ public class MyOrderServiceImpl implements MyOrderService {
 		return mapper.countInfoList(scri);
 	}
 
+
+	@Override
+	public int countPaymentState(int paymentState) {
+		return mapper.countPaymentState(paymentState);
+	}
+
 }

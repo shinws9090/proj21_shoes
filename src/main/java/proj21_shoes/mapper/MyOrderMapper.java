@@ -45,5 +45,6 @@ public interface MyOrderMapper {
 	// 리스트 + 검색 + 페이징 (게시물 총 개수 구하기)
 	public int countInfoList(SearchCriteria scri) throws Exception;
 	
+	public int countPaymentState(int paymentState);
 	
 }

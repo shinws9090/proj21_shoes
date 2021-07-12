@@ -199,6 +199,11 @@ WHERE order_code=#{orderCode};
 		where order_code > 0
 		<include refid="search"></include>
 	</select>
+	
+	<select id="countPaymentState" parameterType="int" resultType="int" >
+		select count(order_code) from vw_myOrderData
+		where payment_state = #{paymentState}
+	</select>
     
     <!-- 검색기능을 위한 동적SQL -->
 	<sql id="search">
@@ -207,6 +212,11 @@ WHERE order_code=#{orderCode};
 			<if test="searchType == 'c'.toString()">AND cancel_state LIKE CONCAT('%',#{keyword},'%')</if>
 			<if test="searchType == 'w'.toString()">AND member_id LIKE CONCAT('%',#{keyword},'%')</if>
 			<if test="searchType == 'q'.toString()">AND product_name LIKE CONCAT('%',#{keyword},'%')</if>
+			<if test="searchType == 'p1'.toString()">AND payment_state = 1</if>
+			<if test="searchType == 'p2'.toString()">AND payment_state = 2</if>
+			<if test="searchType == 'p3'.toString()">AND payment_state = 3</if>
+			<if test="searchType == 'p4'.toString()">AND payment_state = 4</if>
+			
 		</if>
 	</sql>
 	
