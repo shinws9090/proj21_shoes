@@ -308,5 +308,7 @@ select * from qna q;
 insert into qna values (3, 111113, 33333, "문의사항입니다.", "추천해주세요.", "", now());
 
 select * from `order`;
+select * from orderproduct;
+select * from `member`;
 
 select * from vw_myOrderData;

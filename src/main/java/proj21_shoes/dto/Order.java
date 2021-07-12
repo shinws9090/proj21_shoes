@@ -10,7 +10,7 @@ public class Order { 						// 	주문정보
 	private LocalDateTime orderDate; 		//  주문일
 	private LocalDateTime cancelDate; 		//  주문취소일
 	private int paymentAmount; 				// 	결제금액
-	private boolean paymentState; 			// 	결제여부
+	private int paymentState; 			// 	결제여부
 	private boolean cancelState; 			// 	주문취소여부
 	private String deliveryCode; 			// 	배송코드
 	private boolean buyConfirmState; 		// 	구매확정여부
@@ -81,11 +81,11 @@ public class Order { 						// 	주문정보
 		this.paymentAmount = paymentAmount;
 	}
 
-	public boolean isPaymentState() {
+	public int isPaymentState() {
 		return paymentState;
 	}
 
-	public void setPaymentState(boolean paymentState) {
+	public void setPaymentState(int paymentState) {
 		this.paymentState = paymentState;
 	}
 

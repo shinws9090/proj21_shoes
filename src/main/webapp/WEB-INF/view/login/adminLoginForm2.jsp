@@ -26,10 +26,8 @@
 <link href="${contextPath}/css/buttons.css" rel="stylesheet">
 <link rel="stylesheet" href="${contextPath}/css/reset.css">
 <!-- bootstrap end -->	
-
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberBootstrap.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -43,47 +41,72 @@
 	</header>
 	<!-- end header -->
 	
-	<div id="loginForm" style="
-	margin-bottom: 10px; 
-	margin-top: 20px;
-	
-	
-	">
-	<section id = "loginForm" >
-		<form:form action="loginSuccess" modelAttribute="loginCommand" >
-		<form:errors style="color:red; "/>
-	 
-	 	<section id="login_input" >
-	<b><h1>로그인</h1></b><!-- 회원가입 -->
-					<label style=" margin-top:5px;  margin-bottom: 10px;">
-						<form:input path="memberId" placeholder="아이디" size="34px;"/> 
-						
-						<form:errors path="memberId"  style="color:red; "/>
-					
-
-					<label style=""> 
-						<form:password path="memberPwd" placeholder="비밀번호" size="34px;" /> 
-						<form:errors path="memberPwd" style="color:red;" />
-					</label>
-					<div id="remember" style="font-size: 13px; margin-right: 75%; margin-top: 5px; margin-bottom: 5px;" >
-					<label>
-						<a>ID저장</a><form:checkbox path="rememberId"   /> 
-					 
-					 </label>
-		</div>
-			<button type="button,submit"  class="btn btn-secondary btn-lg"  style="width: 100%; font-size: 15px;">로그인</button>
-	
-		<table>
-		<article id = "findForm" >
+	<div id="loginForm" style="">
+	<section id = "loginForm">
+		<h2>관리자 로그인</h2><!-- 회원가입 -->
+		<form:form action="adminLoginSuccess"  modelAttribute="adminLoginCommend">
+		<form:errors/>
+	 <fieldset id="loginCommand" style="border: 2px solid #dcdcdc;"> 
+	 	<table style=" font-size: 1em;">
+		<tr  style="margin-bottom: 10px;">
+			<td style="margin-left: 10px;"  ><p>관리자 ID : </p></td>
+			<td id="td_right">
+				<label  style=" margin-top:5px;  margin-bottom: 10px;" >
+					<form:input path="empId" /> <form:errors path="empId" />
+				</label>
+			</td>
+		</tr>
+		<tr>
+			<td><p>관리자 PW:</p></td>
+			<td id="td_right">
+				<label> 
+					<form:password path="empPwd" /> <form:errors path="empPwd" />
+				</label>
+			</td>
+			</tr>
+		<tr>
 		
-			<a href="${contextPath}/find/findId">아이디 찾기</a> <a> | </a>		
+		<td><p>ID 저장:<p></td>
+				<td>
+					<label style="margin-right:90%;" >
+						<form:checkbox path="rememberId"  /> 
+					</label>
+				</td>
+			</tr>
+			
+			
+		<tr>
+		<td></td>
+		<td>
+		
+			<button type="button,submit"  class="btn btn-secondary btn-lg"  style="width: 100%">관리자 로그인하기</button>
+		
+		</td>
+		</tr>
+<!-- 		<article class="btn2">
+		<tr>
+		<td>
+		<input type="submit" value="로그인하기"  size="100"/>
+		</td>
+		</tr>
+		</article> -->
+		
+		
+		<%-- <p><a href="<c:url value='${contextPath}/find/findIdPw'/>">아이디/비밀번호 찾기</a> --%>
+
+		</table>
+		<table>
+		<article id = "findForm">
+		
+	<%-- 		<a href="${contextPath}/find/findId">아이디 찾기</a> <a> | </a>		
 			<a href="${contextPath}/find/findPw">비밀번호 찾기</a>
-			<a> | </a>		
-			<a href="${contextPath}/adminLogin">관리자 로그인</a>
+			<a> | </a>	 --%>	
+			<%-- <a href="${contextPath}/adminLogin">관리자 로그인</a> --%>
 		
 		</article>
 		</table>
-</section>
+		
+ 	</fieldset> 
 	</form:form> 
 
 	</section>

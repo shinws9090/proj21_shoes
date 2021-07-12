@@ -1,4 +1,3 @@
-
 select * from product;
 
 -- 권한 , 직원정보 , 공지사항

@@ -102,7 +102,7 @@
 						<td>결제금액</td>
 						<td>주문수량</td>
 					 	<td>주문일</td>
-					 	<td>결제여부</td> 
+					 	<td>결제/배송</td> 
 					 	<td>구매확정여부</td>
 					 
 			
@@ -118,36 +118,45 @@
 						<td><a href="${contextPath}/productDetail/${myOrderList.productCode}">${myOrderList.productName }<br>[상품 주문페이지]</a></td>
 						<td>${myOrderList.paymentAmount }</td>
 						<td>${myOrderList.orderCount }</td>
-						 <td>${myOrderList.orderDate }</td> 	
-						 <c:if test="${empty myOrderList.payOX && myOrderList.cancelState == false}">
-						  <td>입금전<br><a href="${contextPath}/myOrderCancel/${myOrderList.orderCode}/${member.memberId}">[주문취소하기]</a></td>
+						<td>${myOrderList.orderDate }</td> 	
+						
+						<c:if test="${myOrderList.paymentState == 0 && myOrderList.cancelState == false}">
+						<td>입금전<br><a href="${contextPath}/myOrderCancel/${myOrderList.orderCode}/${member.memberId}">[주문취소하기]</a></td>
+						</c:if>				
+						
+						<c:if test="${myOrderList.paymentState == 1 && myOrderList.buyConfirmState == false}">
+							<td>입금완료 <br><a href="${contextPath}/myOrderCancel/${myOrderList.orderCode}/${member.memberId}">[주문취소하기]</a></td>
+						</c:if>
+						
+						<c:if test="${myOrderList.paymentState == 1 && myOrderList.buyConfirmState == true}">
+							<td>입금완료</td>
+						</c:if>
+						
+						<c:if test="${myOrderList.paymentState == 2}">
+							<td>배송준비중</td>
+						</c:if>
+						
+						<c:if test="${myOrderList.paymentState == 3}">
+							<td>배송중</td>
+						</c:if>
+						
+						<c:if test="${myOrderList.paymentState == 4}">
+							<td>배송완료</td>
+						</c:if>
 						 
-						 </c:if>				
-						 <c:if test="${!empty myOrderList.payOX && myOrderList.buyConfirmState == false}">
-						  <td>입금완료<br><a href="${contextPath}/myOrderCancel/${myOrderList.orderCode}/${member.memberId}">[주문취소하기]</a></td>
-						 </c:if>
-						  <c:if test="${!empty myOrderList.payOX && myOrderList.buyConfirmState == true}">
-						  <td>입금완료</td>
-						 </c:if>					
-						 
-						 <c:if test="${empty myOrderList.payOX}"><!-- 입금전일시 결제확정 비활성화 -->
-						 <td> - </td>
-						 </c:if>
-						 <!-- 입금완료시 구매확정버튼 활성화 -->
-						<c:if test="${!empty myOrderList.payOX && empty myOrderList.buyConfirmOX}"><!-- 결제완료했고 확정안했으면 -->		
-								 <td><a href="${contextPath}/myPage/myOrder/buyConfirm/${myOrderList.orderCode}/${member.memberId }">확정하기</a></td>
-						 </c:if>
-						 <c:if test="${!empty myOrderList.payOX && !empty myOrderList.buyConfirmOX}"><!-- 결제완료했고 확정했으면 -->		
-								 <td><a>확정완료</a></td>
-						 </c:if>
+						<c:if test="${myOrderList.paymentState != 4}"><!-- 입금전일시 결제확정 비활성화 -->
+							<td> - </td>
+						</c:if>
 						
+						<!-- 입금완료시 구매확정버튼 활성화 -->
+						<c:if test="${myOrderList.paymentState == 4 && myOrderList.buyConfirmState == false}"><!-- 결제완료했고 확정안했으면 -->		
+							<td><a href="${contextPath}/myPage/myOrder/buyConfirm/${myOrderList.orderCode}/${member.memberId }">확정하기</a></td>
+						</c:if>
 						
-						
-					
-					
-					
-					
-					
+						<c:if test="${myOrderList.paymentState == 4 && myOrderList.buyConfirmState == true}"><!-- 결제완료했고 확정했으면 -->		
+							<td><a>확정완료</a></td>
+						</c:if>
+											
 					</tr>
 					</c:forEach>
 					</c:when>
@@ -216,7 +225,7 @@ function movePage(currentPage, cntPerPage, pageSize){
     url = url + "&pageSize="+pageSize;
     
     location.href=url;
-}
+};
  
 </script>
 </html>

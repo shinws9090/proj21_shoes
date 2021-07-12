@@ -49,7 +49,7 @@
 	</update>
 	
 	<update id="updatePaymentState">
-		update `order` set payment_state = true
+		update `order` set payment_state = 1
 		where order_code = #{orderCode}
 	</update>
 	

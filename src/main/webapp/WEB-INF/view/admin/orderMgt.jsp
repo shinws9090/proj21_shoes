@@ -153,13 +153,13 @@ form#deliveryCodeForm {
 										</c:choose>	
 								<td>									
 									<c:choose>
-										<c:when test="${orderList.paymentState == true && (orderList.deliveryCode eq '' || orderList.deliveryCode eq null)}">
+										<c:when test="${orderList.paymentState == 1 && (orderList.deliveryCode eq '' || orderList.deliveryCode eq null)}">
 											<form id="deliveryCodeForm" name="deliveryCodeForm" method="post" autocomplete="off">
 												<input type="text" placeholder="송장번호 입력" value="">
 											</form>
 											<input type="button" id="delivery_btn" onclick="summit1()" value="등록">
 										</c:when>
-										<c:when test="${  orderList.paymentState == true && (orderList.deliveryCode ne '' || orderList.deliveryCode ne null)}">
+										<c:when test="${  orderList.paymentState == 1 && (orderList.deliveryCode ne '' || orderList.deliveryCode ne null)}">
 											<div>${orderList.deliveryCode}</div>
 										</c:when>										
 										<c:otherwise>
@@ -170,7 +170,7 @@ form#deliveryCodeForm {
 								</td>
 								<td>
 									<c:choose>
-										<c:when test="${orderList.buyConfirmState == false && orderList.paymentState == true}">
+										<c:when test="${orderList.buyConfirmState == false && orderList.paymentState == 1}">
 											<input type="button" id="paymentState_btn" onclick="summit2()" value="구매확정">
 										</c:when>
 										<c:otherwise>
