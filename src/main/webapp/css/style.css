@@ -10,9 +10,13 @@ section {
 		min-height: 200px;
 	}
 	
+section.adminSection {
+    padding-top: 8em;
+}
+	
 section#loginForm {
-    margin-top: 200px;
-    margin-bottom: 200px;
+  /*   margin-top: 200px; */
+    margin-bottom: 220px;
 }
 
 @media ( max-width : 767px) {
@@ -40,7 +44,7 @@ section#loginForm {
 	}
 	section {
 		/* 내용들어갈때 패딩탑 줘야 헤더랑 영역 구분됨 */
-		padding-top: 10em;
+		padding-top: 12em;
 	}
 	header>div, header>nav {
 		position: absolute;

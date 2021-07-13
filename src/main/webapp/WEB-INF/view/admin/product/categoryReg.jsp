@@ -46,7 +46,7 @@ opener.location.reload();
 </style>
 </head>
 <body>
-	<section>
+	<section class="adminSection">
 	
 		<h1 class="mt-4">카테고리 추가</h1>
 		<div class="categoryReg">

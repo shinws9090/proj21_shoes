@@ -157,7 +157,7 @@ h1.mt-4 {
 
 </style>
 <body>
-	<section>
+	<section class="adminSection">
 	    <div class="pageContent-wrapper">		        
 			<!-- Page content-->
 			<h1 class="mt-4">상품 등록</h1>

@@ -24,6 +24,7 @@
 			
 			<!-- 회원 로그인 했을 때 보여지는 메뉴 -->
 			<c:if test="${!empty authInfo}">
+			<br>
 				<p>${authInfo.memberName }님. 환영합니다</p>
 				<p>
 			

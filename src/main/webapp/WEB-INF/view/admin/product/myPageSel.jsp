@@ -18,21 +18,32 @@
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<title>회원탈퇴</title>
+<title>회원가입</title>
+<!-- mobile metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<title>마이페이지</title>
 <!-- bootstrap -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
 		integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
 		crossorigin="anonymous">
 <link href="${contextPath}/css/buttons.css" rel="stylesheet">
 <link rel="stylesheet" href="${contextPath}/css/reset.css">
-<!-- bootstrap end -->
+<!-- bootstrap end -->	
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberBootstrap.css">
+
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<style type="text/css">
 
+.step2 h2{
+	border-bottom: none;
+
+}</style>
+	
 </head>
 <body class="main-layout">
 	<!-- header -->
@@ -43,31 +54,23 @@
 		</c:if>
 	</header>
 	<!-- end header -->
-	<div id="myPage">
+	
+		<div id="myPage">
 	<section id ="maPage">
-	
-	
-	
-	
 			<c:if test="${!empty authInfo}">
-			
-			<!-- 상단 등급 바 -->
+						<!-- 상단 등급 바 -->
 				<table id="tbl_maGrade"> 
 					<tr id="tr_myGrade">
-						<td><h2>${memberGrade.memberName }[${memberGrade.memberId}]님의 멤버십 등급은 ${memberGrade.grade}입니다.	</h2>
+						<td><h2>${member.memberName }[${member.memberId}]님의 멤버십 등급은 ${member.grade}입니다.	</h2>
 							<article id="myGrade_detail">
-								<a href="${contextPath}/admin/board/mainNoticeDetail?boardCode=6">등급별 혜택 보기 〉</a>
-								포인트 〉 <a id="myPoint"> ${memberGrade.point }점 </a>
+								<a href="${contextPath}/grade/${member.memberId}">등급별 혜택 보기 〉</a>
+								포인트 〉 <a id="myPoint"> ${member.point }점 </a>
 							</article>
 						</td>
 					</tr>
 				</table>
-							
-				
-				
-				<!-- 좌측메뉴 -->
 			<!-- 좌측 메뉴 -->
-				<article id="my_menu">
+				<article id="my_menu" >
 				<h3>회원정보</h3>
 				<a href="${contextPath}/myPage/myPageSel/${member.memberId}">-회원정보 조회 / 변경</a><br>
 				<a href="${contextPath}/myPage/quitMember/${member.memberId}">-회원탈퇴</a>
@@ -87,94 +90,77 @@
 				
 				
 				</article>
-				
-		<h2 style="text-align:center; border-bottom: 1px solid #c0c0c0; width:48%; margin-left: 30%; padding-bottom: 10px; ">회원탈퇴</h2>
-			<div id="modify_form">
-	<section id ="modifyForm">
+			
+				<!-- ------------------------------회원정보 테이블   -------------------------------------------------- -->
+			
+		
+				<h2 style="border-bottom: 1px solid #c0c0c0; width:65%; margin-left: 20%; padding-bottom: 10px; ">나의 정보 </h2>
+				<br>
+				<br>
+			<div id="myPageForm">
+				<form:form action="modify" modelAttribute="memberDetail">
+				<form:errors/>
+				<table  class="insertTable" >
+					<tr>
+						<td>회원아이디  </td><td style="text-align: left;">${member.memberId }</td>				
+					</tr>
+					<%-- <tr>
+						<td >비밀번호  </td>		<td style="text-align: left;">********</td><td>${member.memberPwd }</td>
+					</tr> --%>
+				<tr>
+						<td>회원이름  </td>		<td> ${member.memberName }</td>
+					</tr>
+					<tr>
+						<td>성별  </td>		<td >${member.gender }</td>
+					</tr>
+					<tr>
+						<td>생년월일  </td>		<td >${member.birthday }</td>
+					</tr>
+					<tr>
+						<td>이메일  </td>		<td >${member.email }</td>
+					</tr>
+					<tr>
+						<td>연락처  </td>		<td >${member.tel }</td>
+					</tr>
+					<tr>
+						<td>우편번호  </td>		<td >${member.zipCode }</td>
+					</tr>
+					<tr>
+						<td >주소  </td>		<td style="width: 81%">${member.address }</td>
+					</tr>
+					<tr>
+						<td >상세주소 </td>		<td>${member.detailAddress }</td>
+					</tr>
+					<tr>
+						<td>포인트  </td>		<td  >${member.point }</td>
+					</tr>
+					<tr>
+						<td >누적구매금액  </td>	<td >${member.cumulativeBuyAmount }</td>
+					</tr>
+					<tr>
+						<td >등급  </td>		<td ">${member.grade }</td>
+					</tr>
+					<tr>
+						<td >가입일  </td>		<td><tf:formatDateTime value="${member.signUpDate }" pattern="yyyy-MM-dd:mm"/>
+					</td>
 
 		
-		
-			<div class="container my-3" style="font: 0.9em Verdana,Dotum,AppleGothic,sans-serif; margin-left: 20%">
-			<form:form action="/myPage/quitMember/${member.memberId }" modelAttribute="memberDetailUpdateCommend"><!-- 보내는거? -->
-			<form:errors />
-			<table  class="modify_table">
-			
-			<tr>
-				<article style="color: red; ">
-								<form:errors  path="confirmPassword"  /><br>
-								<form:errors path="memberPwd" /> 
-				</article>
-				
-				<th>회원 아이디</th>
-				<td id="td_right">
-				<label for="memberId">
-				<form:input path="memberId"  id="memberId" readonly="true" value="${member.memberId }" />
-				</label>
-				</td>				
-			</tr>
-			<form:errors  path="memberId"  />
-			
-		
-			
-			 <tr>
-			<%-- 	<article style="color: red; ">
-								<form:errors  path="confirmPassword"  /><br>
-								<form:errors path="memberPwd" />
-				</article> --%>
-				
-				<th>회원명</th>
-				<td id="td_right">
-				<label for="memberName">
-				<form:input path="memberName"  id="memberName" readonly="true" value="${member.memberId }" />
-				</label>
-				</td>				
-			</tr>
-			<%-- <form:errors  path="memberName"  /> --%>
-			
-		
-		
-		
-		
-		
-			<tr>
-					<th>기존비밀번호 확인 </th>
-					<td id="td_right">
-					<label for="confirmPassword">	
-					<form:password id="confirmPassword" path="confirmPassword" placeholder="기존 비밀번호 입력" />
-					<%-- <form:errors path="confirmPassword" /> --%>
-					</label>
-					</td>	
-			</tr>
-		
-
-		
-			
 		</table>
-
-				<div id="btns" >
-		<h2 style="margin-left: 0; margin-right: 0; width: 100%">  </h2>
-				<h2 style="text-align:center; border-bottom: 1px solid #c0c0c0; width:138%; margin-top:40px; margin-left: -27%; padding-bottom: 10px; "></h2>
-			
-			<button type="button,submit"  class="btn btn-secondary btn-lg "  style=" margin-top:20px; width: 72%; font-size: 15px; float:left;">탈퇴하기</button>
-				<%--  <input type="submit" value="<spring:message code="next.btn"/>" /><!--다음단계  --> --%>
-			</form>
-			
-			</div>
-			</form:form>
-			</div>
-	</section>
-</div>			
-
-
-				<%-- <p>회원정보</p>
-				<li><a href="${contextPath}/myPage/changeMemberData">회원정보 변경</a></li>
-				<li><a href="${contextPath}/myPage/">회원탈퇴</a></li> --%>
 		
+				</form:form>
+				
+				</div>
+			<article style="text-align: left; margin-left: 48%">
+				<a href="${contextPath}/myPage/${authInfo.memberId}">회원정보 변경</a>
+				<a style="color: gray;">     |     </a>
+				<a href="${contextPath}/myPage/quitMember/${member.memberId}">회원탈퇴</a>
+			</article>
+			
+				
 				
 			</c:if>
 
 	
-</section>
 	
 	</section>
 </div>
@@ -182,8 +168,7 @@
 	<section>
 
 	</section>
-
-
+</div>
 	<!-- end our product -->
 	<footer>
 		<jsp:include page="/WEB-INF/view/include/footer.jsp"/>

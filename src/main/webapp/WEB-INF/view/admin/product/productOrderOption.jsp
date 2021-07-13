@@ -112,7 +112,7 @@ opener.location.reload();
 
 </style>
 <body>
-	<section>		
+	<section class="adminSection">	
 		<h1 class="mt-4">재고 등록</h1>
 
 		<div class="productOrderOption">
