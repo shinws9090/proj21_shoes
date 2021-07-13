@@ -68,7 +68,7 @@ section#loginForm {
 		left: 22%;
 		background-image: url("../images/logo.jpg");
 		background-size: 100% 100%;
-		width: 14em;
+		width: 12em;
 		height: 5em;
 	}
 	.main-menu {
@@ -156,11 +156,11 @@ section#loginForm {
 		font-size: 0.8em;
 	}
 	.logo {
-		bottom: 0;
+		bottom: 20%;
 		left: 5%;
 		background-image: url("../images/logo.jpg");
 		background-size: 100% 100%;
-		width: 14em;
+		width: 12em;
 		height: 5em;
 	}
 	.main-menu {
