@@ -110,9 +110,9 @@
 } */
 #insertForm{
 	padding-top:30px;
-	margin-left: 15%;
+	margin-left: 35%;
 	margin-right: 10%;
-	font: 1.1em Verdana,Dotum,AppleGothic,sans-serif;
+	font: 1em Verdana,Dotum,AppleGothic,sans-serif;
 	
 }
 #myPageForm{/* 마이페이지 나의정보 테이블 */
@@ -179,7 +179,7 @@ td{
 
 .step2 p {
 	margin: 15px;
-	font-size: 1.2em;
+	font-size: 1em;
 
 }
 .signUpForm{						/*  */

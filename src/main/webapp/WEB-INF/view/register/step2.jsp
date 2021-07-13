@@ -97,6 +97,7 @@
 	
 	</script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 <body class="main-layout">
 	<!-- header -->
@@ -105,14 +106,16 @@
 	</header>
 	
 	<!-- end header -->
+	
 	<div class="step2">
 	
 		<div id="signUpForm">
 	<section id = "signUpForm">
 	<article id="title_h2">
-		<h2>회원가입</h2> 
+	
 	</article>
 		<div id="insertForm" >
+<h2 style="text-align:center; border-bottom: 1px solid #c0c0c0; width:100%; margin-top:5px; margin-left: -27%; padding-bottom: 10px; ">회원가입</h2>
 		<form:form action="step3" modelAttribute="registerRequest">
 		<form:errors/>
 		<table id ="insertTable"  >
@@ -121,7 +124,7 @@
 			<td>
 				<label> 
 				<form:input  type="text" path="memberId" placeholder="아이디" id="member_id" />  
-				<form:errors path="memberId" />		
+				<form:errors path="memberId"  style="color:red;"/>		
 				</label>
 				
 			</td>
@@ -131,7 +134,7 @@
 			<td >
 				<label for="memberPwd"> 
 				<form:password  path="memberPwd" placeholder="비밀번호" id="member_pwd" />  
-				<form:errors path="memberPwd" />
+				<form:errors path="memberPwd"  style="color:red;"/>
 				</label>
 			</td>
 		</tr>
@@ -141,7 +144,7 @@
 		<td >
 			<label>
 			<form:password id="confirmPassword" path="confirmPassword" placeholder="비밀번호 확인" />  
-			<form:errors path="confirmPassword" />
+			<form:errors path="confirmPassword"  style="color:red;"/>
 			</label>
 			</td>
 		
@@ -150,7 +153,7 @@
 		<td >
 			<label for="memberName">
 			<form:input path="memberName" placeholder="이름" id="member_name" />  
-			<form:errors path="memberName" />
+			<form:errors path="memberName" style="color:red;" />
 			</label>
 		</td>
 
@@ -170,7 +173,7 @@
 		<td >
 			<label for="birthday">
 			<form:input path="birthday" type="date" id="birthday" placeholder="" />  
-			<form:errors path="birthday" />
+			<form:errors path="birthday"  style="color:red;"/>
 			</label>
 		</td>
 		</tr>
@@ -179,7 +182,7 @@
 		<td>
 			<label for="email">
 			<form:input type="email" path="email" id="email" placeholder="이메일주소" />  
-			<form:errors path="email" />
+			<form:errors path="email" style="color:red;" />
 			</label>
 		</td>
 		</tr>
@@ -190,7 +193,7 @@
 			<td > 
 			<label for="tel">
 			<form:input type="tel" path="tel" id="tel" placeholder="연락처를 입력해주세요" />  
-			<form:errors path="tel" />
+			<form:errors path="tel" style="color:red;" />
 			</label>
 		</td>
 		</tr>
@@ -200,7 +203,7 @@
 		<td >
 			<label for="zipCode"> 
 			<form:input type="text" path="zipCode"  id="zipCode" readonly="true" placeholder="클릭해주세요 "   onclick="testDaumPostcode()"/>  
-			<form:errors path="zipCode" />
+			<form:errors path="zipCode"  style="color:red;"/>
 			</label>
 		</td>
 		</tr>
@@ -210,7 +213,7 @@
 		<td>
 			<label for="address">
 			<form:input  path="address" type="text"  id="address"  readonly="true" placeholder="우편번호 입력시 자동입력 "    />  
-			<form:errors path="address" />
+			<form:errors path="address" style="color:red;" />
 			</label>
 		</td>
 		</tr>
@@ -220,7 +223,7 @@
 			<td>
 			<label for="detailAddress">
 			<form:input path="detailAddress"  id="detail_address" placeholder="상세주소 "  />  
-			<form:errors path="detailAddress" />
+			<form:errors path="detailAddress" style="color:red;" />
 			</label>
 		</td>
 		</tr>
@@ -228,20 +231,22 @@
 		
 		</table>
 		
+<h2 style="text-align:center; border-bottom: 1px solid #c0c0c0; width:100%; margin-top:5px; margin-left: -27%; padding-bottom: 10px; "></h2>
+</div>
+	</section>
 			<div id="btns" >
-		<h2 style="margin-left: 0; margin-right: 0; width: 100%">  </h2>
-			<button type="button,submit"  class="btn btn-secondary btn-lg "  style=" margin-top:20px; width: 49%; font-size: 15px; float:right;">가입하기 〉</button>
+		<!-- <h2 style="margin-left: 0; margin-right: 0; width: 50%">  </h2> -->
+			
+			<button type="button,submit"  class="btn btn-secondary btn-lg "  style=" margin-right:30%;  margin-top:20px; width: 22%;  font-size: 15px; float:right;">가입하기 〉</button>
 				<%--  <input type="submit" value="<spring:message code="next.btn"/>" /><!--다음단계  --> --%>
 			</form>
 			<form action="${contextPath}/index" method="get">
-			<button type="button,submit"  class="btn btn-secondary btn-lg bottomBtn" id="cancel" style=" margin-left:20px; margin-top:20px; width: 49%; font-size: 15px;">〈 취소</button>
+			<button type="button,submit"  class="btn btn-secondary btn-lg bottomBtn" id="cancel" style=" margin-left:25%; margin-top:20px; width: 22%; font-size: 15px;">〈 취소</button>
 			</form>
 			</div>
 			
 		</form:form>
 		</div>
-</div>
-	</section>
 	
 </div>
 	
