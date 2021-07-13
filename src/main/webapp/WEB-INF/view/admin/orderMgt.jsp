@@ -160,8 +160,8 @@ td#td10 {
 					<div class="search">
 						<select name="searchType">
 							<option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>주문코드</option>
-							<option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>회원아이디</option>
-							<option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>제품명</option>
+							<option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>회원아이디</option>
+							<option value="q"<c:out value="${scri.searchType eq 'q' ? 'selected' : ''}"/>>제품명</option>
 					    </select>
 					
 					    <input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>

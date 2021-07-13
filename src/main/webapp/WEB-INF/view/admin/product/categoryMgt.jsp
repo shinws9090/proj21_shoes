@@ -72,9 +72,9 @@ tbody tr:nth-child(2n+1) {
 		            <table style="width: 50%; text-align: center">
 		            	<thead>
 							<tr style="background-color: lightgrey; text-align: center">
-								<td>카테고리코드</td>
-								<td>카테고리명</td>
-								<td>관리</td>
+								<td style="width: 40%;">카테고리코드</td>
+								<td style="width: 40%;">카테고리명</td>
+								<td style="width: 20%;">카테고리관리</td>
 							</tr>
 						</thead>
 						<tbody>

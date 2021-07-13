@@ -214,7 +214,7 @@ WHERE order_code=#{orderCode};
 	<sql id="search">
 		<if test="searchType != null">
 			<if test="searchType == 't'.toString()">AND order_code LIKE CONCAT('%',#{keyword},'%')</if>
-			<if test="searchType == 'w'.toString()">AND member_id LIKE CONCAT('%',#{keyword},'%')</if>
+			<if test="searchType == 'w'.toString()">AND member_id = #{keyword}</if>
 			<if test="searchType == 'q'.toString()">AND product_name LIKE CONCAT('%',#{keyword},'%')</if>
 			<if test="searchType == 'p1'.toString()">AND payment_state = 1 AND cancel_state = false</if>
 			<if test="searchType == 'p2'.toString()">AND payment_state = 2 AND cancel_state = false</if>

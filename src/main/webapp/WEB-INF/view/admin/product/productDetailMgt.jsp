@@ -45,6 +45,9 @@ $(function(){
 		});	
 	
 });
+
+opener.location.reload();
+
 </script>
 </head>
 <style>
@@ -53,32 +56,10 @@ td.td1 {
     width: 15%;
 }
 
-td.td2 {
-    width: 15%;
-}
-
-td.td3 {
-    width: 15%;
-}
-
-td.td4 {
-    width: 15%;
-}
-
-td.td5 {
-    width: 15%;
-}
-
-td.td6 {
-    width: 15%;
-}
-
-
-
 .title_div {
     display: inline-block;
     margin-right: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .btn_section {
@@ -115,17 +96,17 @@ ul.pageNum {
 					<table style="width: 100%; text-align: center">
 						<thead>
 							<tr style="background-color: lightgrey; text-align: center">
-								<td>번호</td>
-								<td>상품명</td>
-								<td>브랜드</td>
-								<td>성별</td>
-								<td>카테고리</td>
-								<td>대표이미지</td>
-								<td>원가</td>
-								<td>판매가격</td>
-								<td>등록일</td>
-								<td>누적등록수량</td>
-								<td>누적판매수량</td>
+								<td style="width: 2%;">번호</td>
+								<td style="width: 7%;">상품명</td>
+								<td style="width: 3%;">브랜드</td>
+								<td style="width: 2%;">성별</td>
+								<td style="width: 3%;">카테고리</td>
+								<td style="width: 1%;">대표이미지</td>
+								<td style="width: 4%;">원가</td>
+								<td style="width: 4%;">판매가격</td>
+								<td style="width: 5%;">등록일</td>
+								<td style="width: 6%;">누적등록수량</td>
+								<td style="width: 6%;">누적판매수량</td>
 							</tr>
 						<thead>
 						<tbody>
@@ -135,7 +116,7 @@ ul.pageNum {
 								<td>${products.brand.brandName}</td>								
 								<td>${products.gender}</td>
 								<td>${products.category.category}</td>
-								<td><a href="${contextPath}/productDetail/${products.productCode}"><img src="${contextPath}/images/${products.productPost.productMainImage}" width="150" height="150"></a></td>
+								<td><a href="${contextPath}/productDetail/${products.productCode}"><img src="${contextPath}/images/${products.productPost.productMainImage}" width="130" height="130"></a></td>
 								<td>${products.costPrice}</td>
 								<td>${products.sellPrice}</td>
 								<td>${products.registDate}</td>
@@ -153,16 +134,16 @@ ul.pageNum {
 					<button type="button" id="new_btn">재고등록</button>
 				</div>
 				<div>
-					<div style="height: 300px">
+					<div style="height: 290px">
 					<table style="width: 100%; text-align: center">
 						<thead>
 							<tr style="background-color: lightgrey; text-align: center">
 								<!-- <td class="td1">번호</td> -->
-								<td class="td2">스타일코드</td>
-								<td class="td3">색상</td>
-								<td class="td4">사이즈</td>
-								<td class="td5">현재재고</td>
-								<td class="td6">재고관리</td>
+								<td class="td1">스타일코드</td>
+								<td class="td1">색상</td>
+								<td class="td1">사이즈</td>
+								<td class="td1">현재재고</td>
+								<td class="td1">재고관리</td>
 							</tr>
 						</thead>
 						<tbody>

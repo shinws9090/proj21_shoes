@@ -53,6 +53,10 @@ $(function(){
 	
 });
 
+function reloadOpener(){
+	window.opener.location.reload();
+}
+
 function summit(){
 	let targetObject = $(".pageContent-wrapper");
 	
@@ -100,6 +104,7 @@ function summit(){
 		summitForm.submit();
 		alert("상품추가 완료");
 	};
+	
 };
 
 

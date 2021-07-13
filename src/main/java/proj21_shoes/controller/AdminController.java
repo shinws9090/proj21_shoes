@@ -278,7 +278,7 @@ public class AdminController {
 
 	@PostMapping("/admin/product/productReg")
 	@Transactional
-	public String postProductRegister(MultipartHttpServletRequest request, MultipartFile file)
+	public String postProductRegister(MultipartHttpServletRequest request, MultipartFile file, HttpServletResponse response)
 			throws IOException, Exception {
 		System.out.println("상품등록실행");
 
@@ -337,8 +337,8 @@ public class AdminController {
 
 		System.out.println(image);
 		imageService.insertImage(image);
-
-		return "redirect:/admin/product/productReg";
+		
+		return "redirect:/admin/product/productDetailMgt?productCode="+ Integer.parseInt(request.getParameter("productCode")) + "&page=1&perPageNum=10";
 	}
 
 	@GetMapping("/admin/product/productPostReg")
@@ -806,7 +806,8 @@ public class AdminController {
 	}
 	
 	@PostMapping("/admin/board/qnaMod")
-	public String postqnaBoardMod(HttpServletRequest request, @RequestParam(value = "boardCode") int boardCode) {		
+	public String postqnaBoardMod(HttpServletRequest request, @RequestParam(value = "boardCode") int boardCode,
+			@RequestParam(value = "searchType") String searchType) {		
 		Qna qna = new Qna();
 		qna.setReply(request.getParameter("reply"));
 		qna.setBoardCode(boardCode);		
@@ -814,15 +815,15 @@ public class AdminController {
 		System.out.println(qna);
 		myQnaService.updateQna(qna);
 
-		return "redirect:/admin/board/qna";
+		return "redirect:/admin/board/qna?page=1&perPageNum=10&searchType=" + searchType;
 	}
 	
 	@GetMapping("/admin/board/qnaDel")
-	public String getQnaeBoardDel(@RequestParam(value = "boardCode") int boardCode) {
+	public String getQnaeBoardDel(@RequestParam(value = "boardCode") int boardCode, @RequestParam(value = "searchType") String searchType) {
 		myQnaService.deleteQna(boardCode);
 		System.out.println("문의사항 삭제");
 		
-		return "redirect:/admin/board/qna/?page=1&perPageNum=10";
+		return "redirect:/admin/board/qna/?page=1&perPageNum=10&searchType=" + searchType;
 	}
 
 	@GetMapping("/admin/board/review")

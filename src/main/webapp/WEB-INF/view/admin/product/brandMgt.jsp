@@ -72,10 +72,10 @@ tbody tr:nth-child(2n+1) {
 		            <table style="width: 50%; text-align: center">
 		            	<thead>
 							<tr style="background-color: lightgrey; text-align: center">
-								<td>브랜드코드</td>
-								<td>브랜드명</td>
-								<td>브랜드영어명</td>
-								<td>관리</td>
+								<td style="width: 20%;">브랜드코드</td>
+								<td style="width: 30%;">브랜드명</td>
+								<td style="width: 30%;">브랜드영어명</td>
+								<td style="width: 20%;">브랜드관리</td>
 							</tr>
 						</thead>
 						<tbody>

@@ -13,9 +13,15 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 $(function(){
-
+	function getParameterByName(name) {
+	    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+	        results = regex.exec(location.search);
+	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	};	
+	
 	$('#mod_btn').on("click", function(e) {
-		location.href="${contextPath}/admin/board/qnaMod?boardCode=" + ${qnaView.boardCode};
+		location.href="${contextPath}/admin/board/qnaMod?searchType=" + getParameterByName("searchType") + "&boardCode=" + ${qnaView.boardCode};
 	});
 	
 	$('#del_btn').on("click", function(e) {

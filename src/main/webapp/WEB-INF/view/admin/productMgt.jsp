@@ -16,7 +16,7 @@
 
 $(function(){
 	$('#new').on("click", function(e) {
-		window.open("${contextPath}/admin/product/productReg", "PopupWin", "width=1070, height=640");
+		window.open("${contextPath}/admin/product/productReg", "PopupWin", "width=1130, height=730");
 	});
 	
 	$('#searchBtn').click(function() {
@@ -145,19 +145,19 @@ tbody tr:nth-child(2n+1) {
 					<table style="width: 95%; text-align: center">
 						<thead>
 							<tr style="background-color: lightgrey; text-align: center">
-								<td>번호</td>
-								<td>상품명</td>
-								<td>브랜드</td>
-								<td>성별</td>
-								<td>카테고리</td>
-								<td>대표이미지</td>
-								<td>원가</td>
-								<td>판매가격</td>
-								<td>등록일</td>
-								<td>누적등록수량</td>
-								<td>누적판매수량</td>
-								<td>재고관리</td>
-								<td>상품관리</td>
+								<td style="width: 4%;">번호</td>
+								<td style="width: 10%;">상품명</td>
+								<td style="width: 5%;">브랜드</td>
+								<td style="width: 5%;">성별</td>
+								<td style="width: 5%;">카테고리</td>
+								<td style="width: 1%;">대표이미지</td>
+								<td style="width: 6%;">원가</td>
+								<td style="width: 6%;">판매가격</td>
+								<td style="width: 8%;">등록일</td>
+								<td style="width: 8%;">누적등록수량</td>
+								<td style="width: 8%;">누적판매수량</td>
+								<td style="width: 6%;">재고관리</td>
+								<td style="width: 8%;">상품관리</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -174,9 +174,9 @@ tbody tr:nth-child(2n+1) {
 								<td>${productList.registDate}</td>
 								<td>${productList.cumulativeRegistCount}</td>
 								<td>${productList.cumulativeSellCount}</td>
-								<td><button type="button"><a href="${contextPath}/admin/product/productDetailMgt?productCode=${productList.productCode}&page=1&perPageNum=10" onClick="window.open(this.href, '', 'width=1210, height=760'); return false;">재고관리</a></button></td>
+								<td><button type="button"><a href="${contextPath}/admin/product/productDetailMgt?productCode=${productList.productCode}&page=1&perPageNum=10" onClick="window.open(this.href, '', 'width=1130, height=720'); return false;">재고관리</a></button></td>
 								<td>
-									<button type="button"><a href="${contextPath}/admin/product/productMod?productCode=${productList.productCode}" onClick="window.open(this.href, '', 'width=1070, height=640'); return false;">상품수정</a></button>
+									<button type="button"><a href="${contextPath}/admin/product/productMod?productCode=${productList.productCode}" onClick="window.open(this.href, '', 'width=1130, height=720'); return false;">상품수정</a></button>
 									<button type="button"><a href="${contextPath}/admin/product/productDel?productCode=${productList.productCode}" onClick="if(!confirm('삭제 하시겠습니까?')){return false;}">상품삭제</a></button>
 									
 								</td>

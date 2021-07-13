@@ -321,4 +321,3 @@ select count(order_code) from vw_myOrderData where payment_state= 1;
 select count(order_code) from vw_myOrderData where payment_state= 2;
 select count(order_code) from vw_myOrderData where payment_state= 3;
 select count(order_code) from vw_myOrderData where payment_state= 4;
-
