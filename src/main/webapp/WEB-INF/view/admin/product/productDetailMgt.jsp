@@ -69,7 +69,7 @@ tbody tr:nth-child(2n+1) {
 </style>
 <body class="main-layout">
 
-	<section>
+	<section class="adminSection">
 		<div class="container-orderOption">
 				<div class="title_div">
 					<h1 class="mt-4">상품 정보</h1>

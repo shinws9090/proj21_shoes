@@ -85,4 +85,22 @@ public class MyOrderServiceImpl implements MyOrderService {
 		return mapper.countPaymentState(paymentState);
 	}
 
+
+	@Override
+	public int updatePaymentState(MyOrderCommend order) {
+		return mapper.updatePaymentState(order);
+	}
+
+
+	@Override
+	public int countCancelState(int cancelState) {
+		return mapper.countCancelState(cancelState);
+	}
+
+
+	@Override
+	public int updateDeliverState(MyOrderCommend order) {
+		return mapper.updateDeliverState(order);
+	}
+
 }

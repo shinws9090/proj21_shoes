@@ -79,7 +79,7 @@ tbody tr:nth-child(2n+1) {
 	</header>
 	<!-- end header -->
 <c:if test="${!empty authInfo2}">
-	<section>
+	<section class="adminSection">
 		<div class="d-flex" id="wrapper">
 			<jsp:include page="/WEB-INF/view/admin/include/sidebar.jsp" />
 		    

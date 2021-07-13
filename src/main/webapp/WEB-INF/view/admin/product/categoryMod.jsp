@@ -46,7 +46,7 @@ opener.location.reload();
 </style>
 </head>
 <body>
-	<section>
+	<section class="adminSection">
 	<h1 class="mt-4">카테고리 수정</h1>
 		<div class="categoryMod">
 			<form id="categoryModForm" name="categoryModForm" method="post" autocomplete="off">

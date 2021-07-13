@@ -10,6 +10,10 @@ section {
 		min-height: 200px;
 	}
 	
+section.adminSection {
+    padding-top: 8em;
+}
+	
 section#loginForm {
 /*     margin-top: 200px; */
     margin-bottom: 200px;
@@ -40,7 +44,7 @@ section#loginForm {
 	}
 	section {
 		/* 내용들어갈때 패딩탑 줘야 헤더랑 영역 구분됨 */
-		padding-top: 10em;
+		padding-top: 12em;
 	}
 	header>div, header>nav {
 		position: absolute;
@@ -68,7 +72,7 @@ section#loginForm {
 		left: 22%;
 		background-image: url("../images/logo.jpg");
 		background-size: 100% 100%;
-		width: 14em;
+		width: 12em;
 		height: 5em;
 	}
 	.main-menu {
@@ -156,11 +160,11 @@ section#loginForm {
 		font-size: 0.8em;
 	}
 	.logo {
-		bottom: 0;
+		bottom: 20%;
 		left: 5%;
 		background-image: url("../images/logo.jpg");
 		background-size: 100% 100%;
-		width: 14em;
+		width: 12em;
 		height: 5em;
 	}
 	.main-menu {

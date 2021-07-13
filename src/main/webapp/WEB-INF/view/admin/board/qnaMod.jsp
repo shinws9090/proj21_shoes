@@ -58,7 +58,7 @@ td.qna_subject {
 	</header>
 	<!-- end header -->
 
-	<section>
+	<section class="adminSection">
 		<div class="d-flex" id="wrapper">
 			<jsp:include page="/WEB-INF/view/admin/include/sidebar.jsp" />		    
 		    
