@@ -16,7 +16,8 @@
 		<ul>
 			<!-- 회원 또는 관리자 로그인 하지 않았을 때 보여지는 메뉴  -->
 			<c:if test="${empty authInfo &&empty authInfo2}"> 
-				<p>로그인해주세요.</p> 
+			
+				<p style="margin-top: 10px; margin-left: 12px;">로그인해주세요.</p> 
 				<p>
 				<li><a href="${contextPath}/register/step1">회원가입</a></li>
 				<li><a href="${contextPath}/login/loginForm">로그인</a></li>
@@ -24,8 +25,8 @@
 			
 			<!-- 회원 로그인 했을 때 보여지는 메뉴 -->
 			<c:if test="${!empty authInfo}">
-			<br>
-				<p>${authInfo.memberName }님. 환영합니다</p>
+			
+				<p style="margin-top: 10px; margin-left: 12px;">${authInfo.memberName }님. 환영합니다</p>
 				<p>
 			
 					<%-- <a href="<c:url value="/edit/changePassword"/>">[비밀번호 변경]</a> --%>

@@ -55,7 +55,7 @@ public class MyPageController {
 	public String myPageHome( @PathVariable("memberId") String memberId, HttpSession session,HttpServletResponse response) {
 		MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
 		List<MyOrderCommend>  myOrderList  =myOrderService.selectMyOrderById(memberId);
-
+		MyPageSelectCommend memberGrade = getMyPageService.showMyPageById(memberId);
 		if(member ==null) {
 			throw new MemberNotFoundException();
 		}
@@ -63,9 +63,10 @@ public class MyPageController {
 			System.out.println("리스트 없당");
 		}
 		session.setAttribute("member", member);  // 요고 해줘야 jsp 에서 받을수 있당
-
+		session.setAttribute("memberGrade", memberGrade);  // jsp에 보내주기! 요고 해줘야 jsp 에서 받을수 있당
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("member",member);
+		mav.addObject("memberGrade",memberGrade);
 		session.setAttribute("myOrderList", myOrderList);
 		mav.addObject("myOrderList",myOrderList);
 		System.out.println(member);
