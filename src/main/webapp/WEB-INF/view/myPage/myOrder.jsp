@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="${contextPath}/css/reset.css">
 <!-- bootstrap end -->	
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberBootstrap.css">
 <%-- <link rel="stylesheet" href="<%=request.getContextPath() %>/css/table.css"> --%>
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
@@ -93,7 +94,7 @@
 				<br>
 			
 			<div class="container my-3">
-				<table  class="table" > 
+				<table  class="table order"  > 
 				<thead class="thead-dark">
 					<tr>
 						<td>주문번호</td>
@@ -146,11 +147,11 @@
 							<td> - </td>
 						</c:if>
 						
-						<c:if test="${myOrderList.paymentState == 4 && myOrderList.buyConfirmState == false}"><!-- 결제완료했고 확정안했으면 -->		
+						<c:if test="${myOrderList.paymentState == 4 && myOrderList.buyConfirmState == false}"><!-- 배송완료했고 확정안했으면 -->		
 							<td><a href="${contextPath}/myPage/myOrder/buyConfirm/${myOrderList.orderCode}/${member.memberId }">확정하기</a></td>
 						</c:if>
 						
-						<c:if test="${myOrderList.paymentState == 4 && myOrderList.buyConfirmState == true}"><!-- 결제완료했고 확정했으면 -->		
+						<c:if test="${myOrderList.paymentState == 4 && myOrderList.buyConfirmState == true}"><!-- 배송완료했고 확정했으면 -->		
 							<td><a>확정완료</a></td>
 						</c:if>
 				
@@ -174,7 +175,7 @@
 				
  <!--paginate -->
          <div class="paginate">
-            <div class="paging" style="margin-left: 50%;">
+            <div class="paging margin">
                <a class="direction prev" href="javascript:void(0);"
                   onclick="movePage(1,${pagination3.cntPerPage},${pagination3.pageSize});">
                   &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"

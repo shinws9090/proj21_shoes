@@ -30,6 +30,7 @@
 <!-- bootstrap end -->	
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberBootstrap.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -92,12 +93,12 @@
 				<br>
 				
 				<div class="container my-3">
-				<table class="table">
+				<table class="table order">
 				<thead  class="thead-dark">
 					<tr>
 						<td  id="max">제목</td>						
-						<td id="short">작성일</td>
-						<td id="short">답변유무</td>
+						<td id="short width">작성일</td>
+						<td id="short width">답변유무</td>
 	
 					</tr>
 				</thead>
@@ -132,7 +133,7 @@
 				
  <!--paginate -->
          <div class="paginate">
-            <div class="paging" style="margin-left: 50%;">
+            <div class="paging margin" >
                <a class="direction prev" href="javascript:void(0);"
                   onclick="movePage(1,${pagination2.cntPerPage},${pagination2.pageSize});">
                   &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"

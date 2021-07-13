@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="${contextPath}/css/reset.css">
 <!-- bootstrap end -->	
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberBootstrap.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -90,14 +91,14 @@
 				<h4 style="text-align: center;">최근 미작성 후기 내역 </h4>
 				<br>
 				<div class="container my-3">
-				<table  class="table" > 
+				<table  class="table order" > 
 				<thead class="thead-dark">
 					<tr>
 						 <td>주문번호</td> 
 						<!-- <td>상품사진</td> -->
-						<td>상품명(상품이미지)</td>
-						<td  id="short" >주문일</td>
-						<td  id="short">비고</td>
+						<td>상품명</td>
+						<td  id="short width" >주문일</td>
+						<td  id="short width">비고</td>
 
 					</tr>
 				</thead>
@@ -133,7 +134,7 @@
 				
  <!--paginate -->
          <div class="paginate">
-            <div class="paging" style="margin-left: 50%;">
+            <div class="paging margin">
                <a class="direction prev" href="javascript:void(0);"
                   onclick="movePage(1,${pagination5.cntPerPage},${pagination5.pageSize});">
                   &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"

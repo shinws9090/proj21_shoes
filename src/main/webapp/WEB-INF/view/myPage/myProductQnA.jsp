@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="${contextPath}/css/reset.css">
 <!-- bootstrap end -->	
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberBootstrap.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
@@ -87,12 +88,11 @@
 				<h4 style="text-align: center;">최근 상품문의내역</h4>
 				<br>
 				<div class="container my-3">
-				<table class="table" >
+				<table class="table order" >
 				<thead  class="thead-dark">
 				<tr>
 				
 					<td>문의상품</td>
-					<td>상품사진</td>
 					<td>제목</td>						
 					<td>작성일</td>
 					<td>답변유무</td>
@@ -106,8 +106,8 @@
 						<c:forEach var="myPdQna" items="${myPdQna }">
 							<tr>
 						<%-- 	<td><a href="${contextPath}/myPage/myQnADetail/${authInfo.memberId}/${myQna.boardCode}">${myQna.boardCode }</a></td> <!-- 문의코드 --> --%>
-								<td><a href="${contextPath}/myPage/myProductQnADetail/${myPdQna.memberId}/${myPdQna.boardCode}">${myPdQna.productName }</a></td>	<!-- 상품명 -->
-								<td><a href="${contextPath}/myPage/myProductQnADetail/${myPdQna.memberId}/${myPdQna.boardCode}"><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myPdQna.productMainImage }"></a></td>				
+								<td><h5><a href="${contextPath}/myPage/myProductQnADetail/${myPdQna.memberId}/${myPdQna.boardCode}"><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myPdQna.productMainImage }"></a><br>			
+								<a href="${contextPath}/myPage/myProductQnADetail/${myPdQna.memberId}/${myPdQna.boardCode}">${myPdQna.productName }</a></h5></td>	<!-- 상품명 -->
 								<td><a href="${contextPath}/myPage/myProductQnADetail/${myPdQna.memberId}/${myPdQna.boardCode}">${myPdQna.title }</a></td>	<!-- 제목 -->
 								<td>${myPdQna.registDate }</td>	<!-- 작성일 -->
 								<td>${myPdQna.resOX }</td>
@@ -126,7 +126,7 @@
 	<br>
 		         <!--paginate -->
          <div class="paginate">
-            <div class="paging" style="margin-left: 50%;">
+            <div class="paging margin" >
                <a class="direction prev" href="javascript:void(0);"
                   onclick="movePage(1,${pagination1.cntPerPage},${pagination1.pageSize});">
                   &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"

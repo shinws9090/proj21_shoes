@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="${contextPath}/css/reset.css">
 <!-- bootstrap end -->	
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberBootstrap.css">
 <%-- <link rel="stylesheet" href="<%=request.getContextPath() %>/css/table.css"> --%>
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
@@ -93,7 +94,7 @@
 				<br>
 			
 			<div class="container my-3">
-				<table  class="table" > 
+				<table  class="table order" > 
 				<thead class="thead-dark">
 					<tr>
 						<td>주문번호</td>
@@ -171,7 +172,7 @@
 				
  <!--paginate -->
          <div class="paginate">
-            <div class="paging" style="margin-left: 50%;">
+            <div class="paging margin">
                <a class="direction prev" href="javascript:void(0);"
                   onclick="movePage(1,${pagination3.cntPerPage},${pagination3.pageSize});">
                   &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"

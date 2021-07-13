@@ -114,21 +114,44 @@ border-collapse: separate;
 }
 
 
+.order td, .order th{
+	border-bottom: 1px solid #dcdcdc;
+}
 
-
-
+.detail{
+	
+	    width: 60%;
+    /* margin-left: 1%; */
+    max-width: 1400px;
+    /* border-radius: 10px; */
+    /* border-top: 2px solid #dcdcdc; */
+    border-bottom: 2px solid #dcdcdc;
+    /* font-family: '돋움', dotum; */
+    font-size: 16px;
+    text-align: center;
+    border-collapse: collapse;
+}
+.detail td{
+	    padding: 6px 0 4px;
+    border: 1px solid #e5e5e5;
+    color: #4c4c4c;
+     width: 0;
+}
 .table{
  	width: 120%;
-   margin-left:1%;
+ /*   margin-left:1%; */
    max-width:1400px;
-   border-radius: 10px;
-    border-top: 2px solid #dcdcdc; 
+  /*  border-radius: 10px; */
+ /*    border-top: 2px solid #dcdcdc;  */
    border-bottom: 2px solid #dcdcdc;
 /*    font-family: '돋움', dotum; */
-   font-size: 12px;
+   font-size: 16px;
    text-align: center;
    border-collapse: collapse; 
        
+      
+  
+      
        
 /*     
 		장바구니와 동일 디자인

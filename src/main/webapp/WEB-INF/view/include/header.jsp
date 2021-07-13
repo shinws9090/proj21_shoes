@@ -37,7 +37,7 @@
 			</c:if>
 				<!-- 관리자 로그인 했을 때 보여지는 메뉴 -->
 			<c:if test="${!empty authInfo2}">
-				<p>${authInfo2.empName } 관리자님. 환영합니다</p>
+				<p style="margin-top: 10px; margin-left: 12px;">${authInfo2.empName } 관리자님. 환영합니다</p>
 				<p>
 			<li><a href="${contextPath}/admin/adminMain">관리자 메인</a></li>
 			

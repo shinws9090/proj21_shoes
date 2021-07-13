@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="${contextPath}/css/reset.css">
 <!-- bootstrap end -->	
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberBootstrap.css">
 
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
@@ -90,11 +91,11 @@
 				<h4 style="text-align: center;">최근 구매후기 내역 </h4>
 				<br>
 				<div class="container my-3">
-				<table  class="table" > 
+				<table  class="table order" > 
 				<thead class="thead-dark">
 					<tr>
-						 <td id="short" style="width: 10%;">후기글번호</td> 
-						 <td id="short" style="width: 10%;">주문번호</td> 
+						 <td id="short width" >후기글번호</td> 
+						 <td id="short width">주문번호</td> 
 						<!-- <td>상품사진</td> -->
 						<td id="short" style="width: 20%;">상품명(상품이미지)</td>
 						<td id="max">후기제목</td>
@@ -107,7 +108,7 @@
 					<c:when test="${fn:length(myReviewList) > 0}">
 					<c:forEach var="myReviewList" items="${myReviewList}">
 					<tr>
-						 <td><a href="${contextPath}/myPage/myReview/${member.memberId }/${myReviewList.boardCode}">${myReviewList.boardCode}</a> 
+						 <td><a href="${contextPath}/myPage/myReview/myReviewDetail/${member.memberId }/${myReviewList.boardCode}">${myReviewList.boardCode}</a> 
 						<td><a href="${contextPath}/myPage/myOrder/orderDetail/${member.memberId }/${myReviewList.orderCode}">${myReviewList.orderCode }<br>[상세보기]</a></td>
 						<td><a href="${contextPath}/myPage/myReview/myReviewDetail/${member.memberId }/${myReviewList.boardCode}"><img style="max-width:20%; max-height: 20%" alt="" src="${contextPath}/images/${myReviewList.productMainImage }"></a>			
 						<br>
@@ -136,7 +137,7 @@
 				
  <!--paginate -->
          <div class="paginate">
-            <div class="paging" style="margin-left: 50%;">
+            <div class="paging margin">
                <a class="direction prev" href="javascript:void(0);"
                   onclick="movePage(1,${pagination4.cntPerPage},${pagination4.pageSize});">
                   &lt;&lt; </a> <a class="direction prev" href="javascript:void(0);"

@@ -19,10 +19,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <title>마이페이지</title>
-
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
+		integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
+		crossorigin="anonymous">
+<link href="${contextPath}/css/buttons.css" rel="stylesheet">
+<link rel="stylesheet" href="${contextPath}/css/reset.css">
+<!-- bootstrap end -->	
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/table.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberBootstrap.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -80,9 +86,9 @@
 				
 				<!-- 최근 주문내역 테이블  -->
 				<br>
-				<h4>주문 상세내역</h4>
+				<h4 style="margin-left:15%;">주문 상세내역</h4>
 				<br>
-				<table  class="tbl_type" border="1"> 
+				<table  class="tbl_type detail" > 
 				<tr><td>${myOrderDetail.productName }</td></tr>
 				<tr><td>	<img style="max-width:20%; max-height: 20%; "  alt="" src="${contextPath}/images/${myOrderDetail.productMainImage }"></td></tr>
 
@@ -90,7 +96,7 @@
 				</table>
 				
 				<br>
-				<table  class="tbl_type" border="1"> 
+				<table  class="tbl_type detail" > 
 			
 					<tr>
 						<td>주문번호</td>
@@ -128,8 +134,8 @@
 				</table>
 				<br>
 					<br>
-					<h4>결제정보</h4>
-				<table  class="tbl_type" border="1"> 
+					<h4 style="margin-left:15%; margin-bottom: 10px; font-weight: bold;">결제정보</h4>
+				<table  class="tbl_type detail"> 
 			
 					<tr>
 						<td>구매금액</td>
@@ -161,8 +167,8 @@
 				
 					<br>
 					<br>
-					<h4>배송지 입력정보</h4>
-				<table  class="tbl_type" border="1"> 
+					<h4 style="margin-left:15%; margin-bottom: 10px; font-weight: bold;">배송지 입력정보</h4>
+				<table  class="tbl_type detail" > 
 			
 					<tr>
 						<td>받는 사람</td>

@@ -22,6 +22,7 @@ import proj21_shoes.dto.Grade;
 import proj21_shoes.dto.Member;
 import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.exeption.DuplicateMemberException;
+import proj21_shoes.service.AuthService;
 import proj21_shoes.service.LoginService;
 import proj21_shoes.service.RegisterMemberDetailService;
 import proj21_shoes.service.RegisterMemberService;
@@ -34,6 +35,9 @@ public class SignUpController {
 	private RegisterMemberService memberDetailService;
 	@Autowired
 	private LoginService service;
+
+	@Autowired
+	private AuthService authService;  
 
 	@RequestMapping("/register/step1")
 	public String handleStep1() {
@@ -84,7 +88,9 @@ public class SignUpController {
 			//세션주기
 			LoginCommand2 loginIdPw =service.loginIdPw(regReq.getMemberId(),regReq.getMemberPwd());
 			session.setAttribute("authInfo", loginIdPw);
-			
+			// 세션 멤버정보 확인용
+			Member sessionMember = authService.memberVo(regReq.getMemberId());
+			session.setAttribute("sessionMember", sessionMember);  //이제 jsp에서 이 이름으로 객체 가져다쓰기
 			session.setAttribute("newMember", newMember);
 //			ModelAndView mav = new ModelAndView();
 //			mav.addObject("message", "회원가입을 축하드립니다.");
