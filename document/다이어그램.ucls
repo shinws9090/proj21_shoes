@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <interface id="1" language="java" name="proj21_shoes.mapper.BrandMapper" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/mapper/BrandMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="103" x="603" y="561"/>    
+    <position height="53" width="103" x="469" y="214"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </interface>  
   <interface id="2" language="java" name="proj21_shoes.mapper.NoticeMapper" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/mapper/NoticeMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="103" x="-20" y="4"/>    
+    <position height="53" width="103" x="-24" y="4"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </interface>  
   <interface id="3" language="java" name="proj21_shoes.mapper.EmployeeMapper" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/mapper/EmployeeMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="122" x="-30" y="246"/>    
+    <position height="53" width="122" x="-24" y="246"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </interface>  
   <interface id="4" language="java" name="proj21_shoes.mapper.ImageMapper" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/mapper/ImageMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="103" x="-16" y="167"/>    
+    <position height="53" width="103" x="-24" y="167"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </interface>  
   <interface id="5" language="java" name="proj21_shoes.mapper.ProductQnaMapper" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/mapper/ProductQnaMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="135" x="580" y="693"/>    
+    <position height="53" width="135" x="469" y="346"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </interface>  
   <interface id="6" language="java" name="proj21_shoes.mapper.CartMapper" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/mapper/CartMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="103" x="-20" y="344"/>    
+    <position height="53" width="103" x="-24" y="344"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </interface>  
   <interface id="7" language="java" name="proj21_shoes.mapper.LoginMapper" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/mapper/LoginMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="103" x="-14" y="77"/>    
+    <position height="53" width="103" x="-24" y="77"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </interface>  
   <interface id="8" language="java" name="proj21_shoes.mapper.OrderOptionMapper" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/mapper/OrderOptionMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="137" x="-25" y="-206"/>    
+    <position height="53" width="137" x="-24" y="-206"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   </interface>  
   <interface id="9" language="java" name="proj21_shoes.mapper.MyQnaMapper" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/mapper/MyQnaMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="106" x="-28" y="-58"/>    
+    <position height="53" width="106" x="-24" y="-58"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,7 +84,7 @@
   </interface>  
   <interface id="10" language="java" name="proj21_shoes.mapper.MyPageSelectMapper" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/mapper/MyPageSelectMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="148" x="-36" y="-131"/>    
+    <position height="53" width="148" x="-24" y="-131"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -102,7 +102,7 @@
   </interface>  
   <interface id="12" language="java" name="proj21_shoes.mapper.MemberMapper" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/mapper/MemberMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="114" x="518" y="907"/>    
+    <position height="53" width="114" x="469" y="560"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -111,7 +111,7 @@
   </interface>  
   <interface id="13" language="java" name="proj21_shoes.mapper.ProductMapper" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/mapper/ProductMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="112" x="-25" y="514"/>    
+    <position height="53" width="112" x="-24" y="514"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -120,7 +120,7 @@
   </interface>  
   <interface id="14" language="java" name="proj21_shoes.mapper.ProductReviewMapper" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/mapper/ProductReviewMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="153" x="-35" y="877"/>    
+    <position height="53" width="153" x="469" y="729"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -129,7 +129,7 @@
   </interface>  
   <interface id="15" language="java" name="proj21_shoes.mapper.MemberDetailMapper" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/mapper/MemberDetailMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="146" x="416" y="-113"/>    
+    <position height="53" width="146" x="421" y="-107"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -138,7 +138,7 @@
   </interface>  
   <interface id="16" language="java" name="proj21_shoes.mapper.ProductPostMapper" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/mapper/ProductPostMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="138" x="-23" y="763"/>    
+    <position height="53" width="138" x="-24" y="732"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -147,7 +147,7 @@
   </interface>  
   <interface id="17" language="java" name="proj21_shoes.mapper.CategoryMapper" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/mapper/CategoryMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="118" x="-7" y="581"/>    
+    <position height="53" width="118" x="-24" y="581"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -156,7 +156,7 @@
   </interface>  
   <interface id="18" language="java" name="proj21_shoes.mapper.MyOrderMapper" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/mapper/MyOrderMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="119" x="-7" y="705"/>    
+    <position height="53" width="119" x="-24" y="655"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -165,7 +165,7 @@
   </interface>  
   <interface id="19" language="java" name="proj21_shoes.mapper.OrderMapper" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/mapper/OrderMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="53" width="103" x="-19" y="424"/>    
+    <position height="53" width="103" x="-24" y="424"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -175,7 +175,7 @@
   <class id="20" language="java" name="proj21_shoes.service.impl.ModifyMemberServiceImpl" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/service/impl/ModifyMemberServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="53" width="175" x="724" y="917"/>    
+    <position height="53" width="175" x="675" y="570"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -185,7 +185,7 @@
   <class id="21" language="java" name="proj21_shoes.service.impl.GetMemberDetailServiceImpl" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/service/impl/GetMemberDetailServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="53" width="189" x="713" y="67"/>    
+    <position height="53" width="189" x="714" y="50"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -215,7 +215,7 @@
   <class id="24" language="java" name="proj21_shoes.service.impl.ProductQnaServiceImpl" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/service/impl/ProductQnaServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="53" width="159" x="752" y="694"/>    
+    <position height="53" width="159" x="703" y="347"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -225,7 +225,7 @@
   <class id="25" language="java" name="proj21_shoes.service.impl.OrderOptionServiceImpl" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/service/impl/OrderOptionServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="53" width="161" x="179" y="-206"/>    
+    <position height="53" width="161" x="180" y="-206"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -235,7 +235,7 @@
   <class id="26" language="java" name="proj21_shoes.service.impl.BrandServiceImpl" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/service/impl/BrandServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="53" width="125" x="787" y="561"/>    
+    <position height="53" width="125" x="738" y="214"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -255,7 +255,7 @@
   <class id="28" language="java" name="proj21_shoes.service.impl.MyPageServiceImpl" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/service/impl/MyPageServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="53" width="136" x="206" y="-131"/>    
+    <position height="53" width="136" x="205" y="-131"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -265,7 +265,7 @@
   <class id="29" language="java" name="proj21_shoes.service.impl.OrderServiceImpl" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/service/impl/OrderServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="53" width="124" x="280" y="428"/>    
+    <position height="53" width="124" x="217" y="428"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -275,7 +275,7 @@
   <class id="30" language="java" name="proj21_shoes.service.impl.MyQnaServiceImpl" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/service/impl/MyQnaServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="53" width="130" x="259" y="-53"/>    
+    <position height="53" width="130" x="211" y="-53"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -285,7 +285,7 @@
   <class id="31" language="java" name="proj21_shoes.service.impl.NoticeServiceImpl" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/service/impl/NoticeServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="53" width="127" x="262" y="1"/>    
+    <position height="53" width="127" x="213" y="11"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -295,7 +295,7 @@
   <class id="32" language="java" name="proj21_shoes.service.impl.ProductServiceImpl" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/service/impl/ProductServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="53" width="136" x="273" y="506"/>    
+    <position height="53" width="136" x="205" y="506"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -305,7 +305,7 @@
   <class id="33" language="java" name="proj21_shoes.service.impl.ProductPostServiceImpl" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/service/impl/ProductPostServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="53" width="162" x="253" y="769"/>    
+    <position height="53" width="162" x="180" y="738"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -315,7 +315,7 @@
   <class id="34" language="java" name="proj21_shoes.service.impl.CartServiceImpl" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/service/impl/CartServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="53" width="119" x="287" y="345"/>    
+    <position height="53" width="119" x="222" y="345"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -325,7 +325,7 @@
   <class id="35" language="java" name="proj21_shoes.service.impl.LoginServiceImpl" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/service/impl/LoginServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="53" width="122" x="248" y="88"/>    
+    <position height="53" width="122" x="219" y="88"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -335,7 +335,7 @@
   <class id="36" language="java" name="proj21_shoes.service.impl.ProductReviewServiceImpl" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/service/impl/ProductReviewServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="53" width="177" x="220" y="878"/>    
+    <position height="53" width="177" x="676" y="730"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -345,7 +345,7 @@
   <class id="37" language="java" name="proj21_shoes.service.impl.MyOrderServiceImpl" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/service/impl/MyOrderServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="53" width="140" x="274" y="713"/>    
+    <position height="53" width="140" x="201" y="660"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -355,7 +355,7 @@
   <class id="38" language="java" name="proj21_shoes.service.impl.RegisterMemberServiceImpl" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/service/impl/RegisterMemberServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="53" width="186" x="718" y="813"/>    
+    <position height="53" width="186" x="669" y="466"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -365,7 +365,7 @@
   <class id="39" language="java" name="proj21_shoes.service.impl.CategoryServiceImpl" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/service/impl/CategoryServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="53" width="142" x="266" y="584"/>    
+    <position height="53" width="142" x="199" y="584"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -375,7 +375,7 @@
   <class id="40" language="java" name="proj21_shoes.service.impl.ImageServiceImpl" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/service/impl/ImageServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="53" width="126" x="263" y="165"/>    
+    <position height="53" width="126" x="215" y="165"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -415,7 +415,7 @@
   <class id="44" language="java" name="proj21_shoes.service.impl.MemberServiceImpl" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/service/impl/MemberServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="53" width="138" x="760" y="995"/>    
+    <position height="53" width="138" x="711" y="648"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -425,7 +425,7 @@
   <class id="45" language="java" name="proj21_shoes.service.impl.EmployeeServiceImpl" project="proj21_shoes" 
     file="/proj21_shoes/src/main/java/proj21_shoes/service/impl/EmployeeServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="53" width="146" x="243" y="246"/>    
+    <position height="53" width="146" x="195" y="246"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -457,10 +457,14 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="55">    
-    <bendpoint x="622" y="-10"/>    
+    <bendpoint x="602" y="0"/>    
     <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="56" name="mapper"/>      
-      <multiplicity id="57" minimum="0" maximum="1"/>    
+      <attribute id="56" name="mapper">        
+        <position height="18" width="44" x="530" y="-22"/>      
+      </attribute>      
+      <multiplicity id="57" minimum="0" maximum="1">        
+        <position height="16" width="23" x="576" y="-22"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
@@ -646,7 +650,7 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="124">    
-    <bendpoint x="495" y="20"/>    
+    <bendpoint x="494" y="74"/>    
     <end type="SOURCE" refId="21" navigable="false">      
       <attribute id="125" name="mapper"/>      
       <multiplicity id="126" minimum="0" maximum="1"/>    
