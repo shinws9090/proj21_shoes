@@ -1,14 +1,15 @@
-insert into `order` values(10019, 111111, now(), null, 5000000, 1, false, null, false);
-insert into orderproduct values(10019, 11111, 1, 270, 230);
+insert into `order` values(10019, 111111, now(), null, 249800, 4, false, 1234567890125, false);
+insert into orderproduct values(10019, 11111, 1, 270, 2);
 
-insert into `order` values(10020, 111111, now(), null, 4500000, 2, false, null, false);
-insert into orderproduct values(10020, 11111, 1, 270, 210);
+insert into `order` values(10020, 111111, now(), null, 124900, 2, false, null, false);
+insert into orderproduct values(10020, 11111, 1, 270, 1);
 
-insert into `order` values(10021, 111111, now(), null, 5250000, 3, false, null, false);
-insert into orderproduct values(10021, 11111, 1, 270, 250);
+insert into `order` values(10021, 111111, now(), null, 124900, 3, false, 1234567890124, false);
+insert into orderproduct values(10021, 11111, 1, 270, 1);
 
-insert into `order` values(10022, 111111, now(), null, 3850000, 4, false, 1234567890123, true);
-insert into orderproduct values(10022, 11111, 1, 270, 180);
+insert into `order` values(10022, 111111, now(), null, 124900, 4, false, 1234567890123, true);
+insert into orderproduct values(10022, 11111, 1, 270, 1);
+
 
 
 insert into `order` values(10013, 111112, 20210601, null, 5000000, 4, false, 1234567890123, true);

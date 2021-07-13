@@ -53,7 +53,7 @@
 		<form:form action="loginSuccess" modelAttribute="loginCommand" >
 		<form:errors style="color:red; "/>
 	 
-	 	<section id="login_input" >
+	 	<section id="login_input" style="padding-bottom: 0px;" >
 	<b><h1>로그인</h1></b><!-- 회원가입 -->
 					<label style=" margin-top:5px;  margin-bottom: 10px;">
 						<form:input path="memberId" placeholder="아이디" size="34px;"/> 

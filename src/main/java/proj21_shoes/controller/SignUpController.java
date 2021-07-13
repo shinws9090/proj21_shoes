@@ -14,12 +14,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import proj21_shoes.commend.LoginCommand2;
 import proj21_shoes.commend.RegisterRequest;
 import proj21_shoes.dto.Grade;
 import proj21_shoes.dto.Member;
 import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.exeption.DuplicateMemberException;
+import proj21_shoes.service.LoginService;
 import proj21_shoes.service.RegisterMemberDetailService;
 import proj21_shoes.service.RegisterMemberService;
 
@@ -29,6 +32,8 @@ public class SignUpController {
 	private RegisterMemberDetailService memberService;
 	@Autowired
 	private RegisterMemberService memberDetailService;
+	@Autowired
+	private LoginService service;
 
 	@RequestMapping("/register/step1")
 	public String handleStep1() {
@@ -76,11 +81,19 @@ public class SignUpController {
 			Member newMember2 = new Member(newMember,1000,0,new Grade(5),false,LocalDateTime.now()); //
 			memberService.regist(newMember);
 			memberDetailService.regist(newMember2); //객체로 담아서 넣어줘야한당   //객체로 담아서 넣어주면 mapper.xml 에서 dto변수명으로 사용가능! param1, param2 안해두된당
-
+			//세션주기
+			LoginCommand2 loginIdPw =service.loginIdPw(regReq.getMemberId(),regReq.getMemberPwd());
+			session.setAttribute("authInfo", loginIdPw);
+			
 			session.setAttribute("newMember", newMember);
+//			ModelAndView mav = new ModelAndView();
+//			mav.addObject("message", "회원가입을 축하드립니다.");
+//		    mav.setViewName("redirect:/index");
+
+
 			
-			
-			return "/register/step3";
+			return "redirect:/register/step4";
+			//return "redirect:/step3";
 		} catch (DuplicateMemberException e) {
 			errors.rejectValue("memberId", "duplicate");
 			errors.rejectValue("email", "duplicate");
@@ -88,4 +101,10 @@ public class SignUpController {
 		}
 
 	}
+	//회원가입축하쓰
+	@RequestMapping("/register/step4")
+	public String handleStep2(HttpSession session, HttpServletResponse response) {
+		return "/register/step4";
+	}
+	
 }
