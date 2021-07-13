@@ -16,7 +16,7 @@
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<title>lighten</title>
+<title>이런신발</title>
 <link rel="stylesheet" href="${contextPath}/css/reset.css">
 <link rel="stylesheet" href="${contextPath}/css/style.css">
 <link rel="stylesheet" href="${contextPath}/css/cartList.css">

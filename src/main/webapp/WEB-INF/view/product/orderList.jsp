@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="${contextPath}/css/reset.css">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>lighten</title>
+<title>이런신발</title>
 <link rel="stylesheet" href="${contextPath}/css/style.css">
 <link rel="stylesheet" href="${contextPath}/css/orderList.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
