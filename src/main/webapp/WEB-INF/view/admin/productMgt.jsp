@@ -188,7 +188,7 @@ tbody tr:nth-child(2n+1) {
 					<div class="pageNumber2">
 						<ul class="pageNum2">
 						    <c:if test="${pageMaker.prev}">
-						      <li id="page"><a href="${contextPath}/adminproductMgt${pageMaker.makeSearch(pageMaker.startPage - 1)}">[이전]</a></li>
+						      <li id="page"><a href="${contextPath}/admin/productMgt${pageMaker.makeSearch(pageMaker.startPage - 1)}">[이전]</a></li>
 						    </c:if>
 						    
 						    <c:if test="${!pageMaker.prev}">
@@ -196,11 +196,11 @@ tbody tr:nth-child(2n+1) {
 						    </c:if>
 						
 						    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-						      <li id="page"><a href="${contextPath}/adminproductMgt${pageMaker.makeSearch(idx)}" ${idx == param.page ? 'style="color: #DC143C;"' : ''}>[${idx}]</a></li>
+						      <li id="page"><a href="${contextPath}/admin/productMgt${pageMaker.makeSearch(idx)}" ${idx == param.page ? 'style="color: #DC143C;"' : ''}>[${idx}]</a></li>
 						    </c:forEach>
 						
 						    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-						      <li id="page"><a href="${contextPath}/adminproductMgt${pageMaker.makeSearch(pageMaker.endPage + 1)}">[다음]</a></li>
+						      <li id="page"><a href="${contextPath}/admin/productMgt${pageMaker.makeSearch(pageMaker.endPage + 1)}">[다음]</a></li>
 						    </c:if>
 						    
 						    <c:if test="${!pageMaker.next}">
