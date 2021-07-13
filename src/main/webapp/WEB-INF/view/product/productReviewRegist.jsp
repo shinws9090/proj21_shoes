@@ -27,7 +27,7 @@
 <link href="${contextPath}/css/buttons.css" rel="stylesheet">
 <link rel="stylesheet" href="${contextPath}/css/reset.css">
 <!-- bootstrap end -->
-<title>마이페이지</title>
+<title>이런신발</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/productRegist.css">
 <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">

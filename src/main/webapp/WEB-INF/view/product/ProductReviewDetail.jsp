@@ -16,7 +16,7 @@
 <link href="${contextPath}/css/buttons.css" rel="stylesheet">
 <link rel="stylesheet" href="${contextPath}/css/reset.css">
 <!-- bootstrap end -->
-<title>Insert title here</title>
+<title>이런신발</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/ProductBroad.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

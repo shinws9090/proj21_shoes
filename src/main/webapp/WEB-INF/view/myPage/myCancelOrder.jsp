@@ -128,10 +128,10 @@
 						 <td>${myCancelOrderList.orderDate }</td> 	
 						 <!-- 결제여부 -->
 						 <c:if test="${empty myCancelOrderList.payOX && myCancelOrderList.cancelState == true}"><!--결제안했고 취소했으면  -->
-						  <td>입금전 취소<br></td>			 
+						  <td>결제전 취소<br></td>			 
 						 </c:if>				
 						 <c:if test="${!empty myCancelOrderList.payOX && myCancelOrderList.cancelState == true}"><!--결제했고 취소헀으면  -->
-						  <td>입금후 취소<br><!-- <a>[환불완료]</a> --></td>
+						  <td>결제후 취소<br><!-- <a>[환불완료]</a> --></td>
 						 </c:if>
 						 <!--  -->								 
 						 <c:if test="${empty myCancelOrderList.payOX}"><!-- 입금전일시 환불여부 비활성화 -->

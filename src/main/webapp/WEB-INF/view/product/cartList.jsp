@@ -16,7 +16,7 @@
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<title>lighten</title>
+<title>이런신발</title>
 <link rel="stylesheet" href="${contextPath}/css/reset.css">
 <link rel="stylesheet" href="${contextPath}/css/style.css">
 <link rel="stylesheet" href="${contextPath}/css/cartList.css">
@@ -31,7 +31,7 @@ $(function() {
 		$(".check:checked").parent().parent().children(".price").each(function() {
 			priceAll += Number($(this).text().trim().replace(",","").replace(",",""));
 		});
-		$("#priceAll").text("전체가격:" + priceAll);
+		$("#priceAll").text("전체가격:" + String(priceAll).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 	}
 	priceAll();
 	
