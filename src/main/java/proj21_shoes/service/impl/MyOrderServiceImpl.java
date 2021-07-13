@@ -97,4 +97,10 @@ public class MyOrderServiceImpl implements MyOrderService {
 		return mapper.countCancelState(cancelState);
 	}
 
+
+	@Override
+	public int updateDeliverState(MyOrderCommend order) {
+		return mapper.updateDeliverState(order);
+	}
+
 }

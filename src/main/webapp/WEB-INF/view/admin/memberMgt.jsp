@@ -44,7 +44,7 @@ ul.pageNum {
 		     	<!-- Page content-->
 		        <div class="container-fluid">
 		            <h1 class="mt-4">회원 목록</h1>
-		            <div style="height: 400px">
+		            <div>
 			            <table style="width: 90%; text-align: center">
 										
 							<tr style="background-color: lightgrey; text-align: center">
@@ -57,7 +57,10 @@ ul.pageNum {
 							<tr>
 								<c:forEach items="${memberList}" var="memberList">
 								<tr>
-									<td>${memberList.memberCode}</td>
+									<td>
+										<div>${memberList.memberCode} </div>
+										<div><a href="${contextPath}/admin/memberDetail?memberCode=${memberList.memberCode}&memberId=${memberList.memberId.memberId}" onClick="window.open(this.href, '', 'width=700, height=480'); return false;">[상세보기]</a></div>
+									</td>
 									<td><a href="memberMgtDetail?memberCode=${memberList.memberCode}"><c:out value="${memberList.memberId.memberId}" /></a></td>
 									<td>${memberList.memberId.memberName}</td>
 									<td>${memberList.memberId.tel}</td>

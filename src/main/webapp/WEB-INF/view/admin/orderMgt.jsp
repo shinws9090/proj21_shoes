@@ -41,7 +41,7 @@ form#deliveryCodeForm {
 
 .pageNumer {
     display: inline-block;
-    width: 50%;
+    width: 800px;
     text-align: center;
 }
 
@@ -67,7 +67,7 @@ tbody tr:nth-child(2n+1) {
 }
 
 .orderTitle {
-    margin-top: 20px;
+    	margin-top: 20px;
      margin-bottom: 10px;
 }
 
@@ -244,7 +244,7 @@ td#td10 {
 									<c:if test="${orderList.cancelState == false}">
 										<td>
 											<div>${orderList.orderCode} </div>
-											<div><a href="${contextPath}/myPage/myOrder/orderDetail/${orderList.memberId }/${orderList.orderCode}">${orderList.orderCode }<br>[상세보기]</a></div>
+											<div><a href="${contextPath}/admin/orderDetail?orderCode=${orderList.orderCode}&memberId=${orderList.memberId}" onClick="window.open(this.href, '', 'width=780, height=700'); return false;">[상세보기]</a></div>
 										</td>
 										<td>${orderList.memberId}</td>
 										<td><a href="${contextPath}/productDetail/${orderList.productCode}"><img src="${contextPath}/images/${orderList.productMainImage}" width="100" height="100"></a></td>
@@ -256,13 +256,13 @@ td#td10 {
 													<c:when test="${orderList.paymentState == 1 && orderList.cancelState == false}">
 														<td>
 															<div>결제완료</div>
-															<form id="paymentStateForm" name="paymentStateForm" method="post" autocomplete="off">
+															<form id="paymentStateForm" name="paymentStateForm" action="${contextPath}/admin/orderModPayment?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}" method="post" autocomplete="off">
 																<input name="orderCode" type="hidden" value="${orderList.orderCode}"/>
 																<select name="paymentState" class="paymentState" style="width:100px;" >
 																	<option selected="selected" value="2">배송준비중</option>
 																</select>
-															<button id="mod_btn" type="submit" onClick="if(!confirm('변경 하시겠습니까?')){return false;}">변경</button>
-															<button id="remove_btn" type="button" onClick="if(!confirm('취소 하시겠습니까?')){return false;}"><a href="${contextPath}/admin/orderCancel?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}&orderCode=${orderList.orderCode}">주문취소</button>
+																<button id="mod_btn" type="submit" onClick="if(!confirm('변경 하시겠습니까?')){return false;}">변경</button>
+																<button id="remove_btn" type="button" onClick="if(!confirm('취소 하시겠습니까?')){return false;}"><a href="${contextPath}/admin/orderCancel?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}&orderCode=${orderList.orderCode}">주문취소</button>
 															</form>
 															<br>
 														</td>
@@ -270,13 +270,13 @@ td#td10 {
 													<c:when test="${orderList.paymentState == 2 && orderList.cancelState == false}">
 														<td>
 															<div>배송준비중</div>
-															<form id="paymentStateForm" name="paymentStateForm" method="post" autocomplete="off">
+															<form id="paymentStateForm" name="paymentStateForm" action="${contextPath}/admin/orderModPayment?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}" method="post" autocomplete="off">
 																<input name="orderCode" type="hidden" value="${orderList.orderCode}"/>
 																<select name="paymentState" class="paymentState" style="width:100px;">
 																	<option selected="selected" value="3">배송중</option>
 																</select>
-															<button id="mod_btn" type="submit" onClick="if(!confirm('변경 하시겠습니까?')){return false;}">변경</button>
-															<button id="remove_btn" type="button" onClick="if(!confirm('취소 하시겠습니까?')){return false;}"><a href="${contextPath}/admin/orderCancel?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}&orderCode=${orderList.orderCode}">주문취소</button>
+																<button id="mod_btn" type="submit" onClick="if(!confirm('변경 하시겠습니까?')){return false;}">변경</button>
+																<button id="remove_btn" type="button" onClick="if(!confirm('취소 하시겠습니까?')){return false;}"><a href="${contextPath}/admin/orderCancel?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}&orderCode=${orderList.orderCode}">주문취소</button>
 															</form>								
 															<br>
 														</td>
@@ -284,26 +284,26 @@ td#td10 {
 													<c:when test="${orderList.paymentState == 2 && orderList.cancelState == false}">
 														<td>
 															<div>배송준비중 </div>
-															<form id="paymentStateForm" name="paymentStateForm" method="post" autocomplete="off">
+															<form id="paymentStateForm" name="paymentStateForm" action="${contextPath}/admin/orderModPayment?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}" method="post" autocomplete="off">
 																<input name="orderCode" type="hidden" value="${orderList.orderCode}"/>
 																<select name="paymentState" class="paymentState" style="width:100px;">
 																	<option selected="selected" value="3">배송중</option>
 																</select>
-															<button id="mod_btn" type="submit" onClick="if(!confirm('변경 하시겠습니까?')){return false;}" disabled="disabled">변경</button>
-															<button id="remove_btn" type="button" onClick="if(!confirm('취소 하시겠습니까?')){return false;}"><a href="${contextPath}/admin/orderCancel?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}&orderCode=${orderList.orderCode}">주문취소</button>
+																<button id="mod_btn" type="submit" onClick="if(!confirm('변경 하시겠습니까?')){return false;}" disabled="disabled">변경</button>
+																<button id="remove_btn" type="button" onClick="if(!confirm('취소 하시겠습니까?')){return false;}"><a href="${contextPath}/admin/orderCancel?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}&orderCode=${orderList.orderCode}">주문취소</button>
 															</form>								
 															<br>
 														</td>
 													</c:when>
-													<c:when test="${orderList.paymentState == 2 && orderList.cancelState == false}">
+													<c:when test="${orderList.paymentState == 3 && orderList.cancelState == false}">
 														<td>
 															<div>배송중</div>
-															<form id="paymentStateForm" name="paymentStateForm" method="post" autocomplete="off">
+															<form id="paymentStateForm" name="paymentStateForm" action="${contextPath}/admin/orderModPayment?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}" method="post" autocomplete="off">
 																<input name="orderCode" type="hidden" value="${orderList.orderCode}"/>
 																<select name="paymentState" class="paymentState" style="width:100px;">
 																	<option selected="selected" value="4">배송완료</option>
 																</select>
-															<button id="mod_btn" type="submit" onClick="if(!confirm('변경 하시겠습니까?')){return false;}">변경</button>
+																<button id="mod_btn" type="submit" onClick="if(!confirm('변경 하시겠습니까?')){return false;}">변경</button>
 															</form>
 														</td>
 													</c:when>
@@ -318,10 +318,11 @@ td#td10 {
 												<div>-</div>
 											</c:if>										
 											<c:if test="${orderList.deliveryCode eq null && orderList.paymentState == 2}">
-												<form id="deliveryCodeForm" name="deliveryCodeForm" method="post" autocomplete="off">
-													<input type="text" placeholder="송장번호 입력" value="" style="width:120px;">
+												<form id="deliveryCodeForm" name="deliveryCodeForm" action="${contextPath}/admin/orderModDelivery?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}" method="post" autocomplete="off">
+													<input name="orderCode" type="hidden" value="${orderList.orderCode}"/>
+													<input name="deliveryCode" type="text" placeholder="송장번호 입력" value="" style="width:120px;">
+													<button id="delivery_btn" type="submit" onClick="if(!confirm('등록 하시겠습니까?')){return false;}">등록</button>
 												</form>
-												<input type="button" id="delivery_btn" onclick="submit1()" value="등록">
 											</c:if>
 											
 											<c:if test="${orderList.deliveryCode ne null && orderList.paymentState == 2}">
@@ -329,10 +330,11 @@ td#td10 {
 											</c:if>
 											
 											<c:if test="${orderList.deliveryCode eq null && orderList.paymentState == 3}">
-												<form id="deliveryCodeForm" name="deliveryCodeForm" method="post" autocomplete="off">
-													<input type="text" placeholder="송장번호 입력" value="" style="width:120px;">
+												<form id="deliveryCodeForm" name="deliveryCodeForm" action="${contextPath}/admin/orderModDelivery?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}" method="post" autocomplete="off">
+													<input name="orderCode" type="hidden" value="${orderList.orderCode}"/>
+													<input name="deliveryCode" type="text" placeholder="송장번호 입력" value="" style="width:120px;">
+													<button id="delivery_btn" type="submit" onClick="if(!confirm('등록 하시겠습니까?')){return false;}">등록</button>
 												</form>
-												<input type="button" id="delivery_btn" onclick="submit1()" value="등록">
 											</c:if>
 											
 											<c:if test="${orderList.deliveryCode ne null && orderList.paymentState == 3}">

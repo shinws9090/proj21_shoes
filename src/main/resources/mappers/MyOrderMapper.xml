@@ -231,6 +231,12 @@ WHERE order_code=#{orderCode};
 		where order_code = #{orderCode};
 	</update>
 	
+	<update id="updateDeliverState">
+		update `order` 
+		set delivery_code = #{deliveryCode} 
+		where order_code = #{orderCode};
+	</update>
+	
 </mapper>
 
 

@@ -25,11 +25,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
 
 import net.sf.json.JSONArray;
 import proj21_shoes.commend.MemberDetailAgesCommend;
 import proj21_shoes.commend.MyOrderCommend;
+import proj21_shoes.commend.MyPageSelectCommend;
 import proj21_shoes.commend.MyQnaViewCommand;
 import proj21_shoes.commend.MyReviewCommend;
 import proj21_shoes.commend.OrderCommend;
@@ -40,6 +40,7 @@ import proj21_shoes.dto.Category;
 import proj21_shoes.dto.Employee;
 import proj21_shoes.dto.Image;
 import proj21_shoes.dto.Member;
+import proj21_shoes.dto.MemberDetail;
 import proj21_shoes.dto.Notice;
 import proj21_shoes.dto.OrderOption;
 import proj21_shoes.dto.Product;
@@ -49,9 +50,11 @@ import proj21_shoes.service.BrandService;
 import proj21_shoes.service.CategoryService;
 import proj21_shoes.service.EmployeeService;
 import proj21_shoes.service.GetMemberDetailListService;
+import proj21_shoes.service.GetMemberDetailService;
 import proj21_shoes.service.ImageService;
 import proj21_shoes.service.MemberService;
 import proj21_shoes.service.MyOrderService;
+import proj21_shoes.service.MyPageService;
 import proj21_shoes.service.MyQnaService;
 import proj21_shoes.service.MyReviewService;
 import proj21_shoes.service.NoticeService;
@@ -90,6 +93,9 @@ public class AdminController {
 
 	@Autowired
 	private GetMemberDetailListService memDetailListService;
+	
+	@Autowired
+	private GetMemberDetailService memDetailService;
 
 	@Autowired
 	private MyQnaService myQnaService;
@@ -106,6 +112,9 @@ public class AdminController {
 	@Autowired
 	private MyOrderService myOrderService;
 
+	@Autowired
+	private MyPageService getMyPageService;
+	
 	@GetMapping("/admin/adminMain") // 관리자메인 화면
 	public void AdminMain(Model model) {
 		logger.info("관리자 페이지 이동");
@@ -129,6 +138,17 @@ public class AdminController {
 		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(memberService.countInfoList(scri));
 		model.addAttribute("pageMaker", pageMaker);
+	}
+	
+	@GetMapping("/admin/memberDetail") // 멤버관리 상세화면
+	public void getmemberDetail(HttpServletRequest request, Model model, @RequestParam(value = "memberId") String memberId) {
+		MyPageSelectCommend member = getMyPageService.showMyPageById(memberId);
+		model.addAttribute("member", member);
+				
+		
+//		MemberDetail memberDetail = memDetailService.getMemberDetail(memberId);
+//		model.addAttribute("memberDetail", memberDetail);
+		 
 	}
 
 	@GetMapping("/admin/productMgt") // 제품관리 화면
@@ -182,14 +202,28 @@ public class AdminController {
 		model.addAttribute("cancelCount", cancelCount);
 	}
 
-	@PostMapping("/admin/orderMgt") // 주문관리 화면
-	public String postOrderMgt(HttpServletRequest request, @RequestParam(value = "page") int page,
+	@PostMapping("/admin/orderModPayment") // 주문관리 배송상태 변경
+	public String postOrderModPaymentState(HttpServletRequest request, @RequestParam(value = "page") int page,
 			@RequestParam(value = "perPageNum") int perPageNum, @RequestParam(value = "searchType") String searchType) {
 		
 		MyOrderCommend order = new MyOrderCommend();
 		order.setPaymentState(Integer.parseInt(request.getParameter("paymentState")));
 		order.setOrderCode(Integer.parseInt(request.getParameter("orderCode")));
 		myOrderService.updatePaymentState(order);
+		
+		System.out.println(order);
+		
+		return "redirect:/admin/orderMgt?page=" + page + "&perPageNum=" + perPageNum + "&searchType=" + searchType;
+	}
+	
+	@PostMapping("/admin/orderModDelivery") // 주문관리 송장번호 변경
+	public String postOrderModDeliveryState(HttpServletRequest request, @RequestParam(value = "page") int page,
+			@RequestParam(value = "perPageNum") int perPageNum, @RequestParam(value = "searchType") String searchType) {
+		
+		MyOrderCommend order = new MyOrderCommend();
+		order.setDeliveryCode(request.getParameter("deliveryCode"));
+		order.setOrderCode(Integer.parseInt(request.getParameter("orderCode")));
+		myOrderService.updateDeliverState(order);
 		
 		System.out.println(order);
 		
@@ -204,6 +238,29 @@ public class AdminController {
 		myOrderService.updateMyCancel(orderCode);
 		
 		return "redirect:/admin/orderMgt?page=" + page + "&perPageNum=" + perPageNum + "&searchType=" + searchType;
+	}
+	
+	@GetMapping("/admin/orderDetail") // 주문관리 상세화면
+	public void getOrderDetail(HttpServletRequest request, Model model, @RequestParam(value = "orderCode") int orderCode) {
+				
+		MyOrderCommend orderDetail = myOrderService.selectMyOrderByOrderCode(orderCode);
+		model.addAttribute("orderDetail", orderDetail);
+		 
+		
+		int orderCount1 = myOrderService.countPaymentState(1);
+		model.addAttribute("orderCount1", orderCount1);
+		
+		int orderCount2 = myOrderService.countPaymentState(2);
+		model.addAttribute("orderCount2", orderCount2);
+		
+		int orderCount3 = myOrderService.countPaymentState(3);
+		model.addAttribute("orderCount3", orderCount3);
+		
+		int orderCount4 = myOrderService.countPaymentState(4);
+		model.addAttribute("orderCount4", orderCount4);
+		
+		int cancelCount = myOrderService.countCancelState(1);
+		model.addAttribute("cancelCount", cancelCount);
 	}
 
 	@GetMapping("/admin/product/productReg")
