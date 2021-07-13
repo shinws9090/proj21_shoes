@@ -115,15 +115,15 @@
 	font: 1.1em Verdana,Dotum,AppleGothic,sans-serif;
 	
 }
-#myPageForm{
+#myPageForm{/* 마이페이지 나의정보 테이블 */
 	padding-top:0px;
-	margin-left: 20%;
-	margin-right: 20%;
-	 font: 2em Verdana,Dotum,AppleGothic,sans-serif;
+	margin-left: 40%;
+	margin-right: 0%;
+	 font: 1em Verdana,Dotum,AppleGothic,sans-serif;
 	 padding-bottom:20px;
 	 margin-bottom: 20px;
-	 border-bottom: 1px solid #c0c0c0; 
-	 width:65%; 
+	/*  border-bottom: 1px solid #c0c0c0; */ 
+	 width:900px; 
 }
 
 #myPageForm td{
@@ -136,6 +136,10 @@
 	margin-right: 20%;
 	margin: auto;
  	margin-top: 10px;
+ 	width:auto;
+ 	border-bottom: 1px solid #c0c0c0; 
+ 	border-top: 1px solid #c0c0c0;
+ 	
 /* 	border: 2px solid #dcdcdc; */
 /* box-shadow: 2px 5px 20px #c0c0c0; */
 /*     border-radius: 15px; */

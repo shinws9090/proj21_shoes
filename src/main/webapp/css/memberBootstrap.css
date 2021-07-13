@@ -209,7 +209,7 @@ background-color:#4545460f;
  #modify_form button,  #modify_form input, #modify_form  optgroup, #modify_form  select,  #modify_form textarea {
     margin: 0;
     font-family: inherit;
-        font-size: 1em;
+        font-size: 1.1em;
             width: 350px;
     line-height: inherit;
     margin: 15px;
