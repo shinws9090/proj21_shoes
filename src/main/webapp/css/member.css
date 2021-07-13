@@ -454,13 +454,19 @@ section#pageList{
 /*  -----------------------------------------아이디, 비밀번호 찾기 ------------------------------------------------------ */
 #findForm{
 	
-/* 	 margin-left:30%;  */
+ 	 margin-left:5%;  
+ 	 margin-bottom:10%;  
+ 	 margin-top:5%;  
  	text-align: center; 
  	padding-top: 10px;
  	font-size: 15px;
  	
 
 }
+#findForm{
+	text-align: center;
+}
+
 #findForm h2{
 	margin-bottom: 30px;
 }
@@ -475,8 +481,8 @@ section#pageList{
 	margin-bottom: 50px;
 }
 #findForm_id #findForm #findForm{     /* 동명 div 안의 section 안의   fieldset id 설정*/
-	width:  300px;
-	padding-top: 20px;
+	width:  490px;
+	padding-top: 25px;
 	padding-bottom: 20px;
 	padding-left: 20px;
 	padding-right: 20px;
@@ -520,9 +526,9 @@ section#pageList{
 /*     font-family: "돋움",Dotum; */
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 500;
-	font-size:0.9em;
+	font-size:1em;
      text-align: center;
-     margin-top:150px;
+     margin-top:50px;
 	margin-bottom: 200px;
     
 }

@@ -116,7 +116,7 @@
 	</article>
 		<div id="insertForm" >
 <h2 style="text-align:center; border-bottom: 1px solid #c0c0c0; width:100%; margin-top:5px; margin-left: -27%; padding-bottom: 10px; ">회원가입</h2>
-		<form:form action="step3" modelAttribute="registerRequest">
+		<form:form action="step3" modelAttribute="registerRequest" >
 		<form:errors/>
 		<table id ="insertTable"  >
 		<tr>

@@ -110,6 +110,16 @@ opener.location.reload();
 </head>
 <style>
 
+.btn_section {
+    margin-top: 15px;
+}
+
+section.adminSection {
+    width: 180px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
 </style>
 <body>
 	<section class="adminSection">	

@@ -46,6 +46,12 @@ opener.location.reload();
     margin-top: 15px;
 }
 
+section.adminSection {
+    width: 180px;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+
 </style>
 </head>
 <body>

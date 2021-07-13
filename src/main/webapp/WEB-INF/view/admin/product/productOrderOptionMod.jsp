@@ -61,6 +61,19 @@ let targetObject = $(".productOrderOption");
 opener.location.reload();
 
 </script>
+<style>
+
+.btn_section {
+    margin-top: 15px;
+}
+
+section.adminSection {
+    width: 240px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+</style>
 </head>
 <body>
 	<section class="adminSection">
@@ -116,7 +129,7 @@ opener.location.reload();
 					
 					<div class="form_section">
 						<div class="form_section_title">
-							<label>재고증감량(마이너스면 음수 입력)</label>
+							<label>재고증감량<br>(마이너스면 음수 입력)</label>
 						</div>
 						<div class="form_section_content">
 							<input name="stock" id="stock" value="">

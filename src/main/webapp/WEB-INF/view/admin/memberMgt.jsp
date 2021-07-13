@@ -14,14 +14,26 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <style>
 
+.title_div {
+	margin-bottom: 15px;
+}
+
 ul.pageNum {
-    width: 80%;
+    width: 95%;
     text-align: center;
 }
 
 .search {
-    width: 80%;
+    width: 95%;
     text-align: center;
+}
+
+tbody tr:nth-child(2n) {
+    background-color: #eaeaea;
+}
+
+tbody tr:nth-child(2n+1) {
+    background-color: #f9f9f9;  
 }
 
 </style>
@@ -43,9 +55,9 @@ ul.pageNum {
 		    <div id="page-content-wrapper">
 		     	<!-- Page content-->
 		        <div class="container-fluid">
-		            <h1 class="mt-4">회원 목록</h1>
+		            <div class="title_div"><h1 class="mt-4">회원 목록</h1></div>
 		            <div>
-			            <table style="width: 90%; text-align: center">
+			            <table style="width: 95%; text-align: center">
 										
 							<tr style="background-color: lightgrey; text-align: center">
 								<td>회원코드</td>

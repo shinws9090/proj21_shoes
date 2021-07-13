@@ -40,14 +40,10 @@
 		<section id="findForm">
 
 		
-			<h2>회원가입이 완료되었습니다.</h2>
 	 
-			<fieldset id="findForm"> 
+			<fieldset id="findForm" style="font-size: 25px"> 
 				<div style="padding: inherit;">
-				<h5 style=" text-align: left;"> 아이디 : ${newMember.memberId }</h5>
-					
-		
-				<h5 style=" text-align: left;"> 이름 : ${newMember.memberName }</h5>
+			<h5>${newMember.memberId }(${newMember.memberName })님,  <br>회원가입이 완료되었습니다.</h5>
 			
 			</div>
 			<article id = "findForm">
@@ -57,23 +53,11 @@
 		
 		</article>
 </fieldset>
-		<%-- 	
-			<a>아이디 > ${newMember.memberId }</a>
-			<a>이름 > ${newMember.memberName }</a>
-			<a>이메일 > ${newMember.email }</a>
-			
-
-			
-			<form action="../index" method="get">
-				<input type="submit" value="메인으로" />
-			</form>
-	 --%>
 
 
 		</section>
 	</div>
 
-	<section></section>
 
 	<!-- end our product -->
 	<footer>

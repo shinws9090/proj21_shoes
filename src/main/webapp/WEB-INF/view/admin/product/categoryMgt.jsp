@@ -27,9 +27,20 @@ $(function(){
 
 .btn_new {
     display: inline-block;
-    width: 88%;
     text-align: right;
     margin: 10px;
+}
+
+.title_div {
+	display: inline-block;
+}
+
+tbody tr:nth-child(2n) {
+    background-color: #eaeaea;
+}
+
+tbody tr:nth-child(2n+1) {
+    background-color: #f9f9f9;
 }
 
 </style>
@@ -52,13 +63,13 @@ $(function(){
 		        
 		        <!-- Page content-->
 		        <div class="container-fluid">
-		            <div><h1 class="mt-4">카테고리 목록</h1></div>
+		            <div class="title_div"><h1 class="mt-4">카테고리 목록</h1></div>
 		            
 		            <div class="btn_new">
 						<button type="button" id="new_btn">카테고리 추가</button>
 					</div>
 		            
-		            <table style="width: 90%; text-align: center">
+		            <table style="width: 50%; text-align: center">
 		            	<thead>
 							<tr style="background-color: lightgrey; text-align: center">
 								<td>카테고리코드</td>

@@ -67,8 +67,8 @@ tbody tr:nth-child(2n+1) {
 }
 
 .orderTitle {
-    	margin-top: 20px;
-     margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .orderTitle2 {
@@ -147,15 +147,15 @@ td#td10 {
 		        	<h1 class="mt-4">주문 목록</h1>
 		        	<div class="orderTitle">
 		        		<a class="a1">누적주문 : ${orderCount1 + orderCount2 + orderCount3 + orderCount4 + cancelCount}건</a>
-		        		<a class="a1" href="${contextPath}/admin/orderMgt?page=1&perPageNum=10&searchType=nc">현재주문 : ${orderCount1 + orderCount2 + orderCount3 + orderCount4}건</a>
-		        		<a class="a1" href="${contextPath}/admin/orderMgt?page=1&perPageNum=10&searchType=cc">주문취소 : ${cancelCount}건</a>
+		        		<a class="a1" id="nc" href="${contextPath}/admin/orderMgt?page=1&perPageNum=10&searchType=nc">현재주문 : ${orderCount1 + orderCount2 + orderCount3 + orderCount4}건</a>
+		        		<a class="a1" id="cc" href="${contextPath}/admin/orderMgt?page=1&perPageNum=10&searchType=cc">주문취소 : ${cancelCount}건</a>
 		        	</div>
 		        	<div class="orderTitle2">
 		        		
-		        		<a class="a1" href="${contextPath}/admin/orderMgt?page=1&perPageNum=10&searchType=p1">결제완료 : ${orderCount1}건</a>
-		        		<a class="a1" href="${contextPath}/admin/orderMgt?page=1&perPageNum=10&searchType=p2">배송준비중 : ${orderCount2}건</a>
-		        		<a class="a1" href="${contextPath}/admin/orderMgt?page=1&perPageNum=10&searchType=p3">배송중 : ${orderCount3}건</a>
-		        		<a class="a1" href="${contextPath}/admin/orderMgt?page=1&perPageNum=10&searchType=p4">배송완료 : ${orderCount4}건</a>
+		        		<a class="a1" id="p1" href="${contextPath}/admin/orderMgt?page=1&perPageNum=10&searchType=p1">결제완료 : ${orderCount1}건</a>
+		        		<a class="a1" id="p2" href="${contextPath}/admin/orderMgt?page=1&perPageNum=10&searchType=p2">배송준비중 : ${orderCount2}건</a>
+		        		<a class="a1" id="p3" href="${contextPath}/admin/orderMgt?page=1&perPageNum=10&searchType=p3">배송중 : ${orderCount3}건</a>
+		        		<a class="a1" id="p4" href="${contextPath}/admin/orderMgt?page=1&perPageNum=10&searchType=p4">배송완료 : ${orderCount4}건</a>
 		        	</div>
 					<div class="search">
 						<select name="searchType">
@@ -223,7 +223,7 @@ td#td10 {
 						</ul>
 					</div>
 		        	
-		            <table style="width: 90%; text-align: center">
+		            <table style="width: 95%; text-align: center">
 						<thead>
 							<tr style="background-color: lightgrey; text-align: center">
 								<td id="td1">주문번호</td>
@@ -415,8 +415,42 @@ td#td10 {
 	<jsp:include page="/WEB-INF/view/admin/include/script.jsp" />
 </body>
 <script>
-
+	
 	$("#search2").hide();
+	
+	function getParameterByName(name) {
+	    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+	        results = regex.exec(location.search);
+	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	};
+	
+	var searchType = getParameterByName("searchType");
+	
+	if(searchType == "nc") {
+    	document.getElementById('nc').style.color = "#DC143C";		
+	};
+	
+	if(searchType == "cc") {
+    	document.getElementById('cc').style.color = "#DC143C";		
+	};
+	
+	if(searchType == "p1") {
+    	document.getElementById('p1').style.color = "#DC143C";		
+	};
+	
+	if(searchType == "p2") {
+    	document.getElementById('p2').style.color = "#DC143C";		
+	};
+	
+	if(searchType == "p3") {
+    	document.getElementById('p3').style.color = "#DC143C";		
+	};
+	
+	if(searchType == "p4") {
+    	document.getElementById('p4').style.color = "#DC143C";		
+	};
+
 
 </script>
 </html>
