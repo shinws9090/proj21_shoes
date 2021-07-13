@@ -181,7 +181,7 @@ function newAddress() {
 					<th>총 주문 금액</th>
 					<th>할인 금액</th>
 					<th>포인트 적용 금액</th>
-					<th>결재예정 금액</th>
+					<th>결제예정 금액</th>
 				</tr>
 			</thead>
 				<tr> 
