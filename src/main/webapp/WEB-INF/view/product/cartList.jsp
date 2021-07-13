@@ -31,7 +31,7 @@ $(function() {
 		$(".check:checked").parent().parent().children(".price").each(function() {
 			priceAll += Number($(this).text().trim().replace(",","").replace(",",""));
 		});
-		$("#priceAll").text("전체가격:" + priceAll);
+		$("#priceAll").text("전체가격:" + String(priceAll).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 	}
 	priceAll();
 	
