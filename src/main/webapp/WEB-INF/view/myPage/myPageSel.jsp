@@ -18,11 +18,10 @@
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<title>회원가입</title>
+<title>마이페이지</title>
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<title>마이페이지</title>
 <!-- bootstrap -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
 		integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
@@ -93,15 +92,15 @@
 			
 				<!-- ------------------------------회원정보 테이블   -------------------------------------------------- -->
 			
-		
-				<h2 style="border-bottom: 1px solid #c0c0c0; width:65%; margin-left: 20%; padding-bottom: 10px; ">나의 정보 </h2>
+	
+				<h2 style="text-align:center; border-bottom: 1px solid #c0c0c0; width:48%; margin-left: 30%; padding-bottom: 10px; ">나의정보</h2>
 				<br>
 				<br>
 			<div id="myPageForm">
 				<form:form action="modify" modelAttribute="memberDetail">
 				<form:errors/>
 				<table  class="insertTable" >
-					<tr>
+					<tr style=" border-top: 1px solid #c0c0c0;">
 						<td>회원아이디  </td><td style="text-align: left;">${member.memberId }</td>				
 					</tr>
 					<%-- <tr>
@@ -150,7 +149,8 @@
 				</form:form>
 				
 				</div>
-			<article style="text-align: left; margin-left: 48%">
+				<h2 style="text-align:center; border-bottom: 1px solid #c0c0c0; width:48%; margin-left: 30%; padding-bottom: 10px; "></h2>
+			<article style="text-align: left; margin-left: 48%; margin-top: 10px;">
 				<a href="${contextPath}/myPage/${authInfo.memberId}">회원정보 변경</a>
 				<a style="color: gray;">     |     </a>
 				<a href="${contextPath}/myPage/quitMember/${member.memberId}">회원탈퇴</a>

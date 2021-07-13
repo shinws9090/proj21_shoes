@@ -143,16 +143,16 @@
 			
 	
 	
+				<h2 style="text-align:center; border-bottom: 1px solid #c0c0c0; width:48%; margin-left: 30%; padding-bottom: 10px; ">회원정보 변경</h2>
 	<div id="modify_form">
 	<section id ="modifyForm">
 
-		<h3 style="margin-left: 22%;">회원정보 변경</h3> 
 		
-		<div class="container my-3" style="font: 0.8em Verdana,Dotum,AppleGothic,sans-serif; margin-left: 20%">
+		<div class="container my-3" style="font: 1em Verdana,Dotum,AppleGothic,sans-serif; margin-left: 20%">
 			<form:form action="${contextPath}/myPage/modify/${member.memberId }" modelAttribute="memberDetailUpdateCommend"><!-- 보내는거? -->
 				<form:errors/>
 				<table  class="modify_table">
-			<tr>
+			<tr >
 				<article style="color: red; ">
 								<form:errors  path="confirmPassword"  /><br>
 								<form:errors path="memberPwd" />
@@ -293,8 +293,10 @@
 						</tr>
 					</article> --%>
 					</table>
+					
 <div id="btns" >
 		<h2 style="margin-left: 0; margin-right: 0; width: 100%">  </h2>
+				<h2 style="text-align:center; border-bottom: 1px solid #c0c0c0; width:138%; margin-top:40px; margin-left: -27%; padding-bottom: 10px; "></h2>
 			<button type="button,submit"  class="btn btn-secondary btn-lg "  style=" margin-top:20px; width: 72%; font-size: 15px; float:left;">수정하기</button>
 				<%--  <input type="submit" value="<spring:message code="next.btn"/>" /><!--다음단계  --> --%>
 			</form>

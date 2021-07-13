@@ -15,8 +15,8 @@ section.adminSection {
 }
 	
 section#loginForm {
-    margin-top: 200px;
-    margin-bottom: 200px;
+  /*   margin-top: 200px; */
+    margin-bottom: 220px;
 }
 
 @media ( max-width : 767px) {
