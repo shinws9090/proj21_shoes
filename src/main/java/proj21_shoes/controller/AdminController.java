@@ -201,6 +201,17 @@ public class AdminController {
 		int cancelCount = myOrderService.countCancelState(1);
 		model.addAttribute("cancelCount", cancelCount);
 	}
+	
+	@GetMapping("/admin/orderMgtMem") // 주문관리 화면
+	public void getOrderMgtMem(HttpServletRequest request, Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
+		List<MyOrderCommend> orderList = myOrderService.findAll(scri);
+		model.addAttribute("orderList", orderList);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(myOrderService.countInfoList(scri));
+		model.addAttribute("pageMaker", pageMaker);
+	}	
 
 	@PostMapping("/admin/orderModPayment") // 주문관리 배송상태 변경
 	public String postOrderModPaymentState(HttpServletRequest request, @RequestParam(value = "page") int page,

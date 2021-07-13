@@ -171,7 +171,7 @@ h1.mt-4 {
 				<button type="button" id="next">다음</button>
 				<input type="button" id="new" onclick="summit()" value="상품추가">
 			</div>
-			<%=request.getRealPath("/") %>
+			<%-- <%=request.getRealPath("/") %> --%>
 			<form id="productRegForm" name="productRegForm" method="post" autocomplete="off" enctype="multipart/form-data">
 					<div class="from_RegSection1" id="from_RegSection1">
 						<div class="form_section">

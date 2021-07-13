@@ -1,7 +1,10 @@
 <%@ page import="com.sun.xml.internal.bind.CycleRecoverable.Context"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="tf" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="contextPath" value="<%=request.getContextPath()%>" />
 <!DOCTYPE html>
@@ -13,6 +16,11 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/admin/css/styles.css"/>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <style>
+
+div {
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
 
 .title_div {
 	margin-bottom: 15px;
@@ -56,27 +64,37 @@ tbody tr:nth-child(2n+1) {
 		     	<!-- Page content-->
 		        <div class="container-fluid">
 		            <div class="title_div"><h1 class="mt-4">회원 목록</h1></div>
-		            <div>
+		            <div style="height:520px;">
 			            <table style="width: 95%; text-align: center">
 										
 							<tr style="background-color: lightgrey; text-align: center">
-								<td>회원코드</td>
-								<td>아이디</td>
-								<td>이름</td>
-								<td>연락처</td>
-								<td>회원등급</td>
+								<td style="width: 10%">회원코드</td>
+								<td style="width: 10%">아이디</td>
+								<td style="width: 10%">이름</td>
+								<td style="width: 13%">생년월일</td>
+								<td style="width: 13%">연락처</td>
+								<td style="width: 13%">가입일</td>
+								<td style="width: 10%">회원등급</td>
+								<td style="width: 15%">회원정보</td>
 							</tr>						
 							<tr>
 								<c:forEach items="${memberList}" var="memberList">
 								<tr>
+									<td style="padding-top: 10px; padding-bottom: 10px;"><div>${memberList.memberCode} </div></td>
 									<td>
-										<div>${memberList.memberCode} </div>
-										<div><a href="${contextPath}/admin/memberDetail?memberCode=${memberList.memberCode}&memberId=${memberList.memberId.memberId}" onClick="window.open(this.href, '', 'width=700, height=480'); return false;">[상세보기]</a></div>
+										<div><a href="${contextPath}/admin/memberDetail?memberCode=${memberList.memberCode}&memberId=${memberList.memberId.memberId}" onClick="window.open(this.href, '', 'width=635, height=840'); return false;">${memberList.memberId.memberId}</a></div>
 									</td>
-									<td><a href="memberMgtDetail?memberCode=${memberList.memberCode}"><c:out value="${memberList.memberId.memberId}" /></a></td>
-									<td>${memberList.memberId.memberName}</td>
+									<td>
+										<div><a href="${contextPath}/admin/memberDetail?memberCode=${memberList.memberCode}&memberId=${memberList.memberId.memberId}" onClick="window.open(this.href, '', 'width=635, height=840'); return false;">${memberList.memberId.memberName}</a></div>
+									</td>
+									<td>${memberList.memberId.birthday}</td>
 									<td>${memberList.memberId.tel}</td>
+									<td><tf:formatDateTime value="${memberList.signUpDate}" pattern="yyyy-MM-dd" /></td>
 									<td>${memberList.gradeCode.grade}</td>
+									<td>
+										<button><a href="${contextPath}/admin/memberDetail?memberCode=${memberList.memberCode}&memberId=${memberList.memberId.memberId}" onClick="window.open(this.href, '', 'width=635, height=840'); return false;">회원정보</a></button>
+										<button><a href="${contextPath}/admin/orderMgtMem?page=1&perPageNum=10&searchType=w&keyword=${memberList.memberId.memberId}" onClick="window.open(this.href, '', 'width=1400, height=750'); return false;">주문내역</a></button>
+									</td>
 								</tr>
 								</c:forEach>
 							</tr>
@@ -109,7 +127,6 @@ tbody tr:nth-child(2n+1) {
 						    <select name="searchType">
 						      <option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>아이디</option>
 						      <option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>이름</option>
-						      <option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>아이디+이름</option>
 						    </select>
 						
 						    <input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>

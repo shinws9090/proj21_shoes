@@ -26,6 +26,10 @@ function submit(){
 </script>
 <style>
 
+section.adminSection {
+    padding-top: 10px;
+}
+
 form#paymentStateForm {
     display: inline-block;
 }
@@ -53,9 +57,8 @@ form#deliveryCodeForm {
 
 .pageNumber2 {
     display: inline-block;
-    width: 90%;
+    width: 98%;
     text-align: center;
-    margin-bottom: 100px;
 }
 
 tbody tr:nth-child(2n) {
@@ -94,7 +97,7 @@ td#td2 {
 }
 
 td#td3 {
-    width: 5%;
+    width: 10%;
 }
 
 td#td4 {
@@ -114,7 +117,7 @@ td#td7 {
 }
 
 td#td8 {
-    width: 12%;
+    width: 11%;
 }
 
 td#td9 {
@@ -125,39 +128,19 @@ td#td10 {
     width: 12%;
 }
 
+.title_div {
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
 </style>
 </head>
-<body class="main-layout">
-	<!-- header -->
-	<header>
-		<jsp:include page="/WEB-INF/view/include/header.jsp" />
-		<c:if test="${empty authInfo2}"> 
-			<jsp:include page="/WEB-INF/view/myPage/include/loginplz.jsp"/>
-		</c:if>
-	</header>
-	<!-- end header -->
+<body >
 <c:if test="${!empty authInfo2}">
 	<section class="adminSection">
-		<div class="d-flex" id="wrapper">
-			<jsp:include page="/WEB-INF/view/admin/include/sidebar.jsp" />		    
-		    <!-- Page content wrapper-->
-		    <div id="page-content-wrapper">
-		        <!-- Page content-->
-		        <div class="container-fluid">
-		        	<h1 class="mt-4">주문 목록</h1>
-		        	<div class="orderTitle">
-		        		<a class="a1">누적주문 : ${orderCount1 + orderCount2 + orderCount3 + orderCount4 + cancelCount}건</a>
-		        		<a class="a1" id="nc" href="${contextPath}/admin/orderMgt?page=1&perPageNum=10&searchType=nc">현재주문 : ${orderCount1 + orderCount2 + orderCount3 + orderCount4}건</a>
-		        		<a class="a1" id="cc" href="${contextPath}/admin/orderMgt?page=1&perPageNum=10&searchType=cc">주문취소 : ${cancelCount}건</a>
-		        	</div>
-		        	<div class="orderTitle2">
-		        		
-		        		<a class="a1" id="p1" href="${contextPath}/admin/orderMgt?page=1&perPageNum=10&searchType=p1">결제완료 : ${orderCount1}건</a>
-		        		<a class="a1" id="p2" href="${contextPath}/admin/orderMgt?page=1&perPageNum=10&searchType=p2">배송준비중 : ${orderCount2}건</a>
-		        		<a class="a1" id="p3" href="${contextPath}/admin/orderMgt?page=1&perPageNum=10&searchType=p3">배송중 : ${orderCount3}건</a>
-		        		<a class="a1" id="p4" href="${contextPath}/admin/orderMgt?page=1&perPageNum=10&searchType=p4">배송완료 : ${orderCount4}건</a>
-		        	</div>
-					<div class="search">
+		        	<div class="title_div"><h1 class="mt-4">${param.keyword} 회원의 주문 내역</h1></div>
+		        	
+					<div class="search" id="search">
 						<select name="searchType">
 							<option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>주문코드</option>
 							<option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>회원아이디</option>
@@ -199,31 +182,8 @@ td#td10 {
 					    </script>
 					</div>
 					
-					<div class="pageNumer">
-						<ul class="pageNum">
-							<c:if test="${pageMaker.prev}">
-						      <li id="page"><a href="${contextPath}/admin/orderMgt${pageMaker.makeSearch(pageMaker.startPage - 1)}">[이전]</a></li>
-						    </c:if>
-						    
-						    <c:if test="${!pageMaker.prev}">
-						      <li id="page"><a style="color: #808080;">[이전]</a></li>
-						    </c:if>
-						
-						    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-						      <li id="page"><a href="${contextPath}/admin/orderMgt${pageMaker.makeSearch(idx)}" ${idx == param.page ? 'style="color: #DC143C;"' : ''}>[${idx}]</a></li>
-						    </c:forEach>
-						
-						    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-						      <li id="page"><a href="${contextPath}/admin/orderMgt${pageMaker.makeSearch(pageMaker.endPage + 1)}">[다음]</a></li>
-						    </c:if>
-						    
-						    <c:if test="${!pageMaker.next}">
-						      <li id="page"><a style="color: #808080;">[다음]</a></li>
-						    </c:if>
-						</ul>
-					</div>
-		        	
-		            <table style="width: 95%; text-align: center">
+					<div style="height: 550px; margin-left: 20px">		        	
+		            <table style="width: 98%; text-align: center">
 						<thead>
 							<tr style="background-color: lightgrey; text-align: center">
 								<td id="td1">주문번호</td>
@@ -247,8 +207,8 @@ td#td10 {
 											<div><a href="${contextPath}/admin/orderDetail?orderCode=${orderList.orderCode}&memberId=${orderList.memberId}" onClick="window.open(this.href, '', 'width=780, height=700'); return false;">[상세보기]</a></div>
 										</td>
 										<td>${orderList.memberId}</td>
-										<td><a href="${contextPath}/productDetail/${orderList.productCode}"><img src="${contextPath}/images/${orderList.productMainImage}" width="100" height="100"></a></td>
-										<td><a href="${contextPath}/productDetail/${orderList.productCode}">${orderList.productName}</a></td>
+										<td><img src="${contextPath}/images/${orderList.productMainImage}" width="40" height="40"></td>
+										<td>${orderList.productName}</td>
 										<td>${orderList.paymentAmount}</td>			
 										<td>${orderList.orderCount}</td>
 										<td>${orderList.orderDate}</td>
@@ -256,55 +216,22 @@ td#td10 {
 													<c:when test="${orderList.paymentState == 1 && orderList.cancelState == false}">
 														<td>
 															<div>결제완료</div>
-															<form id="paymentStateForm" name="paymentStateForm" action="${contextPath}/admin/orderModPayment?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}" method="post" autocomplete="off">
-																<input name="orderCode" type="hidden" value="${orderList.orderCode}"/>
-																<select name="paymentState" class="paymentState" style="width:100px;" >
-																	<option selected="selected" value="2">배송준비중</option>
-																</select>
-																<button id="mod_btn" type="submit" onClick="if(!confirm('변경 하시겠습니까?')){return false;}">변경</button>
-																<button id="remove_btn" type="button" onClick="if(!confirm('취소 하시겠습니까?')){return false;}"><a href="${contextPath}/admin/orderCancel?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}&orderCode=${orderList.orderCode}">주문취소</button>
-															</form>
-															<br>
 														</td>
 													</c:when>
 													<c:when test="${orderList.paymentState == 2 && orderList.cancelState == false}">
 														<td>
 															<div>배송준비중</div>
-															<form id="paymentStateForm" name="paymentStateForm" action="${contextPath}/admin/orderModPayment?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}" method="post" autocomplete="off">
-																<input name="orderCode" type="hidden" value="${orderList.orderCode}"/>
-																<select name="paymentState" class="paymentState" style="width:100px;">
-																	<option selected="selected" value="3">배송중</option>
-																</select>
-																<button id="mod_btn" type="submit" onClick="if(!confirm('변경 하시겠습니까?')){return false;}">변경</button>
-																<button id="remove_btn" type="button" onClick="if(!confirm('취소 하시겠습니까?')){return false;}"><a href="${contextPath}/admin/orderCancel?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}&orderCode=${orderList.orderCode}">주문취소</button>
-															</form>								
-															<br>
 														</td>
 													</c:when>
 													<c:when test="${orderList.paymentState == 2 && orderList.cancelState == false}">
 														<td>
 															<div>배송준비중 </div>
-															<form id="paymentStateForm" name="paymentStateForm" action="${contextPath}/admin/orderModPayment?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}" method="post" autocomplete="off">
-																<input name="orderCode" type="hidden" value="${orderList.orderCode}"/>
-																<select name="paymentState" class="paymentState" style="width:100px;">
-																	<option selected="selected" value="3">배송중</option>
-																</select>
-																<button id="mod_btn" type="submit" onClick="if(!confirm('변경 하시겠습니까?')){return false;}" disabled="disabled">변경</button>
-																<button id="remove_btn" type="button" onClick="if(!confirm('취소 하시겠습니까?')){return false;}"><a href="${contextPath}/admin/orderCancel?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}&orderCode=${orderList.orderCode}">주문취소</button>
-															</form>								
 															<br>
 														</td>
 													</c:when>
 													<c:when test="${orderList.paymentState == 3 && orderList.cancelState == false}">
 														<td>
 															<div>배송중</div>
-															<form id="paymentStateForm" name="paymentStateForm" action="${contextPath}/admin/orderModPayment?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}" method="post" autocomplete="off">
-																<input name="orderCode" type="hidden" value="${orderList.orderCode}"/>
-																<select name="paymentState" class="paymentState" style="width:100px;">
-																	<option selected="selected" value="4">배송완료</option>
-																</select>
-																<button id="mod_btn" type="submit" onClick="if(!confirm('변경 하시겠습니까?')){return false;}">변경</button>
-															</form>
 														</td>
 													</c:when>
 													<c:when test="${orderList.paymentState == 4 && orderList.cancelState == false}">
@@ -318,11 +245,7 @@ td#td10 {
 												<div>-</div>
 											</c:if>										
 											<c:if test="${orderList.deliveryCode eq null && orderList.paymentState == 2}">
-												<form id="deliveryCodeForm" name="deliveryCodeForm" action="${contextPath}/admin/orderModDelivery?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}" method="post" autocomplete="off">
-													<input name="orderCode" type="hidden" value="${orderList.orderCode}"/>
-													<input name="deliveryCode" type="text" placeholder="송장번호 입력" value="" style="width:120px;">
-													<button id="delivery_btn" type="submit" onClick="if(!confirm('등록 하시겠습니까?')){return false;}">등록</button>
-												</form>
+												<div>-</div>
 											</c:if>
 											
 											<c:if test="${orderList.deliveryCode ne null && orderList.paymentState == 2}">
@@ -330,11 +253,7 @@ td#td10 {
 											</c:if>
 											
 											<c:if test="${orderList.deliveryCode eq null && orderList.paymentState == 3}">
-												<form id="deliveryCodeForm" name="deliveryCodeForm" action="${contextPath}/admin/orderModDelivery?page=${param.page}&perPageNum=${param.perPageNum}&searchType=${param.searchType}" method="post" autocomplete="off">
-													<input name="orderCode" type="hidden" value="${orderList.orderCode}"/>
-													<input name="deliveryCode" type="text" placeholder="송장번호 입력" value="" style="width:120px;">
-													<button id="delivery_btn" type="submit" onClick="if(!confirm('등록 하시겠습니까?')){return false;}">등록</button>
-												</form>
+												<div>-</div>
 											</c:if>
 											
 											<c:if test="${orderList.deliveryCode ne null && orderList.paymentState == 3}">
@@ -356,32 +275,30 @@ td#td10 {
 											</c:choose>
 										</td>
 									</c:if>
-									<c:if test="${orderList.cancelState == true}">
-										<script>
-											document.getElementById('td8').innerText='주문취소일';
-											document.getElementById('td10').innerText='취소여부';											
-										</script>
-										
-										<td>${orderList.orderCode}</td>
+									<c:if test="${orderList.cancelState == true}">										
+										<td>
+										<div>${orderList.orderCode}<div>
+										<div><a href="${contextPath}/admin/orderDetail?orderCode=${orderList.orderCode}&memberId=${orderList.memberId}" onClick="window.open(this.href, '', 'width=780, height=700'); return false;">[상세보기]</a></div>
+										</td>
 										<td>${orderList.memberId}</td>
-										<td><a href="${contextPath}/productDetail/${orderList.productCode}"><img src="${contextPath}/images/${orderList.productMainImage}" width="100" height="100"></a></td>
-										<td><a href="${contextPath}/productDetail/${orderList.productCode}">${orderList.productName}</a></td>
+										<td><img src="${contextPath}/images/${orderList.productMainImage}" width="40" height="40"></td>
+										<td>${orderList.productName}</td>
 										<td>${orderList.paymentAmount}</td>			
 										<td>${orderList.orderCount}</td>
 										<td>${orderList.orderDate}</td>
+										<td>주문취소일</td>
 										<td>${orderList.cancelDate}</td>
-										<td>-</td>
 										<td>주문취소</td>
 									</c:if>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
-					
+					</div>
 					<div class="pageNumber2">
 						<ul class="pageNum2">
 							<c:if test="${pageMaker.prev}">
-						      <li id="page"><a href="${contextPath}/admin/orderMgt${pageMaker.makeSearch(pageMaker.startPage - 1)}">[이전]</a></li>
+						      <li id="page"><a href="${contextPath}/admin/orderMgtMem${pageMaker.makeSearch(pageMaker.startPage - 1)}">[이전]</a></li>
 						    </c:if>
 						    
 						    <c:if test="${!pageMaker.prev}">
@@ -389,11 +306,11 @@ td#td10 {
 						    </c:if>
 						
 						    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-						      <li id="page"><a href="${contextPath}/admin/orderMgt${pageMaker.makeSearch(idx)}" ${idx == param.page ? 'style="color: #DC143C;"' : ''}>[${idx}]</a></li>
+						      <li id="page"><a href="${contextPath}/admin/orderMgtMem${pageMaker.makeSearch(idx)}" ${idx == param.page ? 'style="color: #DC143C;"' : ''}>[${idx}]</a></li>
 						    </c:forEach>
 						
 						    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-						      <li id="page"><a href="${contextPath}/admin/orderMgt${pageMaker.makeSearch(pageMaker.endPage + 1)}">[다음]</a></li>
+						      <li id="page"><a href="${contextPath}/admin/orderMgtMem${pageMaker.makeSearch(pageMaker.endPage + 1)}">[다음]</a></li>
 						    </c:if>
 						    
 						    <c:if test="${!pageMaker.next}">
@@ -402,20 +319,15 @@ td#td10 {
 						</ul>
 					</div>				
 					
-		        </div>
 		        
-		    </div>		    
-		</div>
 	</section>
 	</c:if>
-	<footer>
-		<jsp:include page="/WEB-INF/view/include/footer.jsp" />
-	</footer>
 	
 	<jsp:include page="/WEB-INF/view/admin/include/script.jsp" />
 </body>
 <script>
 	
+	$("#search").hide();
 	$("#search2").hide();
 	
 	function getParameterByName(name) {

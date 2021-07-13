@@ -58,7 +58,7 @@ element.style {
     padding-top: 0px;
     margin-left: 0px;
     margin-right: 0px;
-    font: 1em Verdana,Dotum,AppleGothic,sans-serif;
+    font: 0.9em Verdana,Dotum,AppleGothic,sans-serif;
     padding-bottom: 20px;
     margin-bottom: 20px;
     border-bottom: 1px solid #c0c0c0;
