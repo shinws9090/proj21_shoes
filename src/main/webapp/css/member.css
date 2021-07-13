@@ -112,14 +112,14 @@
 	padding-top:30px;
 	margin-left: 15%;
 	margin-right: 10%;
-	font: 0.75em Verdana,Dotum,AppleGothic,sans-serif;
+	font: 1.1em Verdana,Dotum,AppleGothic,sans-serif;
 	
 }
 #myPageForm{
 	padding-top:0px;
 	margin-left: 20%;
 	margin-right: 20%;
-	 font: 0.75em Verdana,Dotum,AppleGothic,sans-serif;
+	 font: 2em Verdana,Dotum,AppleGothic,sans-serif;
 	 padding-bottom:20px;
 	 margin-bottom: 20px;
 	 border-bottom: 1px solid #c0c0c0; 
@@ -129,6 +129,7 @@
 #myPageForm td{
 		width:  100px;
 	padding-bottom: 5px; 
+	padding-top: 5px; 
 	 /* padding-left: 20px;  */
 /* 	padding-right: 20px; */
 	margin-left: 20%;
@@ -141,6 +142,8 @@
 /*     background-color:#e2e2e2a3; */
      margin-top:5px;  
      margin-bottom: 10px;
+     line-height: 3;
+     border-top: 0;
 	
 }
 th {
@@ -171,7 +174,8 @@ td{
 }
 
 .step2 p {
-	margin: 10px;
+	margin: 15px;
+	font-size: 1.2em;
 
 }
 .signUpForm{						/*  */
@@ -543,7 +547,7 @@ form:errors{
 } */
 
 
-#modifyForm td,th{
+#modifyForm td{
 
 	padding-bottom: 5px; 
 	 /* padding-left: 20px;  */
@@ -558,7 +562,7 @@ form:errors{
 /*     background-color:#e2e2e2a3; */
      margin-top:5px;  
      margin-bottom: 10px;
-	width:250px;
+ width:450px; 
 	    max-height: 100%;
     max-width: 60%; 
     vertical-align: middle;
@@ -566,6 +570,33 @@ form:errors{
     border-top: 1px solid #dcdcdc;
 	padding:5px;
 }
+
+#modifyForm th{
+
+	padding-bottom: 5px; 
+	 /* padding-left: 20px;  */
+/* 	padding-right: 20px; */
+/* 	margin-left: 20%;
+	margin-right: 20%; */
+	margin: auto;
+ 	margin-top: 10px;
+/* 	border: 2px solid #dcdcdc; */
+/* box-shadow: 2px 5px 20px #c0c0c0; */
+/*     border-radius: 15px; */
+/*     background-color:#e2e2e2a3; */
+     margin-top:5px;  
+     margin-bottom: 10px;
+	/* width:250px; */
+	    max-height: 100%;
+    max-width: 60%; 
+    vertical-align: middle;
+    border-bottom: 1px solid #dcdcdc;
+    border-top: 1px solid #dcdcdc;
+	padding:5px;
+	
+}
+
+
 #modifyForm {
      box-sizing: inherit; 
 }
@@ -577,10 +608,20 @@ form:errors{
 #modifyForm input{
 		width:100%;
 }
-
+#modifyForm tr{
+	margin-bottom: 5px;
+}
 /* .modify_table td, .modify_table th {
     max-height: 100%;
     max-width: 150px;
     vertical-align: middle;
     border: 1px solid #dcdcdc;
+} */
+
+/* #insertTable  td{
+	padding: 1em;
+    border-top: #ccc 1px solid;
+}
+body {
+    line-height: 2;
 } */

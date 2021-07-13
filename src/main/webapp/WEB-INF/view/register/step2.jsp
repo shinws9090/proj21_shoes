@@ -112,7 +112,7 @@
 	<article id="title_h2">
 		<h2>회원가입</h2> 
 	</article>
-		<div id="insertForm" style="font: 0.75em Verdana,Dotum,AppleGothic,sans-serif;">
+		<div id="insertForm" >
 		<form:form action="step3" modelAttribute="registerRequest">
 		<form:errors/>
 		<table id ="insertTable"  >

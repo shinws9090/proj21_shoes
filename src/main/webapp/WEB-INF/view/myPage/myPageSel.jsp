@@ -18,11 +18,10 @@
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<title>회원가입</title>
+<title>마이페이지</title>
 <!-- mobile metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<title>마이페이지</title>
 <!-- bootstrap -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
 		integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
@@ -31,6 +30,7 @@
 <link rel="stylesheet" href="${contextPath}/css/reset.css">
 <!-- bootstrap end -->	
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
+<%-- <link rel="stylesheet" href="<%=request.getContextPath() %>/css/cartList.css"> --%>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/member.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/memberBootstrap.css">
 
@@ -42,7 +42,10 @@
 .step2 h2{
 	border-bottom: none;
 
-}</style>
+}
+
+
+</style>
 	
 </head>
 <body class="main-layout">
@@ -56,10 +59,10 @@
 	<!-- end header -->
 	
 		<div id="myPage">
-	<section id ="maPage">
+	<section id ="maPage" style="	text-align: center;">
 			<c:if test="${!empty authInfo}">
 						<!-- 상단 등급 바 -->
-				<table id="tbl_maGrade"> 
+				<table id="tbl_maGrade" > 
 					<tr id="tr_myGrade">
 						<td><h2>${member.memberName }[${member.memberId}]님의 멤버십 등급은 ${member.grade}입니다.	</h2>
 							<article id="myGrade_detail">
@@ -100,50 +103,104 @@
 			<div id="myPageForm">
 				<form:form action="modify" modelAttribute="memberDetail">
 				<form:errors/>
-				<table  class="insertTable" >
+				<table id="memberTable" style="">
+				<thead>
 					<tr>
-						<td>회원아이디  </td><td style="text-align: left;">${member.memberId }</td>				
-					</tr>
-					<%-- <tr>
-						<td >비밀번호  </td>		<td style="text-align: left;">********</td><td>${member.memberPwd }</td>
-					</tr> --%>
-				<tr>
-						<td>회원이름  </td>		<td> ${member.memberName }</td>
+						<th>회원아이디</th>
+						<th>${member.memberId }</th>
 					</tr>
 					<tr>
-						<td>성별  </td>		<td >${member.gender }</td>
+						<th>회원이름</th>
+						<th>${member.memberName }</th>	
 					</tr>
 					<tr>
-						<td>생년월일  </td>		<td >${member.birthday }</td>
+						<th>성별</th>
+						<th>${member.gender }</th>
 					</tr>
 					<tr>
-						<td>이메일  </td>		<td >${member.email }</td>
+						<th>생년월일</th>
+						<th>${member.birthday }</th>
+					</tr>
+				
+					<tr>
+						<th>이메일</th>
+						<th>${member.email }</th>
+					<tr>
+						<th>연락처</th>
+						<th>${member.tel }</th>
 					</tr>
 					<tr>
-						<td>연락처  </td>		<td >${member.tel }</td>
+						<th>우편번호</th>
+						<th>${member.zipCode }</th>
+						
 					</tr>
 					<tr>
-						<td>우편번호  </td>		<td >${member.zipCode }</td>
+						<th>주소</th>
+						<th>${member.address }</th>
+					</tr>
+					<tr>	
+						<th>상세주소</th>
+						<th>${member.detailAddress }</th>
 					</tr>
 					<tr>
-						<td >주소  </td>		<td style="width: 81%">${member.address }</td>
+						<th>포인트</th>
+						<th>${member.point }</th>
 					</tr>
 					<tr>
-						<td >상세주소 </td>		<td>${member.detailAddress }</td>
+						<th>누적구매금액</th>
+						<th>${member.cumulativeBuyAmount }</th>
 					</tr>
 					<tr>
-						<td>포인트  </td>		<td  >${member.point }</td>
+						<th>등급</th>
+						<th >${member.grade }</th>
 					</tr>
 					<tr>
-						<td >누적구매금액  </td>	<td >${member.cumulativeBuyAmount }</td>
+						<th>가입일</th>
+						<th><tf:formatDateTime value="${member.signUpDate }" pattern="yyyy-MM-dd:mm"/></th>
+					</tr>
+				</thead>
+					
+			<%-- 	<tbody>
+					<tr>
+						<td>${member.memberId }</td>	
+					</tr>	
+					<tr>		
+						<td> ${member.memberName }</td>
 					</tr>
 					<tr>
-						<td >등급  </td>		<td ">${member.grade }</td>
+						<td>${member.gender }</td>
 					</tr>
 					<tr>
-						<td >가입일  </td>		<td><tf:formatDateTime value="${member.signUpDate }" pattern="yyyy-MM-dd:mm"/>
-					</td>
-
+						<td>${member.birthday }</td>
+					</tr>
+					<tr>
+						<td>${member.email }</td>
+					</tr>
+					<tr>
+						<td>${member.tel }</td>
+					</tr>	
+					<tr>
+						<td>${member.zipCode }</td>
+					</tr>
+					<tr>
+						<td>${member.address }</td>
+					</tr>
+					<tr>
+						<td>${member.detailAddress }</td>
+					</tr>
+					<tr>
+						<td>${member.point }</td>
+					</tr>
+					<tr>
+						<td>${member.cumulativeBuyAmount }</td>
+					</tr>
+					<tr>
+						<td >${member.grade }</td>
+					</tr>
+					<tr>
+						<td><tf:formatDateTime value="${member.signUpDate }" pattern="yyyy-MM-dd:mm"/></td>
+					</tr>	
+					</tbody> --%>
 		
 		</table>
 		

@@ -148,11 +148,11 @@
 
 		<h3 style="margin-left: 22%;">회원정보 변경</h3> 
 		
-		<div class="container my-3" style="font: 0.8em Verdana,Dotum,AppleGothic,sans-serif; margin-left: 20%">
+		<div class="container my-3" style="font: 1em Verdana,Dotum,AppleGothic,sans-serif; margin-left: 20%">
 			<form:form action="${contextPath}/myPage/modify/${member.memberId }" modelAttribute="memberDetailUpdateCommend"><!-- 보내는거? -->
 				<form:errors/>
 				<table  class="modify_table">
-			<tr>
+			<tr >
 				<article style="color: red; ">
 								<form:errors  path="confirmPassword"  /><br>
 								<form:errors path="memberPwd" />
