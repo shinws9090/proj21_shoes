@@ -8,7 +8,7 @@ from employee where emp_id ='chamdodari' and emp_pwd =password('rootroot');
 password('rootroot');
 
 select * from memberDetail;
-select * from member where member_id ='1234';
+select * from member where member_id ='aaa';
 
 select * from  `order` where member_code =111116;
 

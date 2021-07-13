@@ -73,7 +73,7 @@
 			
 		
 		
-		<article class="btnSearch">
+		<article class="btnSearch" >
 	
 		
 		<button type="button,submit" value="조회하기" class="btn btn-secondary btn-lg"  style="width: 100%; font-size: 15px; margin-bottom: 10px;">조회하기</button>

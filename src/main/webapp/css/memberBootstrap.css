@@ -198,11 +198,15 @@ background-color:#4545460f;
     line-height: inherit;
     
 }
- #logfinForm button,  #logfinForm input, #logfinForm  optgroup, #logfinForm  select,  #logfinForm textarea {
+
+
+
+
+ #loginForm button,  #loginForm input, #loginForm  optgroup, #loginForm  select,  #loginForm textarea {
     margin: 0;
     font-family: inherit;
-        font-size: 1.3em;
-            width: 350px;
+        font-size: 1.1em;
+            /* width: 350px; */
     line-height: inherit;
     
 }

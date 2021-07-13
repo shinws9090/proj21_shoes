@@ -47,8 +47,7 @@
 			
 			</div>
 			<article id = "findForm">
-		
-			<a href="${contextPath}/login/loginForm">로그인</a> 		
+			
 
 		
 		</article>
