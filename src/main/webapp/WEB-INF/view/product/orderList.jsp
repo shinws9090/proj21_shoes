@@ -230,7 +230,7 @@ function newAddress() {
 					</td>
 				</tr>
 			</table>
-			<input type="submit" class="btn btn-outline-secondary" value="결재하기">
+			<input type="submit" class="btn btn-outline-secondary" value="결제하기">
 		</form>
 	</section>
 		
