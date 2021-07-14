@@ -111,7 +111,7 @@
 					<tr id="tr_myGrade">
 						<td><h2>${memberGrade.memberName }[${memberGrade.memberId}]님의 멤버십 등급은 ${memberGrade.grade}입니다.	</h2>
 							<article id="myGrade_detail">
-								<a href="${contextPath}/grade/${memberGrade.memberId}">등급별 혜택 보기 〉</a>
+									<a href="${contextPath}/admin/board/mainNoticeDetail?boardCode=6">등급별 혜택 보기 〉</a>
 								포인트 〉 <a id="myPoint"> ${memberGrade.point }점 </a>
 							</article>
 						</td>

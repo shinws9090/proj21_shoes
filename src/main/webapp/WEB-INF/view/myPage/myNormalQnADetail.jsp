@@ -47,14 +47,14 @@
 					<tr id="tr_myGrade">
 						<td><h2>${member.memberName }[${member.memberId}]님의 멤버십 등급은 ${member.grade}입니다.	</h2>
 							<article id="myGrade_detail">
-								<a href="${contextPath}/grade/${member.memberId}">등급별 혜택 보기 〉</a>
+									<a href="${contextPath}/admin/board/mainNoticeDetail?boardCode=6">등급별 혜택 보기 〉</a>
 								포인트 〉 <a id="myPoint"> ${member.point }점 </a>
 							</article>
 						</td>
 					</tr>
 				</table>
 				
-				<!-- 좌측 메뉴 -->
+			<!-- 좌측 메뉴 -->
 				<article id="my_menu">
 				<h3>회원정보</h3>
 				<a href="${contextPath}/myPage/myPageSel/${member.memberId}">-회원정보 조회 / 변경</a><br>
@@ -75,7 +75,6 @@
 				
 				
 				</article>
-				
 			
 				<h4>일반문의내역 상세보기</h4>
 				<br>
@@ -120,7 +119,7 @@
 				
 			</table>
 			<article id="myData_btn" >
-			 <a href="${contextPath}/myPage/${myQnADetail.boardCode}/${member.memberId}/modify">수정하러가기(${myQnADetail.boardCode})</a>
+			 <a href="${contextPath}/myPage/${myQnADetail.boardCode}/${member.memberId}/modify">수정하러가기</a>
 			 
 			 </article>
 			

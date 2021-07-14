@@ -47,31 +47,31 @@
 					<tr id="tr_myGrade">
 						<td><h2>${memberPageSelectComment.memberName }[${memberPageSelectComment.memberId}]님의 멤버십 등급은 ${memberPageSelectComment.grade}입니다.	</h2>
 							<article id="myGrade_detail">
-								<a href="${contextPath}/grade/${memberPageSelectComment.memberId}">등급별 혜택 보기 〉</a>
+									<a href="${contextPath}/admin/board/mainNoticeDetail?boardCode=6">등급별 혜택 보기 〉</a>
 								포인트 〉 <a id="myPoint"> ${memberPageSelectComment.point }점 </a>
 							</article>
 						</td>
 					</tr>
 				</table>
 				
-				<!-- 좌측 메뉴 -->
+		<!-- 좌측 메뉴 -->
 				<article id="my_menu">
 				<h3>회원정보</h3>
-				<a href="${contextPath}/myPage/myPageSel/${memberPageSelectComment.memberId}">-회원정보 조회 / 변경</a><br>
-				<a href="${contextPath}/myPage/quitMember/${memberPageSelectComment.memberId}">-회원탈퇴</a>
+				<a href="${contextPath}/myPage/myPageSel/${member.memberId}">-회원정보 조회 / 변경</a><br>
+				<a href="${contextPath}/myPage/quitMember/${member.memberId}">-회원탈퇴</a>
 
 				<h3>나의 쇼핑정보</h3>			
-				<a href="${contextPath}/myPage/myOrder/${memberPageSelectComment.memberId}">-주문내역</a><br>
+				<a href="${contextPath}/myPage/myOrder/${member.memberId}">-주문내역</a><br>
 				<a href="${contextPath}/myPage/myCancelOrder/${member.memberId}">-취소내역</a><br>
 				<a href="${contextPath}/cartList">-장바구니</a>
 			
 				<h3>나의 후기</h3>			
-				<a href="${contextPath}/myPage/myReview/${memberPageSelectComment.memberId}">-작성완료 후기 내역</a><br>
-				<a href="${contextPath}/myPage/myReviewPlz/${memberPageSelectComment.memberId}">-미작성 후기 내역</a><br>
+				<a href="${contextPath}/myPage/myReview/${member.memberId}">-작성완료 후기 내역</a><br>
+				<a href="${contextPath}/myPage/myReviewPlz/${member.memberId}">-미작성 후기 내역</a><br>
 			
 				<h3>나의 문의</h3>
-				<a href="${contextPath}/myPage/myProductQnA/${memberPageSelectComment.memberId}">-상품문의내역</a><br>
-				<a href="${contextPath}/myPage/myNormalQnA/${memberPageSelectComment.memberId}">-일반문의내역</a><br>
+				<a href="${contextPath}/myPage/myProductQnA/${member.memberId}">-상품문의내역</a><br>
+				<a href="${contextPath}/myPage/myNormalQnA/${member.memberId}">-일반문의내역</a><br>
 				
 				
 				</article>
