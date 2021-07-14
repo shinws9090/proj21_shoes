@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -160,6 +162,67 @@ public class AdminController {
 		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(productService.countInfoList(scri));
 		model.addAttribute("pageMaker", pageMaker);
+	}
+	
+	@GetMapping("/admin/bannerMgt") // 제품관리 화면
+	public void bannerMgt(Model model, HttpServletRequest request) {
+		File dir = new File(request.getRealPath("/")+"images/slide");
+	    File[] fileList = dir.listFiles();
+	    List<String> fileNames = new ArrayList<String>();
+	    for(File f : fileList) {
+	    	fileNames.add(f.getName());
+	    }
+	    model.addAttribute("fileNames", fileNames);
+	}
+	
+	@GetMapping("/admin/bannerDel") // 제품관리 화면
+	public String bannerDel(Model model, HttpServletRequest request) {
+	    File file = new File(request.getRealPath("/")+ "images/slide/" + request.getParameter("fileName"));
+	    System.out.println(request.getParameter("fileName"));
+	    System.out.println(file);
+	    
+		if (file.exists()) {
+			file.delete();	//파일 삭제
+			System.out.println(request.getParameter("fileName") + "삭제 성공");
+		} else {
+			System.out.println("파일 없음 삭제 실패");
+		}
+		
+		return "redirect:/admin/bannerMgt";
+	}
+	
+	@GetMapping("/admin/bannerReg") // 제품관리 화면
+	public void getBannerReg(Model model, HttpServletRequest request) {
+		File dir = new File(request.getRealPath("/")+"images/slide");
+	    File[] fileList = dir.listFiles();
+	    List<String> fileNames = new ArrayList<String>();
+	    for(File f : fileList) {
+	    	fileNames.add(f.getName());
+	    }
+	    model.addAttribute("fileNames", JSONArray.fromObject(fileNames));		
+		
+		System.out.println("배너등록 페이지");
+		
+	}
+	
+	@PostMapping("/admin/bannerReg") // 제품관리 화면
+	public void postBannerReg(MultipartHttpServletRequest request, MultipartFile file, HttpServletResponse response)
+			throws IOException, Exception {
+
+		String pathMainImage = request.getSession().getServletContext().getRealPath("/") + "images/slide/";
+		MultipartFile mf = request.getFile("bannerImage");
+		String savedName = mf.getOriginalFilename();
+		File savedFile = new File(pathMainImage + savedName);
+		mf.transferTo(savedFile);
+
+		System.out.println(savedFile);
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		out.println("opener.location.reload()");
+		out.println("window.close()");
+		out.println("</script>");
 	}
 
 	@GetMapping("/admin/product/productDetailMgt") // 제품상세 화면
@@ -589,7 +652,7 @@ public class AdminController {
 	}
 
 	@PostMapping("/admin/product/brandReg")
-	public String postBrandRegister(HttpServletRequest request) {
+	public String postBrandRegister(MultipartHttpServletRequest request, MultipartFile file, HttpServletResponse response) throws IOException, Exception {
 
 		Brand brand = new Brand();
 		brand.setBrandCode(Integer.parseInt(request.getParameter("brandCode")));
@@ -598,6 +661,14 @@ public class AdminController {
 
 		brandService.insertBrand(brand);
 		System.out.println(brand);
+		
+		String pathMainImage = request.getSession().getServletContext().getRealPath("/") + "images/";
+		MultipartFile mf = request.getFile("brandImage");
+		String savedName = request.getParameter("brandName") + "logo.jpg";
+		File savedFile = new File(pathMainImage + savedName);
+		mf.transferTo(savedFile);
+
+		System.out.println(savedFile);
 
 		return "redirect:/admin/product/brandReg";
 	}
