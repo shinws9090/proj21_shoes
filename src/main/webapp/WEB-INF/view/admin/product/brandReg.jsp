@@ -30,6 +30,9 @@ function submit(){
 	} else if(targetObject.find("[name='brandEngName']").val() == "" ) {
 		alert("브랜드영어명 미입력");
 		
+	} else if(targetObject.find("[name='brandImage']").val() == "" ) {
+		alert("브랜드로고 미입력");
+		
 	} else {
 		var submitForm = document.brandRegForm;
 		submitForm.submit();
@@ -43,12 +46,20 @@ opener.location.reload();
 <style>
 
 .btn_section {
-    margin-top: 15px;
+    margin-top: 5px;
+}
+
+.contentbrand{
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.imagebrand{
+	display: inline-block;
+    vertical-align: top;
 }
 
 section.adminSection {
-    width: 180px;
-    margin: 0 auto;
     margin-top: 60px;
 }
 
@@ -58,34 +69,61 @@ section.adminSection {
 	<section class="adminSection">
 		<h1 class="mt-4">브랜드 추가</h1>
 			<div class="brandReg">
-			<form id="brandRegForm" name="brandRegForm" method="post" autocomplete="off">
-
-				<div class="form_section">
-					<div class="form_section_title">
-						<label>브랜드 코드</label>
+			<form id="brandRegForm" name="brandRegForm" method="post" autocomplete="off" enctype="multipart/form-data">
+				<div class="contentbrand">
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>브랜드코드</label>
+						</div>
+						<div class="form_section_content">
+							<input name="brandCode" value="">
+						</div>
 					</div>
-					<div class="form_section_content">
-						<input name="brandCode" value="">
+	
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>브랜드명</label>
+						</div>
+						<div class="form_section_content">
+							<input name="brandName" value="">
+						</div>
 					</div>
-				</div>
-
-				<div class="form_section">
-					<div class="form_section_title">
-						<label>브랜드명</label>
-					</div>
-					<div class="form_section_content">
-						<input name="brandName" value="">
+					
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>브랜드영어명</label>
+						</div>
+						<div class="form_section_content">
+							<input name="brandEngName" value="">
+						</div>
 					</div>
 				</div>
 				
-				<div class="form_section">
-					<div class="form_section_title">
-						<label>브랜드영어명</label>
+				<div class="imagebrand">
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>브랜드로고</label>
+						</div>
+						<div class="form_section_content">
+							<input type="file" id="brandImage" name="brandImage" value="" />
+							<div class="select_img"><img src="" /></div>
+						</div>
 					</div>
-					<div class="form_section_content">
-						<input name="brandEngName" value="">
-					</div>
+					
+					<script>
+						$("#brandImage").change(function(){
+							if(this.files && this.files[0]) {
+								var reader = new FileReader;
+								reader.onload = function(data) {
+									$(".select_img img").attr("src", data.target.result).width(200);        
+								}
+								reader.readAsDataURL(this.files[0]);
+							}
+						});
+					</script>
 				</div>
+				<%-- <%=request.getRealPath("/") %> --%>
+				
 			</form>
 					
 			<div class="btn_section">
