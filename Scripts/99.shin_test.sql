@@ -12,6 +12,7 @@ left join image i on i.product_code = p.product_code;
 where p.product_code = 55555;
 
 
+show variables like 'lower_case_table_names';
 
 
 call productByAll();

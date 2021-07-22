@@ -17,7 +17,7 @@ create or replace view  vw_mypageData as
 	g.grade, 									-- 등급
 	g.sale_price,
 	m.signUp_date 								-- 가입일자					
-from memberdetail  md 							
+from memberDetail  md 							
 left join member m  on md.member_id =m.member_id  
 left join grade g on m.grade_code =g.grade_code ;
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -50,7 +50,7 @@ opd.order_count, 			-- 주문수량
 pdpost.product_main_image   -- 상품대표이미지
 from `order` as od 
 left join address  as adr on od.order_code = adr.order_code  
-left join  orderproduct as opd on od.order_code =opd.order_code
+left join  orderProduct as opd on od.order_code =opd.order_code
 left join orderOption as op on opd.product_code =op.product_code and opd.product_code = op.product_code and opd.style_code =op.style_code and opd.`size` =op.`size` 
 left join  productPost as pdpost on op.product_code  = pdpost.product_code 
 left join product as pd on op.product_code = pd.product_code 
@@ -74,7 +74,7 @@ q.regist_date 		-- 등록일
 from qna as q 
 left join product as pd on q.product_code =pd. product_code 
 left join member as m on q.member_code =m.member_code 
-left join productpost as pp on q.product_code = pp.product_code;
+left join productPost as pp on q.product_code = pp.product_code;
 -- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- 5.-------예진_ 마이페이지 나의 상품후기리스트 뷰--------------------------------------------------------------------------------------------------------------------------
@@ -113,11 +113,11 @@ c.category ,				-- 종류
 m.member_id					-- 회원ID 
 from `order` as od 
 left join review as rv on od.order_code =rv.order_code
-left join reviewimage as riv on riv.board_code =rv .board_code 
-left join orderproduct as o on od.order_code =o.order_code
-left join orderoption as op on o.product_code =op.product_code and o.style_code =op.style_code and o.`size`=op.`size`
+left join reviewImage as riv on riv.board_code =rv .board_code 
+left join orderProduct as o on od.order_code =o.order_code
+left join orderOption as op on o.product_code =op.product_code and o.style_code =op.style_code and o.`size`=op.`size`
 left join product as p on p.product_code =op.product_code 
-left join productpost as p2 on p.product_code =p2.product_code
+left join productPost as p2 on p.product_code =p2.product_code
 left join brand as b on p.brand_code =b.brand_code 
 left join category c on p.product_category_code =c.product_category_code
 left join member m on od.member_code = m.member_code;

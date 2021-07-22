@@ -146,7 +146,7 @@ CREATE TABLE sinabro.review (
 	order_code  INT           NOT NULL COMMENT '주문코드', -- 주문코드
 	product_code INT          NOT NULL COMMENT '상품코드', -- 상품코드
 	title       VARCHAR(500)  NOT NULL COMMENT '제목', -- 제목
-	content     VARCHAR(20000) NULL     COMMENT '내용', -- 내용
+	content     VARCHAR(2000) NULL     COMMENT '내용', -- 내용
 	regist_date DATETIME      NULL     COMMENT '등록일' -- 등록일
 )
 COMMENT '상품후기게시판';

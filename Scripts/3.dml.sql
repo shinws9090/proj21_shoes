@@ -63,7 +63,7 @@ insert into product values
 	(11130,'나이키 슬리퍼',2,'FREE',113,'가죽','사계절',now(),80000,100000,now(),100,0,101),
 	(11131,'나이키 키즈 운동화',2,'KIDS',111,'면','사계절',now(),80000,100000,now(),100,0,101);
 	
-insert into productpost values
+insert into productPost values
 	(11111,'DrMartin1-main.jpg','닥터마틴 샌들'),
 	(11112,'Timberland-main.jpg','팀버랜드 부츠'),
 	(11113,'women-myool-main.jpg','누오보 뮬'),
@@ -109,7 +109,7 @@ insert into image values
 	(20,11130,'nike4-2.jpg'),
 	(21,11131,'nike5-2.jpg');
 
-insert into orderoption values
+insert into orderOption values
 	(11111,1,250,100,'brown'),
 	(11112,1,250,100,'yellow'),
 	(11113,1,250,100,'black'),
@@ -143,7 +143,7 @@ insert into grade values
 	(4,'VIP',0.05),
 	(5,'VVIP',0.1);
 
-insert into memberdetail values
+insert into memberDetail values
 	('aaa',password('rootroot'),'테스트1',true,19850101,'test1@test.co.kr','010-111-8888','12345','국채보상로 438','서구 치과의원'),
 	('aaa1',password('rootroot'),'테스트1',true,19880101,'test2@test.co.kr','010-111-8888','12345','국채보상로 438','서구 치과의원'),
 	('aaa2',password('rootroot'),'테스트1',true,19750101,'test3@test.co.kr','010-111-8888','12345','국채보상로 438','서구 치과의원'),
@@ -225,7 +225,7 @@ insert into address values
 	(10016,'테스트3','42813','상화로 373','비둘기 아파트 2단지','010-333-6666'),
 	(10017,'테스트4','41865','서대구로 30','맨투맨 빌딩 4층','010-666-5555');
 
-insert into orderproduct values
+insert into orderProduct values
 	(10014,11111,1,250,1),
 	(10015,11112,1,250,1),
 	(10016,11113,1,250,1),
@@ -238,7 +238,7 @@ insert into review values
 	(3,10016,11113,'배송이 너무 늦었어요','한참 기다렸어요ㅠㅠ',now()),
 	(4,10017,11114,'맘에 들어요','재구매각이에요...!',now());
 
-insert into reviewimage values
+insert into reviewImage values
 	(1,1,'DrMartin1-main.jpg'),
 	(2,2,'Timberland-main.jpg'),
 	(3,3,'women-myool-main.jpg'),

@@ -42,6 +42,7 @@ public class MvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/index").setViewName("index"); // 메인부르면 컨트롤러 거치지 말고 바로 메인 호출시켜준다!! main.jsp는
+		registry.addViewController("/").setViewName("index"); // 메인부르면 컨트롤러 거치지 말고 바로 메인 호출시켜준다!! main.jsp는
 																	// register안 말고, view안에 바로 만들기
 		registry.addViewController("/signup").setViewName("/member/signup"); // 회원가입화면
 //	registry.addViewController("/memberMgt").setViewName("/admin/memberMgt");

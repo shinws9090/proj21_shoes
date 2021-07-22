@@ -11,6 +11,8 @@ insert into `order` values(10022, 111111, now(), null, 124900, 4, false, 1234567
 insert into orderproduct values(10022, 11111, 1, 250, 1);
 
 
+
+
 select * from `order`;
 select * from orderproduct;
 
