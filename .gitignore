@@ -5,8 +5,6 @@
 build
 /classes/
 /test-classes/
-.classpath
-.project
 .settings/
 /bin/
 /.dbeaver/
